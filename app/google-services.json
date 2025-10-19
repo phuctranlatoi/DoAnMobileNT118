@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "596644444511",
+    "project_id": "qlykhambenh",
+    "storage_bucket": "qlykhambenh.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:596644444511:android:b6a6a76e4d79d88644deea",
+        "android_client_info": {
+          "package_name": "com.example.doannt118"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsBwLO44YtAJ-ZWUF5-o24-TWq2hnwL-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
