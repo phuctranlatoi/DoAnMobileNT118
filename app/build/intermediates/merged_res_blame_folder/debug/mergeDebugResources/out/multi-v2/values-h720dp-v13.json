@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.doannt118.app-mergeDebugResources-42:/values-h720dp-v13/values-h720dp-v13.xml",
+            "map": [
+                {
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\888edb72da4ed1940247abecbac19b32\\transformed\\appcompat-1.7.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "66",
+                        "endOffsets": "117"
+                    }
+                }
+            ]
+        }
+    ]
+}
