@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.example.doannt118.R;
-import com.example.doannt118.model.User;
 import com.example.doannt118.repository.FirestoreRepository;
 import com.google.firebase.FirebaseApp;
 
