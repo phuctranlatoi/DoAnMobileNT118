@@ -1,0 +1,21 @@
+package com.example.doannt118.repository;
+
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.gms.tasks.Task;
+import java.util.List;
+
+public class FirestoreRepository {
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+    public Task<Void> addUser(User user) {
+        return db.collection("users")
+                .document(user.getId())
+                .set(user);
+    }
+
+    public Task<List<User>> getUsers() {
+        return db.collection("users")
+                .get()
+                .continueWith(task -> task.getResult().toObjects(User.class));
+    }
+}
