@@ -13,10 +13,4 @@ public class FirestoreRepository {
                 .document(user.getMaTaiKhoan())
                 .set(user);
     }
-
-    public Task<List<TaiKhoan>> getUsers() {
-        return db.collection("users")
-                .get()
-                .continueWith(task -> task.getResult().toObjects(TaiKhoan.class));
-    }
 }

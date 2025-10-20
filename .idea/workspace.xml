@@ -46,9 +46,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="test FirestoreRepository và sửa lỗi ở mainactivity">
+    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="test FirestoreRepository và sửa lỗi ở MainActivity">
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -303,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760967242597</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="test FirestoreRepository và sửa lỗi ở MainActivity">
+      <option name="closed" value="true" />
+      <created>1760967541711</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1760967541711</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -339,7 +346,8 @@
     <MESSAGE value="frame branch phúc commit" />
     <MESSAGE value="commit" />
     <MESSAGE value="test FirestoreRepository và sửa lỗi ở mainactivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="test FirestoreRepository và sửa lỗi ở mainactivity" />
+    <MESSAGE value="test FirestoreRepository và sửa lỗi ở MainActivity" />
+    <option name="LAST_COMMIT_MESSAGE" value="test FirestoreRepository và sửa lỗi ở MainActivity" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
