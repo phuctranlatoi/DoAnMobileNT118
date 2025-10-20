@@ -46,8 +46,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="test FirestoreRepository và sửa lỗi ở MainActivity">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" afterDir="false" />
+    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="commit changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +109,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="_Designer_Tab" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -310,7 +310,23 @@
       <option name="project" value="LOCAL" />
       <updated>1760967541711</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="test FirestoreRepository và sửa lỗi ở MainActivity">
+      <option name="closed" value="true" />
+      <created>1760967576639</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1760967576639</updated>
+    </task>
+    <task id="LOCAL-00011" summary="commit changes">
+      <option name="closed" value="true" />
+      <created>1760967812151</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1760967812151</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -347,19 +363,20 @@
     <MESSAGE value="commit" />
     <MESSAGE value="test FirestoreRepository và sửa lỗi ở mainactivity" />
     <MESSAGE value="test FirestoreRepository và sửa lỗi ở MainActivity" />
-    <option name="LAST_COMMIT_MESSAGE" value="test FirestoreRepository và sửa lỗi ở MainActivity" />
+    <MESSAGE value="commit changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit changes" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="com.example.doannt118">
           <value>
-            <CheckInfo lastCheckTimestamp="1760864746739" />
+            <CheckInfo lastCheckTimestamp="1760967741178" />
           </value>
         </entry>
         <entry key="com.example.doannt118.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1760864746745" />
+            <CheckInfo lastCheckTimestamp="1760967741175" />
           </value>
         </entry>
       </map>
