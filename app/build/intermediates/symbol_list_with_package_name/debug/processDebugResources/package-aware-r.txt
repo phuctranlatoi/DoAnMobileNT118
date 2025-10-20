@@ -3557,6 +3557,10 @@ drawable abc_textfield_search_material
 drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
+drawable bg_button_outline
+drawable bg_card
+drawable bg_input
+drawable bg_outline_blue
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3798,6 +3802,10 @@ id bounceBoth
 id bounceEnd
 id bounceStart
 id btnAddUser
+id btnDangKy
+id btnLogin
+id btnQuayLai
+id btnRegister
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3882,6 +3890,8 @@ id enterAlways
 id enterAlwaysCollapsed
 id entireSpace
 id escape
+id etPassword
+id etUsername
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3907,6 +3917,7 @@ id ghost_view_holder
 id gone
 id graph
 id graph_wrap
+id groupVaiTro
 id group_divider
 id grouping
 id groups
@@ -4068,6 +4079,8 @@ id pressed
 id progress_circular
 id progress_horizontal
 id radio
+id radioBenhNhan
+id radioNhanVien
 id ratio
 id rectangles
 id report_drawn
@@ -4191,6 +4204,11 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id txtDiaChi
+id txtHoTen
+id txtMatKhau
+id txtSoDienThoai
+id txtTenDangNhap
 id unchecked
 id uniform
 id unlabeled
@@ -4335,7 +4353,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_login
 layout activity_main
+layout activity_register
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog

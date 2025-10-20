@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:2:1-25:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:2:1-25:12
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-25:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-25:12
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ee8c24efa3df2b558d8a2b3c8f26f370\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\098fb34c62f93a42ee9f0d1cf6e45291\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
@@ -78,18 +78,18 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.1] E:\HK1_2025_2026
 MERGED from [io.grpc:grpc-android:1.62.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\391797f5f14da9b62a8e37644b1efdb4\transformed\grpc-android-1.62.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f1e7b4aee2d2e083a564a209689aed43\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:2:1-7:12
 	package
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 	android:versionName
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 	xmlns:tools
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:3:5-51
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 	xmlns:android
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:2:11-69
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:5:5-23:19
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:5:5-23:19
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:5:5-23:19
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:5:5-23:19
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ee8c24efa3df2b558d8a2b3c8f26f370\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -145,45 +145,45 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] E:\HK1_2025_2026\NT118\Andr
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\514f3752c4517e73802fd830d8405aca\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\514f3752c4517e73802fd830d8405aca\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\920493f2be3db07376d709414a236bb0\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:12:9-35
 	android:label
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:10:9-41
 	android:fullBackupContent
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:8:9-54
 	android:roundIcon
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:11:9-54
 	android:icon
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:9:9-43
 	android:allowBackup
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:6:9-35
 	android:theme
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:13:9-47
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:13:9-47
 	android:dataExtractionRules
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:7:9-65
 activity#com.example.doannt118.ui.MainActivity
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:14:9-22:20
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:14:9-22:20
 	android:exported
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:16:13-36
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:16:13-36
 	android:name
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:15:13-44
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:15:13-44
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:17:13-21:29
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:17:13-21:29
 action#android.intent.action.MAIN
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:18:17-69
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:18:17-69
 	android:name
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:18:25-66
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:18:25-66
 category#android.intent.category.LAUNCHER
-ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:20:17-77
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:20:17-77
 	android:name
-		ADDED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml:20:27-74
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:20:27-74
 uses-sdk
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
-INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ee8c24efa3df2b558d8a2b3c8f26f370\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
@@ -331,9 +331,9 @@ MERGED from [io.grpc:grpc-android:1.62.2] E:\HK1_2025_2026\NT118\Android\caches\
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f1e7b4aee2d2e083a564a209689aed43\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f1e7b4aee2d2e083a564a209689aed43\transformed\protolite-well-known-types-18.0.1\AndroidManifest.xml:5:5-44
 	android:targetSdkVersion
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from E:\HK1_2025_2026\NT118\DoAnNT118\app\src\main\AndroidManifest.xml
+		INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6be7348d20a6ae52d043f72949ff6375\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:10:5-79
 MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\23198ad364e736c4388cb41b9a389114\transformed\firebase-ai-17.4.0\AndroidManifest.xml:22:5-79

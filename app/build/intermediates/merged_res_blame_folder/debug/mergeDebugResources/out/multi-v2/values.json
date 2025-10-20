@@ -23,6 +23,23 @@
                     }
                 },
                 {
+                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\build\\generated\\res\\processDebugGoogleServices\\values\\values.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "55,137,241,350,470,573",
+                        "endColumns": "81,103,108,119,102,71",
+                        "endOffsets": "132,236,345,465,568,640"
+                    },
+                    "to": {
+                        "startLines": "2485,2486,2487,2488,2489,2617",
+                        "startColumns": "4,4,4,4,4,4",
+                        "startOffsets": "168747,168829,168933,169042,169162,187209",
+                        "endColumns": "81,103,108,119,102,71",
+                        "endOffsets": "168824,168928,169037,169157,169260,187276"
+                    }
+                },
+                {
                     "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\6aa25a391455377d53ecc70a01c8724a\\transformed\\viewpager2-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -97,6 +114,25 @@
                     }
                 },
                 {
+                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\src\\main\\res\\values\\themes.xml",
+                    "from": {
+                        "startLines": "2,7",
+                        "startColumns": "4,4",
+                        "startOffsets": "102,331",
+                        "endLines": "5,7",
+                        "endColumns": "12,66",
+                        "endOffsets": "323,393"
+                    },
+                    "to": {
+                        "startLines": "2964,7442",
+                        "startColumns": "4,4",
+                        "startOffsets": "210032,529995",
+                        "endLines": "2967,7442",
+                        "endColumns": "12,65",
+                        "endOffsets": "210144,530056"
+                    }
+                },
+                {
                     "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\da0826cdb8758621cb2019418c8540f2\\transformed\\savedstate-1.2.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -152,30 +188,13 @@
                     }
                 },
                 {
-                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnNT118\\app\\build\\generated\\res\\processDebugGoogleServices\\values\\values.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "55,137,241,350,470,573",
-                        "endColumns": "81,103,108,119,102,71",
-                        "endOffsets": "132,236,345,465,568,640"
-                    },
-                    "to": {
-                        "startLines": "2485,2486,2487,2488,2489,2617",
-                        "startColumns": "4,4,4,4,4,4",
-                        "startOffsets": "168747,168829,168933,169042,169162,187209",
-                        "endColumns": "81,103,108,119,102,71",
-                        "endOffsets": "168824,168928,169037,169157,169260,187276"
-                    }
-                },
-                {
-                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnNT118\\app\\src\\main\\res\\values\\colors.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\src\\main\\res\\values\\colors.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
-                        "startOffsets": "55,97",
+                        "startOffsets": "57,100",
                         "endColumns": "41,41",
-                        "endOffsets": "92,134"
+                        "endOffsets": "94,137"
                     },
                     "to": {
                         "startLines": "714,1189",
@@ -200,25 +219,6 @@
                         "startOffsets": "156423",
                         "endColumns": "42",
                         "endOffsets": "156461"
-                    }
-                },
-                {
-                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnNT118\\app\\src\\main\\res\\values\\themes.xml",
-                    "from": {
-                        "startLines": "2,7",
-                        "startColumns": "4,4",
-                        "startOffsets": "100,324",
-                        "endLines": "5,7",
-                        "endColumns": "12,66",
-                        "endOffsets": "318,386"
-                    },
-                    "to": {
-                        "startLines": "2964,7442",
-                        "startColumns": "4,4",
-                        "startOffsets": "210032,529995",
-                        "endLines": "2967,7442",
-                        "endColumns": "12,65",
-                        "endOffsets": "210144,530056"
                     }
                 },
                 {
@@ -292,23 +292,6 @@
                     }
                 },
                 {
-                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnNT118\\app\\src\\main\\res\\values\\strings.xml",
-                    "from": {
-                        "startLines": "1",
-                        "startColumns": "4",
-                        "startOffsets": "16",
-                        "endColumns": "46",
-                        "endOffsets": "58"
-                    },
-                    "to": {
-                        "startLines": "2442",
-                        "startColumns": "4",
-                        "startOffsets": "163801",
-                        "endColumns": "46",
-                        "endOffsets": "163843"
-                    }
-                },
-                {
                     "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\2506044cdfca1b431fdb43f5d9ce6c88\\transformed\\fragment-1.5.4\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2,3,4,5,10",
@@ -325,6 +308,23 @@
                         "endLines": "2262,2296,2337,12908,12912",
                         "endColumns": "56,64,63,24,24",
                         "endOffsets": "152792,154579,156689,833959,834108"
+                    }
+                },
+                {
+                    "source": "E:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "1",
+                        "startColumns": "4",
+                        "startOffsets": "17",
+                        "endColumns": "46",
+                        "endOffsets": "59"
+                    },
+                    "to": {
+                        "startLines": "2442",
+                        "startColumns": "4",
+                        "startOffsets": "163801",
+                        "endColumns": "46",
+                        "endOffsets": "163843"
                     }
                 },
                 {

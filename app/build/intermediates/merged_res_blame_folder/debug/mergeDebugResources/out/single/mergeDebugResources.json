@@ -12,6 +12,10 @@
         "source": "com.example.doannt118.app-main-46:/drawable/ic_launcher_foreground.xml"
     },
     {
+        "merged": "com.example.doannt118.app-debug-44:/layout_activity_login.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/layout/activity_login.xml"
+    },
+    {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-xxxhdpi_ic_launcher.webp.flat",
         "source": "com.example.doannt118.app-main-46:/mipmap-xxxhdpi/ic_launcher.webp"
     },
@@ -22,6 +26,10 @@
     {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-xhdpi_ic_launcher.webp.flat",
         "source": "com.example.doannt118.app-main-46:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/layout_activity_register.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/layout/activity_register.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-anydpi_ic_launcher.xml.flat",
@@ -36,16 +44,24 @@
         "source": "com.example.doannt118.app-main-46:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
+        "merged": "com.example.doannt118.app-debug-44:/drawable_bg_input.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/drawable/bg_input.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/drawable_bg_outline_blue.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/drawable/bg_outline_blue.xml"
+    },
+    {
         "merged": "com.example.doannt118.app-debug-44:/drawable_ic_launcher_background.xml.flat",
         "source": "com.example.doannt118.app-main-46:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "com.example.doannt118.app-main-46:/mipmap-mdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-46:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-mdpi_ic_launcher_round.webp.flat",
@@ -54,6 +70,14 @@
     {
         "merged": "com.example.doannt118.app-debug-44:/xml_data_extraction_rules.xml.flat",
         "source": "com.example.doannt118.app-main-46:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/drawable_bg_button_outline.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/drawable/bg_button_outline.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/drawable_bg_card.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/drawable/bg_card.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-44:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
