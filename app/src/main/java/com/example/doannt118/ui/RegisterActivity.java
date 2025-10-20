@@ -2,16 +2,17 @@ package com.example.doannt118.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.*;
 
 import com.example.doannt118.R;
+import com.example.doannt118.model.User;
 import com.example.doannt118.repository.UserRepository;
 import com.example.doannt118.utils.ToastUtils;
-import com.example.doannt118.model.TaiKhoan;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private EditText txtTenDangNhap, txtMatKhau;
+    private EditText txtTenDangNhap, txtMatKhau, txtHoTen, txtSoDienThoai, txtDiaChi;
     private RadioButton radioBenhNhan, radioNhanVien;
     private Button btnDangKy, btnQuayLai;
 
@@ -25,6 +26,9 @@ public class RegisterActivity extends AppCompatActivity {
         // Ánh xạ view
         txtTenDangNhap = findViewById(R.id.txtTenDangNhap);
         txtMatKhau = findViewById(R.id.txtMatKhau);
+        txtHoTen = findViewById(R.id.txtHoTen);
+        txtSoDienThoai = findViewById(R.id.txtSoDienThoai);
+        txtDiaChi = findViewById(R.id.txtDiaChi);
         radioBenhNhan = findViewById(R.id.radioBenhNhan);
         radioNhanVien = findViewById(R.id.radioNhanVien);
         btnDangKy = findViewById(R.id.btnDangKy);
@@ -35,17 +39,20 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void handleDangKy() {
-        String maTaiKhoan = txtTenDangNhap.getText().toString().trim();
-        String tenDangNhap = txtTenDangNhap.getText().toString().trim();
-        String matKhau = txtMatKhau.getText().toString().trim();
+        String username = txtTenDangNhap.getText().toString().trim();
+        String password = txtMatKhau.getText().toString().trim();
+        String hoTen = txtHoTen.getText().toString().trim();
+        String sdt = txtSoDienThoai.getText().toString().trim();
+        String diaChi = txtDiaChi.getText().toString().trim();
         String vaiTro = radioBenhNhan.isChecked() ? "benhnhan" : "nhanvien";
 
-        if (tenDangNhap.isEmpty() || matKhau.isEmpty()) {
+        if (username.isEmpty() || password.isEmpty() || hoTen.isEmpty() ||
+                sdt.isEmpty() || diaChi.isEmpty()) {
             ToastUtils.show(this, "Vui lòng nhập đầy đủ thông tin!");
             return;
         }
 
-        TaiKhoan user = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhau,vaiTro);
+        User user = new User(username, password, hoTen, sdt, diaChi, vaiTro);
         boolean success = repository.addUser(user);
 
         if (success) {
@@ -59,6 +66,9 @@ public class RegisterActivity extends AppCompatActivity {
     private void clearForm() {
         txtTenDangNhap.setText("");
         txtMatKhau.setText("");
+        txtHoTen.setText("");
+        txtSoDienThoai.setText("");
+        txtDiaChi.setText("");
         radioBenhNhan.setChecked(true);
     }
 }
