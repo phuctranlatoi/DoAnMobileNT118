@@ -1,4 +1,3 @@
-// Đường dẫn: app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java
 package com.example.doannt118.repository;
 
 import com.example.doannt118.model.BacSi;

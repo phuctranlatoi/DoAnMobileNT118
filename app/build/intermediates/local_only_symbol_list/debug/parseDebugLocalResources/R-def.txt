@@ -16,8 +16,8 @@ id btnRegister
 id etPassword
 id etUsername
 id groupVaiTro
+id radioBacSi
 id radioBenhNhan
-id radioNhanVien
 id txtDiaChi
 id txtHoTen
 id txtMatKhau
@@ -35,6 +35,7 @@ string google_app_id
 string google_crash_reporting_api_key
 string google_storage_bucket
 string project_id
+style AppTheme
 style Base.Theme.DoAnNT118
 style Theme.DoAnNT118
 xml backup_rules

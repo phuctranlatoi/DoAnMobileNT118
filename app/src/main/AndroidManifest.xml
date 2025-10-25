@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:theme="@style/AppTheme"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -16,6 +17,7 @@
 
         <activity
             android:name=".ui.LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,6 +27,10 @@
 
         <activity
             android:name=".ui.RegisterActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.MainActivity"
             android:exported="false" />
 
     </application>

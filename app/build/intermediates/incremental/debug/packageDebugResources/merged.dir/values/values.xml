@@ -9,6 +9,12 @@
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBsBwLO44YtAJ-ZWUF5-o24-TWq2hnwL-Y</string>
     <string name="google_storage_bucket" translatable="false">qlykhambenh.firebasestorage.app</string>
     <string name="project_id" translatable="false">qlykhambenh</string>
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">#2196F3</item>
+        <item name="colorPrimaryDark">#1976D2</item>
+        <item name="colorAccent">#FF4081</item>
+    </style>
     <style name="Base.Theme.DoAnNT118" parent="Theme.Material3.DayNight.NoActionBar">
         
         

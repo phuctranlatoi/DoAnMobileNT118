@@ -1,4 +1,3 @@
-// Đường dẫn: app/src/main/java/com/example/doannt118/ui/RegisterActivity.java
 package com.example.doannt118.ui;
 
 import android.os.Bundle;
@@ -16,6 +15,9 @@ import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.TaiKhoan;
 import com.example.doannt118.repository.FirestoreRepository;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp; // Thêm để init Firebase
+
+import org.mindrot.jbcrypt.BCrypt; // Thêm để băm mật khẩu
 
 import java.util.UUID;
 
@@ -31,6 +33,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);  // Thêm để init Firebase nếu cần
         setContentView(R.layout.activity_register);
 
         repo = new FirestoreRepository();
@@ -109,35 +112,47 @@ public class RegisterActivity extends AppCompatActivity {
         );
     }
 
-    private void createNewAccount(String tenDangNhap, String matKhau, String hoTen, String sdt, String diaChi, String vaiTro) {
+    private void createNewAccount(String tenDangNhap, String matKhauThuan, String hoTen, String sdt, String diaChi, String vaiTro) {
 
-        // === LOGIC MỚI: TẠO 2 MÃ UUID ===
         String maTaiKhoan = UUID.randomUUID().toString();
-        String maProfile = UUID.randomUUID().toString(); // Đây là maBenhNhan hoặc maBacSi
+        String maProfile = UUID.randomUUID().toString();
 
-        // 5. Tạo đối tượng TaiKhoan
-        TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhau, vaiTro);
+        // Băm mật khẩu trước khi lưu (consistent với MainActivity)
+        String matKhauDaBam;
+        try {
+            matKhauDaBam = BCrypt.hashpw(matKhauThuan, BCrypt.gensalt());
+        } catch (Exception e) {
+            Log.e("RegisterActivity", "Lỗi băm mật khẩu: ", e);
+            Toast.makeText(this, "Lỗi băm mật khẩu!", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-        // 6. Tạo đối tượng Profile (BenhNhan hoặc BacSi)
+        // 1. Tạo đối tượng TaiKhoan
+        TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro);
+
+        // 2. Tạo đối tượng Profile (BenhNhan hoặc BacSi)
         Object userProfile;
         if ("Bệnh nhân".equals(vaiTro)) {
             userProfile = new BenhNhan(maProfile, maTaiKhoan, hoTen, sdt, diaChi);
-        } else { // "Bác sĩ"
+        } else {
             userProfile = new BacSi(maProfile, maTaiKhoan, hoTen, sdt);
         }
 
-        // 7. Gọi hàm registerNewUserBatch từ repository
-        Task<Void> task = repo.registerNewUserBatch(newTaiKhoan, userProfile);
+        // 3. GỌI HÀM ĐÚNG LÀ "registerNewUserBatch"
+        Task<Void> task = repo.registerNewUserBatch(newTaiKhoan, userProfile); // Không phải addUser
 
+        // 4. Xử lý kết quả
         if (task != null) {
             task.addOnSuccessListener(aVoid -> {
                         Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                        finish(); // Đóng màn hình đăng ký
+                        finish();
                     })
                     .addOnFailureListener(e -> {
                         Log.e("RegisterActivity", "Lỗi khi ghi batch: ", e);
                         Toast.makeText(this, "Đăng ký thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });
+        } else {
+            Toast.makeText(this, "Lỗi tạo profile!", Toast.LENGTH_SHORT).show();
         }
     }
 }

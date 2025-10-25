@@ -4078,8 +4078,8 @@ int id pressed 0x7f08017d
 int id progress_circular 0x7f08017e
 int id progress_horizontal 0x7f08017f
 int id radio 0x7f080180
-int id radioBenhNhan 0x7f080181
-int id radioNhanVien 0x7f080182
+int id radioBacSi 0x7f080181
+int id radioBenhNhan 0x7f080182
 int id ratio 0x7f080183
 int id rectangles 0x7f080184
 int id report_drawn 0x7f080185
@@ -4648,6 +4648,7 @@ int style Animation_Material3_SideSheetDialog 0x7f110007
 int style Animation_Material3_SideSheetDialog_Left 0x7f110008
 int style Animation_Material3_SideSheetDialog_Right 0x7f110009
 int style Animation_MaterialComponents_BottomSheetDialog 0x7f11000a
+int style AppTheme 0x7f1104cf
 int style Base_AlertDialog_AppCompat 0x7f11000b
 int style Base_AlertDialog_AppCompat_Light 0x7f11000c
 int style Base_Animation_AppCompat_Dialog 0x7f11000d
