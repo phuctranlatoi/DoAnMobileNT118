@@ -46,8 +46,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="commit changes">
+    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="sửa registeractivity và thêm toastutils commit">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LoginActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/BacSi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/BacSi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/TaiKhoan.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/TaiKhoan.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/RegisterActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/RegisterActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +105,11 @@
   </component>
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Phuctran" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -109,7 +125,7 @@
   }
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="_Designer_Tab" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -371,12 +387,12 @@
       <map>
         <entry key="com.example.doannt118">
           <value>
-            <CheckInfo lastCheckTimestamp="1760967741178" />
+            <CheckInfo lastCheckTimestamp="1761376806109" />
           </value>
         </entry>
         <entry key="com.example.doannt118.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1760967741175" />
+            <CheckInfo lastCheckTimestamp="1761376806085" />
           </value>
         </entry>
       </map>

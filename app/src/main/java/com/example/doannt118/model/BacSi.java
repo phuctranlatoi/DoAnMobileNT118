@@ -14,8 +14,8 @@ public class BacSi {
         this.soDienThoai = soDienThoai;
     }
 
-    public String getMaNhanVien() { return maBacSi; }
-    public void setMaNhanVien(String maNhanVien) { this.maBacSi = maNhanVien; }
+    public String getMaBacSi() { return maBacSi; }
+    public void setMaBacSi(String maBacSi) { this.maBacSi = maBacSi; }
 
     public String getMaTaiKhoan() { return maTaiKhoan; }
     public void setMaTaiKhoan(String maTaiKhoan) { this.maTaiKhoan = maTaiKhoan; }

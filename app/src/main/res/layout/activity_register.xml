@@ -13,25 +13,12 @@
         android:background="@drawable/bg_card"
         android:padding="24dp">
 
-        <!-- Tiêu đề -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Đăng Ký Tài Khoản"
-            android:textColor="#202124"
             android:textSize="24sp"
-            android:textStyle="bold"
-            android:fontFamily="sans-serif" />
-
-        <!-- Thông tin đăng nhập -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông tin đăng nhập"
-            android:textColor="#5f6368"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp" />
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/txtTenDangNhap"
@@ -40,7 +27,8 @@
             android:hint="Tên đăng nhập"
             android:background="@drawable/bg_input"
             android:paddingHorizontal="12dp"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"/>
 
         <EditText
             android:id="@+id/txtMatKhau"
@@ -53,56 +41,36 @@
             android:textSize="14sp"
             android:layout_marginTop="8dp" />
 
-        <!-- Vai trò -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vai trò:"
-            android:textColor="#5f6368"
             android:textSize="14sp"
             android:layout_marginTop="12dp" />
 
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/groupVaiTro"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="4dp">
 
-            <RadioGroup
-                android:id="@+id/groupVaiTro"
-                android:layout_width="match_parent"
+            <RadioButton
+                android:id="@+id/radioBenhNhan"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:text="Bệnh nhân"
+                android:checked="true"
+                android:textSize="14sp" />
 
-                <RadioButton
-                    android:id="@+id/radioBenhNhan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Bệnh nhân"
-                    android:textColor="#202124"
-                    android:checked="true"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/radioNhanVien"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Nhân viên"
-                    android:textColor="#202124"
-                    android:layout_marginStart="24dp"
-                    android:textSize="14sp" />
-            </RadioGroup>
-        </LinearLayout>
-
-        <!-- Thông tin cá nhân -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thông tin cá nhân"
-            android:textColor="#5f6368"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_marginTop="24dp" />
+            <RadioButton
+                android:id="@+id/radioBacSi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bác sĩ"
+                android:layout_marginStart="24dp"
+                android:textSize="14sp" />
+        </RadioGroup>
 
         <EditText
             android:id="@+id/txtHoTen"
@@ -111,7 +79,8 @@
             android:hint="Họ và tên"
             android:background="@drawable/bg_input"
             android:paddingHorizontal="12dp"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginTop="24dp"/>
 
         <EditText
             android:id="@+id/txtSoDienThoai"
@@ -134,7 +103,6 @@
             android:textSize="14sp"
             android:layout_marginTop="8dp" />
 
-        <!-- Nút hành động -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -146,23 +114,14 @@
                 android:id="@+id/btnDangKy"
                 android:layout_width="120dp"
                 android:layout_height="48dp"
-                android:text="Đăng Ký"
-                android:backgroundTint="#1a73e8"
-                android:textColor="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="14sp" />
+                android:text="Đăng Ký" />
 
             <Button
                 android:id="@+id/btnQuayLai"
                 android:layout_width="120dp"
                 android:layout_height="48dp"
                 android:text="Quay Lại"
-                android:textColor="#1a73e8"
-                android:backgroundTint="#FFFFFF"
-                android:textStyle="bold"
-                android:textSize="14sp"
-                android:layout_marginStart="12dp"
-                android:background="@drawable/bg_outline_blue" />
+                android:layout_marginStart="12dp" />
         </LinearLayout>
 
     </LinearLayout>
