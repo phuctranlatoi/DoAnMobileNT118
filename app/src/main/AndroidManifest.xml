@@ -30,6 +30,9 @@
             android:exported="false" />
         <activity android:name=".ui.MainBenhNhanActivity" />
         <activity android:name=".ui.MainBacSiActivity" />
+        <activity android:name=".ui.ChiTietBenhAnActivity" />
+        <activity android:name=".ui.XembenhanActivity" />
+        <activity android:name=".ui.QuanLyHoSoCaNhan" />
 
         <activity
             android:name=".ui.MainActivity"

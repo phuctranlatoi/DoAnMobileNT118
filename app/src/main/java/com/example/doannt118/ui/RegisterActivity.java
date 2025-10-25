@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doannt118.R;
@@ -14,12 +15,12 @@ import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.TaiKhoan;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp; // Thêm để init Firebase
+import com.google.firebase.FirebaseApp;
 
-import org.mindrot.jbcrypt.BCrypt; // Thêm để băm mật khẩu
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.UUID;
+import java.util.function.Consumer;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this);  // Thêm để init Firebase nếu cần
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_register);
 
         repo = new FirestoreRepository();
@@ -52,8 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
         btnDangKy.setOnClickListener(v -> handleRegister());
         btnQuayLai.setOnClickListener(v -> finish());
 
-        // === LOGIC MỚI: Ẩn/Hiện trường Địa Chỉ ===
-        // Vì Bác sĩ không có địa chỉ, Bệnh nhân thì có
+        // Ẩn/Hiện trường Địa Chỉ dựa trên vai trò
         groupVaiTro.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId == R.id.radioBenhNhan) {
                 txtDiaChi.setVisibility(View.VISIBLE);
@@ -69,12 +69,11 @@ public class RegisterActivity extends AppCompatActivity {
         String matKhau = txtMatKhau.getText().toString().trim();
         String hoTen = txtHoTen.getText().toString().trim();
         String sdt = txtSoDienThoai.getText().toString().trim();
-        String diaChi = txtDiaChi.getText().toString().trim(); // Chỉ dùng nếu là Bệnh nhân
+        String diaChi = txtDiaChi.getText().toString().trim();
 
         // 1. Lấy vai trò được chọn
         int selectedRoleId = groupVaiTro.getCheckedRadioButtonId();
         String vaiTro;
-
         if (selectedRoleId == R.id.radioBenhNhan) {
             vaiTro = "Bệnh nhân";
         } else if (selectedRoleId == R.id.radioBacSi) {
@@ -96,6 +95,12 @@ public class RegisterActivity extends AppCompatActivity {
             return;
         }
 
+        // Validation số điện thoại
+        if (!sdt.matches("\\d{10,11}")) {
+            Toast.makeText(this, "Số điện thoại phải có 10 hoặc 11 chữ số!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // 3. Kiểm tra tên đăng nhập đã tồn tại chưa
         repo.getByField(COLLECTION_TAIKHOAN, "tenDangNhap", tenDangNhap,
                 querySnapshot -> {
@@ -107,17 +112,17 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 },
                 e -> {
+                    Log.e("RegisterActivity", "Lỗi kiểm tra tên đăng nhập: ", e);
                     Toast.makeText(this, "Lỗi kiểm tra: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
         );
     }
 
     private void createNewAccount(String tenDangNhap, String matKhauThuan, String hoTen, String sdt, String diaChi, String vaiTro) {
-
         String maTaiKhoan = UUID.randomUUID().toString();
         String maProfile = UUID.randomUUID().toString();
 
-        // Băm mật khẩu trước khi lưu (consistent với MainActivity)
+        // Băm mật khẩu trước khi lưu
         String matKhauDaBam;
         try {
             matKhauDaBam = BCrypt.hashpw(matKhauThuan, BCrypt.gensalt());
@@ -138,21 +143,15 @@ public class RegisterActivity extends AppCompatActivity {
             userProfile = new BacSi(maProfile, maTaiKhoan, hoTen, sdt);
         }
 
-        // 3. GỌI HÀM ĐÚNG LÀ "registerNewUserBatch"
-        Task<Void> task = repo.registerNewUserBatch(newTaiKhoan, userProfile); // Không phải addUser
-
-        // 4. Xử lý kết quả
-        if (task != null) {
-            task.addOnSuccessListener(aVoid -> {
-                        Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    })
-                    .addOnFailureListener(e -> {
-                        Log.e("RegisterActivity", "Lỗi khi ghi batch: ", e);
-                        Toast.makeText(this, "Đăng ký thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
-        } else {
-            Toast.makeText(this, "Lỗi tạo profile!", Toast.LENGTH_SHORT).show();
-        }
+        // 3. Gọi hàm registerNewUserBatch với 4 tham số
+        repo.registerNewUserBatch(newTaiKhoan, userProfile,
+                aVoid -> {
+                    Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
+                    finish();
+                },
+                e -> {
+                    Log.e("RegisterActivity", "Lỗi khi ghi batch: ", e);
+                    Toast.makeText(this, "Đăng ký thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }

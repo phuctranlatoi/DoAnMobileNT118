@@ -1,14 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-39:12
-INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-39:12
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-42:12
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:2:1-42:12
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ee8c24efa3df2b558d8a2b3c8f26f370\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\098fb34c62f93a42ee9f0d1cf6e45291\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.appcompat:appcompat:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\888edb72da4ed1940247abecbac19b32\transformed\appcompat-1.7.1\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6aa25a391455377d53ecc70a01c8724a\transformed\viewpager2-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6be7348d20a6ae52d043f72949ff6375\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\23198ad364e736c4388cb41b9a389114\transformed\firebase-ai-17.4.0\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-auth-interop:19.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab64eb7198776f645abf90e6a291627c\transformed\firebase-auth-interop-19.0.2\AndroidManifest.xml:2:1-10:12
@@ -24,15 +23,19 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:23.0.0] E:
 MERGED from [com.google.android.gms:play-services-measurement-base:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\892a2f4549f28e34c099159bf1cc2cc9\transformed\play-services-measurement-base-23.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\39bcd63a14dadceee30176e0cb8222f9\transformed\play-services-stats-17.0.2\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\70af92b3dfa180163741e3b6b8513862\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:15:1-23:12
+MERGED from [androidx.gridlayout:gridlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab383454f3991aeecc41b0c09bae3344\transformed\gridlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1d7e364599b73f4cfa2b4633af969403\transformed\viewpager2-1.1.0-beta02\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f3bff000f20c7bf8db73ddba8cca2111\transformed\recyclerview-1.3.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e40aa1dfb27cfd8934a623a87943b0ca\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d879b254bb8b98340ac908a213aabb3a\transformed\emoji2-1.3.0\AndroidManifest.xml:17:1-35:12
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\bd485337fb6a4bc7b8ccc2bc93fd8f5a\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\48fe90a2468b579754f292dfbb03d135\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9190597cd2d9a1f279d5718266146573\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.transition:transition:1.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7e782e7a6949f54bd266f654780ee015\transformed\transition-1.5.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a097907e1f4c080f2dfb25d4f78dde9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7866afa9575415c76f9e9890537c5ef2\transformed\recyclerview-1.2.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e413676ea5d798b689ecbed0a9865721\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\15c70c4ccdd44daa1e2adbab2f8399c1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a085bcac8071e1446432191ecea4ce4\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c233c70c7106e2bde30a5918c5778d3c\transformed\graphics-shapes-release\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ade64abdfde0b82d02d5082b336ccfb2\transformed\ads-adservices-java-1.1.0-beta11\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8cad8b33908c885364f03826f02302d3\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:17:1-28:12
@@ -40,7 +43,10 @@ MERGED from [androidx.core:core-ktx:1.13.1] E:\HK1_2025_2026\NT118\Android\cache
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\634d8e73cc931ab2bc3217ee9a46b1f1\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\5fe7caf90958a6a7656ffec2c86dc41d\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3f846985eea5d41aed9c8bdc62546ab8\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\021ae02ef6a23dc7bd385fe2f070b726\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.customview:customview:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\32c224c7c43c6cc0ed20f590a7a6b66b\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab74161fd0c98da90f688353a90e20bc\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f9ec3ba3924e21ce80e28c0446a77d54\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\eda391c67ddc5656358cb26b6b479473\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b164ea0810d7a99d24ced28159766642\transformed\play-services-base-18.5.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\920493f2be3db07376d709414a236bb0\transformed\core-1.13.1\AndroidManifest.xml:17:1-30:12
@@ -62,8 +68,8 @@ MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] E:\HK1_2
 MERGED from [com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2529326d52fcd8f9e396f29f6ab92678\transformed\play-services-basement-18.8.0\AndroidManifest.xml:16:1-26:12
 MERGED from [androidx.fragment:fragment:1.5.4] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2506044cdfca1b431fdb43f5d9ce6c88\transformed\fragment-1.5.4\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.activity:activity:1.11.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7a09f12fb01aefa6f1e10a2133c99be9\transformed\activity-1.11.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2c577b77ec54626dd0b710766710667b\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3c8c4e456ada8e42238b2b93a1a97e0d\transformed\startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\26d6d5bd4097ab4cd565c09a54173fe4\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [com.google.firebase:firebase-components:19.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fd14e23ee997a2eaefabf9ade27ab428\transformed\firebase-components-19.0.0\AndroidManifest.xml:15:1-20:12
@@ -106,8 +112,8 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:23.0.0] E:
 	android:name
 		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:7:5-38:19
-INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:7:5-38:19
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:7:5-41:19
+INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:7:5-41:19
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6a62a0875a55d10788eee8c13741fea2\transformed\material-1.13.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ee8c24efa3df2b558d8a2b3c8f26f370\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -216,12 +222,24 @@ activity#com.example.doannt118.ui.MainBacSiActivity
 ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:32:9-58
 	android:name
 		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:32:19-55
-activity#com.example.doannt118.ui.MainActivity
-ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:34:9-36:40
-	android:exported
-		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:36:13-37
+activity#com.example.doannt118.ui.ChiTietBenhAnActivity
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:33:9-62
 	android:name
-		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:35:13-44
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:33:19-59
+activity#com.example.doannt118.ui.XembenhanActivity
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:34:9-58
+	android:name
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:34:19-55
+activity#com.example.doannt118.ui.QuanLyHoSoCaNhan
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:35:9-57
+	android:name
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:35:19-54
+activity#com.example.doannt118.ui.MainActivity
+ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:37:9-39:40
+	android:exported
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:38:13-44
 uses-sdk
 INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml
@@ -234,8 +252,6 @@ MERGED from [androidx.appcompat:appcompat-resources:1.7.1] E:\HK1_2025_2026\NT11
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\098fb34c62f93a42ee9f0d1cf6e45291\transformed\appcompat-resources-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\888edb72da4ed1940247abecbac19b32\transformed\appcompat-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.appcompat:appcompat:1.7.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\888edb72da4ed1940247abecbac19b32\transformed\appcompat-1.7.1\AndroidManifest.xml:5:5-44
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6aa25a391455377d53ecc70a01c8724a\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.viewpager2:viewpager2:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6aa25a391455377d53ecc70a01c8724a\transformed\viewpager2-1.0.0\AndroidManifest.xml:20:5-22:41
 MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6be7348d20a6ae52d043f72949ff6375\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6be7348d20a6ae52d043f72949ff6375\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\23198ad364e736c4388cb41b9a389114\transformed\firebase-ai-17.4.0\AndroidManifest.xml:18:5-44
@@ -266,10 +282,18 @@ MERGED from [com.google.android.gms:play-services-stats:17.0.2] E:\HK1_2025_2026
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\39bcd63a14dadceee30176e0cb8222f9\transformed\play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\70af92b3dfa180163741e3b6b8513862\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-appcheck-interop:17.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\70af92b3dfa180163741e3b6b8513862\transformed\firebase-appcheck-interop-17.1.0\AndroidManifest.xml:18:5-44
+MERGED from [androidx.gridlayout:gridlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab383454f3991aeecc41b0c09bae3344\transformed\gridlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.gridlayout:gridlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab383454f3991aeecc41b0c09bae3344\transformed\gridlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1d7e364599b73f4cfa2b4633af969403\transformed\viewpager2-1.1.0-beta02\AndroidManifest.xml:5:5-44
+MERGED from [androidx.viewpager2:viewpager2:1.1.0-beta02] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1d7e364599b73f4cfa2b4633af969403\transformed\viewpager2-1.1.0-beta02\AndroidManifest.xml:5:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f3bff000f20c7bf8db73ddba8cca2111\transformed\recyclerview-1.3.2\AndroidManifest.xml:20:5-44
+MERGED from [androidx.recyclerview:recyclerview:1.3.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f3bff000f20c7bf8db73ddba8cca2111\transformed\recyclerview-1.3.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e40aa1dfb27cfd8934a623a87943b0ca\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2-views-helper:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e40aa1dfb27cfd8934a623a87943b0ca\transformed\emoji2-views-helper-1.3.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d879b254bb8b98340ac908a213aabb3a\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d879b254bb8b98340ac908a213aabb3a\transformed\emoji2-1.3.0\AndroidManifest.xml:21:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\bd485337fb6a4bc7b8ccc2bc93fd8f5a\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.legacy:legacy-support-core-ui:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\bd485337fb6a4bc7b8ccc2bc93fd8f5a\transformed\legacy-support-core-ui-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\48fe90a2468b579754f292dfbb03d135\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\48fe90a2468b579754f292dfbb03d135\transformed\drawerlayout-1.1.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.coordinatorlayout:coordinatorlayout:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9190597cd2d9a1f279d5718266146573\transformed\coordinatorlayout-1.1.0\AndroidManifest.xml:20:5-22:41
@@ -278,12 +302,12 @@ MERGED from [androidx.transition:transition:1.5.0] E:\HK1_2025_2026\NT118\Androi
 MERGED from [androidx.transition:transition:1.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7e782e7a6949f54bd266f654780ee015\transformed\transition-1.5.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a097907e1f4c080f2dfb25d4f78dde9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.dynamicanimation:dynamicanimation:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a097907e1f4c080f2dfb25d4f78dde9\transformed\dynamicanimation-1.1.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7866afa9575415c76f9e9890537c5ef2\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.recyclerview:recyclerview:1.2.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7866afa9575415c76f9e9890537c5ef2\transformed\recyclerview-1.2.1\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e413676ea5d798b689ecbed0a9865721\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e413676ea5d798b689ecbed0a9865721\transformed\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\15c70c4ccdd44daa1e2adbab2f8399c1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\15c70c4ccdd44daa1e2adbab2f8399c1\transformed\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a085bcac8071e1446432191ecea4ce4\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
+MERGED from [androidx.customview:customview-poolingcontainer:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\1a085bcac8071e1446432191ecea4ce4\transformed\customview-poolingcontainer-1.0.0\AndroidManifest.xml:20:5-21:38
 MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c233c70c7106e2bde30a5918c5778d3c\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.graphics:graphics-shapes-android:1.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c233c70c7106e2bde30a5918c5778d3c\transformed\graphics-shapes-release\AndroidManifest.xml:5:5-44
 MERGED from [androidx.privacysandbox.ads:ads-adservices-java:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ade64abdfde0b82d02d5082b336ccfb2\transformed\ads-adservices-java-1.1.0-beta11\AndroidManifest.xml:5:5-44
@@ -298,8 +322,14 @@ MERGED from [androidx.loader:loader:1.0.0] E:\HK1_2025_2026\NT118\Android\caches
 MERGED from [androidx.loader:loader:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\5fe7caf90958a6a7656ffec2c86dc41d\transformed\loader-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3f846985eea5d41aed9c8bdc62546ab8\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.viewpager:viewpager:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3f846985eea5d41aed9c8bdc62546ab8\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\021ae02ef6a23dc7bd385fe2f070b726\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.slidingpanelayout:slidingpanelayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\021ae02ef6a23dc7bd385fe2f070b726\transformed\slidingpanelayout-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.customview:customview:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\32c224c7c43c6cc0ed20f590a7a6b66b\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.1.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\32c224c7c43c6cc0ed20f590a7a6b66b\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab74161fd0c98da90f688353a90e20bc\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab74161fd0c98da90f688353a90e20bc\transformed\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f9ec3ba3924e21ce80e28c0446a77d54\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\f9ec3ba3924e21ce80e28c0446a77d54\transformed\asynclayoutinflater-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\eda391c67ddc5656358cb26b6b479473\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.firebase:firebase-database-collection:18.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\eda391c67ddc5656358cb26b6b479473\transformed\firebase-database-collection-18.0.1\AndroidManifest.xml:5:5-7:41
 MERGED from [com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b164ea0810d7a99d24ced28159766642\transformed\play-services-base-18.5.0\AndroidManifest.xml:3:5-44
@@ -342,10 +372,10 @@ MERGED from [androidx.fragment:fragment:1.5.4] E:\HK1_2025_2026\NT118\Android\ca
 MERGED from [androidx.fragment:fragment:1.5.4] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2506044cdfca1b431fdb43f5d9ce6c88\transformed\fragment-1.5.4\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.activity:activity:1.11.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7a09f12fb01aefa6f1e10a2133c99be9\transformed\activity-1.11.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.activity:activity:1.11.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7a09f12fb01aefa6f1e10a2133c99be9\transformed\activity-1.11.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2c577b77ec54626dd0b710766710667b\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.cardview:cardview:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2c577b77ec54626dd0b710766710667b\transformed\cardview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\e651f2b365546cbd2fc197fb58c3909f\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.startup:startup-runtime:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3c8c4e456ada8e42238b2b93a1a97e0d\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.startup:startup-runtime:1.1.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\3c8c4e456ada8e42238b2b93a1a97e0d\transformed\startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\26d6d5bd4097ab4cd565c09a54173fe4\transformed\tracing-1.0.0\AndroidManifest.xml:20:5-22:41
