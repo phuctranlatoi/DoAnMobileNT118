@@ -12,10 +12,6 @@
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-44:/layout_activity_main.xml.flat",
-        "source": "com.example.doannt118.app-main-46:/layout/activity_main.xml"
-    },
-    {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\layout_activity_login.xml.flat",
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\layout\\activity_login.xml"
     },
@@ -42,6 +38,10 @@
     {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\mipmap-anydpi_ic_launcher.xml.flat",
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\layout_activity_main_benhnhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\layout\\activity_main_benhnhan.xml"
     },
     {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\drawable_bg_outline_blue.xml.flat",
@@ -72,12 +72,32 @@
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\menu_doctor_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\menu\\doctor_menu.xml"
+    },
+    {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\layout_activity_register.xml.flat",
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\layout\\activity_register.xml"
     },
     {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\layout_activity_main_bacsi.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\layout\\activity_main_bacsi.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\drawable_ic_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\drawable\\ic_menu.xml"
+    },
+    {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\mipmap-mdpi_ic_launcher.webp.flat",
         "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\menu_benhnhan_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-46:\\menu\\benhnhan_menu.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-44:/layout_activity_main_benhnhan.xml.flat",
+        "source": "com.example.doannt118.app-main-46:/layout/activity_main_benhnhan.xml"
     },
     {
         "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-44:\\layout_activity_main.xml.flat",

@@ -3612,6 +3612,7 @@ drawable ic_launcher_foreground
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
+drawable ic_menu
 drawable ic_mtrl_arrow_circle
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
@@ -3804,6 +3805,7 @@ id bounceStart
 id btnAddUser
 id btnDangKy
 id btnLogin
+id btnLogout
 id btnQuayLai
 id btnRegister
 id buttonPanel
@@ -3845,6 +3847,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id cvPersonalInfo
 id dark
 id date_picker_actions
 id decelerate
@@ -3874,6 +3877,7 @@ id dragLeft
 id dragRight
 id dragStart
 id dragUp
+id drawerLayout
 id dropdown_menu
 id easeIn
 id easeInOut
@@ -3959,6 +3963,7 @@ id linear
 id listMode
 id list_item
 id m3_side_sheet
+id main_content
 id marquee
 id masked
 id match_constraint
@@ -4017,6 +4022,18 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id navView
+id nav_confirm_appointment
+id nav_confirm_medication
+id nav_manage_invoice
+id nav_manage_medical_record
+id nav_manage_patient
+id nav_manage_prescription
+id nav_manage_profile
+id nav_manage_schedule
+id nav_register_appointment
+id nav_view_invoice
+id nav_view_medical_record
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_content_container
 id navigation_bar_item_icon_container
@@ -4092,6 +4109,8 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvActivityHistory
+id rvAppointments
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -4189,6 +4208,7 @@ id title
 id titleDividerNoCustom
 id title_template
 id toggle
+id toolbar
 id top
 id topPanel
 id top_center
@@ -4204,6 +4224,10 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvDiaChi
+id tvHoTen
+id tvSoDienThoai
+id tvUserName
 id txtDiaChi
 id txtHoTen
 id txtMatKhau
@@ -4355,6 +4379,8 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_login
 layout activity_main
+layout activity_main_bacsi
+layout activity_main_benhnhan
 layout activity_register
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -4437,6 +4463,8 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu benhnhan_menu
+menu doctor_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description
@@ -4487,6 +4515,7 @@ string character_counter_content_description
 string character_counter_overflowed_content_description
 string character_counter_pattern
 string clear_text_end_icon_content_description
+string close_drawer
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -4625,6 +4654,7 @@ string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string nav_rail_collapsed_a11y_label
 string nav_rail_expanded_a11y_label
+string open_drawer
 string password_toggle_content_description
 string path_password_eye
 string path_password_eye_mask_strike_through

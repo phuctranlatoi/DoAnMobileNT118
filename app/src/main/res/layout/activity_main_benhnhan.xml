@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.MainBenhNhanActivity">
+
+    <!-- Add paddingTop to account for status bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="?attr/actionBarSize"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Top Bar -->
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent"
+            app:navigationIcon="@drawable/ic_menu"
+            app:title="Healcarus">
+
+            <Button
+                android:id="@+id/btnLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:backgroundTint="#F8D7DA"
+                android:text="Đăng Xuất"
+                android:textColor="#721C24" />
+        </androidx.appcompat.widget.Toolbar>
+
+        <!-- Sidebar (DrawerLayout for menu) -->
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawerLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvPersonalInfo"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    app:cardBackgroundColor="#F9F9F9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Thông tin cá nhân"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#1A1A1A" />
+
+                        <TextView
+                            android:id="@+id/tvHoTen"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Họ tên: "
+                            android:textSize="14sp"
+                            android:textColor="#1A1A1A" />
+
+                        <TextView
+                            android:id="@+id/tvSoDienThoai"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Số điện thoại: "
+                            android:textSize="14sp"
+                            android:textColor="#1A1A1A" />
+
+                        <TextView
+                            android:id="@+id/tvDiaChi"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Địa chỉ: "
+                            android:textSize="14sp"
+                            android:textColor="#1A1A1A" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Activity History -->
+                <androidx.cardview.widget.CardView
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_margin="16dp"
+                    app:cardBackgroundColor="#F9F9F9"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/cvPersonalInfo">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hoạt động gần đây"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#1A1A1A" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvActivityHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Navigation Drawer -->
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/navView"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                app:menu="@menu/benhnhan_menu" />
+
+        </androidx.drawerlayout.widget.DrawerLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

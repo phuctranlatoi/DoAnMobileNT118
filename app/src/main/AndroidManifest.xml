@@ -28,6 +28,8 @@
         <activity
             android:name=".ui.RegisterActivity"
             android:exported="false" />
+        <activity android:name=".ui.MainBenhNhanActivity" />
+        <activity android:name=".ui.MainBacSiActivity" />
 
         <activity
             android:name=".ui.MainActivity"

@@ -71,7 +71,19 @@ public class LoginActivity extends AppCompatActivity {
                         // 3. So sánh mật khẩu (sửa thành checkpw cho BCrypt)
                         if (BCrypt.checkpw(pass, taiKhoan.getMatKhau())) {
                             Toast.makeText(this, "Đăng nhập thành công! (Vai trò: " + taiKhoan.getVaiTro() + ")", Toast.LENGTH_LONG).show();
-
+                            Intent intent;
+                            if (taiKhoan.getVaiTro().equals("Bệnh nhân")) {
+                                intent = new Intent(this, MainBenhNhanActivity.class);
+                            } else if (taiKhoan.getVaiTro().equals("Bác sĩ")) {
+                                intent = new Intent(this, MainBacSiActivity.class);
+                            } else {
+                                Toast.makeText(this, "Vai trò không hợp lệ!", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                            intent.putExtra("MA_TAI_KHOAN", taiKhoan.getMaTaiKhoan());
+                            intent.putExtra("VAI_TRO", taiKhoan.getVaiTro());
+                            startActivity(intent);
+                            finish();
                             // TODO: Chuyển sang màn hình chính
                         } else {
                             Toast.makeText(this, "Sai mật khẩu!", Toast.LENGTH_SHORT).show();

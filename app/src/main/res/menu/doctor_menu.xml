@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_manage_patient"
+        android:title="Quản Lý Bệnh Nhân" />
+    <item
+        android:id="@+id/nav_manage_medical_record"
+        android:title="Quản Lý Bệnh Án" />
+    <item
+        android:id="@+id/nav_manage_schedule"
+        android:title="Quản Lý Lịch Làm Việc" />
+    <item
+        android:id="@+id/nav_manage_prescription"
+        android:title="Quản Lý Đơn Thuốc" />
+    <item
+        android:id="@+id/nav_confirm_appointment"
+        android:title="Xác Nhận Lịch Khám" />
+    <item
+        android:id="@+id/nav_manage_invoice"
+        android:title="Quản Lý Hóa Đơn" />
+</menu>

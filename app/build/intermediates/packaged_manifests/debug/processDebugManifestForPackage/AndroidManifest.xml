@@ -50,6 +50,8 @@
         <activity
             android:name="com.example.doannt118.ui.RegisterActivity"
             android:exported="false" />
+        <activity android:name="com.example.doannt118.ui.MainBenhNhanActivity" />
+        <activity android:name="com.example.doannt118.ui.MainBacSiActivity" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />
