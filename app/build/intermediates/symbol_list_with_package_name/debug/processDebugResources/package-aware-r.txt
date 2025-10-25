@@ -3608,6 +3608,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable edit_text_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable ic_appointment
@@ -3827,6 +3828,7 @@ id bounceStart
 id btnAddUser
 id btnBack
 id btnCancel
+id btnCapNhat
 id btnConfirm
 id btnDangKy
 id btnEdit
@@ -3834,12 +3836,19 @@ id btnLogin
 id btnLogout
 id btnQuayLai
 id btnRegister
+id btnThem
+id btnXoa
 id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardConfirmAppointment
 id cardConfirmMedication
+id cardManageInvoice
+id cardManageMedicalRecord
+id cardManagePrescription
 id cardManageProfile
+id cardManageSchedule
 id cardRegisterAppointment
 id cardViewInvoice
 id cardViewMedicalRecord
@@ -3878,6 +3887,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id cvAppointments
 id cvPersonalInfo
 id dark
 id date_picker_actions
@@ -3908,7 +3918,6 @@ id dragLeft
 id dragRight
 id dragStart
 id dragUp
-id drawerLayout
 id dropdown_menu
 id easeIn
 id easeInOut
@@ -3926,9 +3935,13 @@ id enterAlways
 id enterAlwaysCollapsed
 id entireSpace
 id escape
+id etChanDoan
 id etDiaChi
+id etGhiChu
 id etHoTen
+id etMaBenhNhan
 id etPassword
+id etSearch
 id etSoDienThoai
 id etUsername
 id exitUntilCollapsed
@@ -4060,7 +4073,6 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
-id navView
 id nav_confirm_appointment
 id nav_confirm_medication
 id nav_manage_invoice
@@ -4133,6 +4145,7 @@ id pooling_container_listener_holder_tag
 id position
 id postLayout
 id pressed
+id progressBar
 id progress_circular
 id progress_horizontal
 id radio
@@ -4150,6 +4163,7 @@ id right_side
 id rounded
 id row_index_key
 id rvAppointments
+id rvBenhAn
 id rvLichSuChanDoan
 id rvMedicalRecords
 id save_non_transition_alpha
@@ -4433,6 +4447,7 @@ layout activity_login
 layout activity_main
 layout activity_main_bacsi
 layout activity_main_benhnhan
+layout activity_quan_ly_benh_an
 layout activity_quanlyhosocanhan
 layout activity_register
 layout activity_xembenhan

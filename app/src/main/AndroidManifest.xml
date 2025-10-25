@@ -33,6 +33,7 @@
         <activity android:name=".ui.ChiTietBenhAnActivity" />
         <activity android:name=".ui.XembenhanActivity" />
         <activity android:name=".ui.QuanLyHoSoCaNhan" />
+        <activity android:name=".ui.QuanLyBenhAnActivity" />
 
         <activity
             android:name=".ui.MainActivity"

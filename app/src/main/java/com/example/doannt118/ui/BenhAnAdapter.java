@@ -1,67 +1,65 @@
 package com.example.doannt118.ui;
 
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doannt118.R;
 import com.example.doannt118.model.BenhAn;
-
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.ViewHolder> {
+public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.BenhAnViewHolder> {
 
-    private List<BenhAn> medicalRecords;
-    private String maTaiKhoan;
+    private List<BenhAn> benhAnList;
+    private OnBenhAnClickListener listener;
 
-    public BenhAnAdapter(List<BenhAn> medicalRecords, String maTaiKhoan) {
-        this.medicalRecords = medicalRecords;
-        this.maTaiKhoan = maTaiKhoan;
+    public interface OnBenhAnClickListener {
+        void onBenhAnClick(BenhAn benhAn);
+    }
+
+    public BenhAnAdapter(List<BenhAn> benhAnList, OnBenhAnClickListener listener) {
+        this.benhAnList = benhAnList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BenhAnViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_benhan, parent, false);
-        return new ViewHolder(view);
+        return new BenhAnViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        BenhAn benhAn = medicalRecords.get(position);
-        holder.tvMaBenhAn.setText("Mã Bệnh Án: " + benhAn.getMaBenhAn());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        holder.tvNgayKham.setText("Ngày Khám: " + (benhAn.getNgayKham() != null ? dateFormat.format(benhAn.getNgayKham().toDate()) : "N/A"));
+    public void onBindViewHolder(@NonNull BenhAnViewHolder holder, int position) {
+        BenhAn benhAn = benhAnList.get(position);
+        holder.tvMaBenhAn.setText("Mã Bệnh Án: " + (benhAn.getMaBenhAn() != null ? benhAn.getMaBenhAn() : "N/A"));
+        holder.tvMaBenhNhan.setText("Mã Bệnh Nhân: " + (benhAn.getMaBenhNhan() != null ? benhAn.getMaBenhNhan() : "N/A"));
         holder.tvChanDoan.setText("Chẩn Đoán: " + (benhAn.getChanDoan() != null ? benhAn.getChanDoan() : "N/A"));
+        holder.tvNgayKham.setText(benhAn.getNgayKham() != null
+                ? new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(benhAn.getNgayKham().toDate())
+                : "N/A");
 
-        holder.itemView.setOnClickListener(v -> {
-            Intent intent = new Intent(holder.itemView.getContext(), ChiTietBenhAnActivity.class);
-            intent.putExtra("MA_BENH_AN", benhAn.getMaBenhAn());
-            intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-            holder.itemView.getContext().startActivity(intent);
-        });
+        holder.itemView.setOnClickListener(v -> listener.onBenhAnClick(benhAn));
     }
 
     @Override
     public int getItemCount() {
-        return medicalRecords.size();
+        return benhAnList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvMaBenhAn, tvNgayKham, tvChanDoan;
+    static class BenhAnViewHolder extends RecyclerView.ViewHolder {
+        TextView tvMaBenhAn, tvMaBenhNhan, tvChanDoan, tvNgayKham;
 
-        public ViewHolder(@NonNull View itemView) {
+        public BenhAnViewHolder(@NonNull View itemView) {
             super(itemView);
             tvMaBenhAn = itemView.findViewById(R.id.tvMaBenhAn);
-            tvNgayKham = itemView.findViewById(R.id.tvNgayKham);
+            tvMaBenhNhan = itemView.findViewById(R.id.tvMaBenhNhan);
             tvChanDoan = itemView.findViewById(R.id.tvChanDoan);
+            tvNgayKham = itemView.findViewById(R.id.tvNgayKham);
         }
     }
 }

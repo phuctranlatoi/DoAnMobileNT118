@@ -55,6 +55,7 @@
         <activity android:name="com.example.doannt118.ui.ChiTietBenhAnActivity" />
         <activity android:name="com.example.doannt118.ui.XembenhanActivity" />
         <activity android:name="com.example.doannt118.ui.QuanLyHoSoCaNhan" />
+        <activity android:name="com.example.doannt118.ui.QuanLyBenhAnActivity" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />

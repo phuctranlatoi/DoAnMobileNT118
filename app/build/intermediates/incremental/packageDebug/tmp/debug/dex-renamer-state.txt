@@ -1,4 +1,4 @@
-#Sat Oct 25 20:47:08 ICT 2025
+#Sat Oct 25 22:48:32 ICT 2025
 base.0=E\:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=E\:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=E\:\\HK1_2025_2026\\NT118\\DoAnMobileNT118\\DoAnMobileNT118\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\12\\classes.dex

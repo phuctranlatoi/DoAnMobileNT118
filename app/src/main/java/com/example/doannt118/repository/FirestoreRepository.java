@@ -4,8 +4,6 @@ import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.BenhAn;
 import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.TaiKhoan;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,12 +29,6 @@ public class FirestoreRepository {
     /**
      * Lấy dữ liệu từ một collection dựa trên một trường (field) và giá trị (value).
      * Dùng để kiểm tra sự tồn tại của tài khoản, bệnh nhân, bác sĩ, hoặc bệnh án.
-     *
-     * @param collection Tên collection (TaiKhoan, BenhNhan, BacSi, BenhAn)
-     * @param field      Tên trường cần so sánh
-     * @param value      Giá trị cần so sánh
-     * @param onSuccess  Callback khi truy vấn thành công
-     * @param onFailure  Callback khi truy vấn thất bại
      */
     public void getByField(String collection, String field, String value,
                            Consumer<QuerySnapshot> onSuccess,
@@ -56,11 +48,6 @@ public class FirestoreRepository {
     /**
      * Đăng ký tài khoản mới bằng WriteBatch, ghi đồng thời vào collection TaiKhoan và profile
      * (BenhNhan hoặc BacSi).
-     *
-     * @param taiKhoan    Đối tượng TaiKhoan
-     * @param userProfile Đối tượng BenhNhan hoặc BacSi
-     * @param onSuccess   Callback khi batch commit thành công
-     * @param onFailure   Callback khi batch commit thất bại
      */
     public void registerNewUserBatch(TaiKhoan taiKhoan, Object userProfile,
                                      Consumer<Void> onSuccess,
@@ -114,12 +101,6 @@ public class FirestoreRepository {
 
     /**
      * Thêm một tài liệu mới vào collection.
-     *
-     * @param collection  Tên collection
-     * @param documentId  ID của tài liệu
-     * @param data        Dữ liệu cần thêm
-     * @param onSuccess   Callback khi thêm thành công
-     * @param onFailure   Callback khi thêm thất bại
      */
     public void addDocument(String collection, String documentId, Object data,
                             Consumer<Void> onSuccess,
@@ -138,12 +119,6 @@ public class FirestoreRepository {
 
     /**
      * Cập nhật một tài liệu trong collection.
-     *
-     * @param collection  Tên collection
-     * @param documentId  ID của tài liệu
-     * @param data        Dữ liệu cần cập nhật
-     * @param onSuccess   Callback khi cập nhật thành công
-     * @param onFailure   Callback khi cập nhật thất bại
      */
     public void updateDocument(String collection, String documentId, Object data,
                                Consumer<Void> onSuccess,
@@ -166,12 +141,12 @@ public class FirestoreRepository {
             updates.put("maBacSi", bacSi.getMaBacSi());
             updates.put("maTaiKhoan", bacSi.getMaTaiKhoan());
             updates.put("hoTen", bacSi.getHoTen());
-//            updates.put("chuyenMon", bacSi.getChuyenMon());
         } else if (data instanceof BenhAn) {
             BenhAn benhAn = (BenhAn) data;
             updates.put("maBenhAn", benhAn.getMaBenhAn());
             updates.put("maLichKham", benhAn.getMaLichKham());
             updates.put("maBenhNhan", benhAn.getMaBenhNhan());
+            updates.put("maBacSi", benhAn.getMaBacSi()); // Added maBacSi
             updates.put("chanDoan", benhAn.getChanDoan());
             updates.put("ghiChu", benhAn.getGhiChu());
             updates.put("ngayKham", benhAn.getNgayKham());
@@ -189,11 +164,6 @@ public class FirestoreRepository {
 
     /**
      * Xóa một tài liệu khỏi collection.
-     *
-     * @param collection  Tên collection
-     * @param documentId  ID của tài liệu
-     * @param onSuccess   Callback khi xóa thành công
-     * @param onFailure   Callback khi xóa thất bại
      */
     public void deleteDocument(String collection, String documentId,
                                Consumer<Void> onSuccess,
@@ -208,5 +178,24 @@ public class FirestoreRepository {
                 .delete()
                 .addOnSuccessListener(onSuccess::accept)
                 .addOnFailureListener(onFailure::accept);
+    }
+
+    /**
+     * Optional: Tìm kiếm tài liệu trong collection với điều kiện linh hoạt hơn.
+     * Ví dụ: Tìm kiếm bệnh án theo nhiều trường (maBenhAn, maBenhNhan).
+     */
+    public void searchDocuments(String collection, String field, String keyword,
+                                Consumer<QuerySnapshot> onSuccess,
+                                Consumer<Exception> onFailure) {
+        if (collection == null || field == null || keyword == null) {
+            onFailure.accept(new IllegalArgumentException("Collection, field, or keyword cannot be null"));
+            return;
+        }
+
+        db.collection(collection)
+                .whereEqualTo(field, keyword)
+                .get()
+                .addOnSuccessListener(querySnapshot -> onSuccess.accept(querySnapshot))
+                .addOnFailureListener(e -> onFailure.accept(e));
     }
 }
