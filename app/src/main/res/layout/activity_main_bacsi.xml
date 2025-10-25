@@ -139,13 +139,6 @@
                                 android:padding="12dp"
                                 android:gravity="center">
 
-                                <!-- <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:src="@drawable/ic_medical_record"
-                                    android:scaleType="centerInside"
-                                    android:contentDescription="Quản Lý Bệnh Án" /> -->
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -173,13 +166,6 @@
                                 android:orientation="vertical"
                                 android:padding="12dp"
                                 android:gravity="center">
-
-                                <!-- <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:src="@drawable/ic_schedule"
-                                    android:scaleType="centerInside"
-                                    android:contentDescription="Quản Lý Lịch Làm Việc" /> -->
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -209,13 +195,6 @@
                                 android:padding="12dp"
                                 android:gravity="center">
 
-                                <!-- <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:src="@drawable/ic_prescription"
-                                    android:scaleType="centerInside"
-                                    android:contentDescription="Quản Lý Đơn Thuốc" /> -->
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -244,13 +223,6 @@
                                 android:padding="12dp"
                                 android:gravity="center">
 
-                                <!-- <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:src="@drawable/ic_appointment"
-                                    android:scaleType="centerInside"
-                                    android:contentDescription="Xác Nhận Lịch Khám" /> -->
-
                                 <TextView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
@@ -278,13 +250,6 @@
                                 android:orientation="vertical"
                                 android:padding="12dp"
                                 android:gravity="center">
-
-                                <!-- <ImageView
-                                    android:layout_width="64dp"
-                                    android:layout_height="64dp"
-                                    android:src="@drawable/ic_invoice"
-                                    android:scaleType="centerInside"
-                                    android:contentDescription="Quản Lý Hóa Đơn" /> -->
 
                                 <TextView
                                     android:layout_width="wrap_content"

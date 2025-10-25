@@ -52,4 +52,6 @@ dependencies {
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
 }

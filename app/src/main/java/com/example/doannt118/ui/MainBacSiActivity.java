@@ -146,8 +146,14 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleQuanLyLichLamViec() {
-        Toast.makeText(this, "Chức năng đang phát triển!", Toast.LENGTH_SHORT).show();
-        // Cần tạo QuanLyLichLamViecActivity
+        if (maBacSi == null) {
+            showError("Lỗi: Không tìm thấy mã bác sĩ");
+            return;
+        }
+        Intent intent = new Intent(this, QuanLyLichLamViecActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        startActivity(intent);
     }
 
     private void handleQuanLyDonThuoc() {

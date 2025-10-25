@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string-array name="trang_thai_array">
+        <item>CON_TRONG</item>
+        <item>DA_DAY</item>
+    </string-array>
     <color name="black">#FF000000</color>
+    <color name="selected_item_background">#D4EDDA</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">DoAnNT118</string>
     <string name="close_drawer">Close navigation drawer</string>
