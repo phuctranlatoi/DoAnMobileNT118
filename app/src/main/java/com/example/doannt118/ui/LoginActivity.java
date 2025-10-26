@@ -9,142 +9,132 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-
 import com.example.doannt118.R;
-import com.example.doannt118.model.LichSuHoatDong;
-import com.example.doannt118.model.TaiKhoan;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import org.mindrot.jbcrypt.BCrypt;
 
-import java.util.Date;
-import java.util.UUID;
-
 public class LoginActivity extends AppCompatActivity {
-    private EditText etUsername, etPassword;
-    private Button btnLogin, btnRegister;
-    private TextView tvForgotPassword;
-    private FirestoreRepository repo;
+    private EditText txtTenDangNhap, txtMatKhau;
+    private Button btnDangNhap;
+    private TextView tvQuenMatKhau, tvDangKy;
     private FirebaseAuth auth;
-    private static final String COLLECTION_TAIKHOAN = "TaiKhoan";
+    private FirestoreRepository repo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        FirebaseApp.initializeApp(this);
         setContentView(R.layout.activity_login);
 
-        repo = new FirestoreRepository();
+        txtTenDangNhap = findViewById(R.id.txtTenDangNhap);
+        txtMatKhau = findViewById(R.id.txtMatKhau);
+        btnDangNhap = findViewById(R.id.btnDangNhap);
+        tvQuenMatKhau = findViewById(R.id.tvQuenMatKhau);
+        tvDangKy = findViewById(R.id.tvDangKy);
         auth = FirebaseAuth.getInstance();
-        etUsername = findViewById(R.id.etUsername);
-        etPassword = findViewById(R.id.etPassword);
-        btnLogin = findViewById(R.id.btnLogin);
-        btnRegister = findViewById(R.id.btnRegister);
-        tvForgotPassword = findViewById(R.id.tvForgotPassword);
+        repo = new FirestoreRepository();
 
-        btnLogin.setOnClickListener(v -> handleLogin());
-        btnRegister.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
-        tvForgotPassword.setOnClickListener(v -> startActivity(new Intent(this, ForgotPasswordActivity.class)));
-    }
+        btnDangNhap.setOnClickListener(v -> {
+            String input = txtTenDangNhap.getText().toString().trim();
+            String matKhau = txtMatKhau.getText().toString().trim();
 
-    private void handleLogin() {
-        String input = etUsername.getText().toString().trim();
-        String pass = etPassword.getText().toString().trim();
-
-        if (input.isEmpty() || pass.isEmpty()) {
-            Toast.makeText(this, "Vui lòng nhập đủ thông tin!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Kiểm tra xem input là email hay username
-        if (input.contains("@") && Patterns.EMAIL_ADDRESS.matcher(input).matches()) {
-            // Đăng nhập bằng email qua FirebaseAuth
-            auth.signInWithEmailAndPassword(input, pass)
-                    .addOnSuccessListener(authResult -> {
-                        // Kiểm tra thông tin tài khoản trong Firestore
-                        repo.getByField(COLLECTION_TAIKHOAN, "email", input,
-                                querySnapshot -> {
-                                    if (querySnapshot.isEmpty()) {
-                                        Toast.makeText(this, "Tài khoản không tồn tại trong Firestore!", Toast.LENGTH_SHORT).show();
-                                        auth.signOut(); // Đăng xuất nếu không tìm thấy trong Firestore
-                                    } else {
-                                        processLogin(querySnapshot, input, pass, "email");
-                                    }
-                                },
-                                e -> {
-                                    Log.e("LoginActivity", "Lỗi khi truy vấn email: ", e);
-                                    Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                                    auth.signOut();
-                                });
-                    })
-                    .addOnFailureListener(e -> {
-                        Log.e("LoginActivity", "Đăng nhập Firebase thất bại: ", e);
-                        Toast.makeText(this, "Sai email hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
-                    });
-        } else {
-            // Đăng nhập bằng username qua Firestore
-            repo.getByField(COLLECTION_TAIKHOAN, "tenDangNhap", input,
-                    querySnapshot -> {
-                        if (querySnapshot.isEmpty()) {
-                            Toast.makeText(this, "Tên đăng nhập không tồn tại!", Toast.LENGTH_SHORT).show();
-                        } else {
-                            processLogin(querySnapshot, input, pass, "tên đăng nhập");
-                        }
-                    },
-                    e -> {
-                        Log.e("LoginActivity", "Lỗi khi truy vấn tenDangNhap: ", e);
-                        Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
-        }
-    }
-
-    private void processLogin(QuerySnapshot querySnapshot, String input, String pass, String loginMethod) {
-        try {
-            TaiKhoan taiKhoan = querySnapshot.getDocuments().get(0).toObject(TaiKhoan.class);
-            if (taiKhoan == null) {
-                Toast.makeText(this, "Lỗi dữ liệu tài khoản!", Toast.LENGTH_SHORT).show();
-                auth.signOut();
+            if (input.isEmpty() || matKhau.isEmpty()) {
+                Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin!", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            if (BCrypt.checkpw(pass, taiKhoan.getMatKhau())) {
-                if (!taiKhoan.getTrangThai().equals("Hoạt động")) {
-                    Toast.makeText(this, "Tài khoản đang bị khóa!", Toast.LENGTH_SHORT).show();
-                    auth.signOut();
-                    return;
-                }
+            String field = Patterns.EMAIL_ADDRESS.matcher(input).matches() ? "email" : "tenDangNhap";
+            Log.d("LoginActivity", "Attempting login with field: " + field + ", value: " + input);
 
-                // Ghi log đăng nhập
-                String maLichSu = UUID.randomUUID().toString();
-                LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, taiKhoan.getMaTaiKhoan(), "Đăng nhập", new Date(), "Đăng nhập thành công bằng " + loginMethod);
-                repo.logActivity(lichSu);
+            repo.getByField("TaiKhoan", field, input,
+                    querySnapshot -> {
+                        if (!querySnapshot.isEmpty()) {
+                            var doc = querySnapshot.getDocuments().get(0);
+                            String storedHash = doc.getString("matKhau");
+                            String vaiTro = doc.getString("vaiTro");
+                            String maTaiKhoan = doc.getString("maTaiKhoan");
+                            String email = doc.getString("email");
+                            String trangThai = doc.getString("trangThai");
 
-                Toast.makeText(this, "Đăng nhập thành công! (Vai trò: " + taiKhoan.getVaiTro() + ")", Toast.LENGTH_LONG).show();
-                Intent intent;
-                if (taiKhoan.getVaiTro().equals("Bệnh nhân")) {
-                    intent = new Intent(this, MainBenhNhanActivity.class);
-                } else if (taiKhoan.getVaiTro().equals("Bác sĩ")) {
-                    intent = new Intent(this, MainBacSiActivity.class);
-                } else {
-                    Toast.makeText(this, "Vai trò không hợp lệ!", Toast.LENGTH_SHORT).show();
-                    auth.signOut();
-                    return;
-                }
-                intent.putExtra("MA_TAI_KHOAN", taiKhoan.getMaTaiKhoan());
-                intent.putExtra("VAI_TRO", taiKhoan.getVaiTro());
-                startActivity(intent);
-                finish();
+                            Log.d("LoginActivity", "Found account: maTaiKhoan=" + maTaiKhoan + ", vaiTro=" + vaiTro + ", trangThai=" + trangThai);
+
+                            if (!trangThai.equals("Hoạt động")) {
+                                String message = trangThai.equals("Chờ duyệt")
+                                        ? "Tài khoản đang chờ duyệt. Vui lòng liên hệ quản trị viên!"
+                                        : "Tài khoản bị khóa!";
+                                Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+
+                            auth.signInWithEmailAndPassword(email, matKhau)
+                                    .addOnSuccessListener(authResult -> {
+                                        if (authResult.getUser() == null) {
+                                            Log.e("LoginActivity", "Firebase user is null");
+                                            Toast.makeText(this, "Lỗi đăng nhập Firebase!", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+
+                                        if (!authResult.getUser().isEmailVerified()) {
+                                            authResult.getUser().sendEmailVerification();
+                                            Toast.makeText(this, "Vui lòng xác thực email! Đã gửi lại link xác thực.", Toast.LENGTH_LONG).show();
+                                            return;
+                                        }
+
+                                        if (!BCrypt.checkpw(matKhau, storedHash)) {
+                                            String newHashedPassword = BCrypt.hashpw(matKhau, BCrypt.gensalt());
+                                            repo.updatePassword(email, newHashedPassword,
+                                                    aVoid -> {
+                                                        Log.d("LoginActivity", "Password synced, navigating for vaiTro=" + vaiTro);
+                                                        navigateToActivity(vaiTro, maTaiKhoan);
+                                                    },
+                                                    e -> {
+                                                        Log.e("LoginActivity", "Password sync failed: ", e);
+                                                        Toast.makeText(this, "Lỗi đồng bộ mật khẩu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                                    });
+                                        } else {
+                                            Log.d("LoginActivity", "Password matched, navigating for vaiTro=" + vaiTro);
+                                            navigateToActivity(vaiTro, maTaiKhoan);
+                                        }
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Log.e("LoginActivity", "Firebase login failed: ", e);
+                                        if (BCrypt.checkpw(matKhau, storedHash)) {
+                                            Toast.makeText(this, "Mật khẩu Firebase không khớp. Vui lòng đặt lại mật khẩu!", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(this, "Mật khẩu không đúng!", Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                        } else {
+                            Log.w("LoginActivity", "Account not found for input: " + input);
+                            Toast.makeText(this, "Tài khoản không tồn tại!", Toast.LENGTH_SHORT).show();
+                        }
+                    },
+                    e -> {
+                        Log.e("LoginActivity", "Firestore query failed: ", e);
+                        Toast.makeText(this, "Lỗi kiểm tra tài khoản: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+        });
+
+        tvQuenMatKhau.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, ForgotPasswordActivity.class)));
+        tvDangKy.setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
+    }
+
+    private void navigateToActivity(String vaiTro, String maTaiKhoan) {
+        Intent intent;
+        try {
+            if (vaiTro.equals("Admin")) {
+                intent = new Intent(LoginActivity.this, MainAdminActivity.class);
+            } else if (vaiTro.equals("Bác sĩ")) {
+                intent = new Intent(LoginActivity.this, MainBacSiActivity.class);
             } else {
-                Toast.makeText(this, "Sai mật khẩu!", Toast.LENGTH_SHORT).show();
-                auth.signOut();
+                intent = new Intent(LoginActivity.this, MainActivity.class);
             }
+            intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+            startActivity(intent);
+            finish();
         } catch (Exception e) {
-            Log.e("LoginActivity", "Lỗi khi chuyển đổi đối tượng: ", e);
-            Toast.makeText(this, "Lỗi xử lý dữ liệu!", Toast.LENGTH_SHORT).show();
-            auth.signOut();
+            Log.e("LoginActivity", "Navigation failed: ", e);
+            Toast.makeText(this, "Lỗi chuyển hướng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }

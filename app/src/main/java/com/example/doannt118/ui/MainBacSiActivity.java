@@ -2,28 +2,23 @@ package com.example.doannt118.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doannt118.R;
 import com.example.doannt118.model.BacSi;
-import com.example.doannt118.model.LichKham;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
 import com.google.android.material.navigation.NavigationView;
-
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
@@ -43,16 +38,26 @@ public class MainBacSiActivity extends AppCompatActivity {
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
 
+        if (maTaiKhoan == null) {
+            Log.e("MainBacSiActivity", "maTaiKhoan is null");
+            Toast.makeText(this, "Lỗi: Không nhận được mã tài khoản!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navView = findViewById(R.id.navView);
+        tvUserName = findViewById(R.id.tvUserName);
+        rvAppointments = findViewById(R.id.rvAppointments);
+        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
-
-        tvUserName = toolbar.findViewById(R.id.tvUserName);
-        rvAppointments = findViewById(R.id.rvAppointments);
-        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
 
         navView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
@@ -83,6 +88,12 @@ public class MainBacSiActivity extends AppCompatActivity {
             finish();
         });
 
+        Button btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
+        btnUpdateProfile.setOnClickListener(v -> {
+            // TODO: Implement UpdateProfileActivity
+            Toast.makeText(this, "Chức năng cập nhật hồ sơ chưa được triển khai!", Toast.LENGTH_SHORT).show();
+        });
+
         loadUserInfo();
         // loadAppointments();
     }
@@ -94,9 +105,19 @@ public class MainBacSiActivity extends AppCompatActivity {
                         BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
                         if (bacSi != null) {
                             tvUserName.setText(bacSi.getHoTen());
+                            Log.d("MainBacSiActivity", "Loaded doctor: " + bacSi.getHoTen());
+                        } else {
+                            Log.w("MainBacSiActivity", "BacSi object is null");
+                            Toast.makeText(this, "Không thể tải thông tin Bác sĩ!", Toast.LENGTH_SHORT).show();
                         }
+                    } else {
+                        Log.w("MainBacSiActivity", "No doctor found for maTaiKhoan: " + maTaiKhoan);
+                        Toast.makeText(this, "Không tìm thấy thông tin Bác sĩ!", Toast.LENGTH_SHORT).show();
                     }
                 },
-                e -> Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                e -> {
+                    Log.e("MainBacSiActivity", "Error loading doctor info: ", e);
+                    Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
