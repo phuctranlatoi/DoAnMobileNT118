@@ -1537,12 +1537,17 @@ color background_floating_material_light
 color background_material_dark
 color background_material_light
 color black
+color blue
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color button_material_dark
 color button_material_light
 color call_notification_answer_color
@@ -2544,6 +2549,8 @@ dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
 dimen appcompat_dialog_background_inset
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -3646,7 +3653,11 @@ drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_other_sign_in
+drawable ic_passkey
+drawable ic_password
 drawable ic_profile
+drawable ic_schedule
 drawable ic_search_black_24
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3837,6 +3848,11 @@ id bounce
 id bounceBoth
 id bounceEnd
 id bounceStart
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id btnAddUser
 id btnBack
 id btnCancel
@@ -3851,6 +3867,7 @@ id btnLogin
 id btnLogout
 id btnQuayLai
 id btnRegister
+id btnResetPassword
 id btnThem
 id btnTraCuu
 id btnXacNhanCapNhat
@@ -3906,7 +3923,6 @@ id currentState
 id custom
 id customPanel
 id cut
-id cvAppointments
 id cvPersonalInfo
 id dark
 id date_picker_actions
@@ -3959,6 +3975,7 @@ id entireSpace
 id escape
 id etChanDoan
 id etDiaChi
+id etEmail
 id etGhiChu
 id etHoTen
 id etMaBenhNhan
@@ -4187,6 +4204,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvActivityHistory
 id rvAppointments
 id rvBenhAn
 id rvLichLamViec
@@ -4308,10 +4326,14 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tvChanDoan
+id tvChiTiet
+id tvChuyenKhoa
 id tvDiaChi
 id tvDiagnosisHistory
+id tvForgotPassword
 id tvGioBatDau
 id tvGioKetThuc
+id tvHanhDong
 id tvHoTen
 id tvKhungGio
 id tvMaBenhAn
@@ -4325,10 +4347,12 @@ id tvNgayLap
 id tvSoDienThoai
 id tvTenBenhNhan
 id tvTenNhanVien
+id tvThoiGian
 id tvTitle
 id tvTrangThai
 id tvUserName
 id txtDiaChi
+id txtEmail
 id txtHoTen
 id txtMatKhau
 id txtSoDienThoai
@@ -4478,6 +4502,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_chitietbenhan
+layout activity_forgot_password
 layout activity_login
 layout activity_main
 layout activity_main_bacsi
@@ -4487,6 +4512,8 @@ layout activity_quan_ly_lich_lam_viec
 layout activity_quanlyhosocanhan
 layout activity_register
 layout activity_xembenhan
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4505,6 +4532,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
+layout item_activity_history
 layout item_benhan
 layout item_diagnosis_entry
 layout item_lich_lam_viec
@@ -4613,6 +4641,8 @@ string abc_searchview_description_voice
 string abc_shareactionprovider_share_with
 string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
+string android_credentials_TYPE_PASSWORD_CREDENTIAL
+string androidx_credentials_TYPE_PUBLIC_KEY_CREDENTIAL
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4651,11 +4681,15 @@ string common_google_play_services_wear_update_text
 string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
+string copy_toast_msg
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
+string fallback_menu_item_copy_link
+string fallback_menu_item_open_in_browser
+string fallback_menu_item_share_link
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -5412,6 +5446,7 @@ style Theme_Design_Light_BottomSheetDialog
 style Theme_Design_Light_NoActionBar
 style Theme_Design_NoActionBar
 style Theme_DoAnNT118
+style Theme_Hidden
 style Theme_Material3_Dark
 style Theme_Material3_Dark_BottomSheetDialog
 style Theme_Material3_Dark_Dialog
@@ -5489,6 +5524,7 @@ style Theme_MaterialComponents_Light_NoActionBar
 style Theme_MaterialComponents_Light_NoActionBar_Bridge
 style Theme_MaterialComponents_NoActionBar
 style Theme_MaterialComponents_NoActionBar_Bridge
+style Theme_PlayCore_Transparent
 style ThemeOverlay_AppCompat
 style ThemeOverlay_AppCompat_ActionBar
 style ThemeOverlay_AppCompat_Dark
@@ -6188,6 +6224,7 @@ styleable ViewTransition android_id SharedValue SharedValueId clearsTag duration
 styleable include constraintSet
 xml backup_rules
 xml data_extraction_rules
+xml image_share_filepaths
 xml m3_button_group_child_size_change
 xml m3_split_button_inner_corner_size_state_list
 xml m3expressive_button_shape_state_list
