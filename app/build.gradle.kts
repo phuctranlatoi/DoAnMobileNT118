@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
-    id("com.google.gms.google-services")}
+    id("com.google.gms.google-services")
+}
 
 android {
     namespace = "com.example.doannt118"
@@ -29,23 +30,30 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    buildToolsVersion = "36.1.0"
+    // Remove buildToolsVersion
 }
 
 dependencies {
-
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.firestore)
-    implementation(libs.firebase.ai)
+    implementation(libs.firebase.firestore)  // Via catalog, let BOM manage version
+    // implementation(libs.firebase.ai)  // If using AI features; otherwise remove
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
-    implementation("com.google.firebase:firebase-ai:17.4.0")
-    implementation("com.google.firebase:firebase-firestore:25.1.0")
-    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")  // No explicit version
+    implementation("com.google.firebase:firebase-analytics")  // Optional
+    implementation("com.google.firebase:firebase-ai")  // No explicit version if BOM supports
+    implementation("org.mindrot:jbcrypt:0.4")
+    implementation("androidx.gridlayout:gridlayout:1.0.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation("androidx.cardview:cardview:1.0.0")
+    implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
+    implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("com.google.firebase:firebase-auth") // Thêm FirebaseAuth
 
 }

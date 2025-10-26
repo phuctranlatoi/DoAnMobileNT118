@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.MainBacSiActivity">
+
+    <!-- Top Bar -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Healcarus">
+
+        <Button
+            android:id="@+id/btnLogout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:backgroundTint="#F8D7DA"
+            android:text="Đăng Xuất"
+            android:textColor="#721C24" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Main Content -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingTop="?attr/actionBarSize"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Personal Info Card (Thông tin bác sĩ với lịch hẹn) -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvPersonalInfo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="#F9F9F9"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Thông tin bác sĩ"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A" />
+
+                <TextView
+                    android:id="@+id/tvHoTen"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Họ tên: "
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A" />
+
+                <TextView
+                    android:id="@+id/tvSoDienThoai"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Số điện thoại: "
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A" />
+
+                <TextView
+                    android:id="@+id/tvChuyenKhoa"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chuyên khoa: "
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lịch hẹn"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A"
+                    android:layout_marginTop="8dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvAppointments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Function Grid -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="#F9F9F9"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="3dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cvPersonalInfo">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Chức năng"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A" />
+
+                <GridLayout
+                    android:id="@+id/gridFunctions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:rowCount="3"
+                    android:padding="8dp">
+
+                    <!-- Function 1: Quản Lý Bệnh Án -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardManageMedicalRecord"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:src="@drawable/ic_medical_record"
+                                android:scaleType="centerInside"
+                                android:contentDescription="Quản Lý Bệnh Án" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quản Lý Bệnh Án"
+                                android:textSize="14sp"
+                                android:textColor="#1A1A1A"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Function 2: Quản Lý Lịch Làm Việc -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardManageSchedule"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:gravity="center">
+
+                            <ImageView
+                                android:layout_width="64dp"
+                                android:layout_height="64dp"
+                                android:src="@drawable/ic_schedule"
+                                android:scaleType="centerInside"
+                                android:contentDescription="Quản Lý Lịch Làm Việc" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quản Lý Lịch Làm Việc"
+                                android:textSize="14sp"
+                                android:textColor="#1A1A1A"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Function 3: Quản Lý Đơn Thuốc -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardManagePrescription"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quản Lý Đơn Thuốc"
+                                android:textSize="14sp"
+                                android:textColor="#1A1A1A"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Function 4: Xác Nhận Lịch Khám -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardConfirmAppointment"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Xác Nhận Lịch Khám"
+                                android:textSize="14sp"
+                                android:textColor="#1A1A1A"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Function 5: Quản Lý Hóa Đơn -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardManageInvoice"
+                        android:layout_width="0dp"
+                        android:layout_height="150dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="8dp"
+                        android:layout_gravity="fill"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Quản Lý Hóa Đơn"
+                                android:textSize="14sp"
+                                android:textColor="#1A1A1A"
+                                android:textAlignment="center" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+                </GridLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Loading -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

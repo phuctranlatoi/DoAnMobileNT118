@@ -1,4 +1,6 @@
+// Đường dẫn: app/src/main/java/com/example/doannt118/model/BacSi.java
 package com.example.doannt118.model;
+
 public class BacSi {
     private String maBacSi;
     private String maTaiKhoan;
@@ -14,8 +16,8 @@ public class BacSi {
         this.soDienThoai = soDienThoai;
     }
 
-    public String getMaNhanVien() { return maBacSi; }
-    public void setMaNhanVien(String maNhanVien) { this.maBacSi = maNhanVien; }
+    public String getMaBacSi() { return maBacSi; }
+    public void setMaBacSi(String maBacSi) { this.maBacSi = maBacSi; }
 
     public String getMaTaiKhoan() { return maTaiKhoan; }
     public void setMaTaiKhoan(String maTaiKhoan) { this.maTaiKhoan = maTaiKhoan; }
@@ -28,8 +30,8 @@ public class BacSi {
 
     @Override
     public String toString() {
-        return "NhanVien{" +
-                "maNhanVien='" + maBacSi + '\'' +
+        return "BacSi{" +
+                "maBacSi='" + maBacSi + '\'' +
                 ", hoTen='" + hoTen + '\'' +
                 '}';
     }

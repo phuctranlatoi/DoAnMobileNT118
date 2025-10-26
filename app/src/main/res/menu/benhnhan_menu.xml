@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_register_appointment"
+        android:title="Đăng Ký Lịch Khám" />
+    <item
+        android:id="@+id/nav_manage_profile"
+        android:title="Quản Lý Hồ Sơ Cá Nhân" />
+    <item
+        android:id="@+id/nav_view_medical_record"
+        android:title="Xem Bệnh Án" />
+    <item
+        android:id="@+id/nav_confirm_medication"
+        android:title="Xác Nhận Dùng Thuốc" />
+    <item
+        android:id="@+id/nav_view_invoice"
+        android:title="Xem Hóa Đơn" />
+</menu>
