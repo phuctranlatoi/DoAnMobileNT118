@@ -122,18 +122,23 @@ public class RegisterActivity extends AppCompatActivity {
                             new BenhNhan(maProfile, maTaiKhoan, hoTen, sdt, diaChi) :
                             new BacSi(maProfile, maTaiKhoan, hoTen, sdt);
 
-                    repo.registerNewUserBatch(newTaiKhoan, userProfile)
-                            .addOnSuccessListener(aVoid -> {
+                    // Gọi theo signature mới: (taiKhoan, profile, onSuccess, onFailure)
+                    repo.registerNewUserBatch(newTaiKhoan, userProfile,
+                            // onSuccess
+                            (Void v) -> {
                                 Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_SHORT).show();
                                 finish();
-                            })
-                            .addOnFailureListener(e -> {
-                                // Nếu Firestore thất bại, xóa người dùng FirebaseAuth để tránh dữ liệu không nhất quán
+                            },
+                            // onFailure
+                            (Exception e) -> {
+                                // Nếu Firestore thất bại, xóa user FirebaseAuth để tránh dữ liệu không nhất quán
                                 if (authResult.getUser() != null) {
                                     authResult.getUser().delete();
                                 }
+                                // e là Exception -> dùng getMessage()
                                 Toast.makeText(this, "Đăng ký thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
+                            }
+                    );
                 })
                 .addOnFailureListener(e -> Toast.makeText(this, "Lỗi tạo tài khoản Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
