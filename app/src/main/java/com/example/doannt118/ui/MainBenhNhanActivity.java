@@ -3,23 +3,35 @@ package com.example.doannt118.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
 import com.example.doannt118.model.BenhNhan;
+import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 public class MainBenhNhanActivity extends AppCompatActivity {
-
     private Toolbar toolbar;
+    private DrawerLayout drawerLayout;
+    private NavigationView navView;
     private TextView tvHoTen, tvSoDienThoai, tvDiaChi;
-    private CardView cardRegisterAppointment, cardManageProfile, cardViewMedicalRecord, cardConfirmMedication, cardViewInvoice;
+    private RecyclerView rvActivityHistory;
     private FirestoreRepository repo;
     private String maTaiKhoan;
 
@@ -31,59 +43,48 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
 
-        // Initialize UI components
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         tvHoTen = findViewById(R.id.tvHoTen);
         tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
         tvDiaChi = findViewById(R.id.tvDiaChi);
+        rvActivityHistory = findViewById(R.id.rvActivityHistory);
+        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
 
-        // Initialize function cards
-        cardRegisterAppointment = findViewById(R.id.cardRegisterAppointment);
-        cardManageProfile = findViewById(R.id.cardManageProfile);
-        cardViewMedicalRecord = findViewById(R.id.cardViewMedicalRecord);
-        cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
-        cardViewInvoice = findViewById(R.id.cardViewInvoice);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        // Set up logout button
+        navView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_register_appointment) {
+                Toast.makeText(this, "Đăng Ký Lịch Khám", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_manage_profile) {
+                Toast.makeText(this, "Quản Lý Hồ Sơ Cá Nhân", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_view_medical_record) {
+                Toast.makeText(this, "Xem Bệnh Án", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_confirm_medication) {
+                Toast.makeText(this, "Xác Nhận Dùng Thuốc", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_view_invoice) {
+                Toast.makeText(this, "Xem Hóa Đơn", Toast.LENGTH_SHORT).show();
+            }
+            drawerLayout.closeDrawers();
+            return true;
+        });
+
         Button btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> {
+            String maLichSu = UUID.randomUUID().toString();
+            LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
+            repo.logActivity(lichSu);
             Intent intent = new Intent(MainBenhNhanActivity.this, LoginActivity.class);
             startActivity(intent);
             finish();
         });
 
-        // Set up click listeners for function cards
-        cardRegisterAppointment.setOnClickListener(v -> {
-            Toast.makeText(this, "Đăng Ký Lịch Khám", Toast.LENGTH_SHORT).show();
-            // TODO: Implement RegisterAppointmentActivity
-        });
-
-        cardManageProfile.setOnClickListener(v -> {
-            Intent intent = new Intent(MainBenhNhanActivity.this, QuanLyHoSoCaNhan.class);
-            intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-            startActivity(intent);
-        });
-
-        cardViewMedicalRecord.setOnClickListener(v -> {
-            Intent intent = new Intent(MainBenhNhanActivity.this, XembenhanActivity.class);
-            intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-            startActivity(intent);
-        });
-
-        cardConfirmMedication.setOnClickListener(v -> {
-            Toast.makeText(this, "Xác Nhận Dùng Thuốc", Toast.LENGTH_SHORT).show();
-            // TODO: Implement ConfirmMedicationActivity
-        });
-
-        cardViewInvoice.setOnClickListener(v -> {
-            Toast.makeText(this, "Xem Hóa Đơn", Toast.LENGTH_SHORT).show();
-            // TODO: Implement ViewInvoiceActivity
-        });
-
-        // Load data
         loadUserInfo();
+        loadActivityHistory();
     }
 
     private void loadUserInfo() {
@@ -129,6 +130,26 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                     tvHoTen.setText("Họ tên: N/A");
                     tvSoDienThoai.setText("Số điện thoại: N/A");
                     tvDiaChi.setText("Địa chỉ: N/A");
+                });
+    }
+
+    private void loadActivityHistory() {
+        repo.getByField("LichSuHoatDong", "maTaiKhoan", maTaiKhoan,
+                querySnapshot -> {
+                    List<LichSuHoatDong> list = new ArrayList<>();
+                    for (var doc : querySnapshot.getDocuments()) {
+                        LichSuHoatDong lichSu = doc.toObject(LichSuHoatDong.class);
+                        if (lichSu != null) {
+                            list.add(lichSu);
+                        }
+                    }
+                    Log.d("MainBenhNhanActivity", "Loaded " + list.size() + " activity records");
+                    rvActivityHistory.setAdapter(new ActivityHistoryAdapter(list));
+                },
+                e -> {
+                    Log.e("MainBenhNhanActivity", "Error loading activity history: ", e);
+                    Toast.makeText(this, "Lỗi tải lịch sử hoạt động: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    rvActivityHistory.setAdapter(new ActivityHistoryAdapter(new ArrayList<>()));
                 });
     }
 }
