@@ -36,7 +36,6 @@ public class LichLamViec {
     public String getTrangThai() { return trangThai; }
     public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 
-    // Thêm phương thức toMap để hỗ trợ Firestore
     public Map<String, Object> toMap() {
         Map<String, Object> map = new HashMap<>();
         map.put("maLichLamViec", maLichLamViec);
