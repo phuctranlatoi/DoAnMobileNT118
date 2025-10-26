@@ -20,6 +20,7 @@ import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -33,6 +34,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     private TextView tvHoTen, tvSoDienThoai, tvDiaChi;
     private RecyclerView rvActivityHistory;
     private FirestoreRepository repo;
+    private FirebaseAuth auth;
     private String maTaiKhoan;
 
     @Override
@@ -41,8 +43,12 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main_benhnhan);
 
         repo = new FirestoreRepository();
+        auth = FirebaseAuth.getInstance();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
 
+        // Ánh xạ DrawerLayout và NavigationView
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navView = findViewById(R.id.nav_view);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -52,10 +58,12 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         rvActivityHistory = findViewById(R.id.rvActivityHistory);
         rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
 
+        // Thiết lập DrawerLayout
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Xử lý sự kiện menu navigation
         navView.setNavigationItemSelectedListener(item -> {
             int id = item.getItemId();
             if (id == R.id.nav_register_appointment) {
@@ -73,12 +81,20 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             return true;
         });
 
+        // Xử lý sự kiện đăng xuất
         Button btnLogout = findViewById(R.id.btnLogout);
         btnLogout.setOnClickListener(v -> {
+            // Ghi log hoạt động
             String maLichSu = UUID.randomUUID().toString();
             LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
             repo.logActivity(lichSu);
+
+            // Đăng xuất khỏi Firebase Authentication
+            auth.signOut();
+
+            // Chuyển hướng đến LoginActivity và xóa stack
             Intent intent = new Intent(MainBenhNhanActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();
         });

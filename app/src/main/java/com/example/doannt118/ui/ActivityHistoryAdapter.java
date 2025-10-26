@@ -28,7 +28,7 @@ public class ActivityHistoryAdapter extends RecyclerView.Adapter<ActivityHistory
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         LichSuHoatDong lichSu = list.get(position);
-        holder.tvHanhDong.setText(lichSu.getHanhDong());
+        holder.tvHanhDong.setText(lichSu.getTenHoatDong());
         holder.tvThoiGian.setText(Dateutils.format(lichSu.getThoiGian()));
         holder.tvChiTiet.setText(lichSu.getChiTiet() != null ? lichSu.getChiTiet() : "N/A");
     }
