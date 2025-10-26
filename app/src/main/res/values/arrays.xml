@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="trang_thai_array">
+        <item>CON_TRONG</item>
+        <item>DA_DAY</item>
+    </string-array>
+</resources>
