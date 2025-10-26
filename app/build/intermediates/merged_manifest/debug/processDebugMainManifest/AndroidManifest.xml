@@ -57,6 +57,7 @@
         <activity android:name="com.example.doannt118.ui.QuanLyBenhAnActivity" />
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
         <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
+        <activity android:name="com.example.doannt118.ui.MainAdminActivity" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />

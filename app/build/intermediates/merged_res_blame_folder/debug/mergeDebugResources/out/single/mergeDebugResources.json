@@ -1,5 +1,9 @@
 [
     {
+        "merged": "com.example.doannt118.app-debug-59:/layout_dialog_edit_account.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/dialog_edit_account.xml"
+    },
+    {
         "merged": "com.example.doannt118.app-debug-59:/drawable_rounded_button_elevation_large.xml.flat",
         "source": "com.example.doannt118.app-main-61:/drawable/rounded_button_elevation_large.xml"
     },
@@ -52,6 +56,18 @@
         "source": "com.example.doannt118.app-main-61:/layout/activity_quan_ly_lich_lam_viec.xml"
     },
     {
+        "merged": "com.example.doannt118.app-debug-59:/layout_activity_main_admin.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/activity_main_admin.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-59:/layout_item_account.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/item_account.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-59:/layout_dialog_create_account.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/dialog_create_account.xml"
+    },
+    {
         "merged": "com.example.doannt118.app-debug-59:/menu_benhnhan_menu.xml.flat",
         "source": "com.example.doannt118.app-main-61:/menu/benhnhan_menu.xml"
     },
@@ -88,12 +104,20 @@
         "source": "com.example.doannt118.app-main-61:/layout/item_lich_lam_viec.xml"
     },
     {
+        "merged": "com.example.doannt118.app-debug-59:/layout_activity_update_bacsi_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/activity_update_bacsi_profile.xml"
+    },
+    {
         "merged": "com.example.doannt118.app-debug-59:/layout_activity_xembenhan.xml.flat",
         "source": "com.example.doannt118.app-main-61:/layout/activity_xembenhan.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-59:/layout_activity_login.xml.flat",
         "source": "com.example.doannt118.app-main-61:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-59:/layout_item_pending_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-61:/layout/item_pending_doctor.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-59:/drawable_ic_medication.xml.flat",
