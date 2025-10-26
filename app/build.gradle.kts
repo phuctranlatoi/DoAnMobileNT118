@@ -54,4 +54,6 @@ dependencies {
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation("com.google.firebase:firebase-auth") // Thêm FirebaseAuth
+
 }
