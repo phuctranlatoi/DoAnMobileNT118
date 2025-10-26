@@ -1,26 +1,13 @@
 package com.example.doannt118.repository;
 
 import android.util.Log;
-
-import com.example.doannt118.model.BacSi;
-import com.example.doannt118.model.BenhAn;
-import com.example.doannt118.model.BenhNhan;
-import com.example.doannt118.model.LichLamViec;
-import com.example.doannt118.model.LichSuHoatDong;
-import com.example.doannt118.model.TaiKhoan;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
+import com.example.doannt118.model.*;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.WriteBatch;
-
+import com.google.firebase.firestore.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
 import java.util.function.Consumer;
 
 public class FirestoreRepository {
@@ -30,6 +17,7 @@ public class FirestoreRepository {
     private static final String COLLECTION_TAIKHOAN = "TaiKhoan";
     private static final String COLLECTION_BENHNHAN = "BenhNhan";
     private static final String COLLECTION_BACSI = "BacSi";
+    private static final String COLLECTION_ADMIN = "Admin";
     private static final String COLLECTION_BENHAN = "BenhAn";
     private static final String COLLECTION_LICHSU = "LichSuHoatDong";
 
@@ -58,8 +46,14 @@ public class FirestoreRepository {
         db.collection(collection)
                 .whereEqualTo(field, value)
                 .get()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getByField success: " + collection + ", field: " + field + ", value: " + value + ", results: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getByField failed: " + collection + ", field: " + field + ", value: " + value, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === LẤY TOÀN BỘ DỮ LIỆU ===
@@ -73,8 +67,14 @@ public class FirestoreRepository {
 
         db.collection(collection)
                 .get()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getAll success: " + collection + ", results: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getAll failed: " + collection, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === ĐĂNG KÝ NGƯỜI DÙNG MỚI THEO BATCH ===
@@ -89,14 +89,22 @@ public class FirestoreRepository {
         String profileCollectionName;
         String profileDocumentId;
 
+        // Xác định loại hồ sơ và trạng thái
         if (userProfile instanceof BenhNhan) {
             profileCollectionName = COLLECTION_BENHNHAN;
             profileDocumentId = ((BenhNhan) userProfile).getMaBenhNhan();
+            taiKhoan.setTrangThai("Hoạt động");
         } else if (userProfile instanceof BacSi) {
             profileCollectionName = COLLECTION_BACSI;
             profileDocumentId = ((BacSi) userProfile).getMaBacSi();
+            taiKhoan.setTrangThai("Chờ duyệt");
+            ((BacSi) userProfile).setTrangThaiXacThuc("Chờ xác thực");
+        } else if (userProfile instanceof Admin) {
+            profileCollectionName = COLLECTION_ADMIN;
+            profileDocumentId = ((Admin) userProfile).getMaAdmin();
+            taiKhoan.setTrangThai("Chờ duyệt");
         } else {
-            onFailure.accept(new IllegalArgumentException("userProfile must be BenhNhan or BacSi"));
+            onFailure.accept(new IllegalArgumentException("userProfile must be BenhNhan, BacSi, or Admin"));
             return;
         }
 
@@ -111,43 +119,92 @@ public class FirestoreRepository {
             return;
         }
 
+        // Log thông tin trước khi commit
+        Log.d("FirestoreRepository", "registerNewUserBatch: taiKhoanId=" + taiKhoanId + ", profileCollection=" + profileCollectionName + ", profileId=" + profileDocumentId);
+
         DocumentReference taiKhoanRef = db.collection(COLLECTION_TAIKHOAN).document(taiKhoanId);
         DocumentReference profileRef = db.collection(profileCollectionName).document(profileDocumentId);
 
         WriteBatch batch = db.batch();
-        batch.set(taiKhoanRef, taiKhoan);
+        batch.set(taiKhoanRef, convertTaiKhoanToMap(taiKhoan));
         batch.set(profileRef, userProfile);
 
         batch.commit()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "registerNewUserBatch success: taiKhoanId=" + taiKhoanId);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "registerNewUserBatch failed: taiKhoanId=" + taiKhoanId, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === GHI LOG HOẠT ĐỘNG ===
     public void logActivity(LichSuHoatDong lichSu) {
+        if (lichSu == null || lichSu.getMaLichSu() == null) {
+            Log.e("FirestoreRepository", "logActivity failed: lichSu or maLichSu is null");
+            return;
+        }
+
         db.collection(COLLECTION_LICHSU)
                 .document(lichSu.getMaLichSu())
                 .set(lichSu)
-                .addOnFailureListener(e -> Log.e("FirestoreRepository", "Lỗi ghi log: ", e));
+                .addOnSuccessListener(aVoid -> Log.d("FirestoreRepository", "logActivity success: maLichSu=" + lichSu.getMaLichSu()))
+                .addOnFailureListener(e -> Log.e("FirestoreRepository", "logActivity failed: maLichSu=" + lichSu.getMaLichSu(), e));
     }
 
     // === CẬP NHẬT MẬT KHẨU (trong collection TaiKhoan) ===
-    public Task<Void> updatePassword(String email, String newPassword) {
-        return db.collection(COLLECTION_TAIKHOAN)
+    public void updatePassword(String email, String newPassword,
+                               Consumer<Void> onSuccess, Consumer<Exception> onFailure) {
+        if (email == null || newPassword == null) {
+            onFailure.accept(new IllegalArgumentException("Email or newPassword cannot be null"));
+            return;
+        }
+
+        db.collection(COLLECTION_TAIKHOAN)
                 .whereEqualTo("email", email)
                 .get()
-                .continueWithTask(task -> {
-                    if (!task.isSuccessful() || task.getResult().isEmpty()) {
-                        throw new Exception("Email không tồn tại");
+                .addOnSuccessListener(querySnapshot -> {
+                    if (querySnapshot.isEmpty()) {
+                        Log.e("FirestoreRepository", "updatePassword failed: Email not found: " + email);
+                        onFailure.accept(new Exception("Email không tồn tại"));
+                        return;
                     }
-                    DocumentReference taiKhoanRef = task.getResult().getDocuments().get(0).getReference();
-                    return taiKhoanRef.update("matKhau", newPassword);
+                    DocumentReference taiKhoanRef = querySnapshot.getDocuments().get(0).getReference();
+                    taiKhoanRef.update("matKhau", newPassword)
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d("FirestoreRepository", "updatePassword success: email=" + email);
+                                onSuccess.accept(aVoid);
+                            })
+                            .addOnFailureListener(e -> {
+                                Log.e("FirestoreRepository", "updatePassword failed: email=" + email, e);
+                                onFailure.accept(e);
+                            });
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "updatePassword query failed: email=" + email, e);
+                    onFailure.accept(e);
                 });
     }
 
     // === GỬI EMAIL RESET PASSWORD ===
-    public Task<Void> sendPasswordResetEmail(String email) {
-        return auth.sendPasswordResetEmail(email);
+    public void sendPasswordResetEmail(String email,
+                                       Consumer<Void> onSuccess, Consumer<Exception> onFailure) {
+        if (email == null) {
+            onFailure.accept(new IllegalArgumentException("Email cannot be null"));
+            return;
+        }
+
+        auth.sendPasswordResetEmail(email)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "sendPasswordResetEmail success: email=" + email);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "sendPasswordResetEmail failed: email=" + email, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === THÊM MỚI DOCUMENT ===
@@ -162,8 +219,14 @@ public class FirestoreRepository {
         db.collection(collection)
                 .document(documentId)
                 .set(data)
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "addDocument success: collection=" + collection + ", documentId=" + documentId);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "addDocument failed: collection=" + collection + ", documentId=" + documentId, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === CẬP NHẬT DOCUMENT ===
@@ -187,6 +250,8 @@ public class FirestoreRepository {
             updates = convertBenhAnToMap((BenhAn) data);
         } else if (data instanceof LichLamViec) {
             updates = convertLichLamViecToMap((LichLamViec) data);
+        } else if (data instanceof Admin) {
+            updates = convertAdminToMap((Admin) data);
         } else {
             onFailure.accept(new IllegalArgumentException("Unsupported data type: " + data.getClass().getName()));
             return;
@@ -195,8 +260,14 @@ public class FirestoreRepository {
         db.collection(collection)
                 .document(documentId)
                 .update(updates)
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "updateDocument success: collection=" + collection + ", documentId=" + documentId);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "updateDocument failed: collection=" + collection + ", documentId=" + documentId, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === XOÁ DOCUMENT ===
@@ -211,8 +282,14 @@ public class FirestoreRepository {
         db.collection(collection)
                 .document(documentId)
                 .delete()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "deleteDocument success: collection=" + collection + ", documentId=" + documentId);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "deleteDocument failed: collection=" + collection + ", documentId=" + documentId, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === TÌM KIẾM DOCUMENT ===
@@ -227,8 +304,14 @@ public class FirestoreRepository {
         db.collection(collection)
                 .whereEqualTo(field, keyword)
                 .get()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "searchDocuments success: collection=" + collection + ", field=" + field + ", keyword=" + keyword);
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "searchDocuments failed: collection=" + collection + ", field=" + field + ", keyword=" + keyword, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === TRUY VẤN CÓ ĐIỀU KIỆN THEO NGÀY (CHUỖI) ===
@@ -245,8 +328,14 @@ public class FirestoreRepository {
                 .whereEqualTo(field, value)
                 .whereEqualTo(dateField, dateValue)
                 .get()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getByFieldWithDate success: collection=" + collection + ", field=" + field + ", value=" + value);
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getByFieldWithDate failed: collection=" + collection + ", field=" + field + ", value=" + value, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === TRUY VẤN THEO KHOẢNG NGÀY (KIỂU DATE) ===
@@ -264,22 +353,133 @@ public class FirestoreRepository {
                 .whereGreaterThanOrEqualTo(dateField, startDate)
                 .whereLessThanOrEqualTo(dateField, endDate)
                 .get()
-                .addOnSuccessListener(onSuccess::accept)
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getByFieldAndDateRange success: collection=" + collection + ", field=" + field + ", value=" + value);
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getByFieldAndDateRange failed: collection=" + collection + ", field=" + field + ", value=" + value, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === ĐẾM DOCUMENT THEO FIELD ===
     public void countByField(String collection, String field, String value,
                              Consumer<Long> onSuccess,
                              Consumer<Exception> onFailure) {
+        if (collection == null || field == null || value == null) {
+            onFailure.accept(new IllegalArgumentException("Collection, field, or value cannot be null"));
+            return;
+        }
+
         db.collection(collection)
                 .whereEqualTo(field, value)
                 .get()
-                .addOnSuccessListener(query -> onSuccess.accept((long) query.size()))
-                .addOnFailureListener(onFailure::accept);
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "countByField success: collection=" + collection + ", field=" + field + ", value=" + value + ", count=" + querySnapshot.size());
+                    onSuccess.accept((long) querySnapshot.size());
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "countByField failed: collection=" + collection + ", field=" + field + ", value=" + value, e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // === DUYỆT BÁC SĨ (XÁC THỰC CHỨNG CHỈ) ===
+    public void approveBacSi(String maBacSi, String trangThaiXacThuc, String trangThaiTaiKhoan, String maTaiKhoan,
+                             Consumer<Void> onSuccess, Consumer<Exception> onFailure) {
+        WriteBatch batch = db.batch();
+        batch.update(db.collection(COLLECTION_BACSI).document(maBacSi), "trangThaiXacThuc", trangThaiXacThuc);
+        batch.update(db.collection(COLLECTION_TAIKHOAN).document(maTaiKhoan), "trangThai", trangThaiTaiKhoan);
+        batch.commit()
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "approveBacSi success: maBacSi=" + maBacSi + ", maTaiKhoan=" + maTaiKhoan);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "approveBacSi failed: maBacSi=" + maBacSi + ", maTaiKhoan=" + maTaiKhoan, e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // === TẠO VÀ GỬI OTP ===
+    public void generateAndSendOTP(String email, Consumer<String> onOTPGenerated,
+                                   Consumer<Exception> onFailure) {
+        try {
+            String otp = String.format("%06d", new Random().nextInt(999999)); // Tạo OTP 6 chữ số
+            Map<String, Object> otpData = new HashMap<>();
+            otpData.put("otp", otp);
+            otpData.put("expiration", new Date(System.currentTimeMillis() + 5 * 60 * 1000)); // Hết hạn sau 5 phút
+
+            db.collection("OTPs").document(email).set(otpData)
+                    .addOnSuccessListener(aVoid -> {
+                        Log.d("FirestoreRepository", "generateAndSendOTP success: email=" + email + ", otp=" + otp);
+                        onOTPGenerated.accept(otp);
+                    })
+                    .addOnFailureListener(e -> {
+                        Log.e("FirestoreRepository", "generateAndSendOTP failed: email=" + email, e);
+                        onFailure.accept(e);
+                    });
+        } catch (Exception e) {
+            Log.e("FirestoreRepository", "generateAndSendOTP exception: email=" + email, e);
+            onFailure.accept(e);
+        }
+    }
+
+    // === KIỂM TRA OTP ===
+    public void verifyOTP(String email, String inputOTP,
+                          Consumer<Boolean> onSuccess, Consumer<Exception> onFailure) {
+        if (email == null || inputOTP == null) {
+            onFailure.accept(new IllegalArgumentException("Email or OTP cannot be null"));
+            return;
+        }
+
+        db.collection("OTPs").document(email).get()
+                .addOnSuccessListener(documentSnapshot -> {
+                    if (!documentSnapshot.exists()) {
+                        Log.e("FirestoreRepository", "verifyOTP failed: OTP not found for email=" + email);
+                        onFailure.accept(new Exception("OTP không tồn tại hoặc đã hết hạn"));
+                        return;
+                    }
+
+                    Map<String, Object> otpData = documentSnapshot.getData();
+                    String storedOTP = (String) otpData.get("otp");
+                    Date expiration = documentSnapshot.getDate("expiration");
+
+                    if (expiration == null || expiration.before(new Date())) {
+                        Log.e("FirestoreRepository", "verifyOTP failed: OTP expired for email=" + email);
+                        onFailure.accept(new Exception("OTP đã hết hạn"));
+                        return;
+                    }
+
+                    boolean isValid = storedOTP.equals(inputOTP);
+                    if (isValid) {
+                        // Xóa OTP sau khi xác thực thành công
+                        db.collection("OTPs").document(email).delete()
+                                .addOnSuccessListener(aVoid -> Log.d("FirestoreRepository", "OTP deleted for email=" + email))
+                                .addOnFailureListener(e -> Log.e("FirestoreRepository", "Failed to delete OTP for email=" + email, e));
+                    }
+                    Log.d("FirestoreRepository", "verifyOTP result: email=" + email + ", isValid=" + isValid);
+                    onSuccess.accept(isValid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "verifyOTP failed: email=" + email, e);
+                    onFailure.accept(e);
+                });
     }
 
     // === CONVERT OBJECT SANG MAP ===
+    private Map<String, Object> convertTaiKhoanToMap(TaiKhoan taiKhoan) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("maTaiKhoan", taiKhoan.getMaTaiKhoan());
+        map.put("tenDangNhap", taiKhoan.getTenDangNhap());
+        map.put("matKhau", taiKhoan.getMatKhau());
+        map.put("vaiTro", taiKhoan.getVaiTro());
+        map.put("email", taiKhoan.getEmail());
+        map.put("trangThai", taiKhoan.getTrangThai());
+        return map;
+    }
+
     private Map<String, Object> convertBenhNhanToMap(BenhNhan b) {
         Map<String, Object> map = new HashMap<>();
         map.put("maBenhNhan", b.getMaBenhNhan());
@@ -295,6 +495,20 @@ public class FirestoreRepository {
         map.put("maBacSi", b.getMaBacSi());
         map.put("maTaiKhoan", b.getMaTaiKhoan());
         map.put("hoTen", b.getHoTen());
+        map.put("soDienThoai", b.getSoDienThoai());
+        map.put("bangCap", b.getBangCap());
+        map.put("hocVi", b.getHocVi());
+        map.put("chungChiHanhNghe", b.getChungChiHanhNghe());
+        map.put("trangThaiXacThuc", b.getTrangThaiXacThuc());
+        return map;
+    }
+
+    private Map<String, Object> convertAdminToMap(Admin admin) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("maAdmin", admin.getMaAdmin());
+        map.put("maTaiKhoan", admin.getMaTaiKhoan());
+        map.put("hoTen", admin.getHoTen());
+        map.put("soDienThoai", admin.getSoDienThoai());
         return map;
     }
 

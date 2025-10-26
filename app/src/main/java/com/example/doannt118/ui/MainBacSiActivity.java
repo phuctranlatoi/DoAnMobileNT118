@@ -3,104 +3,99 @@ package com.example.doannt118.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.MenuItem;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.doannt118.R;
-import com.example.doannt118.ui.LichLamViecAdapter;
 import com.example.doannt118.model.BacSi;
-import com.example.doannt118.model.LichKham;
+import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.google.android.material.navigation.NavigationView;
+import java.util.Date;
+import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
-
     private Toolbar toolbar;
-    private TextView tvHoTen, tvSoDienThoai, tvChuyenKhoa;
+    private DrawerLayout drawerLayout;
+    private NavigationView navView;
+    private TextView tvUserName;
     private RecyclerView rvAppointments;
-    private Button btnLogout;
-    private ProgressBar progressBar;
     private FirestoreRepository repo;
     private String maTaiKhoan;
-    private String maBacSi;
-    private LichLamViecAdapter appointmentAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_bacsi);
 
-        // Khởi tạo Repository
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
+
         if (maTaiKhoan == null) {
-            showError("Mã tài khoản không hợp lệ!");
+            Log.e("MainBacSiActivity", "maTaiKhoan is null");
+            Toast.makeText(this, "Lỗi: Không nhận được mã tài khoản!", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
         }
 
-        // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
-        tvHoTen = findViewById(R.id.tvHoTen);
-        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
-        btnLogout = findViewById(R.id.btnLogout);
-        progressBar = findViewById(R.id.progressBar);
-
-        // Kiểm tra null cho các view
-        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || btnLogout == null || progressBar == null) {
-            showError("Lỗi khởi tạo giao diện!");
-            finish();
-            return;
-        }
-
-        // Thiết lập RecyclerView
-//        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
-//        appointmentAdapter = new LichLamViecAdapter(this, new ArrayList<>());
-//        rvAppointments.setAdapter(appointmentAdapter);
-
-        // Thiết lập Toolbar
         setSupportActionBar(toolbar);
 
-        // Ánh xạ và thêm sự kiện cho các card chức năng
-        CardView cardManageMedicalRecord = findViewById(R.id.cardManageMedicalRecord);
-        CardView cardManageSchedule = findViewById(R.id.cardManageSchedule);
-        CardView cardManagePrescription = findViewById(R.id.cardManagePrescription);
-        CardView cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
-        CardView cardManageInvoice = findViewById(R.id.cardManageInvoice);
+        drawerLayout = findViewById(R.id.drawerLayout);
+        navView = findViewById(R.id.navView);
+        tvUserName = findViewById(R.id.tvUserName);
+        rvAppointments = findViewById(R.id.rvAppointments);
+        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
 
-        if (cardManageMedicalRecord != null) {
-            cardManageMedicalRecord.setOnClickListener(v -> handleQuanLyBenhAn());
-        }
-        if (cardManageSchedule != null) {
-            cardManageSchedule.setOnClickListener(v -> handleQuanLyLichLamViec());
-        }
-        if (cardManagePrescription != null) {
-            cardManagePrescription.setOnClickListener(v -> handleQuanLyDonThuoc());
-        }
-        if (cardConfirmAppointment != null) {
-            cardConfirmAppointment.setOnClickListener(v -> handleXacNhanLichKham());
-        }
-        if (cardManageInvoice != null) {
-            cardManageInvoice.setOnClickListener(v -> handleQuanLyHoaDon());
-        }
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
-        // Xử lý sự kiện logout
-        btnLogout.setOnClickListener(v -> handleDangXuat());
+        navView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            if (id == R.id.nav_manage_patient) {
+                Toast.makeText(this, "Quản Lý Bệnh Nhân", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_manage_medical_record) {
+                Toast.makeText(this, "Quản Lý Bệnh Án", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_manage_schedule) {
+                Toast.makeText(this, "Quản Lý Lịch Làm Việc", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_manage_prescription) {
+                Toast.makeText(this, "Quản Lý Đơn Thuốc", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_confirm_appointment) {
+                Toast.makeText(this, "Xác Nhận Lịch Khám", Toast.LENGTH_SHORT).show();
+            } else if (id == R.id.nav_manage_invoice) {
+                Toast.makeText(this, "Quản Lý Hóa Đơn", Toast.LENGTH_SHORT).show();
+            }
+            drawerLayout.closeDrawers();
+            return true;
+        });
 
-        // Hiển thị progress bar và load thông tin
-        if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
+        Button btnLogout = findViewById(R.id.btnLogout);
+        btnLogout.setOnClickListener(v -> {
+            String maLichSu = UUID.randomUUID().toString();
+            LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
+            repo.logActivity(lichSu);
+            Intent intent = new Intent(MainBacSiActivity.this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        });
+
+        Button btnUpdateProfile = findViewById(R.id.btnUpdateProfile);
+        btnUpdateProfile.setOnClickListener(v -> {
+            // TODO: Implement UpdateProfileActivity
+            Toast.makeText(this, "Chức năng cập nhật hồ sơ chưa được triển khai!", Toast.LENGTH_SHORT).show();
+        });
+
         loadUserInfo();
+        // loadAppointments();
     }
 
     private void loadUserInfo() {
@@ -109,73 +104,20 @@ public class MainBacSiActivity extends AppCompatActivity {
                     if (!querySnapshot.isEmpty()) {
                         BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
                         if (bacSi != null) {
-                            if (tvHoTen != null) tvHoTen.setText("Họ tên: " + bacSi.getHoTen());
-                            if (tvSoDienThoai != null) tvSoDienThoai.setText("Số điện thoại: " + bacSi.getSoDienThoai());
-                            maBacSi = bacSi.getMaBacSi();
+                            tvUserName.setText(bacSi.getHoTen());
+                            Log.d("MainBacSiActivity", "Loaded doctor: " + bacSi.getHoTen());
                         } else {
-                            showError("Không tìm thấy thông tin bác sĩ!");
+                            Log.w("MainBacSiActivity", "BacSi object is null");
+                            Toast.makeText(this, "Không thể tải thông tin Bác sĩ!", Toast.LENGTH_SHORT).show();
                         }
                     } else {
-                        showError("Không tìm thấy thông tin bác sĩ!");
+                        Log.w("MainBacSiActivity", "No doctor found for maTaiKhoan: " + maTaiKhoan);
+                        Toast.makeText(this, "Không tìm thấy thông tin Bác sĩ!", Toast.LENGTH_SHORT).show();
                     }
-                    if (progressBar != null) progressBar.setVisibility(View.GONE);
                 },
                 e -> {
-                    Log.e("MainBacSiActivity", "Lỗi tải thông tin: ", e);
-                    showError("Lỗi tải thông tin: " + e.getMessage());
-                    if (progressBar != null) progressBar.setVisibility(View.GONE);
+                    Log.e("MainBacSiActivity", "Error loading doctor info: ", e);
+                    Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
-    }
-
-    private void handleQuanLyHoSo() {
-        Toast.makeText(this, "Chức năng Quản Lý Hồ Sơ đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleQuanLyBenhAn() {
-        if (maBacSi == null) {
-            showError("Lỗi: Không tìm thấy mã bác sĩ");
-            return;
-        }
-        Intent intent = new Intent(this, QuanLyBenhAnActivity.class);
-        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-        intent.putExtra("MA_BAC_SI", maBacSi);
-        startActivity(intent);
-    }
-
-    private void handleQuanLyLichLamViec() {
-        if (maBacSi == null) {
-            showError("Lỗi: Không tìm thấy mã bác sĩ");
-            return;
-        }
-        Intent intent = new Intent(this, QuanLyLichLamViecActivity.class);
-        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-        intent.putExtra("MA_BAC_SI", maBacSi);
-        startActivity(intent);
-    }
-
-    private void handleQuanLyDonThuoc() {
-        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleXacNhanLichKham() {
-        Toast.makeText(this, "Chức năng Xác Nhận Lịch Khám đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleQuanLyHoaDon() {
-        Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleDangXuat() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
-    }
-
-    private void showError(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        if (tvHoTen != null) tvHoTen.setText("Họ tên: ");
-        if (tvSoDienThoai != null) tvSoDienThoai.setText("Số điện thoại: ");
-        if (tvChuyenKhoa != null) tvChuyenKhoa.setText("Chuyên khoa: ");
     }
 }
