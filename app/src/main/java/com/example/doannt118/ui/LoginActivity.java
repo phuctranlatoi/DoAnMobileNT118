@@ -104,46 +104,79 @@ public class LoginActivity extends AppCompatActivity {
     private void processLogin(QuerySnapshot querySnapshot, String input, String pass, String loginMethod) {
         try {
             TaiKhoan taiKhoan = querySnapshot.getDocuments().get(0).toObject(TaiKhoan.class);
+
             if (taiKhoan == null) {
                 Toast.makeText(this, "Lỗi dữ liệu tài khoản!", Toast.LENGTH_SHORT).show();
                 auth.signOut();
                 return;
             }
 
-            if (BCrypt.checkpw(pass, taiKhoan.getMatKhau())) {
-                if (!taiKhoan.getTrangThai().equals("Hoạt động")) {
-                    Toast.makeText(this, "Tài khoản đang bị khóa!", Toast.LENGTH_SHORT).show();
-                    auth.signOut();
-                    return;
-                }
+            // ✅ Kiểm tra null để tránh crash
+            if (taiKhoan.getMatKhau() == null) {
+                Toast.makeText(this, "Tài khoản không có mật khẩu!", Toast.LENGTH_SHORT).show();
+                auth.signOut();
+                return;
+            }
 
-                // Ghi log đăng nhập
-                String maLichSu = UUID.randomUUID().toString();
-                LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, taiKhoan.getMaTaiKhoan(), "Đăng nhập", new Date(), "Đăng nhập thành công bằng " + loginMethod);
-                repo.logActivity(lichSu);
-
-                Toast.makeText(this, "Đăng nhập thành công! (Vai trò: " + taiKhoan.getVaiTro() + ")", Toast.LENGTH_LONG).show();
-                Intent intent;
-                if (taiKhoan.getVaiTro().equals("Bệnh nhân")) {
-                    intent = new Intent(this, MainBenhNhanActivity.class);
-                } else if (taiKhoan.getVaiTro().equals("Bác sĩ")) {
-                    intent = new Intent(this, MainBacSiActivity.class);
-                } else {
-                    Toast.makeText(this, "Vai trò không hợp lệ!", Toast.LENGTH_SHORT).show();
-                    auth.signOut();
-                    return;
-                }
-                intent.putExtra("MA_TAI_KHOAN", taiKhoan.getMaTaiKhoan());
-                intent.putExtra("VAI_TRO", taiKhoan.getVaiTro());
-                startActivity(intent);
-                finish();
-            } else {
+            // ✅ Kiểm tra mật khẩu
+            if (!BCrypt.checkpw(pass, taiKhoan.getMatKhau())) {
                 Toast.makeText(this, "Sai mật khẩu!", Toast.LENGTH_SHORT).show();
                 auth.signOut();
+                return;
             }
+
+            // ✅ Kiểm tra trạng thái tài khoản
+            String trangThai = taiKhoan.getTrangThai();
+            if (trangThai == null || !trangThai.equals("Hoạt động")) {
+                Toast.makeText(this, "Tài khoản đang bị khóa hoặc không hoạt động!", Toast.LENGTH_SHORT).show();
+                auth.signOut();
+                return;
+            }
+
+            // ✅ Kiểm tra vai trò
+            String vaiTro = taiKhoan.getVaiTro();
+            if (vaiTro == null || vaiTro.isEmpty()) {
+                Toast.makeText(this, "Thiếu vai trò tài khoản!", Toast.LENGTH_SHORT).show();
+                auth.signOut();
+                return;
+            }
+
+            // ✅ Ghi lịch sử hoạt động
+            String maLichSu = UUID.randomUUID().toString();
+            LichSuHoatDong lichSu = new LichSuHoatDong(
+                    maLichSu,
+                    taiKhoan.getMaTaiKhoan(),
+                    "Đăng nhập",
+                    new Date(),
+                    "Đăng nhập thành công bằng " + loginMethod
+            );
+            repo.logActivity(lichSu);
+
+            // ✅ Mở giao diện tương ứng
+            Toast.makeText(this, "Đăng nhập thành công! (Vai trò: " + vaiTro + ")", Toast.LENGTH_LONG).show();
+            Intent intent;
+
+            switch (vaiTro) {
+                case "Bệnh nhân":
+                    intent = new Intent(this, MainBenhNhanActivity.class);
+                    break;
+                case "Bác sĩ":
+                    intent = new Intent(this, MainBacSiActivity.class);
+                    break;
+                default:
+                    Toast.makeText(this, "Vai trò không hợp lệ: " + vaiTro, Toast.LENGTH_SHORT).show();
+                    auth.signOut();
+                    return;
+            }
+
+            intent.putExtra("MA_TAI_KHOAN", taiKhoan.getMaTaiKhoan());
+            intent.putExtra("VAI_TRO", vaiTro);
+            startActivity(intent);
+            finish();
+
         } catch (Exception e) {
             Log.e("LoginActivity", "Lỗi khi chuyển đổi đối tượng: ", e);
-            Toast.makeText(this, "Lỗi xử lý dữ liệu!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Lỗi xử lý dữ liệu đăng nhập!", Toast.LENGTH_SHORT).show();
             auth.signOut();
         }
     }
