@@ -59,13 +59,12 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         tvHoTen = findViewById(R.id.tvHoTen);
         tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
         tvDiaChi = findViewById(R.id.tvDiaChi);
-        rvActivityHistory = findViewById(R.id.rvActivityHistory);
+//        rvActivityHistory = findViewById(R.id.rvActivityHistory);
         btnLogout = findViewById(R.id.btnLogout);
         progressBar = findViewById(R.id.progressBar); // Đảm bảo có ProgressBar trong XML
 
         // Kiểm tra null
-        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || tvDiaChi == null ||
-                rvActivityHistory == null || btnLogout == null || progressBar == null) {
+        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || tvDiaChi == null || btnLogout == null || progressBar == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
@@ -75,9 +74,9 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         // Thiết lập RecyclerView
-        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
-        historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
-        rvActivityHistory.setAdapter(historyAdapter);
+//        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
+//        historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
+//        rvActivityHistory.setAdapter(historyAdapter);
 
         // Xử lý sự kiện cho các CardView chức năng
         CardView cardRegisterAppointment = findViewById(R.id.cardRegisterAppointment);
@@ -108,7 +107,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         // Hiển thị loading và load dữ liệu
         progressBar.setVisibility(View.VISIBLE);
         loadUserInfo();
-        loadActivityHistory();
+//        loadActivityHistory();
     }
 
     private void loadUserInfo() {
@@ -135,24 +134,24 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                 });
     }
 
-    private void loadActivityHistory() {
-        repo.getByField("LichSuHoatDong", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    List<LichSuHoatDong> list = new ArrayList<>();
-                    for (var doc : querySnapshot.getDocuments()) {
-                        LichSuHoatDong item = doc.toObject(LichSuHoatDong.class);
-                        if (item != null) list.add(item);
-                    }
-                    historyAdapter = new ActivityHistoryAdapter(list);
-                    rvActivityHistory.setAdapter(historyAdapter);
-                },
-                e -> {
-                    Log.e("MainBenhNhanActivity", "Lỗi tải lịch sử: ", e);
-                    showError("Lỗi tải lịch sử hoạt động!");
-                    historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
-                    rvActivityHistory.setAdapter(historyAdapter);
-                });
-    }
+//    private void loadActivityHistory() {
+//        repo.getByField("LichSuHoatDong", "maTaiKhoan", maTaiKhoan,
+//                querySnapshot -> {
+//                    List<LichSuHoatDong> list = new ArrayList<>();
+//                    for (var doc : querySnapshot.getDocuments()) {
+//                        LichSuHoatDong item = doc.toObject(LichSuHoatDong.class);
+//                        if (item != null) list.add(item);
+//                    }
+//                    historyAdapter = new ActivityHistoryAdapter(list);
+//                    rvActivityHistory.setAdapter(historyAdapter);
+//                },
+//                e -> {
+//                    Log.e("MainBenhNhanActivity", "Lỗi tải lịch sử: ", e);
+//                    showError("Lỗi tải lịch sử hoạt động!");
+//                    historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
+//                    rvActivityHistory.setAdapter(historyAdapter);
+//                });
+//    }
 
     // === XỬ LÝ CHỨC NĂNG ===
     private void handleDangKyLichKham() {
