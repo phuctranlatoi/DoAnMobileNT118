@@ -126,15 +126,19 @@ public class LoginActivity extends AppCompatActivity {
                 intent = new Intent(LoginActivity.this, MainAdminActivity.class);
             } else if (vaiTro.equals("Bác sĩ")) {
                 intent = new Intent(LoginActivity.this, MainBacSiActivity.class);
+            } else if (vaiTro.equals("Bệnh nhân")) {
+                intent = new Intent(LoginActivity.this, MainBenhNhanActivity.class);
             } else {
-                intent = new Intent(LoginActivity.this, MainActivity.class);
+                Log.e("LoginActivity", "Vai trò không hợp lệ: " + vaiTro);
+                Toast.makeText(this, "Vai trò không hợp lệ: " + vaiTro, Toast.LENGTH_SHORT).show();
+                return;
             }
             intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
             startActivity(intent);
             finish();
         } catch (Exception e) {
-            Log.e("LoginActivity", "Navigation failed: ", e);
-            Toast.makeText(this, "Lỗi chuyển hướng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("LoginActivity", "Lỗi điều hướng: ", e);
+            Toast.makeText(this, "Lỗi chuyển hướng: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }
