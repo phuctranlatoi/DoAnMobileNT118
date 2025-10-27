@@ -3,15 +3,12 @@ package com.example.doannt118.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,7 +16,6 @@ import com.example.doannt118.R;
 import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
@@ -29,8 +25,6 @@ import java.util.UUID;
 
 public class MainBenhNhanActivity extends AppCompatActivity {
     private Toolbar toolbar;
-    private DrawerLayout drawerLayout;
-    private NavigationView navView;
     private TextView tvHoTen, tvSoDienThoai, tvDiaChi;
     private RecyclerView rvActivityHistory;
     private FirestoreRepository repo;
@@ -46,9 +40,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
 
-        // Ánh xạ DrawerLayout và NavigationView
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navView = findViewById(R.id.nav_view);
+        // Ánh xạ Toolbar
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -57,29 +49,6 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         tvDiaChi = findViewById(R.id.tvDiaChi);
         rvActivityHistory = findViewById(R.id.rvActivityHistory);
         rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
-
-        // Thiết lập DrawerLayout
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_drawer, R.string.close_drawer);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
-        // Xử lý sự kiện menu navigation
-        navView.setNavigationItemSelectedListener(item -> {
-            int id = item.getItemId();
-            if (id == R.id.nav_register_appointment) {
-                Toast.makeText(this, "Đăng Ký Lịch Khám", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_manage_profile) {
-                Toast.makeText(this, "Quản Lý Hồ Sơ Cá Nhân", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_view_medical_record) {
-                Toast.makeText(this, "Xem Bệnh Án", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_confirm_medication) {
-                Toast.makeText(this, "Xác Nhận Dùng Thuốc", Toast.LENGTH_SHORT).show();
-            } else if (id == R.id.nav_view_invoice) {
-                Toast.makeText(this, "Xem Hóa Đơn", Toast.LENGTH_SHORT).show();
-            }
-            drawerLayout.closeDrawers();
-            return true;
-        });
 
         // Xử lý sự kiện đăng xuất
         Button btnLogout = findViewById(R.id.btnLogout);

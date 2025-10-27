@@ -51,10 +51,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="controller và giao diện cho lịch làm việc cho role bác sĩ commit">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
-    </list>
+    <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="Merge branch 'Phuctran'&#10;&#10;# Conflicts:&#10;#&#9;app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java&#10;#&#9;app/src/main/java/com/example/doannt118/repository/UserRepository.java&#10;#&#9;app/src/main/java/com/example/doannt118/ui/LoginActivity.java&#10;#&#9;app/src/main/java/com/example/doannt118/ui/MainActivity.java&#10;#&#9;app/src/main/java/com/example/doannt118/ui/RegisterActivity.java" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -429,12 +426,12 @@
       <map>
         <entry key="com.example.doannt118">
           <value>
-            <CheckInfo lastCheckTimestamp="1761376806109" />
+            <CheckInfo lastCheckTimestamp="1761486868799" />
           </value>
         </entry>
         <entry key="com.example.doannt118.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1761376806085" />
+            <CheckInfo lastCheckTimestamp="1761486868800" />
           </value>
         </entry>
       </map>
