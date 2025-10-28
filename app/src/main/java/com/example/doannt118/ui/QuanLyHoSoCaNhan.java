@@ -12,10 +12,13 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.doannt118.R;
-import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.BenhNhan;
+import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.firestore.DocumentSnapshot;
+
+import java.util.Date;
+import java.util.UUID;
 
 public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
@@ -24,8 +27,8 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
     private TextView tvMessage;
     private LinearLayout editButtonLayout;
     private FirestoreRepository repo;
-    private String maTaiKhoan, vaiTro;
-    private String maProfile;
+    private String maTaiKhoan;
+    private String maBenhNhan; // maProfile
     private boolean isEditing = false;
 
     @Override
@@ -35,9 +38,19 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
-        vaiTro = getIntent().getStringExtra("VAI_TRO");
 
-        // Ánh xạ views với kiểm tra null
+        if (maTaiKhoan == null || maTaiKhoan.isEmpty()) {
+            showError("Không tìm thấy thông tin tài khoản!");
+            finish();
+            return;
+        }
+
+        initViews();
+        setupClickListeners();
+        loadBenhNhanData();
+    }
+
+    private void initViews() {
         etHoTen = findViewById(R.id.etHoTen);
         etSoDienThoai = findViewById(R.id.etSoDienThoai);
         etDiaChi = findViewById(R.id.etDiaChi);
@@ -48,151 +61,169 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         tvMessage = findViewById(R.id.tvMessage);
         editButtonLayout = findViewById(R.id.editButtonLayout);
 
-        // Kiểm tra view null
-        if (etHoTen == null || etSoDienThoai == null || btnEdit == null) {
-            Log.e("QuanLyHoSoCaNhanActivity", "Một hoặc nhiều view không tìm thấy trong layout!");
-            Toast.makeText(this, "Lỗi giao diện, vui lòng thử lại!", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
+        // Ẩn thông báo lỗi ban đầu
+        if (tvMessage != null) tvMessage.setVisibility(View.GONE);
 
-        etHoTen.setEnabled(false);
-        etSoDienThoai.setEnabled(false);
-        if (etDiaChi != null) {
-            etDiaChi.setEnabled(false);
-        }
-
-        btnEdit.setOnClickListener(v -> toggleEditMode());
-        if (btnConfirm != null) btnConfirm.setOnClickListener(v -> saveChanges());
-        if (btnCancel != null) btnCancel.setOnClickListener(v -> toggleEditMode());
-        if (btnBack != null) btnBack.setOnClickListener(v -> finish());
-
-        loadProfileData();
+        // Vô hiệu hóa input
+        setEditMode(false);
     }
 
-    private void loadProfileData() {
-        if (maTaiKhoan == null || maTaiKhoan.isEmpty() || vaiTro == null) {
-            if (tvMessage != null) {
-                tvMessage.setVisibility(View.VISIBLE);
-                tvMessage.setText("Thông tin tài khoản không hợp lệ!");
-            }
-            return;
+    private void setupClickListeners() {
+        if (btnEdit != null) {
+            btnEdit.setOnClickListener(v -> toggleEditMode(true));
         }
+        if (btnConfirm != null) {
+            btnConfirm.setOnClickListener(v -> saveChanges());
+        }
+        if (btnCancel != null) {
+            btnCancel.setOnClickListener(v -> toggleEditMode(false));
+        }
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> finish());
+        }
+    }
 
-        String collection = vaiTro.equals("Bệnh nhân") ? "BenhNhan" : "BacSi";
-        repo.getByField(collection, "maTaiKhoan", maTaiKhoan,
+    private void loadBenhNhanData() {
+        showLoading("Đang tải thông tin...");
+
+        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
                 querySnapshot -> {
+                    hideLoading();
                     if (querySnapshot.isEmpty()) {
-                        if (tvMessage != null) {
-                            tvMessage.setVisibility(View.VISIBLE);
-                            tvMessage.setText("Không tìm thấy thông tin!");
-                        }
+                        showError("Không tìm thấy thông tin bệnh nhân!");
                         return;
                     }
 
-                    try {
-                        if (vaiTro.equals("Bệnh nhân")) {
-                            BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
-                            if (benhNhan != null) {
-                                maProfile = benhNhan.getMaBenhNhan();
-                                if (etHoTen != null) etHoTen.setText(benhNhan.getHoTen() != null ? benhNhan.getHoTen() : "");
-                                if (etSoDienThoai != null) etSoDienThoai.setText(benhNhan.getSoDienThoai() != null ? benhNhan.getSoDienThoai() : "");
-                                if (etDiaChi != null) {
-                                    etDiaChi.setText(benhNhan.getDiaChi() != null ? benhNhan.getDiaChi() : "");
-                                    etDiaChi.setVisibility(View.VISIBLE); // Hiển thị địa chỉ cho bệnh nhân
-                                }
-                            }
-                        } else if (vaiTro.equals("Bác sĩ")) {
-                            BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
-                            if (bacSi != null) {
-                                maProfile = bacSi.getMaBacSi();
-                                if (etHoTen != null) etHoTen.setText(bacSi.getHoTen() != null ? bacSi.getHoTen() : "");
-                                if (etSoDienThoai != null) etSoDienThoai.setText(bacSi.getSoDienThoai() != null ? bacSi.getSoDienThoai() : "");
-                                if (etDiaChi != null) {
-                                    etDiaChi.setVisibility(View.GONE); // Ẩn địa chỉ cho bác sĩ
-                                }
-                            }
-                        }
-                    } catch (Exception e) {
-                        Log.e("QuanLyHoSoCaNhanActivity", "Lỗi tải dữ liệu: ", e);
-                        if (tvMessage != null) {
-                            tvMessage.setVisibility(View.VISIBLE);
-                            tvMessage.setText("Lỗi: " + e.getMessage());
-                        }
+                    DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+                    BenhNhan benhNhan = doc.toObject(BenhNhan.class);
+                    if (benhNhan == null) {
+                        showError("Dữ liệu không hợp lệ!");
+                        return;
                     }
+
+                    maBenhNhan = benhNhan.getMaBenhNhan();
+                    if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+                        showError("Mã bệnh nhân trống!");
+                        return;
+                    }
+
+                    // Hiển thị dữ liệu
+                    if (etHoTen != null) etHoTen.setText(safeString(benhNhan.getHoTen()));
+                    if (etSoDienThoai != null) etSoDienThoai.setText(safeString(benhNhan.getSoDienThoai()));
+                    if (etDiaChi != null) {
+                        etDiaChi.setText(safeString(benhNhan.getDiaChi()));
+                        etDiaChi.setVisibility(View.VISIBLE);
+                    }
+
+                    logActivity("Xem hồ sơ cá nhân");
                 },
                 e -> {
-                    Log.e("QuanLyHoSoCaNhanActivity", "Lỗi tải hồ sơ: ", e);
-                    if (tvMessage != null) {
-                        tvMessage.setVisibility(View.VISIBLE);
-                        tvMessage.setText("Lỗi tải hồ sơ: " + e.getMessage());
-                    }
+                    hideLoading();
+                    Log.e("QuanLyHoSo", "Lỗi Firestore: ", e);
+                    showError("Lỗi kết nối: " + e.getMessage());
                 });
     }
 
-    private void toggleEditMode() {
-        isEditing = !isEditing;
-        if (etHoTen != null) etHoTen.setEnabled(isEditing);
-        if (etSoDienThoai != null) etSoDienThoai.setEnabled(isEditing);
-        if (etDiaChi != null) etDiaChi.setEnabled(isEditing && vaiTro.equals("Bệnh nhân"));
-        if (editButtonLayout != null) editButtonLayout.setVisibility(isEditing ? View.VISIBLE : View.GONE);
-        if (btnEdit != null) btnEdit.setVisibility(isEditing ? View.GONE : View.VISIBLE);
-        if (!isEditing) {
-            loadProfileData(); // Reload to discard changes
+    private void toggleEditMode(boolean enable) {
+        isEditing = enable;
+        setEditMode(enable);
+
+        if (editButtonLayout != null) {
+            editButtonLayout.setVisibility(enable ? View.VISIBLE : View.GONE);
+        }
+        if (btnEdit != null) {
+            btnEdit.setVisibility(enable ? View.GONE : View.VISIBLE);
+        }
+
+        // Nếu hủy → reload dữ liệu từ Firestore (an toàn nhất)
+        if (!enable) {
+            loadBenhNhanData();
         }
     }
 
-    private void saveChanges() {
-        String hoTen = (etHoTen != null) ? etHoTen.getText().toString().trim() : "";
-        String soDienThoai = (etSoDienThoai != null) ? etSoDienThoai.getText().toString().trim() : "";
-        String diaChi = (etDiaChi != null && vaiTro.equals("Bệnh nhân")) ? etDiaChi.getText().toString().trim() : null;
+    private void setEditMode(boolean enable) {
+        if (etHoTen != null) etHoTen.setEnabled(enable);
+        if (etSoDienThoai != null) etSoDienThoai.setEnabled(enable);
+        if (etDiaChi != null) etDiaChi.setEnabled(enable);
+    }
 
-        if (hoTen.isEmpty() || soDienThoai.isEmpty() || (vaiTro.equals("Bệnh nhân") && diaChi == null)) {
-            if (tvMessage != null) {
-                tvMessage.setVisibility(View.VISIBLE);
-                tvMessage.setText("Vui lòng điền đầy đủ thông tin!");
-            }
+    private void saveChanges() {
+        String hoTen = safeTrim(etHoTen);
+        String soDienThoai = safeTrim(etSoDienThoai);
+        String diaChi = safeTrim(etDiaChi);
+
+        if (hoTen.isEmpty() || soDienThoai.isEmpty() || diaChi.isEmpty()) {
+            showError("Vui lòng điền đầy đủ thông tin!");
             return;
         }
 
         if (!soDienThoai.matches("\\d{10,11}")) {
-            if (tvMessage != null) {
-                tvMessage.setVisibility(View.VISIBLE);
-                tvMessage.setText("Số điện thoại phải có 10 hoặc 11 chữ số!");
-            }
+            showError("Số điện thoại phải 10-11 số!");
             return;
         }
 
-        String collection = vaiTro.equals("Bệnh nhân") ? "BenhNhan" : "BacSi";
-        Object updatedProfile;
-        if (vaiTro.equals("Bệnh nhân")) {
-            BenhNhan benhNhan = new BenhNhan();
-            benhNhan.setMaBenhNhan(maProfile);
-            benhNhan.setMaTaiKhoan(maTaiKhoan);
-            benhNhan.setHoTen(hoTen);
-            benhNhan.setSoDienThoai(soDienThoai);
-            benhNhan.setDiaChi(diaChi);
-            updatedProfile = benhNhan;
-        } else {
-            BacSi bacSi = new BacSi();
-            bacSi.setMaBacSi(maProfile);
-            bacSi.setMaTaiKhoan(maTaiKhoan);
-            bacSi.setHoTen(hoTen);
-            bacSi.setSoDienThoai(soDienThoai);
-            updatedProfile = bacSi;
+        if (maBenhNhan == null) {
+            showError("Lỗi: Không có mã bệnh nhân!");
+            return;
         }
 
-        repo.updateDocument(collection, maProfile, updatedProfile,
+        showLoading("Đang lưu...");
+
+        BenhNhan updated = new BenhNhan();
+        updated.setMaBenhNhan(maBenhNhan);
+        updated.setMaTaiKhoan(maTaiKhoan);
+        updated.setHoTen(hoTen);
+        updated.setSoDienThoai(soDienThoai);
+        updated.setDiaChi(diaChi);
+
+        repo.updateDocument("BenhNhan", maBenhNhan, updated,
                 aVoid -> {
-                    Toast.makeText(this, "Cập nhật hồ sơ thành công!", Toast.LENGTH_SHORT).show();
-                    toggleEditMode();
+                    hideLoading();
+                    Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                    logActivity("Cập nhật hồ sơ cá nhân");
+                    toggleEditMode(false);
                 },
                 e -> {
-                    Log.e("QuanLyHoSoCaNhanActivity", "Lỗi cập nhật hồ sơ: ", e);
-                    if (tvMessage != null) {
-                        tvMessage.setVisibility(View.VISIBLE);
-                        tvMessage.setText("Lỗi cập nhật: " + e.getMessage());
-                    }
+                    hideLoading();
+                    Log.e("QuanLyHoSo", "Lỗi cập nhật: ", e);
+                    showError("Lỗi lưu: " + e.getMessage());
                 });
+    }
+
+    // === HÀM HỖ TRỢ ===
+    private String safeTrim(EditText et) {
+        return et != null ? et.getText().toString().trim() : "";
+    }
+
+    private String safeString(String s) {
+        return s != null ? s : "";
+    }
+
+    private void showError(String msg) {
+        if (tvMessage != null) {
+            tvMessage.setVisibility(View.VISIBLE);
+            tvMessage.setText(msg);
+            tvMessage.setTextColor(getResources().getColor(android.R.color.holo_red_dark));
+        }
+    }
+
+    private void showLoading(String msg) {
+        if (tvMessage != null) {
+            tvMessage.setVisibility(View.VISIBLE);
+            tvMessage.setText(msg);
+            tvMessage.setTextColor(getResources().getColor(android.R.color.darker_gray));
+        }
+    }
+
+    private void hideLoading() {
+        if (tvMessage != null && !tvMessage.getText().toString().contains("lỗi")) {
+            tvMessage.setVisibility(View.GONE);
+        }
+    }
+
+    private void logActivity(String tenHoatDong) {
+        String maLichSu = UUID.randomUUID().toString();
+        LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, tenHoatDong, new Date(), "Bệnh nhân: " + tenHoatDong);
+        repo.logActivity(lichSu);
     }
 }
