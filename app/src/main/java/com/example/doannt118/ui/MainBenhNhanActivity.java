@@ -3,12 +3,15 @@ package com.example.doannt118.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,117 +27,189 @@ import java.util.List;
 import java.util.UUID;
 
 public class MainBenhNhanActivity extends AppCompatActivity {
+
     private Toolbar toolbar;
     private TextView tvHoTen, tvSoDienThoai, tvDiaChi;
     private RecyclerView rvActivityHistory;
+    private Button btnLogout;
+    private ProgressBar progressBar;
     private FirestoreRepository repo;
     private FirebaseAuth auth;
     private String maTaiKhoan;
+    private ActivityHistoryAdapter historyAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_benhnhan);
 
+        // Khởi tạo
         repo = new FirestoreRepository();
         auth = FirebaseAuth.getInstance();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
 
-        // Ánh xạ Toolbar
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        tvHoTen = findViewById(R.id.tvHoTen);
-        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
-        tvDiaChi = findViewById(R.id.tvDiaChi);
-        rvActivityHistory = findViewById(R.id.rvActivityHistory);
-        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
-
-        // Xử lý sự kiện đăng xuất
-        Button btnLogout = findViewById(R.id.btnLogout);
-        btnLogout.setOnClickListener(v -> {
-            // Ghi log hoạt động
-            String maLichSu = UUID.randomUUID().toString();
-            LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
-            repo.logActivity(lichSu);
-
-            // Đăng xuất khỏi Firebase Authentication
-            auth.signOut();
-
-            // Chuyển hướng đến LoginActivity và xóa stack
-            Intent intent = new Intent(MainBenhNhanActivity.this, LoginActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-            finish();
-        });
-
-        loadUserInfo();
-        loadActivityHistory();
-    }
-
-    private void loadUserInfo() {
         if (maTaiKhoan == null || maTaiKhoan.isEmpty()) {
-            Log.e("MainBenhNhanActivity", "maTaiKhoan is null or empty");
-            Toast.makeText(this, "Lỗi: Không tìm thấy thông tin tài khoản", Toast.LENGTH_SHORT).show();
+            showError("Mã tài khoản không hợp lệ!");
+            finish();
             return;
         }
 
+        // Ánh xạ View
+        toolbar = findViewById(R.id.toolbar);
+        tvHoTen = findViewById(R.id.tvHoTen);
+        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
+        tvDiaChi = findViewById(R.id.tvDiaChi);
+//        rvActivityHistory = findViewById(R.id.rvActivityHistory);
+        btnLogout = findViewById(R.id.btnLogout);
+        progressBar = findViewById(R.id.progressBar); // Đảm bảo có ProgressBar trong XML
+
+        // Kiểm tra null
+        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || tvDiaChi == null || btnLogout == null || progressBar == null) {
+            showError("Lỗi khởi tạo giao diện!");
+            finish();
+            return;
+        }
+
+        // Thiết lập Toolbar
+        setSupportActionBar(toolbar);
+
+        // Thiết lập RecyclerView
+//        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
+//        historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
+//        rvActivityHistory.setAdapter(historyAdapter);
+
+        // Xử lý sự kiện cho các CardView chức năng
+        CardView cardRegisterAppointment = findViewById(R.id.cardRegisterAppointment);
+        CardView cardManageProfile = findViewById(R.id.cardManageProfile);
+        CardView cardViewMedicalRecord = findViewById(R.id.cardViewMedicalRecord);
+        CardView cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
+        CardView cardViewInvoice = findViewById(R.id.cardViewInvoice);
+
+        if (cardRegisterAppointment != null) {
+            cardRegisterAppointment.setOnClickListener(v -> handleDangKyLichKham());
+        }
+        if (cardManageProfile != null) {
+            cardManageProfile.setOnClickListener(v -> handleQuanLyHoSo());
+        }
+        if (cardViewMedicalRecord != null) {
+            cardViewMedicalRecord.setOnClickListener(v -> handleXemBenhAn());
+        }
+        if (cardConfirmMedication != null) {
+            cardConfirmMedication.setOnClickListener(v -> handleXacNhanDungThuoc());
+        }
+        if (cardViewInvoice != null) {
+            cardViewInvoice.setOnClickListener(v -> handleXemHoaDon());
+        }
+
+        // Xử lý đăng xuất
+        btnLogout.setOnClickListener(v -> handleDangXuat());
+
+        // Hiển thị loading và load dữ liệu
+        progressBar.setVisibility(View.VISIBLE);
+        loadUserInfo();
+//        loadActivityHistory();
+    }
+
+    private void loadUserInfo() {
         repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
                 querySnapshot -> {
-                    if (querySnapshot.isEmpty()) {
-                        Log.e("MainBenhNhanActivity", "No BenhNhan found for maTaiKhoan: " + maTaiKhoan);
-                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân", Toast.LENGTH_SHORT).show();
-                        tvHoTen.setText("Họ tên: N/A");
-                        tvSoDienThoai.setText("Số điện thoại: N/A");
-                        tvDiaChi.setText("Địa chỉ: N/A");
-                        return;
-                    }
-
-                    try {
+                    if (!querySnapshot.isEmpty()) {
                         BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
                         if (benhNhan != null) {
-                            Log.d("MainBenhNhanActivity", "BenhNhan data: " + benhNhan.toString());
-                            tvHoTen.setText("Họ tên: " + (benhNhan.getHoTen() != null ? benhNhan.getHoTen() : "N/A"));
-                            tvSoDienThoai.setText("Số điện thoại: " + (benhNhan.getSoDienThoai() != null ? benhNhan.getSoDienThoai() : "N/A"));
-                            tvDiaChi.setText("Địa chỉ: " + (benhNhan.getDiaChi() != null ? benhNhan.getDiaChi() : "N/A"));
+                            tvHoTen.setText("Họ tên: " + getSafeString(benhNhan.getHoTen()));
+                            tvSoDienThoai.setText("Số điện thoại: " + getSafeString(benhNhan.getSoDienThoai()));
+                            tvDiaChi.setText("Địa chỉ: " + getSafeString(benhNhan.getDiaChi()));
                         } else {
-                            Log.e("MainBenhNhanActivity", "Failed to parse BenhNhan object");
-                            Toast.makeText(this, "Lỗi: Dữ liệu bệnh nhân không hợp lệ", Toast.LENGTH_SHORT).show();
-                            tvHoTen.setText("Họ tên: N/A");
-                            tvSoDienThoai.setText("Số điện thoại: N/A");
-                            tvDiaChi.setText("Địa chỉ: N/A");
+                            showError("Dữ liệu bệnh nhân không hợp lệ!");
                         }
-                    } catch (Exception e) {
-                        Log.e("MainBenhNhanActivity", "Error parsing BenhNhan: ", e);
-                        Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        showError("Không tìm thấy thông tin bệnh nhân!");
                     }
+                    hideProgress();
                 },
                 e -> {
-                    Log.e("MainBenhNhanActivity", "Firestore query error: ", e);
-                    Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    tvHoTen.setText("Họ tên: N/A");
-                    tvSoDienThoai.setText("Số điện thoại: N/A");
-                    tvDiaChi.setText("Địa chỉ: N/A");
+                    Log.e("MainBenhNhanActivity", "Lỗi tải thông tin: ", e);
+                    showError("Lỗi tải thông tin: " + e.getMessage());
+                    hideProgress();
                 });
     }
 
-    private void loadActivityHistory() {
-        repo.getByField("LichSuHoatDong", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    List<LichSuHoatDong> list = new ArrayList<>();
-                    for (var doc : querySnapshot.getDocuments()) {
-                        LichSuHoatDong lichSu = doc.toObject(LichSuHoatDong.class);
-                        if (lichSu != null) {
-                            list.add(lichSu);
-                        }
-                    }
-                    Log.d("MainBenhNhanActivity", "Loaded " + list.size() + " activity records");
-                    rvActivityHistory.setAdapter(new ActivityHistoryAdapter(list));
-                },
-                e -> {
-                    Log.e("MainBenhNhanActivity", "Error loading activity history: ", e);
-                    Toast.makeText(this, "Lỗi tải lịch sử hoạt động: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    rvActivityHistory.setAdapter(new ActivityHistoryAdapter(new ArrayList<>()));
-                });
+//    private void loadActivityHistory() {
+//        repo.getByField("LichSuHoatDong", "maTaiKhoan", maTaiKhoan,
+//                querySnapshot -> {
+//                    List<LichSuHoatDong> list = new ArrayList<>();
+//                    for (var doc : querySnapshot.getDocuments()) {
+//                        LichSuHoatDong item = doc.toObject(LichSuHoatDong.class);
+//                        if (item != null) list.add(item);
+//                    }
+//                    historyAdapter = new ActivityHistoryAdapter(list);
+//                    rvActivityHistory.setAdapter(historyAdapter);
+//                },
+//                e -> {
+//                    Log.e("MainBenhNhanActivity", "Lỗi tải lịch sử: ", e);
+//                    showError("Lỗi tải lịch sử hoạt động!");
+//                    historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
+//                    rvActivityHistory.setAdapter(historyAdapter);
+//                });
+//    }
+
+    // === XỬ LÝ CHỨC NĂNG ===
+    private void handleDangKyLichKham() {
+        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleQuanLyHoSo() {
+        logActivity("Quản lý hồ sơ cá nhân");
+        startActivitySafe(QuanLyHoSoCaNhan.class);
+    }
+
+    private void handleXemBenhAn() {
+        logActivity("Xem bệnh án");
+        startActivitySafe(XembenhanActivity.class);
+    }
+
+    private void handleXacNhanDungThuoc() {
+        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleXemHoaDon() {
+        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleDangXuat() {
+        logActivity("Đăng xuất");
+        auth.signOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish();
+    }
+
+    // === HÀM HỖ TRỢ ===
+    private void logActivity(String tenHoatDong) {
+        String maLichSu = UUID.randomUUID().toString();
+        LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, tenHoatDong, new Date(), "Truy cập " + tenHoatDong);
+        repo.logActivity(lichSu);
+    }
+
+    private void startActivitySafe(Class<?> activityClass) {
+        Intent intent = new Intent(this, activityClass);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        startActivity(intent);
+    }
+
+    private String getSafeString(String value) {
+        return value != null ? value : "N/A";
+    }
+
+    private void hideProgress() {
+        if (progressBar != null) progressBar.setVisibility(View.GONE);
+    }
+
+    private void showError(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        tvHoTen.setText("Họ tên: N/A");
+        tvSoDienThoai.setText("Số điện thoại: N/A");
+        tvDiaChi.setText("Địa chỉ: N/A");
     }
 }
