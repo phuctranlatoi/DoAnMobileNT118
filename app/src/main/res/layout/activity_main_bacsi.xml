@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
+    android:fitsSystemWindows="true"
     tools:context=".ui.MainBacSiActivity">
 
     <!-- Top Bar -->
@@ -17,14 +18,15 @@
         app:layout_constraintTop_toTopOf="parent"
         app:title="Healcarus">
 
-        <Button
-            android:id="@+id/btnLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/btnSettings"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_gravity="end"
-            android:backgroundTint="#F8D7DA"
-            android:text="Đăng Xuất"
-            android:textColor="#721C24" />
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/setting_lines"
+            android:contentDescription="Cài đặt"
+            android:scaleType="centerCrop" />
     </androidx.appcompat.widget.Toolbar>
 
     <!-- Main Content -->

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -16,20 +17,23 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
+import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.ui.LichLamViecAdapter;
 import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.LichKham;
 import com.example.doannt118.repository.FirestoreRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private TextView tvHoTen, tvSoDienThoai, tvChuyenKhoa;
     private RecyclerView rvAppointments;
-    private Button btnLogout;
+    private ImageView btnSettings;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private String maTaiKhoan;
@@ -54,11 +58,11 @@ public class MainBacSiActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         tvHoTen = findViewById(R.id.tvHoTen);
         tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
-        btnLogout = findViewById(R.id.btnLogout);
+        btnSettings = findViewById(R.id.btnSettings);
         progressBar = findViewById(R.id.progressBar);
 
         // Kiểm tra null cho các view
-        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || btnLogout == null || progressBar == null) {
+        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || btnSettings == null || progressBar == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
@@ -96,7 +100,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         }
 
         // Xử lý sự kiện logout
-        btnLogout.setOnClickListener(v -> handleDangXuat());
+        btnSettings.setOnClickListener(v -> handleSettings());
 
         // Hiển thị progress bar và load thông tin
         if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
@@ -164,12 +168,28 @@ public class MainBacSiActivity extends AppCompatActivity {
     private void handleQuanLyHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
     }
+    private void handleSettings() {
+        logActivity("Mở cài đặt");
+        startActivitySafe(SettingActivity.class); // Giả sử có màn hình SettingsActivity
+    }
 
     private void handleDangXuat() {
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
+    }
+
+    private void logActivity(String tenHoatDong) {
+        String maLichSu = UUID.randomUUID().toString();
+        LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, tenHoatDong, new Date(), "Truy cập " + tenHoatDong);
+        repo.logActivity(lichSu);
+    }
+
+    private void startActivitySafe(Class<?> activityClass) {
+        Intent intent = new Intent(this, activityClass);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        startActivity(intent);
     }
 
     private void showError(String message) {
