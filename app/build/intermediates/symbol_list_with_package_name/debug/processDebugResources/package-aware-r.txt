@@ -3657,7 +3657,6 @@ drawable ic_other_sign_in
 drawable ic_passkey
 drawable ic_password
 drawable ic_profile
-drawable ic_schedule
 drawable ic_search_black_24
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3873,6 +3872,7 @@ id btnReject
 id btnSave
 id btnThem
 id btnTraCuu
+id btnUpdateProfile
 id btnXacNhan
 id btnXacNhanCapNhat
 id btnXacNhanThem
@@ -3883,13 +3883,8 @@ id cache_measures
 id callMeasure
 id cancel_action
 id cancel_button
-id cardConfirmAppointment
 id cardConfirmMedication
-id cardManageInvoice
-id cardManageMedicalRecord
-id cardManagePrescription
 id cardManageProfile
-id cardManageSchedule
 id cardRegisterAppointment
 id cardViewInvoice
 id cardViewMedicalRecord
@@ -3929,6 +3924,7 @@ id custom
 id customPanel
 id cut
 id cvAccounts
+id cvAppointments
 id cvPersonalInfo
 id dark
 id date_picker_actions
@@ -3961,6 +3957,7 @@ id dragLeft
 id dragRight
 id dragStart
 id dragUp
+id drawerLayout
 id drawer_layout
 id dropdown_menu
 id easeIn
@@ -4121,6 +4118,7 @@ id mtrl_picker_text_input_range_start
 id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
+id navView
 id nav_confirm_appointment
 id nav_confirm_medication
 id nav_manage_invoice
@@ -4337,7 +4335,6 @@ id tvBangCap
 id tvChanDoan
 id tvChiTiet
 id tvChungChi
-id tvChuyenKhoa
 id tvDangKy
 id tvDiaChi
 id tvDiagnosisHistory
