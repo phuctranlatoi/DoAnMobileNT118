@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,9 +29,8 @@ import java.util.UUID;
 public class MainBenhNhanActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TextView tvHoTen, tvSoDienThoai, tvDiaChi;
-    private RecyclerView rvActivityHistory;
-    private Button btnLogout;
+    private TextView tvHoTen;
+    private ImageView btnSettings; // Thay Button bằng ImageView cho nút cài đặt
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private FirebaseAuth auth;
@@ -57,14 +56,11 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
         tvHoTen = findViewById(R.id.tvHoTen);
-        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
-        tvDiaChi = findViewById(R.id.tvDiaChi);
-//        rvActivityHistory = findViewById(R.id.rvActivityHistory);
-        btnLogout = findViewById(R.id.btnLogout);
-        progressBar = findViewById(R.id.progressBar); // Đảm bảo có ProgressBar trong XML
+        btnSettings = findViewById(R.id.btnSettings); // Ánh xạ ImageView cho nút cài đặt
+        progressBar = findViewById(R.id.progressBar);
 
         // Kiểm tra null
-        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || tvDiaChi == null || btnLogout == null || progressBar == null) {
+        if (toolbar == null || tvHoTen == null || btnSettings == null || progressBar == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
@@ -101,8 +97,8 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             cardViewInvoice.setOnClickListener(v -> handleXemHoaDon());
         }
 
-        // Xử lý đăng xuất
-        btnLogout.setOnClickListener(v -> handleDangXuat());
+        // Xử lý sự kiện cho nút cài đặt
+        btnSettings.setOnClickListener(v -> handleSettings());
 
         // Hiển thị loading và load dữ liệu
         progressBar.setVisibility(View.VISIBLE);
@@ -116,9 +112,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                     if (!querySnapshot.isEmpty()) {
                         BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
                         if (benhNhan != null) {
-                            tvHoTen.setText("Họ tên: " + getSafeString(benhNhan.getHoTen()));
-                            tvSoDienThoai.setText("Số điện thoại: " + getSafeString(benhNhan.getSoDienThoai()));
-                            tvDiaChi.setText("Địa chỉ: " + getSafeString(benhNhan.getDiaChi()));
+                            tvHoTen.setText(getSafeString(benhNhan.getHoTen())); // Chỉ hiển thị họ tên
                         } else {
                             showError("Dữ liệu bệnh nhân không hợp lệ!");
                         }
@@ -176,6 +170,11 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
     }
 
+    private void handleSettings() {
+        logActivity("Mở cài đặt");
+        startActivitySafe(SettingActivity.class); // Giả sử có màn hình SettingsActivity
+    }
+
     private void handleDangXuat() {
         logActivity("Đăng xuất");
         auth.signOut();
@@ -209,7 +208,5 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         tvHoTen.setText("Họ tên: N/A");
-        tvSoDienThoai.setText("Số điện thoại: N/A");
-        tvDiaChi.setText("Địa chỉ: N/A");
     }
 }
