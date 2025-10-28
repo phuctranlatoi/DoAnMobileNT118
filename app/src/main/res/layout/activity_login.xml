@@ -1,65 +1,163 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#FFFFFF">
+    android:background="@color/white">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="24dp"
-        android:paddingTop="50dp"
-        android:text="Đăng Nhập"
-        android:textSize="24sp"
-        android:textStyle="bold" />
-
-    <EditText
-        android:id="@+id/txtTenDangNhap"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Tên đăng nhập hoặc Email"
-        android:background="@drawable/bg_input"
-        android:paddingHorizontal="12dp"
-        android:textSize="14sp"/>
-
-    <EditText
-        android:id="@+id/txtMatKhau"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"
-        android:background="@drawable/bg_input"
-        android:paddingHorizontal="12dp"
-        android:textSize="14sp"
-        android:layout_marginTop="8dp"/>
-
-    <TextView
-        android:id="@+id/tvQuenMatKhau"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quên mật khẩu?"
-        android:textColor="#0000FF"
-        android:layout_gravity="end"
-        android:layout_marginTop="8dp"/>
+        android:padding="24dp">
 
-    <Button
-        android:id="@+id/btnDangNhap"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:text="Đăng Nhập"
-        android:backgroundTint="#28A745"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="16dp"/>
+        <!-- Logo Helcarus -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.33"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginTop="48dp"
+            android:src="@drawable/hospital"
+            android:background="@drawable/circle_bg"
+            android:padding="24dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
 
-    <TextView
-        android:id="@+id/tvDangKy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="8dp"
-        android:text="Chưa có tài khoản? Đăng ký"
-        android:textColor="#0000FF" />
-</LinearLayout>
+        <!-- Welcome text -->
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to"
+            android:textColor="#6C6C6C"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/imgLogo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Helcarus"
+            android:textColor="#00224D"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            app:layout_constraintTop_toBottomOf="@id/tvWelcome"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Ô nhập Tên đăng nhập hoặc Email -->
+        <RelativeLayout
+            android:id="@+id/layoutEmail"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_input_field"
+            app:layout_constraintTop_toBottomOf="@id/tvAppName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iconEmail"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_email"
+                android:tint="#3BAEA0" />
+
+            <EditText
+                android:id="@+id/txtTenDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/iconEmail"
+                android:layout_marginStart="12dp"
+                android:hint="Tên đăng nhập hoặc Email"
+                android:textColor="#222"
+                android:textColorHint="#9A9A9A"
+                android:background="@android:color/transparent"
+                android:inputType="textEmailAddress"
+                android:paddingEnd="16dp" />
+        </RelativeLayout>
+
+        <!-- Ô nhập mật khẩu -->
+        <RelativeLayout
+            android:id="@+id/layoutPassword"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_input_field"
+            app:layout_constraintTop_toBottomOf="@id/layoutEmail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageView
+                android:id="@+id/iconLock"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:src="@drawable/ic_lock"
+                android:tint="#3BAEA0" />
+
+            <EditText
+                android:id="@+id/txtMatKhau"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/iconLock"
+                android:layout_marginStart="12dp"
+                android:hint="Mật khẩu"
+                android:inputType="textPassword"
+                android:textColor="#222"
+                android:textColorHint="#9A9A9A"
+                android:background="@android:color/transparent"
+                android:paddingEnd="16dp" />
+        </RelativeLayout>
+
+        <!-- Quên mật khẩu -->
+        <TextView
+            android:id="@+id/tvQuenMatKhau"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quên mật khẩu?"
+            android:textColor="#3BAEA0"
+            android:textSize="13sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@id/layoutPassword"
+            app:layout_constraintEnd_toEndOf="@id/layoutPassword" />
+
+        <!-- Nút đăng nhập -->
+        <Button
+            android:id="@+id/btnDangNhap"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:text="Đăng nhập"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_button_teal"
+            app:layout_constraintTop_toBottomOf="@id/tvQuenMatKhau"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- Đăng ký -->
+        <TextView
+            android:id="@+id/tvDangKy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có tài khoản? Đăng ký"
+            android:textColor="#3BAEA0"
+            android:textSize="14sp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@id/btnDangNhap"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
