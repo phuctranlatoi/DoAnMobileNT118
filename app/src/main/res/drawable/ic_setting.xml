@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <path
+        android:pathData="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12z"
+        android:fillColor="#FFFFFF" />
+
+    <path
+        android:pathData="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"
+        android:fillColor="#000000" />
+
+    <!-- Vẽ các "răng" của bánh răng -->
+    <path
+        android:pathData="M12 4.5a7.5 7.5 0 0 1 7.5 7.5h-15A7.5 7.5 0 0 1 12 4.5z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M12 19.5a7.5 7.5 0 0 1 7.5-7.5h-15A7.5 7.5 0 0 1 12 19.5z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M4.5 12a7.5 7.5 0 0 1 7.5-7.5v15A7.5 7.5 0 0 1 4.5 12z"
+        android:fillColor="#000000" />
+    <path
+        android:pathData="M19.5 12a7.5 7.5 0 0 1-7.5 7.5v-15A7.5 7.5 0 0 1 19.5 12z"
+        android:fillColor="#000000" />
+
+    <!-- Thêm các chi tiết nhỏ để tạo hiệu ứng răng cưa -->
+    <path
+        android:pathData="M6 6L8 4"
+        android:strokeWidth="1"
+        android:strokeColor="#000000" />
+    <path
+        android:pathData="M18 6L20 4"
+        android:strokeWidth="1"
+        android:strokeColor="#000000" />
+    <path
+        android:pathData="M6 18L8 20"
+        android:strokeWidth="1"
+        android:strokeColor="#000000" />
+    <path
+        android:pathData="M18 18L20 20"
+        android:strokeWidth="1"
+        android:strokeColor="#000000" />
+</vector>
