@@ -36,7 +36,7 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <!-- Search Bar -->
+        <!-- Search Bar for Medical Records -->
         <EditText
             android:id="@+id/etSearch"
             android:layout_width="match_parent"
@@ -70,12 +70,27 @@
                     android:textStyle="bold"
                     android:textColor="#1A1A1A" />
 
-                <EditText
-                    android:id="@+id/etMaBenhNhan"
+                <!-- Search Patient -->
+                <AutoCompleteTextView
+                    android:id="@+id/etSearchBenhNhan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mã Bệnh Nhân"
+                    android:hint="Nhập tên hoặc số điện thoại bệnh nhân"
                     android:inputType="text"
+                    android:imeOptions="actionSearch"
+                    android:background="@drawable/edit_text_background"
+                    android:padding="12dp"
+                    android:layout_marginTop="8dp" />
+
+                <!-- Selected Patient Info -->
+                <TextView
+                    android:id="@+id/tvSelectedBenhNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Chưa chọn bệnh nhân"
+                    android:textSize="14sp"
+                    android:textColor="#1A1A1A"
+                    android:padding="8dp"
                     android:layout_marginTop="8dp" />
 
                 <TextView

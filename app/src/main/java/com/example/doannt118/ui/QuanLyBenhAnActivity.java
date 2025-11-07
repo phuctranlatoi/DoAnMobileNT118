@@ -1,10 +1,12 @@
 package com.example.doannt118.ui;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -16,9 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.doannt118.R;
 import com.example.doannt118.model.BenhAn;
+import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,14 +36,16 @@ import java.util.UUID;
 public class QuanLyBenhAnActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private EditText etSearch, etMaBenhNhan, etChanDoan, etGhiChu;
-    private TextView tvNgayKham, tvMessage;
+    private AutoCompleteTextView etSearchBenhNhan;
+    private TextView tvSelectedBenhNhan, tvNgayKham, tvMessage;
+    private EditText etSearch, etChanDoan, etGhiChu;
     private RecyclerView rvBenhAn;
     private Button btnThem, btnCapNhat, btnXoa, btnQuayLai;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private String maTaiKhoan, maBacSi;
     private BenhAn selectedBenhAn;
+    private BenhNhan selectedBenhNhan; // Lưu bệnh nhân được chọn
     private BenhAnAdapter benhAnAdapter;
     private List<BenhAn> benhAnList;
     private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
@@ -58,8 +65,9 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Quản Lý Bệnh Án");
 
+        etSearchBenhNhan = findViewById(R.id.etSearchBenhNhan);
+        tvSelectedBenhNhan = findViewById(R.id.tvSelectedBenhNhan);
         etSearch = findViewById(R.id.etSearch);
-        etMaBenhNhan = findViewById(R.id.etMaBenhNhan);
         tvNgayKham = findViewById(R.id.tvNgayKham);
         etChanDoan = findViewById(R.id.etChanDoan);
         etGhiChu = findViewById(R.id.etGhiChu);
@@ -84,15 +92,21 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         rvBenhAn.setAdapter(benhAnAdapter);
 
         // Set up button listeners
-        btnThem.setOnClickListener(v -> handleThem());
-        btnCapNhat.setOnClickListener(v -> handleCapNhat());
-        btnXoa.setOnClickListener(v -> handleXoa());
+        btnThem.setOnClickListener(v -> confirmAction("Thêm bệnh án", "Bạn có chắc muốn thêm bệnh án này?", this::handleThem));
+        btnCapNhat.setOnClickListener(v -> confirmAction("Cập nhật bệnh án", "Bạn có chắc muốn cập nhật bệnh án này?", this::handleCapNhat));
+        btnXoa.setOnClickListener(v -> confirmAction("Xóa bệnh án", "Bạn có chắc muốn xóa bệnh án này?", this::handleXoa));
         btnQuayLai.setOnClickListener(v -> handleQuayLai());
         etSearch.setOnEditorActionListener((v, actionId, event) -> {
             handleTraCuu();
             return true;
         });
         tvNgayKham.setOnClickListener(v -> showDatePickerDialog());
+
+        // Set up search patient
+        etSearchBenhNhan.setOnEditorActionListener((v, actionId, event) -> {
+            searchBenhNhan(etSearchBenhNhan.getText().toString().trim());
+            return true;
+        });
 
         // Initially hide update/delete buttons
         btnCapNhat.setVisibility(View.GONE);
@@ -111,7 +125,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         repo.getByField("BenhAn", "maBacSi", maBacSi,
                 querySnapshot -> {
                     benhAnList.clear();
-                    for (var doc : querySnapshot.getDocuments()) {
+                    for (DocumentSnapshot doc : querySnapshot) {
                         BenhAn benhAn = doc.toObject(BenhAn.class);
                         if (benhAn != null) {
                             benhAn.setMaBenhAn(doc.getId());
@@ -127,13 +141,24 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                     hideProgressBar();
                 },
                 e -> {
-                    showError("Lỗi tải bệnh án: " + e.getMessage());
+                    showError("Lỗi tải bệnh án: " + e.toString());
                     hideProgressBar();
                 });
     }
 
     private void loadBenhAnForUpdate(BenhAn benhAn) {
-        etMaBenhNhan.setText(benhAn.getMaBenhNhan());
+        // Load selected patient info
+        repo.getByField("BenhNhan", "maBenhNhan", benhAn.getMaBenhNhan(),
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+                        selectedBenhNhan = doc.toObject(BenhNhan.class);
+                        if (selectedBenhNhan != null) {
+                            tvSelectedBenhNhan.setText("Bệnh nhân: " + selectedBenhNhan.getHoTen() + " (Mã: " + selectedBenhNhan.getMaBenhNhan() + ")");
+                        }
+                    }
+                },
+                e -> showError("Lỗi tải thông tin bệnh nhân: " + e.toString()));
         etChanDoan.setText(benhAn.getChanDoan());
         etGhiChu.setText(benhAn.getGhiChu());
         tvNgayKham.setText(benhAn.getNgayKham() != null
@@ -141,35 +166,91 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                 : "");
     }
 
+    private void searchBenhNhan(String keyword) {
+        if (TextUtils.isEmpty(keyword)) {
+            showError("Vui lòng nhập tên hoặc số điện thoại bệnh nhân!");
+            return;
+        }
+        showProgressBar();
+        // Tìm kiếm theo hoTen hoặc soDienThoai
+        repo.getAll("BenhNhan",
+                querySnapshot -> {
+                    List<BenhNhan> benhNhanList = new ArrayList<>();
+                    for (DocumentSnapshot doc : querySnapshot) {
+                        BenhNhan benhNhan = doc.toObject(BenhNhan.class);
+                        if (benhNhan != null && (benhNhan.getHoTen().toLowerCase().contains(keyword.toLowerCase()) ||
+                                benhNhan.getSoDienThoai().contains(keyword))) {
+                            benhNhanList.add(benhNhan);
+                            if (benhNhanList.size() >= 10) break; // Giới hạn 10 kết quả
+                        }
+                    }
+                    if (benhNhanList.isEmpty()) {
+                        showError("Không tìm thấy bệnh nhân!");
+                        hideProgressBar();
+                    } else {
+                        showBenhNhanListDialog(benhNhanList);
+                        hideProgressBar();
+                    }
+                },
+                e -> {
+                    showError("Lỗi tìm kiếm bệnh nhân: " + e.toString());
+                    hideProgressBar();
+                });
+    }
+
+    private void showBenhNhanListDialog(List<BenhNhan> benhNhanList) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_benh_nhan_list, null);
+        RecyclerView rvBenhNhanList = dialogView.findViewById(R.id.rvBenhNhanList);
+        Button btnCancel = dialogView.findViewById(R.id.btnCancel);
+
+        rvBenhNhanList.setLayoutManager(new LinearLayoutManager(this));
+        BenhNhanAdapter benhNhanAdapter = new BenhNhanAdapter(benhNhanList, benhNhan -> {
+            selectedBenhNhan = benhNhan;
+            tvSelectedBenhNhan.setText("Bệnh nhân: " + benhNhan.getHoTen() + " (Mã: " + benhNhan.getMaBenhNhan() + ")");
+            etSearchBenhNhan.setText("");
+        });
+        rvBenhNhanList.setAdapter(benhNhanAdapter);
+
+        AlertDialog dialog = builder.setView(dialogView).create();
+        btnCancel.setOnClickListener(v -> dialog.dismiss());
+        dialog.show();
+    }
+
     private void handleThem() {
         if (!validateInput()) return;
         BenhAn benhAn = new BenhAn();
         String documentId = "BA" + UUID.randomUUID().toString().substring(0, 8);
         benhAn.setMaBenhAn(documentId);
-        benhAn.setMaBenhNhan(etMaBenhNhan.getText().toString().trim());
+        benhAn.setMaBenhNhan(selectedBenhNhan.getMaBenhNhan());
         benhAn.setMaBacSi(maBacSi);
         benhAn.setChanDoan(etChanDoan.getText().toString().trim());
         benhAn.setGhiChu(etGhiChu.getText().toString().trim());
         benhAn.setNgayKham(getSelectedDateAsTimestamp());
 
         showProgressBar();
-        repo.getByField("BenhNhan", "maBenhNhan", benhAn.getMaBenhNhan(),
+        // Kiểm tra mã bệnh án trùng
+        repo.getByField("BenhAn", "maBenhAn", documentId,
                 querySnapshot -> {
                     if (!querySnapshot.isEmpty()) {
-                        repo.addDocument("BenhAn", documentId, benhAn,
-                                aVoid -> {
-                                    Toast.makeText(this, "Thêm bệnh án thành công!", Toast.LENGTH_SHORT).show();
-                                    loadDanhSachBenhAn();
-                                    clearFields();
-                                },
-                                e -> showError("Thêm thất bại: " + e.getMessage()));
-                    } else {
-                        showError("Mã bệnh nhân không tồn tại!");
+                        showError("Mã bệnh án đã tồn tại, thử lại!");
+                        hideProgressBar();
+                        return;
                     }
-                    hideProgressBar();
+                    repo.addDocument("BenhAn", documentId, benhAn,
+                            aVoid -> {
+                                Toast.makeText(this, "Thêm bệnh án thành công!", Toast.LENGTH_SHORT).show();
+                                loadDanhSachBenhAn();
+                                clearFields();
+                                hideProgressBar();
+                            },
+                            e -> {
+                                showError("Thêm thất bại: " + e.toString());
+                                hideProgressBar();
+                            });
                 },
                 e -> {
-                    showError("Lỗi kiểm tra bệnh nhân: " + e.getMessage());
+                    showError("Lỗi kiểm tra mã bệnh án: " + e.toString());
                     hideProgressBar();
                 });
     }
@@ -182,30 +263,22 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         if (!validateInput()) return;
         BenhAn benhAn = new BenhAn();
         benhAn.setMaBenhAn(selectedBenhAn.getMaBenhAn());
-        benhAn.setMaBenhNhan(etMaBenhNhan.getText().toString().trim());
+        benhAn.setMaBenhNhan(selectedBenhNhan.getMaBenhNhan());
         benhAn.setMaBacSi(maBacSi);
         benhAn.setChanDoan(etChanDoan.getText().toString().trim());
         benhAn.setGhiChu(etGhiChu.getText().toString().trim());
         benhAn.setNgayKham(getSelectedDateAsTimestamp());
 
         showProgressBar();
-        repo.getByField("BenhNhan", "maBenhNhan", benhAn.getMaBenhNhan(),
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        repo.updateDocument("BenhAn", benhAn.getMaBenhAn(), benhAn,
-                                aVoid -> {
-                                    Toast.makeText(this, "Cập nhật bệnh án thành công!", Toast.LENGTH_SHORT).show();
-                                    loadDanhSachBenhAn();
-                                    clearFields();
-                                },
-                                e -> showError("Cập nhật thất bại: " + e.getMessage()));
-                    } else {
-                        showError("Mã bệnh nhân không tồn tại!");
-                    }
+        repo.updateDocument("BenhAn", benhAn.getMaBenhAn(), benhAn,
+                aVoid -> {
+                    Toast.makeText(this, "Cập nhật bệnh án thành công!", Toast.LENGTH_SHORT).show();
+                    loadDanhSachBenhAn();
+                    clearFields();
                     hideProgressBar();
                 },
                 e -> {
-                    showError("Lỗi kiểm tra bệnh nhân: " + e.getMessage());
+                    showError("Cập nhật thất bại: " + e.toString());
                     hideProgressBar();
                 });
     }
@@ -221,9 +294,12 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                     Toast.makeText(this, "Xóa bệnh án thành công!", Toast.LENGTH_SHORT).show();
                     loadDanhSachBenhAn();
                     clearFields();
+                    hideProgressBar();
                 },
-                e -> showError("Xóa thất bại: " + e.getMessage()));
-        hideProgressBar();
+                e -> {
+                    showError("Xóa thất bại: " + e.toString());
+                    hideProgressBar();
+                });
     }
 
     private void handleTraCuu() {
@@ -236,7 +312,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         repo.getByField("BenhAn", "maBenhNhan", keyword,
                 querySnapshot -> {
                     benhAnList.clear();
-                    for (var doc : querySnapshot.getDocuments()) {
+                    for (DocumentSnapshot doc : querySnapshot) {
                         BenhAn benhAn = doc.toObject(BenhAn.class);
                         if (benhAn != null && benhAn.getMaBacSi().equals(maBacSi)) {
                             benhAn.setMaBenhAn(doc.getId());
@@ -252,7 +328,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                     hideProgressBar();
                 },
                 e -> {
-                    showError("Tra cứu thất bại: " + e.getMessage());
+                    showError("Tra cứu thất bại: " + e.toString());
                     hideProgressBar();
                 });
     }
@@ -265,9 +341,8 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
     }
 
     private boolean validateInput() {
-        String maBenhNhan = etMaBenhNhan.getText().toString().trim();
-        if (TextUtils.isEmpty(maBenhNhan)) {
-            showError("Vui lòng nhập mã bệnh nhân!");
+        if (selectedBenhNhan == null) {
+            showError("Vui lòng chọn bệnh nhân!");
             return false;
         }
         if (TextUtils.isEmpty(tvNgayKham.getText())) {
@@ -278,11 +353,14 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
     }
 
     private void clearFields() {
-        etMaBenhNhan.setText("");
+        etSearchBenhNhan.setText("");
+        tvSelectedBenhNhan.setText("Chưa chọn bệnh nhân");
+        etSearch.setText("");
         etChanDoan.setText("");
         etGhiChu.setText("");
         tvNgayKham.setText("");
         selectedBenhAn = null;
+        selectedBenhNhan = null;
         btnCapNhat.setVisibility(View.GONE);
         btnXoa.setVisibility(View.GONE);
         btnThem.setVisibility(View.VISIBLE);
@@ -319,7 +397,6 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         try {
             Date date = DATE_FORMAT.parse(tvNgayKham.getText().toString());
             if (date == null) throw new ParseException("Invalid date format", 0);
-            // Validate date range (e.g., not before 1970 or after 1 year from now)
             Calendar cal = Calendar.getInstance();
             cal.setTime(date);
             Calendar minCal = Calendar.getInstance();
@@ -332,9 +409,18 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
             }
             return new Timestamp(date);
         } catch (ParseException e) {
-            showError("Định dạng ngày không hợp lệ: " + e.getMessage());
+            showError("Định dạng ngày không hợp lệ: " + e.toString());
             return Timestamp.now();
         }
+    }
+
+    private void confirmAction(String title, String message, Runnable action) {
+        new AlertDialog.Builder(this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("Xác nhận", (dialog, which) -> action.run())
+                .setNegativeButton("Hủy", null)
+                .show();
     }
 
     private void showProgressBar() {
