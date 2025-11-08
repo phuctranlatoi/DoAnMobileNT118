@@ -22,7 +22,7 @@ import java.util.UUID;
 
 public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
-    private EditText etHoTen, etSoDienThoai, etDiaChi;
+    private EditText etHoTen, etSoDienThoai, etDiaChi, etNgaySinh;
     private Button btnEdit, btnConfirm, btnCancel, btnBack;
     private TextView tvMessage;
     private LinearLayout editButtonLayout;
@@ -54,6 +54,7 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         etHoTen = findViewById(R.id.etHoTen);
         etSoDienThoai = findViewById(R.id.etSoDienThoai);
         etDiaChi = findViewById(R.id.etDiaChi);
+        etNgaySinh = findViewById(R.id.etNgaySinh);
         btnEdit = findViewById(R.id.btnEdit);
         btnConfirm = findViewById(R.id.btnConfirm);
         btnCancel = findViewById(R.id.btnCancel);
@@ -114,6 +115,8 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
                         etDiaChi.setText(safeString(benhNhan.getDiaChi()));
                         etDiaChi.setVisibility(View.VISIBLE);
                     }
+                    if (etNgaySinh != null) etNgaySinh.setText(safeString(benhNhan.getNgaySinh()));
+
 
                     logActivity("Xem hồ sơ cá nhân");
                 },
@@ -145,14 +148,17 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         if (etHoTen != null) etHoTen.setEnabled(enable);
         if (etSoDienThoai != null) etSoDienThoai.setEnabled(enable);
         if (etDiaChi != null) etDiaChi.setEnabled(enable);
+        if (etNgaySinh != null) etNgaySinh.setEnabled(enable);
     }
 
     private void saveChanges() {
         String hoTen = safeTrim(etHoTen);
         String soDienThoai = safeTrim(etSoDienThoai);
         String diaChi = safeTrim(etDiaChi);
+        String ngaySinh = safeTrim(etNgaySinh);
 
-        if (hoTen.isEmpty() || soDienThoai.isEmpty() || diaChi.isEmpty()) {
+
+        if (hoTen.isEmpty() || soDienThoai.isEmpty() || diaChi.isEmpty()|| ngaySinh.isEmpty()) {
             showError("Vui lòng điền đầy đủ thông tin!");
             return;
         }

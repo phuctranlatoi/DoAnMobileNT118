@@ -419,6 +419,7 @@ public class FirestoreRepository {
         map.put("hoTen", b.getHoTen());
         map.put("soDienThoai", b.getSoDienThoai());
         map.put("diaChi", b.getDiaChi());
+        map.put("ngaySinh", b.getNgaySinh());
         return map;
     }
 

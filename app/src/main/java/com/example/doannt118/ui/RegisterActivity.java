@@ -16,7 +16,7 @@ import org.mindrot.jbcrypt.BCrypt;
 import java.util.UUID;
 
 public class RegisterActivity extends AppCompatActivity {
-    private EditText txtTenDangNhap, txtMatKhau, txtHoTen, txtSoDienThoai, txtEmail, txtDiaChi;
+    private EditText txtTenDangNhap, txtMatKhau, txtHoTen, txtSoDienThoai, txtEmail, txtDiaChi, txtNgaySinh;
     private Button btnDangKy, btnQuayLai;
     private FirebaseAuth auth;
     private FirestoreRepository repo;
@@ -32,6 +32,7 @@ public class RegisterActivity extends AppCompatActivity {
         txtSoDienThoai = findViewById(R.id.txtSoDienThoai);
         txtEmail = findViewById(R.id.txtEmail);
         txtDiaChi = findViewById(R.id.txtDiaChi);
+        txtNgaySinh = findViewById(R.id.txtNgaySinh);
         btnDangKy = findViewById(R.id.btnDangKy);
         btnQuayLai = findViewById(R.id.btnQuayLai);
         auth = FirebaseAuth.getInstance();
@@ -44,6 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
             String sdt = txtSoDienThoai.getText().toString().trim();
             String email = txtEmail.getText().toString().trim();
             String diaChi = txtDiaChi.getText().toString().trim();
+            String ngaySinh = txtNgaySinh.getText().toString().trim();
             String vaiTro = "Bệnh nhân";
 
             // Kiểm tra đầu vào
@@ -93,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                                                         // Tạo dữ liệu cho Firestore
                                                         TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Hoạt động");
-                                                        BenhNhan benhNhan = new BenhNhan(maBenhNhan, maTaiKhoan, hoTen, sdt, diaChi);
+                                                        BenhNhan benhNhan = new BenhNhan(maBenhNhan, maTaiKhoan, hoTen, sdt, diaChi, ngaySinh);
 
                                                         // Lưu vào Firestore
                                                         repo.registerNewUserBatch(newTaiKhoan, benhNhan,

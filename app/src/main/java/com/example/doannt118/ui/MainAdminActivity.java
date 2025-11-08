@@ -345,7 +345,7 @@ public class MainAdminActivity extends AppCompatActivity {
                             } else if (taiKhoan.getVaiTro().equals("Admin")) {
                                 userProfile = new Admin(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt);
                             } else {
-                                userProfile = new BenhNhan(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt, "");
+                                userProfile = new BenhNhan(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt, "", "");
                             }
 
                             repo.updateDocument(collection, maProfile, userProfile,

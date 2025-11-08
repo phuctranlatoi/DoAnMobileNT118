@@ -5,15 +5,17 @@ public class BenhNhan {
     private String hoTen;
     private String soDienThoai;
     private String diaChi;
+    private String ngaySinh;
 
     public BenhNhan() {}
 
-    public BenhNhan(String maBenhNhan, String maTaiKhoan, String hoTen, String soDienThoai, String diaChi) {
+    public BenhNhan(String maBenhNhan, String maTaiKhoan, String hoTen, String soDienThoai, String diaChi, String ngaySinh) {
         this.maBenhNhan = maBenhNhan;
         this.maTaiKhoan = maTaiKhoan;
         this.hoTen = hoTen;
         this.soDienThoai = soDienThoai;
         this.diaChi = diaChi;
+        this.ngaySinh = ngaySinh;
     }
 
     public String getMaBenhNhan() { return maBenhNhan; }
@@ -31,11 +33,16 @@ public class BenhNhan {
     public String getDiaChi() { return diaChi; }
     public void setDiaChi(String diaChi) { this.diaChi = diaChi; }
 
+    public String getNgaySinh() { return ngaySinh; }
+    public void setNgaySinh(String ngaySinh) { this.ngaySinh = ngaySinh; }
+
     @Override
     public String toString() {
         return "BenhNhan{" +
                 "maBenhNhan='" + maBenhNhan + '\'' +
                 ", hoTen='" + hoTen + '\'' +
+                ", soDienThoai='" + soDienThoai + '\'' +
+                ", diaChi='" + diaChi + '\'' +
                 '}';
     }
 }

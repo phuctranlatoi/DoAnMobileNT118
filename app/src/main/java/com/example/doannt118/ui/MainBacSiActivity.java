@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -25,15 +24,14 @@ import com.example.doannt118.repository.FirestoreRepository;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private TextView tvHoTen, tvSoDienThoai, tvChuyenKhoa;
+    private TextView tvHoTen;
+    private ImageView ivAvatar, btnSettings;
     private RecyclerView rvAppointments;
-    private ImageView btnSettings;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private String maTaiKhoan;
@@ -57,21 +55,22 @@ public class MainBacSiActivity extends AppCompatActivity {
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
         tvHoTen = findViewById(R.id.tvHoTen);
-        tvSoDienThoai = findViewById(R.id.tvSoDienThoai);
+        ivAvatar = findViewById(R.id.ivAvatar);
         btnSettings = findViewById(R.id.btnSettings);
         progressBar = findViewById(R.id.progressBar);
+        rvAppointments = findViewById(R.id.rvAppointments);
 
         // Kiểm tra null cho các view
-        if (toolbar == null || tvHoTen == null || tvSoDienThoai == null || btnSettings == null || progressBar == null) {
+        if (toolbar == null || tvHoTen == null || ivAvatar == null || btnSettings == null || progressBar == null || rvAppointments == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
         }
 
         // Thiết lập RecyclerView
-//        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
-//        appointmentAdapter = new LichLamViecAdapter(this, new ArrayList<>());
-//        rvAppointments.setAdapter(appointmentAdapter);
+        rvAppointments.setLayoutManager(new LinearLayoutManager(this));
+        appointmentAdapter = new LichLamViecAdapter(this, new ArrayList<>());
+        rvAppointments.setAdapter(appointmentAdapter);
 
         // Thiết lập Toolbar
         setSupportActionBar(toolbar);
@@ -103,7 +102,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         btnSettings.setOnClickListener(v -> handleSettings());
 
         // Hiển thị progress bar và load thông tin
-        if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
+        progressBar.setVisibility(View.VISIBLE);
         loadUserInfo();
     }
 
@@ -113,26 +112,23 @@ public class MainBacSiActivity extends AppCompatActivity {
                     if (!querySnapshot.isEmpty()) {
                         BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
                         if (bacSi != null) {
-                            if (tvHoTen != null) tvHoTen.setText("Họ tên: " + bacSi.getHoTen());
-                            if (tvSoDienThoai != null) tvSoDienThoai.setText("Số điện thoại: " + bacSi.getSoDienThoai());
+                            tvHoTen.setText(bacSi.getHoTen());
                             maBacSi = bacSi.getMaBacSi();
+                            // Optional: Load avatar dynamically if available in BacSi model
+                            // e.g., if (bacSi.getAvatarUrl() != null) loadImage(ivAvatar, bacSi.getAvatarUrl());
                         } else {
                             showError("Không tìm thấy thông tin bác sĩ!");
                         }
                     } else {
                         showError("Không tìm thấy thông tin bác sĩ!");
                     }
-                    if (progressBar != null) progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 },
                 e -> {
                     Log.e("MainBacSiActivity", "Lỗi tải thông tin: ", e);
                     showError("Lỗi tải thông tin: " + e.getMessage());
-                    if (progressBar != null) progressBar.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
                 });
-    }
-
-    private void handleQuanLyHoSo() {
-        Toast.makeText(this, "Chức năng Quản Lý Hồ Sơ đang phát triển!", Toast.LENGTH_SHORT).show();
     }
 
     private void handleQuanLyBenhAn() {
@@ -168,16 +164,10 @@ public class MainBacSiActivity extends AppCompatActivity {
     private void handleQuanLyHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
     }
+
     private void handleSettings() {
         logActivity("Mở cài đặt");
-        startActivitySafe(SettingActivity.class); // Giả sử có màn hình SettingsActivity
-    }
-
-    private void handleDangXuat() {
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+        startActivitySafe(SettingActivity.class);
     }
 
     private void logActivity(String tenHoatDong) {
@@ -194,8 +184,6 @@ public class MainBacSiActivity extends AppCompatActivity {
 
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-        if (tvHoTen != null) tvHoTen.setText("Họ tên: ");
-        if (tvSoDienThoai != null) tvSoDienThoai.setText("Số điện thoại: ");
-        if (tvChuyenKhoa != null) tvChuyenKhoa.setText("Chuyên khoa: ");
+//        tvHoTen.setText("Họ tên: ");
     }
 }

@@ -154,7 +154,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                         DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
                         selectedBenhNhan = doc.toObject(BenhNhan.class);
                         if (selectedBenhNhan != null) {
-                            tvSelectedBenhNhan.setText("Bệnh nhân: " + selectedBenhNhan.getHoTen() + " (Mã: " + selectedBenhNhan.getMaBenhNhan() + ")");
+                            tvSelectedBenhNhan.setText("Bệnh nhân: " + selectedBenhNhan.getHoTen() /*+ " (Mã: " + selectedBenhNhan.getMaBenhNhan() + ")"*/);
                         }
                     }
                 },
@@ -207,7 +207,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         rvBenhNhanList.setLayoutManager(new LinearLayoutManager(this));
         BenhNhanAdapter benhNhanAdapter = new BenhNhanAdapter(benhNhanList, benhNhan -> {
             selectedBenhNhan = benhNhan;
-            tvSelectedBenhNhan.setText("Bệnh nhân: " + benhNhan.getHoTen() + " (Mã: " + benhNhan.getMaBenhNhan() + ")");
+            tvSelectedBenhNhan.setText("Bệnh nhân: " + benhNhan.getHoTen() /*+ " (Mã: " + benhNhan.getMaBenhNhan() + ")"*/);
             etSearchBenhNhan.setText("");
         });
         rvBenhNhanList.setAdapter(benhNhanAdapter);
