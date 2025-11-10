@@ -46,6 +46,9 @@
         <activity android:name=".ui.QuanLyLichLamViecActivity" />
         <activity android:name=".ui.ForgotPasswordActivity" />
         <activity android:name=".ui.SettingActivity"/>
+        <activity android:name=".ui.XemChiTietLichKhamActivity"
+            android:parentActivityName=".ui.QuanLyLichLamViecActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />

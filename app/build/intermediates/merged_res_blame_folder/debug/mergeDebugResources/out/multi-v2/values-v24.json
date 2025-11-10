@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-57:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\1c3d1f1ab644570670d249adaf64b4e7\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\70a07def50ff2a7f096d6cb9c4da7204\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\6a62a0875a55d10788eee8c13741fea2\\transformed\\material-1.13.0\\res\\values-v24\\values-v24.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\d7dbd1d26d05f1caaa55ad421cae0772\\transformed\\material-1.13.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -40,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\888edb72da4ed1940247abecbac19b32\\transformed\\appcompat-1.7.1\\res\\values-v24\\values-v24.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\f873838ddba470e204f10d0ad5b068a6\\transformed\\appcompat-1.7.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-57:/values-v21/values-v21.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/be9c559a73b2e0d98ce2e677cb5537d3/transformed/credentials-play-services-auth-1.2.0-rc01/res/values-v21/values-v21.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\f8a65e4898cde94da25f90f586f12ec9\\transformed\\credentials-play-services-auth-1.2.0-rc01\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/888edb72da4ed1940247abecbac19b32/transformed/appcompat-1.7.1/res/values-v21/values-v21.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\f873838ddba470e204f10d0ad5b068a6\\transformed\\appcompat-1.7.1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,17,19,20,21,22,24,26,27,28,29,30,32,34,36,38,40,42,43,48,50,52,53,54,56,58,59,60,61,62,63,106,109,152,155,158,160,162,164,167,171,174,175,176,179,180,181,182,183,184,187,188,190,192,194,196,200,202,203,204,205,207,211,213,215,216,217,218,219,220,222,223,224,234,235,236,248",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -42,24 +42,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/6a62a0875a55d10788eee8c13741fea2/transformed/material-1.13.0/res/values-v21/values-v21.xml",
-                    "from": {
-                        "startLines": "2,3,4,5",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "55,153,248,344",
-                        "endColumns": "97,94,95,96",
-                        "endOffsets": "148,243,339,436"
-                    },
-                    "to": {
-                        "startLines": "3,4,5,6",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "173,271,366,462",
-                        "endColumns": "97,94,95,96",
-                        "endOffsets": "266,361,457,554"
-                    }
-                },
-                {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/920493f2be3db07376d709414a236bb0/transformed/core-1.13.1/res/values-v21/values-v21.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\701e7e6bcfdc0f3026d64817a562b53f\\transformed\\core-1.13.1\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -78,7 +61,24 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/1c3d1f1ab644570670d249adaf64b4e7/transformed/media-1.0.0/res/values-v21/values-v21.xml",
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\d7dbd1d26d05f1caaa55ad421cae0772\\transformed\\material-1.13.0\\res\\values-v21\\values-v21.xml",
+                    "from": {
+                        "startLines": "2,3,4,5",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "55,153,248,344",
+                        "endColumns": "97,94,95,96",
+                        "endOffsets": "148,243,339,436"
+                    },
+                    "to": {
+                        "startLines": "3,4,5,6",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "173,271,366,462",
+                        "endColumns": "97,94,95,96",
+                        "endOffsets": "266,361,457,554"
+                    }
+                },
+                {
+                    "source": "E:\\HK1_2025_2026\\NT118\\Android\\caches\\8.13\\transforms\\70a07def50ff2a7f096d6cb9c4da7204\\transformed\\media-1.0.0\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",

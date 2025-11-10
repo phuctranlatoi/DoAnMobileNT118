@@ -38,7 +38,8 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
-    implementation(libs.firebase.firestore)  // Via catalog, let BOM manage version
+    implementation(libs.firebase.firestore)
+    implementation(libs.recyclerview)  // Via catalog, let BOM manage version
     // implementation(libs.firebase.ai)  // If using AI features; otherwise remove
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
