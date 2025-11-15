@@ -10,12 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.ui.LichLamViecAdapter;
 import com.example.doannt118.model.BacSi;
@@ -28,9 +27,9 @@ import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private View toolbar;
     private TextView tvHoTen;
-    private ImageView ivAvatar, btnSettings;
+    private ImageView ivAvatar, btnNotification;
     private RecyclerView rvAppointments;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
@@ -56,12 +55,12 @@ public class MainBacSiActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         tvHoTen = findViewById(R.id.tvHoTen);
         ivAvatar = findViewById(R.id.ivAvatar);
-        btnSettings = findViewById(R.id.btnSettings);
+        btnNotification = findViewById(R.id.btnNotification);
         progressBar = findViewById(R.id.progressBar);
         rvAppointments = findViewById(R.id.rvAppointments);
 
         // Kiểm tra null cho các view
-        if (toolbar == null || tvHoTen == null || ivAvatar == null || btnSettings == null || progressBar == null || rvAppointments == null) {
+        if (toolbar == null || tvHoTen == null || progressBar == null || rvAppointments == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
@@ -72,15 +71,12 @@ public class MainBacSiActivity extends AppCompatActivity {
         appointmentAdapter = new LichLamViecAdapter(this, new ArrayList<>());
         rvAppointments.setAdapter(appointmentAdapter);
 
-        // Thiết lập Toolbar
-        setSupportActionBar(toolbar);
-
-        // Ánh xạ và thêm sự kiện cho các card chức năng
-        CardView cardManageMedicalRecord = findViewById(R.id.cardManageMedicalRecord);
-        CardView cardManageSchedule = findViewById(R.id.cardManageSchedule);
-        CardView cardManagePrescription = findViewById(R.id.cardManagePrescription);
-        CardView cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
-        CardView cardManageInvoice = findViewById(R.id.cardManageInvoice);
+        // Ánh xạ và thêm sự kiện cho các chức năng
+        View cardManageMedicalRecord = findViewById(R.id.cardManageMedicalRecord);
+        View cardManageSchedule = findViewById(R.id.cardManageSchedule);
+        View cardManagePrescription = findViewById(R.id.cardManagePrescription);
+        View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
+        View cardManageInvoice = findViewById(R.id.cardManageInvoice);
 
         if (cardManageMedicalRecord != null) {
             cardManageMedicalRecord.setOnClickListener(v -> handleQuanLyBenhAn());
@@ -98,8 +94,34 @@ public class MainBacSiActivity extends AppCompatActivity {
             cardManageInvoice.setOnClickListener(v -> handleQuanLyHoaDon());
         }
 
-        // Xử lý sự kiện logout
-        btnSettings.setOnClickListener(v -> handleSettings());
+        // Xử lý sự kiện thông báo
+        if (btnNotification != null) {
+            btnNotification.setOnClickListener(v ->
+                Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Xử lý Bottom Navigation
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    // Đã ở trang chủ
+                    return true;
+                } else if (itemId == R.id.nav_messages) {
+                    Toast.makeText(this, "Chức năng Tin nhắn đang phát triển!", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.nav_notifications) {
+                    Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    handleProfile();
+                    return false; // Không select để khi quay lại vẫn ở home
+                }
+                return false;
+            });
+        }
 
         // Hiển thị progress bar và load thông tin
         progressBar.setVisibility(View.VISIBLE);
@@ -129,6 +151,16 @@ public class MainBacSiActivity extends AppCompatActivity {
                     showError("Lỗi tải thông tin: " + e.getMessage());
                     progressBar.setVisibility(View.GONE);
                 });
+    }
+
+    private void handleProfile() {
+        logActivity("Mở trang cá nhân");
+        startActivitySafe(ProfileActivity.class);
+    }
+
+    private void handleQuanLyHoSo() {
+        logActivity("Quản lý hồ sơ cá nhân");
+        startActivitySafe(QuanLyHoSoCaNhan.class);
     }
 
     private void handleQuanLyBenhAn() {
@@ -163,11 +195,6 @@ public class MainBacSiActivity extends AppCompatActivity {
 
     private void handleQuanLyHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleSettings() {
-        logActivity("Mở cài đặt");
-        startActivitySafe(SettingActivity.class);
     }
 
     private void logActivity(String tenHoatDong) {
