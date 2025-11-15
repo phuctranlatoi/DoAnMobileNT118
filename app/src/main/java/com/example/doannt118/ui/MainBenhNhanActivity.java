@@ -10,12 +10,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
@@ -28,9 +27,9 @@ import java.util.UUID;
 
 public class MainBenhNhanActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
+    private View toolbar;
     private TextView tvHoTen;
-    private ImageView btnSettings; // Thay Button bằng ImageView cho nút cài đặt
+    private ImageView ivAvatar, btnNotification;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private FirebaseAuth auth;
@@ -56,36 +55,30 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
         tvHoTen = findViewById(R.id.tvHoTen);
-        btnSettings = findViewById(R.id.btnSettings); // Ánh xạ ImageView cho nút cài đặt
+        ivAvatar = findViewById(R.id.ivAvatar);
+        btnNotification = findViewById(R.id.btnNotification);
         progressBar = findViewById(R.id.progressBar);
 
         // Kiểm tra null
-        if (toolbar == null || tvHoTen == null || btnSettings == null || progressBar == null) {
+        if (toolbar == null || tvHoTen == null || progressBar == null) {
             showError("Lỗi khởi tạo giao diện!");
             finish();
             return;
         }
-
-        // Thiết lập Toolbar
-        setSupportActionBar(toolbar);
 
         // Thiết lập RecyclerView
 //        rvActivityHistory.setLayoutManager(new LinearLayoutManager(this));
 //        historyAdapter = new ActivityHistoryAdapter(new ArrayList<>());
 //        rvActivityHistory.setAdapter(historyAdapter);
 
-        // Xử lý sự kiện cho các CardView chức năng
-        CardView cardRegisterAppointment = findViewById(R.id.cardRegisterAppointment);
-        CardView cardManageProfile = findViewById(R.id.cardManageProfile);
-        CardView cardViewMedicalRecord = findViewById(R.id.cardViewMedicalRecord);
-        CardView cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
-        CardView cardViewInvoice = findViewById(R.id.cardViewInvoice);
+        // Xử lý sự kiện cho các chức năng
+        View cardRegisterAppointment = findViewById(R.id.cardRegisterAppointment);
+        View cardViewMedicalRecord = findViewById(R.id.cardViewMedicalRecord);
+        View cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
+        View cardViewInvoice = findViewById(R.id.cardViewInvoice);
 
         if (cardRegisterAppointment != null) {
             cardRegisterAppointment.setOnClickListener(v -> handleDangKyLichKham());
-        }
-        if (cardManageProfile != null) {
-            cardManageProfile.setOnClickListener(v -> handleQuanLyHoSo());
         }
         if (cardViewMedicalRecord != null) {
             cardViewMedicalRecord.setOnClickListener(v -> handleXemBenhAn());
@@ -97,8 +90,37 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             cardViewInvoice.setOnClickListener(v -> handleXemHoaDon());
         }
 
-        // Xử lý sự kiện cho nút cài đặt
-        btnSettings.setOnClickListener(v -> handleSettings());
+        // Xử lý sự kiện cho nút thông báo
+        if (btnNotification != null) {
+            btnNotification.setOnClickListener(v -> 
+                Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Xử lý Bottom Navigation
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
+        if (bottomNavigation != null) {
+            bottomNavigation.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+                if (itemId == R.id.nav_home) {
+                    // Đã ở trang chủ
+                    return true;
+                } else if (itemId == R.id.nav_messages) {
+                    Toast.makeText(this, "Chức năng Tin nhắn đang phát triển!", Toast.LENGTH_SHORT).show();
+                    return true;
+                } else if (itemId == R.id.nav_add) {
+                    handleDangKyLichKham();
+                    return true;
+                } else if (itemId == R.id.nav_appointments) {
+                    handleXemLichKham();
+                    return true;
+                } else if (itemId == R.id.nav_profile) {
+                    handleProfile();
+                    return false; // Không select để khi quay lại vẫn ở home
+                }
+                return false;
+            });
+        }
 
         // Hiển thị loading và load dữ liệu
         progressBar.setVisibility(View.VISIBLE);
@@ -152,9 +174,18 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
     }
 
+    private void handleProfile() {
+        logActivity("Mở trang cá nhân");
+        startActivitySafe(ProfileActivity.class);
+    }
+
     private void handleQuanLyHoSo() {
         logActivity("Quản lý hồ sơ cá nhân");
         startActivitySafe(QuanLyHoSoCaNhan.class);
+    }
+
+    private void handleXemLichKham() {
+        Toast.makeText(this, "Chức năng Xem lịch khám đang phát triển!", Toast.LENGTH_SHORT).show();
     }
 
     private void handleXemBenhAn() {
@@ -168,11 +199,6 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleXemHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
-    }
-
-    private void handleSettings() {
-        logActivity("Mở cài đặt");
-        startActivitySafe(SettingActivity.class); // Giả sử có màn hình SettingsActivity
     }
 
     private void handleDangXuat() {
