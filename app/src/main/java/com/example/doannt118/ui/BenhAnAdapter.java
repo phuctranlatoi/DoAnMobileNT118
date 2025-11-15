@@ -42,30 +42,38 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.BenhAnView
     @Override
     public void onBindViewHolder(@NonNull BenhAnViewHolder holder, int position) {
         BenhAn benhAn = benhAnList.get(position);
-        holder.tvMaBenhAn.setText("Mã Bệnh Án: " + (benhAn.getMaBenhAn() != null ? benhAn.getMaBenhAn() : "N/A"));
-        holder.tvChanDoan.setText("Chẩn Đoán: " + (benhAn.getChanDoan() != null ? benhAn.getChanDoan() : "N/A"));
+        holder.tvMaBenhAn.setText("Mã: " + (benhAn.getMaBenhAn() != null ? benhAn.getMaBenhAn() : "N/A"));
+        holder.tvChanDoan.setText(benhAn.getChanDoan() != null ? benhAn.getChanDoan() : "Chưa có chẩn đoán");
         holder.tvNgayKham.setText(benhAn.getNgayKham() != null
                 ? new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(benhAn.getNgayKham().toDate())
                 : "N/A");
 
         // Load patient name
-        repo.getByField("BenhNhan", "maBenhNhan", benhAn.getMaBenhNhan(),
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
-                        BenhNhan benhNhan = doc.toObject(BenhNhan.class);
-                        if (benhNhan != null) {
-                            holder.tvMaBenhNhan.setText("Bệnh nhân: " + benhNhan.getHoTen());
+        if (benhAn.getMaBenhNhan() != null && !benhAn.getMaBenhNhan().isEmpty()) {
+            repo.getByField("BenhNhan", "maBenhNhan", benhAn.getMaBenhNhan(),
+                    querySnapshot -> {
+                        if (!querySnapshot.isEmpty()) {
+                            DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+                            BenhNhan benhNhan = doc.toObject(BenhNhan.class);
+                            if (benhNhan != null && benhNhan.getHoTen() != null) {
+                                holder.tvMaBenhNhan.setText("BN: " + benhNhan.getHoTen());
+                            } else {
+                                holder.tvMaBenhNhan.setText("BN: " + benhAn.getMaBenhNhan());
+                            }
                         } else {
-                            holder.tvMaBenhNhan.setText("Mã Bệnh Nhân: " + (benhAn.getMaBenhNhan() != null ? benhAn.getMaBenhNhan() : "N/A"));
+                            holder.tvMaBenhNhan.setText("BN: " + benhAn.getMaBenhNhan());
                         }
-                    } else {
-                        holder.tvMaBenhNhan.setText("Mã Bệnh Nhân: " + (benhAn.getMaBenhNhan() != null ? benhAn.getMaBenhNhan() : "N/A"));
-                    }
-                },
-                e -> holder.tvMaBenhNhan.setText("Mã Bệnh Nhân: " + (benhAn.getMaBenhNhan() != null ? benhAn.getMaBenhNhan() : "N/A")));
+                    },
+                    e -> holder.tvMaBenhNhan.setText("BN: " + benhAn.getMaBenhNhan()));
+        } else {
+            holder.tvMaBenhNhan.setText("BN: N/A");
+        }
 
-        holder.itemView.setOnClickListener(v -> listener.onBenhAnClick(benhAn));
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onBenhAnClick(benhAn);
+            }
+        });
     }
 
     @Override
