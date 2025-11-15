@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,8 +24,9 @@ import java.util.UUID;
 public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
     private EditText etHoTen, etSoDienThoai, etDiaChi, etNgaySinh;
-    private Button btnEdit, btnConfirm, btnCancel, btnBack;
-    private TextView tvMessage;
+    private ImageView btnEdit, btnBack, ivAvatar;
+    private Button btnConfirm, btnCancel;
+    private TextView tvMessage, tvChangeAvatar;
     private LinearLayout editButtonLayout;
     private FirestoreRepository repo;
     private String maTaiKhoan;
@@ -61,6 +63,8 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         btnBack = findViewById(R.id.btnBack);
         tvMessage = findViewById(R.id.tvMessage);
         editButtonLayout = findViewById(R.id.editButtonLayout);
+        ivAvatar = findViewById(R.id.ivAvatar);
+        tvChangeAvatar = findViewById(R.id.tvChangeAvatar);
 
         // Ẩn thông báo lỗi ban đầu
         if (tvMessage != null) tvMessage.setVisibility(View.GONE);
@@ -134,8 +138,8 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         if (editButtonLayout != null) {
             editButtonLayout.setVisibility(enable ? View.VISIBLE : View.GONE);
         }
-        if (btnEdit != null) {
-            btnEdit.setVisibility(enable ? View.GONE : View.VISIBLE);
+        if (tvChangeAvatar != null) {
+            tvChangeAvatar.setVisibility(enable ? View.VISIBLE : View.GONE);
         }
 
         // Nếu hủy → reload dữ liệu từ Firestore (an toàn nhất)

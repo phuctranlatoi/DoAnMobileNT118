@@ -1,62 +1,102 @@
 package com.example.doannt118.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.doannt118.R;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class SettingActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
-    private Button btnLogout;
-    private FirebaseAuth auth;
+    private SwitchCompat switchThongBao, switchCamera, switchMicro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        // Khởi tạo Firebase Auth
-        auth = FirebaseAuth.getInstance();
-
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
-        btnLogout = findViewById(R.id.btnLogout);
+        switchThongBao = findViewById(R.id.switchThongBao);
+        switchCamera = findViewById(R.id.switchCamera);
+        switchMicro = findViewById(R.id.switchMicro);
 
         // Thiết lập Toolbar
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Nút back
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        // Xử lý sự kiện đăng xuất
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                handleLogout();
-            }
-        });
+        setupClickListeners();
     }
 
-    private void handleLogout() {
-        auth.signOut();
-        Toast.makeText(this, "Đã đăng xuất!", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(this, LoginActivity.class);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-        finish();
+    private void setupClickListeners() {
+        // Thông báo
+        View settingThongBao = findViewById(R.id.settingThongBao);
+        if (settingThongBao != null) {
+            settingThongBao.setOnClickListener(v -> {
+                if (switchThongBao != null) {
+                    switchThongBao.setChecked(!switchThongBao.isChecked());
+                }
+            });
+        }
+
+        // Camera
+        View settingCamera = findViewById(R.id.settingCamera);
+        if (settingCamera != null) {
+            settingCamera.setOnClickListener(v -> {
+                if (switchCamera != null) {
+                    switchCamera.setChecked(!switchCamera.isChecked());
+                }
+            });
+        }
+
+        // Micro
+        View settingMicro = findViewById(R.id.settingMicro);
+        if (settingMicro != null) {
+            settingMicro.setOnClickListener(v -> {
+                if (switchMicro != null) {
+                    switchMicro.setChecked(!switchMicro.isChecked());
+                }
+            });
+        }
+
+        // Thay đổi mật khẩu
+        View settingChangePassword = findViewById(R.id.settingChangePassword);
+        if (settingChangePassword != null) {
+            settingChangePassword.setOnClickListener(v ->
+                Toast.makeText(this, "Chức năng đang phát triển!", Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        // Xử lý switch listeners
+        if (switchThongBao != null) {
+            switchThongBao.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this, "Thông báo: " + (isChecked ? "Bật" : "Tắt"), Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        if (switchCamera != null) {
+            switchCamera.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this, "Camera: " + (isChecked ? "Bật" : "Tắt"), Toast.LENGTH_SHORT).show()
+            );
+        }
+
+        if (switchMicro != null) {
+            switchMicro.setOnCheckedChangeListener((buttonView, isChecked) ->
+                Toast.makeText(this, "Micro: " + (isChecked ? "Bật" : "Tắt"), Toast.LENGTH_SHORT).show()
+            );
+        }
     }
 
     @Override
     public boolean onSupportNavigateUp() {
-        onBackPressed(); // Xử lý nút back trên Toolbar
+        onBackPressed();
         return true;
     }
 }
