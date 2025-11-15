@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+    <!-- Placeholder illustration - simple doctor icon -->
+    <path
+        android:fillColor="#4CAF50"
+        android:pathData="M60,20C50,20 42,28 42,38V48H38C34,48 30,52 30,56V100C30,104 34,108 38,108H82C86,108 90,104 90,100V56C90,52 86,48 82,48H78V38C78,28 70,20 60,20M60,28C65,28 70,33 70,38C70,43 65,48 60,48C55,48 50,43 50,38C50,33 55,28 60,28M60,56C65,56 70,61 70,66C70,71 65,76 60,76C55,76 50,71 50,66C50,61 55,56 60,56M82,92H38V88C38,82 50,78 60,78C70,78 82,82 82,88V92Z" />
+    <!-- Medical cross -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M65,30H55V35H50V45H55V50H65V45H70V35H65V30Z" />
+</vector>
