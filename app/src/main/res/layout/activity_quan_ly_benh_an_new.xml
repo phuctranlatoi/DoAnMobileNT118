@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <!-- AppBar -->
     <com.google.android.material.appbar.AppBarLayout
@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="#2196F3"
             app:navigationIcon="@drawable/ic_home"
             app:title="Quản lý bệnh án"
             app:titleTextColor="@color/white" />
@@ -41,7 +41,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@android:drawable/ic_menu_search"
-                    app:tint="@color/textSecondary" />
+                    app:tint="#7F8C8D" />
 
                 <EditText
                     android:id="@+id/etSearch"
@@ -101,7 +101,7 @@
                             android:text="Thêm bệnh án mới"
                             android:textSize="18sp"
                             android:textStyle="bold"
-                            android:textColor="@color/textPrimary" />
+                            android:textColor="#2C3E50" />
 
                         <ImageView
                             android:id="@+id/btnCloseForm"
@@ -110,7 +110,7 @@
                             android:src="@android:drawable/ic_menu_close_clear_cancel"
                             android:padding="4dp"
                             android:background="?attr/selectableItemBackgroundBorderless"
-                            app:tint="@color/textSecondary" />
+                            app:tint="#7F8C8D" />
                     </LinearLayout>
 
                     <!-- Search Patient -->
@@ -119,7 +119,7 @@
                         android:layout_height="wrap_content"
                         android:text="Bệnh nhân"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
 
@@ -139,9 +139,9 @@
                         android:layout_height="wrap_content"
                         android:text="Chưa chọn bệnh nhân"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:padding="8dp"
-                        android:background="@color/background"
+                        android:background="#F5F5F5"
                         android:layout_marginBottom="16dp"
                         android:drawableStart="@android:drawable/ic_menu_info_details"
                         android:drawablePadding="8dp" />
@@ -152,7 +152,7 @@
                         android:layout_height="wrap_content"
                         android:text="Ngày khám"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
 
@@ -175,7 +175,7 @@
                         android:layout_height="wrap_content"
                         android:text="Chẩn đoán"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
 
@@ -197,7 +197,7 @@
                         android:layout_height="wrap_content"
                         android:text="Ghi chú"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:textStyle="bold"
                         android:layout_marginBottom="4dp" />
 
@@ -241,7 +241,7 @@
                             android:text="Xóa"
                             android:textSize="14sp"
                             android:textStyle="bold"
-                            android:textColor="@color/colorDanger"
+                            android:textColor="#E74C3C"
                             android:background="@drawable/button_outline_red"
                             android:textAllCaps="false"
                             android:visibility="gone" />
@@ -276,7 +276,7 @@
                     android:text="Danh sách bệnh án"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <TextView
                     android:id="@+id/tvCount"
@@ -284,7 +284,7 @@
                     android:layout_height="wrap_content"
                     android:text="0 bệnh án"
                     android:textSize="13sp"
-                    android:textColor="@color/textSecondary" />
+                    android:textColor="#7F8C8D" />
             </LinearLayout>
 
             <!-- RecyclerView -->
@@ -310,7 +310,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_medical_record"
-                    app:tint="@color/textHint"
+                    app:tint="#BDBDBD"
                     android:alpha="0.5" />
 
                 <TextView
@@ -318,7 +318,7 @@
                     android:layout_height="wrap_content"
                     android:text="Chưa có bệnh án nào"
                     android:textSize="16sp"
-                    android:textColor="@color/textSecondary"
+                    android:textColor="#7F8C8D"
                     android:textStyle="bold"
                     android:layout_marginTop="16dp" />
 
@@ -327,7 +327,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nhấn nút + để thêm bệnh án mới"
                     android:textSize="14sp"
-                    android:textColor="@color/textHint"
+                    android:textColor="#BDBDBD"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
         </LinearLayout>
@@ -342,7 +342,7 @@
         android:layout_margin="24dp"
         android:src="@android:drawable/ic_input_add"
         app:tint="@color/white"
-        app:backgroundTint="@color/colorSuccess"
+        app:backgroundTint="#4CAF50"
         app:elevation="6dp" />
 
     <!-- Loading Overlay -->
@@ -374,7 +374,7 @@
                     android:id="@+id/progressBar"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:indeterminateTint="@color/colorPrimary" />
+                    android:indeterminateTint="#2196F3" />
 
                 <TextView
                     android:id="@+id/tvMessage"
@@ -382,7 +382,7 @@
                     android:layout_height="wrap_content"
                     android:text="Đang xử lý..."
                     android:textSize="14sp"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="#2C3E50"
                     android:layout_marginTop="12dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>

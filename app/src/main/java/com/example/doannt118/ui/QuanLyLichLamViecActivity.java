@@ -75,7 +75,7 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quan_ly_lich_lam_viec);
+        setContentView(R.layout.activity_quan_ly_lich_lam_viec_new);
 
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");

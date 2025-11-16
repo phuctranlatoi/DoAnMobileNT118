@@ -171,7 +171,10 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     // === XỬ LÝ CHỨC NĂNG ===
     private void handleDangKyLichKham() {
-        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+        logActivity("Mở đăng ký lịch khám");
+        Intent intent = new Intent(this, DanhSachBacSiActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        startActivity(intent);
     }
 
     private void handleProfile() {

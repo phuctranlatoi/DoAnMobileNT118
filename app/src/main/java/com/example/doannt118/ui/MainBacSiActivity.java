@@ -182,7 +182,7 @@ public class MainBacSiActivity extends AppCompatActivity {
             showError("Lỗi: Không tìm thấy mã bác sĩ");
             return;
         }
-        Intent intent = new Intent(this, QuanLyLichLamViecActivity.class);
+        Intent intent = new Intent(this, QuanLyLichLamViecNewActivity.class);
         intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
         intent.putExtra("MA_BAC_SI", maBacSi);
         startActivity(intent);
@@ -193,7 +193,14 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleXacNhanLichKham() {
-        Toast.makeText(this, "Chức năng Xác Nhận Lịch Khám đang phát triển!", Toast.LENGTH_SHORT).show();
+        if (maBacSi == null) {
+            showError("Lỗi: Không tìm thấy mã bác sĩ");
+            return;
+        }
+        Intent intent = new Intent(this, XacNhanLichKhamActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        startActivity(intent);
     }
 
     private void handleQuanLyHoaDon() {

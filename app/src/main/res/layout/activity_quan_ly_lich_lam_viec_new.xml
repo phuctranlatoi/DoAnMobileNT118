@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:contentScrim="@color/colorPrimary"
+            app:contentScrim="#2196F3"
             app:expandedTitleMarginStart="16dp"
             app:expandedTitleMarginBottom="16dp">
 
@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:background="@color/colorPrimary"
+                android:background="#2196F3"
                 app:layout_collapseMode="parallax">
 
                 <!-- Header -->
@@ -84,14 +84,14 @@
                                 android:text="0"
                                 android:textSize="32sp"
                                 android:textStyle="bold"
-                                android:textColor="@color/colorPrimary" />
+                                android:textColor="#2196F3" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Khung giờ"
                                 android:textSize="13sp"
-                                android:textColor="@color/textSecondary"
+                                android:textColor="#7F8C8D"
                                 android:layout_marginTop="4dp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -119,14 +119,14 @@
                                 android:text="0"
                                 android:textSize="32sp"
                                 android:textStyle="bold"
-                                android:textColor="@color/colorSuccess" />
+                                android:textColor="#4CAF50" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Bệnh nhân"
                                 android:textSize="13sp"
-                                android:textColor="@color/textSecondary"
+                                android:textColor="#7F8C8D"
                                 android:layout_marginTop="4dp" />
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
@@ -173,7 +173,7 @@
                 android:text="Lịch khám trong ngày"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/textPrimary"
+                android:textColor="#2C3E50"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="12dp" />
 
@@ -192,7 +192,7 @@
                 android:layout_height="wrap_content"
                 android:text="Chưa có lịch khám nào"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
+                android:textColor="#7F8C8D"
                 android:gravity="center"
                 android:padding="32dp"
                 android:visibility="gone" />

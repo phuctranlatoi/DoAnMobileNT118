@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="Tên Admin"
-            android:textColor="@color/textPrimary"
+            android:textColor="#2C3E50"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -68,7 +68,7 @@
                 android:text="Danh sách tài khoản"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/textPrimary" />
+                android:textColor="#2C3E50" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAccounts"

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <!-- Header -->
     <LinearLayout
@@ -32,7 +32,7 @@
             android:text="Chọn bác sĩ"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/textPrimary" />
+            android:textColor="#2C3E50" />
     </LinearLayout>
 
     <!-- Search bar -->

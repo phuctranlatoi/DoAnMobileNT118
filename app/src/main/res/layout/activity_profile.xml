@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="#F5F5F5"
     android:fitsSystemWindows="true">
 
 
@@ -56,7 +56,7 @@
                     android:text="Tên người dùng"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <TextView
                     android:id="@+id/tvUserPhone"
@@ -65,7 +65,7 @@
                     android:layout_marginTop="4dp"
                     android:text="+84123456789"
                     android:textSize="14sp"
-                    android:textColor="@color/textSecondary" />
+                    android:textColor="#7F8C8D" />
             </LinearLayout>
         </LinearLayout>
 
@@ -95,7 +95,7 @@
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:src="@drawable/ic_medical_record"
-                    app:tint="@color/colorSuccess"
+                    app:tint="#4CAF50"
                     android:contentDescription="Hồ sơ y tế" />
 
                 <TextView
@@ -106,14 +106,14 @@
                     android:layout_marginStart="16dp"
                     android:text="Hồ sơ y tế"
                     android:textSize="16sp"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_home"
                     android:rotation="180"
-                    app:tint="@color/textSecondary"
+                    app:tint="#7F8C8D"
                     android:contentDescription="Arrow" />
             </LinearLayout>
 
@@ -143,14 +143,14 @@
                     android:layout_marginStart="16dp"
                     android:text="Danh sách quan tâm"
                     android:textSize="16sp"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_home"
                     android:rotation="180"
-                    app:tint="@color/textSecondary"
+                    app:tint="#7F8C8D"
                     android:contentDescription="Arrow" />
             </LinearLayout>
 
@@ -180,14 +180,14 @@
                     android:layout_marginStart="16dp"
                     android:text="Điều khoản và Quy định"
                     android:textSize="16sp"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_home"
                     android:rotation="180"
-                    app:tint="@color/textSecondary"
+                    app:tint="#7F8C8D"
                     android:contentDescription="Arrow" />
             </LinearLayout>
         </LinearLayout>
@@ -227,7 +227,7 @@
                     android:layout_marginStart="16dp"
                     android:text="Liên hệ &amp; hỗ trợ"
                     android:textSize="16sp"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
             </LinearLayout>
 
             <!-- Cài đặt -->
@@ -256,14 +256,14 @@
                     android:layout_marginStart="16dp"
                     android:text="Cài đặt"
                     android:textSize="16sp"
-                    android:textColor="@color/textPrimary" />
+                    android:textColor="#2C3E50" />
 
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/ic_home"
                     android:rotation="180"
-                    app:tint="@color/textSecondary"
+                    app:tint="#7F8C8D"
                     android:contentDescription="Arrow" />
             </LinearLayout>
 

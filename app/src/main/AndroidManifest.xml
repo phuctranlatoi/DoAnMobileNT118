@@ -47,9 +47,14 @@
         <activity android:name=".ui.QuanLyLichLamViecActivity" />
         <activity android:name=".ui.ForgotPasswordActivity" />
         <activity android:name=".ui.SettingActivity"/>
+        <activity android:name=".ui.DangKyLichKhamActivity" />
+        <activity android:name=".ui.DanhSachBacSiActivity" />
+        <activity android:name=".ui.ChiTietBacSiActivity" />
         <activity android:name=".ui.XemChiTietLichKhamActivity"
             android:parentActivityName=".ui.QuanLyLichLamViecActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name=".ui.XacNhanLichKhamActivity" />
+        <activity android:name=".ui.QuanLyLichLamViecNewActivity" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />

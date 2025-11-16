@@ -1,24 +1,27 @@
 package com.example.doannt118.model;
 
+import com.google.firebase.Timestamp;
+
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LichLamViec {
     private String maLichLamViec;
     private String maBacSi;
-    private Date ngayLamViec;
-    private String caLamViec;
-    private String trangThai;
+    private Date ngayLamViec; // Dùng Date thay vì Timestamp để tương thích
+    private String caLamViec; // "08:00-09:00" - tên field trong Firestore
+    private String trangThai; // CON_TRONG, DA_DAY
+    private int soLuongToiDa; // Mặc định 6
 
     public LichLamViec() {}
 
-    public LichLamViec(String maLichLamViec, String maBacSi, Date ngayLamViec, String caLamViec, String trangThai) {
+    public LichLamViec(String maLichLamViec, String maBacSi, Date ngayLamViec,
+                       String caLamViec, String trangThai, int soLuongToiDa) {
         this.maLichLamViec = maLichLamViec;
         this.maBacSi = maBacSi;
         this.ngayLamViec = ngayLamViec;
         this.caLamViec = caLamViec;
         this.trangThai = trangThai;
+        this.soLuongToiDa = soLuongToiDa;
     }
 
     public String getMaLichLamViec() { return maLichLamViec; }
@@ -36,13 +39,6 @@ public class LichLamViec {
     public String getTrangThai() { return trangThai; }
     public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 
-    public Map<String, Object> toMap() {
-        Map<String, Object> map = new HashMap<>();
-        map.put("maLichLamViec", maLichLamViec);
-        map.put("maBacSi", maBacSi);
-        map.put("ngayLamViec", ngayLamViec);
-        map.put("caLamViec", caLamViec);
-        map.put("trangThai", trangThai);
-        return map;
-    }
+    public int getSoLuongToiDa() { return soLuongToiDa; }
+    public void setSoLuongToiDa(int soLuongToiDa) { this.soLuongToiDa = soLuongToiDa; }
 }

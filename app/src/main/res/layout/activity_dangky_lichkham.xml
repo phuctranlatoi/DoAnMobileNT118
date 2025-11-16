@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <!-- Header -->
     <LinearLayout
@@ -32,7 +32,7 @@
             android:text="Đăng ký lịch khám"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="@color/textPrimary" />
+            android:textColor="#2C3E50" />
     </LinearLayout>
 
     <ScrollView
@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="Ngày khám"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
+                android:textColor="#7F8C8D"
                 android:layout_marginBottom="8dp" />
 
             <Button
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chọn ngày khám"
-                android:textColor="@color/textPrimary"
+                android:textColor="#2C3E50"
                 android:backgroundTint="#FFFFFF"
                 android:drawableEnd="@drawable/ic_calendar"
                 android:gravity="start|center_vertical"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:text="Bác sĩ"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
+                android:textColor="#7F8C8D"
                 android:layout_marginBottom="8dp" />
 
             <Spinner
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:text="Khung giờ"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
+                android:textColor="#7F8C8D"
                 android:layout_marginBottom="8dp" />
 
             <Spinner
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
-                android:textColor="@color/colorDanger"
+                android:textColor="#E74C3C"
                 android:visibility="gone"
                 android:layout_marginBottom="16dp" />
 
@@ -118,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:text="Đăng ký lịch khám"
                 android:textColor="@color/white"
-                android:backgroundTint="@color/colorPrimary"
+                android:backgroundTint="#2196F3"
                 android:padding="16dp"
                 android:layout_marginBottom="24dp" />
 
@@ -129,7 +129,7 @@
                 android:text="Lịch khám của bạn"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/textPrimary"
+                android:textColor="#2C3E50"
                 android:layout_marginBottom="12dp" />
 
             <androidx.recyclerview.widget.RecyclerView

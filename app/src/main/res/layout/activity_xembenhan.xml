@@ -5,13 +5,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#2196F3"
         android:orientation="horizontal"
         android:padding="16dp"
         android:gravity="center_vertical">
@@ -74,7 +74,7 @@
                 android:text="Trần Hoàng Phúc"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                android:textColor="@color/textPrimary" />
+                android:textColor="#2C3E50" />
 
             <TextView
                 android:id="@+id/tvMaHoSo"
@@ -83,7 +83,7 @@
                 android:layout_marginTop="4dp"
                 android:text="Mã hồ sơ: YMP252502139"
                 android:textSize="12sp"
-                android:textColor="@color/textSecondary" />
+                android:textColor="#7F8C8D" />
         </LinearLayout>
     </LinearLayout>
 
@@ -104,7 +104,7 @@
             android:layout_marginEnd="4dp"
             android:text="Kết quả khám"
             android:textSize="14sp"
-            android:backgroundTint="@color/colorPrimary"
+            android:backgroundTint="#2196F3"
             android:textColor="@color/white" />
 
         <Button
@@ -115,8 +115,8 @@
             android:layout_marginStart="4dp"
             android:text="Ghi chú"
             android:textSize="14sp"
-            android:backgroundTint="@color/divider"
-            android:textColor="@color/textSecondary" />
+            android:backgroundTint="#E0E0E0"
+            android:textColor="#7F8C8D" />
     </LinearLayout>
 
     <!-- Content Area -->
@@ -155,7 +155,7 @@
                 android:layout_marginTop="16dp"
                 android:text="Hồ sơ này chưa có kết quả khám"
                 android:textSize="16sp"
-                android:textColor="@color/textPrimary"
+                android:textColor="#2C3E50"
                 android:textStyle="bold" />
 
             <TextView
@@ -164,7 +164,7 @@
                 android:layout_marginTop="8dp"
                 android:text="Chưa có dữ liệu khám bệnh"
                 android:textSize="14sp"
-                android:textColor="@color/textSecondary"
+                android:textColor="#7F8C8D"
                 android:gravity="center" />
         </LinearLayout>
 

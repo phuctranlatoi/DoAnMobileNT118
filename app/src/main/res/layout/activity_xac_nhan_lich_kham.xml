@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="#F5F5F5">
 
     <!-- AppBar với gradient -->
     <com.google.android.material.appbar.AppBarLayout
@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
+            android:background="#2196F3"
             app:navigationIcon="@drawable/ic_home"
             app:title="Xác nhận lịch khám"
             app:titleTextColor="@color/white" />
@@ -44,7 +44,7 @@
                     android:text="Chờ xác nhận"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    android:backgroundTint="@color/colorPrimary"
+                    android:backgroundTint="#2196F3"
                     android:textColor="@color/white"
                     android:layout_marginEnd="4dp" />
 
@@ -55,8 +55,8 @@
                     android:layout_weight="1"
                     android:text="Đã xác nhận"
                     android:textSize="14sp"
-                    android:backgroundTint="@color/divider"
-                    android:textColor="@color/textSecondary"
+                    android:backgroundTint="#E0E0E0"
+                    android:textColor="#7F8C8D"
                     android:layout_marginStart="4dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
@@ -97,7 +97,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:src="@drawable/ic_appointment"
-                    app:tint="@color/textHint"
+                    app:tint="#BDBDBD"
                     android:alpha="0.5" />
 
                 <TextView
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:text="Không có lịch khám nào"
                     android:textSize="16sp"
-                    android:textColor="@color/textSecondary"
+                    android:textColor="#7F8C8D"
                     android:textStyle="bold"
                     android:layout_marginTop="16dp" />
 
@@ -115,7 +115,7 @@
                     android:layout_height="wrap_content"
                     android:text="Danh sách trống"
                     android:textSize="14sp"
-                    android:textColor="@color/textHint"
+                    android:textColor="#BDBDBD"
                     android:layout_marginTop="4dp" />
             </LinearLayout>
         </LinearLayout>
@@ -150,14 +150,14 @@
                     android:id="@+id/progressBar"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:indeterminateTint="@color/colorPrimary" />
+                    android:indeterminateTint="#2196F3" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đang xử lý..."
                     android:textSize="14sp"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="#2C3E50"
                     android:layout_marginTop="12dp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
