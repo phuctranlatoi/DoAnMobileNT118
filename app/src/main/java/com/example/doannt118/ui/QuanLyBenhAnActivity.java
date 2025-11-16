@@ -42,6 +42,9 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
     private RecyclerView rvBenhAn;
     private Button btnThem, btnCapNhat, btnXoa, btnQuayLai;
     private ProgressBar progressBar;
+    private View cardForm, loadingOverlay, layoutEmpty, btnCloseForm;
+    private com.google.android.material.floatingactionbutton.FloatingActionButton fabAdd;
+    private TextView tvCount;
     private FirestoreRepository repo;
     private String maTaiKhoan, maBacSi;
     private BenhAn selectedBenhAn;
@@ -53,7 +56,7 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quan_ly_benh_an);
+        setContentView(R.layout.activity_quan_ly_benh_an_new);
 
         // Initialize Firestore and get intent data
         repo = new FirestoreRepository();
@@ -78,6 +81,14 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         btnQuayLai = findViewById(R.id.btnQuayLai);
         tvMessage = findViewById(R.id.tvMessage);
         progressBar = findViewById(R.id.progressBar);
+        
+        // New layout views
+        cardForm = findViewById(R.id.cardForm);
+        loadingOverlay = findViewById(R.id.loadingOverlay);
+        layoutEmpty = findViewById(R.id.layoutEmpty);
+        btnCloseForm = findViewById(R.id.btnCloseForm);
+        fabAdd = findViewById(R.id.fabAdd);
+        tvCount = findViewById(R.id.tvCount);
 
         // Set up RecyclerView
         rvBenhAn.setLayoutManager(new LinearLayoutManager(this));
@@ -85,9 +96,16 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         benhAnAdapter = new BenhAnAdapter(benhAnList, benhAn -> {
             selectedBenhAn = benhAn;
             loadBenhAnForUpdate(benhAn);
+            
+            // Show form in edit mode
+            if (cardForm != null) {
+                cardForm.setVisibility(View.VISIBLE);
+            }
             btnCapNhat.setVisibility(View.VISIBLE);
             btnXoa.setVisibility(View.VISIBLE);
             btnThem.setVisibility(View.GONE);
+            
+            Toast.makeText(this, "Chỉnh sửa bệnh án", Toast.LENGTH_SHORT).show();
         });
         rvBenhAn.setAdapter(benhAnAdapter);
 
@@ -96,6 +114,31 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
         btnCapNhat.setOnClickListener(v -> confirmAction("Cập nhật bệnh án", "Bạn có chắc muốn cập nhật bệnh án này?", this::handleCapNhat));
         btnXoa.setOnClickListener(v -> confirmAction("Xóa bệnh án", "Bạn có chắc muốn xóa bệnh án này?", this::handleXoa));
         btnQuayLai.setOnClickListener(v -> handleQuayLai());
+        
+        // FAB - Show form to add new
+        if (fabAdd != null) {
+            fabAdd.setOnClickListener(v -> {
+                clearForm();
+                selectedBenhAn = null;
+                selectedBenhNhan = null;
+                cardForm.setVisibility(View.VISIBLE);
+                btnThem.setVisibility(View.VISIBLE);
+                btnCapNhat.setVisibility(View.GONE);
+                btnXoa.setVisibility(View.GONE);
+                Toast.makeText(this, "Thêm bệnh án mới", Toast.LENGTH_SHORT).show();
+            });
+        }
+        
+        // Close form button
+        if (btnCloseForm != null) {
+            btnCloseForm.setOnClickListener(v -> {
+                cardForm.setVisibility(View.GONE);
+                clearForm();
+            });
+        }
+        
+        // Toolbar navigation
+        toolbar.setNavigationOnClickListener(v -> finish());
         etSearch.setOnEditorActionListener((v, actionId, event) -> {
             handleTraCuu();
             return true;
@@ -133,9 +176,22 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
                         }
                     }
                     benhAnAdapter.notifyDataSetChanged();
+                    
+                    // Update count
+                    if (tvCount != null) {
+                        tvCount.setText(benhAnList.size() + " bệnh án");
+                    }
+                    
+                    // Show/hide empty state
                     if (benhAnList.isEmpty()) {
+                        if (layoutEmpty != null) {
+                            layoutEmpty.setVisibility(View.VISIBLE);
+                        }
                         showError("Không có bệnh án!");
                     } else {
+                        if (layoutEmpty != null) {
+                            layoutEmpty.setVisibility(View.GONE);
+                        }
                         hideMessage();
                     }
                     hideProgressBar();
@@ -424,11 +480,19 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
     }
 
     private void showProgressBar() {
-        if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
+        if (loadingOverlay != null) {
+            loadingOverlay.setVisibility(View.VISIBLE);
+        } else if (progressBar != null) {
+            progressBar.setVisibility(View.VISIBLE);
+        }
     }
 
     private void hideProgressBar() {
-        if (progressBar != null) progressBar.setVisibility(View.GONE);
+        if (loadingOverlay != null) {
+            loadingOverlay.setVisibility(View.GONE);
+        } else if (progressBar != null) {
+            progressBar.setVisibility(View.GONE);
+        }
     }
 
     private void showError(String message) {
@@ -441,5 +505,16 @@ public class QuanLyBenhAnActivity extends AppCompatActivity {
 
     private void hideMessage() {
         if (tvMessage != null) tvMessage.setVisibility(View.GONE);
+    }
+
+    private void clearForm() {
+        etSearchBenhNhan.setText("");
+        tvSelectedBenhNhan.setText("Chưa chọn bệnh nhân");
+        etSearch.setText("");
+        etChanDoan.setText("");
+        etGhiChu.setText("");
+        tvNgayKham.setText("");
+        selectedBenhAn = null;
+        selectedBenhNhan = null;
     }
 }

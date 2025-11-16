@@ -24,7 +24,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_note"
-                android:tint="@color/colorPrimary"
+                android:tint="#2196F3"
                 android:layout_marginEnd="8dp"/>
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:text="01/01/2024"
                 android:textSize="14sp"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#2196F3"
                 android:textStyle="bold"/>
         </LinearLayout>
 
@@ -51,7 +51,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider"
+            android:background="#E0E0E0"
             android:layout_marginVertical="8dp"/>
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text="Mã bệnh án: BA001"
             android:textSize="12sp"
-            android:textColor="@color/textSecondary"/>
+            android:textColor="#7F8C8D"/>
 
     </LinearLayout>
 

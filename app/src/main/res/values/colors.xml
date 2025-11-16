@@ -1,41 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Base Colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    
-    <!-- Primary Colors - Blue Theme -->
-    <color name="colorPrimary">#2196F3</color>
-    <color name="colorPrimaryDark">#1976D2</color>
-    <color name="colorPrimaryLight">#BBDEFB</color>
-    <color name="colorAccent">#4CAF50</color>
-    
-    <!-- Secondary Colors -->
-    <color name="colorSuccess">#4CAF50</color>
-    <color name="colorSuccessLight">#E8F5E9</color>
-    <color name="colorWarning">#FFA726</color>
-    <color name="colorWarningLight">#FFF3E0</color>
-    <color name="colorDanger">#E74C3C</color>
-    <color name="colorDangerLight">#FFEBEE</color>
-    <color name="colorInfo">#2196F3</color>
-    <color name="colorInfoLight">#E3F2FD</color>
-    
-    <!-- Text Colors -->
-    <color name="textPrimary">#2C3E50</color>
-    <color name="textSecondary">#7F8C8D</color>
-    <color name="textHint">#BDBDBD</color>
-    <color name="textDisabled">#9E9E9E</color>
-    
-    <!-- Background Colors -->
-    <color name="background">#F5F5F5</color>
-    <color name="backgroundCard">#FFFFFF</color>
-    <color name="backgroundOverlay">#80000000</color>
-    
-    <!-- Border & Divider -->
-    <color name="divider">#E0E0E0</color>
-    <color name="border">#BDBDBD</color>
-    
-    <!-- Legacy (for compatibility) -->
-    <color name="selected_item_background">#E3F2FD</color>
-    <color name="blue">#2196F3</color>
+    <color name="selected_item_background">#D4EDDA</color>
+    <color name="blue">#0000FF</color>
 </resources>

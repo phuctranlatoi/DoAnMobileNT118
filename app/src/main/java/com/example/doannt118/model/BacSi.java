@@ -12,6 +12,11 @@ public class BacSi {
     private String hocVi;
     private List<String> chungChiHanhNghe;
     private String trangThaiXacThuc; // "Chờ xác thực", "Đã xác thực", "Từ chối"
+    private String chuyenKhoa; // "Nội thận", "Ngoại tiết niệu", etc.
+    private String diaChi;
+    private int namKinhNghiem;
+    private String gioiThieu;
+    private String ngaySinh;
 
     public BacSi() {
         chungChiHanhNghe = new ArrayList<>();
@@ -44,6 +49,21 @@ public class BacSi {
     public void setChungChiHanhNghe(List<String> chungChiHanhNghe) { this.chungChiHanhNghe = chungChiHanhNghe; }
     public String getTrangThaiXacThuc() { return trangThaiXacThuc; }
     public void setTrangThaiXacThuc(String trangThaiXacThuc) { this.trangThaiXacThuc = trangThaiXacThuc; }
+    
+    public String getChuyenKhoa() { return chuyenKhoa; }
+    public void setChuyenKhoa(String chuyenKhoa) { this.chuyenKhoa = chuyenKhoa; }
+    
+    public String getDiaChi() { return diaChi; }
+    public void setDiaChi(String diaChi) { this.diaChi = diaChi; }
+    
+    public int getNamKinhNghiem() { return namKinhNghiem; }
+    public void setNamKinhNghiem(int namKinhNghiem) { this.namKinhNghiem = namKinhNghiem; }
+    
+    public String getGioiThieu() { return gioiThieu; }
+    public void setGioiThieu(String gioiThieu) { this.gioiThieu = gioiThieu; }
+    
+    public String getNgaySinh() { return ngaySinh; }
+    public void setNgaySinh(String ngaySinh) { this.ngaySinh = ngaySinh; }
 
     @Override
     public String toString() {

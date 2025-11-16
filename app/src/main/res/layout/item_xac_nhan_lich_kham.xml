@@ -29,7 +29,7 @@
                 android:layout_height="48dp"
                 app:cardCornerRadius="24dp"
                 app:cardElevation="0dp"
-                app:cardBackgroundColor="@color/colorInfoLight">
+                app:cardBackgroundColor="#E3F2FD">
 
                 <TextView
                     android:id="@+id/tvSoThuTu"
@@ -38,7 +38,7 @@
                     android:text="1"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="#2196F3"
                     android:gravity="center" />
             </androidx.cardview.widget.CardView>
 
@@ -56,7 +56,7 @@
                     android:text="Nguyễn Văn A"
                     android:textSize="17sp"
                     android:textStyle="bold"
-                    android:textColor="@color/textPrimary"
+                    android:textColor="#2C3E50"
                     android:maxLines="1"
                     android:ellipsize="end" />
 
@@ -71,7 +71,7 @@
                         android:layout_width="14dp"
                         android:layout_height="14dp"
                         android:src="@drawable/ic_schedule"
-                        app:tint="@color/textSecondary" />
+                        app:tint="#7F8C8D" />
 
                     <TextView
                         android:id="@+id/tvNgayKham"
@@ -79,7 +79,7 @@
                         android:layout_height="wrap_content"
                         android:text="01/01/2024 - 08:00"
                         android:textSize="13sp"
-                        android:textColor="@color/textSecondary"
+                        android:textColor="#7F8C8D"
                         android:layout_marginStart="4dp" />
                 </LinearLayout>
             </LinearLayout>
@@ -94,7 +94,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/white"
                 android:background="@drawable/badge_background"
-                android:backgroundTint="@color/colorWarning"
+                android:backgroundTint="#FFA726"
                 android:paddingHorizontal="12dp"
                 android:paddingVertical="6dp"
                 android:elevation="2dp" />
@@ -104,7 +104,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/divider"
+            android:background="#E0E0E0"
             android:layout_marginVertical="8dp" />
 
         <!-- Buttons -->
@@ -124,7 +124,7 @@
                 android:text="✕ Từ chối"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/colorDanger"
+                android:textColor="#E74C3C"
                 android:background="@drawable/button_outline_red"
                 android:layout_marginEnd="8dp"
                 android:textAllCaps="false" />

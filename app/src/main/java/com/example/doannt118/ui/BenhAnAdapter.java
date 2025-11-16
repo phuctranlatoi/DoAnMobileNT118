@@ -69,11 +69,17 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.BenhAnView
             holder.tvMaBenhNhan.setText("BN: N/A");
         }
 
-        holder.itemView.setOnClickListener(v -> {
+        // Click on item or edit icon
+        View.OnClickListener clickListener = v -> {
             if (listener != null) {
                 listener.onBenhAnClick(benhAn);
             }
-        });
+        };
+        
+        holder.itemView.setOnClickListener(clickListener);
+        if (holder.btnEdit != null) {
+            holder.btnEdit.setOnClickListener(clickListener);
+        }
     }
 
     @Override
@@ -83,6 +89,7 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.BenhAnView
 
     static class BenhAnViewHolder extends RecyclerView.ViewHolder {
         TextView tvMaBenhAn, tvMaBenhNhan, tvChanDoan, tvNgayKham;
+        View btnEdit;
 
         public BenhAnViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -90,6 +97,7 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.BenhAnView
             tvMaBenhNhan = itemView.findViewById(R.id.tvMaBenhNhan);
             tvChanDoan = itemView.findViewById(R.id.tvChanDoan);
             tvNgayKham = itemView.findViewById(R.id.tvNgayKham);
+            btnEdit = itemView.findViewById(R.id.btnEdit);
         }
     }
 }

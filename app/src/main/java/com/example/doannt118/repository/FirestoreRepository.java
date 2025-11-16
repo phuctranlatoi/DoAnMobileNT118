@@ -34,8 +34,30 @@ public class FirestoreRepository {
         return db.collection(collection);
     }
 
-    // === LẤY DỮ LIỆU THEO FIELD ===
+    // === LẤY DỮ LIỆU THEO FIELD (String) ===
     public void getByField(String collection, String field, String value,
+                           Consumer<QuerySnapshot> onSuccess,
+                           Consumer<Exception> onFailure) {
+        if (collection == null || field == null || value == null) {
+            onFailure.accept(new IllegalArgumentException("Collection, field, or value cannot be null"));
+            return;
+        }
+
+        db.collection(collection)
+                .whereEqualTo(field, value)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getByField success: " + collection + ", field: " + field + ", value: " + value + ", results: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getByField failed: " + collection + ", field: " + field + ", value: " + value, e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // === LẤY DỮ LIỆU THEO FIELD (Object - hỗ trợ Timestamp, Date, etc.) ===
+    public void getByField(String collection, String field, Object value,
                            Consumer<QuerySnapshot> onSuccess,
                            Consumer<Exception> onFailure) {
         if (collection == null || field == null || value == null) {

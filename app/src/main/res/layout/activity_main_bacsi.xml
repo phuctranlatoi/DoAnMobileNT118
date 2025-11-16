@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="#2196F3"
         android:orientation="horizontal"
         android:padding="16dp"
         android:gravity="center_vertical"
@@ -104,7 +104,7 @@
                         android:layout_height="wrap_content"
                         android:text="Xin chào, Bác sĩ 👋"
                         android:textSize="24sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:textStyle="bold" />
 
                     <TextView
@@ -113,14 +113,14 @@
                         android:layout_marginTop="4dp"
                         android:text="Chăm sóc sức khỏe bệnh nhân"
                         android:textSize="14sp"
-                        android:textColor="@color/textSecondary" />
+                        android:textColor="#7F8C8D" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="với IVE"
                         android:textSize="14sp"
-                        android:textColor="@color/textSecondary" />
+                        android:textColor="#7F8C8D" />
                 </LinearLayout>
 
                 <ImageView
@@ -164,7 +164,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/colorSuccessLight">
+                        app:cardBackgroundColor="#E8F5E9">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -172,7 +172,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_medical_record"
                             android:contentDescription="Quản lý bệnh án"
-                            app:tint="@color/colorSuccess" />
+                            app:tint="#4CAF50" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -181,7 +181,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Quản lý\nbệnh án"
                         android:textSize="12sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -204,7 +204,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/colorSuccessLight">
+                        app:cardBackgroundColor="#E8F5E9">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -212,7 +212,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_schedule"
                             android:contentDescription="Quản lý lịch làm việc"
-                            app:tint="@color/colorSuccess" />
+                            app:tint="#4CAF50" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -221,7 +221,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Lịch\nlàm việc"
                         android:textSize="12sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -244,7 +244,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/colorSuccessLight">
+                        app:cardBackgroundColor="#E8F5E9">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -252,7 +252,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_medication"
                             android:contentDescription="Quản lý đơn thuốc"
-                            app:tint="@color/colorSuccess" />
+                            app:tint="#4CAF50" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -261,7 +261,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Quản lý\nđơn thuốc"
                         android:textSize="12sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -285,7 +285,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/colorSuccessLight">
+                        app:cardBackgroundColor="#E8F5E9">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -293,7 +293,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_appointment"
                             android:contentDescription="Xác nhận lịch khám"
-                            app:tint="@color/colorSuccess" />
+                            app:tint="#4CAF50" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -302,7 +302,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Xác nhận\nlịch khám"
                         android:textSize="12sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -325,7 +325,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="@color/colorSuccessLight">
+                        app:cardBackgroundColor="#E8F5E9">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -333,7 +333,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_invoice"
                             android:contentDescription="Quản lý hóa đơn"
-                            app:tint="@color/colorSuccess" />
+                            app:tint="#4CAF50" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -342,7 +342,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Quản lý\nhóa đơn"
                         android:textSize="12sp"
-                        android:textColor="@color/textPrimary"
+                        android:textColor="#2C3E50"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -357,7 +357,7 @@
                 android:text="Lịch hẹn hôm nay"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:textColor="@color/textPrimary" />
+                android:textColor="#2C3E50" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAppointments"
