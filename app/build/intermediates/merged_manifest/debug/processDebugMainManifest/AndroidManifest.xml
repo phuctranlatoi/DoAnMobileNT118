@@ -69,10 +69,15 @@
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
         <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
         <activity android:name="com.example.doannt118.ui.SettingActivity" />
+        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
+        <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
+        <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
         <activity
             android:name="com.example.doannt118.ui.XemChiTietLichKhamActivity"
             android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+        <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
+        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />
