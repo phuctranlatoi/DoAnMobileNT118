@@ -99,6 +99,7 @@
                     android:contentDescription="Hồ sơ y tế" />
 
                 <TextView
+                    android:id="@+id/tvMenuHoSoTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -316,7 +317,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
-        app:menu="@menu/bottom_nav_patient"
         app:itemIconTint="@drawable/bottom_nav_icon_tint"
         app:itemTextColor="@drawable/bottom_nav_icon_tint"
         app:layout_constraintBottom_toBottomOf="parent"

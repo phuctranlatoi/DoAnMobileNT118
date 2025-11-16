@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.doannt118.R;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.example.doannt118.utils.SessionManager;
 import com.google.firebase.auth.FirebaseAuth;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -20,6 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvQuenMatKhau, tvDangKy;
     private FirebaseAuth auth;
     private FirestoreRepository repo;
+    private SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,17 @@ public class LoginActivity extends AppCompatActivity {
         tvDangKy = findViewById(R.id.tvDangKy);
         auth = FirebaseAuth.getInstance();
         repo = new FirestoreRepository();
+        sessionManager = new SessionManager(this);
+
+        // Kiểm tra xem đã đăng nhập chưa
+        if (sessionManager.isLoggedIn()) {
+            String maTaiKhoan = sessionManager.getMaTaiKhoan();
+            String vaiTro = sessionManager.getVaiTro();
+            if (maTaiKhoan != null && vaiTro != null) {
+                navigateToActivity(vaiTro, maTaiKhoan);
+                return;
+            }
+        }
 
         btnDangNhap.setOnClickListener(v -> {
             String input = txtTenDangNhap.getText().toString().trim();
@@ -85,6 +98,8 @@ public class LoginActivity extends AppCompatActivity {
                                             repo.updatePassword(email, newHashedPassword,
                                                     aVoid -> {
                                                         Log.d("LoginActivity", "Password synced, navigating for vaiTro=" + vaiTro);
+                                                        // Lưu session
+                                                        sessionManager.createLoginSession(maTaiKhoan, vaiTro, email, "");
                                                         navigateToActivity(vaiTro, maTaiKhoan);
                                                     },
                                                     e -> {
@@ -93,6 +108,8 @@ public class LoginActivity extends AppCompatActivity {
                                                     });
                                         } else {
                                             Log.d("LoginActivity", "Password matched, navigating for vaiTro=" + vaiTro);
+                                            // Lưu session
+                                            sessionManager.createLoginSession(maTaiKhoan, vaiTro, email, "");
                                             navigateToActivity(vaiTro, maTaiKhoan);
                                         }
                                     })

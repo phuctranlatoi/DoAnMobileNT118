@@ -270,6 +270,28 @@ public class FirestoreRepository {
                 });
     }
 
+    // === CẬP NHẬT CÁC FIELD CỤ THỂ ===
+    public void updateDocumentFields(String collection, String documentId, Map<String, Object> fields,
+                                     Consumer<Void> onSuccess,
+                                     Consumer<Exception> onFailure) {
+        if (collection == null || documentId == null || fields == null || fields.isEmpty()) {
+            onFailure.accept(new IllegalArgumentException("Collection, documentId, or fields cannot be null or empty"));
+            return;
+        }
+
+        db.collection(collection)
+                .document(documentId)
+                .update(fields)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "updateDocumentFields success: collection=" + collection + ", documentId=" + documentId);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "updateDocumentFields failed: collection=" + collection + ", documentId=" + documentId, e);
+                    onFailure.accept(e);
+                });
+    }
+
     // === XOÁ DOCUMENT ===
     public void deleteDocument(String collection, String documentId,
                                Consumer<Void> onSuccess,
