@@ -30,7 +30,8 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
     private LinearLayout editButtonLayout;
     private FirestoreRepository repo;
     private String maTaiKhoan;
-    private String maBenhNhan; // maProfile
+    private String maBenhNhan; // maProfile hoặc maBacSi
+    private String userType; // "benhnhan" hoặc "bacsi"
     private boolean isEditing = false;
 
     @Override
@@ -40,6 +41,12 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
+        userType = getIntent().getStringExtra("USER_TYPE");
+        
+        // Mặc định là bệnh nhân nếu không có userType
+        if (userType == null || userType.isEmpty()) {
+            userType = "benhnhan";
+        }
 
         if (maTaiKhoan == null || maTaiKhoan.isEmpty()) {
             showError("Không tìm thấy thông tin tài khoản!");
@@ -49,7 +56,7 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
         initViews();
         setupClickListeners();
-        loadBenhNhanData();
+        loadUserData();
     }
 
     private void initViews() {
@@ -88,39 +95,68 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         }
     }
 
-    private void loadBenhNhanData() {
+    private void loadUserData() {
         showLoading("Đang tải thông tin...");
+        
+        String collection = "bacsi".equals(userType) ? "BacSi" : "BenhNhan";
+        String userLabel = "bacsi".equals(userType) ? "bác sĩ" : "bệnh nhân";
 
-        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
+        repo.getByField(collection, "maTaiKhoan", maTaiKhoan,
                 querySnapshot -> {
                     hideLoading();
                     if (querySnapshot.isEmpty()) {
-                        showError("Không tìm thấy thông tin bệnh nhân!");
+                        showError("Không tìm thấy thông tin " + userLabel + "!");
                         return;
                     }
 
                     DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
-                    BenhNhan benhNhan = doc.toObject(BenhNhan.class);
-                    if (benhNhan == null) {
-                        showError("Dữ liệu không hợp lệ!");
-                        return;
-                    }
+                    
+                    if ("bacsi".equals(userType)) {
+                        // Load thông tin bác sĩ
+                        String maBacSi = doc.getString("maBacSi");
+                        String hoTen = doc.getString("hoTen");
+                        String soDienThoai = doc.getString("soDienThoai");
+                        String diaChi = doc.getString("diaChi");
+                        String ngaySinh = doc.getString("ngaySinh");
+                        
+                        if (maBacSi == null || maBacSi.isEmpty()) {
+                            showError("Mã bác sĩ trống!");
+                            return;
+                        }
+                        
+                        maBenhNhan = maBacSi; // Dùng chung biến để lưu ID
+                        
+                        // Hiển thị dữ liệu
+                        if (etHoTen != null) etHoTen.setText(safeString(hoTen));
+                        if (etSoDienThoai != null) etSoDienThoai.setText(safeString(soDienThoai));
+                        if (etDiaChi != null) {
+                            etDiaChi.setText(safeString(diaChi));
+                            etDiaChi.setVisibility(View.VISIBLE);
+                        }
+                        if (etNgaySinh != null) etNgaySinh.setText(safeString(ngaySinh));
+                    } else {
+                        // Load thông tin bệnh nhân
+                        BenhNhan benhNhan = doc.toObject(BenhNhan.class);
+                        if (benhNhan == null) {
+                            showError("Dữ liệu không hợp lệ!");
+                            return;
+                        }
 
-                    maBenhNhan = benhNhan.getMaBenhNhan();
-                    if (maBenhNhan == null || maBenhNhan.isEmpty()) {
-                        showError("Mã bệnh nhân trống!");
-                        return;
-                    }
+                        maBenhNhan = benhNhan.getMaBenhNhan();
+                        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+                            showError("Mã bệnh nhân trống!");
+                            return;
+                        }
 
-                    // Hiển thị dữ liệu
-                    if (etHoTen != null) etHoTen.setText(safeString(benhNhan.getHoTen()));
-                    if (etSoDienThoai != null) etSoDienThoai.setText(safeString(benhNhan.getSoDienThoai()));
-                    if (etDiaChi != null) {
-                        etDiaChi.setText(safeString(benhNhan.getDiaChi()));
-                        etDiaChi.setVisibility(View.VISIBLE);
+                        // Hiển thị dữ liệu
+                        if (etHoTen != null) etHoTen.setText(safeString(benhNhan.getHoTen()));
+                        if (etSoDienThoai != null) etSoDienThoai.setText(safeString(benhNhan.getSoDienThoai()));
+                        if (etDiaChi != null) {
+                            etDiaChi.setText(safeString(benhNhan.getDiaChi()));
+                            etDiaChi.setVisibility(View.VISIBLE);
+                        }
+                        if (etNgaySinh != null) etNgaySinh.setText(safeString(benhNhan.getNgaySinh()));
                     }
-                    if (etNgaySinh != null) etNgaySinh.setText(safeString(benhNhan.getNgaySinh()));
-
 
                     logActivity("Xem hồ sơ cá nhân");
                 },
@@ -144,7 +180,7 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
 
         // Nếu hủy → reload dữ liệu từ Firestore (an toàn nhất)
         if (!enable) {
-            loadBenhNhanData();
+            loadUserData();
         }
     }
 
@@ -161,8 +197,7 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         String diaChi = safeTrim(etDiaChi);
         String ngaySinh = safeTrim(etNgaySinh);
 
-
-        if (hoTen.isEmpty() || soDienThoai.isEmpty() || diaChi.isEmpty()|| ngaySinh.isEmpty()) {
+        if (hoTen.isEmpty() || soDienThoai.isEmpty() || diaChi.isEmpty() || ngaySinh.isEmpty()) {
             showError("Vui lòng điền đầy đủ thông tin!");
             return;
         }
@@ -173,31 +208,59 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         }
 
         if (maBenhNhan == null) {
-            showError("Lỗi: Không có mã bệnh nhân!");
+            showError("Lỗi: Không có mã người dùng!");
             return;
         }
 
         showLoading("Đang lưu...");
+        
+        String collection = "bacsi".equals(userType) ? "BacSi" : "BenhNhan";
 
-        BenhNhan updated = new BenhNhan();
-        updated.setMaBenhNhan(maBenhNhan);
-        updated.setMaTaiKhoan(maTaiKhoan);
-        updated.setHoTen(hoTen);
-        updated.setSoDienThoai(soDienThoai);
-        updated.setDiaChi(diaChi);
+        if ("bacsi".equals(userType)) {
+            // Cập nhật thông tin bác sĩ
+            java.util.Map<String, Object> updates = new java.util.HashMap<>();
+            updates.put("maBacSi", maBenhNhan);
+            updates.put("maTaiKhoan", maTaiKhoan);
+            updates.put("hoTen", hoTen);
+            updates.put("soDienThoai", soDienThoai);
+            updates.put("diaChi", diaChi);
+            updates.put("ngaySinh", ngaySinh);
+            
+            repo.updateDocumentFields(collection, maBenhNhan, updates,
+                    aVoid -> {
+                        hideLoading();
+                        Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                        logActivity("Cập nhật hồ sơ cá nhân");
+                        toggleEditMode(false);
+                    },
+                    e -> {
+                        hideLoading();
+                        Log.e("QuanLyHoSo", "Lỗi cập nhật: ", e);
+                        showError("Lỗi lưu: " + e.getMessage());
+                    });
+        } else {
+            // Cập nhật thông tin bệnh nhân
+            BenhNhan updated = new BenhNhan();
+            updated.setMaBenhNhan(maBenhNhan);
+            updated.setMaTaiKhoan(maTaiKhoan);
+            updated.setHoTen(hoTen);
+            updated.setSoDienThoai(soDienThoai);
+            updated.setDiaChi(diaChi);
+            updated.setNgaySinh(ngaySinh);
 
-        repo.updateDocument("BenhNhan", maBenhNhan, updated,
-                aVoid -> {
-                    hideLoading();
-                    Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
-                    logActivity("Cập nhật hồ sơ cá nhân");
-                    toggleEditMode(false);
-                },
-                e -> {
-                    hideLoading();
-                    Log.e("QuanLyHoSo", "Lỗi cập nhật: ", e);
-                    showError("Lỗi lưu: " + e.getMessage());
-                });
+            repo.updateDocument(collection, maBenhNhan, updated,
+                    aVoid -> {
+                        hideLoading();
+                        Toast.makeText(this, "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                        logActivity("Cập nhật hồ sơ cá nhân");
+                        toggleEditMode(false);
+                    },
+                    e -> {
+                        hideLoading();
+                        Log.e("QuanLyHoSo", "Lỗi cập nhật: ", e);
+                        showError("Lỗi lưu: " + e.getMessage());
+                    });
+        }
     }
 
     // === HÀM HỖ TRỢ ===

@@ -176,7 +176,10 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleProfile() {
         logActivity("Mở trang cá nhân");
-        startActivitySafe(ProfileActivity.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("USER_TYPE", "benhnhan");
+        startActivity(intent);
     }
 
     private void handleQuanLyHoSo() {
