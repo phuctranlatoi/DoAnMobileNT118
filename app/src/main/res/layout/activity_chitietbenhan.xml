@@ -14,7 +14,7 @@
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Chi Tiết Bệnh Án"
-        app:titleTextColor="#1A1A1A" />
+        app:titleTextColor="@color/textPrimary" />
 
     <!-- ProgressBar -->
     <ProgressBar

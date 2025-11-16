@@ -15,7 +15,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:padding="16dp"
         android:gravity="center_vertical"
@@ -131,7 +131,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                        app:cardBackgroundColor="@color/colorSuccessLight">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -139,7 +139,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_appointment"
                             android:contentDescription="Đăng ký lịch khám"
-                            app:tint="#4CAF50" />
+                            app:tint="@color/colorSuccess" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -148,7 +148,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Đăng ký\nlịch khám"
                         android:textSize="12sp"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/textPrimary"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -171,7 +171,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                        app:cardBackgroundColor="@color/colorSuccessLight">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -179,7 +179,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_medical_record"
                             android:contentDescription="Xem bệnh án"
-                            app:tint="#4CAF50" />
+                            app:tint="@color/colorSuccess" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -188,7 +188,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Xem\nbệnh án"
                         android:textSize="12sp"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/textPrimary"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -212,7 +212,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                        app:cardBackgroundColor="@color/colorSuccessLight">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -220,7 +220,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_medication"
                             android:contentDescription="Xác nhận dùng thuốc"
-                            app:tint="#4CAF50" />
+                            app:tint="@color/colorSuccess" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -229,7 +229,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Xác nhận\ndùng thuốc"
                         android:textSize="12sp"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/textPrimary"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>
@@ -252,7 +252,7 @@
                         android:layout_height="64dp"
                         app:cardCornerRadius="32dp"
                         app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                        app:cardBackgroundColor="@color/colorSuccessLight">
 
                         <ImageView
                             android:layout_width="36dp"
@@ -260,7 +260,7 @@
                             android:layout_gravity="center"
                             android:src="@drawable/ic_invoice"
                             android:contentDescription="Xem hóa đơn"
-                            app:tint="#4CAF50" />
+                            app:tint="@color/colorSuccess" />
                     </androidx.cardview.widget.CardView>
 
                     <TextView
@@ -269,7 +269,7 @@
                         android:layout_marginTop="8dp"
                         android:text="Xem\nhóa đơn"
                         android:textSize="12sp"
-                        android:textColor="#2C3E50"
+                        android:textColor="@color/textPrimary"
                         android:gravity="center"
                         android:maxLines="2" />
                 </LinearLayout>

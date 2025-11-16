@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="#F5F5F5">
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?attr/selectableItemBackground"
-                app:tint="#2C3E50" />
+                app:tint="@color/textPrimary" />
 
             <TextView
                 android:id="@+id/tvTitle"
@@ -42,7 +42,7 @@
                 android:text="Hồ Sơ Cá Nhân"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#2C3E50" />
+                android:textColor="@color/textPrimary" />
 
             <ImageView
                 android:id="@+id/btnEdit"
@@ -53,7 +53,7 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?attr/selectableItemBackground"
-                app:tint="#4CAF50" />
+                app:tint="@color/colorSuccess" />
         </LinearLayout>
 
         <!-- Avatar Section -->
@@ -90,7 +90,7 @@
                 android:layout_marginTop="12dp"
                 android:text="Thay đổi ảnh đại diện"
                 android:textSize="14sp"
-                android:textColor="#4CAF50"
+                android:textColor="@color/colorSuccess"
                 android:clickable="true"
                 android:focusable="true"
                 android:background="?attr/selectableItemBackground"
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:text="Họ và tên"
                     android:textSize="14sp"
-                    android:textColor="#7F8C8D"
+                    android:textColor="@color/textSecondary"
                     android:layout_marginBottom="4dp" />
 
                 <EditText
@@ -142,7 +142,7 @@
                     android:layout_height="wrap_content"
                     android:text="Số điện thoại"
                     android:textSize="14sp"
-                    android:textColor="#7F8C8D"
+                    android:textColor="@color/textSecondary"
                     android:layout_marginBottom="4dp" />
 
                 <EditText
@@ -160,7 +160,7 @@
                     android:layout_height="wrap_content"
                     android:text="Địa chỉ"
                     android:textSize="14sp"
-                    android:textColor="#7F8C8D"
+                    android:textColor="@color/textSecondary"
                     android:layout_marginBottom="4dp" />
 
                 <EditText
@@ -178,7 +178,7 @@
                     android:layout_height="wrap_content"
                     android:text="Ngày sinh (dd/MM/yyyy)"
                     android:textSize="14sp"
-                    android:textColor="#7F8C8D"
+                    android:textColor="@color/textSecondary"
                     android:layout_marginBottom="4dp" />
 
                 <EditText
@@ -205,8 +205,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hủy"
-                        android:backgroundTint="#E0E0E0"
-                        android:textColor="#2C3E50" />
+                        android:backgroundTint="@color/divider"
+                        android:textColor="@color/textPrimary" />
 
                     <Button
                         android:id="@+id/btnConfirm"
@@ -214,7 +214,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:text="Lưu"
-                        android:backgroundTint="#4CAF50"
+                        android:backgroundTint="@color/colorSuccess"
                         android:textColor="@color/white" />
                 </LinearLayout>
             </LinearLayout>

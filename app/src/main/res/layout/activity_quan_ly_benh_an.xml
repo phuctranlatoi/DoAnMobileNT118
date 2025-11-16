@@ -13,7 +13,7 @@
         android:background="@color/white"
         app:layout_constraintTop_toTopOf="parent"
         app:title="Quản Lý Bệnh Án"
-        app:titleTextColor="#1A1A1A" />
+        app:titleTextColor="@color/textPrimary" />
 
     <!-- ProgressBar -->
     <ProgressBar
@@ -62,13 +62,32 @@
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Thêm/Cập nhật Bệnh Án"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Thêm/Cập nhật Bệnh Án"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/textPrimary" />
+
+                    <Button
+                        android:id="@+id/btnClearForm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="36dp"
+                        android:text="+ Thêm mới"
+                        android:textSize="12sp"
+                        android:textColor="@color/white"
+                        android:backgroundTint="@color/colorSuccess"
+                        android:paddingHorizontal="12dp"
+                        android:textAllCaps="false" />
+                </LinearLayout>
 
                 <!-- Search Patient -->
                 <AutoCompleteTextView
@@ -89,7 +108,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Chưa chọn bệnh nhân"
                     android:textSize="14sp"
-                    android:textColor="#1A1A1A"
+                    android:textColor="@color/textPrimary"
                     android:padding="8dp"
                     android:layout_marginTop="8dp" />
 
@@ -144,7 +163,7 @@
                 android:layout_weight="1"
                 android:text="Cập Nhật"
                 android:backgroundTint="#FFC107"
-                android:textColor="#1A1A1A"
+                android:textColor="@color/textPrimary"
                 android:layout_marginStart="8dp" />
 
             <Button
