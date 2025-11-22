@@ -1,542 +1,530 @@
 [
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_phone.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_phone.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_outline_blue.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_outline_blue.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_menu.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_menu.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_main_admin.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_main_admin.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_rounded_button_elevation.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/rounded_button_elevation.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_quan_ly_benh_an_new.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_quan_ly_benh_an_new.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_phone.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_phone.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_header_gradient.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_header_gradient.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_dialog_edit_account.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/dialog_edit_account.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_avatar.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_avatar.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_lich_lam_viec_new.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_lich_lam_viec_new.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_profile.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_profile.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_health_record.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_health_record.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_location1.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_location1.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_button_solid_blue.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/button_solid_blue.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_avatar.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_avatar.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-anydpi/ic_launcher.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_doctor.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_doctor.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_note.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_note.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_edit_text_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/edit_text_background.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_setting_lines.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/setting_lines.png"
     },
     {
         "merged": "com.example.doannt118.app-debug-60:/layout_item_account.xml.flat",
         "source": "com.example.doannt118.app-main-62:/layout/item_account.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_health_record.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_health_record.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_lichkham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_lichkham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_invoice.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_invoice.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_microphone.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_microphone.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/xml_data_extraction_rules.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/xml/data_extraction_rules.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_update_bacsi_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_update_bacsi_profile.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/menu_bottom_nav_doctor.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/menu/bottom_nav_doctor.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_lich_lam_viec.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_search_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/search_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_main_benhnhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_main_benhnhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_lich_kham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_disease_info.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_disease_info.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_pending_doctor.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_pending_doctor.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_message.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_message.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_ghichu.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_ghichu.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_email.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_email.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_rounded_button_elevation_large.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/rounded_button_elevation_large.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_email.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_email.png"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_button_solid_blue.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/button_solid_blue.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_time.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_time.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_setting.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_setting.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xxxhdpi/ic_launcher.webp"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_search_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/search_background.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_chitietbenhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_chitietbenhan.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-60:/layout_activity_main_bacsi.xml.flat",
         "source": "com.example.doannt118.app-main-62:/layout/activity_main_bacsi.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_badge_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/badge_background.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_rounded_button_white.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/rounded_button_white.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_profile.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_profile.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_pending_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_pending_doctor.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_dialog_edit_account.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/dialog_edit_account.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_button_outline_red.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/button_outline_red.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_forgot_password.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-60:/menu_benhnhan_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/menu/benhnhan_menu.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_pill_info.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_pill_info.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_lich_kham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_disease_info.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_disease_info.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_medication.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_medication.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_diagnosis_entry.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_diagnosis_entry.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_avatar_overlay.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_avatar_overlay.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_spinner_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/spinner_background.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_card.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_card.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_xac_nhan_lich_kham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_xac_nhan_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_add.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_add.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/menu_benhnhan_menu.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/menu/benhnhan_menu.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_button_secondary.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_button_secondary.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_main_bacsi.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_main_bacsi.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_note.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_note.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_button_secondary.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_button_secondary.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_circle_bg.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/circle_bg.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_circle_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/circle_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_circle_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/circle_background.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_doctor_illustration.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_doctor_illustration.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_chi_tiet_bac_si.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_chi_tiet_bac_si.xml"
-    },
-    {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/menu_doctor_menu.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/menu/doctor_menu.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_settings.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_settings.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-60:/layout_activity_main_admin.xml.flat",
         "source": "com.example.doannt118.app-main-62:/layout/activity_main_admin.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_notification.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_notification.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_profile.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_badge_success.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/badge_success.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_chi_tiet_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_chi_tiet_bac_si.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_dialog_benh_nhan_list.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/dialog_benh_nhan_list.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_hospital.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_hospital.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_password.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_password.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_danh_sach_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_danh_sach_bac_si.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_khung_gio.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_khung_gio.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_dialog_benh_nhan_list.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/dialog_benh_nhan_list.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_verified.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_verified.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_dangky_lichkham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_dangky_lichkham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_avatar_overlay.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_avatar_overlay.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_service.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_service.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_lich_lam_viec_new.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_lich_lam_viec_new.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_login.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_login.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_input.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_input.xml"
+        "merged": "com.example.doannt118.app-debug-60:/menu_bottom_nav_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/menu/bottom_nav_doctor.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_outline_blue.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_outline_blue.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_settings.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_settings.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_quan_ly_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_quan_ly_lich_lam_viec.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_hospital.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/hospital.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_calendar.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_calendar.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_add.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_add.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_service.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_service.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_quan_ly_lich_lam_viec_new.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_quan_ly_lich_lam_viec_new.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_dangky_lichkham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_dangky_lichkham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_xem_chi_tiet_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_xem_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_doctor_illustration.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_doctor_illustration.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_microphone.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_microphone.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_rounded_button.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/rounded_button.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_hospital.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/hospital.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_img.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/img.png"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_chi_tiet_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_hospital.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_hospital.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_medical_record.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_medical_record.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_chitietbenhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_chitietbenhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_badge_danger.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/badge_danger.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_welcome.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_welcome.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_benhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_benhan.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/xml_backup_rules.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/xml/backup_rules.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_img_logo.jpg.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/img_logo.jpg"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_number.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_number.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_number.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_number.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_xac_nhan_lich_kham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_xac_nhan_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/menu_bottom_nav_patient.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/menu/bottom_nav_patient.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_rounded_button_white.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/rounded_button_white.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_xac_nhan_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_launcher_background.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_launcher_background.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_benh_nhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_benh_nhan.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_schedule.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_schedule.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_button_primary.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_button_primary.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_danh_sach_bac_si.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_danh_sach_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_dialog_create_account.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/dialog_create_account.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_invoice.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_invoice.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_badge_danger.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/badge_danger.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_input.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_input.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_benhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_benhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_camera.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_camera.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_search.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_search.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_circle_bg.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/circle_bg.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_benh_nhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_benh_nhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_quan_ly_lich_lam_viec_new.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_quan_ly_lich_lam_viec_new.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_main.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_main.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_message.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_message.xml"
+        "merged": "com.example.doannt118.app-debug-60:/menu_doctor_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/menu/doctor_menu.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_calendar.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_calendar.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_schedule.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_schedule.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_rounded_button_teal.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/rounded_button_teal.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_setting.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_setting.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bottom_nav_icon_tint.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bottom_nav_icon_tint.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_img.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/img.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_setting_lines.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/setting_lines.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_appointment.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_appointment.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_settings.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_settings.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_profile.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_input_field.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_input_field.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_pill_info.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_pill_info.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_quanlyhosocanhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_quanlyhosocanhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_button_outline.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_button_outline.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_user.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_user.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_location.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_location.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_bac_si.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_img_logo.jpg.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/img_logo.jpg"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_button_outline.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_button_outline.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_home.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_home.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_bac_si.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_notification.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_notification.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_lichkham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_lichkham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_quan_ly_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_quan_ly_benh_an.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_main.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_main.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_search.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_search.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_chi_tiet_lich_kham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_chi_tiet_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_verified.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_verified.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_edit.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_edit.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_button_solid_green.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/button_solid_green.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_camera.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_camera.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_diagnosis_entry.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_diagnosis_entry.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_quan_ly_benh_an.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_quan_ly_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_consultation.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_consultation.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_password.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_password.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_quan_ly_lich_lam_viec.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_quan_ly_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_edit_text_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/edit_text_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_account.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_account.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_medical.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_medical.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_dialog_create_account.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/dialog_create_account.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_activity_history.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_activity_history.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_consultation.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_consultation.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_ghichu.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_ghichu.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_lock.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_lock.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_xembenhan.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_xembenhan.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_rounded_button_teal.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/rounded_button_teal.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_gradient_button.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/gradient_button.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_doctor.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_card.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_card.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_header_gradient.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_header_gradient.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_input_1.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_input_1.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_xembenhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_xembenhan.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_rounded_button_elevation.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/rounded_button_elevation.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_khung_gio.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_khung_gio.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/menu_bottom_nav_patient.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/menu/bottom_nav_patient.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_register.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_register.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_register.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_register.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_update_bacsi_profile.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_update_bacsi_profile.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_gradient_button.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/gradient_button.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_item_activity_history.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/item_activity_history.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_rounded_button.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/rounded_button.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_medical_record.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_medical_record.xml"
+        "merged": "com.example.doannt118.app-debug-60:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_appointment.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_appointment.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_welcome.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_welcome.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_user.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_user.png"
+        "merged": "com.example.doannt118.app-debug-60:/xml_backup_rules.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/xml/backup_rules.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_bg_button_primary.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/bg_button_primary.xml"
+        "merged": "com.example.doannt118.app-debug-60:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-62:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_medication.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_medication.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_time.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_time.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_xem_chi_tiet_lich_kham.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_xem_chi_tiet_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_badge_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/badge_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_medical.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_medical.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_input_field.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_input_field.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_home.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_home.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_menu.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_login.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_login.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_spinner_background.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/spinner_background.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_xac_nhan_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_location1.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_location1.png"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_ic_lock.png.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/ic_lock.png"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_edit.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_edit.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/layout_activity_forgot_password.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/layout/activity_forgot_password.xml"
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_main_benhnhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_main_benhnhan.xml"
     },
     {
-        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-60:/drawable_button_solid_green.xml.flat",
-        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-62:/drawable/button_solid_green.xml"
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_location.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_location.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_quan_ly_benh_an_new.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_quan_ly_benh_an_new.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bottom_nav_icon_tint.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bottom_nav_icon_tint.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/layout_activity_quanlyhosocanhan.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/activity_quanlyhosocanhan.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/layout_item_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/layout/item_lich_lam_viec.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_bg_input_1.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/bg_input_1.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_badge_success.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/badge_success.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_ic_settings.png.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/ic_settings.png"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_rounded_button_elevation_large.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/rounded_button_elevation_large.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-60:/drawable_button_outline_red.xml.flat",
+        "source": "com.example.doannt118.app-main-62:/drawable/button_outline_red.xml"
     }
 ]

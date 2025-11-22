@@ -77,7 +77,6 @@ public class MainBacSiActivity extends AppCompatActivity {
         View cardManageSchedule = findViewById(R.id.cardManageSchedule);
         View cardManagePrescription = findViewById(R.id.cardManagePrescription);
         View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
-        View cardManageInvoice = findViewById(R.id.cardManageInvoice);
 
         if (cardManageMedicalRecord != null) {
             cardManageMedicalRecord.setOnClickListener(v -> handleQuanLyBenhAn());
@@ -90,9 +89,6 @@ public class MainBacSiActivity extends AppCompatActivity {
         }
         if (cardConfirmAppointment != null) {
             cardConfirmAppointment.setOnClickListener(v -> handleXacNhanLichKham());
-        }
-        if (cardManageInvoice != null) {
-            cardManageInvoice.setOnClickListener(v -> handleQuanLyHoaDon());
         }
 
         // Xử lý sự kiện thông báo
