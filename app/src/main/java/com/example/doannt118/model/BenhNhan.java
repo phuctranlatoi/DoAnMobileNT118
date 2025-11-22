@@ -6,6 +6,7 @@ public class BenhNhan {
     private String soDienThoai;
     private String diaChi;
     private String ngaySinh;
+    private String avatarUrl;
 
     public BenhNhan() {}
 
@@ -35,6 +36,9 @@ public class BenhNhan {
 
     public String getNgaySinh() { return ngaySinh; }
     public void setNgaySinh(String ngaySinh) { this.ngaySinh = ngaySinh; }
+
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 
     @Override
     public String toString() {

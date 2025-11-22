@@ -56,5 +56,7 @@ dependencies {
     implementation("com.firebaseui:firebase-ui-firestore:8.0.2")
     implementation("androidx.paging:paging-runtime-ktx:3.2.1")
     implementation("com.google.firebase:firebase-auth") // Thêm FirebaseAuth
+    implementation("com.google.firebase:firebase-storage") // Thêm Firebase Storage cho upload ảnh
     implementation("com.sun.mail:javax.mail:1.6.2")
+    implementation("com.github.bumptech.glide:glide:4.16.0") // Thư viện load ảnh
 }

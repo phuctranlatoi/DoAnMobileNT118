@@ -10,22 +10,22 @@
     android:fitsSystemWindows="true"
     tools:context=".ui.MainBenhNhanActivity">
 
-    <!-- Header -->
+    <!-- Header với gradient -->
     <LinearLayout
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#2196F3"
+        android:background="@drawable/bg_header_gradient"
         android:orientation="horizontal"
-        android:padding="16dp"
+        android:padding="20dp"
         android:gravity="center_vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.cardview.widget.CardView
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="4dp">
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="6dp">
 
             <ImageView
                 android:id="@+id/ivAvatar"
@@ -40,36 +40,45 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginStart="12dp"
+            android:layout_marginStart="16dp"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Buổi tối an lành!"
+                android:text="Xin chào,"
                 android:textSize="14sp"
-                android:textColor="@color/white" />
+                android:textColor="#E0F7FA" />
 
             <TextView
                 android:id="@+id/tvHoTen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Tên người dùng"
-                android:textSize="18sp"
+                android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:layout_marginTop="2dp" />
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/btnNotification"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
-            android:src="@drawable/ic_notification"
-            android:contentDescription="Thông báo"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            app:tint="@color/white" />
+        <androidx.cardview.widget.CardView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="4dp"
+            app:cardBackgroundColor="#4DD0E1">
+
+            <ImageView
+                android:id="@+id/btnNotification"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_notification"
+                android:contentDescription="Thông báo"
+                android:clickable="true"
+                android:focusable="true"
+                app:tint="@color/white" />
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
 
     <!-- Nội dung chính (có thể cuộn) -->
@@ -85,194 +94,232 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Header với lời chào và hình minh họa -->
-            <RelativeLayout
+            <!-- Card chào mừng -->
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_header_gradient"
-                android:padding="20dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="#E3F2FD">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical">
-                </LinearLayout>
-            </RelativeLayout>
+                    android:orientation="horizontal"
+                    android:padding="20dp"
+                    android:gravity="center_vertical">
 
-            <!-- Grid Menu Chức năng -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Chăm sóc sức khỏe"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#1976D2" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Đặt lịch khám nhanh chóng và tiện lợi"
+                            android:textSize="13sp"
+                            android:textColor="#546E7A" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_doctor_illustration"
+                        android:contentDescription="Doctor"
+                        android:scaleType="centerInside" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Tiêu đề Dịch vụ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dịch vụ của chúng tôi"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#2C3E50"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Grid Menu Chức năng với CardView -->
             <GridLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:columnCount="3"
+                android:columnCount="2"
                 android:rowCount="2"
                 android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false"
-                android:useDefaultMargins="true">
+                android:columnOrderPreserved="false">
 
-                <!-- Hàng 1 -->
                 <!-- Đăng ký lịch khám -->
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardRegisterAppointment"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="140dp"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground">
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#E8F5E9">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        app:cardCornerRadius="32dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/ic_appointment"
                             android:contentDescription="Đăng ký lịch khám"
                             app:tint="#4CAF50" />
-                    </androidx.cardview.widget.CardView>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Đăng ký\nlịch khám"
-                        android:textSize="12sp"
-                        android:textColor="#2C3E50"
-                        android:gravity="center"
-                        android:maxLines="2" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Đăng ký\nlịch khám"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C3E50"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Xem bệnh án -->
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewMedicalRecord"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="140dp"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground">
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#FFF3E0">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        app:cardCornerRadius="32dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/ic_medical_record"
                             android:contentDescription="Xem bệnh án"
-                            app:tint="#4CAF50" />
-                    </androidx.cardview.widget.CardView>
+                            app:tint="#FF9800" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Xem\nbệnh án"
-                        android:textSize="12sp"
-                        android:textColor="#2C3E50"
-                        android:gravity="center"
-                        android:maxLines="2" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Xem\nbệnh án"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C3E50"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
-                <!-- Hàng 2 -->
                 <!-- Xác nhận dùng thuốc -->
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardConfirmMedication"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="140dp"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground">
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#F3E5F5">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        app:cardCornerRadius="32dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/ic_medication"
                             android:contentDescription="Xác nhận dùng thuốc"
-                            app:tint="#4CAF50" />
-                    </androidx.cardview.widget.CardView>
+                            app:tint="#9C27B0" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Xác nhận\ndùng thuốc"
-                        android:textSize="12sp"
-                        android:textColor="#2C3E50"
-                        android:gravity="center"
-                        android:maxLines="2" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Xác nhận\ndùng thuốc"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C3E50"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
                 <!-- Xem hóa đơn -->
-                <LinearLayout
+                <androidx.cardview.widget.CardView
                     android:id="@+id/cardViewInvoice"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="140dp"
                     android:layout_columnWeight="1"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="12dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="4dp"
                     android:clickable="true"
                     android:focusable="true"
-                    android:background="?attr/selectableItemBackground">
+                    android:foreground="?attr/selectableItemBackground"
+                    app:cardBackgroundColor="#E1F5FE">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
-                        app:cardCornerRadius="32dp"
-                        app:cardElevation="4dp"
-                        app:cardBackgroundColor="#E8F5E9">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/ic_invoice"
                             android:contentDescription="Xem hóa đơn"
-                            app:tint="#4CAF50" />
-                    </androidx.cardview.widget.CardView>
+                            app:tint="#03A9F4" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="Xem\nhóa đơn"
-                        android:textSize="12sp"
-                        android:textColor="#2C3E50"
-                        android:gravity="center"
-                        android:maxLines="2" />
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="Xem\nhóa đơn"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            android:textColor="#2C3E50"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
 
             </GridLayout>
 

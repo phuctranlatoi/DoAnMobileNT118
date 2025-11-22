@@ -3589,6 +3589,7 @@ drawable avd_show_password
 drawable badge_background
 drawable badge_danger
 drawable badge_success
+drawable bg_avatar_overlay
 drawable bg_button_outline
 drawable bg_button_primary
 drawable bg_button_secondary
@@ -3659,6 +3660,7 @@ drawable ic_consultation
 drawable ic_disease_info
 drawable ic_doctor
 drawable ic_doctor_illustration
+drawable ic_edit
 drawable ic_email
 drawable ic_expand_less_22px
 drawable ic_expand_more_22px
@@ -3923,6 +3925,7 @@ id btnDangNhap
 id btnDatKham
 id btnDatLich
 id btnEdit
+id btnEditAvatar
 id btnFilterCho
 id btnFilterDaXacNhan
 id btnGhiChu
@@ -3954,7 +3957,6 @@ id cardConfirmAppointment
 id cardConfirmMedication
 id cardForm
 id cardKhungGio
-id cardManageInvoice
 id cardManageMedicalRecord
 id cardManagePrescription
 id cardManageSchedule
@@ -3996,7 +3998,6 @@ id currentState
 id custom
 id customPanel
 id cut
-id cvAccounts
 id dark
 id date_picker_actions
 id decelerate
@@ -4083,6 +4084,7 @@ id frost
 id fullscreen_header
 id ghost_view
 id ghost_view_holder
+id glide_custom_view_target_tag
 id gone
 id graph
 id graph_wrap
@@ -4123,6 +4125,7 @@ id jumpToEnd
 id jumpToStart
 id labeled
 id layout
+id layoutBacSiInfo
 id layoutButtons
 id layoutEmail
 id layoutEmpty
@@ -4474,6 +4477,7 @@ id tvNgay
 id tvNgayKham
 id tvNgayLamViec
 id tvNgayLap
+id tvPendingCount
 id tvQuenMatKhau
 id tvSelectedBenhNhan
 id tvSoBenhNhan
@@ -4487,6 +4491,7 @@ id tvThongBao
 id tvTitle
 id tvTongBenhNhan
 id tvTongSoLich
+id tvTotalCount
 id tvTrangThai
 id tvTrangThaiXacThuc
 id tvUserName
@@ -5004,7 +5009,6 @@ style Animation_Material3_SideSheetDialog
 style Animation_Material3_SideSheetDialog_Left
 style Animation_Material3_SideSheetDialog_Right
 style Animation_MaterialComponents_BottomSheetDialog
-style AppTheme
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -5285,6 +5289,9 @@ style Base_Widget_MaterialComponents_Snackbar
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
+style ButtonDanger
+style ButtonPrimary
+style ButtonSuccess
 style CardView
 style CardView_Dark
 style CardView_Light
@@ -5436,6 +5443,7 @@ style ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Day
 style ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Window_Fullscreen
 style ShapeAppearanceOverlay_MaterialComponents_MaterialCalendar_Year
 style ShapeAppearanceOverlay_MaterialComponents_TextInputLayout_FilledBox
+style TabTextStyle
 style TextAppearance_AppCompat
 style TextAppearance_AppCompat_Body1
 style TextAppearance_AppCompat_Body2

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.doannt118.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.doannt118.model.BenhNhan;
@@ -135,6 +136,16 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                         BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
                         if (benhNhan != null) {
                             tvHoTen.setText(getSafeString(benhNhan.getHoTen())); // Chỉ hiển thị họ tên
+                            
+                            // Load avatar nếu có
+                            if (benhNhan.getAvatarUrl() != null && !benhNhan.getAvatarUrl().isEmpty()) {
+                                Glide.with(this)
+                                    .load(benhNhan.getAvatarUrl())
+                                    .placeholder(R.drawable.ic_avatar)
+                                    .error(R.drawable.ic_avatar)
+                                    .circleCrop()
+                                    .into(ivAvatar);
+                            }
                         } else {
                             showError("Dữ liệu bệnh nhân không hợp lệ!");
                         }

@@ -35,11 +35,11 @@ import java.util.List;
 import java.util.UUID;
 
 public class MainAdminActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TextView tvUserName;
+    private View toolbar;
+    private TextView tvUserName, tvPendingCount, tvTotalCount;
     private TabLayout tabLayout;
     private RecyclerView rvAccounts;
-    private Button btnLogout;
+    private View btnLogout;
     private FirestoreRepository repo;
     private FirebaseAuth auth;
     private String maTaiKhoanAdmin;
@@ -58,9 +58,9 @@ public class MainAdminActivity extends AppCompatActivity {
         maTaiKhoanAdmin = getIntent().getStringExtra("MA_TAI_KHOAN");
 
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         tvUserName = findViewById(R.id.tvUserName);
+        tvPendingCount = findViewById(R.id.tvPendingCount);
+        tvTotalCount = findViewById(R.id.tvTotalCount);
         tabLayout = findViewById(R.id.tabLayout);
         rvAccounts = findViewById(R.id.rvAccounts);
         btnLogout = findViewById(R.id.btnLogout);
@@ -107,7 +107,28 @@ public class MainAdminActivity extends AppCompatActivity {
         });
 
         loadUserInfo();
+        loadStatistics();
         loadPendingAccounts(); // Mặc định hiển thị tab "Chờ duyệt"
+    }
+    
+    private void loadStatistics() {
+        // Đếm tài khoản chờ duyệt
+        repo.countByField("TaiKhoan", "trangThai", "Chờ duyệt",
+                count -> {
+                    if (tvPendingCount != null) {
+                        tvPendingCount.setText(String.valueOf(count));
+                    }
+                },
+                e -> Toast.makeText(this, "Lỗi tải thống kê", Toast.LENGTH_SHORT).show());
+        
+        // Đếm tổng tài khoản
+        repo.getAll("TaiKhoan",
+                querySnapshot -> {
+                    if (tvTotalCount != null) {
+                        tvTotalCount.setText(String.valueOf(querySnapshot.size()));
+                    }
+                },
+                e -> Toast.makeText(this, "Lỗi tải thống kê", Toast.LENGTH_SHORT).show());
     }
 
     private void loadUserInfo() {
@@ -135,6 +156,7 @@ public class MainAdminActivity extends AppCompatActivity {
                     }
                     adapter = new AccountAdapter(pendingAccounts, true);
                     rvAccounts.setAdapter(adapter);
+                    loadStatistics(); // Cập nhật thống kê
                 },
                 e -> Toast.makeText(this, "Lỗi tải danh sách tài khoản chờ duyệt: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
@@ -151,6 +173,7 @@ public class MainAdminActivity extends AppCompatActivity {
                     }
                     adapter = new AccountAdapter(allAccounts, false);
                     rvAccounts.setAdapter(adapter);
+                    loadStatistics(); // Cập nhật thống kê
                 },
                 e -> Toast.makeText(this, "Lỗi tải danh sách tài khoản: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }

@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.doannt118.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.doannt118.model.LichSuHoatDong;
@@ -136,8 +137,16 @@ public class MainBacSiActivity extends AppCompatActivity {
                         if (bacSi != null) {
                             tvHoTen.setText(bacSi.getHoTen());
                             maBacSi = bacSi.getMaBacSi();
-                            // Optional: Load avatar dynamically if available in BacSi model
-                            // e.g., if (bacSi.getAvatarUrl() != null) loadImage(ivAvatar, bacSi.getAvatarUrl());
+                            
+                            // Load avatar nếu có
+                            if (bacSi.getAvatarUrl() != null && !bacSi.getAvatarUrl().isEmpty() && ivAvatar != null) {
+                                Glide.with(this)
+                                    .load(bacSi.getAvatarUrl())
+                                    .placeholder(R.drawable.ic_avatar)
+                                    .error(R.drawable.ic_avatar)
+                                    .circleCrop()
+                                    .into(ivAvatar);
+                            }
                         } else {
                             showError("Không tìm thấy thông tin bác sĩ!");
                         }

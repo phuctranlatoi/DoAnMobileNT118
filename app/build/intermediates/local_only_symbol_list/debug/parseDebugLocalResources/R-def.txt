@@ -8,6 +8,7 @@ color white
 drawable badge_background
 drawable badge_danger
 drawable badge_success
+drawable bg_avatar_overlay
 drawable bg_button_outline
 drawable bg_button_primary
 drawable bg_button_secondary
@@ -35,6 +36,7 @@ drawable ic_consultation
 drawable ic_disease_info
 drawable ic_doctor
 drawable ic_doctor_illustration
+drawable ic_edit
 drawable ic_email
 drawable ic_health_record
 drawable ic_home
@@ -94,6 +96,7 @@ id btnDangNhap
 id btnDatKham
 id btnDatLich
 id btnEdit
+id btnEditAvatar
 id btnFilterCho
 id btnFilterDaXacNhan
 id btnGhiChu
@@ -120,14 +123,12 @@ id cardConfirmAppointment
 id cardConfirmMedication
 id cardForm
 id cardKhungGio
-id cardManageInvoice
 id cardManageMedicalRecord
 id cardManagePrescription
 id cardManageSchedule
 id cardRegisterAppointment
 id cardViewInvoice
 id cardViewMedicalRecord
-id cvAccounts
 id dpNgayLamViec
 id dpTraCuu
 id editButtonLayout
@@ -151,6 +152,7 @@ id iconEmail
 id iconLock
 id imgLogo
 id ivAvatar
+id layoutBacSiInfo
 id layoutButtons
 id layoutEmail
 id layoutEmpty
@@ -246,6 +248,7 @@ id tvNgay
 id tvNgayKham
 id tvNgayLamViec
 id tvNgayLap
+id tvPendingCount
 id tvQuenMatKhau
 id tvSelectedBenhNhan
 id tvSoBenhNhan
@@ -259,6 +262,7 @@ id tvThongBao
 id tvTitle
 id tvTongBenhNhan
 id tvTongSoLich
+id tvTotalCount
 id tvTrangThai
 id tvTrangThaiXacThuc
 id tvUserName
@@ -331,8 +335,11 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string open_drawer
 string project_id
-style AppTheme
 style Base.Theme.DoAnNT118
+style ButtonDanger
+style ButtonPrimary
+style ButtonSuccess
+style TabTextStyle
 style Theme.DoAnNT118
 xml backup_rules
 xml data_extraction_rules

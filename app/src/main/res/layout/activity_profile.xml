@@ -27,20 +27,47 @@
             android:background="@color/white"
             android:gravity="center_vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="64dp"
-                android:layout_height="64dp"
-                app:cardCornerRadius="32dp"
-                app:cardElevation="4dp">
+            <FrameLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp">
 
-                <ImageView
-                    android:id="@+id/ivAvatar"
+                <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/ic_avatar"
-                    android:scaleType="centerCrop"
-                    android:contentDescription="Avatar" />
-            </androidx.cardview.widget.CardView>
+                    app:cardCornerRadius="40dp"
+                    app:cardElevation="4dp">
+
+                    <ImageView
+                        android:id="@+id/ivAvatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/ic_avatar"
+                        android:scaleType="centerCrop"
+                        android:contentDescription="Avatar" />
+                </androidx.cardview.widget.CardView>
+
+                <!-- Nút chỉnh sửa ảnh -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/btnEditAvatar"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="bottom|end"
+                    app:cardCornerRadius="14dp"
+                    app:cardElevation="4dp"
+                    app:cardBackgroundColor="#2196F3"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_camera"
+                        android:contentDescription="Chỉnh sửa ảnh"
+                        app:tint="@color/white" />
+                </androidx.cardview.widget.CardView>
+            </FrameLayout>
 
             <LinearLayout
                 android:layout_width="0dp"

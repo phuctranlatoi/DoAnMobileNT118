@@ -17,6 +17,7 @@ public class BacSi {
     private int namKinhNghiem;
     private String gioiThieu;
     private String ngaySinh;
+    private String avatarUrl;
 
     public BacSi() {
         chungChiHanhNghe = new ArrayList<>();
@@ -64,6 +65,9 @@ public class BacSi {
     
     public String getNgaySinh() { return ngaySinh; }
     public void setNgaySinh(String ngaySinh) { this.ngaySinh = ngaySinh; }
+    
+    public String getAvatarUrl() { return avatarUrl; }
+    public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
 
     @Override
     public String toString() {

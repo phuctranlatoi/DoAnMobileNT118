@@ -464,6 +464,7 @@ public class FirestoreRepository {
         map.put("soDienThoai", b.getSoDienThoai());
         map.put("diaChi", b.getDiaChi());
         map.put("ngaySinh", b.getNgaySinh());
+        map.put("avatarUrl", b.getAvatarUrl());
         return map;
     }
 
@@ -477,6 +478,7 @@ public class FirestoreRepository {
         map.put("hocVi", b.getHocVi());
         map.put("chungChiHanhNghe", b.getChungChiHanhNghe());
         map.put("trangThaiXacThuc", b.getTrangThaiXacThuc());
+        map.put("avatarUrl", b.getAvatarUrl());
         return map;
     }
 
