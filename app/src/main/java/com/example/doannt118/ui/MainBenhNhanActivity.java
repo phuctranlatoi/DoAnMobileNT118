@@ -230,7 +230,22 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     }
 
     private void handleXemHoaDon() {
-        Toast.makeText(this, "Chức năng Xem hóa đơn đang phát triển!", Toast.LENGTH_SHORT).show();
+        logActivity("Xem hóa đơn");
+        // Lấy mã bệnh nhân trước
+        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
+                        if (benhNhan != null) {
+                            Intent intent = new Intent(this, DanhSachHoaDonActivity.class);
+                            intent.putExtra("MA_BENH_NHAN", benhNhan.getMaBenhNhan());
+                            startActivity(intent);
+                        }
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void handleDangXuat() {

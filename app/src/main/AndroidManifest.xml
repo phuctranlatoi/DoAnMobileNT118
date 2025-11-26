@@ -59,8 +59,21 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name=".ui.XacNhanLichKhamActivity" />
         <activity android:name=".ui.QuanLyLichLamViecNewActivity" />
-        <activity android:name=".ui.DanhSachDonThuocActivity" />
-        <activity android:name=".ui.ChiTietDonThuocActivity" />
+        <activity
+            android:name=".ui.DanhSachDonThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChiTietDonThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DanhSachHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChiTietHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.UpdateBacSiProfileActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
