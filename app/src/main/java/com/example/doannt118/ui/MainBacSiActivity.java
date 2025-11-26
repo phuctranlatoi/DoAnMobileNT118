@@ -77,6 +77,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         View cardManageSchedule = findViewById(R.id.cardManageSchedule);
         View cardManagePrescription = findViewById(R.id.cardManagePrescription);
         View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
+        View cardSendNotification = findViewById(R.id.cardSendNotification);
 
         if (cardManageMedicalRecord != null) {
             cardManageMedicalRecord.setOnClickListener(v -> handleQuanLyBenhAn());
@@ -90,12 +91,8 @@ public class MainBacSiActivity extends AppCompatActivity {
         if (cardConfirmAppointment != null) {
             cardConfirmAppointment.setOnClickListener(v -> handleXacNhanLichKham());
         }
-
-        // Xử lý sự kiện thông báo
-        if (btnNotification != null) {
-            btnNotification.setOnClickListener(v ->
-                Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show()
-            );
+        if (cardSendNotification != null) {
+            cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
         }
 
         // Xử lý Bottom Navigation
@@ -210,6 +207,17 @@ public class MainBacSiActivity extends AppCompatActivity {
 
     private void handleQuanLyHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleGuiThongBao() {
+        logActivity("Gửi thông báo");
+        if (maBacSi == null) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, GuiThongBaoActivity.class);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        startActivity(intent);
     }
 
     private void logActivity(String tenHoatDong) {

@@ -4,4 +4,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="selected_item_background">#D4EDDA</color>
     <color name="blue">#0000FF</color>
+    <color name="unread_notification">#E3F2FD</color>
 </resources>

@@ -35,6 +35,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     private FirestoreRepository repo;
     private FirebaseAuth auth;
     private String maTaiKhoan;
+    private String maBenhNhan;
     private ActivityHistoryAdapter historyAdapter;
 
     @Override
@@ -93,9 +94,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
         // Xử lý sự kiện cho nút thông báo
         if (btnNotification != null) {
-            btnNotification.setOnClickListener(v -> 
-                Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show()
-            );
+            btnNotification.setOnClickListener(v -> handleXemThongBao());
         }
 
         // Xử lý Bottom Navigation
@@ -136,6 +135,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                         BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
                         if (benhNhan != null) {
                             tvHoTen.setText(getSafeString(benhNhan.getHoTen())); // Chỉ hiển thị họ tên
+                            maBenhNhan = benhNhan.getMaBenhNhan();
                             
                             // Load avatar nếu có
                             if (benhNhan.getAvatarUrl() != null && !benhNhan.getAvatarUrl().isEmpty()) {
@@ -227,6 +227,17 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                     }
                 },
                 e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    private void handleXemThongBao() {
+        logActivity("Xem thông báo");
+        if (maBenhNhan == null) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
     }
 
     private void handleXemHoaDon() {

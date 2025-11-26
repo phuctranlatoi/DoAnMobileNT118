@@ -58,6 +58,8 @@
             android:parentActivityName=".ui.QuanLyLichLamViecActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name=".ui.XacNhanLichKhamActivity" />
+        <activity android:name=".ui.GuiThongBaoActivity" />
+        <activity android:name=".ui.ThongBaoActivity" />
         <activity android:name=".ui.QuanLyLichLamViecNewActivity" />
         <activity
             android:name=".ui.DanhSachDonThuocActivity"
