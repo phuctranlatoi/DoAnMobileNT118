@@ -3,81 +3,72 @@ package com.example.doannt118.ui;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
 import com.example.doannt118.model.LichKham;
-import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
-import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
-import java.util.UUID;
+import java.util.Map;
 
 public class XacNhanLichKhamActivity extends AppCompatActivity {
 
     private static final String TAG = "XacNhanLichKham";
     
     private RecyclerView rvLichKham;
-    private TextView tvThongBao;
+    private TextView tvEmpty;
     private ProgressBar progressBar;
-    private Button btnFilterCho, btnFilterDaXacNhan;
-    private ImageView btnBack;
+    private TabLayout tabLayout;
+    private Toolbar toolbar;
     
     private FirestoreRepository repo;
     private XacNhanLichKhamAdapter adapter;
-    private String maTaiKhoan;
     private String maBacSi;
-    private String currentFilter = "CHO"; // CHO hoặc XAC_NHAN
+    private String currentFilter = "CHO_XAC_NHAN";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xac_nhan_lich_kham);
 
-        // Nhận dữ liệu từ Intent
-        maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
         maBacSi = getIntent().getStringExtra("MA_BAC_SI");
-
-        if (maTaiKhoan == null || maBacSi == null) {
-            Toast.makeText(this, "Lỗi: Thiếu thông tin tài khoản!", Toast.LENGTH_SHORT).show();
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Lỗi: Không tìm thấy mã bác sĩ!", Toast.LENGTH_SHORT).show();
             finish();
             return;
         }
 
-        // Khởi tạo
         repo = new FirestoreRepository();
         initViews();
         setupRecyclerView();
         setupListeners();
-        
-        // Load dữ liệu
         loadDanhSachLichKham();
     }
 
-    private View loadingOverlay, layoutEmpty;
-    
     private void initViews() {
+        toolbar = findViewById(R.id.toolbar);
         rvLichKham = findViewById(R.id.rvLichKham);
-        tvThongBao = findViewById(R.id.tvThongBao);
+        tvEmpty = findViewById(R.id.tvEmpty);
         progressBar = findViewById(R.id.progressBar);
-        loadingOverlay = findViewById(R.id.loadingOverlay);
-        layoutEmpty = findViewById(R.id.layoutEmpty);
-        btnFilterCho = findViewById(R.id.btnFilterCho);
-        btnFilterDaXacNhan = findViewById(R.id.btnFilterDaXacNhan);
+        tabLayout = findViewById(R.id.tabLayout);
         
-        // Setup toolbar
-        androidx.appcompat.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle("Xác nhận lịch khám");
+        }
         toolbar.setNavigationOnClickListener(v -> finish());
     }
 
@@ -86,12 +77,12 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
             new XacNhanLichKhamAdapter.OnLichKhamActionListener() {
                 @Override
                 public void onXacNhan(LichKham lichKham) {
-                    handleXacNhan(lichKham);
+                    showConfirmDialog(lichKham, true);
                 }
 
                 @Override
-                public void onHuy(LichKham lichKham) {
-                    handleHuy(lichKham);
+                public void onTuChoi(LichKham lichKham) {
+                    showConfirmDialog(lichKham, false);
                 }
             });
         
@@ -100,120 +91,139 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
-        btnFilterCho.setOnClickListener(v -> {
-            currentFilter = "CHO";
-            updateFilterButtons();
-            loadDanhSachLichKham();
-        });
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                int position = tab.getPosition();
+                if (position == 0) {
+                    currentFilter = "CHO_XAC_NHAN";
+                } else if (position == 1) {
+                    currentFilter = "DA_XAC_NHAN";
+                } else {
+                    currentFilter = "TU_CHOI";
+                }
+                loadDanhSachLichKham();
+            }
 
-        btnFilterDaXacNhan.setOnClickListener(v -> {
-            currentFilter = "XAC_NHAN";
-            updateFilterButtons();
-            loadDanhSachLichKham();
-        });
-    }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {}
 
-    private void updateFilterButtons() {
-        if ("CHO".equals(currentFilter)) {
-            btnFilterCho.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF2196F3));
-            btnFilterCho.setTextColor(0xFFFFFFFF);
-            btnFilterDaXacNhan.setBackgroundTintList(getColorStateList(android.R.color.darker_gray));
-            btnFilterDaXacNhan.setTextColor(0xFF7F8C8D);
-        } else {
-            btnFilterDaXacNhan.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF2196F3));
-            btnFilterDaXacNhan.setTextColor(0xFFFFFFFF);
-            btnFilterCho.setBackgroundTintList(getColorStateList(android.R.color.darker_gray));
-            btnFilterCho.setTextColor(0xFF7F8C8D);
-        }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {}
+        });
     }
 
     private void loadDanhSachLichKham() {
-        loadingOverlay.setVisibility(View.VISIBLE);
-        layoutEmpty.setVisibility(View.GONE);
+        progressBar.setVisibility(View.VISIBLE);
+        tvEmpty.setVisibility(View.GONE);
 
         repo.getByField("LichKham", "maBacSi", maBacSi,
             querySnapshot -> {
                 List<LichKham> danhSach = new ArrayList<>();
                 
-                for (com.google.firebase.firestore.DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                for (var doc : querySnapshot.getDocuments()) {
                     LichKham lichKham = doc.toObject(LichKham.class);
                     if (lichKham != null && currentFilter.equals(lichKham.getTrangThai())) {
                         danhSach.add(lichKham);
                     }
                 }
 
-                loadingOverlay.setVisibility(View.GONE);
+                // Sắp xếp theo thời gian: lịch cũ hơn (trước) lên đầu
+                danhSach.sort((l1, l2) -> {
+                    if (l1.getThoiGianKham() == null) return 1;
+                    if (l2.getThoiGianKham() == null) return -1;
+                    return l1.getThoiGianKham().compareTo(l2.getThoiGianKham());
+                });
+
+                progressBar.setVisibility(View.GONE);
                 
                 if (danhSach.isEmpty()) {
-                    layoutEmpty.setVisibility(View.VISIBLE);
-                    if ("CHO".equals(currentFilter)) {
-                        tvThongBao.setText("Không có lịch khám chờ xác nhận");
-                    } else {
-                        tvThongBao.setText("Chưa có lịch khám nào được xác nhận");
-                    }
+                    tvEmpty.setVisibility(View.VISIBLE);
+                    updateEmptyMessage();
                 } else {
-                    layoutEmpty.setVisibility(View.GONE);
+                    tvEmpty.setVisibility(View.GONE);
                 }
                 
                 adapter.updateData(danhSach);
-                Log.d(TAG, "Loaded " + danhSach.size() + " lịch khám với trạng thái: " + currentFilter);
+                Log.d(TAG, "Loaded " + danhSach.size() + " lịch khám (sorted by time)");
             },
             e -> {
-                loadingOverlay.setVisibility(View.GONE);
-                Log.e(TAG, "Lỗi tải danh sách lịch khám", e);
-                Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                layoutEmpty.setVisibility(View.VISIBLE);
-                tvThongBao.setText("Lỗi tải dữ liệu");
+                progressBar.setVisibility(View.GONE);
+                tvEmpty.setVisibility(View.VISIBLE);
+                Log.e(TAG, "Lỗi tải danh sách", e);
+                Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             });
     }
 
-    private void handleXacNhan(LichKham lichKham) {
-        loadingOverlay.setVisibility(View.VISIBLE);
+    private void updateEmptyMessage() {
+        switch (currentFilter) {
+            case "CHO_XAC_NHAN":
+                tvEmpty.setText("Không có lịch khám chờ xác nhận");
+                break;
+            case "DA_XAC_NHAN":
+                tvEmpty.setText("Chưa có lịch khám nào được xác nhận");
+                break;
+            case "TU_CHOI":
+                tvEmpty.setText("Chưa có lịch khám nào bị từ chối");
+                break;
+        }
+    }
+
+    private void showConfirmDialog(LichKham lichKham, boolean isApprove) {
+        String title = isApprove ? "Xác nhận lịch khám" : "Từ chối lịch khám";
+        String message = isApprove ? 
+            "Bạn có chắc chắn muốn xác nhận lịch khám này?" : 
+            "Bạn có chắc chắn muốn từ chối lịch khám này?";
         
-        repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(),
-            java.util.Collections.singletonMap("trangThai", "XAC_NHAN"),
-            aVoid -> {
-                loadingOverlay.setVisibility(View.GONE);
-                Toast.makeText(this, "✓ Xác nhận lịch khám thành công!", Toast.LENGTH_SHORT).show();
-                logActivity("Xác nhận lịch khám: " + lichKham.getMaLichKham());
-                loadDanhSachLichKham();
-            },
-            e -> {
-                loadingOverlay.setVisibility(View.GONE);
-                Log.e(TAG, "Lỗi xác nhận lịch khám", e);
-                Toast.makeText(this, "✗ Xác nhận thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            });
-    }
-
-    private void handleHuy(LichKham lichKham) {
-        // Hiển thị dialog xác nhận trước khi hủy
-        new androidx.appcompat.app.AlertDialog.Builder(this)
-            .setTitle("Xác nhận từ chối")
-            .setMessage("Bạn có chắc chắn muốn từ chối lịch khám này?")
-            .setPositiveButton("Từ chối", (dialog, which) -> {
-                loadingOverlay.setVisibility(View.VISIBLE);
-                
-                repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(),
-                    java.util.Collections.singletonMap("trangThai", "HUY"),
-                    aVoid -> {
-                        loadingOverlay.setVisibility(View.GONE);
-                        Toast.makeText(this, "✓ Đã từ chối lịch khám!", Toast.LENGTH_SHORT).show();
-                        logActivity("Từ chối lịch khám: " + lichKham.getMaLichKham());
-                        loadDanhSachLichKham();
-                    },
-                    e -> {
-                        loadingOverlay.setVisibility(View.GONE);
-                        Log.e(TAG, "Lỗi hủy lịch khám", e);
-                        Toast.makeText(this, "✗ Từ chối thất bại: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
+        new AlertDialog.Builder(this)
+            .setTitle(title)
+            .setMessage(message)
+            .setPositiveButton(isApprove ? "Xác nhận" : "Từ chối", (dialog, which) -> {
+                if (isApprove) {
+                    handleXacNhan(lichKham);
+                } else {
+                    handleTuChoi(lichKham);
+                }
             })
-            .setNegativeButton("Hủy bỏ", null)
+            .setNegativeButton("Hủy", null)
             .show();
     }
 
-    private void logActivity(String tenHoatDong) {
-        String maLichSu = UUID.randomUUID().toString();
-        LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, tenHoatDong, new Date(), "Bác sĩ " + tenHoatDong);
-        repo.logActivity(lichSu);
+    private void handleXacNhan(LichKham lichKham) {
+        progressBar.setVisibility(View.VISIBLE);
+        
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("trangThai", "DA_XAC_NHAN");
+        
+        repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
+            aVoid -> {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(this, "✓ Xác nhận thành công!", Toast.LENGTH_SHORT).show();
+                loadDanhSachLichKham();
+            },
+            e -> {
+                progressBar.setVisibility(View.GONE);
+                Log.e(TAG, "Lỗi xác nhận", e);
+                Toast.makeText(this, "✗ Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
+    }
+
+    private void handleTuChoi(LichKham lichKham) {
+        progressBar.setVisibility(View.VISIBLE);
+        
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("trangThai", "TU_CHOI");
+        
+        repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
+            aVoid -> {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(this, "✓ Đã từ chối lịch khám!", Toast.LENGTH_SHORT).show();
+                loadDanhSachLichKham();
+            },
+            e -> {
+                progressBar.setVisibility(View.GONE);
+                Log.e(TAG, "Lỗi từ chối", e);
+                Toast.makeText(this, "✗ Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
     }
 }

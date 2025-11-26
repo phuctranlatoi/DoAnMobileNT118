@@ -5,10 +5,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
@@ -22,19 +22,18 @@ import java.util.Locale;
 public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKhamAdapter.ViewHolder> {
 
     private Context context;
-    private List<LichKham> danhSachLichKham;
+    private List<LichKham> lichKhamList;
     private OnLichKhamActionListener listener;
     private FirestoreRepository repo;
-    private SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy - HH:mm", Locale.getDefault());
 
     public interface OnLichKhamActionListener {
         void onXacNhan(LichKham lichKham);
-        void onHuy(LichKham lichKham);
+        void onTuChoi(LichKham lichKham);
     }
 
-    public XacNhanLichKhamAdapter(Context context, List<LichKham> danhSachLichKham, OnLichKhamActionListener listener) {
+    public XacNhanLichKhamAdapter(Context context, List<LichKham> lichKhamList, OnLichKhamActionListener listener) {
         this.context = context;
-        this.danhSachLichKham = danhSachLichKham;
+        this.lichKhamList = lichKhamList;
         this.listener = listener;
         this.repo = new FirestoreRepository();
     }
@@ -48,93 +47,86 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        LichKham lichKham = danhSachLichKham.get(position);
+        LichKham lichKham = lichKhamList.get(position);
         
-        // Hiển thị số thứ tự
-        holder.tvSoThuTu.setText(String.valueOf(lichKham.getSoThuTu()));
+        // Hiển thị thời gian
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        holder.tvThoiGian.setText(sdf.format(lichKham.getThoiGianKham()));
+        
+        // Hiển thị lý do khám
+        holder.tvLyDo.setText(lichKham.getLyDoKham() != null ? lichKham.getLyDoKham() : "Không có lý do");
         
         // Load tên bệnh nhân
-        loadTenBenhNhan(lichKham.getMaBenhNhan(), holder.tvTenBenhNhan);
+        repo.getByField("BenhNhan", "maBenhNhan", lichKham.getMaBenhNhan(),
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        String hoTen = querySnapshot.getDocuments().get(0).getString("hoTen");
+                        String sdt = querySnapshot.getDocuments().get(0).getString("soDienThoai");
+                        holder.tvBenhNhan.setText(hoTen);
+                        holder.tvSoDienThoai.setText("SĐT: " + sdt);
+                    }
+                },
+                e -> holder.tvBenhNhan.setText("Bệnh nhân"));
         
-        // Hiển thị ngày khám
-        if (lichKham.getNgayKham() != null) {
-            holder.tvNgayKham.setText(dateFormat.format(lichKham.getNgayKham().toDate()));
-        }
-        
-        // Hiển thị trạng thái
+        // Hiển thị/ẩn nút dựa vào trạng thái
         String trangThai = lichKham.getTrangThai();
-        if ("CHO".equals(trangThai)) {
-            holder.tvTrangThai.setText("Chờ");
-            holder.tvTrangThai.setBackgroundResource(R.drawable.badge_background);
-            holder.tvTrangThai.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFFFA726));
-            holder.layoutButtons.setVisibility(View.VISIBLE);
-        } else if ("XAC_NHAN".equals(trangThai)) {
-            holder.tvTrangThai.setText("Đã xác nhận");
-            holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success);
-            holder.tvTrangThai.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFF4CAF50));
-            holder.layoutButtons.setVisibility(View.GONE);
-        } else if ("HUY".equals(trangThai)) {
-            holder.tvTrangThai.setText("Đã từ chối");
-            holder.tvTrangThai.setBackgroundResource(R.drawable.badge_danger);
-            holder.tvTrangThai.setBackgroundTintList(android.content.res.ColorStateList.valueOf(0xFFE74C3C));
-            holder.layoutButtons.setVisibility(View.GONE);
+        if ("CHO_XAC_NHAN".equals(trangThai)) {
+            holder.btnXacNhan.setVisibility(View.VISIBLE);
+            holder.btnTuChoi.setVisibility(View.VISIBLE);
+            holder.tvTrangThai.setVisibility(View.GONE);
         } else {
-            holder.tvTrangThai.setText(trangThai);
-            holder.tvTrangThai.setBackgroundResource(R.drawable.badge_background);
-            holder.layoutButtons.setVisibility(View.GONE);
+            holder.btnXacNhan.setVisibility(View.GONE);
+            holder.btnTuChoi.setVisibility(View.GONE);
+            holder.tvTrangThai.setVisibility(View.VISIBLE);
+            
+            if ("DA_XAC_NHAN".equals(trangThai)) {
+                holder.tvTrangThai.setText("✓ Đã xác nhận");
+                holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success);
+            } else if ("TU_CHOI".equals(trangThai)) {
+                holder.tvTrangThai.setText("✗ Đã từ chối");
+                holder.tvTrangThai.setBackgroundResource(R.drawable.badge_danger);
+            }
         }
         
-        // Xử lý sự kiện nút
+        // Xử lý sự kiện
         holder.btnXacNhan.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onXacNhan(lichKham);
             }
         });
         
-        holder.btnHuy.setOnClickListener(v -> {
+        holder.btnTuChoi.setOnClickListener(v -> {
             if (listener != null) {
-                listener.onHuy(lichKham);
+                listener.onTuChoi(lichKham);
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        return danhSachLichKham.size();
+        return lichKhamList.size();
     }
 
     public void updateData(List<LichKham> newData) {
-        this.danhSachLichKham = newData;
+        this.lichKhamList = newData;
         notifyDataSetChanged();
     }
 
-    private void loadTenBenhNhan(String maBenhNhan, TextView textView) {
-        repo.getByField("BenhNhan", "maBenhNhan", maBenhNhan,
-            querySnapshot -> {
-                if (!querySnapshot.isEmpty()) {
-                    String hoTen = querySnapshot.getDocuments().get(0).getString("hoTen");
-                    textView.setText(hoTen != null ? hoTen : "Không rõ");
-                } else {
-                    textView.setText("Không rõ");
-                }
-            },
-            e -> textView.setText("Lỗi"));
-    }
-
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvSoThuTu, tvTenBenhNhan, tvNgayKham, tvTrangThai;
-        Button btnXacNhan, btnHuy;
-        LinearLayout layoutButtons;
+        CardView cardView;
+        TextView tvBenhNhan, tvSoDienThoai, tvThoiGian, tvLyDo, tvTrangThai;
+        Button btnXacNhan, btnTuChoi;
 
-        public ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
-            tvSoThuTu = itemView.findViewById(R.id.tvSoThuTu);
-            tvTenBenhNhan = itemView.findViewById(R.id.tvTenBenhNhan);
-            tvNgayKham = itemView.findViewById(R.id.tvNgayKham);
+            cardView = itemView.findViewById(R.id.cardView);
+            tvBenhNhan = itemView.findViewById(R.id.tvBenhNhan);
+            tvSoDienThoai = itemView.findViewById(R.id.tvSoDienThoai);
+            tvThoiGian = itemView.findViewById(R.id.tvThoiGian);
+            tvLyDo = itemView.findViewById(R.id.tvLyDo);
             tvTrangThai = itemView.findViewById(R.id.tvTrangThai);
             btnXacNhan = itemView.findViewById(R.id.btnXacNhan);
-            btnHuy = itemView.findViewById(R.id.btnHuy);
-            layoutButtons = itemView.findViewById(R.id.layoutButtons);
+            btnTuChoi = itemView.findViewById(R.id.btnTuChoi);
         }
     }
 }
