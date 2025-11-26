@@ -364,32 +364,54 @@ public class ProfileActivity extends AppCompatActivity {
         Toast.makeText(this, "Đang tải ảnh lên...", Toast.LENGTH_SHORT).show();
         Log.d("ProfileActivity", "Bắt đầu upload ảnh: " + imageUri.toString());
         
-        // Tạo reference đến Firebase Storage
-        String fileName = "avatars/" + maTaiKhoan + "_" + System.currentTimeMillis() + ".jpg";
-        StorageReference storageRef = storage.getReference().child(fileName);
-        
-        // Upload file
-        storageRef.putFile(imageUri)
-            .addOnProgressListener(taskSnapshot -> {
-                double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                Log.d("ProfileActivity", "Upload progress: " + progress + "%");
-            })
-            .addOnSuccessListener(taskSnapshot -> {
-                Log.d("ProfileActivity", "Upload thành công!");
-                // Lấy URL của ảnh đã upload
-                storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
-                    String downloadUrl = uri.toString();
-                    Log.d("ProfileActivity", "Download URL: " + downloadUrl);
-                    updateAvatarUrlInFirestore(downloadUrl);
-                }).addOnFailureListener(e -> {
-                    Log.e("ProfileActivity", "Lỗi lấy download URL: ", e);
-                    Toast.makeText(this, "Lỗi lấy URL ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        try {
+            // Lấy storage bucket từ google-services.json
+            String storageBucket = "qlykhambenh.firebasestorage.app";
+            Log.d("ProfileActivity", "Storage bucket: " + storageBucket);
+            
+            // Khởi tạo lại storage với bucket cụ thể
+            FirebaseStorage storageInstance = FirebaseStorage.getInstance("gs://" + storageBucket);
+            
+            // Tạo reference đến Firebase Storage
+            String fileName = "avatars/" + maTaiKhoan + "_" + System.currentTimeMillis() + ".jpg";
+            StorageReference storageRef = storageInstance.getReference().child(fileName);
+            
+            Log.d("ProfileActivity", "Upload path: " + storageRef.getPath());
+            
+            // Upload file
+            storageRef.putFile(imageUri)
+                .addOnProgressListener(taskSnapshot -> {
+                    double progress = (100.0 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    Log.d("ProfileActivity", "Upload progress: " + progress + "%");
+                })
+                .addOnSuccessListener(taskSnapshot -> {
+                    Log.d("ProfileActivity", "Upload thành công!");
+                    // Lấy URL của ảnh đã upload
+                    storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String downloadUrl = uri.toString();
+                        Log.d("ProfileActivity", "Download URL: " + downloadUrl);
+                        updateAvatarUrlInFirestore(downloadUrl);
+                    }).addOnFailureListener(e -> {
+                        Log.e("ProfileActivity", "Lỗi lấy download URL: ", e);
+                        Toast.makeText(this, "Lỗi lấy URL ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("ProfileActivity", "Lỗi upload ảnh: ", e);
+                    
+                    // Kiểm tra loại lỗi cụ thể
+                    if (e.getMessage() != null && e.getMessage().contains("Object does not exist")) {
+                        Toast.makeText(this, "Lỗi: Firebase Storage chưa được kích hoạt. Vui lòng kiểm tra Firebase Console.", Toast.LENGTH_LONG).show();
+                    } else if (e.getMessage() != null && e.getMessage().contains("Permission denied")) {
+                        Toast.makeText(this, "Lỗi: Không có quyền upload. Vui lòng kiểm tra Storage Rules.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "Lỗi tải ảnh lên: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                 });
-            })
-            .addOnFailureListener(e -> {
-                Log.e("ProfileActivity", "Lỗi upload ảnh: ", e);
-                Toast.makeText(this, "Lỗi tải ảnh lên: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            });
+        } catch (Exception e) {
+            Log.e("ProfileActivity", "Lỗi khởi tạo Firebase Storage: ", e);
+            Toast.makeText(this, "Lỗi khởi tạo Storage: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
     
     private void updateAvatarUrlInFirestore(String avatarUrl) {
