@@ -43,8 +43,21 @@ public class LichLamViecNewAdapter extends RecyclerView.Adapter<LichLamViecNewAd
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LichLamViec lichLamViec = danhSachLichLamViec.get(position);
         
-        // Hiển thị ca làm việc
-        holder.tvCaLamViec.setText(lichLamViec.getCaLamViec());
+        // Hiển thị ca làm việc với loại hình
+        String loaiHinh = lichLamViec.getLoaiHinh();
+        String caLamViec = lichLamViec.getCaLamViec();
+        
+        if ("ONLINE".equals(loaiHinh)) {
+            holder.tvCaLamViec.setText("🌐 " + caLamViec + " (Online)");
+            holder.tvLoaiHinh.setText("Online");
+            holder.tvLoaiHinh.setBackgroundResource(R.drawable.badge_info);
+            holder.tvLoaiHinh.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvCaLamViec.setText("🏥 " + caLamViec + " (Tại phòng)");
+            holder.tvLoaiHinh.setText("Tại phòng");
+            holder.tvLoaiHinh.setBackgroundResource(R.drawable.badge_primary);
+            holder.tvLoaiHinh.setVisibility(View.VISIBLE);
+        }
         
         // Load số bệnh nhân
         loadSoBenhNhan(lichLamViec, holder);
@@ -54,6 +67,7 @@ public class LichLamViecNewAdapter extends RecyclerView.Adapter<LichLamViecNewAd
             Intent intent = new Intent(context, XemChiTietLichKhamActivity.class);
             intent.putExtra("MA_LICH_LAM_VIEC", lichLamViec.getMaLichLamViec());
             intent.putExtra("CA_LAM_VIEC", lichLamViec.getCaLamViec());
+            intent.putExtra("LOAI_HINH", lichLamViec.getLoaiHinh());
             context.startActivity(intent);
         });
     }
@@ -113,13 +127,14 @@ public class LichLamViecNewAdapter extends RecyclerView.Adapter<LichLamViecNewAd
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCaLamViec, tvSoBenhNhan, tvTrangThai;
+        TextView tvCaLamViec, tvSoBenhNhan, tvTrangThai, tvLoaiHinh;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvCaLamViec = itemView.findViewById(R.id.tvCaLamViec);
             tvSoBenhNhan = itemView.findViewById(R.id.tvSoBenhNhan);
             tvTrangThai = itemView.findViewById(R.id.tvTrangThai);
+            tvLoaiHinh = itemView.findViewById(R.id.tvLoaiHinh);
         }
     }
 }

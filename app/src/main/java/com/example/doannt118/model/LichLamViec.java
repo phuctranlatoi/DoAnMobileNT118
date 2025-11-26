@@ -11,6 +11,7 @@ public class LichLamViec {
     private String caLamViec; // "08:00-09:00" - tên field trong Firestore
     private String trangThai; // CON_TRONG, DA_DAY
     private int soLuongToiDa; // Mặc định 6
+    private String loaiHinh; // ONLINE, OFFLINE (tại phòng khám)
 
     public LichLamViec() {}
 
@@ -22,6 +23,18 @@ public class LichLamViec {
         this.caLamViec = caLamViec;
         this.trangThai = trangThai;
         this.soLuongToiDa = soLuongToiDa;
+        this.loaiHinh = "OFFLINE"; // Mặc định là khám tại phòng
+    }
+    
+    public LichLamViec(String maLichLamViec, String maBacSi, Date ngayLamViec,
+                       String caLamViec, String trangThai, int soLuongToiDa, String loaiHinh) {
+        this.maLichLamViec = maLichLamViec;
+        this.maBacSi = maBacSi;
+        this.ngayLamViec = ngayLamViec;
+        this.caLamViec = caLamViec;
+        this.trangThai = trangThai;
+        this.soLuongToiDa = soLuongToiDa;
+        this.loaiHinh = loaiHinh;
     }
 
     public String getMaLichLamViec() { return maLichLamViec; }
@@ -41,4 +54,7 @@ public class LichLamViec {
 
     public int getSoLuongToiDa() { return soLuongToiDa; }
     public void setSoLuongToiDa(int soLuongToiDa) { this.soLuongToiDa = soLuongToiDa; }
+    
+    public String getLoaiHinh() { return loaiHinh; }
+    public void setLoaiHinh(String loaiHinh) { this.loaiHinh = loaiHinh; }
 }
