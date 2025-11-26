@@ -211,11 +211,26 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     }
 
     private void handleXacNhanDungThuoc() {
-        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+        logActivity("Xem đơn thuốc");
+        // Lấy mã bệnh nhân trước
+        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
+                        if (benhNhan != null) {
+                            Intent intent = new Intent(this, DanhSachDonThuocActivity.class);
+                            intent.putExtra("MA_BENH_NHAN", benhNhan.getMaBenhNhan());
+                            startActivity(intent);
+                        }
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void handleXemHoaDon() {
-        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Chức năng Xem hóa đơn đang phát triển!", Toast.LENGTH_SHORT).show();
     }
 
     private void handleDangXuat() {

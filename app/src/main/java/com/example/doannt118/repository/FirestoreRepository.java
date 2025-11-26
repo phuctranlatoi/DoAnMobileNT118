@@ -4,8 +4,10 @@ import android.util.Log;
 import com.example.doannt118.model.*;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.function.Consumer;
@@ -20,6 +22,9 @@ public class FirestoreRepository {
     private static final String COLLECTION_ADMIN = "Admin";
     private static final String COLLECTION_BENHAN = "BenhAn";
     private static final String COLLECTION_LICHSU = "LichSuHoatDong";
+    private static final String COLLECTION_DONTHUOC = "DonThuoc";
+    private static final String COLLECTION_CHITIETDONTHUOC = "ChiTietDonThuoc";
+    private static final String COLLECTION_DUOCPHAM = "DuocPham";
 
     public FirestoreRepository() {
         db = FirebaseFirestore.getInstance();
@@ -442,6 +447,115 @@ public class FirestoreRepository {
                 })
                 .addOnFailureListener(e -> {
                     Log.e("FirestoreRepository", "approveBacSi failed: maBacSi=" + maBacSi + ", maTaiKhoan=" + maTaiKhoan, e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // === QUẢN LÝ ĐỐN THUỐC ===
+    
+    // Lấy danh sách đơn thuốc theo mã bệnh nhân
+    public void getDonThuocByBenhNhan(String maBenhNhan,
+                                      Consumer<QuerySnapshot> onSuccess,
+                                      Consumer<Exception> onFailure) {
+        // Lấy danh sách bệnh án của bệnh nhân
+        db.collection(COLLECTION_BENHAN)
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .get()
+                .addOnSuccessListener(benhAnSnapshot -> {
+                    if (benhAnSnapshot.isEmpty()) {
+                        onSuccess.accept(benhAnSnapshot);
+                        return;
+                    }
+                    
+                    // Lấy danh sách mã bệnh án
+                    List<String> maBenhAnList = new ArrayList<>();
+                    benhAnSnapshot.forEach(doc -> {
+                        String maBenhAn = doc.getString("maBenhAn");
+                        if (maBenhAn != null) {
+                            maBenhAnList.add(maBenhAn);
+                        }
+                    });
+                    
+                    // Lấy đơn thuốc theo danh sách mã bệnh án
+                    if (!maBenhAnList.isEmpty()) {
+                        db.collection(COLLECTION_DONTHUOC)
+                                .whereIn("maBenhAn", maBenhAnList)
+                                .get()
+                                .addOnSuccessListener(donThuocSnapshot -> {
+                                    Log.d("FirestoreRepository", "getDonThuocByBenhNhan success: " + donThuocSnapshot.size() + " records");
+                                    onSuccess.accept(donThuocSnapshot);
+                                })
+                                .addOnFailureListener(e -> {
+                                    Log.e("FirestoreRepository", "getDonThuocByBenhNhan failed", e);
+                                    onFailure.accept(e);
+                                });
+                    } else {
+                        onSuccess.accept(benhAnSnapshot);
+                    }
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getDonThuocByBenhNhan failed", e);
+                    onFailure.accept(e);
+                });
+    }
+    
+    // Lấy chi tiết đơn thuốc
+    public void getChiTietDonThuoc(String maDonThuoc,
+                                   Consumer<QuerySnapshot> onSuccess,
+                                   Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_CHITIETDONTHUOC)
+                .whereEqualTo("maDonThuoc", maDonThuoc)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getChiTietDonThuoc success: " + querySnapshot.size() + " items");
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getChiTietDonThuoc failed", e);
+                    onFailure.accept(e);
+                });
+    }
+    
+    // Thêm đơn thuốc mới
+    public void addDonThuoc(String maDonThuoc, String maBenhAn, Date ngayLap,
+                            Consumer<Void> onSuccess,
+                            Consumer<Exception> onFailure) {
+        Map<String, Object> donThuoc = new HashMap<>();
+        donThuoc.put("maDonThuoc", maDonThuoc);
+        donThuoc.put("maBenhAn", maBenhAn);
+        donThuoc.put("ngayLap", ngayLap);
+        
+        db.collection(COLLECTION_DONTHUOC)
+                .document(maDonThuoc)
+                .set(donThuoc)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "addDonThuoc success: " + maDonThuoc);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "addDonThuoc failed", e);
+                    onFailure.accept(e);
+                });
+    }
+    
+    // Thêm chi tiết đơn thuốc
+    public void addChiTietDonThuoc(String maDonThuoc, String maDuocPham, int soLuong, String lieuDung,
+                                   Consumer<Void> onSuccess,
+                                   Consumer<Exception> onFailure) {
+        Map<String, Object> chiTiet = new HashMap<>();
+        chiTiet.put("maDonThuoc", maDonThuoc);
+        chiTiet.put("maDuocPham", maDuocPham);
+        chiTiet.put("soLuong", soLuong);
+        chiTiet.put("lieuDung", lieuDung);
+        
+        db.collection(COLLECTION_CHITIETDONTHUOC)
+                .add(chiTiet)
+                .addOnSuccessListener(documentReference -> {
+                    Log.d("FirestoreRepository", "addChiTietDonThuoc success");
+                    onSuccess.accept(null);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "addChiTietDonThuoc failed", e);
                     onFailure.accept(e);
                 });
     }

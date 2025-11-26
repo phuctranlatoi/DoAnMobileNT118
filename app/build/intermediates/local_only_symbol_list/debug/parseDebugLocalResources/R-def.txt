@@ -29,6 +29,7 @@ drawable gradient_button
 drawable hospital
 drawable ic_add
 drawable ic_appointment
+drawable ic_arrow_right
 drawable ic_avatar
 drawable ic_calendar
 drawable ic_camera
@@ -127,6 +128,7 @@ id cardManageMedicalRecord
 id cardManagePrescription
 id cardManageSchedule
 id cardRegisterAppointment
+id cardView
 id cardViewInvoice
 id cardViewMedicalRecord
 id dpNgayLamViec
@@ -192,7 +194,9 @@ id rvAppointments
 id rvBacSi
 id rvBenhAn
 id rvBenhNhanList
+id rvChiTiet
 id rvChiTietLichKham
+id rvDonThuoc
 id rvGhiChu
 id rvKetQuaKham
 id rvKhungGio
@@ -237,8 +241,10 @@ id tvHoTen
 id tvHocVi
 id tvKhungGio
 id tvKinhNghiem
+id tvLieuDung
 id tvMaBenhAn
 id tvMaBenhNhan
+id tvMaDonThuoc
 id tvMaHoSo
 id tvMaLichKham
 id tvMaLichLamViec
@@ -253,10 +259,12 @@ id tvQuenMatKhau
 id tvSelectedBenhNhan
 id tvSoBenhNhan
 id tvSoDienThoai
+id tvSoLuong
 id tvSoThuTu
 id tvTenBenhNhan
 id tvTenDangNhap
 id tvTenNhanVien
+id tvTenThuoc
 id tvThoiGian
 id tvThongBao
 id tvTitle
@@ -280,9 +288,11 @@ id txtNgaySinh
 id txtSoDienThoai
 id txtTenDangNhap
 layout activity_chi_tiet_bac_si
+layout activity_chi_tiet_don_thuoc
 layout activity_chitietbenhan
 layout activity_dangky_lichkham
 layout activity_danh_sach_bac_si
+layout activity_danh_sach_don_thuoc
 layout activity_forgot_password
 layout activity_login
 layout activity_main
@@ -310,8 +320,10 @@ layout item_activity_history
 layout item_bac_si
 layout item_benh_nhan
 layout item_benhan
+layout item_chi_tiet_don_thuoc
 layout item_chi_tiet_lich_kham
 layout item_diagnosis_entry
+layout item_don_thuoc
 layout item_ghichu
 layout item_khung_gio
 layout item_lich_kham

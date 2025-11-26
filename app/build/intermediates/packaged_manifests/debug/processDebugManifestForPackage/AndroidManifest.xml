@@ -83,6 +83,8 @@
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
+        <activity android:name="com.example.doannt118.ui.DanhSachDonThuocActivity" />
+        <activity android:name="com.example.doannt118.ui.ChiTietDonThuocActivity" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />
