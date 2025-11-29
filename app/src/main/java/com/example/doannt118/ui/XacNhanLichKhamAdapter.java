@@ -51,10 +51,10 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
         
         // Hiển thị thời gian
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        holder.tvThoiGian.setText(sdf.format(lichKham.getThoiGianKham()));
+        holder.tvThoiGian.setText(sdf.format(lichKham.getNgayKham().toDate()));
         
-        // Hiển thị lý do khám
-        holder.tvLyDo.setText(lichKham.getLyDoKham() != null ? lichKham.getLyDoKham() : "Không có lý do");
+        // Hiển thị số thứ tự
+        holder.tvLyDo.setText("STT: " + lichKham.getSoThuTu());
         
         // Load tên bệnh nhân
         repo.getByField("BenhNhan", "maBenhNhan", lichKham.getMaBenhNhan(),

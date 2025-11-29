@@ -78,10 +78,15 @@ public class GuiThongBaoActivity extends AppCompatActivity {
     }
 
     private void loadBenhNhan() {
-        repo.getAll("BenhNhan", BenhNhan.class,
-                list -> {
+        repo.getAll("BenhNhan",
+                querySnapshot -> {
                     benhNhanList.clear();
-                    benhNhanList.addAll(list);
+                    for (com.google.firebase.firestore.DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                        BenhNhan bn = doc.toObject(BenhNhan.class);
+                        if (bn != null) {
+                            benhNhanList.add(bn);
+                        }
+                    }
                     adapter.notifyDataSetChanged();
                 },
                 e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -110,7 +115,7 @@ public class GuiThongBaoActivity extends AppCompatActivity {
         int count = 0;
 
         for (BenhNhan bn : selectedBenhNhan) {
-            String maThongBao = repo.generateId("ThongBao");
+            String maThongBao = "TB" + System.currentTimeMillis() + "_" + bn.getMaBenhNhan();
             ThongBao thongBao = new ThongBao(
                 maThongBao,
                 bn.getMaBenhNhan(),
@@ -122,7 +127,7 @@ public class GuiThongBaoActivity extends AppCompatActivity {
                 false
             );
 
-            repo.add("ThongBao", maThongBao, thongBao,
+            repo.addDocument("ThongBao", maThongBao, thongBao,
                     aVoid -> {},
                     e -> Toast.makeText(this, "Lỗi gửi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
             count++;

@@ -57,8 +57,7 @@ public class ThongBaoActivity extends AppCompatActivity {
     }
 
     private void listenToThongBao() {
-        listenerRegistration = repo.getFirestore()
-                .collection("ThongBao")
+        listenerRegistration = repo.getCollection("ThongBao")
                 .whereEqualTo("maBenhNhan", maBenhNhan)
                 .orderBy("thoiGianGui", Query.Direction.DESCENDING)
                 .addSnapshotListener((snapshots, error) -> {
@@ -78,7 +77,7 @@ public class ThongBaoActivity extends AppCompatActivity {
     private void markAsRead(ThongBao thongBao) {
         if (!thongBao.isDaDoc()) {
             thongBao.setDaDoc(true);
-            repo.update("ThongBao", thongBao.getMaThongBao(), thongBao,
+            repo.updateDocument("ThongBao", thongBao.getMaThongBao(), thongBao,
                     aVoid -> {},
                     e -> {});
         }

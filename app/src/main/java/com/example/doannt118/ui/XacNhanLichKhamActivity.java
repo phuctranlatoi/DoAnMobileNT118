@@ -36,7 +36,7 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
     private FirestoreRepository repo;
     private XacNhanLichKhamAdapter adapter;
     private String maBacSi;
-    private String currentFilter = "CHO_XAC_NHAN";
+    private String currentFilter = "CHO";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,11 +96,11 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
                 if (position == 0) {
-                    currentFilter = "CHO_XAC_NHAN";
+                    currentFilter = "CHO";
                 } else if (position == 1) {
-                    currentFilter = "DA_XAC_NHAN";
+                    currentFilter = "XAC_NHAN";
                 } else {
-                    currentFilter = "TU_CHOI";
+                    currentFilter = "HUY";
                 }
                 loadDanhSachLichKham();
             }
@@ -123,16 +123,19 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
                 
                 for (var doc : querySnapshot.getDocuments()) {
                     LichKham lichKham = doc.toObject(LichKham.class);
-                    if (lichKham != null && currentFilter.equals(lichKham.getTrangThai())) {
-                        danhSach.add(lichKham);
+                    if (lichKham != null) {
+                        Log.d(TAG, "LichKham: " + lichKham.getMaLichKham() + " - TrangThai: " + lichKham.getTrangThai() + " - Filter: " + currentFilter);
+                        if (currentFilter.equals(lichKham.getTrangThai())) {
+                            danhSach.add(lichKham);
+                        }
                     }
                 }
 
                 // Sắp xếp theo thời gian: lịch cũ hơn (trước) lên đầu
                 danhSach.sort((l1, l2) -> {
-                    if (l1.getThoiGianKham() == null) return 1;
-                    if (l2.getThoiGianKham() == null) return -1;
-                    return l1.getThoiGianKham().compareTo(l2.getThoiGianKham());
+                    if (l1.getNgayKham() == null) return 1;
+                    if (l2.getNgayKham() == null) return -1;
+                    return l1.getNgayKham().compareTo(l2.getNgayKham());
                 });
 
                 progressBar.setVisibility(View.GONE);
@@ -145,7 +148,21 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
                 }
                 
                 adapter.updateData(danhSach);
-                Log.d(TAG, "Loaded " + danhSach.size() + " lịch khám (sorted by time)");
+                Log.d(TAG, "Loaded " + danhSach.size() + " lịch khám với trạng thái '" + currentFilter + "' (sorted by time)");
+                
+                // Debug: Hiển thị tổng số lịch khám theo từng trạng thái
+                int countCho = 0, countXacNhan = 0, countHuy = 0, countKhac = 0;
+                for (var doc : querySnapshot.getDocuments()) {
+                    LichKham lk = doc.toObject(LichKham.class);
+                    if (lk != null) {
+                        String tt = lk.getTrangThai();
+                        if ("CHO".equals(tt)) countCho++;
+                        else if ("XAC_NHAN".equals(tt)) countXacNhan++;
+                        else if ("HUY".equals(tt)) countHuy++;
+                        else countKhac++;
+                    }
+                }
+                Log.d(TAG, "Tổng số lịch: CHO=" + countCho + ", XAC_NHAN=" + countXacNhan + ", HUY=" + countHuy + ", Khác=" + countKhac);
             },
             e -> {
                 progressBar.setVisibility(View.GONE);
@@ -157,13 +174,13 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
 
     private void updateEmptyMessage() {
         switch (currentFilter) {
-            case "CHO_XAC_NHAN":
+            case "CHO":
                 tvEmpty.setText("Không có lịch khám chờ xác nhận");
                 break;
-            case "DA_XAC_NHAN":
+            case "XAC_NHAN":
                 tvEmpty.setText("Chưa có lịch khám nào được xác nhận");
                 break;
-            case "TU_CHOI":
+            case "HUY":
                 tvEmpty.setText("Chưa có lịch khám nào bị từ chối");
                 break;
         }
@@ -193,7 +210,7 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         
         Map<String, Object> updates = new HashMap<>();
-        updates.put("trangThai", "DA_XAC_NHAN");
+        updates.put("trangThai", "XAC_NHAN");
         
         repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
             aVoid -> {
@@ -212,7 +229,7 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         
         Map<String, Object> updates = new HashMap<>();
-        updates.put("trangThai", "TU_CHOI");
+        updates.put("trangThai", "HUY");
         
         repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
             aVoid -> {

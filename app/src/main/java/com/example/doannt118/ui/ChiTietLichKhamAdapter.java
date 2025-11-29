@@ -116,7 +116,7 @@ public class ChiTietLichKhamAdapter extends RecyclerView.Adapter<ChiTietLichKham
         notifyDataSetChanged();
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvSoThuTu, tvTenBenhNhan, tvNgayKham, tvTrangThai;
 
         public ViewHolder(@NonNull View itemView) {
