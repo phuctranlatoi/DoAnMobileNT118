@@ -18,7 +18,7 @@ import java.util.Map;
 
 public class CapNhatBenhAnActivity extends AppCompatActivity {
     private TextInputEditText edtChanDoan, edtGhiChu;
-    private MaterialButton btnCapNhat, btnKeDonThuoc, btnTaoHoaDon;
+    private MaterialButton btnCapNhat, btnKeDonThuoc;
     private ProgressBar progressBar;
     
     private FirestoreRepository repository;
@@ -47,24 +47,16 @@ public class CapNhatBenhAnActivity extends AppCompatActivity {
         edtGhiChu = findViewById(R.id.edtGhiChu);
         btnCapNhat = findViewById(R.id.btnCapNhat);
         btnKeDonThuoc = findViewById(R.id.btnKeDonThuoc);
-        btnTaoHoaDon = findViewById(R.id.btnTaoHoaDon);
         progressBar = findViewById(R.id.progressBar);
         
         repository = new FirestoreRepository();
         
         btnCapNhat.setOnClickListener(v -> capNhatBenhAn());
         btnKeDonThuoc.setOnClickListener(v -> keDonThuoc());
-        btnTaoHoaDon.setOnClickListener(v -> taoHoaDon());
     }
     
     private void keDonThuoc() {
         android.content.Intent intent = new android.content.Intent(this, KeDonThuocActivity.class);
-        intent.putExtra("maBenhAn", maBenhAn);
-        startActivity(intent);
-    }
-    
-    private void taoHoaDon() {
-        android.content.Intent intent = new android.content.Intent(this, TaoHoaDonActivity.class);
         intent.putExtra("maBenhAn", maBenhAn);
         startActivity(intent);
     }
