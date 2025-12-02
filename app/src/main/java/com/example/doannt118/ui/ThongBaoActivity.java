@@ -75,12 +75,10 @@ public class ThongBaoActivity extends AppCompatActivity {
     }
 
     private void markAsRead(ThongBao thongBao) {
-        if (!thongBao.isDaDoc()) {
-            thongBao.setDaDoc(true);
-            repo.updateDocument("ThongBao", thongBao.getMaThongBao(), thongBao,
-                    aVoid -> {},
-                    e -> {});
-        }
+        // Mở chi tiết thông báo
+        android.content.Intent intent = new android.content.Intent(this, ChiTietThongBaoActivity.class);
+        intent.putExtra("maThongBao", thongBao.getMaThongBao());
+        startActivity(intent);
     }
 
     @Override

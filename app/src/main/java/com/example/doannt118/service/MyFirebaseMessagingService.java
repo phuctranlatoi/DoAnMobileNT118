@@ -1,0 +1,159 @@
+package com.example.doannt118.service;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
+import android.util.Log;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+
+import com.example.doannt118.R;
+import com.example.doannt118.ui.ThongBaoActivity;
+import com.example.doannt118.ui.XacNhanUongThuocActivity;
+import com.google.firebase.messaging.FirebaseMessagingService;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Map;
+
+public class MyFirebaseMessagingService extends FirebaseMessagingService {
+    private static final String TAG = "FCMService";
+    private static final String CHANNEL_ID = "medical_notification_channel";
+    private static final String CHANNEL_NAME = "Thông báo y tế";
+
+    @Override
+    public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
+        
+        Log.d(TAG, "From: " + remoteMessage.getFrom());
+
+        // Kiểm tra notification payload
+        if (remoteMessage.getNotification() != null) {
+            String title = remoteMessage.getNotification().getTitle();
+            String body = remoteMessage.getNotification().getBody();
+            Log.d(TAG, "Notification Title: " + title);
+            Log.d(TAG, "Notification Body: " + body);
+            
+            sendNotification(title, body, remoteMessage.getData());
+        }
+
+        // Kiểm tra data payload
+        if (remoteMessage.getData().size() > 0) {
+            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
+            handleDataPayload(remoteMessage.getData());
+        }
+    }
+
+    @Override
+    public void onNewToken(@NonNull String token) {
+        super.onNewToken(token);
+        Log.d(TAG, "Refreshed token: " + token);
+        
+        // Gửi token lên server hoặc lưu vào Firestore
+        sendRegistrationToServer(token);
+    }
+
+    private void handleDataPayload(Map<String, String> data) {
+        String type = data.get("type");
+        String title = data.get("title");
+        String body = data.get("body");
+        
+        if (type != null) {
+            switch (type) {
+                case "NHAC_THUOC":
+                    sendMedicationNotification(title, body, data);
+                    break;
+                case "LICH_HEN":
+                    sendAppointmentNotification(title, body, data);
+                    break;
+                case "THONG_BAO_CHUNG":
+                    sendGeneralNotification(title, body, data);
+                    break;
+                default:
+                    sendNotification(title, body, data);
+                    break;
+            }
+        }
+    }
+
+    private void sendMedicationNotification(String title, String body, Map<String, String> data) {
+        Intent intent = new Intent(this, XacNhanUongThuocActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("maLichUong", data.get("maLichUong"));
+        intent.putExtra("maBenhNhan", data.get("maBenhNhan"));
+        
+        showNotification(title, body, intent, 1);
+    }
+
+    private void sendAppointmentNotification(String title, String body, Map<String, String> data) {
+        Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("MA_BENH_NHAN", data.get("maBenhNhan"));
+        
+        showNotification(title, body, intent, 2);
+    }
+
+    private void sendGeneralNotification(String title, String body, Map<String, String> data) {
+        Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra("MA_BENH_NHAN", data.get("maBenhNhan"));
+        
+        showNotification(title, body, intent, 3);
+    }
+
+    private void sendNotification(String title, String body, Map<String, String> data) {
+        Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        
+        showNotification(title, body, intent, 0);
+    }
+
+    private void showNotification(String title, String body, Intent intent, int notificationId) {
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+            this, 
+            notificationId,
+            intent,
+            PendingIntent.FLAG_ONE_SHOT | PendingIntent.FLAG_IMMUTABLE
+        );
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(defaultSoundUri)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(body));
+
+        NotificationManager notificationManager = 
+            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        // Tạo notification channel cho Android O trở lên
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID,
+                CHANNEL_NAME,
+                NotificationManager.IMPORTANCE_HIGH
+            );
+            channel.setDescription("Kênh thông báo cho ứng dụng y tế");
+            channel.enableVibration(true);
+            notificationManager.createNotificationChannel(channel);
+        }
+
+        notificationManager.notify(notificationId, notificationBuilder.build());
+    }
+
+    private void sendRegistrationToServer(String token) {
+        // TODO: Implement gửi token lên Firestore
+        // Lưu token vào collection "DeviceTokens" với mã bệnh nhân
+        Log.d(TAG, "Token saved: " + token);
+    }
+}
