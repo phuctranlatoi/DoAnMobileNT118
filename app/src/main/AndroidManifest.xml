@@ -81,5 +81,11 @@
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.XacNhanUongThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LichSuUongThuocActivity"
+            android:exported="false" />
     </application>
 </manifest>

@@ -753,4 +753,152 @@ public class FirestoreRepository {
                     onFailure.accept(e);
                 });
     }
+
+    // === QUẢN LÝ LỊCH UỐNG THUỐC ===
+
+    // Lấy lịch uống thuốc theo bệnh nhân và ngày
+    public void getLichUongThuocByBenhNhanAndDate(String maBenhNhan, Date ngayUong,
+                                                  Consumer<QuerySnapshot> onSuccess,
+                                                  Consumer<Exception> onFailure) {
+        db.collection("LichUongThuoc")
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .whereEqualTo("ngayUong", ngayUong)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getLichUongThuocByBenhNhanAndDate success: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getLichUongThuocByBenhNhanAndDate failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Lấy lịch uống thuốc chờ xác nhận
+    public void getLichUongThuocChoXacNhan(String maBenhNhan,
+                                          Consumer<QuerySnapshot> onSuccess,
+                                          Consumer<Exception> onFailure) {
+        db.collection("LichUongThuoc")
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .whereEqualTo("trangThai", "CHO_XAC_NHAN")
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getLichUongThuocChoXacNhan success: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getLichUongThuocChoXacNhan failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Lấy thống kê xác nhận uống thuốc
+    public void getThongKeXacNhanUongThuoc(String maBenhNhan, String maDonThuoc,
+                                          Consumer<QuerySnapshot> onSuccess,
+                                          Consumer<Exception> onFailure) {
+        db.collection("XacNhanUongThuoc")
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getThongKeXacNhanUongThuoc success: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getThongKeXacNhanUongThuoc failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Cập nhật trạng thái lịch uống thuốc
+    public void capNhatTrangThaiLichUong(String maLichUong, String trangThai,
+                                        Consumer<Void> onSuccess,
+                                        Consumer<Exception> onFailure) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("trangThai", trangThai);
+        updates.put("thoiGianXacNhan", com.google.firebase.Timestamp.now());
+
+        db.collection("LichUongThuoc")
+                .document(maLichUong)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "capNhatTrangThaiLichUong success: " + maLichUong);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "capNhatTrangThaiLichUong failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Lấy chi tiết đơn thuốc theo ca uống
+    public void getChiTietDonThuocTheoCa(String maDonThuoc, String caUong,
+                                        Consumer<List<Map<String, Object>>> onSuccess,
+                                        Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_CHITIETDONTHUOC)
+                .whereEqualTo("maDonThuoc", maDonThuoc)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    List<Map<String, Object>> result = new ArrayList<>();
+                    for (var doc : querySnapshot.getDocuments()) {
+                        Map<String, Object> data = doc.getData();
+                        if (data != null) {
+                            boolean canUong = false;
+                            if ("SANG".equals(caUong) && Boolean.TRUE.equals(data.get("uongSang"))) {
+                                canUong = true;
+                            } else if ("TRUA".equals(caUong) && Boolean.TRUE.equals(data.get("uongTrua"))) {
+                                canUong = true;
+                            } else if ("TOI".equals(caUong) && Boolean.TRUE.equals(data.get("uongToi"))) {
+                                canUong = true;
+                            }
+                            
+                            if (canUong) {
+                                result.add(data);
+                            }
+                        }
+                    }
+                    Log.d("FirestoreRepository", "getChiTietDonThuocTheoCa success: " + result.size());
+                    onSuccess.accept(result);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getChiTietDonThuocTheoCa failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Tính tỉ lệ tuân thủ uống thuốc
+    public void tinhTiLeTuanThu(String maBenhNhan, String maDonThuoc,
+                               Consumer<Map<String, Integer>> onSuccess,
+                               Consumer<Exception> onFailure) {
+        db.collection("LichUongThuoc")
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .whereEqualTo("maDonThuoc", maDonThuoc)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    int total = querySnapshot.size();
+                    int daUong = 0;
+                    int boQua = 0;
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        String trangThai = doc.getString("trangThai");
+                        if ("DA_UONG".equals(trangThai)) {
+                            daUong++;
+                        } else if ("BO_QUA".equals(trangThai)) {
+                            boQua++;
+                        }
+                    }
+                    
+                    Map<String, Integer> result = new HashMap<>();
+                    result.put("total", total);
+                    result.put("daUong", daUong);
+                    result.put("boQua", boQua);
+                    result.put("tiLe", total > 0 ? (daUong * 100 / total) : 0);
+                    
+                    Log.d("FirestoreRepository", "tinhTiLeTuanThu success: " + result);
+                    onSuccess.accept(result);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "tinhTiLeTuanThu failed", e);
+                    onFailure.accept(e);
+                });
+    }
 }

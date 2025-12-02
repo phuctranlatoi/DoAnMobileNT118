@@ -87,7 +87,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             cardViewMedicalRecord.setOnClickListener(v -> handleXemBenhAn());
         }
         if (cardConfirmMedication != null) {
-            cardConfirmMedication.setOnClickListener(v -> handleXacNhanDungThuoc());
+            cardConfirmMedication.setOnClickListener(v -> handleLichSuUongThuoc());
         }
         if (cardViewInvoice != null) {
             cardViewInvoice.setOnClickListener(v -> handleXemHoaDon());
@@ -212,6 +212,11 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     private void handleXemBenhAn() {
         logActivity("Xem bệnh án");
         startActivitySafe(XemBenhAnActivity.class);
+    }
+
+    private void handleLichSuUongThuoc() {
+        logActivity("Xem lịch sử uống thuốc");
+        startActivitySafe(LichSuUongThuocActivity.class);
     }
 
     private void handleXacNhanDungThuoc() {

@@ -4,14 +4,20 @@ import java.util.Date;
 public class DonThuoc {
     private String maDonThuoc;
     private String maBenhAn;
+    private String maBenhNhan;
     private Date ngayLap;
+    private int soNgayUong;
+    private Date ngayBatDau;
+    private Date ngayKetThuc;
 
     public DonThuoc() {}
 
-    public DonThuoc(String maDonThuoc, String maBenhAn, Date ngayLap) {
+    public DonThuoc(String maDonThuoc, String maBenhAn, String maBenhNhan, Date ngayLap, int soNgayUong) {
         this.maDonThuoc = maDonThuoc;
         this.maBenhAn = maBenhAn;
+        this.maBenhNhan = maBenhNhan;
         this.ngayLap = ngayLap;
+        this.soNgayUong = soNgayUong;
     }
 
     public String getMaDonThuoc() { return maDonThuoc; }
@@ -20,6 +26,18 @@ public class DonThuoc {
     public String getMaBenhAn() { return maBenhAn; }
     public void setMaBenhAn(String maBenhAn) { this.maBenhAn = maBenhAn; }
 
+    public String getMaBenhNhan() { return maBenhNhan; }
+    public void setMaBenhNhan(String maBenhNhan) { this.maBenhNhan = maBenhNhan; }
+
     public Date getNgayLap() { return ngayLap; }
     public void setNgayLap(Date ngayLap) { this.ngayLap = ngayLap; }
+
+    public int getSoNgayUong() { return soNgayUong; }
+    public void setSoNgayUong(int soNgayUong) { this.soNgayUong = soNgayUong; }
+
+    public Date getNgayBatDau() { return ngayBatDau; }
+    public void setNgayBatDau(Date ngayBatDau) { this.ngayBatDau = ngayBatDau; }
+
+    public Date getNgayKetThuc() { return ngayKetThuc; }
+    public void setNgayKetThuc(Date ngayKetThuc) { this.ngayKetThuc = ngayKetThuc; }
 }
