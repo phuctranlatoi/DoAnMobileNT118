@@ -103,7 +103,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="16dp"
                 android:src="@drawable/ic_lock"
-                android:tint="#3BAEA0" />
+                app:tint="#3BAEA0" />
 
             <EditText
                 android:id="@+id/txtMatKhau"

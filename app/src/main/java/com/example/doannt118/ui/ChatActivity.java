@@ -49,7 +49,7 @@ public class ChatActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Trợ lý ảo 🤖");
+            getSupportActionBar().setTitle("Trợ lý ảo");
         }
     }
     

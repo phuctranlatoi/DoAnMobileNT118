@@ -6,7 +6,7 @@
         android:title="Trang chủ" />
     <item
         android:id="@+id/nav_messages"
-        android:icon="@drawable/ic_notification"
+        android:icon="@drawable/chatbot"
         android:title="Chatbot" />
     <item
         android:id="@+id/nav_add"
