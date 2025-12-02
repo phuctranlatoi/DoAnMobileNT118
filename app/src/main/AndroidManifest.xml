@@ -96,6 +96,15 @@
         <activity
             android:name=".ui.ChiTietThongBaoActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.QuanLyBenhAnBacSiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.CapNhatBenhAnActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.TaoBenhAnActivity"
+            android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->
         <service

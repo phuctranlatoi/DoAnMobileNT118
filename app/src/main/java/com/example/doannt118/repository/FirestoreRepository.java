@@ -901,4 +901,125 @@ public class FirestoreRepository {
                     onFailure.accept(e);
                 });
     }
+
+    // === QUẢN LÝ BỆNH ÁN (BÁC SĨ) ===
+
+    // Lấy danh sách bệnh án theo bác sĩ
+    public void getBenhAnByBacSi(String maBacSi,
+                                Consumer<QuerySnapshot> onSuccess,
+                                Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_BENHAN)
+                .whereEqualTo("maBacSi", maBacSi)
+                .orderBy("ngayKham", Query.Direction.DESCENDING)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getBenhAnByBacSi success: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getBenhAnByBacSi failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Tạo bệnh án mới
+    public void taoBenhAn(String maBenhAn, String maLichKham, String maBenhNhan, 
+                         String maBacSi, String chanDoan, String ghiChu,
+                         Consumer<Void> onSuccess,
+                         Consumer<Exception> onFailure) {
+        Map<String, Object> benhAn = new HashMap<>();
+        benhAn.put("maBenhAn", maBenhAn);
+        benhAn.put("maLichKham", maLichKham);
+        benhAn.put("maBenhNhan", maBenhNhan);
+        benhAn.put("maBacSi", maBacSi);
+        benhAn.put("chanDoan", chanDoan);
+        benhAn.put("ghiChu", ghiChu);
+        benhAn.put("ngayKham", com.google.firebase.Timestamp.now());
+
+        db.collection(COLLECTION_BENHAN)
+                .document(maBenhAn)
+                .set(benhAn)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "taoBenhAn success: " + maBenhAn);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "taoBenhAn failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Cập nhật chẩn đoán bệnh án
+    public void capNhatChanDoan(String maBenhAn, String chanDoan, String ghiChu,
+                               Consumer<Void> onSuccess,
+                               Consumer<Exception> onFailure) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("chanDoan", chanDoan);
+        updates.put("ghiChu", ghiChu);
+        updates.put("ngayKham", com.google.firebase.Timestamp.now());
+
+        db.collection(COLLECTION_BENHAN)
+                .document(maBenhAn)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "capNhatChanDoan success: " + maBenhAn);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "capNhatChanDoan failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Lấy bệnh án theo lịch khám
+    public void getBenhAnByLichKham(String maLichKham,
+                                   Consumer<QuerySnapshot> onSuccess,
+                                   Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_BENHAN)
+                .whereEqualTo("maLichKham", maLichKham)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getBenhAnByLichKham success");
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getBenhAnByLichKham failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Thống kê bệnh án theo bác sĩ
+    public void thongKeBenhAnBacSi(String maBacSi,
+                                  Consumer<Map<String, Integer>> onSuccess,
+                                  Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_BENHAN)
+                .whereEqualTo("maBacSi", maBacSi)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    int total = querySnapshot.size();
+                    int daKham = 0;
+                    int choKham = 0;
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        String chanDoan = doc.getString("chanDoan");
+                        if (chanDoan != null && !chanDoan.isEmpty()) {
+                            daKham++;
+                        } else {
+                            choKham++;
+                        }
+                    }
+                    
+                    Map<String, Integer> result = new HashMap<>();
+                    result.put("total", total);
+                    result.put("daKham", daKham);
+                    result.put("choKham", choKham);
+                    
+                    Log.d("FirestoreRepository", "thongKeBenhAnBacSi success: " + result);
+                    onSuccess.accept(result);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "thongKeBenhAnBacSi failed", e);
+                    onFailure.accept(e);
+                });
+    }
 }
