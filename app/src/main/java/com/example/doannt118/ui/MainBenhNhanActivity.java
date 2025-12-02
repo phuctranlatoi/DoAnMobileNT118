@@ -78,6 +78,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         View cardViewMedicalRecord = findViewById(R.id.cardViewMedicalRecord);
         View cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
         View cardViewInvoice = findViewById(R.id.cardViewInvoice);
+        View cardChatbot = findViewById(R.id.cardChatbot);
 
         if (cardRegisterAppointment != null) {
             cardRegisterAppointment.setOnClickListener(v -> handleDangKyLichKham());
@@ -90,6 +91,9 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         }
         if (cardViewInvoice != null) {
             cardViewInvoice.setOnClickListener(v -> handleXemHoaDon());
+        }
+        if (cardChatbot != null) {
+            cardChatbot.setOnClickListener(v -> handleChatbot());
         }
 
         // Xử lý sự kiện cho nút thông báo
@@ -106,7 +110,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                     // Đã ở trang chủ
                     return true;
                 } else if (itemId == R.id.nav_messages) {
-                    Toast.makeText(this, "Chức năng Tin nhắn đang phát triển!", Toast.LENGTH_SHORT).show();
+                    handleChatbot();
                     return true;
                 } else if (itemId == R.id.nav_add) {
                     handleDangKyLichKham();
@@ -236,6 +240,17 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             return;
         }
         Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
+    }
+
+    private void handleChatbot() {
+        logActivity("Mở trợ lý ảo");
+        if (maBenhNhan == null) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("MA_BENH_NHAN", maBenhNhan);
         startActivity(intent);
     }

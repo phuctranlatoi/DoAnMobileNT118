@@ -82,9 +82,27 @@
             android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
+        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
+        <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.ChatActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
-        <activity android:name="com.example.doannt118.ui.DanhSachDonThuocActivity" />
-        <activity android:name="com.example.doannt118.ui.ChiTietDonThuocActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.DanhSachDonThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ChiTietDonThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.DanhSachHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ChiTietHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.UpdateBacSiProfileActivity"
+            android:exported="false" />
         <activity
             android:name="com.example.doannt118.ui.MainActivity"
             android:exported="false" />

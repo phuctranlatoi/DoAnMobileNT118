@@ -87,11 +87,12 @@ public class LoginActivity extends AppCompatActivity {
                                             return;
                                         }
 
-                                        if (!authResult.getUser().isEmailVerified()) {
-                                            authResult.getUser().sendEmailVerification();
-                                            Toast.makeText(this, "Vui lòng xác thực email! Đã gửi lại link xác thực.", Toast.LENGTH_LONG).show();
-                                            return;
-                                        }
+                                        // TẮT XÁC THỰC EMAIL - Để import data dễ dàng
+                                        // if (!authResult.getUser().isEmailVerified()) {
+                                        //     authResult.getUser().sendEmailVerification();
+                                        //     Toast.makeText(this, "Vui lòng xác thực email! Đã gửi lại link xác thực.", Toast.LENGTH_LONG).show();
+                                        //     return;
+                                        // }
 
                                         if (!BCrypt.checkpw(matKhau, storedHash)) {
                                             String newHashedPassword = BCrypt.hashpw(matKhau, BCrypt.gensalt());

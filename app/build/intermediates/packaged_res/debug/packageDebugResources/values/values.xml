@@ -7,6 +7,7 @@
     <color name="black">#FF000000</color>
     <color name="blue">#0000FF</color>
     <color name="selected_item_background">#D4EDDA</color>
+    <color name="unread_notification">#E3F2FD</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">DoAnNT118</string>
     <string name="close_drawer">Close navigation drawer</string>
