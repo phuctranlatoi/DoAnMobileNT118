@@ -5,4 +5,17 @@
     <color name="selected_item_background">#D4EDDA</color>
     <color name="blue">#0000FF</color>
     <color name="unread_notification">#E3F2FD</color>
+    
+    <!-- App Colors -->
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="colorAccent">#FF4081</color>
+    
+    <!-- Text Colors -->
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#F5F5F5</color>
+    <color name="divider">#E0E0E0</color>
 </resources>

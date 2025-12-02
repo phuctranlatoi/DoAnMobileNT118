@@ -44,10 +44,9 @@
         <activity android:name=".ui.MainBacSiActivity" />
         <activity android:name=".ui.MainAdminActivity" />
         <activity android:name=".ui.ChiTietBenhAnActivity" />
-        <activity android:name=".ui.XembenhanActivity" />
+        <activity android:name=".ui.XemBenhAnActivity" />
         <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ui.QuanLyHoSoCaNhan" />
-        <activity android:name=".ui.QuanLyBenhAnActivity" />
         <activity android:name=".ui.QuanLyLichLamViecActivity" />
         <activity android:name=".ui.ForgotPasswordActivity" />
         <activity android:name=".ui.SettingActivity"/>

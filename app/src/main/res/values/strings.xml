@@ -2,4 +2,8 @@
     <string name="app_name">DoAnNT118</string>
     <string name="open_drawer">Open navigation drawer</string>
     <string name="close_drawer">Close navigation drawer</string>
+    
+    <!-- Medical Record Strings -->
+    <string name="medical_record_icon">Biểu tượng hồ sơ bệnh án</string>
+    <string name="view_details">Xem chi tiết</string>
 </resources>

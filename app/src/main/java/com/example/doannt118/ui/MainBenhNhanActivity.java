@@ -211,7 +211,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleXemBenhAn() {
         logActivity("Xem bệnh án");
-        startActivitySafe(XembenhanActivity.class);
+        startActivitySafe(XemBenhAnActivity.class);
     }
 
     private void handleXacNhanDungThuoc() {
