@@ -105,6 +105,9 @@
         <activity
             android:name=".ui.TaoBenhAnActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.KeDonThuocActivity"
+            android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->
         <service

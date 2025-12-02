@@ -86,6 +86,17 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnKeDonThuoc"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="Kê đơn thuốc"
+                android:textSize="16sp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                app:cornerRadius="12dp"
+                app:icon="@drawable/ic_medication"
+                android:layout_marginBottom="12dp" />
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnCapNhat"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
