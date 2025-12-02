@@ -360,6 +360,17 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
         
+        // Kiểm tra user đã đăng nhập Firebase Auth chưa
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(this, "Lỗi: Chưa đăng nhập Firebase Auth!", Toast.LENGTH_SHORT).show();
+            Log.e("ProfileActivity", "Firebase user is null");
+            return;
+        }
+        
+        String firebaseUid = auth.getCurrentUser().getUid();
+        Log.d("ProfileActivity", "Firebase UID: " + firebaseUid);
+        Log.d("ProfileActivity", "maTaiKhoan: " + maTaiKhoan);
+        
         // Hiển thị progress
         Toast.makeText(this, "Đang tải ảnh lên...", Toast.LENGTH_SHORT).show();
         Log.d("ProfileActivity", "Bắt đầu upload ảnh: " + imageUri.toString());
@@ -372,8 +383,8 @@ public class ProfileActivity extends AppCompatActivity {
             // Khởi tạo lại storage với bucket cụ thể
             FirebaseStorage storageInstance = FirebaseStorage.getInstance("gs://" + storageBucket);
             
-            // Tạo reference đến Firebase Storage
-            String fileName = "avatars/" + maTaiKhoan + "_" + System.currentTimeMillis() + ".jpg";
+            // Tạo reference đến Firebase Storage - Dùng Firebase UID thay vì maTaiKhoan
+            String fileName = "avatars/" + firebaseUid + "/avatar_" + System.currentTimeMillis() + ".jpg";
             StorageReference storageRef = storageInstance.getReference().child(fileName);
             
             Log.d("ProfileActivity", "Upload path: " + storageRef.getPath());

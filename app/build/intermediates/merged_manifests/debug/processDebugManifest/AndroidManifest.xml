@@ -58,11 +58,13 @@
         <activity
             android:name="com.example.doannt118.ui.LoginActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.example.doannt118.ui.RegisterActivity"
             android:exported="false"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.doannt118.ui.MainBenhNhanActivity" />
         <activity android:name="com.example.doannt118.ui.MainBacSiActivity" />
         <activity android:name="com.example.doannt118.ui.MainAdminActivity" />
@@ -72,9 +74,13 @@
         <activity android:name="com.example.doannt118.ui.QuanLyHoSoCaNhan" />
         <activity android:name="com.example.doannt118.ui.QuanLyBenhAnActivity" />
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
-        <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.ForgotPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.doannt118.ui.SettingActivity" />
-        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.DangKyLichKhamActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
         <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
         <activity
@@ -82,7 +88,9 @@
             android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
         <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
-        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.GuiThongBaoActivity"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
         <activity
             android:name="com.example.doannt118.ui.ChatActivity"

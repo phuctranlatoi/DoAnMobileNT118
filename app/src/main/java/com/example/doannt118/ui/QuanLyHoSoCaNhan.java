@@ -1,6 +1,13 @@
 package com.example.doannt118.ui;
 
+import android.Manifest;
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,13 +17,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
+import com.bumptech.glide.Glide;
 import com.example.doannt118.R;
 import com.example.doannt118.model.BenhNhan;
 import com.example.doannt118.model.LichSuHoatDong;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.Date;
 import java.util.UUID;
@@ -33,6 +48,16 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
     private String maBenhNhan; // maProfile hoặc maBacSi
     private String userType; // "benhnhan" hoặc "bacsi"
     private boolean isEditing = false;
+    private String currentAvatarUrl;
+    private Uri selectedImageUri;
+    private FirebaseAuth auth;
+    private FirebaseStorage storage;
+    private FirebaseFirestore firestore;
+    
+    // Activity Result Launchers
+    private ActivityResultLauncher<Intent> galleryLauncher;
+    private ActivityResultLauncher<Intent> cameraLauncher;
+    private ActivityResultLauncher<String> permissionLauncher;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +65,9 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         setContentView(R.layout.activity_quanlyhosocanhan);
 
         repo = new FirestoreRepository();
+        auth = FirebaseAuth.getInstance();
+        storage = FirebaseStorage.getInstance();
+        firestore = FirebaseFirestore.getInstance();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
         userType = getIntent().getStringExtra("USER_TYPE");
         
@@ -54,9 +82,76 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
             return;
         }
 
+        initActivityResultLaunchers();
         initViews();
         setupClickListeners();
         loadUserData();
+    }
+    
+    private void initActivityResultLaunchers() {
+        // Gallery launcher
+        galleryLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK && result.getData() != null) {
+                    selectedImageUri = result.getData().getData();
+                    if (selectedImageUri != null) {
+                        Log.d("QuanLyHoSo", "Ảnh được chọn: " + selectedImageUri.toString());
+                        uploadImageToFirebase(selectedImageUri);
+                    } else {
+                        Toast.makeText(this, "Không thể lấy ảnh", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
+        );
+        
+        // Camera launcher
+        cameraLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == RESULT_OK) {
+                    if (result.getData() != null && result.getData().getExtras() != null) {
+                        android.graphics.Bitmap bitmap = (android.graphics.Bitmap) result.getData().getExtras().get("data");
+                        if (bitmap != null) {
+                            saveBitmapAndUpload(bitmap);
+                        } else {
+                            Toast.makeText(this, "Không thể lấy ảnh từ camera", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }
+        );
+        
+        // Permission launcher
+        permissionLauncher = registerForActivityResult(
+            new ActivityResultContracts.RequestPermission(),
+            isGranted -> {
+                if (isGranted) {
+                    showImagePickerDialog();
+                } else {
+                    Toast.makeText(this, "Cần cấp quyền để chọn ảnh", Toast.LENGTH_SHORT).show();
+                }
+            }
+        );
+    }
+    
+    private void saveBitmapAndUpload(android.graphics.Bitmap bitmap) {
+        try {
+            java.io.File cacheDir = getCacheDir();
+            java.io.File tempFile = new java.io.File(cacheDir, "temp_avatar_" + System.currentTimeMillis() + ".jpg");
+            
+            java.io.FileOutputStream fos = new java.io.FileOutputStream(tempFile);
+            bitmap.compress(android.graphics.Bitmap.CompressFormat.JPEG, 90, fos);
+            fos.flush();
+            fos.close();
+            
+            selectedImageUri = Uri.fromFile(tempFile);
+            uploadImageToFirebase(selectedImageUri);
+            
+        } catch (Exception e) {
+            Log.e("QuanLyHoSo", "Lỗi lưu ảnh: ", e);
+            Toast.makeText(this, "Lỗi xử lý ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void initViews() {
@@ -92,6 +187,12 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         }
         if (btnBack != null) {
             btnBack.setOnClickListener(v -> finish());
+        }
+        if (tvChangeAvatar != null) {
+            tvChangeAvatar.setOnClickListener(v -> {
+                Log.d("QuanLyHoSo", "Change avatar clicked");
+                checkPermissionAndPickImage();
+            });
         }
     }
 
@@ -134,6 +235,10 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
                             etDiaChi.setVisibility(View.VISIBLE);
                         }
                         if (etNgaySinh != null) etNgaySinh.setText(safeString(ngaySinh));
+                        
+                        // Load avatar
+                        currentAvatarUrl = doc.getString("avatarUrl");
+                        loadAvatar(currentAvatarUrl);
                     } else {
                         // Load thông tin bệnh nhân
                         BenhNhan benhNhan = doc.toObject(BenhNhan.class);
@@ -156,6 +261,10 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
                             etDiaChi.setVisibility(View.VISIBLE);
                         }
                         if (etNgaySinh != null) etNgaySinh.setText(safeString(benhNhan.getNgaySinh()));
+                        
+                        // Load avatar
+                        currentAvatarUrl = benhNhan.getAvatarUrl();
+                        loadAvatar(currentAvatarUrl);
                     }
 
                     logActivity("Xem hồ sơ cá nhân");
@@ -298,5 +407,150 @@ public class QuanLyHoSoCaNhan extends AppCompatActivity {
         String maLichSu = UUID.randomUUID().toString();
         LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoan, tenHoatDong, new Date(), "Bệnh nhân: " + tenHoatDong);
         repo.logActivity(lichSu);
+    }
+    
+    private void loadAvatar(String avatarUrl) {
+        if (avatarUrl != null && !avatarUrl.isEmpty() && ivAvatar != null) {
+            Glide.with(this)
+                .load(avatarUrl)
+                .placeholder(R.drawable.ic_avatar)
+                .error(R.drawable.ic_avatar)
+                .circleCrop()
+                .into(ivAvatar);
+        }
+    }
+    
+    private void checkPermissionAndPickImage() {
+        Log.d("QuanLyHoSo", "checkPermissionAndPickImage called");
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_MEDIA_IMAGES) 
+                    == PackageManager.PERMISSION_GRANTED) {
+                showImagePickerDialog();
+            } else {
+                permissionLauncher.launch(Manifest.permission.READ_MEDIA_IMAGES);
+            }
+        } else {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) 
+                    == PackageManager.PERMISSION_GRANTED) {
+                showImagePickerDialog();
+            } else {
+                permissionLauncher.launch(Manifest.permission.READ_EXTERNAL_STORAGE);
+            }
+        }
+    }
+    
+    private void showImagePickerDialog() {
+        Log.d("QuanLyHoSo", "showImagePickerDialog called");
+        String[] options = {"Chọn từ thư viện", "Chụp ảnh mới"};
+        
+        new AlertDialog.Builder(this)
+            .setTitle("Chọn ảnh đại diện")
+            .setItems(options, (dialog, which) -> {
+                if (which == 0) {
+                    openGallery();
+                } else {
+                    openCamera();
+                }
+            })
+            .setNegativeButton("Hủy", null)
+            .show();
+    }
+    
+    private void openGallery() {
+        try {
+            Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/*");
+            galleryLauncher.launch(intent);
+        } catch (Exception e) {
+            Log.e("QuanLyHoSo", "Error opening gallery: ", e);
+            Toast.makeText(this, "Lỗi mở thư viện: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    private void openCamera() {
+        try {
+            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+            if (intent.resolveActivity(getPackageManager()) != null) {
+                cameraLauncher.launch(intent);
+            } else {
+                Toast.makeText(this, "Không tìm thấy ứng dụng camera", Toast.LENGTH_SHORT).show();
+            }
+        } catch (Exception e) {
+            Log.e("QuanLyHoSo", "Error opening camera: ", e);
+            Toast.makeText(this, "Lỗi mở camera: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+    private void uploadImageToFirebase(Uri imageUri) {
+        if (imageUri == null) {
+            Toast.makeText(this, "Không có ảnh để tải lên", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        if (auth.getCurrentUser() == null) {
+            Toast.makeText(this, "Lỗi: Chưa đăng nhập Firebase Auth!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        String firebaseUid = auth.getCurrentUser().getUid();
+        Toast.makeText(this, "Đang tải ảnh lên...", Toast.LENGTH_SHORT).show();
+        
+        try {
+            String storageBucket = "qlykhambenh.firebasestorage.app";
+            FirebaseStorage storageInstance = FirebaseStorage.getInstance("gs://" + storageBucket);
+            String fileName = "avatars/" + firebaseUid + "/avatar_" + System.currentTimeMillis() + ".jpg";
+            StorageReference storageRef = storageInstance.getReference().child(fileName);
+            
+            storageRef.putFile(imageUri)
+                .addOnSuccessListener(taskSnapshot -> {
+                    storageRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String downloadUrl = uri.toString();
+                        updateAvatarUrlInFirestore(downloadUrl);
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(this, "Lỗi lấy URL ảnh: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("QuanLyHoSo", "Lỗi upload ảnh: ", e);
+                    if (e.getMessage() != null && e.getMessage().contains("Permission denied")) {
+                        Toast.makeText(this, "Lỗi: Không có quyền upload. Vui lòng kiểm tra Storage Rules.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(this, "Lỗi tải ảnh lên: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+        } catch (Exception e) {
+            Toast.makeText(this, "Lỗi khởi tạo Storage: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
+    }
+    
+    private void updateAvatarUrlInFirestore(String avatarUrl) {
+        String collection = "bacsi".equals(userType) ? "BacSi" : "BenhNhan";
+        
+        firestore.collection(collection)
+            .whereEqualTo("maTaiKhoan", maTaiKhoan)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    String docId = querySnapshot.getDocuments().get(0).getId();
+                    
+                    firestore.collection(collection)
+                        .document(docId)
+                        .update("avatarUrl", avatarUrl)
+                        .addOnSuccessListener(aVoid -> {
+                            currentAvatarUrl = avatarUrl;
+                            loadAvatar(avatarUrl);
+                            Toast.makeText(this, "Cập nhật ảnh đại diện thành công!", Toast.LENGTH_SHORT).show();
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(this, "Lỗi cập nhật ảnh đại diện: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+                } else {
+                    Toast.makeText(this, "Không tìm thấy thông tin người dùng!", Toast.LENGTH_SHORT).show();
+                }
+            })
+            .addOnFailureListener(e -> {
+                Toast.makeText(this, "Lỗi tìm thông tin người dùng: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            });
     }
 }
