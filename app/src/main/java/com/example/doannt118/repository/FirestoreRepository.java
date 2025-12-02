@@ -1168,4 +1168,162 @@ public class FirestoreRepository {
                     onFailure.accept(e);
                 });
     }
+
+    // === QUẢN LÝ HÓA ĐƠN (BÁC SĨ) ===
+
+    // Tạo hóa đơn với chi tiết
+    public void taoHoaDonVoiChiTiet(String maHoaDon, String maBenhAn, String maBenhNhan,
+                                    Date ngayLap, double tongTien, List<ChiTietHoaDon> danhSachDichVu,
+                                    Consumer<Void> onSuccess,
+                                    Consumer<Exception> onFailure) {
+        WriteBatch batch = db.batch();
+        
+        // Tạo hóa đơn
+        Map<String, Object> hoaDon = new HashMap<>();
+        hoaDon.put("maHoaDon", maHoaDon);
+        hoaDon.put("maBenhAn", maBenhAn);
+        hoaDon.put("maBenhNhan", maBenhNhan);
+        hoaDon.put("ngayLap", ngayLap);
+        hoaDon.put("tongTien", tongTien);
+        hoaDon.put("trangThai", "CHO_THANH_TOAN");
+        
+        DocumentReference hoaDonRef = db.collection(COLLECTION_HOADON).document(maHoaDon);
+        batch.set(hoaDonRef, hoaDon);
+        
+        // Thêm chi tiết hóa đơn
+        for (ChiTietHoaDon chiTiet : danhSachDichVu) {
+            chiTiet.setMaHoaDon(maHoaDon);
+            DocumentReference chiTietRef = db.collection(COLLECTION_CHITIETHOADON)
+                .document(chiTiet.getMaChiTiet());
+            batch.set(chiTietRef, chiTiet);
+        }
+        
+        batch.commit()
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "taoHoaDonVoiChiTiet success: " + maHoaDon);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "taoHoaDonVoiChiTiet failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Cập nhật trạng thái hóa đơn
+    public void capNhatTrangThaiHoaDon(String maHoaDon, String trangThai, String phuongThucThanhToan,
+                                      Consumer<Void> onSuccess,
+                                      Consumer<Exception> onFailure) {
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("trangThai", trangThai);
+        if (phuongThucThanhToan != null) {
+            updates.put("phuongThucThanhToan", phuongThucThanhToan);
+        }
+        
+        db.collection(COLLECTION_HOADON)
+                .document(maHoaDon)
+                .update(updates)
+                .addOnSuccessListener(aVoid -> {
+                    Log.d("FirestoreRepository", "capNhatTrangThaiHoaDon success: " + maHoaDon);
+                    onSuccess.accept(aVoid);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "capNhatTrangThaiHoaDon failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Xóa hóa đơn (và chi tiết)
+    public void xoaHoaDon(String maHoaDon,
+                         Consumer<Void> onSuccess,
+                         Consumer<Exception> onFailure) {
+        // Xóa chi tiết trước
+        db.collection(COLLECTION_CHITIETHOADON)
+                .whereEqualTo("maHoaDon", maHoaDon)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    WriteBatch batch = db.batch();
+                    
+                    // Xóa tất cả chi tiết
+                    for (var doc : querySnapshot.getDocuments()) {
+                        batch.delete(doc.getReference());
+                    }
+                    
+                    // Xóa hóa đơn
+                    batch.delete(db.collection(COLLECTION_HOADON).document(maHoaDon));
+                    
+                    batch.commit()
+                            .addOnSuccessListener(aVoid -> {
+                                Log.d("FirestoreRepository", "xoaHoaDon success: " + maHoaDon);
+                                onSuccess.accept(aVoid);
+                            })
+                            .addOnFailureListener(e -> {
+                                Log.e("FirestoreRepository", "xoaHoaDon failed", e);
+                                onFailure.accept(e);
+                            });
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "xoaHoaDon query failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Lấy hóa đơn theo bệnh án
+    public void getHoaDonByBenhAn(String maBenhAn,
+                                 Consumer<QuerySnapshot> onSuccess,
+                                 Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_HOADON)
+                .whereEqualTo("maBenhAn", maBenhAn)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    Log.d("FirestoreRepository", "getHoaDonByBenhAn success: " + querySnapshot.size());
+                    onSuccess.accept(querySnapshot);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "getHoaDonByBenhAn failed", e);
+                    onFailure.accept(e);
+                });
+    }
+
+    // Thống kê hóa đơn
+    public void thongKeHoaDon(String maBenhNhan,
+                            Consumer<Map<String, Object>> onSuccess,
+                            Consumer<Exception> onFailure) {
+        db.collection(COLLECTION_HOADON)
+                .whereEqualTo("maBenhNhan", maBenhNhan)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
+                    int total = querySnapshot.size();
+                    int daThanhToan = 0;
+                    int choThanhToan = 0;
+                    double tongTienDaThanhToan = 0;
+                    double tongTienChoThanhToan = 0;
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        String trangThai = doc.getString("trangThai");
+                        Double tongTien = doc.getDouble("tongTien");
+                        
+                        if ("DA_THANH_TOAN".equals(trangThai)) {
+                            daThanhToan++;
+                            tongTienDaThanhToan += (tongTien != null ? tongTien : 0);
+                        } else {
+                            choThanhToan++;
+                            tongTienChoThanhToan += (tongTien != null ? tongTien : 0);
+                        }
+                    }
+                    
+                    Map<String, Object> result = new HashMap<>();
+                    result.put("total", total);
+                    result.put("daThanhToan", daThanhToan);
+                    result.put("choThanhToan", choThanhToan);
+                    result.put("tongTienDaThanhToan", tongTienDaThanhToan);
+                    result.put("tongTienChoThanhToan", tongTienChoThanhToan);
+                    
+                    Log.d("FirestoreRepository", "thongKeHoaDon success: " + result);
+                    onSuccess.accept(result);
+                })
+                .addOnFailureListener(e -> {
+                    Log.e("FirestoreRepository", "thongKeHoaDon failed", e);
+                    onFailure.accept(e);
+                });
+    }
 }
