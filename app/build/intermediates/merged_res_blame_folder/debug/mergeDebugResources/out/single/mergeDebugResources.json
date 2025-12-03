@@ -252,6 +252,10 @@
         "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-63:/drawable/ic_password.xml"
     },
     {
+        "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/layout_item_dich_vu_hoa_don.xml.flat",
+        "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-63:/layout/item_dich_vu_hoa_don.xml"
+    },
+    {
         "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/drawable_ic_location.xml.flat",
         "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-63:/drawable/ic_location.xml"
     },
@@ -418,10 +422,6 @@
     {
         "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_thong_bao.xml.flat",
         "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-63:/layout/activity_chi_tiet_thong_bao.xml"
-    },
-    {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_dich_vu_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_dich_vu_hoa_don.xml"
     },
     {
         "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/drawable_badge_primary.xml.flat",
@@ -634,6 +634,10 @@
     {
         "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/drawable_rounded_button.xml.flat",
         "source": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-main-63:/drawable/rounded_button.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_xac_nhan_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_xac_nhan_lich_kham.xml"
     },
     {
         "merged": "/Users/kelvin/.gradle/daemon/8.13/com.example.doannt118.app-debug-61:/drawable_bg_button_secondary.xml.flat",

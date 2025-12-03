@@ -199,6 +199,7 @@ id ivIcon
 id ivLoaiThongBao
 id ivTrangThai
 id layoutBacSiInfo
+id layoutButtons
 id layoutEmail
 id layoutPassword
 id lblThongBao

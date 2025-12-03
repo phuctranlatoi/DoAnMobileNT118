@@ -70,19 +70,17 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
         
         // Hiển thị/ẩn nút dựa vào trạng thái
         String trangThai = lichKham.getTrangThai();
-        if ("CHO_XAC_NHAN".equals(trangThai)) {
-            holder.btnXacNhan.setVisibility(View.VISIBLE);
-            holder.btnTuChoi.setVisibility(View.VISIBLE);
+        if ("CHO".equals(trangThai)) {
+            holder.layoutButtons.setVisibility(View.VISIBLE);
             holder.tvTrangThai.setVisibility(View.GONE);
         } else {
-            holder.btnXacNhan.setVisibility(View.GONE);
-            holder.btnTuChoi.setVisibility(View.GONE);
+            holder.layoutButtons.setVisibility(View.GONE);
             holder.tvTrangThai.setVisibility(View.VISIBLE);
             
-            if ("DA_XAC_NHAN".equals(trangThai)) {
+            if ("XAC_NHAN".equals(trangThai)) {
                 holder.tvTrangThai.setText("✓ Đã xác nhận");
                 holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success);
-            } else if ("TU_CHOI".equals(trangThai)) {
+            } else if ("HUY".equals(trangThai)) {
                 holder.tvTrangThai.setText("✗ Đã từ chối");
                 holder.tvTrangThai.setBackgroundResource(R.drawable.badge_danger);
             }
@@ -116,6 +114,7 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
         CardView cardView;
         TextView tvBenhNhan, tvSoDienThoai, tvThoiGian, tvLyDo, tvTrangThai;
         Button btnXacNhan, btnTuChoi;
+        View layoutButtons;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -127,6 +126,7 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
             tvTrangThai = itemView.findViewById(R.id.tvTrangThai);
             btnXacNhan = itemView.findViewById(R.id.btnXacNhan);
             btnTuChoi = itemView.findViewById(R.id.btnTuChoi);
+            layoutButtons = itemView.findViewById(R.id.layoutButtons);
         }
     }
 }

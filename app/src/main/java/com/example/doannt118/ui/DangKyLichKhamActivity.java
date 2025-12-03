@@ -248,6 +248,9 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
         endCal.set(Calendar.MILLISECOND, 999);
         Date endDate = endCal.getTime();
         
+        Calendar now = Calendar.getInstance();
+        boolean isToday = isSameDay(selectedDate, now.getTime());
+        
         repo.getByFieldAndDateRange("LichLamViec", "maBacSi", maBacSi, "ngayLamViec", startDate, endDate,
                 querySnapshot -> {
                     List<String> khungGioList = new ArrayList<>();
@@ -255,25 +258,39 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     
                     for (var doc : querySnapshot.getDocuments()) {
                         String trangThai = doc.getString("trangThai");
+                        String caLamViec = doc.getString("caLamViec");
+                        String maLichLamViec = doc.getString("maLichLamViec");
+                        
+                        if (caLamViec == null || maLichLamViec == null) continue;
+                        
+                        // Kiểm tra nếu là hôm nay thì bỏ qua khung giờ đã qua
+                        if (isToday && isTimeSlotPassed(caLamViec)) {
+                            continue;
+                        }
                         
                         if ("CON_TRONG".equals(trangThai)) {
-                            String caLamViec = doc.getString("caLamViec");
-                            String maLichLamViec = doc.getString("maLichLamViec");
-                            
-                            if (caLamViec != null && maLichLamViec != null) {
-                                khungGioMap.put(caLamViec, maLichLamViec);
-                                khungGioList.add(caLamViec);
-                            }
+                            // Đếm số lượng đã đăng ký
+                            repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
+                                lichKhamSnapshot -> {
+                                    int soLuongDaDangKy = lichKhamSnapshot.size();
+                                    int soLuongConTrong = 6 - soLuongDaDangKy;
+                                    
+                                    if (soLuongConTrong > 0) {
+                                        String displayText = caLamViec + " (Còn " + soLuongConTrong + " chỗ)";
+                                        khungGioMap.put(displayText, maLichLamViec);
+                                        khungGioList.add(displayText);
+                                        updateKhungGioSpinner(khungGioList);
+                                    }
+                                },
+                                e -> Log.e(TAG, "Error counting lichKham: ", e)
+                            );
                         }
                     }
                     
-                    ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                            android.R.layout.simple_spinner_item, khungGioList);
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinnerKhungGio.setAdapter(adapter);
-                    
+                    // Cập nhật spinner ngay cả khi không có khung giờ nào
                     if (khungGioList.size() == 1) {
                         showMessage("Bác sĩ không có khung giờ trống!");
+                        updateKhungGioSpinner(khungGioList);
                     } else {
                         hideMessage();
                     }
@@ -282,6 +299,47 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     Log.e(TAG, "Error loading khungGio: ", e);
                     showMessage("Lỗi tải khung giờ!");
                 });
+    }
+    
+    private boolean isSameDay(Date date1, Date date2) {
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(date1);
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(date2);
+        return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
+               cal1.get(Calendar.DAY_OF_YEAR) == cal2.get(Calendar.DAY_OF_YEAR);
+    }
+    
+    private boolean isTimeSlotPassed(String caLamViec) {
+        Calendar now = Calendar.getInstance();
+        int currentHour = now.get(Calendar.HOUR_OF_DAY);
+        
+        // Parse khung giờ (ví dụ: "08:00 - 10:00")
+        if (caLamViec.contains("-")) {
+            String[] parts = caLamViec.split("-");
+            if (parts.length > 0) {
+                String startTime = parts[0].trim();
+                String[] timeParts = startTime.split(":");
+                if (timeParts.length > 0) {
+                    try {
+                        int slotHour = Integer.parseInt(timeParts[0]);
+                        return currentHour >= slotHour;
+                    } catch (NumberFormatException e) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    
+    private void updateKhungGioSpinner(List<String> khungGioList) {
+        runOnUiThread(() -> {
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, khungGioList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerKhungGio.setAdapter(adapter);
+        });
     }
 
     // Tiếp tục trong phần 2...
