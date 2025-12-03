@@ -59,7 +59,6 @@ public class ThongBaoActivity extends AppCompatActivity {
     private void listenToThongBao() {
         listenerRegistration = repo.getCollection("ThongBao")
                 .whereEqualTo("maBenhNhan", maBenhNhan)
-                .orderBy("thoiGianGui", Query.Direction.DESCENDING)
                 .addSnapshotListener((snapshots, error) -> {
                     if (error != null) {
                         Toast.makeText(this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
@@ -68,7 +67,16 @@ public class ThongBaoActivity extends AppCompatActivity {
 
                     if (snapshots != null) {
                         thongBaoList.clear();
-                        thongBaoList.addAll(snapshots.toObjects(ThongBao.class));
+                        List<ThongBao> tempList = snapshots.toObjects(ThongBao.class);
+                        
+                        // Sắp xếp theo thời gian trong code thay vì query
+                        tempList.sort((t1, t2) -> {
+                            if (t1.getThoiGianGui() == null) return 1;
+                            if (t2.getThoiGianGui() == null) return -1;
+                            return t2.getThoiGianGui().compareTo(t1.getThoiGianGui());
+                        });
+                        
+                        thongBaoList.addAll(tempList);
                         adapter.notifyDataSetChanged();
                     }
                 });
