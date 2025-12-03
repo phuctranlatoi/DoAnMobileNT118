@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.doannt118.app-mergeDebugResources-58:/values-xlarge-v4/values-xlarge-v4.xml",
+            "outputFile": "com.example.doannt118.app-mergeDebugResources-59:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/f873838ddba470e204f10d0ad5b068a6/transformed/appcompat-1.7.1/res/values-xlarge-v4/values-xlarge-v4.xml",
+                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/9a6ff1f62b467f507e3bf42197fa0f35/transformed/appcompat-1.7.1/res/values-xlarge-v4/values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

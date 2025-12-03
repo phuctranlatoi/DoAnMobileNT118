@@ -91,9 +91,6 @@
             android:name=".ui.LichSuUongThuocActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.GuiThongBaoActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.ChiTietThongBaoActivity"
             android:exported="false" />
         <activity
@@ -107,6 +104,9 @@
             android:exported="false" />
         <activity
             android:name=".ui.KeDonThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.TaoHoaDonActivity"
             android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->

@@ -4,9 +4,16 @@
         <item>CON_TRONG</item>
         <item>DA_DAY</item>
     </string-array>
+    <color name="background">#F5F5F5</color>
     <color name="black">#FF000000</color>
     <color name="blue">#0000FF</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1976D2</color>
+    <color name="divider">#E0E0E0</color>
     <color name="selected_item_background">#D4EDDA</color>
+    <color name="textPrimary">#212121</color>
+    <color name="textSecondary">#757575</color>
     <color name="unread_notification">#E3F2FD</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">DoAnNT118</string>
@@ -16,8 +23,10 @@
     <string name="google_app_id" translatable="false">1:596644444511:android:b6a6a76e4d79d88644deea</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBsBwLO44YtAJ-ZWUF5-o24-TWq2hnwL-Y</string>
     <string name="google_storage_bucket" translatable="false">qlykhambenh.firebasestorage.app</string>
+    <string name="medical_record_icon">Biểu tượng hồ sơ bệnh án</string>
     <string name="open_drawer">Open navigation drawer</string>
     <string name="project_id" translatable="false">qlykhambenh</string>
+    <string name="view_details">Xem chi tiết</string>
     <style name="Base.Theme.DoAnNT118" parent="Theme.Material3.DayNight.NoActionBar">
         
         

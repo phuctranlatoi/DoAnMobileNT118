@@ -51,7 +51,7 @@ public class BenhNhanAdapter extends RecyclerView.Adapter<BenhNhanAdapter.BenhNh
         public BenhNhanViewHolder(@NonNull View itemView) {
             super(itemView);
             tvHoTen = itemView.findViewById(R.id.tvHoTen);
-            tvMaBenhNhan = itemView.findViewById(R.id.tvMaBenhNhan);
+            // tvMaBenhNhan = itemView.findViewById(R.id.tvMaBenhNhan);
             tvSoDienThoai = itemView.findViewById(R.id.tvSoDienThoai);
         }
     }
