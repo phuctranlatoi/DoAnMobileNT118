@@ -170,6 +170,7 @@ id edtChanDoan
 id edtDonGia
 id edtGhiChu
 id edtLieuDung
+id edtLyDo
 id edtMessage
 id edtNoiDung
 id edtSoLuong
@@ -394,6 +395,7 @@ layout dialog_create_account
 layout dialog_edit_account
 layout dialog_them_dich_vu
 layout dialog_them_thuoc
+layout dialog_tu_choi_lich_kham
 layout item_account
 layout item_activity_history
 layout item_bac_si

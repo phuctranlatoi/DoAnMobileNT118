@@ -176,4 +176,56 @@ public class NotificationHelper {
         void onTokenReceived(String token);
         void onError(Exception e);
     }
+    
+    /**
+     * Gửi thông báo cho bác sĩ (static method)
+     */
+    public static void guiThongBaoChoBacSi(Context context, String maBacSi, 
+                                          String tieuDe, String noiDung, 
+                                          String loaiThongBao, String maBenhNhan) {
+        FirestoreRepository repository = new FirestoreRepository();
+        String maThongBao = "TB_" + UUID.randomUUID().toString();
+        
+        ThongBao thongBao = new ThongBao(
+            maThongBao,
+            null, // Không có maBenhNhan vì gửi cho bác sĩ
+            maBacSi,
+            tieuDe,
+            noiDung,
+            loaiThongBao,
+            Timestamp.now(),
+            false
+        );
+        
+        repository.addDocument("ThongBao", maThongBao, thongBao,
+            aVoid -> Log.d(TAG, "Đã gửi thông báo cho bác sĩ: " + maBacSi),
+            e -> Log.e(TAG, "Lỗi gửi thông báo: " + e.getMessage())
+        );
+    }
+    
+    /**
+     * Gửi thông báo cho bệnh nhân (static method)
+     */
+    public static void guiThongBaoChoBenhNhan(Context context, String maBenhNhan, 
+                                             String tieuDe, String noiDung, 
+                                             String loaiThongBao, String maBacSi) {
+        FirestoreRepository repository = new FirestoreRepository();
+        String maThongBao = "TB_" + UUID.randomUUID().toString();
+        
+        ThongBao thongBao = new ThongBao(
+            maThongBao,
+            maBenhNhan,
+            maBacSi,
+            tieuDe,
+            noiDung,
+            loaiThongBao,
+            Timestamp.now(),
+            false
+        );
+        
+        repository.addDocument("ThongBao", maThongBao, thongBao,
+            aVoid -> Log.d(TAG, "Đã gửi thông báo cho bệnh nhân: " + maBenhNhan),
+            e -> Log.e(TAG, "Lỗi gửi thông báo: " + e.getMessage())
+        );
+    }
 }

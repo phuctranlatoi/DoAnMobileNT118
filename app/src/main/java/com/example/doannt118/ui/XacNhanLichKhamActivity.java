@@ -187,23 +187,43 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
     }
 
     private void showConfirmDialog(LichKham lichKham, boolean isApprove) {
-        String title = isApprove ? "Xác nhận lịch khám" : "Từ chối lịch khám";
-        String message = isApprove ? 
-            "Bạn có chắc chắn muốn xác nhận lịch khám này?" : 
-            "Bạn có chắc chắn muốn từ chối lịch khám này?";
+        if (isApprove) {
+            new AlertDialog.Builder(this)
+                .setTitle("Xác nhận lịch khám")
+                .setMessage("Bạn có chắc chắn muốn xác nhận lịch khám này?")
+                .setPositiveButton("Xác nhận", (dialog, which) -> handleXacNhan(lichKham))
+                .setNegativeButton("Hủy", null)
+                .show();
+        } else {
+            showDialogTuChoiVoiLyDo(lichKham);
+        }
+    }
+    
+    private void showDialogTuChoiVoiLyDo(LichKham lichKham) {
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_tu_choi_lich_kham, null);
+        com.google.android.material.textfield.TextInputEditText edtLyDo = 
+            dialogView.findViewById(R.id.edtLyDo);
         
-        new AlertDialog.Builder(this)
-            .setTitle(title)
-            .setMessage(message)
-            .setPositiveButton(isApprove ? "Xác nhận" : "Từ chối", (dialog, which) -> {
-                if (isApprove) {
-                    handleXacNhan(lichKham);
-                } else {
-                    handleTuChoi(lichKham);
-                }
-            })
+        AlertDialog dialog = new AlertDialog.Builder(this)
+            .setTitle("Từ chối lịch khám")
+            .setView(dialogView)
+            .setPositiveButton("Từ chối", null)
             .setNegativeButton("Hủy", null)
-            .show();
+            .create();
+        
+        dialog.setOnShowListener(d -> {
+            dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(v -> {
+                String lyDo = edtLyDo.getText().toString().trim();
+                if (lyDo.isEmpty()) {
+                    Toast.makeText(this, "Vui lòng nhập lý do từ chối", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                handleTuChoi(lichKham, lyDo);
+                dialog.dismiss();
+            });
+        });
+        
+        dialog.show();
     }
 
     private void handleXacNhan(LichKham lichKham) {
@@ -225,16 +245,21 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
             });
     }
 
-    private void handleTuChoi(LichKham lichKham) {
+    private void handleTuChoi(LichKham lichKham, String lyDo) {
         progressBar.setVisibility(View.VISIBLE);
         
         Map<String, Object> updates = new HashMap<>();
         updates.put("trangThai", "HUY");
+        updates.put("lyDoTuChoi", lyDo);
         
         repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
             aVoid -> {
                 progressBar.setVisibility(View.GONE);
                 Toast.makeText(this, "✓ Đã từ chối lịch khám!", Toast.LENGTH_SHORT).show();
+                
+                // Gửi thông báo cho bệnh nhân
+                guiThongBaoTuChoiChoBenhNhan(lichKham.getMaBenhNhan(), lyDo);
+                
                 loadDanhSachLichKham();
             },
             e -> {
@@ -242,5 +267,19 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
                 Log.e(TAG, "Lỗi từ chối", e);
                 Toast.makeText(this, "✗ Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             });
+    }
+    
+    private void guiThongBaoTuChoiChoBenhNhan(String maBenhNhan, String lyDo) {
+        String tieuDe = "Lịch khám bị từ chối";
+        String noiDung = "Bác sĩ đã từ chối lịch khám của bạn. Lý do: " + lyDo;
+        
+        com.example.doannt118.utils.NotificationHelper.guiThongBaoChoBenhNhan(
+            this,
+            maBenhNhan,
+            tieuDe,
+            noiDung,
+            "LICH_HEN",
+            ""
+        );
     }
 }

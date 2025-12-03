@@ -20,6 +20,7 @@ import com.example.doannt118.R;
 import com.example.doannt118.model.LichKham;
 import com.example.doannt118.model.LichLamViec;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.example.doannt118.utils.NotificationHelper;
 import com.google.firebase.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -269,14 +270,18 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                         }
                         
                         if ("CON_TRONG".equals(trangThai)) {
+                            // Lấy số lượng tối đa từ lịch làm việc
+                            Long soLuongToiDaLong = doc.getLong("soLuongToiDa");
+                            int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 6;
+                            
                             // Đếm số lượng đã đăng ký
                             repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
                                 lichKhamSnapshot -> {
                                     int soLuongDaDangKy = lichKhamSnapshot.size();
-                                    int soLuongConTrong = 6 - soLuongDaDangKy;
+                                    int soLuongConTrong = soLuongToiDa - soLuongDaDangKy;
                                     
                                     if (soLuongConTrong > 0) {
-                                        String displayText = caLamViec + " (Còn " + soLuongConTrong + " chỗ)";
+                                        String displayText = caLamViec + " (Còn " + soLuongConTrong + "/" + soLuongToiDa + " chỗ)";
                                         khungGioMap.put(displayText, maLichLamViec);
                                         khungGioList.add(displayText);
                                         updateKhungGioSpinner(khungGioList);
@@ -352,23 +357,36 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
         String maBacSi = bacSiMap.get(selectedBacSi);
         String maLichLamViec = khungGioMap.get(selectedKhungGio);
 
-        // Kiểm tra số lượng bệnh nhân đã đăng ký
-        repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
-                querySnapshot -> {
-                    int soLuongHienTai = querySnapshot.size();
-                    
-                    if (soLuongHienTai >= 6) {
-                        // Cập nhật trạng thái lịch làm việc
-                        Map<String, Object> updates = new HashMap<>();
-                        updates.put("trangThai", "DA_DAY");
-                        repo.updateDocumentFields("LichLamViec", maLichLamViec, updates,
-                                aVoid -> {
-                                    showMessage("Khung giờ này đã đầy!");
-                                    loadKhungGio();
-                                },
-                                e -> Log.e(TAG, "Error updating trangThai: ", e));
+        // Lấy thông tin lịch làm việc để kiểm tra số lượng tối đa
+        repo.getCollection("LichLamViec")
+                .document(maLichLamViec)
+                .get()
+                .addOnSuccessListener(lichLamViecDoc -> {
+                    if (!lichLamViecDoc.exists()) {
+                        showMessage("Lịch làm việc không tồn tại!");
                         return;
                     }
+                    
+                    Long soLuongToiDaLong = lichLamViecDoc.getLong("soLuongToiDa");
+                    int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 6;
+                    
+                    // Kiểm tra số lượng bệnh nhân đã đăng ký
+                    repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
+                        querySnapshot -> {
+                            int soLuongHienTai = querySnapshot.size();
+                            
+                            if (soLuongHienTai >= soLuongToiDa) {
+                                // Cập nhật trạng thái lịch làm việc
+                                Map<String, Object> updates = new HashMap<>();
+                                updates.put("trangThai", "DA_DAY");
+                                repo.updateDocumentFields("LichLamViec", maLichLamViec, updates,
+                                        aVoid -> {
+                                            showMessage("Khung giờ này đã đầy!");
+                                            loadKhungGio();
+                                        },
+                                        e -> Log.e(TAG, "Error updating trangThai: ", e));
+                                return;
+                            }
 
                     // Tính số thứ tự
                     int soThuTu = soLuongHienTai + 1;
@@ -390,8 +408,11 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                                 Toast.makeText(this, "Đăng ký thành công! Số thứ tự: " + soThuTu,
                                         Toast.LENGTH_LONG).show();
                                 
-                                // Kiểm tra nếu đã đủ 6 người thì cập nhật trạng thái
-                                if (soThuTu >= 6) {
+                                // Gửi thông báo cho bác sĩ
+                                guiThongBaoDangKyChoBS(maBacSi, selectedBacSi, selectedKhungGio);
+                                
+                                // Kiểm tra nếu đã đủ người thì cập nhật trạng thái
+                                if (soThuTu >= soLuongToiDa) {
                                     Map<String, Object> updates = new HashMap<>();
                                     updates.put("trangThai", "DA_DAY");
                                     repo.updateDocumentFields("LichLamViec", maLichLamViec, updates,
@@ -406,10 +427,16 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                                 Log.e(TAG, "Error adding lichKham: ", e);
                                 Toast.makeText(this, "Đăng ký thất bại!", Toast.LENGTH_SHORT).show();
                             });
-                },
-                e -> {
-                    Log.e(TAG, "Error checking soLuong: ", e);
-                    Toast.makeText(this, "Lỗi kiểm tra số lượng!", Toast.LENGTH_SHORT).show();
+                        },
+                        e -> {
+                            Log.e(TAG, "Error checking soLuong: ", e);
+                            Toast.makeText(this, "Lỗi kiểm tra số lượng!", Toast.LENGTH_SHORT).show();
+                        }
+                    );
+                })
+                .addOnFailureListener(e -> {
+                    Log.e(TAG, "Error loading lichLamViec: ", e);
+                    Toast.makeText(this, "Lỗi tải thông tin lịch làm việc!", Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -514,5 +541,32 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
 
     private void hideMessage() {
         tvThongBao.setVisibility(View.GONE);
+    }
+    
+    private void guiThongBaoDangKyChoBS(String maBacSi, String tenBacSi, String khungGio) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String ngayKham = sdf.format(selectedDate);
+        
+        // Lấy tên bệnh nhân
+        repo.getByField("BenhNhan", "maBenhNhan", maBenhNhan,
+            querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    String tenBenhNhan = querySnapshot.getDocuments().get(0).getString("hoTen");
+                    
+                    String tieuDe = "Đăng ký lịch khám mới";
+                    String noiDung = tenBenhNhan + " đã đăng ký lịch khám vào " + ngayKham + " - " + khungGio;
+                    
+                    NotificationHelper.guiThongBaoChoBacSi(
+                        this,
+                        maBacSi,
+                        tieuDe,
+                        noiDung,
+                        "LICH_HEN",
+                        maBenhNhan
+                    );
+                }
+            },
+            e -> Log.e(TAG, "Error loading benh nhan: ", e)
+        );
     }
 }
