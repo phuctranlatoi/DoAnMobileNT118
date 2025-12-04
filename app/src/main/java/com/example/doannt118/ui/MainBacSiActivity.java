@@ -184,7 +184,7 @@ public class MainBacSiActivity extends AppCompatActivity {
             showError("Lỗi: Không tìm thấy mã bác sĩ");
             return;
         }
-        Intent intent = new Intent(this, QuanLyLichLamViecNewActivity.class);
+        Intent intent = new Intent(this, QuanLyLichLamViecActivity.class);
         intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
         intent.putExtra("MA_BAC_SI", maBacSi);
         startActivity(intent);
