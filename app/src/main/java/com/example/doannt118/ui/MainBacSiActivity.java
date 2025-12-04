@@ -77,6 +77,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         View cardManageSchedule = findViewById(R.id.cardManageSchedule);
         View cardManagePrescription = findViewById(R.id.cardManagePrescription);
         View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
+        View cardNhapMaKham = findViewById(R.id.cardNhapMaKham);
         View cardSendNotification = findViewById(R.id.cardSendNotification);
 
         if (cardManageMedicalRecord != null) {
@@ -90,6 +91,9 @@ public class MainBacSiActivity extends AppCompatActivity {
         }
         if (cardConfirmAppointment != null) {
             cardConfirmAppointment.setOnClickListener(v -> handleXacNhanLichKham());
+        }
+        if (cardNhapMaKham != null) {
+            cardNhapMaKham.setOnClickListener(v -> handleNhapMaKham());
         }
         if (cardSendNotification != null) {
             cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
@@ -123,36 +127,31 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void loadUserInfo() {
-        repo.getByField("BacSi", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
-                        if (bacSi != null) {
-                            tvHoTen.setText(bacSi.getHoTen());
-                            maBacSi = bacSi.getMaBacSi();
-                            
-                            // Load avatar nếu có
-                            if (bacSi.getAvatarUrl() != null && !bacSi.getAvatarUrl().isEmpty() && ivAvatar != null) {
-                                Glide.with(this)
-                                    .load(bacSi.getAvatarUrl())
-                                    .placeholder(R.drawable.ic_avatar)
-                                    .error(R.drawable.ic_avatar)
-                                    .circleCrop()
-                                    .into(ivAvatar);
-                            }
-                        } else {
-                            showError("Không tìm thấy thông tin bác sĩ!");
-                        }
-                    } else {
-                        showError("Không tìm thấy thông tin bác sĩ!");
+        com.example.doannt118.utils.UserInfoLoader.loadBacSi(maTaiKhoan, repo,
+            new com.example.doannt118.utils.UserInfoLoader.BacSiCallback() {
+                @Override
+                public void onSuccess(BacSi bacSi) {
+                    tvHoTen.setText(bacSi.getHoTen());
+                    maBacSi = bacSi.getMaBacSi();
+                    
+                    // Load avatar nếu có
+                    if (bacSi.getAvatarUrl() != null && !bacSi.getAvatarUrl().isEmpty() && ivAvatar != null) {
+                        Glide.with(MainBacSiActivity.this)
+                            .load(bacSi.getAvatarUrl())
+                            .placeholder(R.drawable.ic_avatar)
+                            .error(R.drawable.ic_avatar)
+                            .circleCrop()
+                            .into(ivAvatar);
                     }
                     progressBar.setVisibility(View.GONE);
-                },
-                e -> {
-                    Log.e("MainBacSiActivity", "Lỗi tải thông tin: ", e);
-                    showError("Lỗi tải thông tin: " + e.getMessage());
+                }
+                
+                @Override
+                public void onError(String message) {
+                    showError(message);
                     progressBar.setVisibility(View.GONE);
-                });
+                }
+            });
     }
 
     private void handleProfile() {
@@ -169,8 +168,9 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleQuanLyBenhAn() {
-        if (maBacSi == null) {
-            showError("Lỗi: Không tìm thấy mã bác sĩ");
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
             return;
         }
         Intent intent = new Intent(this, QuanLyBenhAnBacSiActivity.class);
@@ -180,8 +180,9 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleQuanLyLichLamViec() {
-        if (maBacSi == null) {
-            showError("Lỗi: Không tìm thấy mã bác sĩ");
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
             return;
         }
         Intent intent = new Intent(this, QuanLyLichLamViecActivity.class);
@@ -195,8 +196,9 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleXacNhanLichKham() {
-        if (maBacSi == null) {
-            showError("Lỗi: Không tìm thấy mã bác sĩ");
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
             return;
         }
         Intent intent = new Intent(this, XacNhanLichKhamActivity.class);
@@ -207,6 +209,12 @@ public class MainBacSiActivity extends AppCompatActivity {
 
     private void handleQuanLyHoaDon() {
         Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
+    }
+
+    private void handleNhapMaKham() {
+        logActivity("Nhập mã khám");
+        Intent intent = new Intent(this, NhapMaKhamActivity.class);
+        startActivity(intent);
     }
 
     private void handleGuiThongBao() {

@@ -15,7 +15,9 @@ import java.text.SimpleDateFormat;
 import java.util.Locale;
 
 public class ChiTietBenhAnActivity extends AppCompatActivity {
-    private TextView tvMaBenhAn, tvNgayKham, tvBacSi, tvChanDoan, tvGhiChu;
+    private TextView tvMaBenhAn, tvNgayKham, tvBacSi, tvChanDoan, tvGhiChu, tvEmptyDonThuoc;
+    private androidx.recyclerview.widget.RecyclerView rvDonThuoc;
+    private com.google.android.material.card.MaterialCardView cardDonThuoc;
     private ProgressBar progressBar;
     private FirestoreRepository repository;
     private String maBenhAn;
@@ -29,7 +31,12 @@ public class ChiTietBenhAnActivity extends AppCompatActivity {
         initViews();
         setupToolbar();
         
-        maBenhAn = getIntent().getStringExtra("maBenhAn");
+        // Hỗ trợ cả 2 key để tương thích
+        maBenhAn = getIntent().getStringExtra("MA_BENH_AN");
+        if (maBenhAn == null) {
+            maBenhAn = getIntent().getStringExtra("maBenhAn");
+        }
+        
         if (maBenhAn != null) {
             loadBenhAnDetail();
         } else {
@@ -44,9 +51,14 @@ public class ChiTietBenhAnActivity extends AppCompatActivity {
         tvBacSi = findViewById(R.id.tvBacSi);
         tvChanDoan = findViewById(R.id.tvChanDoan);
         tvGhiChu = findViewById(R.id.tvGhiChu);
+        tvEmptyDonThuoc = findViewById(R.id.tvEmptyDonThuoc);
+        rvDonThuoc = findViewById(R.id.rvDonThuoc);
+        cardDonThuoc = findViewById(R.id.cardDonThuoc);
         progressBar = findViewById(R.id.progressBar);
         repository = new FirestoreRepository();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+        
+        rvDonThuoc.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(this));
     }
 
     private void setupToolbar() {
@@ -70,6 +82,7 @@ public class ChiTietBenhAnActivity extends AppCompatActivity {
                     if (benhAn != null) {
                         displayBenhAnInfo(benhAn);
                         loadBacSiInfo(benhAn.getMaBacSi());
+                        loadDonThuoc();
                     }
                 } else {
                     Toast.makeText(this, "Không tìm thấy thông tin bệnh án", Toast.LENGTH_SHORT).show();
@@ -86,8 +99,12 @@ public class ChiTietBenhAnActivity extends AppCompatActivity {
     private void displayBenhAnInfo(BenhAn benhAn) {
         tvMaBenhAn.setText(benhAn.getMaBenhAn());
         
-        if (benhAn.getNgayKham() != null) {
-            tvNgayKham.setText(dateFormat.format(benhAn.getNgayKham().toDate()));
+        if (benhAn.getNgayKhamAsTimestamp() != null) {
+            tvNgayKham.setText(dateFormat.format(benhAn.getNgayKhamAsTimestamp().toDate()));
+        } else if (benhAn.getNgayKham() instanceof String) {
+            tvNgayKham.setText((String) benhAn.getNgayKham());
+        } else {
+            tvNgayKham.setText("N/A");
         }
         
         tvChanDoan.setText(benhAn.getChanDoan() != null ? benhAn.getChanDoan() : "Chưa có chẩn đoán");
@@ -111,6 +128,56 @@ public class ChiTietBenhAnActivity extends AppCompatActivity {
                 }
             },
             e -> tvBacSi.setText("Mã BS: " + maBacSi)
+        );
+    }
+
+    private void loadDonThuoc() {
+        repository.getByField("DonThuoc", "maBenhAn", maBenhAn,
+            querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    String maDonThuoc = querySnapshot.getDocuments().get(0).getString("maDonThuoc");
+                    if (maDonThuoc != null) {
+                        loadChiTietDonThuoc(maDonThuoc);
+                    }
+                } else {
+                    cardDonThuoc.setVisibility(View.VISIBLE);
+                    tvEmptyDonThuoc.setVisibility(View.VISIBLE);
+                    rvDonThuoc.setVisibility(View.GONE);
+                }
+            },
+            e -> {
+                // Không có đơn thuốc - không hiển thị card
+            }
+        );
+    }
+    
+    private void loadChiTietDonThuoc(String maDonThuoc) {
+        repository.getByField("ChiTietDonThuoc", "maDonThuoc", maDonThuoc,
+            querySnapshot -> {
+                java.util.List<com.example.doannt118.model.ChiTietDonThuoc> danhSach = new java.util.ArrayList<>();
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.ChiTietDonThuoc chiTiet = doc.toObject(com.example.doannt118.model.ChiTietDonThuoc.class);
+                    if (chiTiet != null) {
+                        danhSach.add(chiTiet);
+                    }
+                }
+                
+                if (!danhSach.isEmpty()) {
+                    cardDonThuoc.setVisibility(View.VISIBLE);
+                    rvDonThuoc.setVisibility(View.VISIBLE);
+                    tvEmptyDonThuoc.setVisibility(View.GONE);
+                    
+                    ChiTietDonThuocAdapter adapter = new ChiTietDonThuocAdapter(this, danhSach);
+                    rvDonThuoc.setAdapter(adapter);
+                } else {
+                    cardDonThuoc.setVisibility(View.VISIBLE);
+                    tvEmptyDonThuoc.setVisibility(View.VISIBLE);
+                    rvDonThuoc.setVisibility(View.GONE);
+                }
+            },
+            e -> {
+                // Lỗi load chi tiết
+            }
         );
     }
 

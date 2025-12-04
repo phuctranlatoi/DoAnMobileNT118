@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="@color/white"
+        android:background="@drawable/bg_header_gradient"
         android:elevation="4dp"
         android:gravity="center_vertical"
         android:orientation="horizontal"
@@ -22,6 +22,7 @@
             android:layout_height="24dp"
             android:src="@drawable/ic_home"
             android:rotation="180"
+            android:tint="@color/white"
             android:contentDescription="Back" />
 
         <TextView
@@ -29,10 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="16dp"
-            android:text="Đăng ký lịch khám"
+            android:text="📅 Đăng ký lịch khám"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:textColor="#2C3E50" />
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <ScrollView
@@ -47,59 +48,104 @@
             android:padding="16dp">
 
             <!-- Chọn ngày khám -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Ngày khám"
-                android:textSize="14sp"
-                android:textColor="#7F8C8D"
-                android:layout_marginBottom="8dp" />
-
-            <Button
-                android:id="@+id/btnChonNgay"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chọn ngày khám"
-                android:textColor="#2C3E50"
-                android:backgroundTint="#FFFFFF"
-                android:drawableEnd="@drawable/ic_calendar"
-                android:gravity="start|center_vertical"
-                android:padding="16dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📅 Ngày khám"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50"
+                        android:layout_marginBottom="8dp" />
+
+                    <Button
+                        android:id="@+id/btnChonNgay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Chọn ngày khám"
+                        android:textColor="@color/white"
+                        android:backgroundTint="#2196F3"
+                        android:drawableEnd="@drawable/ic_calendar"
+                        android:gravity="center"
+                        android:padding="16dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Chọn bác sĩ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Bác sĩ"
-                android:textSize="14sp"
-                android:textColor="#7F8C8D"
-                android:layout_marginBottom="8dp" />
-
-            <Spinner
-                android:id="@+id/spinnerBacSi"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/spinner_background"
-                android:padding="12dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="👨‍⚕️ Chọn bác sĩ"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50"
+                        android:layout_marginBottom="8dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerBacSi"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/spinner_background"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Chọn khung giờ -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Khung giờ"
-                android:textSize="14sp"
-                android:textColor="#7F8C8D"
-                android:layout_marginBottom="8dp" />
-
-            <Spinner
-                android:id="@+id/spinnerKhungGio"
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:background="@drawable/spinner_background"
-                android:padding="12dp"
-                android:layout_marginBottom="16dp" />
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:cardElevation="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="⏰ Chọn khung giờ"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:textColor="#2C3E50"
+                        android:layout_marginBottom="8dp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerKhungGio"
+                        android:layout_width="match_parent"
+                        android:layout_height="50dp"
+                        android:background="@drawable/spinner_background"
+                        android:padding="12dp" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!-- Thông báo -->
             <TextView
@@ -116,21 +162,36 @@
                 android:id="@+id/btnDangKy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Đăng ký lịch khám"
+                android:text="✓ Đăng ký lịch khám"
                 android:textColor="@color/white"
-                android:backgroundTint="#2196F3"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:backgroundTint="#4CAF50"
                 android:padding="16dp"
                 android:layout_marginBottom="24dp" />
 
             <!-- Danh sách lịch khám đã đăng ký -->
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lịch khám của bạn"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="#2C3E50"
-                android:layout_marginBottom="12dp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="12dp">
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="24dp"
+                    android:background="#2196F3"
+                    android:layout_marginEnd="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📋 Lịch khám của bạn"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#2C3E50" />
+            </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvLichKham"

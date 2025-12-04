@@ -1,38 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
 
-    <TextView
-        android:id="@+id/tvMaLichLamViec"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:orientation="horizontal"
+        android:padding="16dp">
 
-    <TextView
-        android:id="@+id/tvTenNhanVien"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        <!-- Icon -->
+        <androidx.cardview.widget.CardView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            app:cardCornerRadius="28dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#E3F2FD">
 
-    <TextView
-        android:id="@+id/tvNgayLamViec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_schedule"
+                app:tint="#2196F3" />
+        </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/tvKhungGio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
+        <!-- Thông tin -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tvTrangThai"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"/>
-</LinearLayout>
+            <TextView
+                android:id="@+id/tvKhungGio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="08:00 - 12:00"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="#2C3E50" />
+
+            <TextView
+                android:id="@+id/tvNgayLamViec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="01/01/2024"
+                android:textSize="14sp"
+                android:textColor="#7F8C8D"
+                android:layout_marginTop="4dp" />
+
+            <TextView
+                android:id="@+id/tvTenNhanVien"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BS. Nguyễn Văn A"
+                android:textSize="13sp"
+                android:textColor="#95A5A6"
+                android:layout_marginTop="2dp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Badge trạng thái -->
+        <TextView
+            android:id="@+id/tvTrangThai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Còn trống"
+            android:textSize="12sp"
+            android:textColor="@color/white"
+            android:background="@drawable/badge_success"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:layout_gravity="center_vertical" />
+
+        <TextView
+            android:id="@+id/tvMaLichLamViec"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

@@ -61,7 +61,15 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         holder.tvMaLichLamViec.setText(lich.getMaLichLamViec() != null ? lich.getMaLichLamViec() : "N/A");
         holder.tvTenNhanVien.setText(nhanVienMap.getOrDefault(lich.getMaBacSi(), "Không rõ BS"));
         holder.tvCaLamViec.setText(lich.getCaLamViec() != null ? lich.getCaLamViec() : "N/A");
-        holder.tvTrangThai.setText(lich.getTrangThai() != null ? lich.getTrangThai() : "N/A");
+        
+        // Hiển thị số lượng bệnh nhân thay vì trạng thái
+        int soLuongToiDa = lich.getSoLuongToiDa();
+        if (soLuongToiDa == 0) soLuongToiDa = 10; // Mặc định
+        
+        // Hiển thị tạm thời - sẽ cập nhật sau khi đếm từ Firebase
+        String soLuongText = "0/" + soLuongToiDa + " BN";
+        holder.tvTrangThai.setText(soLuongText);
+        holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success); // Còn trống - xanh
 
         if (lich.getNgayLamViec() != null) {
             holder.tvNgayLamViec.setText(DATE_FORMAT.format(lich.getNgayLamViec()));

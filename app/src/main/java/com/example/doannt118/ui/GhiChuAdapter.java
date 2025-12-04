@@ -39,9 +39,15 @@ public class GhiChuAdapter extends RecyclerView.Adapter<GhiChuAdapter.GhiChuView
         
         holder.tvMaBenhAn.setText("Mã bệnh án: " + (benhAn.getMaBenhAn() != null ? benhAn.getMaBenhAn() : "N/A"));
         holder.tvGhiChu.setText(benhAn.getGhiChu() != null ? benhAn.getGhiChu() : "Không có ghi chú");
-        holder.tvNgayKham.setText(benhAn.getNgayKham() != null
-                ? new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(benhAn.getNgayKham().toDate())
-                : "N/A");
+        
+        // Xử lý ngày khám với cả String và Timestamp
+        if (benhAn.getNgayKhamAsTimestamp() != null) {
+            holder.tvNgayKham.setText(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(benhAn.getNgayKhamAsTimestamp().toDate()));
+        } else if (benhAn.getNgayKham() instanceof String) {
+            holder.tvNgayKham.setText((String) benhAn.getNgayKham());
+        } else {
+            holder.tvNgayKham.setText("N/A");
+        }
 
         holder.itemView.setOnClickListener(v -> {
             if (listener != null) {

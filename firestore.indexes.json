@@ -1,0 +1,33 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "BenhAn",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "maBenhNhan",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "ngayKham",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "DonThuoc",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "maBenhNhan",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "ngayLap",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

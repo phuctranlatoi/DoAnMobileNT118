@@ -49,8 +49,12 @@ public class BenhAnBacSiAdapter extends RecyclerView.Adapter<BenhAnBacSiAdapter.
         
         holder.tvMaBenhAn.setText(benhAn.getMaBenhAn());
         
-        if (benhAn.getNgayKham() != null) {
-            holder.tvNgayKham.setText(dateFormat.format(benhAn.getNgayKham().toDate()));
+        if (benhAn.getNgayKhamAsTimestamp() != null) {
+            holder.tvNgayKham.setText(dateFormat.format(benhAn.getNgayKhamAsTimestamp().toDate()));
+        } else if (benhAn.getNgayKham() instanceof String) {
+            holder.tvNgayKham.setText((String) benhAn.getNgayKham());
+        } else {
+            holder.tvNgayKham.setText("N/A");
         }
         
         String chanDoan = benhAn.getChanDoan();

@@ -7,6 +7,11 @@ public class HoaDon {
     private String maBenhNhan;
     private Date ngayLap;
     private double tongTien;
+    private long phiKham;               // Phí khám
+    private long phiThuoc;              // Phí thuốc
+    private long phiDichVu;             // Phí dịch vụ khác (xét nghiệm, chụp chiếu...)
+    private String trangThai;           // CHUA_THANH_TOAN, DA_THANH_TOAN
+    private Date ngayThanhToan;
 
     public HoaDon() {}
 
@@ -39,5 +44,25 @@ public class HoaDon {
 
     public double getTongTien() { return tongTien; }
     public void setTongTien(double tongTien) { this.tongTien = tongTien; }
+
+    public long getPhiKham() { return phiKham; }
+    public void setPhiKham(long phiKham) { this.phiKham = phiKham; }
+
+    public long getPhiThuoc() { return phiThuoc; }
+    public void setPhiThuoc(long phiThuoc) { this.phiThuoc = phiThuoc; }
+
+    public long getPhiDichVu() { return phiDichVu; }
+    public void setPhiDichVu(long phiDichVu) { this.phiDichVu = phiDichVu; }
+
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
+
+    public Date getNgayThanhToan() { return ngayThanhToan; }
+    public void setNgayThanhToan(Date ngayThanhToan) { this.ngayThanhToan = ngayThanhToan; }
+    
+    // Helper method tính tổng tự động
+    public long getTongTienLong() {
+        return phiKham + phiThuoc + phiDichVu;
+    }
 }
 

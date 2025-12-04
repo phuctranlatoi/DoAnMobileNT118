@@ -51,6 +51,8 @@
         <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ui.QuanLyHoSoCaNhan" />
         <activity android:name=".ui.QuanLyLichLamViecActivity" />
+        <activity android:name=".ui.ThemLichLamViecActivity" 
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".ui.ForgotPasswordActivity" />
         <activity android:name=".ui.SettingActivity"/>
         <activity android:name=".ui.DangKyLichKhamActivity" />
@@ -107,6 +109,30 @@
             android:exported="false" />
         <activity
             android:name=".ui.TaoHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.NhapMaKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.HoSoBenhNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.LichKhamCuaToiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChiTietLichKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.InitDuocPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.InitDichVuKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChonDichVuKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.QuanLyDuLieuActivity"
             android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->

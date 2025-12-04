@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Header: Trạng thái -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/tvTrangThai"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Đã xác nhận"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:drawablePadding="6dp"
+                app:drawableStartCompat="@drawable/ic_check_circle" />
+
+            <TextView
+                android:id="@+id/tvNgayDangKy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="04/12/2024"
+                android:textSize="12sp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <!-- Mã khám -->
+        <LinearLayout
+            android:id="@+id/layoutMaKham"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_outline_blue"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Mã khám:"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/tvMaKham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="123456"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:letterSpacing="0.1" />
+        </LinearLayout>
+
+        <!-- Thông tin bác sĩ -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_doctor"
+                app:tint="@color/primary"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvBacSi"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="BS. Nguyễn Văn A"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <!-- Ngày khám -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_calendar"
+                app:tint="@android:color/darker_gray"
+                android:layout_marginEnd="8dp" />
+
+            <TextView
+                android:id="@+id/tvNgayKham"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="05/12/2024 - 08:00"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray" />
+        </LinearLayout>
+
+        <!-- Lý do khám -->
+        <LinearLayout
+            android:id="@+id/layoutLyDo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="start"
+            android:layout_marginBottom="8dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_note"
+                app:tint="@android:color/darker_gray"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="2dp" />
+
+            <TextView
+                android:id="@+id/tvLyDoKham"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Khám tổng quát"
+                android:textSize="14sp"
+                android:textColor="@android:color/darker_gray"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
+
+        <!-- Lý do từ chối -->
+        <LinearLayout
+            android:id="@+id/layoutLyDoTuChoi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#FFEBEE"
+            android:padding="12dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lý do từ chối:"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="#C62828"
+                android:layout_marginBottom="4dp" />
+
+            <TextView
+                android:id="@+id/tvLyDoTuChoi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bác sĩ bận"
+                android:textSize="13sp"
+                android:textColor="#D32F2F" />
+        </LinearLayout>
+
+        <!-- Button xem chi tiết -->
+        <Button
+            android:id="@+id/btnXemChiTiet"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:text="Xem Chi Tiết"
+            android:textSize="14sp"
+            android:layout_marginTop="12dp"
+            style="@style/Widget.Material3.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

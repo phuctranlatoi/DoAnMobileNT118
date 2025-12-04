@@ -47,9 +47,26 @@ public class LichKhamAdapter extends RecyclerView.Adapter<LichKhamAdapter.LichKh
             holder.tvNgayKham.setText(sdf.format(lichKham.getNgayKham().toDate()));
         }
 
+        // Kiểm tra quá hạn
+        boolean isQuaHan = false;
+        if (lichKham.getNgayKham() != null) {
+            long ngayKhamMillis = lichKham.getNgayKham().toDate().getTime();
+            long currentMillis = System.currentTimeMillis();
+            // Quá hạn nếu ngày khám < ngày hiện tại và trạng thái không phải HOAN_THANH hoặc HUY
+            if (ngayKhamMillis < currentMillis && 
+                !"HOAN_THANH".equals(lichKham.getTrangThai()) && 
+                !"HUY".equals(lichKham.getTrangThai())) {
+                isQuaHan = true;
+            }
+        }
+
         // Hiển thị trạng thái
         String trangThai = lichKham.getTrangThai();
-        if ("CHO".equals(trangThai)) {
+        if (isQuaHan) {
+            holder.tvTrangThai.setText("Quá hạn");
+            holder.tvTrangThai.setBackgroundColor(0xFFFF9800); // Màu cam
+            holder.btnHuy.setVisibility(View.GONE);
+        } else if ("CHO".equals(trangThai)) {
             holder.tvTrangThai.setText("Chờ xác nhận");
             holder.tvTrangThai.setBackgroundResource(R.drawable.badge_background);
             holder.btnHuy.setVisibility(View.VISIBLE);

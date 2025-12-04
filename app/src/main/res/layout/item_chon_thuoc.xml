@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvTenThuoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paracetamol 500mg"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/textPrimary" />
+
+        <TextView
+            android:id="@+id/tvDonVi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Viên"
+            android:textSize="14sp"
+            android:textColor="@color/textSecondary"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

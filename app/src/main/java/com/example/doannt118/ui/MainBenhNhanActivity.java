@@ -133,36 +133,31 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     }
 
     private void loadUserInfo() {
-        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
-                        if (benhNhan != null) {
-                            tvHoTen.setText(getSafeString(benhNhan.getHoTen())); // Chỉ hiển thị họ tên
-                            maBenhNhan = benhNhan.getMaBenhNhan();
-                            
-                            // Load avatar nếu có
-                            if (benhNhan.getAvatarUrl() != null && !benhNhan.getAvatarUrl().isEmpty()) {
-                                Glide.with(this)
-                                    .load(benhNhan.getAvatarUrl())
-                                    .placeholder(R.drawable.ic_avatar)
-                                    .error(R.drawable.ic_avatar)
-                                    .circleCrop()
-                                    .into(ivAvatar);
-                            }
-                        } else {
-                            showError("Dữ liệu bệnh nhân không hợp lệ!");
-                        }
-                    } else {
-                        showError("Không tìm thấy thông tin bệnh nhân!");
+        com.example.doannt118.utils.UserInfoLoader.loadBenhNhan(maTaiKhoan, repo,
+            new com.example.doannt118.utils.UserInfoLoader.BenhNhanCallback() {
+                @Override
+                public void onSuccess(BenhNhan benhNhan) {
+                    tvHoTen.setText(getSafeString(benhNhan.getHoTen()));
+                    maBenhNhan = benhNhan.getMaBenhNhan();
+                    
+                    // Load avatar nếu có
+                    if (benhNhan.getAvatarUrl() != null && !benhNhan.getAvatarUrl().isEmpty()) {
+                        Glide.with(MainBenhNhanActivity.this)
+                            .load(benhNhan.getAvatarUrl())
+                            .placeholder(R.drawable.ic_avatar)
+                            .error(R.drawable.ic_avatar)
+                            .circleCrop()
+                            .into(ivAvatar);
                     }
                     hideProgress();
-                },
-                e -> {
-                    Log.e("MainBenhNhanActivity", "Lỗi tải thông tin: ", e);
-                    showError("Lỗi tải thông tin: " + e.getMessage());
+                }
+                
+                @Override
+                public void onError(String message) {
+                    showError(message);
                     hideProgress();
-                });
+                }
+            });
     }
 
 //    private void loadActivityHistory() {
@@ -187,7 +182,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     // === XỬ LÝ CHỨC NĂNG ===
     private void handleDangKyLichKham() {
         logActivity("Mở đăng ký lịch khám");
-        Intent intent = new Intent(this, DanhSachBacSiActivity.class);
+        Intent intent = new Intent(this, DangKyLichKhamActivity.class);
         intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
         startActivity(intent);
     }
@@ -206,17 +201,40 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     }
 
     private void handleXemLichKham() {
-        Toast.makeText(this, "Chức năng Xem lịch khám đang phát triển!", Toast.LENGTH_SHORT).show();
+        logActivity("Xem lịch khám");
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Intent intent = new Intent(this, LichKhamCuaToiActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
     }
 
     private void handleXemBenhAn() {
         logActivity("Xem bệnh án");
-        startActivitySafe(XemBenhAnActivity.class);
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        Intent intent = new Intent(this, XemBenhAnActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
     }
 
     private void handleLichSuUongThuoc() {
         logActivity("Xem lịch sử uống thuốc");
-        startActivitySafe(LichSuUongThuocActivity.class);
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        Intent intent = new Intent(this, LichSuUongThuocActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
     }
 
     private void handleXacNhanDungThuoc() {
@@ -240,8 +258,9 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleXemThongBao() {
         logActivity("Xem thông báo");
-        if (maBenhNhan == null) {
-            Toast.makeText(this, "Vui lòng đợi tải thông tin!", Toast.LENGTH_SHORT).show();
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
             return;
         }
         Intent intent = new Intent(this, ThongBaoActivity.class);
@@ -251,8 +270,9 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleChatbot() {
         logActivity("Mở trợ lý ảo");
-        if (maBenhNhan == null) {
-            Toast.makeText(this, "Vui lòng đợi tải thông tin!", Toast.LENGTH_SHORT).show();
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
             return;
         }
         Intent intent = new Intent(this, ChatActivity.class);
@@ -262,21 +282,14 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleXemHoaDon() {
         logActivity("Xem hóa đơn");
-        // Lấy mã bệnh nhân trước
-        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
-                        if (benhNhan != null) {
-                            Intent intent = new Intent(this, DanhSachHoaDonActivity.class);
-                            intent.putExtra("MA_BENH_NHAN", benhNhan.getMaBenhNhan());
-                            startActivity(intent);
-                        }
-                    } else {
-                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
-                    }
-                },
-                e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        Intent intent = new Intent(this, DanhSachHoaDonActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
     }
 
     private void handleDangXuat() {

@@ -74,6 +74,9 @@
         <activity android:name="com.example.doannt118.ui.ProfileActivity" />
         <activity android:name="com.example.doannt118.ui.QuanLyHoSoCaNhan" />
         <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
+        <activity
+            android:name="com.example.doannt118.ui.ThemLichLamViecActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
         <activity android:name="com.example.doannt118.ui.SettingActivity" />
         <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
@@ -131,6 +134,30 @@
             android:exported="false" />
         <activity
             android:name="com.example.doannt118.ui.TaoHoaDonActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.NhapMaKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.HoSoBenhNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.LichKhamCuaToiActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ChiTietLichKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.InitDuocPhamActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.InitDichVuKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ChonDichVuKhamActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.QuanLyDuLieuActivity"
             android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->

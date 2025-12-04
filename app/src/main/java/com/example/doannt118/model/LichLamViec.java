@@ -7,32 +7,29 @@ import java.util.Date;
 public class LichLamViec {
     private String maLichLamViec;
     private String maBacSi;
-    private Date ngayLamViec; // Dùng Date thay vì Timestamp để tương thích
-    private String caLamViec; // "08:00-09:00" - tên field trong Firestore
-    private String trangThai; // CON_TRONG, DA_DAY
-    private int soLuongToiDa; // Mặc định 6
+    private Date ngayLamViec;
+    private String caLamViec; // "08:00-12:00"
+    private int soLuongToiDa; // Số lượng bệnh nhân tối đa (mặc định 6)
     private String loaiHinh; // ONLINE, OFFLINE (tại phòng khám)
 
     public LichLamViec() {}
 
     public LichLamViec(String maLichLamViec, String maBacSi, Date ngayLamViec,
-                       String caLamViec, String trangThai, int soLuongToiDa) {
+                       String caLamViec, int soLuongToiDa) {
         this.maLichLamViec = maLichLamViec;
         this.maBacSi = maBacSi;
         this.ngayLamViec = ngayLamViec;
         this.caLamViec = caLamViec;
-        this.trangThai = trangThai;
         this.soLuongToiDa = soLuongToiDa;
-        this.loaiHinh = "OFFLINE"; // Mặc định là khám tại phòng
+        this.loaiHinh = "OFFLINE";
     }
     
     public LichLamViec(String maLichLamViec, String maBacSi, Date ngayLamViec,
-                       String caLamViec, String trangThai, int soLuongToiDa, String loaiHinh) {
+                       String caLamViec, int soLuongToiDa, String loaiHinh) {
         this.maLichLamViec = maLichLamViec;
         this.maBacSi = maBacSi;
         this.ngayLamViec = ngayLamViec;
         this.caLamViec = caLamViec;
-        this.trangThai = trangThai;
         this.soLuongToiDa = soLuongToiDa;
         this.loaiHinh = loaiHinh;
     }
@@ -49,8 +46,7 @@ public class LichLamViec {
     public String getCaLamViec() { return caLamViec; }
     public void setCaLamViec(String caLamViec) { this.caLamViec = caLamViec; }
 
-    public String getTrangThai() { return trangThai; }
-    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
+
 
     public int getSoLuongToiDa() { return soLuongToiDa; }
     public void setSoLuongToiDa(int soLuongToiDa) { this.soLuongToiDa = soLuongToiDa; }

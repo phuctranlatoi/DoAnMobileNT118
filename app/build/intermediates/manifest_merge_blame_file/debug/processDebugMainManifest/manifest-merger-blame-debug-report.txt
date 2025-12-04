@@ -69,7 +69,7 @@
 33-->[androidx.core:core:1.13.1] /Users/kelvin/.gradle/caches/8.13/transforms/bf8e43b07ffce61d914b860cfc7ce753/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
 34
 35    <application
-35-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-131:19
+35-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-157:19
 36        android:allowBackup="true"
 36-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:16:9-35
 37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -153,605 +153,659 @@
 76        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
 76-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:53:9-66
 76-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:53:19-63
-77        <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
-77-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:54:9-63
-77-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:54:19-60
-78        <activity android:name="com.example.doannt118.ui.SettingActivity" />
-78-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:55:9-55
-78-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:55:19-53
-79        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
-79-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:56:9-63
-79-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:56:19-60
-80        <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
-80-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:57:9-62
-80-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:57:19-59
-81        <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
-81-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:58:9-61
-81-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:58:19-58
-82        <activity
-82-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:59:9-61:74
-83            android:name="com.example.doannt118.ui.XemChiTietLichKhamActivity"
-83-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:59:19-64
-84            android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
-84-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:60:13-71
-85            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-85-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:61:13-71
-86        <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
-86-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:62:9-64
-86-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:62:19-61
-87        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
-87-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:63:9-60
-87-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:63:19-57
-88        <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
-88-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:64:9-57
-88-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:64:19-54
-89        <activity
-89-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:65:9-67:58
-90            android:name="com.example.doannt118.ui.ChatActivity"
-90-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:66:13-44
-91            android:windowSoftInputMode="adjustResize" />
-91-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:67:13-55
-92        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
-92-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:68:9-69
-92-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:68:19-66
-93        <activity
-93-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:69:9-71:40
-94            android:name="com.example.doannt118.ui.DanhSachDonThuocActivity"
-94-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:70:13-56
-95            android:exported="false" />
-95-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:71:13-37
+77        <activity
+77-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:54:9-55:72
+78            android:name="com.example.doannt118.ui.ThemLichLamViecActivity"
+78-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:54:19-61
+79            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+79-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:55:13-69
+80        <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
+80-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:56:9-63
+80-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:56:19-60
+81        <activity android:name="com.example.doannt118.ui.SettingActivity" />
+81-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:57:9-55
+81-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:57:19-53
+82        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
+82-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:58:9-63
+82-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:58:19-60
+83        <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
+83-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:59:9-62
+83-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:59:19-59
+84        <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
+84-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:60:9-61
+84-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:60:19-58
+85        <activity
+85-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:61:9-63:74
+86            android:name="com.example.doannt118.ui.XemChiTietLichKhamActivity"
+86-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:61:19-64
+87            android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
+87-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:62:13-71
+88            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+88-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:63:13-71
+89        <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
+89-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:64:9-64
+89-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:64:19-61
+90        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
+90-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:65:9-60
+90-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:65:19-57
+91        <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
+91-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:66:9-57
+91-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:66:19-54
+92        <activity
+92-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:67:9-69:58
+93            android:name="com.example.doannt118.ui.ChatActivity"
+93-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:68:13-44
+94            android:windowSoftInputMode="adjustResize" />
+94-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:69:13-55
+95        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
+95-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:70:9-69
+95-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:70:19-66
 96        <activity
-96-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:72:9-74:40
-97            android:name="com.example.doannt118.ui.ChiTietDonThuocActivity"
-97-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:73:13-55
+96-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:71:9-73:40
+97            android:name="com.example.doannt118.ui.DanhSachDonThuocActivity"
+97-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:72:13-56
 98            android:exported="false" />
-98-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:74:13-37
+98-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:73:13-37
 99        <activity
-99-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:75:9-77:40
-100            android:name="com.example.doannt118.ui.DanhSachHoaDonActivity"
-100-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:76:13-54
+99-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:74:9-76:40
+100            android:name="com.example.doannt118.ui.ChiTietDonThuocActivity"
+100-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:75:13-55
 101            android:exported="false" />
-101-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:77:13-37
+101-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:76:13-37
 102        <activity
-102-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:78:9-80:40
-103            android:name="com.example.doannt118.ui.ChiTietHoaDonActivity"
-103-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:79:13-53
+102-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:77:9-79:40
+103            android:name="com.example.doannt118.ui.DanhSachHoaDonActivity"
+103-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:78:13-54
 104            android:exported="false" />
-104-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:80:13-37
+104-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:79:13-37
 105        <activity
-105-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:81:9-83:40
-106            android:name="com.example.doannt118.ui.UpdateBacSiProfileActivity"
-106-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:82:13-58
+105-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:80:9-82:40
+106            android:name="com.example.doannt118.ui.ChiTietHoaDonActivity"
+106-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:81:13-53
 107            android:exported="false" />
-107-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:83:13-37
+107-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:82:13-37
 108        <activity
-108-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:84:9-86:40
-109            android:name="com.example.doannt118.ui.MainActivity"
-109-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:85:13-44
+108-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:83:9-85:40
+109            android:name="com.example.doannt118.ui.UpdateBacSiProfileActivity"
+109-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:84:13-58
 110            android:exported="false" />
-110-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:86:13-37
+110-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:85:13-37
 111        <activity
-111-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:87:9-89:40
-112            android:name="com.example.doannt118.ui.XacNhanUongThuocActivity"
-112-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:88:13-56
+111-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:86:9-88:40
+112            android:name="com.example.doannt118.ui.MainActivity"
+112-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:87:13-44
 113            android:exported="false" />
-113-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:89:13-37
+113-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:88:13-37
 114        <activity
-114-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:90:9-92:40
-115            android:name="com.example.doannt118.ui.LichSuUongThuocActivity"
-115-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:91:13-55
+114-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:89:9-91:40
+115            android:name="com.example.doannt118.ui.XacNhanUongThuocActivity"
+115-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:90:13-56
 116            android:exported="false" />
-116-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:92:13-37
+116-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:91:13-37
 117        <activity
-117-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:93:9-95:40
-118            android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"
-118-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:94:13-55
+117-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:92:9-94:40
+118            android:name="com.example.doannt118.ui.LichSuUongThuocActivity"
+118-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:93:13-55
 119            android:exported="false" />
-119-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:95:13-37
+119-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:94:13-37
 120        <activity
-120-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:96:9-98:40
-121            android:name="com.example.doannt118.ui.QuanLyBenhAnBacSiActivity"
-121-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:97:13-57
+120-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:95:9-97:40
+121            android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"
+121-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:96:13-55
 122            android:exported="false" />
-122-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:98:13-37
+122-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:97:13-37
 123        <activity
-123-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:99:9-101:40
-124            android:name="com.example.doannt118.ui.CapNhatBenhAnActivity"
-124-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:100:13-53
+123-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:98:9-100:40
+124            android:name="com.example.doannt118.ui.QuanLyBenhAnBacSiActivity"
+124-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:99:13-57
 125            android:exported="false" />
-125-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:101:13-37
+125-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:100:13-37
 126        <activity
-126-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:102:9-104:40
-127            android:name="com.example.doannt118.ui.TaoBenhAnActivity"
-127-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:103:13-49
+126-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:101:9-103:40
+127            android:name="com.example.doannt118.ui.CapNhatBenhAnActivity"
+127-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:102:13-53
 128            android:exported="false" />
-128-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:104:13-37
+128-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:103:13-37
 129        <activity
-129-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:105:9-107:40
-130            android:name="com.example.doannt118.ui.KeDonThuocActivity"
-130-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:106:13-50
+129-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:104:9-106:40
+130            android:name="com.example.doannt118.ui.TaoBenhAnActivity"
+130-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:105:13-49
 131            android:exported="false" />
-131-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:107:13-37
+131-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:106:13-37
 132        <activity
-132-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:108:9-110:40
-133            android:name="com.example.doannt118.ui.TaoHoaDonActivity"
-133-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:109:13-49
+132-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:107:9-109:40
+133            android:name="com.example.doannt118.ui.KeDonThuocActivity"
+133-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:108:13-50
 134            android:exported="false" />
-134-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:110:13-37
-135
-136        <!-- Firebase Cloud Messaging Service -->
-137        <service
-137-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:113:9-119:19
-138            android:name="com.example.doannt118.service.MyFirebaseMessagingService"
-138-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:114:13-63
-139            android:exported="false" >
-139-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:115:13-37
-140            <intent-filter>
-140-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:116:13-118:29
-141                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-141-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:17-78
-141-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:25-75
-142            </intent-filter>
-143        </service>
-144
-145        <!-- Firebase Messaging Metadata -->
-146        <meta-data
-146-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:122:9-124:60
-147            android:name="com.google.firebase.messaging.default_notification_icon"
-147-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:123:13-83
-148            android:resource="@drawable/ic_notification" />
-148-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:124:13-57
-149        <meta-data
-149-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:125:9-127:54
-150            android:name="com.google.firebase.messaging.default_notification_color"
-150-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:126:13-84
-151            android:resource="@color/colorPrimary" />
-151-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:127:13-51
-152        <meta-data
-152-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:128:9-130:60
-153            android:name="com.google.firebase.messaging.default_notification_channel_id"
-153-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:129:13-89
-154            android:value="medical_notification_channel" />
-154-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:130:13-57
-155
+134-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:109:13-37
+135        <activity
+135-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:110:9-112:40
+136            android:name="com.example.doannt118.ui.TaoHoaDonActivity"
+136-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:111:13-49
+137            android:exported="false" />
+137-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:112:13-37
+138        <activity
+138-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:113:9-115:40
+139            android:name="com.example.doannt118.ui.NhapMaKhamActivity"
+139-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:114:13-50
+140            android:exported="false" />
+140-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:115:13-37
+141        <activity
+141-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:116:9-118:40
+142            android:name="com.example.doannt118.ui.HoSoBenhNhanActivity"
+142-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:13-52
+143            android:exported="false" />
+143-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:118:13-37
+144        <activity
+144-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:119:9-121:40
+145            android:name="com.example.doannt118.ui.LichKhamCuaToiActivity"
+145-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:120:13-54
+146            android:exported="false" />
+146-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:121:13-37
+147        <activity
+147-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:122:9-124:40
+148            android:name="com.example.doannt118.ui.ChiTietLichKhamActivity"
+148-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:123:13-55
+149            android:exported="false" />
+149-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:124:13-37
+150        <activity
+150-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:125:9-127:40
+151            android:name="com.example.doannt118.ui.InitDuocPhamActivity"
+151-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:126:13-52
+152            android:exported="false" />
+152-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:127:13-37
+153        <activity
+153-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:128:9-130:40
+154            android:name="com.example.doannt118.ui.InitDichVuKhamActivity"
+154-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:129:13-54
+155            android:exported="false" />
+155-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:130:13-37
 156        <activity
-156-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:29:9-46:20
-157            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-157-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:30:13-80
-158            android:excludeFromRecents="true"
-158-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:31:13-46
-159            android:exported="true"
-159-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:32:13-36
-160            android:launchMode="singleTask"
-160-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:33:13-44
-161            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-161-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:34:13-72
-162            <intent-filter>
-162-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:35:13-45:29
-163                <action android:name="android.intent.action.VIEW" />
-163-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:17-69
-163-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:25-66
-164
-165                <category android:name="android.intent.category.DEFAULT" />
-165-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:17-76
-165-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:27-73
-166                <category android:name="android.intent.category.BROWSABLE" />
-166-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:17-78
-166-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:27-75
-167
-168                <data
-168-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:41:17-44:51
-169                    android:host="firebase.auth"
-169-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:42:21-49
-170                    android:path="/"
-170-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:43:21-37
-171                    android:scheme="genericidp" />
-171-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:44:21-48
-172            </intent-filter>
-173        </activity>
-174        <activity
-174-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:47:9-64:20
-175            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-175-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:48:13-79
-176            android:excludeFromRecents="true"
-176-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:49:13-46
-177            android:exported="true"
-177-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:50:13-36
-178            android:launchMode="singleTask"
-178-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:51:13-44
-179            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-179-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:52:13-72
-180            <intent-filter>
-180-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:53:13-63:29
-181                <action android:name="android.intent.action.VIEW" />
-181-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:17-69
-181-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:25-66
+156-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:131:9-133:40
+157            android:name="com.example.doannt118.ui.ChonDichVuKhamActivity"
+157-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:132:13-54
+158            android:exported="false" />
+158-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:133:13-37
+159        <activity
+159-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:134:9-136:40
+160            android:name="com.example.doannt118.ui.QuanLyDuLieuActivity"
+160-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:135:13-52
+161            android:exported="false" />
+161-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:136:13-37
+162
+163        <!-- Firebase Cloud Messaging Service -->
+164        <service
+164-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:139:9-145:19
+165            android:name="com.example.doannt118.service.MyFirebaseMessagingService"
+165-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:140:13-63
+166            android:exported="false" >
+166-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:141:13-37
+167            <intent-filter>
+167-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:142:13-144:29
+168                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+168-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:17-78
+168-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:25-75
+169            </intent-filter>
+170        </service>
+171
+172        <!-- Firebase Messaging Metadata -->
+173        <meta-data
+173-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:148:9-150:60
+174            android:name="com.google.firebase.messaging.default_notification_icon"
+174-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:149:13-83
+175            android:resource="@drawable/ic_notification" />
+175-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:150:13-57
+176        <meta-data
+176-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:151:9-153:54
+177            android:name="com.google.firebase.messaging.default_notification_color"
+177-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:152:13-84
+178            android:resource="@color/colorPrimary" />
+178-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:153:13-51
+179        <meta-data
+179-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:154:9-156:60
+180            android:name="com.google.firebase.messaging.default_notification_channel_id"
+180-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:155:13-89
+181            android:value="medical_notification_channel" />
+181-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:156:13-57
 182
-183                <category android:name="android.intent.category.DEFAULT" />
-183-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:17-76
-183-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:27-73
-184                <category android:name="android.intent.category.BROWSABLE" />
-184-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:17-78
-184-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:27-75
-185
-186                <data
-186-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:41:17-44:51
-187                    android:host="firebase.auth"
-187-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:42:21-49
-188                    android:path="/"
-188-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:43:21-37
-189                    android:scheme="recaptcha" />
-189-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:44:21-48
-190            </intent-filter>
-191        </activity>
-192
-193        <service
-193-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:66:9-72:19
-194            android:name="com.google.firebase.components.ComponentDiscoveryService"
-194-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:67:13-84
-195            android:directBootAware="true"
-195-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:32:13-43
-196            android:exported="false" >
-196-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:68:13-37
-197            <meta-data
-197-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:69:13-71:85
-198                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-198-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:70:17-109
-199                android:value="com.google.firebase.components.ComponentRegistrar" />
-199-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:71:17-82
-200            <meta-data
-200-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:17:13-19:85
-201                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-201-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:18:17-122
-202                android:value="com.google.firebase.components.ComponentRegistrar" />
-202-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:19:17-82
-203            <meta-data
-203-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:20:13-22:85
-204                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-204-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:21:17-111
-205                android:value="com.google.firebase.components.ComponentRegistrar" />
-205-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:22:17-82
-206            <meta-data
-206-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:57:13-59:85
-207                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-207-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:58:17-122
-208                android:value="com.google.firebase.components.ComponentRegistrar" />
-208-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:59:17-82
-209            <meta-data
-209-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:60:13-62:85
-210                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-210-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:61:17-119
-211                android:value="com.google.firebase.components.ComponentRegistrar" />
-211-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:62:17-82
-212            <meta-data
-212-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:30:13-32:85
-213                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-213-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:31:17-118
-214                android:value="com.google.firebase.components.ComponentRegistrar" />
-214-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:32:17-82
-215            <meta-data
-215-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:33:13-35:85
-216                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-216-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:34:17-107
-217                android:value="com.google.firebase.components.ComponentRegistrar" />
-217-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:35:17-82
-218            <meta-data
-218-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:31:13-33:85
-219                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
-219-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:32:17-105
-220                android:value="com.google.firebase.components.ComponentRegistrar" />
-220-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:33:17-82
-221            <meta-data
-221-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:33:13-35:85
-222                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-222-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:34:17-139
-223                android:value="com.google.firebase.components.ComponentRegistrar" />
-223-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:35:17-82
+183        <activity
+183-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:29:9-46:20
+184            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+184-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:30:13-80
+185            android:excludeFromRecents="true"
+185-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:31:13-46
+186            android:exported="true"
+186-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:32:13-36
+187            android:launchMode="singleTask"
+187-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:33:13-44
+188            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+188-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:34:13-72
+189            <intent-filter>
+189-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:35:13-45:29
+190                <action android:name="android.intent.action.VIEW" />
+190-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:17-69
+190-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:25-66
+191
+192                <category android:name="android.intent.category.DEFAULT" />
+192-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:17-76
+192-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:27-73
+193                <category android:name="android.intent.category.BROWSABLE" />
+193-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:17-78
+193-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:27-75
+194
+195                <data
+195-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:41:17-44:51
+196                    android:host="firebase.auth"
+196-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:42:21-49
+197                    android:path="/"
+197-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:43:21-37
+198                    android:scheme="genericidp" />
+198-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:44:21-48
+199            </intent-filter>
+200        </activity>
+201        <activity
+201-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:47:9-64:20
+202            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+202-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:48:13-79
+203            android:excludeFromRecents="true"
+203-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:49:13-46
+204            android:exported="true"
+204-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:50:13-36
+205            android:launchMode="singleTask"
+205-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:51:13-44
+206            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+206-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:52:13-72
+207            <intent-filter>
+207-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:53:13-63:29
+208                <action android:name="android.intent.action.VIEW" />
+208-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:17-69
+208-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:36:25-66
+209
+210                <category android:name="android.intent.category.DEFAULT" />
+210-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:17-76
+210-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:38:27-73
+211                <category android:name="android.intent.category.BROWSABLE" />
+211-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:17-78
+211-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:39:27-75
+212
+213                <data
+213-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:41:17-44:51
+214                    android:host="firebase.auth"
+214-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:42:21-49
+215                    android:path="/"
+215-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:43:21-37
+216                    android:scheme="recaptcha" />
+216-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:44:21-48
+217            </intent-filter>
+218        </activity>
+219
+220        <service
+220-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:66:9-72:19
+221            android:name="com.google.firebase.components.ComponentDiscoveryService"
+221-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:67:13-84
+222            android:directBootAware="true"
+222-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:32:13-43
+223            android:exported="false" >
+223-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:68:13-37
 224            <meta-data
-224-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:15:13-17:85
-225                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-225-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:16:17-130
+224-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:69:13-71:85
+225                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+225-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:70:17-109
 226                android:value="com.google.firebase.components.ComponentRegistrar" />
-226-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:17:17-82
+226-->[com.google.firebase:firebase-auth:24.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/13ed9c0c7b8f5968e5b3e306a63d3453/transformed/firebase-auth-24.0.1/AndroidManifest.xml:71:17-82
 227            <meta-data
-227-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:18:13-20:85
-228                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-228-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:19:17-127
+227-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:17:13-19:85
+228                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+228-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:18:17-122
 229                android:value="com.google.firebase.components.ComponentRegistrar" />
-229-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:20:17-82
+229-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:19:17-82
 230            <meta-data
-230-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:35:13-37:85
-231                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-231-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:36:17-109
+230-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:20:13-22:85
+231                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+231-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:21:17-111
 232                android:value="com.google.firebase.components.ComponentRegistrar" />
-232-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:37:17-82
+232-->[com.google.firebase:firebase-firestore:26.0.2] /Users/kelvin/.gradle/caches/8.13/transforms/3b113bf9895ee0c11c670340de6b19f2/transformed/firebase-firestore-26.0.2/AndroidManifest.xml:22:17-82
 233            <meta-data
-233-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:25:13-27:85
-234                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-234-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:26:17-120
+233-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:57:13-59:85
+234                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+234-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:58:17-122
 235                android:value="com.google.firebase.components.ComponentRegistrar" />
-235-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:27:17-82
+235-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:59:17-82
 236            <meta-data
-236-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:28:13-30:85
-237                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-237-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:29:17-117
+236-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:60:13-62:85
+237                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+237-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:61:17-119
 238                android:value="com.google.firebase.components.ComponentRegistrar" />
-238-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:30:17-82
+238-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:62:17-82
 239            <meta-data
-239-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
-240                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-240-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+239-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:30:13-32:85
+240                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+240-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:31:17-118
 241                android:value="com.google.firebase.components.ComponentRegistrar" />
-241-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
-242        </service>
-243
-244        <receiver
-244-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:29:9-40:20
-245            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-245-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:30:13-78
-246            android:exported="true"
-246-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:31:13-36
-247            android:permission="com.google.android.c2dm.permission.SEND" >
-247-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:32:13-73
-248            <intent-filter>
-248-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:33:13-35:29
-249                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-249-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:34:17-81
-249-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:34:25-78
-250            </intent-filter>
-251
-252            <meta-data
-252-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:37:13-39:40
-253                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-253-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:38:17-92
-254                android:value="true" />
-254-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:39:17-37
-255        </receiver>
-256        <!--
-257             FirebaseMessagingService performs security checks at runtime,
-258             but set to not exported to explicitly avoid allowing another app to call it.
-259        -->
-260        <service
-260-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:46:9-53:19
-261            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-261-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:47:13-82
-262            android:directBootAware="true"
-262-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:48:13-43
-263            android:exported="false" >
-263-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:49:13-37
-264            <intent-filter android:priority="-500" >
-264-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:116:13-118:29
-265                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-265-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:17-78
-265-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:25-75
-266            </intent-filter>
-267        </service>
-268
-269        <provider
-269-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:23:9-28:39
-270            android:name="com.google.firebase.provider.FirebaseInitProvider"
-270-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:24:13-77
-271            android:authorities="com.example.doannt118.firebaseinitprovider"
-271-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:25:13-72
-272            android:directBootAware="true"
-272-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:26:13-43
-273            android:exported="false"
-273-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:27:13-37
-274            android:initOrder="100" />
-274-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:28:13-36
-275
-276        <receiver
-276-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:29:9-33:20
-277            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-277-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:30:13-85
-278            android:enabled="true"
-278-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:31:13-35
-279            android:exported="false" >
-279-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:32:13-37
-280        </receiver>
-281
-282        <service
-282-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:35:9-38:40
-283            android:name="com.google.android.gms.measurement.AppMeasurementService"
-283-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:36:13-84
-284            android:enabled="true"
-284-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:37:13-35
-285            android:exported="false" />
-285-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:38:13-37
-286        <service
-286-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:39:9-43:72
-287            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-287-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:40:13-87
-288            android:enabled="true"
-288-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:41:13-35
-289            android:exported="false"
-289-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:42:13-37
-290            android:permission="android.permission.BIND_JOB_SERVICE" />
-290-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:43:13-69
-291        <service
-291-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
-292            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
-292-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
-293            android:enabled="true"
-293-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
-294            android:exported="false" >
-294-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
-295            <meta-data
-295-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
-296                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
-296-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
-297                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
-297-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
-298        </service>
-299
-300        <activity
-300-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
-301            android:name="androidx.credentials.playservices.HiddenActivity"
-301-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
-302            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-302-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
-303            android:enabled="true"
-303-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
-304            android:exported="false"
-304-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
-305            android:fitsSystemWindows="true"
-305-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
-306            android:theme="@style/Theme.Hidden" >
-306-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
-307        </activity>
-308        <activity
-308-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
-309            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-309-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
-310            android:excludeFromRecents="true"
-310-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
-311            android:exported="false"
-311-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
-312            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-312-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
-313        <!--
-314            Service handling Google Sign-In user revocation. For apps that do not integrate with
-315            Google Sign-In, this service will never be started.
-316        -->
-317        <service
-317-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
-318            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-318-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
-319            android:exported="true"
-319-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
-320            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-320-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
-321            android:visibleToInstantApps="true" />
-321-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
-322
-323        <provider
-323-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
-324            android:name="androidx.startup.InitializationProvider"
-324-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
-325            android:authorities="com.example.doannt118.androidx-startup"
-325-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
-326            android:exported="false" >
-326-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
-327            <meta-data
-327-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
-328                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-328-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
-329                android:value="androidx.startup" />
-329-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
-330            <meta-data
-330-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-331                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-331-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-332                android:value="androidx.startup" />
-332-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-333            <meta-data
-333-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
-334                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-334-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
-335                android:value="androidx.startup" />
-335-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
-336        </provider>
-337
-338        <uses-library
-338-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
-339            android:name="android.ext.adservices"
-339-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
-340            android:required="false" />
-340-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
-341
-342        <activity
-342-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
-343            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-343-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
-344            android:exported="false"
-344-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
-345            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-345-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
-346
-347        <receiver
-347-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
-348            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-348-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
-349            android:directBootAware="false"
-349-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
-350            android:enabled="true"
-350-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
-351            android:exported="true"
-351-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
-352            android:permission="android.permission.DUMP" >
-352-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
-353            <intent-filter>
-353-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
-354                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-354-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
-354-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
-355            </intent-filter>
-356            <intent-filter>
-356-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
-357                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-357-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
-357-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
-358            </intent-filter>
-359            <intent-filter>
-359-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
-360                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-360-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
-360-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
-361            </intent-filter>
-362            <intent-filter>
-362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
-363                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-363-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
-363-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
-364            </intent-filter>
-365        </receiver>
-366
-367        <meta-data
-367-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:21:9-23:69
-368            android:name="com.google.android.gms.version"
-368-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:22:13-58
-369            android:value="@integer/google_play_services_version" />
-369-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:23:13-66
-370
-371        <service
-371-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
-372            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-372-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
-373            android:exported="false" >
-373-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
-374            <meta-data
-374-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
-375                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-375-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
-376                android:value="cct" />
-376-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
-377        </service>
-378        <service
-378-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
-379            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-379-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
-380            android:exported="false"
-380-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
-381            android:permission="android.permission.BIND_JOB_SERVICE" >
-381-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
-382        </service>
-383
-384        <receiver
-384-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
-385            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-385-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
-386            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-386-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
-387        <activity
-387-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
-388            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-388-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
-389            android:exported="false"
-389-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
-390            android:stateNotNeeded="true"
-390-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
-391            android:theme="@style/Theme.PlayCore.Transparent" />
-391-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
-392    </application>
+241-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:32:17-82
+242            <meta-data
+242-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:33:13-35:85
+243                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+243-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:34:17-107
+244                android:value="com.google.firebase.components.ComponentRegistrar" />
+244-->[com.google.firebase:firebase-storage:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/92066f7994c58190f2600a679edf1d8b/transformed/firebase-storage-22.0.1/AndroidManifest.xml:35:17-82
+245            <meta-data
+245-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:31:13-33:85
+246                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
+246-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:32:17-105
+247                android:value="com.google.firebase.components.ComponentRegistrar" />
+247-->[com.google.firebase:firebase-ai:17.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/65a95755691cefbc4d9beb39b65a6a53/transformed/firebase-ai-17.4.0/AndroidManifest.xml:33:17-82
+248            <meta-data
+248-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:33:13-35:85
+249                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+249-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:34:17-139
+250                android:value="com.google.firebase.components.ComponentRegistrar" />
+250-->[com.google.android.gms:play-services-measurement-api:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/186e1e85886948150801c551a6eb7241/transformed/play-services-measurement-api-23.0.0/AndroidManifest.xml:35:17-82
+251            <meta-data
+251-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:15:13-17:85
+252                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+252-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:16:17-130
+253                android:value="com.google.firebase.components.ComponentRegistrar" />
+253-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:17:17-82
+254            <meta-data
+254-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:18:13-20:85
+255                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+255-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:19:17-127
+256                android:value="com.google.firebase.components.ComponentRegistrar" />
+256-->[com.google.firebase:firebase-installations:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/5ca69437f578fdbda543190b2aa164fb/transformed/firebase-installations-19.0.1/AndroidManifest.xml:20:17-82
+257            <meta-data
+257-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:35:13-37:85
+258                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+258-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:36:17-109
+259                android:value="com.google.firebase.components.ComponentRegistrar" />
+259-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:37:17-82
+260            <meta-data
+260-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:25:13-27:85
+261                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+261-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:26:17-120
+262                android:value="com.google.firebase.components.ComponentRegistrar" />
+262-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:27:17-82
+263            <meta-data
+263-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:28:13-30:85
+264                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+264-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:29:17-117
+265                android:value="com.google.firebase.components.ComponentRegistrar" />
+265-->[com.google.firebase:firebase-appcheck:19.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/7f81c75f94f2c3030776605f746b0f5a/transformed/firebase-appcheck-19.0.1/AndroidManifest.xml:30:17-82
+266            <meta-data
+266-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
+267                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+267-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+268                android:value="com.google.firebase.components.ComponentRegistrar" />
+268-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/kelvin/.gradle/caches/8.13/transforms/874350f2744efbcd95239bd25b998e32/transformed/firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
+269        </service>
+270
+271        <receiver
+271-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:29:9-40:20
+272            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+272-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:30:13-78
+273            android:exported="true"
+273-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:31:13-36
+274            android:permission="com.google.android.c2dm.permission.SEND" >
+274-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:32:13-73
+275            <intent-filter>
+275-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:33:13-35:29
+276                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+276-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:34:17-81
+276-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:34:25-78
+277            </intent-filter>
+278
+279            <meta-data
+279-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:37:13-39:40
+280                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+280-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:38:17-92
+281                android:value="true" />
+281-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:39:17-37
+282        </receiver>
+283        <!--
+284             FirebaseMessagingService performs security checks at runtime,
+285             but set to not exported to explicitly avoid allowing another app to call it.
+286        -->
+287        <service
+287-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:46:9-53:19
+288            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+288-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:47:13-82
+289            android:directBootAware="true"
+289-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:48:13-43
+290            android:exported="false" >
+290-->[com.google.firebase:firebase-messaging:25.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/b7f860fe41396be651b271c3437d14ef/transformed/firebase-messaging-25.0.1/AndroidManifest.xml:49:13-37
+291            <intent-filter android:priority="-500" >
+291-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:142:13-144:29
+292                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+292-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:17-78
+292-->/Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:25-75
+293            </intent-filter>
+294        </service>
+295
+296        <provider
+296-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:23:9-28:39
+297            android:name="com.google.firebase.provider.FirebaseInitProvider"
+297-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:24:13-77
+298            android:authorities="com.example.doannt118.firebaseinitprovider"
+298-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:25:13-72
+299            android:directBootAware="true"
+299-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:26:13-43
+300            android:exported="false"
+300-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:27:13-37
+301            android:initOrder="100" />
+301-->[com.google.firebase:firebase-common:22.0.1] /Users/kelvin/.gradle/caches/8.13/transforms/c76788c9de84bc5344d328fa6340241b/transformed/firebase-common-22.0.1/AndroidManifest.xml:28:13-36
+302
+303        <receiver
+303-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:29:9-33:20
+304            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+304-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:30:13-85
+305            android:enabled="true"
+305-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:31:13-35
+306            android:exported="false" >
+306-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:32:13-37
+307        </receiver>
+308
+309        <service
+309-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:35:9-38:40
+310            android:name="com.google.android.gms.measurement.AppMeasurementService"
+310-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:36:13-84
+311            android:enabled="true"
+311-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:37:13-35
+312            android:exported="false" />
+312-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:38:13-37
+313        <service
+313-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:39:9-43:72
+314            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+314-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:40:13-87
+315            android:enabled="true"
+315-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:41:13-35
+316            android:exported="false"
+316-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:42:13-37
+317            android:permission="android.permission.BIND_JOB_SERVICE" />
+317-->[com.google.android.gms:play-services-measurement:23.0.0] /Users/kelvin/.gradle/caches/8.13/transforms/3e90dd9f0e6711227a62c38d22f770a8/transformed/play-services-measurement-23.0.0/AndroidManifest.xml:43:13-69
+318        <service
+318-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:24:9-32:19
+319            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+319-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:25:13-94
+320            android:enabled="true"
+320-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:26:13-35
+321            android:exported="false" >
+321-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:27:13-37
+322            <meta-data
+322-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:29:13-31:104
+323                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+323-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:30:17-76
+324                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+324-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:31:17-101
+325        </service>
+326
+327        <activity
+327-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:34:9-41:20
+328            android:name="androidx.credentials.playservices.HiddenActivity"
+328-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:35:13-76
+329            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+329-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:36:13-87
+330            android:enabled="true"
+330-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:37:13-35
+331            android:exported="false"
+331-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:38:13-37
+332            android:fitsSystemWindows="true"
+332-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:39:13-45
+333            android:theme="@style/Theme.Hidden" >
+333-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] /Users/kelvin/.gradle/caches/8.13/transforms/9efb47309ed405a5ce17d1ff05bcc756/transformed/credentials-play-services-auth-1.2.0-rc01/AndroidManifest.xml:40:13-48
+334        </activity>
+335        <activity
+335-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:23:9-27:75
+336            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+336-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:24:13-93
+337            android:excludeFromRecents="true"
+337-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:25:13-46
+338            android:exported="false"
+338-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:26:13-37
+339            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+339-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:27:13-72
+340        <!--
+341            Service handling Google Sign-In user revocation. For apps that do not integrate with
+342            Google Sign-In, this service will never be started.
+343        -->
+344        <service
+344-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:33:9-37:51
+345            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+345-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:34:13-89
+346            android:exported="true"
+346-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:35:13-36
+347            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+347-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:36:13-107
+348            android:visibleToInstantApps="true" />
+348-->[com.google.android.gms:play-services-auth:20.7.0] /Users/kelvin/.gradle/caches/8.13/transforms/ac4364af89616208a1a401f8f36d8b6f/transformed/play-services-auth-20.7.0/AndroidManifest.xml:37:13-48
+349
+350        <provider
+350-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:24:9-32:20
+351            android:name="androidx.startup.InitializationProvider"
+351-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:25:13-67
+352            android:authorities="com.example.doannt118.androidx-startup"
+352-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:26:13-68
+353            android:exported="false" >
+353-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:27:13-37
+354            <meta-data
+354-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:29:13-31:52
+355                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+355-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:30:17-75
+356                android:value="androidx.startup" />
+356-->[androidx.emoji2:emoji2:1.3.0] /Users/kelvin/.gradle/caches/8.13/transforms/b36e6a8b304e07da62dd971439be69f2/transformed/emoji2-1.3.0/AndroidManifest.xml:31:17-49
+357            <meta-data
+357-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+358                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+358-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+359                android:value="androidx.startup" />
+359-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/kelvin/.gradle/caches/8.13/transforms/1afeaba86f1d800bda2d9a99a9067f38/transformed/lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+360            <meta-data
+360-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:29:13-31:52
+361                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+361-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:30:17-85
+362                android:value="androidx.startup" />
+362-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:31:17-49
+363        </provider>
+364
+365        <uses-library
+365-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:23:9-25:40
+366            android:name="android.ext.adservices"
+366-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:24:13-50
+367            android:required="false" />
+367-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] /Users/kelvin/.gradle/caches/8.13/transforms/9fd3b9534a70614a05845b9937e46ad1/transformed/ads-adservices-1.1.0-beta11/AndroidManifest.xml:25:13-37
+368
+369        <activity
+369-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:9-173
+370            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+370-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:19-85
+371            android:exported="false"
+371-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:146-170
+372            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+372-->[com.google.android.gms:play-services-base:18.5.0] /Users/kelvin/.gradle/caches/8.13/transforms/1b708b86605c476a58d24685a3e4356e/transformed/play-services-base-18.5.0/AndroidManifest.xml:5:86-145
+373
+374        <receiver
+374-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:34:9-52:20
+375            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+375-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:35:13-76
+376            android:directBootAware="false"
+376-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:36:13-44
+377            android:enabled="true"
+377-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:37:13-35
+378            android:exported="true"
+378-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:38:13-36
+379            android:permission="android.permission.DUMP" >
+379-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:39:13-57
+380            <intent-filter>
+380-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:40:13-42:29
+381                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+381-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:17-91
+381-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:41:25-88
+382            </intent-filter>
+383            <intent-filter>
+383-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:43:13-45:29
+384                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+384-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:17-85
+384-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:44:25-82
+385            </intent-filter>
+386            <intent-filter>
+386-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:46:13-48:29
+387                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+387-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:17-88
+387-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:47:25-85
+388            </intent-filter>
+389            <intent-filter>
+389-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:49:13-51:29
+390                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+390-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:17-95
+390-->[androidx.profileinstaller:profileinstaller:1.4.0] /Users/kelvin/.gradle/caches/8.13/transforms/2787c603247b72bde3227747b5f77d35/transformed/profileinstaller-1.4.0/AndroidManifest.xml:50:25-92
+391            </intent-filter>
+392        </receiver>
 393
-394</manifest>
+394        <meta-data
+394-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:21:9-23:69
+395            android:name="com.google.android.gms.version"
+395-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:22:13-58
+396            android:value="@integer/google_play_services_version" />
+396-->[com.google.android.gms:play-services-basement:18.8.0] /Users/kelvin/.gradle/caches/8.13/transforms/7f66f4f5e93d694f38ae7d9d61185ab9/transformed/play-services-basement-18.8.0/AndroidManifest.xml:23:13-66
+397
+398        <service
+398-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
+399            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+399-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
+400            android:exported="false" >
+400-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
+401            <meta-data
+401-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
+402                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+402-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
+403                android:value="cct" />
+403-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/553be3ea6a67e9f324f82ba4ac27a5ac/transformed/transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
+404        </service>
+405        <service
+405-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
+406            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+406-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
+407            android:exported="false"
+407-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
+408            android:permission="android.permission.BIND_JOB_SERVICE" >
+408-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
+409        </service>
+410
+411        <receiver
+411-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
+412            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+412-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
+413            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
+413-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/kelvin/.gradle/caches/8.13/transforms/a9e955fc0dc03c6aa65e346830313fdc/transformed/transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
+414        <activity
+414-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:14:9-18:65
+415            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+415-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:15:13-93
+416            android:exported="false"
+416-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:16:13-37
+417            android:stateNotNeeded="true"
+417-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:17:13-42
+418            android:theme="@style/Theme.PlayCore.Transparent" />
+418-->[com.google.android.play:core-common:2.0.3] /Users/kelvin/.gradle/caches/8.13/transforms/7166d0731332ecb97f9d35e2eb12bc28/transformed/core-common-2.0.3/AndroidManifest.xml:18:13-62
+419    </application>
+420
+421</manifest>

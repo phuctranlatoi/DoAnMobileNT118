@@ -250,8 +250,6 @@ public class MainAdminActivity extends AppCompatActivity {
 
     private void createNewAccount(String tenDangNhap, String matKhau, String hoTen, String sdt, String email,
                                   String bangCap, String hocVi, String chungChi, String vaiTro, AlertDialog dialog) {
-        String maTaiKhoan = UUID.randomUUID().toString();
-        String maProfile = UUID.randomUUID().toString();
         String matKhauDaBam;
         try {
             matKhauDaBam = BCrypt.hashpw(matKhau, BCrypt.gensalt());
@@ -260,28 +258,49 @@ public class MainAdminActivity extends AppCompatActivity {
             return;
         }
 
+        // Bước 1: Tạo tài khoản Firebase Authentication
         auth.createUserWithEmailAndPassword(email, matKhau)
                 .addOnSuccessListener(authResult -> {
+                    // Lấy UID từ Firebase Auth - đây chính là maTaiKhoan
+                    final String maTaiKhoan = authResult.getUser().getUid();
+                    
+                    // Gửi email xác thực
                     authResult.getUser().sendEmailVerification();
+                    
+                    // Tạo mã profile (maBacSi hoặc maAdmin)
+                    final String maProfile = vaiTro.equals("Admin") 
+                        ? "AD" + System.currentTimeMillis() 
+                        : "BS" + System.currentTimeMillis();
+                    
+                    // Bước 2: Tạo object TaiKhoan
                     TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Chờ duyệt");
+                    
+                    // Bước 3: Tạo object BacSi hoặc Admin
                     Object userProfile;
-
                     if (vaiTro.equals("Bác sĩ")) {
                         userProfile = new BacSi(maProfile, maTaiKhoan, hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Chờ xác thực");
                     } else {
                         userProfile = new Admin(maProfile, maTaiKhoan, hoTen, sdt);
                     }
 
+                    // Bước 4: Lưu vào Firestore (TaiKhoan + BacSi/Admin)
                     repo.registerNewUserBatch(newTaiKhoan, userProfile,
                             v -> {
+                                // Log hoạt động
                                 String maLichSu = UUID.randomUUID().toString();
                                 LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Tạo tài khoản", new Date(), "Tạo tài khoản " + vaiTro + ": " + hoTen);
                                 repo.logActivity(lichSu);
-                                Toast.makeText(this, "Tạo tài khoản thành công! Chờ xác thực.", Toast.LENGTH_LONG).show();
+                                
                                 dialog.dismiss();
+                                
+                                // Hiển thị thông tin tài khoản vừa tạo
+                                showAccountInfoDialog(tenDangNhap, matKhau, email, maProfile, maTaiKhoan, hoTen, vaiTro);
+                                
+                                // Reload danh sách
                                 tabLayout.getTabAt(0).select();
                             },
                             e -> {
+                                // Nếu lưu Firestore thất bại, xóa tài khoản Firebase Auth
                                 if (authResult.getUser() != null) {
                                     authResult.getUser().delete();
                                 }
@@ -291,6 +310,54 @@ public class MainAdminActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> Toast.makeText(this, "Lỗi tạo tài khoản Firebase: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
+    private void showAccountInfoDialog(String tenDangNhap, String matKhau, String email, 
+                                       String maProfile, String maTaiKhoan, String hoTen, String vaiTro) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_account_info, null);
+        builder.setView(dialogView);
+        
+        TextView tvTitle = dialogView.findViewById(R.id.tvTitle);
+        TextView tvTenDangNhap = dialogView.findViewById(R.id.tvTenDangNhap);
+        TextView tvMatKhau = dialogView.findViewById(R.id.tvMatKhau);
+        TextView tvEmail = dialogView.findViewById(R.id.tvEmail);
+        TextView tvMaProfile = dialogView.findViewById(R.id.tvMaProfile);
+        TextView tvMaTaiKhoan = dialogView.findViewById(R.id.tvMaTaiKhoan);
+        TextView tvHoTen = dialogView.findViewById(R.id.tvHoTen);
+        Button btnCopy = dialogView.findViewById(R.id.btnCopy);
+        Button btnDong = dialogView.findViewById(R.id.btnDong);
+        
+        tvTitle.setText("Tạo tài khoản " + vaiTro + " thành công!");
+        tvTenDangNhap.setText("Tên đăng nhập: " + tenDangNhap);
+        tvMatKhau.setText("Mật khẩu: " + matKhau);
+        tvEmail.setText("Email: " + email);
+        tvMaProfile.setText((vaiTro.equals("Bác sĩ") ? "Mã bác sĩ: " : "Mã admin: ") + maProfile);
+        tvMaTaiKhoan.setText("Mã tài khoản: " + maTaiKhoan);
+        tvHoTen.setText("Họ tên: " + hoTen);
+        
+        AlertDialog dialog = builder.create();
+        
+        btnCopy.setOnClickListener(v -> {
+            String info = "=== THÔNG TIN TÀI KHOẢN ===\n" +
+                         "Vai trò: " + vaiTro + "\n" +
+                         "Họ tên: " + hoTen + "\n" +
+                         "Tên đăng nhập: " + tenDangNhap + "\n" +
+                         "Mật khẩu: " + matKhau + "\n" +
+                         "Email: " + email + "\n" +
+                         (vaiTro.equals("Bác sĩ") ? "Mã bác sĩ: " : "Mã admin: ") + maProfile + "\n" +
+                         "Mã tài khoản: " + maTaiKhoan;
+            
+            android.content.ClipboardManager clipboard = (android.content.ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+            android.content.ClipData clip = android.content.ClipData.newPlainText("Thông tin tài khoản", info);
+            clipboard.setPrimaryClip(clip);
+            Toast.makeText(this, "Đã copy thông tin tài khoản", Toast.LENGTH_SHORT).show();
+        });
+        
+        btnDong.setOnClickListener(v -> dialog.dismiss());
+        
+        dialog.setCancelable(false);
+        dialog.show();
+    }
+    
     private void showEditAccountDialog(TaiKhoan taiKhoan) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_account, null);

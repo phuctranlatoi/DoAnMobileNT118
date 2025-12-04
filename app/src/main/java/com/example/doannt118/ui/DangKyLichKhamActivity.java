@@ -86,20 +86,20 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
     }
 
     private void loadMaBenhNhan() {
-        repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        maBenhNhan = querySnapshot.getDocuments().get(0).getString("maBenhNhan");
-                        loadLichKham();
-                    } else {
-                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
-                        finish();
-                    }
-                },
-                e -> {
-                    Log.e(TAG, "Error loading maBenhNhan: ", e);
-                    Toast.makeText(this, "Lỗi tải thông tin!", Toast.LENGTH_SHORT).show();
-                });
+        com.example.doannt118.utils.UserInfoLoader.loadBenhNhan(maTaiKhoan, repo,
+            new com.example.doannt118.utils.UserInfoLoader.BenhNhanCallback() {
+                @Override
+                public void onSuccess(com.example.doannt118.model.BenhNhan benhNhan) {
+                    maBenhNhan = benhNhan.getMaBenhNhan();
+                    loadLichKham();
+                }
+                
+                @Override
+                public void onError(String message) {
+                    Toast.makeText(DangKyLichKhamActivity.this, message, Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+            });
     }
 
     private void setupClickListeners() {
@@ -169,54 +169,101 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
         endCal.set(Calendar.MILLISECOND, 999);
         Date endDate = endCal.getTime();
         
-        // Load tất cả lịch làm việc trong khoảng thời gian
+        Calendar now = Calendar.getInstance();
+        boolean isToday = isSameDay(selectedDate, now.getTime());
+        
+        // Load tất cả lịch làm việc trong ngày được chọn
         repo.getCollection("LichLamViec")
                 .whereGreaterThanOrEqualTo("ngayLamViec", startDate)
                 .whereLessThanOrEqualTo("ngayLamViec", endDate)
-                .whereEqualTo("trangThai", "CON_TRONG")
                 .get()
                 .addOnSuccessListener(querySnapshot -> {
-                    List<String> bacSiList = new ArrayList<>();
-                    bacSiList.add("-- Chọn bác sĩ --");
+                    Map<String, String> tempBacSiMap = new HashMap<>();
                     
                     for (var doc : querySnapshot.getDocuments()) {
                         String maBacSi = doc.getString("maBacSi");
+                        String caLamViec = doc.getString("caLamViec");
                         
-                        if (maBacSi != null && !bacSiMap.containsValue(maBacSi)) {
-                            // Load tên bác sĩ
-                            repo.getByField("BacSi", "maBacSi", maBacSi,
-                                    bacSiSnapshot -> {
-                                        if (!bacSiSnapshot.isEmpty()) {
-                                            String hoTen = bacSiSnapshot.getDocuments().get(0).getString("hoTen");
-                                            if (hoTen != null && !bacSiMap.containsKey(hoTen)) {
-                                                bacSiMap.put(hoTen, maBacSi);
-                                                bacSiList.add(hoTen);
-                                                updateBacSiSpinner(bacSiList);
-                                            }
-                                        }
-                                    },
-                                    e -> Log.e(TAG, "Error loading bacSi: ", e));
+                        if (maBacSi == null || caLamViec == null) continue;
+                        
+                        // Nếu là hôm nay, bỏ qua khung giờ đã qua
+                        if (isToday && isTimeSlotPassed(caLamViec)) {
+                            continue;
                         }
+                        
+                        // Kiểm tra còn chỗ trống không
+                        String maLichLamViec = doc.getString("maLichLamViec");
+                        Long soLuongToiDaLong = doc.getLong("soLuongToiDa");
+                        int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 10;
+                        
+                        // Đếm số lượng đã đăng ký cho lịch làm việc này
+                        repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
+                            lichKhamSnapshot -> {
+                                int soLuongDaDangKy = 0;
+                                for (var lkDoc : lichKhamSnapshot.getDocuments()) {
+                                    String trangThai = lkDoc.getString("trangThai");
+                                    // Chỉ đếm lịch chờ xác nhận và đã xác nhận
+                                    if ("CHO".equals(trangThai) || "XAC_NHAN".equals(trangThai)) {
+                                        soLuongDaDangKy++;
+                                    }
+                                }
+                                
+                                // Nếu còn chỗ trống, thêm bác sĩ vào danh sách
+                                if (soLuongDaDangKy < soLuongToiDa) {
+                                    if (!tempBacSiMap.containsValue(maBacSi)) {
+                                        tempBacSiMap.put("temp_" + maBacSi, maBacSi);
+                                        
+                                        // Load tên bác sĩ
+                                        repo.getByField("BacSi", "maBacSi", maBacSi,
+                                            bacSiSnapshot -> {
+                                                if (!bacSiSnapshot.isEmpty()) {
+                                                    String hoTen = bacSiSnapshot.getDocuments().get(0).getString("hoTen");
+                                                    String chuyenKhoa = bacSiSnapshot.getDocuments().get(0).getString("chuyenKhoa");
+                                                    
+                                                    if (hoTen != null && !bacSiMap.containsKey(hoTen)) {
+                                                        bacSiMap.put(hoTen, maBacSi);
+                                                        updateBacSiSpinnerFromMap();
+                                                    }
+                                                }
+                                            },
+                                            e -> Log.e(TAG, "Error loading bacSi: ", e));
+                                    }
+                                }
+                            },
+                            e -> Log.e(TAG, "Error counting lichKham: ", e)
+                        );
                     }
                     
-                    if (bacSiList.size() == 1) {
-                        showMessage("Không có bác sĩ trống cho ngày này!");
-                    } else {
-                        hideMessage();
-                    }
+                    // Kiểm tra sau 1 giây xem có bác sĩ nào không
+                    new android.os.Handler().postDelayed(() -> {
+                        if (bacSiMap.isEmpty()) {
+                            showMessage("Không có bác sĩ có lịch trống cho ngày này!");
+                            updateBacSiSpinnerFromMap();
+                        } else {
+                            hideMessage();
+                        }
+                    }, 1000);
                 })
                 .addOnFailureListener(e -> {
                     Log.e(TAG, "Error loading lichLamViec: ", e);
                     showMessage("Lỗi tải danh sách bác sĩ!");
                 });
     }
-
-    private void updateBacSiSpinner(List<String> bacSiList) {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_item, bacSiList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerBacSi.setAdapter(adapter);
+    
+    private void updateBacSiSpinnerFromMap() {
+        runOnUiThread(() -> {
+            List<String> bacSiList = new ArrayList<>();
+            bacSiList.add("-- Chọn bác sĩ --");
+            bacSiList.addAll(bacSiMap.keySet());
+            
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                    android.R.layout.simple_spinner_item, bacSiList);
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            spinnerBacSi.setAdapter(adapter);
+        });
     }
+
+
 
     private void loadKhungGio() {
         if (selectedDate == null) {
@@ -258,7 +305,6 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     khungGioList.add("-- Chọn khung giờ --");
                     
                     for (var doc : querySnapshot.getDocuments()) {
-                        String trangThai = doc.getString("trangThai");
                         String caLamViec = doc.getString("caLamViec");
                         String maLichLamViec = doc.getString("maLichLamViec");
                         
@@ -269,16 +315,15 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                             continue;
                         }
                         
-                        if ("CON_TRONG".equals(trangThai)) {
-                            // Lấy số lượng tối đa từ lịch làm việc
-                            Long soLuongToiDaLong = doc.getLong("soLuongToiDa");
-                            int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 6;
-                            
-                            // Đếm số lượng đã đăng ký
-                            repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
-                                lichKhamSnapshot -> {
-                                    int soLuongDaDangKy = lichKhamSnapshot.size();
-                                    int soLuongConTrong = soLuongToiDa - soLuongDaDangKy;
+                        // Lấy số lượng tối đa từ lịch làm việc
+                        Long soLuongToiDaLong = doc.getLong("soLuongToiDa");
+                        int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 6;
+                        
+                        // Đếm số lượng đã đăng ký
+                        repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
+                            lichKhamSnapshot -> {
+                                int soLuongDaDangKy = lichKhamSnapshot.size();
+                                int soLuongConTrong = soLuongToiDa - soLuongDaDangKy;
                                     
                                     if (soLuongConTrong > 0) {
                                         String displayText = caLamViec + " (Còn " + soLuongConTrong + "/" + soLuongToiDa + " chỗ)";
@@ -289,7 +334,6 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                                 },
                                 e -> Log.e(TAG, "Error counting lichKham: ", e)
                             );
-                        }
                     }
                     
                     // Cập nhật spinner ngay cả khi không có khung giờ nào
@@ -376,15 +420,7 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                             int soLuongHienTai = querySnapshot.size();
                             
                             if (soLuongHienTai >= soLuongToiDa) {
-                                // Cập nhật trạng thái lịch làm việc
-                                Map<String, Object> updates = new HashMap<>();
-                                updates.put("trangThai", "DA_DAY");
-                                repo.updateDocumentFields("LichLamViec", maLichLamViec, updates,
-                                        aVoid -> {
-                                            showMessage("Khung giờ này đã đầy!");
-                                            loadKhungGio();
-                                        },
-                                        e -> Log.e(TAG, "Error updating trangThai: ", e));
+                                showMessage("Khung giờ này đã đầy!");
                                 return;
                             }
 
@@ -410,15 +446,6 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                                 
                                 // Gửi thông báo cho bác sĩ
                                 guiThongBaoDangKyChoBS(maBacSi, selectedBacSi, selectedKhungGio);
-                                
-                                // Kiểm tra nếu đã đủ người thì cập nhật trạng thái
-                                if (soThuTu >= soLuongToiDa) {
-                                    Map<String, Object> updates = new HashMap<>();
-                                    updates.put("trangThai", "DA_DAY");
-                                    repo.updateDocumentFields("LichLamViec", maLichLamViec, updates,
-                                            v -> loadKhungGio(),
-                                            e -> Log.e(TAG, "Error updating: ", e));
-                                }
                                 
                                 clearFields();
                                 loadLichKham();
@@ -455,15 +482,6 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                             aVoid -> {
                                 Toast.makeText(this, "Hủy lịch khám thành công!",
                                         Toast.LENGTH_SHORT).show();
-                                
-                                // Cập nhật trạng thái lịch làm việc về CON_TRONG
-                                Map<String, Object> updates = new HashMap<>();
-                                updates.put("trangThai", "CON_TRONG");
-                                repo.updateDocumentFields("LichLamViec",
-                                        lichKham.getMaLichLamViec(), updates,
-                                        v -> {},
-                                        e -> Log.e(TAG, "Error updating: ", e));
-                                
                                 loadLichKham();
                             },
                             e -> {

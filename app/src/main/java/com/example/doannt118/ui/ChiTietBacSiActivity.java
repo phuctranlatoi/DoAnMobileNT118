@@ -185,8 +185,8 @@ public class ChiTietBacSiActivity extends AppCompatActivity {
                 lichLamViec.setMaBacSi(maBacSi);
                 lichLamViec.setNgayLamViec(selectedDate);
                 lichLamViec.setCaLamViec(caLamViec);
-                lichLamViec.setTrangThai("CON_TRONG");
                 lichLamViec.setSoLuongToiDa(6);
+                lichLamViec.setLoaiHinh("OFFLINE");
                 
                 khungGioList.add(lichLamViec);
             }

@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.doannt118.R;
 import com.example.doannt118.model.ChiTietDonThuoc;
 import com.example.doannt118.model.DonThuoc;
+import com.example.doannt118.model.DuocPham;
 import com.example.doannt118.repository.FirestoreRepository;
 import com.example.doannt118.utils.MedicationScheduler;
 import com.google.android.material.button.MaterialButton;
@@ -135,6 +137,59 @@ public class KeDonThuocActivity extends AppCompatActivity {
     }
 
     private void showDialogThemThuoc() {
+        // Hiển thị dialog chọn thuốc trước
+        showDialogChonThuoc();
+    }
+
+    private void showDialogChonThuoc() {
+        Dialog dialog = new Dialog(this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_chon_thuoc);
+        dialog.getWindow().setLayout(
+            getResources().getDisplayMetrics().widthPixels - 100,
+            android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        RecyclerView rvDanhSachThuoc = dialog.findViewById(R.id.rvDanhSachThuoc);
+        TextView tvEmptyThuoc = dialog.findViewById(R.id.tvEmptyThuoc);
+
+        rvDanhSachThuoc.setLayoutManager(new LinearLayoutManager(this));
+
+        // Load danh sách thuốc
+        repository.getAll("DuocPham",
+            querySnapshot -> {
+                List<DuocPham> danhSachDuocPham = new ArrayList<>();
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    DuocPham duocPham = doc.toObject(DuocPham.class);
+                    if (duocPham != null) {
+                        danhSachDuocPham.add(duocPham);
+                    }
+                }
+
+                if (danhSachDuocPham.isEmpty()) {
+                    tvEmptyThuoc.setVisibility(View.VISIBLE);
+                    rvDanhSachThuoc.setVisibility(View.GONE);
+                } else {
+                    tvEmptyThuoc.setVisibility(View.GONE);
+                    rvDanhSachThuoc.setVisibility(View.VISIBLE);
+
+                    ChonThuocAdapter adapter = new ChonThuocAdapter(danhSachDuocPham, duocPham -> {
+                        dialog.dismiss();
+                        showDialogNhapThongTinThuoc(duocPham);
+                    });
+                    rvDanhSachThuoc.setAdapter(adapter);
+                }
+            },
+            e -> {
+                Toast.makeText(this, "Lỗi tải danh sách thuốc: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+        );
+
+        dialog.show();
+    }
+
+    private void showDialogNhapThongTinThuoc(DuocPham duocPham) {
         Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_them_thuoc);
@@ -143,7 +198,7 @@ public class KeDonThuocActivity extends AppCompatActivity {
             android.view.ViewGroup.LayoutParams.WRAP_CONTENT
         );
 
-        TextInputEditText edtTenThuoc = dialog.findViewById(R.id.edtTenThuoc);
+        AutoCompleteTextView edtTenThuoc = dialog.findViewById(R.id.edtTenThuoc);
         TextInputEditText edtSoLuong = dialog.findViewById(R.id.edtSoLuong);
         TextInputEditText edtLieuDung = dialog.findViewById(R.id.edtLieuDung);
         CheckBox cbSang = dialog.findViewById(R.id.cbSang);
@@ -152,17 +207,16 @@ public class KeDonThuocActivity extends AppCompatActivity {
         MaterialButton btnHuy = dialog.findViewById(R.id.btnHuy);
         MaterialButton btnXacNhan = dialog.findViewById(R.id.btnXacNhan);
 
+        // Set tên thuốc đã chọn
+        edtTenThuoc.setText(duocPham.getTenDuocPham());
+        edtTenThuoc.setEnabled(false); // Không cho sửa tên thuốc
+
         btnHuy.setOnClickListener(v -> dialog.dismiss());
         
         btnXacNhan.setOnClickListener(v -> {
             String tenThuoc = edtTenThuoc.getText().toString().trim();
             String soLuongStr = edtSoLuong.getText().toString().trim();
             String lieuDung = edtLieuDung.getText().toString().trim();
-            
-            if (tenThuoc.isEmpty()) {
-                Toast.makeText(this, "Vui lòng nhập tên thuốc", Toast.LENGTH_SHORT).show();
-                return;
-            }
             
             if (!cbSang.isChecked() && !cbTrua.isChecked() && !cbToi.isChecked()) {
                 Toast.makeText(this, "Vui lòng chọn ít nhất 1 ca uống", Toast.LENGTH_SHORT).show();

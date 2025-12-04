@@ -627,7 +627,8 @@ public class FirestoreRepository {
         map.put("maBacSi", l.getMaBacSi());
         map.put("ngayLamViec", l.getNgayLamViec());
         map.put("caLamViec", l.getCaLamViec());
-        map.put("trangThai", l.getTrangThai());
+        map.put("soLuongToiDa", l.getSoLuongToiDa());
+        map.put("loaiHinh", l.getLoaiHinh());
         return map;
     }
 

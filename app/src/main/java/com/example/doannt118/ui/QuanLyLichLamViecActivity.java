@@ -58,7 +58,7 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
     private String maBacSi;
     private String tenBacSi;
     private DatePicker dpTraCuu, dpNgayLamViec;
-    private Spinner spTrangThai;
+    private com.google.android.material.textfield.TextInputEditText edtSoLuongToiDa;
     private View formNhapLieu;
 
     private List<LichLamViec> lichLamViecList = new ArrayList<>();
@@ -71,11 +71,13 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
     private LocalTime selectedStartTime = null;
     private LocalTime selectedEndTime = null;
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
+    private static final int REQUEST_CODE_THEM_LICH = 1001;
+    private static final int REQUEST_CODE_SUA_LICH = 1002;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quan_ly_lich_lam_viec_new);
+        setContentView(R.layout.activity_quan_ly_lich_lam_viec);
 
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
@@ -97,7 +99,7 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
         progressBar = findViewById(R.id.progressBar);
         dpTraCuu = findViewById(R.id.dpTraCuu);
         dpNgayLamViec = findViewById(R.id.dpNgayLamViec);
-        spTrangThai = findViewById(R.id.spTrangThai);
+        edtSoLuongToiDa = findViewById(R.id.edtSoLuongToiDa);
         formNhapLieu = findViewById(R.id.formNhapLieu);
         lblThongBao = findViewById(R.id.lblThongBao);
         btnChonGioBatDau = findViewById(R.id.btnChonGioBatDau);
@@ -109,11 +111,6 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
         rvLichLamViec.setLayoutManager(new LinearLayoutManager(this));
         adapter = new LichLamViecAdapter(this, lichLamViecList, this, currentDoctorMap);
         rvLichLamViec.setAdapter(adapter);
-
-        ArrayAdapter<CharSequence> adapterSpinner = ArrayAdapter.createFromResource(this,
-                R.array.trang_thai_array, android.R.layout.simple_spinner_item);
-        adapterSpinner.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spTrangThai.setAdapter(adapterSpinner);
 
         // --- setOnClickListener ---
         btnLogout.setOnClickListener(v -> handleDangXuat());
@@ -171,34 +168,28 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
             finish();
             return;
         }
-        repo.getByField("BacSi", "maTaiKhoan", maTaiKhoan,
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
-                        if (bacSi != null) {
-                            tvUserName.setText(bacSi.getHoTen());
-                            maBacSi = bacSi.getMaBacSi();
-                            tenBacSi = bacSi.getHoTen();
-                            currentDoctorMap.put(maBacSi, tenBacSi);
-                            adapter.updateNhanVienInfo(currentDoctorMap);
-                            Log.d("QuanLyLichLamViec", "Loaded maBacSi: " + maBacSi);
-                            loadDanhSachLich();
-                        } else {
-                            showError("Không tìm thấy thông tin bác sĩ!");
-                            finish();
-                        }
-                    } else {
-                        showError("Không tìm thấy thông tin bác sĩ!");
-                        finish();
-                    }
+        
+        com.example.doannt118.utils.UserInfoLoader.loadBacSi(maTaiKhoan, repo,
+            new com.example.doannt118.utils.UserInfoLoader.BacSiCallback() {
+                @Override
+                public void onSuccess(BacSi bacSi) {
+                    tvUserName.setText(bacSi.getHoTen());
+                    maBacSi = bacSi.getMaBacSi();
+                    tenBacSi = bacSi.getHoTen();
+                    currentDoctorMap.put(maBacSi, tenBacSi);
+                    adapter.updateNhanVienInfo(currentDoctorMap);
+                    Log.d("QuanLyLichLamViec", "Loaded maBacSi: " + maBacSi);
+                    loadDanhSachLich();
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
-                },
-                e -> {
-                    Log.e("QuanLyLichLamViec", "Lỗi tải thông tin bác sĩ: ", e);
-                    showError("Lỗi tải thông tin bác sĩ: " + e.getMessage());
+                }
+                
+                @Override
+                public void onError(String message) {
+                    showError(message);
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
                     finish();
-                });
+                }
+            });
     }
 
     private void loadDanhSachLich() {
@@ -268,10 +259,10 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
     }
 
     public void handleThem() {
-        isAdding = true;
-        isUpdating = false;
-        clearFields();
-        setFormVisible(true);
+        // Mở Activity mới để thêm lịch làm việc
+        Intent intent = new Intent(this, ThemLichLamViecActivity.class);
+        intent.putExtra("maBacSi", maBacSi);
+        startActivityForResult(intent, REQUEST_CODE_THEM_LICH);
     }
 
     public void handleXacNhanThem(View view) {
@@ -286,8 +277,21 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
 
         String khungGio = selectedStartTime.format(TIME_FORMATTER) + "-" + selectedEndTime.format(TIME_FORMATTER);
         lich.setCaLamViec(khungGio);
-        lich.setTrangThai(spTrangThai.getSelectedItem().toString());
         lich.setMaLichLamViec(UUID.randomUUID().toString());
+        
+        // Lấy số lượng tối đa từ input
+        String soLuongStr = edtSoLuongToiDa.getText().toString().trim();
+        int soLuongToiDa = 10; // Mặc định
+        try {
+            if (!soLuongStr.isEmpty()) {
+                soLuongToiDa = Integer.parseInt(soLuongStr);
+            }
+        } catch (NumberFormatException e) {
+            showError("Số lượng bệnh nhân không hợp lệ!");
+            return;
+        }
+        
+        lich.setSoLuongToiDa(soLuongToiDa);
 
         if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
         repo.addDocument("LichLamViec", lich.getMaLichLamViec(), lich,
@@ -311,31 +315,12 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
             showError("Vui lòng chọn một lịch làm việc từ danh sách để cập nhật!");
             return;
         }
-        isUpdating = true;
-        isAdding = false;
-        setFormVisible(true);
-
-        Calendar calendar = Calendar.getInstance();
-        if (selected.getNgayLamViec() != null) {
-            calendar.setTime(selected.getNgayLamViec());
-            dpNgayLamViec.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        } else {
-            calendar = Calendar.getInstance();
-            dpNgayLamViec.updateDate(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
-        }
-
-        LocalTime[] times = parseKhungGio(selected.getCaLamViec());
-        if (times != null) {
-            selectedStartTime = times[0];
-            selectedEndTime = times[1];
-            tvGioBatDau.setText(selectedStartTime.format(TIME_FORMATTER));
-            tvGioKetThuc.setText(selectedEndTime.format(TIME_FORMATTER));
-        } else {
-            clearTimeFields();
-            Log.w("HandleCapNhat", "Không thể parse khung giờ cũ: " + selected.getCaLamViec());
-        }
-
-        spTrangThai.setSelection(getTrangThaiPosition(selected.getTrangThai()));
+        
+        // Mở Activity mới để sửa lịch làm việc
+        Intent intent = new Intent(this, ThemLichLamViecActivity.class);
+        intent.putExtra("maBacSi", maBacSi);
+        intent.putExtra("maLichLamViec", selected.getMaLichLamViec());
+        startActivityForResult(intent, REQUEST_CODE_SUA_LICH);
     }
 
     public void handleXacNhanCapNhat(View view) {
@@ -355,7 +340,18 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
         updates.put("ngayLamViec", calendar.getTime());
         String khungGio = selectedStartTime.format(TIME_FORMATTER) + "-" + selectedEndTime.format(TIME_FORMATTER);
         updates.put("caLamViec", khungGio);
-        updates.put("trangThai", spTrangThai.getSelectedItem().toString());
+        
+        // Cập nhật số lượng tối đa
+        String soLuongStr = edtSoLuongToiDa.getText().toString().trim();
+        try {
+            if (!soLuongStr.isEmpty()) {
+                int soLuongToiDa = Integer.parseInt(soLuongStr);
+                updates.put("soLuongBenhNhanToiDa", soLuongToiDa);
+            }
+        } catch (NumberFormatException e) {
+            showError("Số lượng bệnh nhân không hợp lệ!");
+            return;
+        }
 
         if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
         repo.updateDocument("LichLamViec", selected.getMaLichLamViec(), updates,
@@ -379,18 +375,26 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
             showError("Vui lòng chọn một lịch làm việc từ danh sách để xóa!");
             return;
         }
-        if (!"CON_TRONG".equalsIgnoreCase(selected.getTrangThai())) {
-            showError("Chỉ có thể xóa lịch làm việc có trạng thái 'Còn trống'.");
-            return;
-        }
 
         if (progressBar != null) progressBar.setVisibility(View.VISIBLE);
         lblThongBao.setText("Đang kiểm tra lịch khám liên quan...");
-        repo.countByField("LichKham", "maLichLamViec", selected.getMaLichLamViec(),
-                count -> {
+        
+        // Kiểm tra xem có bệnh nhân nào đã đăng ký không (theo UC009 bước 3.2.3)
+        repo.getByField("LichKham", "maLichLamViec", selected.getMaLichLamViec(),
+                querySnapshot -> {
+                    int soLuongBenhNhan = 0;
+                    for (var doc : querySnapshot.getDocuments()) {
+                        String trangThai = doc.getString("trangThai");
+                        // Đếm cả lịch chờ xác nhận và đã xác nhận
+                        if ("CHO".equals(trangThai) || "XAC_NHAN".equals(trangThai)) {
+                            soLuongBenhNhan++;
+                        }
+                    }
+                    
                     if (progressBar != null) progressBar.setVisibility(View.GONE);
-                    if (count > 0) {
-                        showError("Không thể xóa lịch làm việc này vì đã có " + count + " lịch khám được đặt.");
+                    
+                    if (soLuongBenhNhan > 0) {
+                        showError("Không thể xóa lịch làm việc này vì đã có " + soLuongBenhNhan + " bệnh nhân đăng ký.");
                     } else {
                         new AlertDialog.Builder(this)
                                 .setTitle("Xác nhận xóa")
@@ -486,18 +490,10 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
         }
     }
 
-    private int getTrangThaiPosition(String trangThai) {
-        ArrayAdapter<CharSequence> spinnerAdapter = (ArrayAdapter<CharSequence>) spTrangThai.getAdapter();
-        if (trangThai != null && spinnerAdapter != null) {
-            for (int i = 0; i < spinnerAdapter.getCount(); i++) {
-                if (trangThai.equalsIgnoreCase(spinnerAdapter.getItem(i).toString())) {
-                    return i;
-                }
-            }
-        }
-        Log.w("SpinnerWarning", "Không tìm thấy trạng thái '" + trangThai + "' trong Spinner.");
-        return 0;
-    }
+    // Method này không còn cần thiết vì đã bỏ trạng thái
+    // private int getTrangThaiPosition(String trangThai) {
+    //     return 0;
+    // }
 
     private boolean validateInput() {
         LocalDate ngay = getSelectedDateFromDp(dpNgayLamViec);
@@ -569,7 +565,7 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
         Calendar now = Calendar.getInstance();
         dpNgayLamViec.updateDate(now.get(Calendar.YEAR), now.get(Calendar.MONTH), now.get(Calendar.DAY_OF_MONTH));
         clearTimeFields();
-        spTrangThai.setSelection(0);
+        edtSoLuongToiDa.setText("10"); // Reset về giá trị mặc định
         lblThongBao.setText("");
     }
 
@@ -602,11 +598,19 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
                 dateStr = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(lichLamViec.getNgayLamViec());
             }
             showMessage("Đã chọn: Ca " + lichLamViec.getCaLamViec() + " ngày " + dateStr);
-            // Mở XemChiTietLichKhamActivity
-            Intent intent = new Intent(this, XemChiTietLichKhamActivity.class);
-            intent.putExtra("maLichLamViec", lichLamViec.getMaLichLamViec());
-            intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
-            startActivity(intent);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CODE_THEM_LICH || requestCode == REQUEST_CODE_SUA_LICH) {
+                // Reload danh sách sau khi thêm/sửa thành công
+                loadDanhSachLich();
+                Toast.makeText(this, "Đã cập nhật lịch làm việc", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

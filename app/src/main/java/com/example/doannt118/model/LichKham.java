@@ -6,10 +6,15 @@ public class LichKham {
     private String maLichKham;
     private String maBenhNhan;
     private String maBacSi;
+    private String tenBacSi; // Tên bác sĩ (không lưu trong Firestore, chỉ dùng để hiển thị)
     private String maLichLamViec;
     private Timestamp ngayKham;
+    private String gioKham; // Giờ khám cụ thể (ví dụ: "08:00" hoặc "08:00-12:00")
     private String trangThai; // CHO, XAC_NHAN, HOAN_THANH, HUY
     private int soThuTu;
+    private String lyDoTuChoi;
+    private String lyDoKham;
+    private String maKhamBenh; // Mã khám 6 số
 
     public LichKham() {}
 
@@ -44,4 +49,19 @@ public class LichKham {
 
     public int getSoThuTu() { return soThuTu; }
     public void setSoThuTu(int soThuTu) { this.soThuTu = soThuTu; }
+
+    public String getLyDoTuChoi() { return lyDoTuChoi; }
+    public void setLyDoTuChoi(String lyDoTuChoi) { this.lyDoTuChoi = lyDoTuChoi; }
+
+    public String getLyDoKham() { return lyDoKham; }
+    public void setLyDoKham(String lyDoKham) { this.lyDoKham = lyDoKham; }
+
+    public String getMaKhamBenh() { return maKhamBenh; }
+    public void setMaKhamBenh(String maKhamBenh) { this.maKhamBenh = maKhamBenh; }
+    
+    public String getGioKham() { return gioKham; }
+    public void setGioKham(String gioKham) { this.gioKham = gioKham; }
+    
+    public String getTenBacSi() { return tenBacSi; }
+    public void setTenBacSi(String tenBacSi) { this.tenBacSi = tenBacSi; }
 }

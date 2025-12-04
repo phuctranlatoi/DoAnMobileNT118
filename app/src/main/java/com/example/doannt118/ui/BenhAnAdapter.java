@@ -19,11 +19,13 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.ViewHolder
     private Context context;
     private List<BenhAn> benhAnList;
     private SimpleDateFormat dateFormat;
+    private com.example.doannt118.repository.FirestoreRepository repository;
 
     public BenhAnAdapter(Context context) {
         this.context = context;
         this.benhAnList = new ArrayList<>();
         this.dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        this.repository = new com.example.doannt118.repository.FirestoreRepository();
     }
 
     public void setData(List<BenhAn> list) {
@@ -44,12 +46,18 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.ViewHolder
         
         holder.tvMaBenhAn.setText(benhAn.getMaBenhAn());
         
-        if (benhAn.getNgayKham() != null) {
-            holder.tvNgayKham.setText(dateFormat.format(benhAn.getNgayKham().toDate()));
+        if (benhAn.getNgayKhamAsTimestamp() != null) {
+            holder.tvNgayKham.setText(dateFormat.format(benhAn.getNgayKhamAsTimestamp().toDate()));
+        } else if (benhAn.getNgayKham() instanceof String) {
+            holder.tvNgayKham.setText((String) benhAn.getNgayKham());
+        } else {
+            holder.tvNgayKham.setText("N/A");
         }
         
         holder.tvChanDoan.setText("Chẩn đoán: " + (benhAn.getChanDoan() != null ? benhAn.getChanDoan() : "Chưa có"));
-        holder.tvBacSi.setText("Mã bác sĩ: " + (benhAn.getMaBacSi() != null ? benhAn.getMaBacSi() : "N/A"));
+        
+        // Load tên bác sĩ
+        loadBacSiInfo(benhAn.getMaBacSi(), holder.tvBacSi);
         
         holder.itemView.setOnClickListener(v -> {
             Intent intent = new Intent(context, ChiTietBenhAnActivity.class);
@@ -61,6 +69,26 @@ public class BenhAnAdapter extends RecyclerView.Adapter<BenhAnAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return benhAnList.size();
+    }
+    
+    private void loadBacSiInfo(String maBacSi, TextView textView) {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            textView.setText("Bác sĩ: N/A");
+            return;
+        }
+        
+        repository.getByField("BacSi", "maBacSi", maBacSi,
+            querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    com.google.firebase.firestore.DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+                    String hoTen = doc.getString("hoTen");
+                    textView.setText("Bác sĩ: " + (hoTen != null ? hoTen : maBacSi));
+                } else {
+                    textView.setText("Bác sĩ: " + maBacSi);
+                }
+            },
+            e -> textView.setText("Bác sĩ: " + maBacSi)
+        );
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
