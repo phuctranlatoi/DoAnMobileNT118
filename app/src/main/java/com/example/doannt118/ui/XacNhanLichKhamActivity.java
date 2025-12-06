@@ -123,19 +123,31 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
         repo.getByField("LichKham", "maBacSi", maBacSi,
             querySnapshot -> {
                 List<LichKham> danhSach = new ArrayList<>();
-                long currentTime = System.currentTimeMillis();
+                java.util.Calendar now = java.util.Calendar.getInstance();
+                now.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                now.set(java.util.Calendar.MINUTE, 0);
+                now.set(java.util.Calendar.SECOND, 0);
+                now.set(java.util.Calendar.MILLISECOND, 0);
+                long startOfToday = now.getTimeInMillis();
                 
                 for (var doc : querySnapshot.getDocuments()) {
                     LichKham lichKham = doc.toObject(LichKham.class);
                     if (lichKham != null) {
                         Log.d(TAG, "LichKham: " + lichKham.getMaLichKham() + " - TrangThai: " + lichKham.getTrangThai() + " - Filter: " + currentFilter);
                         
-                        // Kiểm tra quá hạn
+                        // Kiểm tra quá hạn - chỉ coi là quá hạn nếu đã qua hôm nay
                         boolean isQuaHan = false;
                         if (lichKham.getNgayKham() != null) {
-                            long ngayKhamMillis = lichKham.getNgayKham().toDate().getTime();
-                            // Quá hạn nếu đã qua ngày khám
-                            if (ngayKhamMillis < currentTime) {
+                            java.util.Calendar ngayKhamCal = java.util.Calendar.getInstance();
+                            ngayKhamCal.setTime(lichKham.getNgayKham().toDate());
+                            ngayKhamCal.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                            ngayKhamCal.set(java.util.Calendar.MINUTE, 0);
+                            ngayKhamCal.set(java.util.Calendar.SECOND, 0);
+                            ngayKhamCal.set(java.util.Calendar.MILLISECOND, 0);
+                            long ngayKhamMillis = ngayKhamCal.getTimeInMillis();
+                            
+                            // Quá hạn nếu ngày khám < ngày hôm nay (không tính giờ)
+                            if (ngayKhamMillis < startOfToday) {
                                 isQuaHan = true;
                             }
                         }

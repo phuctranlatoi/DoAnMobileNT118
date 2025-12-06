@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -349,7 +350,13 @@ public class TaoBenhAnActivity extends AppCompatActivity {
         
         AutoCompleteTextView edtTenThuoc = dialogView.findViewById(R.id.edtTenThuoc);
         TextInputEditText edtSoLuong = dialogView.findViewById(R.id.edtSoLuong);
-        TextInputEditText edtLieuDung = dialogView.findViewById(R.id.edtLieuDung);
+        TextInputEditText edtSoNgayUong = dialogView.findViewById(R.id.edtSoNgayUong);
+        TextInputEditText edtSoLanMoiNgay = dialogView.findViewById(R.id.edtSoLanMoiNgay);
+        TextInputEditText edtSoVienMoiLan = dialogView.findViewById(R.id.edtSoVienMoiLan);
+        TextInputEditText edtCachDung = dialogView.findViewById(R.id.edtCachDung);
+        CheckBox cbSang = dialogView.findViewById(R.id.cbSang);
+        CheckBox cbTrua = dialogView.findViewById(R.id.cbTrua);
+        CheckBox cbChieu = dialogView.findViewById(R.id.cbChieu);
         MaterialButton btnXacNhan = dialogView.findViewById(R.id.btnXacNhan);
         MaterialButton btnHuy = dialogView.findViewById(R.id.btnHuy);
         
@@ -361,20 +368,45 @@ public class TaoBenhAnActivity extends AppCompatActivity {
         
         btnXacNhan.setOnClickListener(v -> {
             String soLuongStr = edtSoLuong.getText().toString();
-            String lieuDung = edtLieuDung.getText().toString();
+            String soNgayUongStr = edtSoNgayUong.getText().toString();
+            String soLanMoiNgayStr = edtSoLanMoiNgay.getText().toString();
+            String soVienMoiLanStr = edtSoVienMoiLan.getText().toString();
+            String cachDung = edtCachDung.getText().toString();
             
-            if (soLuongStr.isEmpty() || lieuDung.isEmpty()) {
-                Toast.makeText(this, "Vui lòng điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+            if (soLuongStr.isEmpty()) {
+                Toast.makeText(this, "Vui lòng nhập số lượng", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            
+            if (!cbSang.isChecked() && !cbTrua.isChecked() && !cbChieu.isChecked()) {
+                Toast.makeText(this, "Vui lòng chọn ít nhất 1 ca uống", Toast.LENGTH_SHORT).show();
                 return;
             }
             
             int soLuong = Integer.parseInt(soLuongStr);
+            int soNgayUong = soNgayUongStr.isEmpty() ? 7 : Integer.parseInt(soNgayUongStr);
+            int soLanMoiNgay = soLanMoiNgayStr.isEmpty() ? 2 : Integer.parseInt(soLanMoiNgayStr);
+            int soVienMoiLan = soVienMoiLanStr.isEmpty() ? 1 : Integer.parseInt(soVienMoiLanStr);
+            
+            // Tạo liều dùng từ thông tin đã nhập
+            String lieuDung = "Uống " + soVienMoiLan + " viên/lần, " + soLanMoiNgay + " lần/ngày";
+            if (!cachDung.isEmpty()) {
+                lieuDung += " - " + cachDung;
+            }
             
             ChiTietDonThuoc chiTiet = new ChiTietDonThuoc();
             chiTiet.setMaDuocPham(duocPham.getMaDuocPham());
             chiTiet.setTenThuoc(duocPham.getTenDuocPham());
             chiTiet.setSoLuong(soLuong);
             chiTiet.setLieuDung(lieuDung);
+            chiTiet.setSoNgayUong(soNgayUong);
+            chiTiet.setSoLanMoiNgay(soLanMoiNgay);
+            chiTiet.setSoVienMoiLan(soVienMoiLan);
+            chiTiet.setCachDung(cachDung);
+            chiTiet.setUongSang(cbSang.isChecked());
+            chiTiet.setUongTrua(cbTrua.isChecked());
+            chiTiet.setUongChieu(cbChieu.isChecked());
+            chiTiet.setUongToi(false); // Không có ca tối
             
             danhSachThuoc.add(chiTiet);
             thuocAdapter.notifyItemInserted(danhSachThuoc.size() - 1);

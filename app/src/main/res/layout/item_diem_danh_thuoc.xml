@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardThuoc"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/divider">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <!-- Icon thuốc -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_medication"
+            android:tint="@color/primary"
+            android:layout_gravity="center_vertical" />
+
+        <!-- Thông tin thuốc -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp">
+
+            <TextView
+                android:id="@+id/tvTenThuoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Paracetamol 500mg"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_primary" />
+
+            <TextView
+                android:id="@+id/tvLieuDung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Uống 7 ngày, ngày 3 lần, mỗi lần 2 viên"
+                android:textSize="13sp"
+                android:textColor="@color/text_secondary" />
+
+            <TextView
+                android:id="@+id/tvCachDung"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Uống sau ăn"
+                android:textSize="12sp"
+                android:textColor="@color/text_hint"
+                android:textStyle="italic" />
+
+            <!-- Trạng thái đã uống -->
+            <LinearLayout
+                android:id="@+id/layoutDaUong"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_check"
+                    android:tint="@color/success"
+                    android:layout_gravity="center_vertical" />
+
+                <TextView
+                    android:id="@+id/tvThoiGianUong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="Đã uống lúc 08:30"
+                    android:textSize="12sp"
+                    android:textColor="@color/success" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Nút điểm danh -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDiemDanh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã uống"
+            android:textSize="12sp"
+            app:cornerRadius="20dp"
+            android:layout_gravity="center_vertical"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

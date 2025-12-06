@@ -188,7 +188,7 @@ public class NotificationHelper {
         
         ThongBao thongBao = new ThongBao(
             maThongBao,
-            null, // Không có maBenhNhan vì gửi cho bác sĩ
+            maBenhNhan, // Lưu mã bệnh nhân để biết ai đăng ký
             maBacSi,
             tieuDe,
             noiDung,
@@ -198,7 +198,10 @@ public class NotificationHelper {
         );
         
         repository.addDocument("ThongBao", maThongBao, thongBao,
-            aVoid -> Log.d(TAG, "Đã gửi thông báo cho bác sĩ: " + maBacSi),
+            aVoid -> {
+                Log.d(TAG, "Đã gửi thông báo cho bác sĩ: " + maBacSi);
+                Log.d(TAG, "Nội dung: " + noiDung);
+            },
             e -> Log.e(TAG, "Lỗi gửi thông báo: " + e.getMessage())
         );
     }
@@ -215,7 +218,7 @@ public class NotificationHelper {
         ThongBao thongBao = new ThongBao(
             maThongBao,
             maBenhNhan,
-            maBacSi,
+            maBacSi, // Lưu mã bác sĩ để biết ai gửi
             tieuDe,
             noiDung,
             loaiThongBao,
@@ -224,7 +227,10 @@ public class NotificationHelper {
         );
         
         repository.addDocument("ThongBao", maThongBao, thongBao,
-            aVoid -> Log.d(TAG, "Đã gửi thông báo cho bệnh nhân: " + maBenhNhan),
+            aVoid -> {
+                Log.d(TAG, "Đã gửi thông báo cho bệnh nhân: " + maBenhNhan);
+                Log.d(TAG, "Nội dung: " + noiDung);
+            },
             e -> Log.e(TAG, "Lỗi gửi thông báo: " + e.getMessage())
         );
     }

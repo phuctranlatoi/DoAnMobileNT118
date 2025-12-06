@@ -132,6 +132,7 @@ public class XacNhanUongThuocActivity extends AppCompatActivity {
                         boolean canUong = false;
                         if ("SANG".equals(caUong) && chiTiet.isUongSang()) canUong = true;
                         if ("TRUA".equals(caUong) && chiTiet.isUongTrua()) canUong = true;
+                        if ("CHIEU".equals(caUong) && chiTiet.isUongChieu()) canUong = true;
                         if ("TOI".equals(caUong) && chiTiet.isUongToi()) canUong = true;
                         
                         if (canUong) {

@@ -9,8 +9,11 @@ public class DonThuoc {
     private int soNgayUong;
     private Date ngayBatDau;
     private Date ngayKetThuc;
+    private String trangThai; // "DANG_DUNG", "DA_HET", "DA_HUY"
 
-    public DonThuoc() {}
+    public DonThuoc() {
+        this.trangThai = "DANG_DUNG"; // Mặc định đang dùng
+    }
 
     public DonThuoc(String maDonThuoc, String maBenhAn, String maBenhNhan, Date ngayLap, int soNgayUong) {
         this.maDonThuoc = maDonThuoc;
@@ -18,6 +21,7 @@ public class DonThuoc {
         this.maBenhNhan = maBenhNhan;
         this.ngayLap = ngayLap;
         this.soNgayUong = soNgayUong;
+        this.trangThai = "DANG_DUNG";
     }
 
     public String getMaDonThuoc() { return maDonThuoc; }
@@ -40,4 +44,7 @@ public class DonThuoc {
 
     public Date getNgayKetThuc() { return ngayKetThuc; }
     public void setNgayKetThuc(Date ngayKetThuc) { this.ngayKetThuc = ngayKetThuc; }
+
+    public String getTrangThai() { return trangThai; }
+    public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
 }

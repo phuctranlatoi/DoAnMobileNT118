@@ -304,14 +304,27 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     List<String> khungGioList = new ArrayList<>();
                     khungGioList.add("-- Chọn khung giờ --");
                     
+                    int totalSlots = querySnapshot.size();
+                    final int[] processedSlots = {0};
+                    
+                    if (totalSlots == 0) {
+                        showMessage("Bác sĩ không có lịch làm việc trong ngày này!");
+                        updateKhungGioSpinner(khungGioList);
+                        return;
+                    }
+                    
                     for (var doc : querySnapshot.getDocuments()) {
                         String caLamViec = doc.getString("caLamViec");
                         String maLichLamViec = doc.getString("maLichLamViec");
                         
-                        if (caLamViec == null || maLichLamViec == null) continue;
+                        if (caLamViec == null || maLichLamViec == null) {
+                            processedSlots[0]++;
+                            continue;
+                        }
                         
                         // Kiểm tra nếu là hôm nay thì bỏ qua khung giờ đã qua
                         if (isToday && isTimeSlotPassed(caLamViec)) {
+                            processedSlots[0]++;
                             continue;
                         }
                         
@@ -322,26 +335,49 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                         // Đếm số lượng đã đăng ký
                         repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
                             lichKhamSnapshot -> {
-                                int soLuongDaDangKy = lichKhamSnapshot.size();
+                                // Chỉ đếm lịch chờ xác nhận và đã xác nhận
+                                int soLuongDaDangKy = 0;
+                                for (var lkDoc : lichKhamSnapshot.getDocuments()) {
+                                    String trangThai = lkDoc.getString("trangThai");
+                                    if ("CHO".equals(trangThai) || "XAC_NHAN".equals(trangThai)) {
+                                        soLuongDaDangKy++;
+                                    }
+                                }
                                 int soLuongConTrong = soLuongToiDa - soLuongDaDangKy;
                                     
-                                    if (soLuongConTrong > 0) {
-                                        String displayText = caLamViec + " (Còn " + soLuongConTrong + "/" + soLuongToiDa + " chỗ)";
-                                        khungGioMap.put(displayText, maLichLamViec);
-                                        khungGioList.add(displayText);
-                                        updateKhungGioSpinner(khungGioList);
+                                if (soLuongConTrong > 0) {
+                                    String displayText = caLamViec + " (Còn " + soLuongConTrong + "/" + soLuongToiDa + " chỗ)";
+                                    khungGioMap.put(displayText, maLichLamViec);
+                                    khungGioList.add(displayText);
+                                }
+                                
+                                processedSlots[0]++;
+                                
+                                // Khi đã xử lý xong tất cả slots, cập nhật spinner
+                                if (processedSlots[0] == totalSlots) {
+                                    if (khungGioList.size() == 1) {
+                                        showMessage("Bác sĩ không có khung giờ trống!");
+                                    } else {
+                                        hideMessage();
                                     }
-                                },
-                                e -> Log.e(TAG, "Error counting lichKham: ", e)
-                            );
-                    }
-                    
-                    // Cập nhật spinner ngay cả khi không có khung giờ nào
-                    if (khungGioList.size() == 1) {
-                        showMessage("Bác sĩ không có khung giờ trống!");
-                        updateKhungGioSpinner(khungGioList);
-                    } else {
-                        hideMessage();
+                                    updateKhungGioSpinner(khungGioList);
+                                }
+                            },
+                            e -> {
+                                Log.e(TAG, "Error counting lichKham: ", e);
+                                processedSlots[0]++;
+                                
+                                // Vẫn cập nhật spinner khi có lỗi
+                                if (processedSlots[0] == totalSlots) {
+                                    if (khungGioList.size() == 1) {
+                                        showMessage("Bác sĩ không có khung giờ trống!");
+                                    } else {
+                                        hideMessage();
+                                    }
+                                    updateKhungGioSpinner(khungGioList);
+                                }
+                            }
+                        );
                     }
                 },
                 e -> {
@@ -362,17 +398,27 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
     private boolean isTimeSlotPassed(String caLamViec) {
         Calendar now = Calendar.getInstance();
         int currentHour = now.get(Calendar.HOUR_OF_DAY);
+        int currentMinute = now.get(Calendar.MINUTE);
         
         // Parse khung giờ (ví dụ: "08:00 - 10:00")
         if (caLamViec.contains("-")) {
             String[] parts = caLamViec.split("-");
-            if (parts.length > 0) {
-                String startTime = parts[0].trim();
-                String[] timeParts = startTime.split(":");
-                if (timeParts.length > 0) {
+            if (parts.length >= 2) {
+                // Lấy giờ kết thúc thay vì giờ bắt đầu
+                String endTime = parts[1].trim();
+                String[] timeParts = endTime.split(":");
+                if (timeParts.length >= 2) {
                     try {
-                        int slotHour = Integer.parseInt(timeParts[0]);
-                        return currentHour >= slotHour;
+                        int endHour = Integer.parseInt(timeParts[0]);
+                        int endMinute = Integer.parseInt(timeParts[1]);
+                        
+                        // Chỉ loại bỏ nếu khung giờ đã kết thúc
+                        if (currentHour > endHour) {
+                            return true;
+                        } else if (currentHour == endHour && currentMinute >= endMinute) {
+                            return true;
+                        }
+                        return false;
                     } catch (NumberFormatException e) {
                         return false;
                     }
@@ -417,7 +463,14 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     // Kiểm tra số lượng bệnh nhân đã đăng ký
                     repo.getByField("LichKham", "maLichLamViec", maLichLamViec,
                         querySnapshot -> {
-                            int soLuongHienTai = querySnapshot.size();
+                            // Chỉ đếm lịch chờ xác nhận và đã xác nhận
+                            int soLuongHienTai = 0;
+                            for (var doc : querySnapshot.getDocuments()) {
+                                String trangThai = doc.getString("trangThai");
+                                if ("CHO".equals(trangThai) || "XAC_NHAN".equals(trangThai)) {
+                                    soLuongHienTai++;
+                                }
+                            }
                             
                             if (soLuongHienTai >= soLuongToiDa) {
                                 showMessage("Khung giờ này đã đầy!");
@@ -429,12 +482,17 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
 
                     // Tạo lịch khám mới
                     String maLichKham = UUID.randomUUID().toString();
+                    
+                    // Lấy giờ khám từ lịch làm việc
+                    String caLamViec = lichLamViecDoc.getString("caLamViec");
+                    
                     LichKham lichKham = new LichKham();
                     lichKham.setMaLichKham(maLichKham);
                     lichKham.setMaBenhNhan(maBenhNhan);
                     lichKham.setMaBacSi(maBacSi);
                     lichKham.setMaLichLamViec(maLichLamViec);
                     lichKham.setNgayKham(new Timestamp(selectedDate));
+                    lichKham.setGioKham(caLamViec); // Lưu giờ khám
                     lichKham.setTrangThai("CHO");
                     lichKham.setSoThuTu(soThuTu);
 

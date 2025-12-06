@@ -8,7 +8,7 @@ public class LichUongThuoc {
     private String maDonThuoc;
     private String maBenhNhan;
     private Date ngayUong;
-    private String caUong; // "SANG", "TRUA", "TOI"
+    private String caUong; // "SANG", "TRUA", "CHIEU", "TOI"
     private String trangThai; // "CHO_XAC_NHAN", "DA_UONG", "BO_QUA"
     private Timestamp thoiGianXacNhan;
 

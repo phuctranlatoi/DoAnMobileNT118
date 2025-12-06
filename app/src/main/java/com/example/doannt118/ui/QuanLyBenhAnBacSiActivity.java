@@ -92,6 +92,15 @@ public class QuanLyBenhAnBacSiActivity extends AppCompatActivity {
     }
 
     private void loadBacSiInfo() {
+        // Ưu tiên lấy từ Intent trước
+        maBacSi = getIntent().getStringExtra("MA_BAC_SI");
+        
+        if (maBacSi != null && !maBacSi.isEmpty()) {
+            loadBenhAn();
+            return;
+        }
+        
+        // Nếu không có trong Intent, load từ Firebase Auth
         String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
         showLoading(true);
         

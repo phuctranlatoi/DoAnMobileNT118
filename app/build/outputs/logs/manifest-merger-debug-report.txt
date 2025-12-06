@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-158:12
-INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-158:12
-INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-158:12
-INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-158:12
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-161:12
+INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-161:12
+INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-161:12
+INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:2:1-161:12
 MERGED from [com.google.android.material:material:1.13.0] /Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] /Users/kelvin/.gradle/caches/8.13/transforms/a9fab218b14b0b8ebc71aee18b7e92fb/transformed/constraintlayout-2.2.1/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.1] /Users/kelvin/.gradle/caches/8.13/transforms/76c1ed098c220c6600ee4c0a105c157e/transformed/appcompat-resources-1.7.1/AndroidManifest.xml:2:1-7:12
@@ -188,8 +188,8 @@ ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidMani
 	android:name
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:12:22-76
 application
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-157:19
-INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-157:19
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-160:19
+INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:14:5-160:19
 MERGED from [com.google.android.material:material:1.13.0] /Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.13.0] /Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] /Users/kelvin/.gradle/caches/8.13/transforms/a9fab218b14b0b8ebc71aee18b7e92fb/transformed/constraintlayout-2.2.1/AndroidManifest.xml:7:5-20
@@ -462,120 +462,126 @@ ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidMani
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:94:13-37
 	android:name
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:93:13-55
-activity#com.example.doannt118.ui.ChiTietThongBaoActivity
+activity#com.example.doannt118.ui.DiemDanhUongThuocActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:95:9-97:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:97:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:96:13-55
-activity#com.example.doannt118.ui.QuanLyBenhAnBacSiActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:96:13-57
+activity#com.example.doannt118.ui.ChiTietThongBaoActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:98:9-100:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:100:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:99:13-57
-activity#com.example.doannt118.ui.CapNhatBenhAnActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:99:13-55
+activity#com.example.doannt118.ui.QuanLyBenhAnBacSiActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:101:9-103:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:103:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:102:13-53
-activity#com.example.doannt118.ui.TaoBenhAnActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:102:13-57
+activity#com.example.doannt118.ui.CapNhatBenhAnActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:104:9-106:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:106:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:105:13-49
-activity#com.example.doannt118.ui.KeDonThuocActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:105:13-53
+activity#com.example.doannt118.ui.TaoBenhAnActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:107:9-109:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:109:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:108:13-50
-activity#com.example.doannt118.ui.TaoHoaDonActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:108:13-49
+activity#com.example.doannt118.ui.KeDonThuocActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:110:9-112:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:112:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:111:13-49
-activity#com.example.doannt118.ui.NhapMaKhamActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:111:13-50
+activity#com.example.doannt118.ui.TaoHoaDonActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:113:9-115:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:115:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:114:13-50
-activity#com.example.doannt118.ui.HoSoBenhNhanActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:114:13-49
+activity#com.example.doannt118.ui.NhapMaKhamActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:116:9-118:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:118:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:13-52
-activity#com.example.doannt118.ui.LichKhamCuaToiActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:117:13-50
+activity#com.example.doannt118.ui.HoSoBenhNhanActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:119:9-121:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:121:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:120:13-54
-activity#com.example.doannt118.ui.ChiTietLichKhamActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:120:13-52
+activity#com.example.doannt118.ui.LichKhamCuaToiActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:122:9-124:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:124:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:123:13-55
-activity#com.example.doannt118.ui.InitDuocPhamActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:123:13-54
+activity#com.example.doannt118.ui.ChiTietLichKhamActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:125:9-127:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:127:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:126:13-52
-activity#com.example.doannt118.ui.InitDichVuKhamActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:126:13-55
+activity#com.example.doannt118.ui.InitDuocPhamActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:128:9-130:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:130:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:129:13-54
-activity#com.example.doannt118.ui.ChonDichVuKhamActivity
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:129:13-52
+activity#com.example.doannt118.ui.InitDichVuKhamActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:131:9-133:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:133:13-37
 	android:name
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:132:13-54
-activity#com.example.doannt118.ui.QuanLyDuLieuActivity
+activity#com.example.doannt118.ui.ChonDichVuKhamActivity
 ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:134:9-136:40
 	android:exported
 		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:136:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:135:13-52
-service#com.example.doannt118.service.MyFirebaseMessagingService
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:139:9-145:19
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:135:13-54
+activity#com.example.doannt118.ui.QuanLyDuLieuActivity
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:137:9-139:40
 	android:exported
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:141:13-37
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:139:13-37
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:140:13-63
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:138:13-52
+service#com.example.doannt118.service.MyFirebaseMessagingService
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:142:9-148:19
+	android:exported
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:144:13-37
+	android:name
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:13-63
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:142:13-144:29
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:145:13-147:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:17-78
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:146:17-78
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:143:25-75
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:146:25-75
 meta-data#com.google.firebase.messaging.default_notification_icon
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:148:9-150:60
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:151:9-153:60
 	android:resource
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:150:13-57
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:153:13-57
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:149:13-83
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:152:13-83
 meta-data#com.google.firebase.messaging.default_notification_color
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:151:9-153:54
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:154:9-156:54
 	android:resource
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:153:13-51
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:156:13-51
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:152:13-84
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:155:13-84
 meta-data#com.google.firebase.messaging.default_notification_channel_id
-ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:154:9-156:60
+ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:157:9-159:60
 	android:value
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:156:13-57
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:159:13-57
 	android:name
-		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:155:13-89
+		ADDED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml:158:13-89
 uses-sdk
 INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/kelvin/Downloads/DoAn/DoAnMobileNT118/app/src/main/AndroidManifest.xml

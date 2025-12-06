@@ -64,10 +64,17 @@ public class LichSuUongThuocActivity extends AppCompatActivity {
     }
 
     private void loadBenhNhanInfo() {
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        // Lấy maTaiKhoan từ Intent
+        String maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
+        if (maTaiKhoan == null || maTaiKhoan.isEmpty()) {
+            showLoading(false);
+            Toast.makeText(this, "Mã tài khoản không hợp lệ!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
         showLoading(true);
         
-        repository.getByField("BenhNhan", "maTaiKhoan", userId,
+        repository.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
             querySnapshot -> {
                 if (!querySnapshot.isEmpty()) {
                     DocumentSnapshot doc = querySnapshot.getDocuments().get(0);

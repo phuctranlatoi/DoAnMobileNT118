@@ -3,66 +3,117 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="1dp">
+    android:layout_marginStart="4dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/divider">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_medication"
-            android:tint="@color/colorPrimary"
-            android:padding="8dp" />
-
+        <!-- Header với icon và tên thuốc -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
 
-            <TextView
-                android:id="@+id/tvTenThuoc"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Paracetamol 500mg"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/textPrimary" />
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/primary_light">
 
-            <TextView
-                android:id="@+id/tvLieuDung"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1 viên/lần • Sáng, Tối"
-                android:textSize="13sp"
-                android:textColor="@color/textSecondary"
-                android:layout_marginTop="4dp" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_medication"
+                    android:tint="@color/primary"
+                    android:padding="12dp" />
+            </com.google.android.material.card.MaterialCardView>
 
-            <TextView
-                android:id="@+id/tvSoLuong"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Số lượng: 14 viên"
-                android:textSize="12sp"
-                android:textColor="@color/textSecondary"
-                android:layout_marginTop="2dp" />
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvTenThuoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paracetamol 500mg"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/text_primary"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/tvSoLuong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="📦 Tổng: 14 viên"
+                    android:textSize="13sp"
+                    android:textColor="@color/text_secondary"
+                    android:layout_marginTop="4dp" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/error_light">
+
+                <ImageView
+                    android:id="@+id/ivDelete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_delete"
+                    android:tint="@color/error"
+                    android:padding="10dp"
+                    android:background="?attr/selectableItemBackgroundBorderless" />
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/ivDelete"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_delete"
-            android:tint="@android:color/holo_red_dark"
-            android:padding="6dp"
-            android:background="?attr/selectableItemBackgroundBorderless" />
+        <!-- Divider -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            android:layout_marginBottom="12dp" />
+
+        <!-- Liều dùng chi tiết -->
+        <TextView
+            android:id="@+id/tvLieuDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="💊 Uống 7 ngày, ngày 2 lần (sáng, chiều), mỗi lần 1 viên"
+            android:textSize="14sp"
+            android:textColor="@color/text_primary"
+            android:lineSpacingExtra="2dp" />
+
+        <!-- Cách dùng -->
+        <TextView
+            android:id="@+id/tvCachDung"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Uống sau ăn"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary"
+            android:textStyle="italic"
+            android:layout_marginTop="8dp"
+            android:visibility="gone" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

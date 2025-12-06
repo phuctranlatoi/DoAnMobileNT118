@@ -200,10 +200,13 @@ public class KeDonThuocActivity extends AppCompatActivity {
 
         AutoCompleteTextView edtTenThuoc = dialog.findViewById(R.id.edtTenThuoc);
         TextInputEditText edtSoLuong = dialog.findViewById(R.id.edtSoLuong);
-        TextInputEditText edtLieuDung = dialog.findViewById(R.id.edtLieuDung);
+        TextInputEditText edtSoNgayUong = dialog.findViewById(R.id.edtSoNgayUong);
+        TextInputEditText edtSoLanMoiNgay = dialog.findViewById(R.id.edtSoLanMoiNgay);
+        TextInputEditText edtSoVienMoiLan = dialog.findViewById(R.id.edtSoVienMoiLan);
+        TextInputEditText edtCachDung = dialog.findViewById(R.id.edtCachDung);
         CheckBox cbSang = dialog.findViewById(R.id.cbSang);
         CheckBox cbTrua = dialog.findViewById(R.id.cbTrua);
-        CheckBox cbToi = dialog.findViewById(R.id.cbToi);
+        CheckBox cbChieu = dialog.findViewById(R.id.cbChieu);
         MaterialButton btnHuy = dialog.findViewById(R.id.btnHuy);
         MaterialButton btnXacNhan = dialog.findViewById(R.id.btnXacNhan);
 
@@ -216,24 +219,45 @@ public class KeDonThuocActivity extends AppCompatActivity {
         btnXacNhan.setOnClickListener(v -> {
             String tenThuoc = edtTenThuoc.getText().toString().trim();
             String soLuongStr = edtSoLuong.getText().toString().trim();
-            String lieuDung = edtLieuDung.getText().toString().trim();
+            String soNgayUongStr = edtSoNgayUong.getText().toString().trim();
+            String soLanMoiNgayStr = edtSoLanMoiNgay.getText().toString().trim();
+            String soVienMoiLanStr = edtSoVienMoiLan.getText().toString().trim();
+            String cachDung = edtCachDung.getText().toString().trim();
             
-            if (!cbSang.isChecked() && !cbTrua.isChecked() && !cbToi.isChecked()) {
+            if (!cbSang.isChecked() && !cbTrua.isChecked() && !cbChieu.isChecked()) {
                 Toast.makeText(this, "Vui lòng chọn ít nhất 1 ca uống", Toast.LENGTH_SHORT).show();
                 return;
             }
             
             int soLuong = 1;
+            int soNgayUong = 7;
+            int soLanMoiNgay = 2;
+            int soVienMoiLan = 1;
+            
             try {
                 soLuong = Integer.parseInt(soLuongStr);
-            } catch (Exception e) {}
+                soNgayUong = Integer.parseInt(soNgayUongStr);
+                soLanMoiNgay = Integer.parseInt(soLanMoiNgayStr);
+                soVienMoiLan = Integer.parseInt(soVienMoiLanStr);
+            } catch (Exception e) {
+                Toast.makeText(this, "Vui lòng nhập số hợp lệ", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            
+            // Tạo liều dùng từ thông tin đã nhập
+            String lieuDung = "Uống " + soVienMoiLan + " viên/lần, " + soLanMoiNgay + " lần/ngày";
+            if (!cachDung.isEmpty()) {
+                lieuDung += " - " + cachDung;
+            }
             
             String maChiTiet = "CT_" + UUID.randomUUID().toString();
             ChiTietDonThuoc thuoc = new ChiTietDonThuoc(
-                null, null, tenThuoc, soLuong, lieuDung,
-                cbSang.isChecked(), cbTrua.isChecked(), cbToi.isChecked()
+                null, duocPham.getMaDuocPham(), tenThuoc, soLuong, lieuDung,
+                soNgayUong, soLanMoiNgay, soVienMoiLan,
+                cbSang.isChecked(), cbTrua.isChecked(), cbChieu.isChecked(), false // Không có ca tối
             );
             thuoc.setMaChiTiet(maChiTiet);
+            thuoc.setCachDung(cachDung);
             
             danhSachThuoc.add(thuoc);
             adapter.notifyItemInserted(danhSachThuoc.size() - 1);

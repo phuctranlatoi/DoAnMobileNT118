@@ -87,6 +87,10 @@ public class LoginActivity extends AppCompatActivity {
                                             return;
                                         }
 
+                                        // Lấy Firebase Auth UID để dùng làm maTaiKhoan thực tế
+                                        String firebaseUid = authResult.getUser().getUid();
+                                        Log.d("LoginActivity", "Firebase UID: " + firebaseUid + ", TaiKhoan UUID: " + maTaiKhoan);
+
                                         // TẮT XÁC THỰC EMAIL - Để import data dễ dàng
                                         // if (!authResult.getUser().isEmailVerified()) {
                                         //     authResult.getUser().sendEmailVerification();
@@ -99,9 +103,9 @@ public class LoginActivity extends AppCompatActivity {
                                             repo.updatePassword(email, newHashedPassword,
                                                     aVoid -> {
                                                         Log.d("LoginActivity", "Password synced, navigating for vaiTro=" + vaiTro);
-                                                        // Lưu session
-                                                        sessionManager.createLoginSession(maTaiKhoan, vaiTro, email, "");
-                                                        navigateToActivity(vaiTro, maTaiKhoan);
+                                                        // Lưu session với Firebase UID
+                                                        sessionManager.createLoginSession(firebaseUid, vaiTro, email, "");
+                                                        navigateToActivity(vaiTro, firebaseUid);
                                                     },
                                                     e -> {
                                                         Log.e("LoginActivity", "Password sync failed: ", e);
@@ -109,9 +113,9 @@ public class LoginActivity extends AppCompatActivity {
                                                     });
                                         } else {
                                             Log.d("LoginActivity", "Password matched, navigating for vaiTro=" + vaiTro);
-                                            // Lưu session
-                                            sessionManager.createLoginSession(maTaiKhoan, vaiTro, email, "");
-                                            navigateToActivity(vaiTro, maTaiKhoan);
+                                            // Lưu session với Firebase UID
+                                            sessionManager.createLoginSession(firebaseUid, vaiTro, email, "");
+                                            navigateToActivity(vaiTro, firebaseUid);
                                         }
                                     })
                                     .addOnFailureListener(e -> {

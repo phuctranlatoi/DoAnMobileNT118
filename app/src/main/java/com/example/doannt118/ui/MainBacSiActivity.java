@@ -87,7 +87,7 @@ public class MainBacSiActivity extends AppCompatActivity {
             cardManageSchedule.setOnClickListener(v -> handleQuanLyLichLamViec());
         }
         if (cardManagePrescription != null) {
-            cardManagePrescription.setOnClickListener(v -> handleQuanLyDonThuoc());
+            cardManagePrescription.setOnClickListener(v -> handleAIAssistant());
         }
         if (cardConfirmAppointment != null) {
             cardConfirmAppointment.setOnClickListener(v -> handleXacNhanLichKham());
@@ -108,10 +108,23 @@ public class MainBacSiActivity extends AppCompatActivity {
                     // Đã ở trang chủ
                     return true;
                 } else if (itemId == R.id.nav_messages) {
-                    Toast.makeText(this, "Chức năng Tin nhắn đang phát triển!", Toast.LENGTH_SHORT).show();
+                    // Mở chatbot
+                    Intent intent = new Intent(this, ChatActivity.class);
+                    intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+                    startActivity(intent);
                     return true;
                 } else if (itemId == R.id.nav_notifications) {
-                    Toast.makeText(this, "Chức năng Thông báo đang phát triển!", Toast.LENGTH_SHORT).show();
+                    // Mở danh sách thông báo
+                    if (maBacSi == null || maBacSi.isEmpty()) {
+                        Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+                        loadUserInfo();
+                        return false;
+                    }
+                    Intent intent = new Intent(this, ThongBaoActivity.class);
+                    intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+                    intent.putExtra("MA_BAC_SI", maBacSi);
+                    intent.putExtra("USER_TYPE", "bacsi");
+                    startActivity(intent);
                     return true;
                 } else if (itemId == R.id.nav_profile) {
                     handleProfile();
@@ -191,8 +204,20 @@ public class MainBacSiActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void handleQuanLyDonThuoc() {
-        Toast.makeText(this, "Chức năng Quản Lý Đơn Thuốc đang phát triển!", Toast.LENGTH_SHORT).show();
+    private void handleAIAssistant() {
+        // Mở AI Assistant với context bác sĩ
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo();
+            return;
+        }
+        logActivity("Sử dụng AI Assistant");
+        Intent intent = new Intent(this, ChatActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        intent.putExtra("USER_TYPE", "bacsi");
+        intent.putExtra("AI_MODE", "doctor_assistant"); // Chế độ đặc biệt cho bác sĩ
+        startActivity(intent);
     }
 
     private void handleXacNhanLichKham() {
@@ -208,7 +233,17 @@ public class MainBacSiActivity extends AppCompatActivity {
     }
 
     private void handleQuanLyHoaDon() {
-        Toast.makeText(this, "Chức năng Quản Lý Hóa Đơn đang phát triển!", Toast.LENGTH_SHORT).show();
+        // Mở danh sách hóa đơn
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo();
+            return;
+        }
+        Intent intent = new Intent(this, DanhSachHoaDonActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        intent.putExtra("USER_TYPE", "bacsi");
+        startActivity(intent);
     }
 
     private void handleNhapMaKham() {

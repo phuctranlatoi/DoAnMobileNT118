@@ -40,6 +40,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_lich_kham_cua_toi.xml">
+        <config>
+          <theme>@style/Theme.DoAnNT118</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml">
         <config>
           <theme>@style/Theme.DoAnNT118</theme>
@@ -80,6 +85,11 @@
           <theme>@style/Theme.DoAnNT118</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_settings.xml">
+        <config>
+          <theme>@style/Theme.DoAnNT118</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_thong_bao.xml">
         <config>
           <theme>@style/Theme.DoAnNT118</theme>
@@ -91,6 +101,11 @@
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml">
+        <config>
+          <theme>@style/Theme.DoAnNT118</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/activity_xac_nhan_lich_kham.xml">
         <config>
           <theme>@style/Theme.DoAnNT118</theme>
         </config>
@@ -110,6 +125,11 @@
           <theme>@style/Theme.DoAnNT118</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_chi_tiet_lich_kham.xml">
+        <config>
+          <theme>@style/Theme.DoAnNT118</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_diagnosis_entry.xml">
         <config>
           <theme>@style/AppTheme</theme>
@@ -125,6 +145,11 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/item_lichkham.xml">
+        <config>
+          <theme>@style/Theme.DoAnNT118</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/menu/benhnhan_menu.xml">
         <config>
           <theme>@style/Theme.DoAnNT118</theme>
@@ -137,22 +162,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c538384b-bf8b-494e-b00a-3f888db2fbf0" name="Changes" comment="--20. chỉnh sửa giao diện main bác sĩ và bệnh nhân">
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.13/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/merger.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/doannt118/repository/FirestoreRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/doannt118/repository/FirestoreRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/doannt118/ui/MainActivity.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/com/example/doannt118/ui/MainActivity.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/linked_resources_binary_format/debug/processDebugResources/linked-resources-binary-format-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/linked_resources_binary_format/debug/processDebugResources/linked-resources-binary-format-debug.ap_" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/parseDebugLocalResources/R-def.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/processDebugMainManifest/manifest-merger-blame-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/manifest_merge_blame_file/debug/processDebugMainManifest/manifest-merger-blame-debug-report.txt" afterDir="false" />
@@ -166,53 +182,26 @@
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/values/values.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/packageDebugResources/values/values.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/processDebugResources/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/processDebugResources/R.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/processDebugResources/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/processDebugResources/stableIds.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/logs/manifest-merger-debug-report.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/BenhAn.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/BenhAn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/HoaDon.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/HoaDon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichKham.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichKham.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichLamViec.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichLamViec.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/repository/FirestoreRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/BenhAnAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/BenhAnAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/BenhAnBacSiAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/BenhAnBacSiAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ChiTietBacSiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ChiTietBacSiActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ChiTietBenhAnActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ChiTietBenhAnActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/ChiTietDonThuoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/ChiTietDonThuoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/DonThuoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/DonThuoc.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichUongThuoc.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/model/LichUongThuoc.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/DangKyLichKhamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/DangKyLichKhamActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/GhiChuAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/GhiChuAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/KeDonThuocActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/KeDonThuocActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichKhamAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichKhamAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichLamViecAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichLamViecAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainAdminActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainAdminActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichSuUongThuocActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LichSuUongThuocActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/LoginActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainBacSiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainBacSiActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainBenhNhanActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/MainBenhNhanActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/QuanLyLichLamViecActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/QuanLyLichLamViecActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/QuanLyBenhAnBacSiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/QuanLyBenhAnBacSiActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/TaoBenhAnActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/TaoBenhAnActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ThuocKeDonAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/ThuocKeDonAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/XacNhanLichKhamActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/XacNhanLichKhamActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/badge_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/badge_background.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_add.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_add.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_avatar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_avatar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_calendar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_calendar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_delete.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_doctor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_doctor.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_edit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_edit.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_medical_record.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_medical_record.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_notification.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_schedule.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_schedule.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_chi_tiet_benh_an.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_chi_tiet_benh_an.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_dangky_lichkham.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_dangky_lichkham.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_bacsi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main_bacsi.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_quan_ly_lich_lam_viec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_quan_ly_lich_lam_viec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_quan_ly_lich_lam_viec_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_tao_benh_an.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_tao_benh_an.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/XacNhanUongThuocActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/doannt118/ui/XacNhanUongThuocActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_check.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/dialog_them_thuoc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/dialog_them_thuoc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_lich_lam_viec.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_lich_lam_viec.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_lich_lam_viec_new.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_lichkham.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_lichkham.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_thuoc_ke_don.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_thuoc_ke_don.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -223,7 +212,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/kelvin/.android/avd/Pixel_9.avd), DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=ac5c0c56)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/Users/kelvin/.android/avd/Pixel_9.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -300,26 +289,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;NhanBui&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/HK1_2025_2026/NT118/DoAnMobileNT118/DoAnMobileNT118&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;AndroidSdkUpdater&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Android App.app.executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "Phuctran",
+    "last_opened_file_path": "E:/HK1_2025_2026/NT118/DoAnMobileNT118/DoAnMobileNT118",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "AndroidSdkUpdater"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\HK1_2025_2026\NT118\DoAnNT118\app" />
@@ -664,12 +653,12 @@
       <map>
         <entry key="com.example.doannt118">
           <value>
-            <CheckInfo lastCheckTimestamp="1764735846448" />
+            <CheckInfo lastCheckTimestamp="1765006239182" />
           </value>
         </entry>
         <entry key="com.example.doannt118.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1764735846618" />
+            <CheckInfo lastCheckTimestamp="1765006239182" />
           </value>
         </entry>
       </map>

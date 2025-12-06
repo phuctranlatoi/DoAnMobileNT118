@@ -41,17 +41,23 @@ public class ThuocKeDonAdapter extends RecyclerView.Adapter<ThuocKeDonAdapter.Vi
         ChiTietDonThuoc thuoc = thuocList.get(position);
         
         holder.tvTenThuoc.setText(thuoc.getTenThuoc());
+        holder.tvSoLuong.setText("📦 Tổng: " + thuoc.getSoLuong() + " viên");
         
-        // Hiển thị ca uống
-        List<String> caUong = new ArrayList<>();
-        if (thuoc.isUongSang()) caUong.add("Sáng");
-        if (thuoc.isUongTrua()) caUong.add("Trưa");
-        if (thuoc.isUongToi()) caUong.add("Tối");
+        // Hiển thị liều dùng đầy đủ
+        String lieuDungDayDu = thuoc.getLieuDungDayDu();
+        if (lieuDungDayDu != null && !lieuDungDayDu.isEmpty()) {
+            holder.tvLieuDung.setText("💊 " + lieuDungDayDu);
+        } else {
+            holder.tvLieuDung.setText("💊 " + thuoc.getLieuDung());
+        }
         
-        String lieuDungText = thuoc.getLieuDung() + " • " + String.join(", ", caUong);
-        holder.tvLieuDung.setText(lieuDungText);
-        
-        holder.tvSoLuong.setText("Số lượng: " + thuoc.getSoLuong() + " viên");
+        // Hiển thị cách dùng nếu có
+        if (thuoc.getCachDung() != null && !thuoc.getCachDung().isEmpty()) {
+            holder.tvCachDung.setVisibility(View.VISIBLE);
+            holder.tvCachDung.setText("Uống " + thuoc.getCachDung());
+        } else {
+            holder.tvCachDung.setVisibility(View.GONE);
+        }
         
         holder.ivDelete.setOnClickListener(v -> {
             if (deleteListener != null) {
@@ -66,7 +72,7 @@ public class ThuocKeDonAdapter extends RecyclerView.Adapter<ThuocKeDonAdapter.Vi
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTenThuoc, tvLieuDung, tvSoLuong;
+        TextView tvTenThuoc, tvLieuDung, tvSoLuong, tvCachDung;
         ImageView ivDelete;
 
         public ViewHolder(@NonNull View itemView) {
@@ -74,6 +80,7 @@ public class ThuocKeDonAdapter extends RecyclerView.Adapter<ThuocKeDonAdapter.Vi
             tvTenThuoc = itemView.findViewById(R.id.tvTenThuoc);
             tvLieuDung = itemView.findViewById(R.id.tvLieuDung);
             tvSoLuong = itemView.findViewById(R.id.tvSoLuong);
+            tvCachDung = itemView.findViewById(R.id.tvCachDung);
             ivDelete = itemView.findViewById(R.id.ivDelete);
         }
     }

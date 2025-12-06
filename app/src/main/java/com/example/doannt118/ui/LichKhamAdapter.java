@@ -47,26 +47,9 @@ public class LichKhamAdapter extends RecyclerView.Adapter<LichKhamAdapter.LichKh
             holder.tvNgayKham.setText(sdf.format(lichKham.getNgayKham().toDate()));
         }
 
-        // Kiểm tra quá hạn
-        boolean isQuaHan = false;
-        if (lichKham.getNgayKham() != null) {
-            long ngayKhamMillis = lichKham.getNgayKham().toDate().getTime();
-            long currentMillis = System.currentTimeMillis();
-            // Quá hạn nếu ngày khám < ngày hiện tại và trạng thái không phải HOAN_THANH hoặc HUY
-            if (ngayKhamMillis < currentMillis && 
-                !"HOAN_THANH".equals(lichKham.getTrangThai()) && 
-                !"HUY".equals(lichKham.getTrangThai())) {
-                isQuaHan = true;
-            }
-        }
-
-        // Hiển thị trạng thái
+        // Hiển thị trạng thái (không kiểm tra quá hạn, chỉ hiển thị trạng thái thực tế)
         String trangThai = lichKham.getTrangThai();
-        if (isQuaHan) {
-            holder.tvTrangThai.setText("Quá hạn");
-            holder.tvTrangThai.setBackgroundColor(0xFFFF9800); // Màu cam
-            holder.btnHuy.setVisibility(View.GONE);
-        } else if ("CHO".equals(trangThai)) {
+        if ("CHO".equals(trangThai)) {
             holder.tvTrangThai.setText("Chờ xác nhận");
             holder.tvTrangThai.setBackgroundResource(R.drawable.badge_background);
             holder.btnHuy.setVisibility(View.VISIBLE);
@@ -78,9 +61,14 @@ public class LichKhamAdapter extends RecyclerView.Adapter<LichKhamAdapter.LichKh
             holder.tvTrangThai.setText("Hoàn thành");
             holder.tvTrangThai.setBackgroundColor(0xFF9E9E9E);
             holder.btnHuy.setVisibility(View.GONE);
-        } else {
+        } else if ("HUY".equals(trangThai)) {
             holder.tvTrangThai.setText("Đã hủy");
             holder.tvTrangThai.setBackgroundColor(0xFFE74C3C);
+            holder.btnHuy.setVisibility(View.GONE);
+        } else {
+            // Trạng thái mặc định
+            holder.tvTrangThai.setText(trangThai != null ? trangThai : "Không xác định");
+            holder.tvTrangThai.setBackgroundColor(0xFF9E9E9E);
             holder.btnHuy.setVisibility(View.GONE);
         }
 

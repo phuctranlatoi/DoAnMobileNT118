@@ -24,6 +24,8 @@ public class ThongBaoActivity extends AppCompatActivity {
     private List<ThongBao> thongBaoList;
     private FirestoreRepository repo;
     private String maBenhNhan;
+    private String maBacSi;
+    private String userType; // "benhnhan" hoặc "bacsi"
     private ListenerRegistration listenerRegistration;
 
     @Override
@@ -32,6 +34,14 @@ public class ThongBaoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_thong_bao);
 
         maBenhNhan = getIntent().getStringExtra("MA_BENH_NHAN");
+        maBacSi = getIntent().getStringExtra("MA_BAC_SI");
+        userType = getIntent().getStringExtra("USER_TYPE");
+        
+        // Nếu không có userType, tự động xác định
+        if (userType == null) {
+            userType = (maBenhNhan != null) ? "benhnhan" : "bacsi";
+        }
+        
         repo = new FirestoreRepository();
 
         setupToolbar();
@@ -57,29 +67,40 @@ public class ThongBaoActivity extends AppCompatActivity {
     }
 
     private void listenToThongBao() {
-        listenerRegistration = repo.getCollection("ThongBao")
-                .whereEqualTo("maBenhNhan", maBenhNhan)
-                .addSnapshotListener((snapshots, error) -> {
-                    if (error != null) {
-                        Toast.makeText(this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+        Query query;
+        
+        // Tạo query dựa trên loại người dùng
+        if ("bacsi".equals(userType)) {
+            // Bác sĩ: lấy thông báo có maBacSi
+            query = repo.getCollection("ThongBao")
+                    .whereEqualTo("maBacSi", maBacSi);
+        } else {
+            // Bệnh nhân: lấy thông báo có maBenhNhan
+            query = repo.getCollection("ThongBao")
+                    .whereEqualTo("maBenhNhan", maBenhNhan);
+        }
+        
+        listenerRegistration = query.addSnapshotListener((snapshots, error) -> {
+            if (error != null) {
+                Toast.makeText(this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                return;
+            }
 
-                    if (snapshots != null) {
-                        thongBaoList.clear();
-                        List<ThongBao> tempList = snapshots.toObjects(ThongBao.class);
-                        
-                        // Sắp xếp theo thời gian trong code thay vì query
-                        tempList.sort((t1, t2) -> {
-                            if (t1.getThoiGianGui() == null) return 1;
-                            if (t2.getThoiGianGui() == null) return -1;
-                            return t2.getThoiGianGui().compareTo(t1.getThoiGianGui());
-                        });
-                        
-                        thongBaoList.addAll(tempList);
-                        adapter.notifyDataSetChanged();
-                    }
+            if (snapshots != null) {
+                thongBaoList.clear();
+                List<ThongBao> tempList = snapshots.toObjects(ThongBao.class);
+                
+                // Sắp xếp theo thời gian trong code thay vì query
+                tempList.sort((t1, t2) -> {
+                    if (t1.getThoiGianGui() == null) return 1;
+                    if (t2.getThoiGianGui() == null) return -1;
+                    return t2.getThoiGianGui().compareTo(t1.getThoiGianGui());
                 });
+                
+                thongBaoList.addAll(tempList);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     private void markAsRead(ThongBao thongBao) {

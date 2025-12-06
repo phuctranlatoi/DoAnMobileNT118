@@ -118,6 +118,9 @@
             android:name="com.example.doannt118.ui.LichSuUongThuocActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.doannt118.ui.DiemDanhUongThuocActivity"
+            android:exported="false" />
+        <activity
             android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"
             android:exported="false" />
         <activity

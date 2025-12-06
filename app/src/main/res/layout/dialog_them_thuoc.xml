@@ -1,105 +1,309 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="20dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Thêm thuốc"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:textColor="@color/textPrimary"
-        android:layout_marginBottom="16dp" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Tên thuốc (gõ để tìm kiếm)"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="12dp">
-
-        <AutoCompleteTextView
-            android:id="@+id/edtTenThuoc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:completionThreshold="1"
-            android:dropDownHeight="200dp" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Số lượng (viên)"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="12dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtSoLuong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="number"
-            android:text="1" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Liều dùng"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_marginBottom="12dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/edtLieuDung"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:text="1 viên/lần" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ca uống"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="@color/textPrimary"
-        android:layout_marginBottom="8dp" />
-
+    <!-- Header -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
 
-        <CheckBox
-            android:id="@+id/cbSang"
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_medication"
+            android:tint="@color/primary"
+            android:layout_marginEnd="12dp" />
+
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Sáng"
-            android:checked="true" />
-
-        <CheckBox
-            android:id="@+id/cbTrua"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Trưa" />
-
-        <CheckBox
-            android:id="@+id/cbToi"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Tối"
-            android:checked="true" />
+            android:text="Thêm thuốc vào đơn"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary" />
     </LinearLayout>
 
+    <!-- Tên thuốc -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/divider"
+        android:layout_marginBottom="16dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="🔍 Tên thuốc (gõ để tìm kiếm)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:hintTextColor="@color/primary">
+
+            <AutoCompleteTextView
+                android:id="@+id/edtTenThuoc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:completionThreshold="1"
+                android:dropDownHeight="200dp"
+                android:textSize="15sp"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Số lượng tổng -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/divider"
+        android:layout_marginBottom="20dp">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="📦 Tổng số lượng (viên)"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+            app:boxBackgroundColor="@android:color/transparent"
+            app:hintTextColor="@color/primary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edtSoLuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:text="14"
+                android:textSize="15sp"
+                android:padding="16dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Thông tin liều lượng -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/background"
+        android:layout_marginBottom="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📋 Liều lượng chi tiết"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_marginBottom="16dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="12dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Số ngày"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    android:layout_marginEnd="6dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSoNgayUong"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="7"
+                        android:gravity="center" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Lần/ngày"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp"
+                    android:layout_marginEnd="6dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSoLanMoiNgay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="2"
+                        android:gravity="center" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="Viên/lần"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    app:boxCornerRadiusTopStart="8dp"
+                    app:boxCornerRadiusTopEnd="8dp"
+                    app:boxCornerRadiusBottomStart="8dp"
+                    app:boxCornerRadiusBottomEnd="8dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/edtSoVienMoiLan"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:text="1"
+                        android:gravity="center" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="💊 Cách dùng"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                app:boxCornerRadiusTopStart="8dp"
+                app:boxCornerRadiusTopEnd="8dp"
+                app:boxCornerRadiusBottomStart="8dp"
+                app:boxCornerRadiusBottomEnd="8dp"
+                app:prefixText="Uống ">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtCachDung"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:text="sau ăn" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Ca uống -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="2dp"
+        app:cardBackgroundColor="@color/background"
+        android:layout_marginBottom="24dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⏰ Ca uống trong ngày"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
+                android:layout_marginBottom="12dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    android:layout_marginEnd="6dp">
+
+                    <CheckBox
+                        android:id="@+id/cbSang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🌅\nSáng"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:checked="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider"
+                    android:layout_marginEnd="6dp">
+
+                    <CheckBox
+                        android:id="@+id/cbTrua"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="☀️\nTrưa"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:textSize="13sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/divider">
+
+                    <CheckBox
+                        android:id="@+id/cbChieu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="🌤️\nChiều"
+                        android:gravity="center"
+                        android:padding="12dp"
+                        android:checked="true"
+                        android:textSize="13sp" />
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Buttons -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -108,17 +312,26 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnHuy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
             android:text="Hủy"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            android:textSize="15sp"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            app:cornerRadius="12dp"
             android:layout_marginEnd="8dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnXacNhan"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Thêm"
-            app:cornerRadius="8dp" />
+            android:layout_width="0dp"
+            android:layout_height="56dp"
+            android:layout_weight="1"
+            android:text="✓ Thêm thuốc"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@drawable/ic_add"
+            app:iconGravity="textStart" />
     </LinearLayout>
 </LinearLayout>
+</ScrollView>

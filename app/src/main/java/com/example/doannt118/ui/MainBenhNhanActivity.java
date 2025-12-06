@@ -225,14 +225,13 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     }
 
     private void handleLichSuUongThuoc() {
-        logActivity("Xem lịch sử uống thuốc");
+        logActivity("Điểm danh uống thuốc");
         if (maBenhNhan == null || maBenhNhan.isEmpty()) {
             Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
             loadUserInfo(); // Thử load lại
             return;
         }
-        Intent intent = new Intent(this, LichSuUongThuocActivity.class);
-        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        Intent intent = new Intent(this, DiemDanhUongThuocActivity.class);
         intent.putExtra("MA_BENH_NHAN", maBenhNhan);
         startActivity(intent);
     }
