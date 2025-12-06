@@ -20,10 +20,13 @@ public class CapNhatBenhAnActivity extends AppCompatActivity {
     private TextInputEditText edtChanDoan, edtGhiChu;
     private MaterialButton btnCapNhat, btnKeDonThuoc;
     private ProgressBar progressBar;
+    private androidx.recyclerview.widget.RecyclerView rvDonThuoc;
+    private android.widget.TextView tvEmptyDonThuoc;
     
     private FirestoreRepository repository;
     private String maBenhAn;
     private BenhAn benhAn;
+    private DonThuocAdapter donThuocAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +51,20 @@ public class CapNhatBenhAnActivity extends AppCompatActivity {
         btnCapNhat = findViewById(R.id.btnCapNhat);
         btnKeDonThuoc = findViewById(R.id.btnKeDonThuoc);
         progressBar = findViewById(R.id.progressBar);
+        rvDonThuoc = findViewById(R.id.rvDonThuoc);
+        tvEmptyDonThuoc = findViewById(R.id.tvEmptyDonThuoc);
         
         repository = new FirestoreRepository();
+        
+        // Setup RecyclerView
+        donThuocAdapter = new DonThuocAdapter(this, new java.util.ArrayList<>(), donThuoc -> {
+            // Click vào đơn thuốc để xem chi tiết
+            android.content.Intent intent = new android.content.Intent(this, ChiTietDonThuocActivity.class);
+            intent.putExtra("maDonThuoc", donThuoc.getMaDonThuoc());
+            startActivity(intent);
+        });
+        rvDonThuoc.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(this));
+        rvDonThuoc.setAdapter(donThuocAdapter);
         
         btnCapNhat.setOnClickListener(v -> capNhatBenhAn());
         btnKeDonThuoc.setOnClickListener(v -> keDonThuoc());
@@ -100,6 +115,39 @@ public class CapNhatBenhAnActivity extends AppCompatActivity {
         }
         if (benhAn.getGhiChu() != null) {
             edtGhiChu.setText(benhAn.getGhiChu());
+        }
+        
+        // Load đơn thuốc của bệnh án
+        loadDonThuoc();
+    }
+    
+    private void loadDonThuoc() {
+        repository.getByField("DonThuoc", "maBenhAn", maBenhAn,
+            querySnapshot -> {
+                java.util.List<com.example.doannt118.model.DonThuoc> list = new java.util.ArrayList<>();
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.DonThuoc donThuoc = doc.toObject(com.example.doannt118.model.DonThuoc.class);
+                    if (donThuoc != null) {
+                        list.add(donThuoc);
+                    }
+                }
+                
+                donThuocAdapter.updateData(list);
+                tvEmptyDonThuoc.setVisibility(list.isEmpty() ? View.VISIBLE : View.GONE);
+                rvDonThuoc.setVisibility(list.isEmpty() ? View.GONE : View.VISIBLE);
+            },
+            e -> {
+                Toast.makeText(this, "Lỗi tải đơn thuốc: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        );
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Reload đơn thuốc khi quay lại (sau khi kê đơn mới)
+        if (maBenhAn != null) {
+            loadDonThuoc();
         }
     }
 

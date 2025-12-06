@@ -25,17 +25,33 @@ public class ChatbotEngine {
     private IntentDetector intentDetector;
     private GeminiAssistant geminiAssistant; // Chỉ dùng khi cần
     private String maBenhNhan;
+    private String maBacSi;
+    private String userType; // "benhnhan" hoặc "bacsi"
     
     public interface ChatCallback {
         void onResponse(ChatResponse response);
         void onError(String error);
     }
     
+    // Constructor cũ - backward compatibility
     public ChatbotEngine(Context context, String maBenhNhan) {
+        this(context, maBenhNhan, "benhnhan");
+    }
+    
+    // Constructor mới - hỗ trợ cả bác sĩ và bệnh nhân
+    public ChatbotEngine(Context context, String userId, String userType) {
         this.context = context;
-        this.maBenhNhan = maBenhNhan;
+        this.userType = userType;
+        
+        if ("bacsi".equals(userType)) {
+            this.maBacSi = userId;
+        } else {
+            this.maBenhNhan = userId;
+        }
+        
         this.repo = new FirestoreRepository();
         this.conversationContext = new ConversationContext();
+        this.conversationContext.setData("userType", userType); // Lưu userType vào context
         this.intentDetector = new IntentDetector();
         this.geminiAssistant = new GeminiAssistant(context); // Backup only
     }
@@ -148,6 +164,33 @@ public class ChatbotEngine {
                 
             case CAM_ON:
                 handleThanks(callback);
+                break;
+                
+            // ============================================
+            // DOCTOR-SPECIFIC INTENTS
+            // ============================================
+            case THONG_KE_BENH_NHAN:
+                handlePatientStatistics(callback);
+                break;
+                
+            case XEM_LICH_LAM_VIEC:
+                handleDoctorSchedule(callback);
+                break;
+                
+            case TRA_CUU_BENH_NHAN:
+                handlePatientLookup(userMessage, callback);
+                break;
+                
+            case TRA_CUU_THUOC:
+                handleMedicationLookup(userMessage, callback);
+                break;
+                
+            case TAO_BAO_CAO:
+                handleCreateReport(callback);
+                break;
+                
+            case GOI_Y_CHAN_DOAN:
+                handleDiagnosisSuggestion(userMessage, callback);
                 break;
                 
             // ============================================
@@ -544,5 +587,169 @@ public class ChatbotEngine {
             },
             e -> callback.onError(e.getMessage())
         );
+    }
+    
+    // ============================================
+    // DOCTOR-SPECIFIC HANDLERS
+    // ============================================
+    
+    private void handlePatientStatistics(ChatCallback callback) {
+        if (maBacSi == null) {
+            callback.onResponse(new ChatResponse(
+                "Chức năng này chỉ dành cho bác sĩ.",
+                ChatResponse.ResponseType.TEXT
+            ));
+            return;
+        }
+        
+        // Query thống kê từ Firestore
+        repo.getByField("LichKham", "maBacSi", maBacSi,
+            querySnapshot -> {
+                int totalAppointments = querySnapshot.size();
+                int todayAppointments = 0;
+                int pendingAppointments = 0;
+                
+                java.util.Calendar today = java.util.Calendar.getInstance();
+                today.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                today.set(java.util.Calendar.MINUTE, 0);
+                today.set(java.util.Calendar.SECOND, 0);
+                
+                for (var doc : querySnapshot.getDocuments()) {
+                    LichKham lk = doc.toObject(LichKham.class);
+                    if (lk != null) {
+                        if ("CHO".equals(lk.getTrangThai())) {
+                            pendingAppointments++;
+                        }
+                        
+                        if (lk.getNgayKham() != null) {
+                            java.util.Calendar appointmentDate = java.util.Calendar.getInstance();
+                            appointmentDate.setTime(lk.getNgayKham().toDate());
+                            appointmentDate.set(java.util.Calendar.HOUR_OF_DAY, 0);
+                            appointmentDate.set(java.util.Calendar.MINUTE, 0);
+                            appointmentDate.set(java.util.Calendar.SECOND, 0);
+                            
+                            if (appointmentDate.equals(today)) {
+                                todayAppointments++;
+                            }
+                        }
+                    }
+                }
+                
+                String message = "📊 Thống kê bệnh nhân:\n\n" +
+                               "📅 Hôm nay: " + todayAppointments + " lịch khám\n" +
+                               "⏳ Chờ xác nhận: " + pendingAppointments + " lịch\n" +
+                               "📋 Tổng số lịch: " + totalAppointments + "\n\n" +
+                               "Bạn cần xem chi tiết gì không?";
+                
+                callback.onResponse(new ChatResponse(message, ChatResponse.ResponseType.TEXT));
+            },
+            e -> callback.onError(e.getMessage())
+        );
+    }
+    
+    private void handleDoctorSchedule(ChatCallback callback) {
+        if (maBacSi == null) {
+            callback.onResponse(new ChatResponse(
+                "Chức năng này chỉ dành cho bác sĩ.",
+                ChatResponse.ResponseType.TEXT
+            ));
+            return;
+        }
+        
+        // Query lịch làm việc từ Firestore
+        repo.getByField("LichLamViec", "maBacSi", maBacSi,
+            querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Bạn chưa có lịch làm việc nào được đăng ký.",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                } else {
+                    StringBuilder message = new StringBuilder("📅 Lịch làm việc của bạn:\n\n");
+                    
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        String caLamViec = doc.getString("caLamViec");
+                        com.google.firebase.Timestamp ngayLamViec = doc.getTimestamp("ngayLamViec");
+                        
+                        if (ngayLamViec != null) {
+                            message.append("📌 ").append(sdf.format(ngayLamViec.toDate()));
+                            message.append(" - ").append(caLamViec).append("\n");
+                        }
+                    }
+                    
+                    callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
+                }
+            },
+            e -> callback.onError(e.getMessage())
+        );
+    }
+    
+    private void handlePatientLookup(String userMessage, ChatCallback callback) {
+        if (maBacSi == null) {
+            callback.onResponse(new ChatResponse(
+                "Chức năng này chỉ dành cho bác sĩ.",
+                ChatResponse.ResponseType.TEXT
+            ));
+            return;
+        }
+        
+        callback.onResponse(new ChatResponse(
+            "🔍 Tra cứu bệnh nhân\n\n" +
+            "Vui lòng cung cấp:\n" +
+            "- Tên bệnh nhân\n" +
+            "- Mã bệnh nhân\n" +
+            "- Số điện thoại\n\n" +
+            "Để tôi tìm kiếm thông tin.",
+            ChatResponse.ResponseType.TEXT
+        ));
+    }
+    
+    private void handleMedicationLookup(String userMessage, ChatCallback callback) {
+        // Tra cứu thuốc - có thể dùng Gemini để tra cứu thông tin thuốc
+        String prompt = "Tra cứu thông tin về thuốc: " + userMessage + 
+                       "\n\nVui lòng cung cấp:\n" +
+                       "- Thành phần\n" +
+                       "- Công dụng\n" +
+                       "- Liều dùng\n" +
+                       "- Tương tác thuốc\n" +
+                       "- Chống chỉ định";
+        
+        handleWithGemini(prompt, callback);
+    }
+    
+    private void handleCreateReport(ChatCallback callback) {
+        if (maBacSi == null) {
+            callback.onResponse(new ChatResponse(
+                "Chức năng này chỉ dành cho bác sĩ.",
+                ChatResponse.ResponseType.TEXT
+            ));
+            return;
+        }
+        
+        callback.onResponse(new ChatResponse(
+            "📋 Tạo báo cáo\n\n" +
+            "Bạn muốn tạo báo cáo gì?\n\n" +
+            "1. Báo cáo bệnh nhân theo ngày\n" +
+            "2. Báo cáo doanh thu\n" +
+            "3. Báo cáo thuốc kê đơn\n" +
+            "4. Báo cáo tổng hợp\n\n" +
+            "Vui lòng chọn loại báo cáo.",
+            ChatResponse.ResponseType.TEXT
+        ));
+    }
+    
+    private void handleDiagnosisSuggestion(String userMessage, ChatCallback callback) {
+        // Gợi ý chẩn đoán - dùng Gemini với context y tế
+        String prompt = "Với vai trò là trợ lý y tế, hãy gợi ý các chẩn đoán có thể dựa trên triệu chứng sau:\n\n" +
+                       userMessage + 
+                       "\n\nVui lòng liệt kê:\n" +
+                       "1. Các chẩn đoán có thể\n" +
+                       "2. Xét nghiệm cần làm\n" +
+                       "3. Điều trị ban đầu\n\n" +
+                       "Lưu ý: Đây chỉ là gợi ý, cần thăm khám trực tiếp để chẩn đoán chính xác.";
+        
+        handleWithGemini(prompt, callback);
     }
 }

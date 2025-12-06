@@ -60,6 +60,11 @@ public class DonThuocAdapter extends RecyclerView.Adapter<DonThuocAdapter.ViewHo
     public int getItemCount() {
         return donThuocList.size();
     }
+    
+    public void updateData(List<DonThuoc> newList) {
+        this.donThuocList = newList;
+        notifyDataSetChanged();
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         CardView cardView;

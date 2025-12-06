@@ -304,7 +304,7 @@
                         <ImageView
                             android:layout_width="48dp"
                             android:layout_height="48dp"
-                            android:src="@drawable/ic_chat"
+                            android:src="@drawable/chatbot"
                             android:contentDescription="AI Assistant"
                             app:tint="#03A9F4" />
 
@@ -382,9 +382,9 @@
                         android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:src="@drawable/ic_notification"
+                            android:layout_width="45dp"
+                            android:layout_height="45dp"
+                            android:src="@drawable/ic_message"
                             android:contentDescription="Gửi thông báo"
                             app:tint="#E91E63" />
 

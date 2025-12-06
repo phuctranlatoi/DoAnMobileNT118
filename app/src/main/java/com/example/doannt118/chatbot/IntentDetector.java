@@ -25,6 +25,14 @@ public class IntentDetector {
         XEM_HOA_DON,            // Xem hóa đơn
         THONG_TIN_PHONG_KHAM,   // FAQ phòng khám
         
+        // DOCTOR-SPECIFIC INTENTS
+        THONG_KE_BENH_NHAN,     // Thống kê bệnh nhân
+        XEM_LICH_LAM_VIEC,      // Xem lịch làm việc
+        TRA_CUU_BENH_NHAN,      // Tra cứu thông tin bệnh nhân
+        TRA_CUU_THUOC,          // Tra cứu thuốc và tương tác
+        TAO_BAO_CAO,            // Tạo báo cáo
+        GOI_Y_CHAN_DOAN,        // Gợi ý chẩn đoán
+        
         // CONVERSATION
         CHAO_HOI,
         CAM_ON,
@@ -78,6 +86,34 @@ public class IntentDetector {
         
         keywords.put(Intent.THONG_TIN_PHONG_KHAM, Arrays.asList(
             "giờ làm việc", "địa chỉ", "liên hệ", "hotline", "ở đâu"
+        ));
+        
+        // ============================================
+        // DOCTOR-SPECIFIC INTENTS
+        // ============================================
+        
+        keywords.put(Intent.THONG_KE_BENH_NHAN, Arrays.asList(
+            "thống kê", "số lượng bệnh nhân", "bao nhiêu bệnh nhân", "tổng số", "báo cáo thống kê"
+        ));
+        
+        keywords.put(Intent.XEM_LICH_LAM_VIEC, Arrays.asList(
+            "lịch làm việc", "lịch của tôi", "ca làm", "lịch trực", "khi nào làm việc"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_BENH_NHAN, Arrays.asList(
+            "thông tin bệnh nhân", "tra cứu bệnh nhân", "tìm bệnh nhân", "bệnh nhân nào", "hồ sơ bệnh nhân"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_THUOC, Arrays.asList(
+            "tra cứu thuốc", "thuốc gì", "tương tác thuốc", "thông tin thuốc", "liều dùng"
+        ));
+        
+        keywords.put(Intent.TAO_BAO_CAO, Arrays.asList(
+            "tạo báo cáo", "báo cáo", "xuất báo cáo", "report", "thống kê báo cáo"
+        ));
+        
+        keywords.put(Intent.GOI_Y_CHAN_DOAN, Arrays.asList(
+            "gợi ý chẩn đoán", "chẩn đoán", "triệu chứng", "bệnh gì", "có thể là"
         ));
         
         // ============================================

@@ -122,20 +122,33 @@ public class DiemDanhUongThuocActivity extends AppCompatActivity {
     private void loadThuocHomNay() {
         showLoading(true);
         
+        android.util.Log.d("DiemDanhThuoc", "Loading thuốc for maBenhNhan: " + maBenhNhan);
+        
         // Load tất cả đơn thuốc đang active của bệnh nhân
         repository.getByField("DonThuoc", "maBenhNhan", maBenhNhan,
             querySnapshot -> {
+                android.util.Log.d("DiemDanhThuoc", "Found " + querySnapshot.size() + " đơn thuốc");
+                
                 List<String> danhSachMaDonThuoc = new ArrayList<>();
                 for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
                     DonThuoc donThuoc = doc.toObject(DonThuoc.class);
-                    if (donThuoc != null && "DANG_DUNG".equals(donThuoc.getTrangThai())) {
-                        danhSachMaDonThuoc.add(donThuoc.getMaDonThuoc());
+                    if (donThuoc != null) {
+                        // Nếu trangThai null hoặc "DANG_DUNG" thì hiển thị
+                        String trangThai = donThuoc.getTrangThai();
+                        android.util.Log.d("DiemDanhThuoc", "DonThuoc: " + donThuoc.getMaDonThuoc() + ", trangThai: " + trangThai);
+                        
+                        if (trangThai == null || "DANG_DUNG".equals(trangThai)) {
+                            danhSachMaDonThuoc.add(donThuoc.getMaDonThuoc());
+                        }
                     }
                 }
+                
+                android.util.Log.d("DiemDanhThuoc", "Filtered to " + danhSachMaDonThuoc.size() + " đơn thuốc đang dùng");
                 
                 if (danhSachMaDonThuoc.isEmpty()) {
                     showLoading(false);
                     showEmpty(true);
+                    Toast.makeText(this, "Không có đơn thuốc nào đang sử dụng", Toast.LENGTH_LONG).show();
                     return;
                 }
                 
@@ -143,6 +156,7 @@ public class DiemDanhUongThuocActivity extends AppCompatActivity {
             },
             e -> {
                 showLoading(false);
+                android.util.Log.e("DiemDanhThuoc", "Error loading DonThuoc", e);
                 Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         );
@@ -183,11 +197,28 @@ public class DiemDanhUongThuocActivity extends AppCompatActivity {
         List<ChiTietDonThuoc> thuocChieu = new ArrayList<>();
         
         for (ChiTietDonThuoc thuoc : tatCaThuoc) {
-            if (thuoc.isUongSang()) thuocSang.add(thuoc);
-            if (thuoc.isUongTrua()) thuocTrua.add(thuoc);
-            if (thuoc.isUongChieu()) thuocChieu.add(thuoc);
-            // Không xử lý ca tối
+            // Kiểm tra xem có thông tin ca uống không
+            boolean coThongTinCaUong = thuoc.isUongSang() || thuoc.isUongTrua() || 
+                                       thuoc.isUongChieu() || thuoc.isUongToi();
+            
+            if (!coThongTinCaUong) {
+                // Dữ liệu cũ không có thông tin ca uống
+                // Mặc định hiển thị ở cả 3 ca (sáng, trưa, chiều)
+                android.util.Log.d("DiemDanhThuoc", "Thuốc " + thuoc.getTenThuoc() + " không có thông tin ca uống, hiển thị ở tất cả ca");
+                thuocSang.add(thuoc);
+                thuocTrua.add(thuoc);
+                thuocChieu.add(thuoc);
+            } else {
+                // Dữ liệu mới có thông tin ca uống
+                if (thuoc.isUongSang()) thuocSang.add(thuoc);
+                if (thuoc.isUongTrua()) thuocTrua.add(thuoc);
+                if (thuoc.isUongChieu()) thuocChieu.add(thuoc);
+                // Không xử lý ca tối
+            }
         }
+        
+        android.util.Log.d("DiemDanhThuoc", "Phân loại: Sáng=" + thuocSang.size() + 
+                          ", Trưa=" + thuocTrua.size() + ", Chiều=" + thuocChieu.size());
         
         // Hiển thị từng ca (chỉ sáng, trưa, chiều)
         adapterSang.setData(thuocSang);

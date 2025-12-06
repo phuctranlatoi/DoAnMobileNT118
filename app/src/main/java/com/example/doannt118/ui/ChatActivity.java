@@ -29,14 +29,30 @@ public class ChatActivity extends AppCompatActivity {
     private List<ChatMessage> messages;
     private ChatbotEngine chatbot;
     private String maBenhNhan;
+    private String maBacSi;
+    private String userType; // "benhnhan" hoặc "bacsi"
+    private String aiMode; // "patient_assistant" hoặc "doctor_assistant"
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         
-        // Get maBenhNhan from intent
+        // Get parameters from intent
         maBenhNhan = getIntent().getStringExtra("MA_BENH_NHAN");
+        maBacSi = getIntent().getStringExtra("MA_BAC_SI");
+        userType = getIntent().getStringExtra("USER_TYPE");
+        aiMode = getIntent().getStringExtra("AI_MODE");
+        
+        // Auto-detect user type if not provided
+        if (userType == null) {
+            userType = (maBacSi != null) ? "bacsi" : "benhnhan";
+        }
+        
+        // Auto-detect AI mode if not provided
+        if (aiMode == null) {
+            aiMode = (maBacSi != null) ? "doctor_assistant" : "patient_assistant";
+        }
         
         setupToolbar();
         initViews();
@@ -49,7 +65,12 @@ public class ChatActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle("Trợ lý ảo");
+            // Đặt title khác nhau cho bác sĩ và bệnh nhân
+            if ("doctor_assistant".equals(aiMode)) {
+                getSupportActionBar().setTitle("AI Assistant - Bác sĩ");
+            } else {
+                getSupportActionBar().setTitle("Trợ lý ảo");
+            }
         }
     }
     
@@ -79,22 +100,43 @@ public class ChatActivity extends AppCompatActivity {
     }
     
     private void initChatbot() {
-        chatbot = new ChatbotEngine(this, maBenhNhan);
+        // Khởi tạo chatbot với context phù hợp
+        if ("doctor_assistant".equals(aiMode)) {
+            chatbot = new ChatbotEngine(this, maBacSi, "bacsi");
+        } else {
+            chatbot = new ChatbotEngine(this, maBenhNhan, "benhnhan");
+        }
     }
     
     private void sendWelcomeMessage() {
-        ChatMessage welcomeMessage = new ChatMessage(
-            "Xin chào! 👋\n\n" +
-            "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
-            "📅 Đặt lịch khám\n" +
-            "💊 Xem đơn thuốc\n" +
-            "🏥 Xem bệnh án\n" +
-            "👨‍⚕️ Tìm bác sĩ\n" +
-            "💰 Xem hóa đơn\n" +
-            "❓ Tư vấn sức khỏe\n\n" +
-            "Bạn cần giúp gì?",
-            ChatMessage.MessageType.BOT
-        );
+        String welcomeText;
+        
+        if ("doctor_assistant".equals(aiMode)) {
+            // Welcome message cho bác sĩ
+            welcomeText = "Xin chào Bác sĩ! 👨‍⚕️\n\n" +
+                "Tôi là AI Assistant của bạn. Tôi có thể giúp:\n\n" +
+                "📊 Thống kê bệnh nhân\n" +
+                "📅 Quản lý lịch làm việc\n" +
+                "🔍 Tra cứu thông tin bệnh nhân\n" +
+                "💊 Tra cứu thuốc và tương tác\n" +
+                "📋 Tạo báo cáo nhanh\n" +
+                "🏥 Xem lịch sử khám bệnh\n" +
+                "💡 Gợi ý chẩn đoán\n\n" +
+                "Bác sĩ cần hỗ trợ gì?";
+        } else {
+            // Welcome message cho bệnh nhân
+            welcomeText = "Xin chào! 👋\n\n" +
+                "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
+                "📅 Đặt lịch khám\n" +
+                "💊 Xem đơn thuốc\n" +
+                "🏥 Xem bệnh án\n" +
+                "👨‍⚕️ Tìm bác sĩ\n" +
+                "💰 Xem hóa đơn\n" +
+                "❓ Tư vấn sức khỏe\n\n" +
+                "Bạn cần giúp gì?";
+        }
+        
+        ChatMessage welcomeMessage = new ChatMessage(welcomeText, ChatMessage.MessageType.BOT);
         
         messages.add(welcomeMessage);
         adapter.notifyItemInserted(messages.size() - 1);

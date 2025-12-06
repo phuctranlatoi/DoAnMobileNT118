@@ -51,7 +51,9 @@ public class ChiTietDonThuocAdapter extends RecyclerView.Adapter<ChiTietDonThuoc
                 },
                 e -> Log.e("ChiTietDonThuocAdapter", "Lỗi tải dược phẩm: ", e));
         
-        holder.tvLieuDung.setText("Liều dùng: " + chiTiet.getLieuDung());
+        // Hiển thị liều dùng đầy đủ (tự động tạo nếu null)
+        String lieuDung = chiTiet.getLieuDungDayDu();
+        holder.tvLieuDung.setText("Liều dùng: " + (lieuDung != null ? lieuDung : "Theo chỉ định"));
     }
 
     @Override

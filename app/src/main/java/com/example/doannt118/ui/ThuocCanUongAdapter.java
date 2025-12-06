@@ -44,7 +44,9 @@ public class ThuocCanUongAdapter extends RecyclerView.Adapter<ThuocCanUongAdapte
         ChiTietDonThuoc thuoc = thuocList.get(position);
         
         holder.tvTenThuoc.setText(thuoc.getTenThuoc() != null ? thuoc.getTenThuoc() : "Thuốc");
-        holder.tvLieuDung.setText(thuoc.getLieuDung() != null ? thuoc.getLieuDung() : "");
+        // Dùng getLieuDungDayDu() để tự động tạo nếu null
+        String lieuDung = thuoc.getLieuDungDayDu();
+        holder.tvLieuDung.setText(lieuDung != null ? lieuDung : "Theo chỉ định");
         holder.tvSoLuong.setText("Số lượng: " + thuoc.getSoLuong() + " viên");
         
         holder.cbDaUong.setOnCheckedChangeListener((buttonView, isChecked) -> {
