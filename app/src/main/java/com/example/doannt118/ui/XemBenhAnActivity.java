@@ -59,7 +59,7 @@ public class XemBenhAnActivity extends AppCompatActivity {
         adapter = new BenhAnAdapter(this);
         rvBenhAn.setLayoutManager(new LinearLayoutManager(this));
         rvBenhAn.setAdapter(adapter);
-        
+
         swipeRefresh.setOnRefreshListener(() -> {
             if (maBenhNhan != null) {
                 loadBenhAn();
@@ -76,52 +76,52 @@ public class XemBenhAnActivity extends AppCompatActivity {
             Toast.makeText(this, "Mã tài khoản không hợp lệ!", Toast.LENGTH_SHORT).show();
             return;
         }
-        
+
         showLoading(true);
-        
+
         repository.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
-            querySnapshot -> {
-                if (!querySnapshot.isEmpty()) {
-                    DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
-                    maBenhNhan = doc.getString("maBenhNhan");
-                    loadBenhAn();
-                } else {
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        DocumentSnapshot doc = querySnapshot.getDocuments().get(0);
+                        maBenhNhan = doc.getString("maBenhNhan");
+                        loadBenhAn();
+                    } else {
+                        showLoading(false);
+                        showEmpty(true);
+                        Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân", Toast.LENGTH_SHORT).show();
+                    }
+                },
+                e -> {
                     showLoading(false);
-                    showEmpty(true);
-                    Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-            },
-            e -> {
-                showLoading(false);
-                Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
         );
     }
 
     private void loadBenhAn() {
         showLoading(true);
         showEmpty(false);
-        
+
         repository.getByField("BenhAn", "maBenhNhan", maBenhNhan,
-            querySnapshot -> {
-                List<BenhAn> list = new ArrayList<>();
-                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
-                    BenhAn benhAn = doc.toObject(BenhAn.class);
-                    if (benhAn != null) {
-                        list.add(benhAn);
+                querySnapshot -> {
+                    List<BenhAn> list = new ArrayList<>();
+                    for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                        BenhAn benhAn = doc.toObject(BenhAn.class);
+                        if (benhAn != null) {
+                            list.add(benhAn);
+                        }
                     }
+
+                    adapter.setData(list);
+                    showLoading(false);
+                    swipeRefresh.setRefreshing(false);
+                    showEmpty(list.isEmpty());
+                },
+                e -> {
+                    showLoading(false);
+                    swipeRefresh.setRefreshing(false);
+                    Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
-                
-                adapter.setData(list);
-                showLoading(false);
-                swipeRefresh.setRefreshing(false);
-                showEmpty(list.isEmpty());
-            },
-            e -> {
-                showLoading(false);
-                swipeRefresh.setRefreshing(false);
-                Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
         );
     }
 
