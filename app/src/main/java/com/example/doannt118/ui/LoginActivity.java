@@ -69,7 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                             String email = doc.getString("email");
                             String trangThai = doc.getString("trangThai");
 
+                            Log.d("LoginActivity", "Document ID: " + doc.getId());
+                            Log.d("LoginActivity", "All fields: " + doc.getData());
                             Log.d("LoginActivity", "Found account: maTaiKhoan=" + maTaiKhoan + ", vaiTro=" + vaiTro + ", trangThai=" + trangThai);
+                            
+                            if (maTaiKhoan == null || maTaiKhoan.isEmpty()) {
+                                Log.e("LoginActivity", "maTaiKhoan is null or empty! Using document ID as fallback");
+                                maTaiKhoan = doc.getId();
+                            }
 
                             if (!trangThai.equals("Hoạt động")) {
                                 String message = trangThai.equals("Chờ duyệt")
@@ -79,6 +86,9 @@ public class LoginActivity extends AppCompatActivity {
                                 return;
                             }
 
+                            // Sử dụng maTaiKhoan từ Firestore (hoặc document ID nếu null)
+                            final String finalMaTaiKhoan = maTaiKhoan;
+                            
                             auth.signInWithEmailAndPassword(email, matKhau)
                                     .addOnSuccessListener(authResult -> {
                                         if (authResult.getUser() == null) {
@@ -87,9 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                                             return;
                                         }
 
-                                        // Lấy Firebase Auth UID để dùng làm maTaiKhoan thực tế
-                                        String firebaseUid = authResult.getUser().getUid();
-                                        Log.d("LoginActivity", "Firebase UID: " + firebaseUid + ", TaiKhoan UUID: " + maTaiKhoan);
+                                        Log.d("LoginActivity", "Firebase login success, using maTaiKhoan: " + finalMaTaiKhoan);
 
                                         // TẮT XÁC THỰC EMAIL - Để import data dễ dàng
                                         // if (!authResult.getUser().isEmailVerified()) {
@@ -102,20 +110,18 @@ public class LoginActivity extends AppCompatActivity {
                                             String newHashedPassword = BCrypt.hashpw(matKhau, BCrypt.gensalt());
                                             repo.updatePassword(email, newHashedPassword,
                                                     aVoid -> {
-                                                        Log.d("LoginActivity", "Password synced, navigating for vaiTro=" + vaiTro);
-                                                        // Lưu session với Firebase UID
-                                                        sessionManager.createLoginSession(firebaseUid, vaiTro, email, "");
-                                                        navigateToActivity(vaiTro, firebaseUid);
+                                                        Log.d("LoginActivity", "Password synced, navigating with maTaiKhoan=" + finalMaTaiKhoan);
+                                                        sessionManager.createLoginSession(finalMaTaiKhoan, vaiTro, email, "");
+                                                        navigateToActivity(vaiTro, finalMaTaiKhoan);
                                                     },
                                                     e -> {
                                                         Log.e("LoginActivity", "Password sync failed: ", e);
                                                         Toast.makeText(this, "Lỗi đồng bộ mật khẩu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                                                     });
                                         } else {
-                                            Log.d("LoginActivity", "Password matched, navigating for vaiTro=" + vaiTro);
-                                            // Lưu session với Firebase UID
-                                            sessionManager.createLoginSession(firebaseUid, vaiTro, email, "");
-                                            navigateToActivity(vaiTro, firebaseUid);
+                                            Log.d("LoginActivity", "Password matched, navigating with maTaiKhoan=" + finalMaTaiKhoan);
+                                            sessionManager.createLoginSession(finalMaTaiKhoan, vaiTro, email, "");
+                                            navigateToActivity(vaiTro, finalMaTaiKhoan);
                                         }
                                     })
                                     .addOnFailureListener(e -> {

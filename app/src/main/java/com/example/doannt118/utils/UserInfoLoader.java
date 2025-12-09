@@ -86,15 +86,42 @@ public class UserInfoLoader {
         
         repo.getByField("BenhNhan", "maTaiKhoan", maTaiKhoan,
             querySnapshot -> {
-                Log.d(TAG, "loadBenhNhan: Query returned " + querySnapshot.size() + " documents");
+                Log.d(TAG, "loadBenhNhan: Query by field returned " + querySnapshot.size() + " documents");
                 
                 if (querySnapshot.isEmpty()) {
-                    Log.e(TAG, "loadBenhNhan: No documents found for maTaiKhoan = " + maTaiKhoan);
-                    Log.e(TAG, "loadBenhNhan: Please check:");
-                    Log.e(TAG, "  1. Firestore collection 'BenhNhan' exists");
-                    Log.e(TAG, "  2. Document has field 'maTaiKhoan' = '" + maTaiKhoan + "'");
-                    Log.e(TAG, "  3. Firestore rules allow read access");
-                    callback.onError("Không tìm thấy thông tin bệnh nhân!\nVui lòng kiểm tra Firestore.");
+                    Log.w(TAG, "loadBenhNhan: No documents found by field maTaiKhoan, trying document ID...");
+                    
+                    // Thử tìm theo document ID
+                    repo.getCollection("BenhNhan").document(maTaiKhoan).get()
+                        .addOnSuccessListener(documentSnapshot -> {
+                            if (documentSnapshot.exists()) {
+                                Log.d(TAG, "loadBenhNhan: Found by document ID!");
+                                try {
+                                    BenhNhan benhNhan = documentSnapshot.toObject(BenhNhan.class);
+                                    if (benhNhan == null) {
+                                        Log.e(TAG, "loadBenhNhan: Failed to convert document to BenhNhan object");
+                                        callback.onError("Dữ liệu bệnh nhân không hợp lệ!");
+                                        return;
+                                    }
+                                    Log.d(TAG, "loadBenhNhan: Success! maBenhNhan = " + benhNhan.getMaBenhNhan() + ", hoTen = " + benhNhan.getHoTen());
+                                    callback.onSuccess(benhNhan);
+                                } catch (Exception e) {
+                                    Log.e(TAG, "loadBenhNhan: Exception converting document", e);
+                                    callback.onError("Lỗi xử lý dữ liệu: " + e.getMessage());
+                                }
+                            } else {
+                                Log.e(TAG, "loadBenhNhan: No document found with ID = " + maTaiKhoan);
+                                Log.e(TAG, "loadBenhNhan: Please check:");
+                                Log.e(TAG, "  1. Firestore collection 'BenhNhan' exists");
+                                Log.e(TAG, "  2. Document ID or field 'maTaiKhoan' = '" + maTaiKhoan + "'");
+                                Log.e(TAG, "  3. Firestore rules allow read access");
+                                callback.onError("Không tìm thấy thông tin bệnh nhân!\nVui lòng kiểm tra Firestore.");
+                            }
+                        })
+                        .addOnFailureListener(e -> {
+                            Log.e(TAG, "loadBenhNhan: Query by document ID failed", e);
+                            callback.onError("Lỗi tải thông tin: " + e.getMessage());
+                        });
                     return;
                 }
                 

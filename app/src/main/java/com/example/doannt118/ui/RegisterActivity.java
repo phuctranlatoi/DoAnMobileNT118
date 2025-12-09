@@ -97,6 +97,9 @@ public class RegisterActivity extends AppCompatActivity {
                                                         TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Hoạt động");
                                                         BenhNhan benhNhan = new BenhNhan(maBenhNhan, maTaiKhoan, hoTen, sdt, diaChi, ngaySinh);
 
+                                                        Log.d("RegisterActivity", "Creating account - maTaiKhoan: " + maTaiKhoan + ", maBenhNhan: " + maBenhNhan);
+                                                        Log.d("RegisterActivity", "BenhNhan.maTaiKhoan: " + benhNhan.getMaTaiKhoan());
+
                                                         // Lưu vào Firestore
                                                         repo.registerNewUserBatch(newTaiKhoan, benhNhan,
                                                                 aVoid -> {
