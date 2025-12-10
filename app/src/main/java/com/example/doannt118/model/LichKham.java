@@ -15,6 +15,10 @@ public class LichKham {
     private String lyDoTuChoi;
     private String lyDoKham;
     private String maKhamBenh; // Mã khám 6 số
+    private String loaiKham; // Loại khám (Khám tổng quát, Khám chuyên khoa, etc.)
+    private Double chiPhi; // Chi phí khám
+    private Timestamp ngayTao; // Ngày tạo lịch
+    private String ghiChu; // Ghi chú
 
     public LichKham() {}
 
@@ -64,4 +68,16 @@ public class LichKham {
     
     public String getTenBacSi() { return tenBacSi; }
     public void setTenBacSi(String tenBacSi) { this.tenBacSi = tenBacSi; }
+    
+    public String getLoaiKham() { return loaiKham; }
+    public void setLoaiKham(String loaiKham) { this.loaiKham = loaiKham; }
+    
+    public Double getChiPhi() { return chiPhi; }
+    public void setChiPhi(Double chiPhi) { this.chiPhi = chiPhi; }
+    
+    public Timestamp getNgayTao() { return ngayTao; }
+    public void setNgayTao(Timestamp ngayTao) { this.ngayTao = ngayTao; }
+    
+    public String getGhiChu() { return ghiChu; }
+    public void setGhiChu(String ghiChu) { this.ghiChu = ghiChu; }
 }

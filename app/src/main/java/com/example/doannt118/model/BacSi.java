@@ -18,6 +18,7 @@ public class BacSi {
     private String gioiThieu;
     private String ngaySinh;
     private String avatarUrl;
+    private String caLamViec; // "SANG", "CHIEU", "CA_NGAY" - dùng cho chatbot
 
     public BacSi() {
         chungChiHanhNghe = new ArrayList<>();
@@ -68,6 +69,9 @@ public class BacSi {
     
     public String getAvatarUrl() { return avatarUrl; }
     public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
+    
+    public String getCaLamViec() { return caLamViec; }
+    public void setCaLamViec(String caLamViec) { this.caLamViec = caLamViec; }
 
     @Override
     public String toString() {

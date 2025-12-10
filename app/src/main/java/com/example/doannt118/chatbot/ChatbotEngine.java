@@ -23,7 +23,7 @@ public class ChatbotEngine {
     private FirestoreRepository repo;
     private ConversationContext conversationContext;
     private IntentDetector intentDetector;
-    private GeminiAssistant geminiAssistant; // Chỉ dùng khi cần
+    private GeminiAssistant geminiAssistant;
     private String maBenhNhan;
     private String maBacSi;
     private String userType; // "benhnhan" hoặc "bacsi"
@@ -51,23 +51,29 @@ public class ChatbotEngine {
         
         this.repo = new FirestoreRepository();
         this.conversationContext = new ConversationContext();
-        this.conversationContext.setData("userType", userType); // Lưu userType vào context
+        this.conversationContext.setData("userType", userType);
         this.intentDetector = new IntentDetector();
-        this.geminiAssistant = new GeminiAssistant(context); // Backup only
+        this.geminiAssistant = new GeminiAssistant(context);
     }
     
     /**
-     * MAIN PROCESSING - TỰ BUILD LOGIC
+     * MAIN PROCESSING - TỰ BUILD LOGIC với NLU cải tiến
      */
     public void processMessage(String userMessage, ChatCallback callback) {
         
-        // Step 1: Detect intent (RULE-BASED)
+        // Step 1: Kiểm tra câu hỏi mơ hồ trước
+        if (intentDetector.isAmbiguous(userMessage)) {
+            handleAmbiguousMessage(userMessage, callback);
+            return;
+        }
+        
+        // Step 2: Detect intent (RULE-BASED với NLU)
         IntentDetector.Intent intent = intentDetector.detect(userMessage);
         
-        // Step 2: Check conversation state
+        // Step 3: Check conversation state
         ConversationContext.ConversationState state = conversationContext.getState();
         
-        // Step 3: Route to appropriate handler (TỰ BUILD)
+        // Step 4: Route to appropriate handler (TỰ BUILD)
         if (state != ConversationContext.ConversationState.IDLE) {
             // Đang trong conversation flow
             handleConversationFlow(userMessage, state, callback);
@@ -78,8 +84,28 @@ public class ChatbotEngine {
     }
     
     /**
+     * Xử lý câu hỏi mơ hồ bằng cách gợi ý
+     */
+    private void handleAmbiguousMessage(String userMessage, ChatCallback callback) {
+        List<String> suggestions = intentDetector.getSuggestions(userMessage);
+        
+        String responseMessage = "Tôi hiểu bạn đang hỏi về \"" + userMessage + "\" 🤔\n\n" +
+                               "Bạn có thể muốn:\n\n";
+        
+        for (int i = 0; i < suggestions.size() && i < 4; i++) {
+            responseMessage += "• " + suggestions.get(i) + "\n";
+        }
+        
+        responseMessage += "\nVui lòng nói rõ hơn để tôi có thể giúp bạn tốt nhất! 😊";
+        
+        ChatResponse response = new ChatResponse(responseMessage, ChatResponse.ResponseType.QUICK_REPLY);
+        response.setQuickReplies(suggestions.subList(0, Math.min(suggestions.size(), 4)));
+        
+        callback.onResponse(response);
+    }
+    
+    /**
      * XỬ LÝ CONVERSATION FLOW - TỰ BUILD
-     * VD: Đang đặt lịch, đang chờ user nhập ngày...
      */
     private void handleConversationFlow(String userMessage, 
                                        ConversationContext.ConversationState state, 
@@ -94,6 +120,10 @@ public class ChatbotEngine {
                 handleDoctorSelection(userMessage, callback);
                 break;
                 
+            case WAITING_TIME_SELECTION:
+                handleTimeSelection(userMessage, callback);
+                break;
+                
             case WAITING_CONFIRMATION:
                 handleConfirmation(userMessage, callback);
                 break;
@@ -105,57 +135,26 @@ public class ChatbotEngine {
     
     /**
      * XỬ LÝ INTENT MỚI
-     * 
-     * PHÂN LOẠI:
-     * - Data/Action intents → Rule-based (TỰ BUILD)
-     * - Knowledge/Advisory intents → Gemini AI
      */
     private void handleNewIntent(IntentDetector.Intent intent, 
                                  String userMessage, 
                                  ChatCallback callback) {
         
-        // ============================================
-        // RULE-BASED: Truy xuất data & Actions
-        // ============================================
         switch (intent) {
             case DAT_LICH_KHAM:
-                // Action: Đặt lịch khám
                 handleBookingIntent(callback);
                 break;
                 
             case XEM_LICH_HEN:
-                // Data: Query lịch hẹn từ Firestore
                 handleViewAppointments(callback);
                 break;
                 
             case HUONG_DAN_UONG_THUOC:
-                // Data: Query đơn thuốc từ Firestore
                 handleMedicationGuide(callback);
                 break;
                 
             case TRA_CUU_BAC_SI:
-                // Data: Query bác sĩ từ Firestore
                 handleDoctorQuery(userMessage, callback);
-                break;
-                
-            case XEM_BENH_AN:
-                // Data: Query bệnh án từ Firestore
-                handleViewMedicalRecords(callback);
-                break;
-                
-            case XEM_HOA_DON:
-                // Data: Query hóa đơn từ Firestore
-                handleViewInvoices(callback);
-                break;
-                
-            case HUY_LICH:
-                // Action: Hủy lịch hẹn
-                handleCancelAppointment(userMessage, callback);
-                break;
-                
-            case THONG_TIN_PHONG_KHAM:
-                // Static info: FAQ
-                handleClinicInfo(callback);
                 break;
                 
             case CHAO_HOI:
@@ -166,42 +165,12 @@ public class ChatbotEngine {
                 handleThanks(callback);
                 break;
                 
-            // ============================================
-            // DOCTOR-SPECIFIC INTENTS
-            // ============================================
-            case THONG_KE_BENH_NHAN:
-                handlePatientStatistics(callback);
-                break;
-                
-            case XEM_LICH_LAM_VIEC:
-                handleDoctorSchedule(callback);
-                break;
-                
-            case TRA_CUU_BENH_NHAN:
-                handlePatientLookup(userMessage, callback);
-                break;
-                
-            case TRA_CUU_THUOC:
-                handleMedicationLookup(userMessage, callback);
-                break;
-                
-            case TAO_BAO_CAO:
-                handleCreateReport(callback);
-                break;
-                
-            case GOI_Y_CHAN_DOAN:
-                handleDiagnosisSuggestion(userMessage, callback);
-                break;
-                
-            // ============================================
-            // GEMINI AI: Tư vấn & Kiến thức y tế
-            // ============================================
             case KHAC:
-                // Câu hỏi mở, tư vấn y tế
-                // VD: "Tôi bị đau đầu nên làm gì?"
-                //     "Trước khi khám nên chuẩn bị gì?"
-                handleWithGemini(userMessage, callback);
+                handleUnknownIntent(userMessage, callback);
                 break;
+                
+            default:
+                handleUnknownIntent(userMessage, callback);
         }
     }
     
@@ -219,7 +188,6 @@ public class ChatbotEngine {
             ChatResponse.ResponseType.TEXT
         );
         
-        // Add quick replies
         List<String> quickReplies = new ArrayList<>();
         quickReplies.add("Hôm nay");
         quickReplies.add("Ngày mai");
@@ -230,98 +198,254 @@ public class ChatbotEngine {
     }
     
     private void handleDateInput(String userMessage, ChatCallback callback) {
-        // Parse date từ user input (TỰ BUILD)
-        String date = parseDateFromText(userMessage);
+        java.util.Date selectedDate = parseDateFromText(userMessage);
         
-        if (date == null) {
+        if (selectedDate == null) {
             callback.onResponse(new ChatResponse(
                 "Xin lỗi, tôi không hiểu ngày bạn muốn khám.\n" +
-                "Vui lòng nhập lại (VD: 15/12, ngày mai)",
+                "Vui lòng nhập lại (VD: 15/12, ngày mai, thứ 2 tuần sau)",
                 ChatResponse.ResponseType.TEXT
             ));
             return;
         }
         
-        // Lưu date vào context
-        conversationContext.setData("date", date);
+        // Kiểm tra ngày hợp lệ
+        java.util.Calendar today = java.util.Calendar.getInstance();
+        today.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        today.set(java.util.Calendar.MINUTE, 0);
+        today.set(java.util.Calendar.SECOND, 0);
+        today.set(java.util.Calendar.MILLISECOND, 0);
         
-        // Query bác sĩ có lịch ngày đó (TỰ BUILD - Query Firestore)
-        queryDoctorsByDate(date, callback);
-    }
-    
-    private void queryDoctorsByDate(String date, ChatCallback callback) {
-        // TODO: Query Firestore để lấy bác sĩ có lịch ngày này
-        // Giả sử có 2 bác sĩ:
-        
-        List<BacSi> doctors = new ArrayList<>();
-        // Mock data - Thực tế query từ Firestore
-        
-        if (doctors.isEmpty()) {
+        if (selectedDate.before(today.getTime())) {
             callback.onResponse(new ChatResponse(
-                "Xin lỗi, không có bác sĩ nào có lịch vào ngày " + date + "\n\n" +
-                "Bạn có muốn chọn ngày khác không?",
+                "Không thể đặt lịch cho ngày trong quá khứ.\n" +
+                "Vui lòng chọn ngày từ hôm nay trở đi.",
                 ChatResponse.ResponseType.TEXT
             ));
-            conversationContext.setState(ConversationContext.ConversationState.WAITING_DATE);
-        } else {
-            // Hiển thị danh sách bác sĩ
-            StringBuilder message = new StringBuilder();
-            message.append("Các bác sĩ có lịch ngày ").append(date).append(":\n\n");
-            
-            for (int i = 0; i < doctors.size(); i++) {
-                BacSi bs = doctors.get(i);
-                message.append(i + 1).append(". 👨‍⚕️ ").append(bs.getHoTen()).append("\n");
-                message.append("   Chuyên khoa: ").append(bs.getChuyenKhoa()).append("\n");
-                message.append("   Kinh nghiệm: ").append(bs.getNamKinhNghiem()).append(" năm\n\n");
-            }
-            
-            message.append("Bạn muốn đặt lịch với bác sĩ nào?");
-            
-            conversationContext.setData("doctors", doctors);
-            conversationContext.setState(ConversationContext.ConversationState.WAITING_DOCTOR_SELECTION);
-            
-            callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
+            return;
         }
+        
+        conversationContext.setData("selectedDate", selectedDate);
+        queryAvailableDoctors(selectedDate, callback);
+    }
+    
+    private void queryAvailableDoctors(java.util.Date selectedDate, ChatCallback callback) {
+        // Query bác sĩ có lịch làm việc ngày này
+        repo.getCollection("LichLamViec")
+            .whereEqualTo("ngayLamViec", new com.google.firebase.Timestamp(selectedDate))
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Xin lỗi, không có bác sĩ nào có lịch làm việc vào ngày " + 
+                        new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate) + "\n\n" +
+                        "Bạn có muốn chọn ngày khác không?",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                    conversationContext.setState(ConversationContext.ConversationState.WAITING_DATE);
+                    return;
+                }
+                
+                List<String> doctorIds = new ArrayList<>();
+                Map<String, String> doctorSchedules = new HashMap<>();
+                
+                for (var doc : querySnapshot.getDocuments()) {
+                    String maBacSi = doc.getString("maBacSi");
+                    String caLamViec = doc.getString("caLamViec");
+                    if (maBacSi != null) {
+                        doctorIds.add(maBacSi);
+                        doctorSchedules.put(maBacSi, caLamViec);
+                    }
+                }
+                
+                if (doctorIds.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Không tìm thấy bác sĩ có lịch làm việc ngày này.\n" +
+                        "Vui lòng chọn ngày khác.",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                    conversationContext.setState(ConversationContext.ConversationState.WAITING_DATE);
+                    return;
+                }
+                
+                // Query thông tin chi tiết bác sĩ
+                repo.getCollection("BacSi")
+                    .whereIn("maBacSi", doctorIds)
+                    .get()
+                    .addOnSuccessListener(doctorSnapshot -> {
+                        List<BacSi> availableDoctors = new ArrayList<>();
+                        
+                        for (var doctorDoc : doctorSnapshot.getDocuments()) {
+                            BacSi doctor = doctorDoc.toObject(BacSi.class);
+                            if (doctor != null) {
+                                String schedule = doctorSchedules.get(doctor.getMaBacSi());
+                                doctor.setCaLamViec(schedule);
+                                availableDoctors.add(doctor);
+                            }
+                        }
+                        
+                        if (availableDoctors.isEmpty()) {
+                            callback.onResponse(new ChatResponse(
+                                "Không tìm thấy thông tin bác sĩ.\n" +
+                                "Vui lòng thử lại sau.",
+                                ChatResponse.ResponseType.TEXT
+                            ));
+                            conversationContext.reset();
+                            return;
+                        }
+                        
+                        StringBuilder message = new StringBuilder();
+                        message.append("🏥 Các bác sĩ có lịch ngày ")
+                               .append(new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(selectedDate))
+                               .append(":\n\n");
+                        
+                        for (int i = 0; i < availableDoctors.size(); i++) {
+                            BacSi doctor = availableDoctors.get(i);
+                            message.append(i + 1).append(". 👨‍⚕️ **").append(doctor.getHoTen()).append("**\n");
+                            message.append("   📋 Chuyên khoa: ").append(doctor.getChuyenKhoa()).append("\n");
+                            message.append("   ⭐ Kinh nghiệm: ").append(doctor.getNamKinhNghiem()).append(" năm\n");
+                            message.append("   ⏰ Ca làm việc: ").append(doctor.getCaLamViec()).append("\n\n");
+                        }
+                        
+                        message.append("Vui lòng chọn bác sĩ (VD: Bác sĩ 1, BS 2):");
+                        
+                        conversationContext.setData("availableDoctors", availableDoctors);
+                        conversationContext.setState(ConversationContext.ConversationState.WAITING_DOCTOR_SELECTION);
+                        
+                        callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
+                    })
+                    .addOnFailureListener(e -> {
+                        callback.onError("Lỗi khi tải thông tin bác sĩ: " + e.getMessage());
+                    });
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tìm lịch làm việc: " + e.getMessage());
+            });
     }
     
     private void handleDoctorSelection(String userMessage, ChatCallback callback) {
-        // Parse doctor selection (TỰ BUILD)
-        // VD: "bác sĩ 1", "bác sĩ A", "số 2"
-        
         @SuppressWarnings("unchecked")
-        List<BacSi> doctors = (List<BacSi>) conversationContext.getData("doctors");
+        List<BacSi> availableDoctors = (List<BacSi>) conversationContext.getData("availableDoctors");
         
-        BacSi selectedDoctor = findDoctorFromInput(userMessage, doctors);
-        
-        if (selectedDoctor == null) {
-            callback.onResponse(new ChatResponse(
-                "Xin lỗi, tôi không tìm thấy bác sĩ bạn chọn.\n" +
-                "Vui lòng nhập lại (VD: Bác sĩ 1, Bác sĩ Nguyễn Văn A)",
-                ChatResponse.ResponseType.TEXT
-            ));
-
+        if (availableDoctors == null || availableDoctors.isEmpty()) {
+            callback.onError("Không tìm thấy danh sách bác sĩ");
             return;
         }
         
-        // Lưu doctor vào context
-        conversationContext.setData("doctor", selectedDoctor);
+        BacSi selectedDoctor = findDoctorFromInput(userMessage, availableDoctors);
         
-        // Hiển thị xác nhận
-        showBookingConfirmation(callback);
+        if (selectedDoctor == null) {
+            StringBuilder doctorList = new StringBuilder("Vui lòng chọn một trong các bác sĩ sau:\n\n");
+            for (int i = 0; i < availableDoctors.size(); i++) {
+                doctorList.append(i + 1).append(". ").append(availableDoctors.get(i).getHoTen()).append("\n");
+            }
+            doctorList.append("\nVD: Bác sĩ 1, BS 2, hoặc tên bác sĩ");
+            
+            callback.onResponse(new ChatResponse(doctorList.toString(), ChatResponse.ResponseType.TEXT));
+            return;
+        }
+        
+        conversationContext.setData("selectedDoctor", selectedDoctor);
+        queryAvailableTimeSlots(selectedDoctor, callback);
     }
     
-    private void showBookingConfirmation(ChatCallback callback) {
-        String date = conversationContext.getString("date");
-        BacSi doctor = (BacSi) conversationContext.getData("doctor");
+    private void queryAvailableTimeSlots(BacSi selectedDoctor, ChatCallback callback) {
+        java.util.Date selectedDate = (java.util.Date) conversationContext.getData("selectedDate");
         
-        String message = "📋 Xác nhận thông tin đặt lịch:\n\n" +
-                        "👤 Bệnh nhân: [Tên bạn]\n" +
-                        "👨‍⚕️ Bác sĩ: " + doctor.getHoTen() + "\n" +
-                        "📅 Ngày: " + date + "\n" +
-                        "⏰ Giờ: 8:00\n" +
-                        "💊 Loại: Khám tổng quát\n" +
-                        "💰 Chi phí: 200.000đ\n\n" +
-                        "Xác nhận đặt lịch?";
+        repo.getCollection("LichKham")
+            .whereEqualTo("maBacSi", selectedDoctor.getMaBacSi())
+            .whereEqualTo("ngayKham", new com.google.firebase.Timestamp(selectedDate))
+            .whereIn("trangThai", java.util.Arrays.asList("CHO", "XAC_NHAN"))
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                List<String> bookedTimes = new ArrayList<>();
+                for (var doc : querySnapshot.getDocuments()) {
+                    String gioKham = doc.getString("gioKham");
+                    if (gioKham != null) {
+                        bookedTimes.add(gioKham);
+                    }
+                }
+                
+                List<String> availableTimes = generateAvailableTimeSlots(selectedDoctor.getCaLamViec(), bookedTimes);
+                
+                if (availableTimes.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Xin lỗi, bác sĩ " + selectedDoctor.getHoTen() + 
+                        " đã hết lịch trong ngày này.\n\n" +
+                        "Bạn có muốn:\n" +
+                        "1. Chọn bác sĩ khác\n" +
+                        "2. Chọn ngày khác",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                    conversationContext.setState(ConversationContext.ConversationState.WAITING_DOCTOR_SELECTION);
+                    return;
+                }
+                
+                StringBuilder message = new StringBuilder();
+                message.append("⏰ Khung giờ có sẵn của bác sĩ ")
+                       .append(selectedDoctor.getHoTen())
+                       .append(":\n\n");
+                
+                for (int i = 0; i < availableTimes.size(); i++) {
+                    message.append(i + 1).append(". ").append(availableTimes.get(i)).append("\n");
+                }
+                
+                message.append("\nVui lòng chọn giờ khám (VD: 1, 8:00, khung 2):");
+                
+                conversationContext.setData("availableTimes", availableTimes);
+                conversationContext.setState(ConversationContext.ConversationState.WAITING_TIME_SELECTION);
+                
+                callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi kiểm tra lịch khám: " + e.getMessage());
+            });
+    }
+    
+    private void handleTimeSelection(String userMessage, ChatCallback callback) {
+        @SuppressWarnings("unchecked")
+        List<String> availableTimes = (List<String>) conversationContext.getData("availableTimes");
+        
+        if (availableTimes == null || availableTimes.isEmpty()) {
+            callback.onError("Không tìm thấy danh sách khung giờ");
+            return;
+        }
+        
+        String selectedTime = findTimeFromInput(userMessage, availableTimes);
+        
+        if (selectedTime == null) {
+            StringBuilder timeList = new StringBuilder("Vui lòng chọn một trong các khung giờ sau:\n\n");
+            for (int i = 0; i < availableTimes.size(); i++) {
+                timeList.append(i + 1).append(". ").append(availableTimes.get(i)).append("\n");
+            }
+            timeList.append("\nVD: 1, 8:00, khung 2");
+            
+            callback.onResponse(new ChatResponse(timeList.toString(), ChatResponse.ResponseType.TEXT));
+            return;
+        }
+        
+        conversationContext.setData("selectedTime", selectedTime);
+        showFinalBookingConfirmation(callback);
+    }
+    
+    private void showFinalBookingConfirmation(ChatCallback callback) {
+        java.util.Date selectedDate = (java.util.Date) conversationContext.getData("selectedDate");
+        BacSi selectedDoctor = (BacSi) conversationContext.getData("selectedDoctor");
+        String selectedTime = (String) conversationContext.getData("selectedTime");
+        
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        
+        String message = "📋 **XÁC NHẬN THÔNG TIN ĐẶT LỊCH**\n\n" +
+                        "👤 **Bệnh nhân:** " + getUserName() + "\n" +
+                        "👨‍⚕️ **Bác sĩ:** " + selectedDoctor.getHoTen() + "\n" +
+                        "🏥 **Chuyên khoa:** " + selectedDoctor.getChuyenKhoa() + "\n" +
+                        "📅 **Ngày khám:** " + dateFormat.format(selectedDate) + "\n" +
+                        "⏰ **Giờ khám:** " + selectedTime + "\n" +
+                        "💊 **Loại khám:** Khám tổng quát\n" +
+                        "💰 **Chi phí:** 200.000đ\n\n" +
+                        "✅ **Xác nhận đặt lịch?**\n" +
+                        "Trả lời: 'Có' hoặc 'Xác nhận' để đặt lịch\n" +
+                        "Trả lời: 'Không' hoặc 'Hủy' để hủy bỏ";
         
         conversationContext.setState(ConversationContext.ConversationState.WAITING_CONFIRMATION);
         
@@ -333,10 +457,8 @@ public class ChatbotEngine {
         IntentDetector.Intent intent = intentDetector.detect(userMessage);
         
         if (intent == IntentDetector.Intent.XAC_NHAN) {
-            // Tạo lịch khám trong Firestore (TỰ BUILD)
             createBooking(callback);
         } else {
-            // Hủy
             conversationContext.reset();
             callback.onResponse(new ChatResponse(
                 "Đã hủy đặt lịch. Bạn cần giúp gì khác không?",
@@ -346,17 +468,51 @@ public class ChatbotEngine {
     }
     
     private void createBooking(ChatCallback callback) {
-        // TODO: Tạo LichKham trong Firestore
+        java.util.Date selectedDate = (java.util.Date) conversationContext.getData("selectedDate");
+        BacSi selectedDoctor = (BacSi) conversationContext.getData("selectedDoctor");
+        String selectedTime = (String) conversationContext.getData("selectedTime");
         
-        conversationContext.reset();
+        String maLichKham = "LK" + System.currentTimeMillis();
         
-        callback.onResponse(new ChatResponse(
-            "✅ Đặt lịch thành công!\n\n" +
-            "Mã lịch khám: LK" + System.currentTimeMillis() + "\n\n" +
-            "Vui lòng đến trước 15 phút.\n" +
-            "Bạn có thể xem lịch trong mục 'Lịch khám của tôi'.",
-            ChatResponse.ResponseType.TEXT
-        ));
+        LichKham lichKham = new LichKham();
+        lichKham.setMaLichKham(maLichKham);
+        lichKham.setMaBenhNhan(maBenhNhan);
+        lichKham.setMaBacSi(selectedDoctor.getMaBacSi());
+        lichKham.setNgayKham(new com.google.firebase.Timestamp(selectedDate));
+        lichKham.setGioKham(selectedTime);
+        lichKham.setTrangThai("CHO");
+        lichKham.setLoaiKham("Khám tổng quát");
+        lichKham.setChiPhi(200000.0);
+        lichKham.setNgayTao(com.google.firebase.Timestamp.now());
+        lichKham.setGhiChu("Đặt lịch qua trợ lý AI");
+        
+        repo.addDocument("LichKham", maLichKham, lichKham,
+            aVoid -> {
+                conversationContext.reset();
+                
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                
+                String successMessage = "🎉 **ĐẶT LỊCH THÀNH CÔNG!**\n\n" +
+                                      "📋 **Mã lịch khám:** " + maLichKham + "\n" +
+                                      "👨‍⚕️ **Bác sĩ:** " + selectedDoctor.getHoTen() + "\n" +
+                                      "📅 **Ngày:** " + dateFormat.format(selectedDate) + "\n" +
+                                      "⏰ **Giờ:** " + selectedTime + "\n" +
+                                      "💰 **Chi phí:** 200.000đ\n\n" +
+                                      "📝 **Lưu ý quan trọng:**\n" +
+                                      "• Vui lòng đến trước 15 phút\n" +
+                                      "• Mang theo CMND/CCCD\n" +
+                                      "• Chuẩn bị tiền khám\n\n" +
+                                      "📱 Bạn có thể xem lịch trong mục **'Lịch khám của tôi'**\n\n" +
+                                      "Cần hỗ trợ gì thêm không? 😊";
+                
+                callback.onResponse(new ChatResponse(successMessage, ChatResponse.ResponseType.TEXT));
+            },
+            e -> {
+                conversationContext.reset();
+                callback.onError("Lỗi khi đặt lịch: " + e.getMessage() + 
+                               "\nVui lòng thử lại hoặc liên hệ trực tiếp phòng khám.");
+            }
+        );
     }
     
     // ============================================
@@ -364,83 +520,178 @@ public class ChatbotEngine {
     // ============================================
     
     private void handleViewAppointments(ChatCallback callback) {
-        // Query lịch hẹn từ Firestore (TỰ BUILD)
-        repo.getByField("LichKham", "maBenhNhan", maBenhNhan,
-            querySnapshot -> {
+        repo.getCollection("LichKham")
+            .whereEqualTo("maBenhNhan", maBenhNhan)
+            .orderBy("ngayKham", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .limit(10)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
                 if (querySnapshot.isEmpty()) {
                     callback.onResponse(new ChatResponse(
-                        "Bạn chưa có lịch hẹn nào.",
+                        "📅 **LỊCH KHÁM CỦA BẠN**\n\n" +
+                        "Bạn chưa có lịch hẹn nào.\n\n" +
+                        "💡 Bạn có muốn đặt lịch khám mới không?\n" +
+                        "Chỉ cần nói: *'Tôi muốn đặt lịch khám'*",
                         ChatResponse.ResponseType.TEXT
                     ));
                 } else {
-                    StringBuilder message = new StringBuilder("📅 Lịch hẹn của bạn:\n\n");
+                    StringBuilder message = new StringBuilder("📅 **LỊCH KHÁM CỦA BẠN**\n\n");
                     
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    int count = 0;
                     
                     for (var doc : querySnapshot.getDocuments()) {
                         LichKham lk = doc.toObject(LichKham.class);
                         if (lk != null) {
-                            message.append("📌 ").append(sdf.format(lk.getNgayKham().toDate())).append("\n");
-                            message.append("   Trạng thái: ").append(lk.getTrangThai()).append("\n\n");
+                            count++;
+                            String trangThaiIcon = getTrangThaiIcon(lk.getTrangThai());
+                            String trangThaiText = getTrangThaiText(lk.getTrangThai());
+                            
+                            message.append("**").append(count).append(". ").append(lk.getMaLichKham()).append("**\n");
+                            message.append("📅 Ngày: ").append(dateFormat.format(lk.getNgayKham().toDate())).append("\n");
+                            message.append("⏰ Giờ: ").append(lk.getGioKham()).append("\n");
+                            message.append("👨‍⚕️ Bác sĩ: ").append(getBacSiName(lk.getMaBacSi())).append("\n");
+                            message.append(trangThaiIcon).append(" Trạng thái: ").append(trangThaiText).append("\n");
+                            message.append("💰 Chi phí: ").append(formatCurrency(lk.getChiPhi())).append("\n\n");
                         }
                     }
                     
+                    message.append("💡 **Cần hỗ trợ gì thêm?**\n");
+                    message.append("• Đặt lịch mới: *'Đặt lịch khám'*\n");
+                    message.append("• Hủy lịch: *'Hủy lịch [mã lịch]'*\n");
+                    message.append("• Xem chi tiết: *'Chi tiết lịch [mã lịch]'*");
+                    
                     callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
                 }
-            },
-            e -> callback.onError(e.getMessage())
-        );
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tải lịch khám: " + e.getMessage());
+            });
     }
     
     private void handleMedicationGuide(ChatCallback callback) {
-        // Query đơn thuốc từ Firestore (TỰ BUILD)
-        callback.onResponse(new ChatResponse(
-            "💊 Hướng dẫn uống thuốc:\n\n" +
-            "Tôi đang kiểm tra đơn thuốc của bạn...",
-            ChatResponse.ResponseType.TEXT
-        ));
-        
-        // TODO: Query DonThuoc từ Firestore
+        repo.getCollection("DonThuoc")
+            .whereEqualTo("maBenhNhan", maBenhNhan)
+            .whereIn("trangThai", java.util.Arrays.asList("DANG_DUNG", null))
+            .orderBy("ngayKeDon", com.google.firebase.firestore.Query.Direction.DESCENDING)
+            .limit(5)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "💊 **ĐƠN THUỐC CỦA BẠN**\n\n" +
+                        "Bạn hiện không có đơn thuốc nào đang sử dụng.\n\n" +
+                        "💡 Nếu bạn có thắc mắc về thuốc, hãy hỏi tôi:\n" +
+                        "*'Thuốc [tên thuốc] có tác dụng gì?'*",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                } else {
+                    StringBuilder message = new StringBuilder("💊 **ĐƠN THUỐC CỦA BẠN**\n\n");
+                    
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        com.example.doannt118.model.DonThuoc donThuoc = doc.toObject(com.example.doannt118.model.DonThuoc.class);
+                        if (donThuoc != null) {
+                            message.append("📋 **").append(donThuoc.getMaDonThuoc()).append("**\n");
+                            message.append("📅 Ngày kê: ").append(dateFormat.format(donThuoc.getNgayKeDon().toDate())).append("\n");
+                            message.append("👨‍⚕️ Bác sĩ: ").append(getBacSiName(donThuoc.getMaBacSi())).append("\n\n");
+                            
+                            queryMedicationDetails(donThuoc.getMaDonThuoc(), message, callback);
+                            return;
+                        }
+                    }
+                }
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tải đơn thuốc: " + e.getMessage());
+            });
+    }
+    
+    private void queryMedicationDetails(String maDonThuoc, StringBuilder message, ChatCallback callback) {
+        repo.getCollection("ChiTietDonThuoc")
+            .whereEqualTo("maDonThuoc", maDonThuoc)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    message.append("**CHI TIẾT THUỐC:**\n\n");
+                    
+                    int count = 0;
+                    for (var doc : querySnapshot.getDocuments()) {
+                        com.example.doannt118.model.ChiTietDonThuoc chiTiet = doc.toObject(com.example.doannt118.model.ChiTietDonThuoc.class);
+                        if (chiTiet != null) {
+                            count++;
+                            message.append(count).append(". **").append(chiTiet.getTenThuoc()).append("**\n");
+                            message.append("   📊 Liều dùng: ").append(chiTiet.getLieuDungDayDu()).append("\n");
+                            message.append("   🍽️ Cách dùng: ").append(chiTiet.getCachDung()).append("\n");
+                            
+                            StringBuilder schedule = new StringBuilder("   ⏰ Lịch uống: ");
+                            if (chiTiet.isUongSang()) schedule.append("Sáng ");
+                            if (chiTiet.isUongTrua()) schedule.append("Trưa ");
+                            if (chiTiet.isUongChieu()) schedule.append("Chiều ");
+                            if (chiTiet.isUongToi()) schedule.append("Tối ");
+                            message.append(schedule.toString()).append("\n\n");
+                        }
+                    }
+                }
+                
+                message.append("💡 **Lưu ý quan trọng:**\n");
+                message.append("• Uống đúng giờ, đúng liều\n");
+                message.append("• Không tự ý ngừng thuốc\n");
+                message.append("• Báo bác sĩ nếu có tác dụng phụ\n\n");
+                message.append("🔔 Bạn có thể xem lịch uống thuốc trong mục **'Quản lý uống thuốc'**");
+                
+                callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tải chi tiết thuốc: " + e.getMessage());
+            });
     }
     
     private void handleDoctorQuery(String userMessage, ChatCallback callback) {
-        // Extract chuyên khoa từ message (TỰ BUILD)
         String chuyenKhoa = extractChuyenKhoa(userMessage);
         
         if (chuyenKhoa != null) {
-            // Query bác sĩ theo chuyên khoa
             queryDoctorsBySpecialty(chuyenKhoa, callback);
         } else {
-            // Không rõ chuyên khoa → Dùng Gemini gợi ý
             handleWithGemini(userMessage, callback);
         }
     }
     
-    private void handleClinicInfo(ChatCallback callback) {
-        // Hardcoded info (TỰ BUILD)
-        callback.onResponse(new ChatResponse(
-            "🏥 Thông tin phòng khám:\n\n" +
-            "📍 Địa chỉ: 123 Đường ABC, Quận XYZ, TP.HCM\n" +
-            "📞 Hotline: 1900-xxxx\n" +
-            "⏰ Giờ làm việc:\n" +
-            "   - Thứ 2-6: 8:00 - 17:00\n" +
-            "   - Thứ 7: 8:00 - 12:00\n" +
-            "   - Chủ nhật: Nghỉ",
-            ChatResponse.ResponseType.TEXT
-        ));
-    }
-    
     private void handleGreeting(ChatCallback callback) {
-        callback.onResponse(new ChatResponse(
-            "Xin chào! 👋\n\n" +
-            "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
-            "📅 Đặt lịch khám\n" +
-            "💊 Xem đơn thuốc\n" +
-            "🏥 Xem bệnh án\n" +
-            "👨‍⚕️ Tìm bác sĩ\n\n" +
-            "Bạn cần giúp gì?",
-            ChatResponse.ResponseType.TEXT
-        ));
+        String welcomeMessage;
+        List<String> quickReplies = new ArrayList<>();
+        
+        if ("bacsi".equals(userType)) {
+            welcomeMessage = "Xin chào Bác sĩ! 👨‍⚕️\n\n" +
+                           "Tôi có thể hỗ trợ bạn:\n\n" +
+                           "📊 Xem thống kê bệnh nhân\n" +
+                           "📅 Quản lý lịch làm việc\n" +
+                           "🔍 Tra cứu thông tin\n" +
+                           "💊 Tra cứu thuốc\n\n" +
+                           "Bạn cần hỗ trợ gì?";
+            
+            quickReplies.add("Thống kê hôm nay");
+            quickReplies.add("Lịch làm việc");
+            quickReplies.add("Tra cứu thuốc");
+        } else {
+            welcomeMessage = "Xin chào! 👋\n\n" +
+                           "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
+                           "📅 Đặt lịch khám\n" +
+                           "💊 Xem đơn thuốc\n" +
+                           "🏥 Xem lịch khám\n" +
+                           "👨‍⚕️ Tìm bác sĩ\n\n" +
+                           "Bạn cần giúp gì?";
+            
+            quickReplies.add("Đặt lịch khám");
+            quickReplies.add("Xem lịch khám");
+            quickReplies.add("Xem đơn thuốc");
+            quickReplies.add("Tìm bác sĩ");
+        }
+        
+        ChatResponse response = new ChatResponse(welcomeMessage, ChatResponse.ResponseType.QUICK_REPLY);
+        response.setQuickReplies(quickReplies);
+        callback.onResponse(response);
     }
     
     private void handleThanks(ChatCallback callback) {
@@ -456,21 +707,53 @@ public class ChatbotEngine {
     // ============================================
     
     /**
-     * Dùng Gemini cho:
-     * - Tư vấn triệu chứng: "Tôi bị đau đầu nên làm gì?"
-     * - Hướng dẫn chuẩn bị: "Trước khi khám nên chuẩn bị gì?"
-     * - Kiến thức y tế: "Thuốc X có tác dụng gì?"
-     * - Lời khuyên sức khỏe: "Ăn gì tốt cho tim?"
+     * Xử lý intent không rõ - thông minh hơn
      */
-    private void handleWithGemini(String userMessage, ChatCallback callback) {
+    private void handleUnknownIntent(String userMessage, ChatCallback callback) {
+        // Kiểm tra xem có phải câu hỏi y tế không
+        if (isMedicalAdvice(userMessage)) {
+            handleWithGemini(userMessage, callback);
+            return;
+        }
         
-        // Build context từ user data (nếu cần)
+        // Gợi ý dựa trên từ khóa trong câu
+        List<String> suggestions = intentDetector.getSuggestions(userMessage);
+        
+        String responseMessage = "Xin lỗi, tôi không hiểu rõ ý bạn 😅\n\n";
+        
+        if (!suggestions.isEmpty()) {
+            responseMessage += "Có phải bạn muốn:\n\n";
+            for (int i = 0; i < suggestions.size() && i < 3; i++) {
+                responseMessage += "• " + suggestions.get(i) + "\n";
+            }
+            responseMessage += "\n";
+        }
+        
+        responseMessage += "Hoặc bạn có thể hỏi tôi về:\n" +
+                          "📅 Đặt lịch khám\n" +
+                          "💊 Xem đơn thuốc\n" +
+                          "🏥 Xem lịch khám\n" +
+                          "👨‍⚕️ Tìm bác sĩ\n\n" +
+                          "Hãy nói rõ hơn để tôi giúp bạn nhé! 😊";
+        
+        List<String> quickReplies = new ArrayList<>();
+        quickReplies.add("Đặt lịch khám");
+        quickReplies.add("Xem lịch khám");
+        quickReplies.add("Xem đơn thuốc");
+        quickReplies.add("Tìm bác sĩ");
+        
+        ChatResponse response = new ChatResponse(responseMessage, ChatResponse.ResponseType.QUICK_REPLY);
+        response.setQuickReplies(quickReplies);
+        
+        callback.onResponse(response);
+    }
+    
+    private void handleWithGemini(String userMessage, ChatCallback callback) {
         String userContext = buildUserContext();
         
         geminiAssistant.ask(userMessage, userContext, new GeminiAssistant.GeminiCallback() {
             @Override
             public void onSuccess(String response) {
-                // Thêm disclaimer nếu là tư vấn y tế
                 if (isMedicalAdvice(userMessage)) {
                     response += "\n\n⚠️ Lưu ý: Đây chỉ là tư vấn sơ bộ. " +
                                "Vui lòng gặp bác sĩ để được chẩn đoán chính xác.";
@@ -481,38 +764,19 @@ public class ChatbotEngine {
             
             @Override
             public void onError(String error) {
-                // Gemini fail → Fallback
-                callback.onResponse(new ChatResponse(
-                    "Xin lỗi, tôi không thể trả lời câu hỏi này lúc này.\n\n" +
-                    "Bạn có thể:\n" +
-                    "- Đặt lịch khám để được bác sĩ tư vấn trực tiếp\n" +
-                    "- Hỏi về các tính năng khác của hệ thống\n\n" +
-                    "[Đặt lịch khám]",
-                    ChatResponse.ResponseType.TEXT
-                ));
+                // Fallback khi Gemini lỗi
+                handleUnknownIntent(userMessage, callback);
             }
         });
     }
     
-    /**
-     * Build context về user để Gemini trả lời chính xác hơn
-     */
     private String buildUserContext() {
         StringBuilder context = new StringBuilder();
         context.append("Thông tin bệnh nhân:\n");
         context.append("- Mã BN: ").append(maBenhNhan).append("\n");
-        
-        // TODO: Thêm context nếu cần:
-        // - Có đơn thuốc đang dùng
-        // - Có bệnh án gần đây
-        // - Có lịch hẹn sắp tới
-        
         return context.toString();
     }
     
-    /**
-     * Check xem có phải câu hỏi tư vấn y tế không
-     */
     private boolean isMedicalAdvice(String message) {
         String lower = message.toLowerCase();
         return lower.contains("bị") || 
@@ -523,64 +787,186 @@ public class ChatbotEngine {
     }
     
     // ============================================
-    // MORE DATA HANDLERS - TỰ BUILD
+    // HELPER METHODS
     // ============================================
     
-    private void handleViewMedicalRecords(ChatCallback callback) {
-        // TODO: Query BenhAn từ Firestore
-        callback.onResponse(new ChatResponse(
-            "📋 Đang tải bệnh án của bạn...",
-            ChatResponse.ResponseType.TEXT
-        ));
-    }
-    
-    private void handleViewInvoices(ChatCallback callback) {
-        // TODO: Query HoaDon từ Firestore
-        callback.onResponse(new ChatResponse(
-            "💰 Đang tải hóa đơn của bạn...",
-            ChatResponse.ResponseType.TEXT
-        ));
-    }
-    
-    private void handleCancelAppointment(String userMessage, ChatCallback callback) {
-        // TODO: Parse lịch cần hủy và update Firestore
-        callback.onResponse(new ChatResponse(
-            "Bạn muốn hủy lịch hẹn nào?\n" +
-            "Vui lòng cho tôi biết ngày hoặc mã lịch khám.",
-            ChatResponse.ResponseType.TEXT
-        ));
-    }
-    
-    // ============================================
-    // HELPER METHODS - TỰ BUILD
-    // ============================================
-    
-    private String parseDateFromText(String text) {
-        // Simple date parsing (TỰ BUILD)
-        if (text.contains("hôm nay") || text.contains("hom nay")) {
-            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-            return sdf.format(new java.util.Date());
+    private java.util.Date parseDateFromText(String text) {
+        text = text.toLowerCase().trim();
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        
+        if (text.contains("hôm nay") || text.contains("hom nay") || text.equals("hôm nay")) {
+            return cal.getTime();
         }
-        // TODO: Parse "ngày mai", "thứ 3", "15/12"...
+        
+        if (text.contains("ngày mai") || text.contains("ngay mai") || text.equals("mai")) {
+            cal.add(java.util.Calendar.DAY_OF_MONTH, 1);
+            return cal.getTime();
+        }
+        
+        if (text.contains("ngày mốt") || text.contains("ngay mot") || text.equals("mốt")) {
+            cal.add(java.util.Calendar.DAY_OF_MONTH, 2);
+            return cal.getTime();
+        }
+        
+        if (text.contains("thứ")) {
+            return parseDayOfWeek(text, cal);
+        }
+        
+        if (text.matches("\\d{1,2}/\\d{1,2}(/\\d{4})?")) {
+            return parseDateFormat(text, cal);
+        }
+        
         return null;
+    }
+    
+    private java.util.Date parseDayOfWeek(String text, java.util.Calendar cal) {
+        int targetDay = -1;
+        
+        if (text.contains("thứ 2") || text.contains("thứ hai")) targetDay = java.util.Calendar.MONDAY;
+        else if (text.contains("thứ 3") || text.contains("thứ ba")) targetDay = java.util.Calendar.TUESDAY;
+        else if (text.contains("thứ 4") || text.contains("thứ tư")) targetDay = java.util.Calendar.WEDNESDAY;
+        else if (text.contains("thứ 5") || text.contains("thứ năm")) targetDay = java.util.Calendar.THURSDAY;
+        else if (text.contains("thứ 6") || text.contains("thứ sáu")) targetDay = java.util.Calendar.FRIDAY;
+        else if (text.contains("thứ 7") || text.contains("thứ bảy")) targetDay = java.util.Calendar.SATURDAY;
+        else if (text.contains("chủ nhật") || text.contains("cn")) targetDay = java.util.Calendar.SUNDAY;
+        
+        if (targetDay == -1) return null;
+        
+        int currentDay = cal.get(java.util.Calendar.DAY_OF_WEEK);
+        int daysToAdd = targetDay - currentDay;
+        
+        if (daysToAdd <= 0) {
+            daysToAdd += 7;
+        }
+        
+        if (text.contains("tuần sau")) {
+            daysToAdd += 7;
+        }
+        
+        cal.add(java.util.Calendar.DAY_OF_MONTH, daysToAdd);
+        return cal.getTime();
+    }
+    
+    private java.util.Date parseDateFormat(String text, java.util.Calendar cal) {
+        try {
+            String[] parts = text.split("/");
+            int day = Integer.parseInt(parts[0]);
+            int month = Integer.parseInt(parts[1]);
+            int year = cal.get(java.util.Calendar.YEAR);
+            
+            if (parts.length == 3) {
+                year = Integer.parseInt(parts[2]);
+            }
+            
+            cal.set(year, month - 1, day);
+            return cal.getTime();
+        } catch (Exception e) {
+            return null;
+        }
     }
     
     private BacSi findDoctorFromInput(String input, List<BacSi> doctors) {
-        // Parse doctor selection (TỰ BUILD)
-        // TODO: Match "bác sĩ 1", "số 2", "bác sĩ A"
+        input = input.toLowerCase().trim();
+        
+        for (int i = 1; i <= doctors.size(); i++) {
+            if (input.equals(String.valueOf(i)) ||
+                input.contains("bác sĩ " + i) ||
+                input.contains("bs " + i) ||
+                input.contains("số " + i) ||
+                input.contains("bác si " + i)) {
+                return doctors.get(i - 1);
+            }
+        }
+        
+        for (BacSi doctor : doctors) {
+            String doctorName = doctor.getHoTen().toLowerCase();
+            if (input.contains(doctorName) || doctorName.contains(input)) {
+                return doctor;
+            }
+        }
+        
         return null;
     }
     
+    private String findTimeFromInput(String input, List<String> availableTimes) {
+        input = input.toLowerCase().trim();
+        
+        for (int i = 1; i <= availableTimes.size(); i++) {
+            if (input.equals(String.valueOf(i)) ||
+                input.contains("khung " + i) ||
+                input.contains("giờ " + i) ||
+                input.contains("số " + i)) {
+                return availableTimes.get(i - 1);
+            }
+        }
+        
+        for (String time : availableTimes) {
+            if (input.contains(time.toLowerCase()) ||
+                time.toLowerCase().contains(input)) {
+                return time;
+            }
+        }
+        
+        return null;
+    }
+    
+    private List<String> generateAvailableTimeSlots(String caLamViec, List<String> bookedTimes) {
+        List<String> allSlots = new ArrayList<>();
+        
+        if ("SANG".equals(caLamViec)) {
+            allSlots.add("08:00");
+            allSlots.add("08:30");
+            allSlots.add("09:00");
+            allSlots.add("09:30");
+            allSlots.add("10:00");
+            allSlots.add("10:30");
+            allSlots.add("11:00");
+        } else if ("CHIEU".equals(caLamViec)) {
+            allSlots.add("14:00");
+            allSlots.add("14:30");
+            allSlots.add("15:00");
+            allSlots.add("15:30");
+            allSlots.add("16:00");
+            allSlots.add("16:30");
+            allSlots.add("17:00");
+        } else {
+            allSlots.add("08:00");
+            allSlots.add("08:30");
+            allSlots.add("09:00");
+            allSlots.add("09:30");
+            allSlots.add("10:00");
+            allSlots.add("10:30");
+            allSlots.add("11:00");
+            allSlots.add("14:00");
+            allSlots.add("14:30");
+            allSlots.add("15:00");
+            allSlots.add("15:30");
+            allSlots.add("16:00");
+            allSlots.add("16:30");
+            allSlots.add("17:00");
+        }
+        
+        List<String> availableSlots = new ArrayList<>();
+        for (String slot : allSlots) {
+            if (!bookedTimes.contains(slot)) {
+                availableSlots.add(slot);
+            }
+        }
+        
+        return availableSlots;
+    }
+    
+    private String getUserName() {
+        return "Bệnh nhân";
+    }
+    
     private String extractChuyenKhoa(String message) {
-        // Extract specialty from message (TỰ BUILD)
         if (message.contains("tim")) return "Tim mạch";
         if (message.contains("nội")) return "Nội khoa";
-        // TODO: More specialties
         return null;
     }
     
     private void queryDoctorsBySpecialty(String chuyenKhoa, ChatCallback callback) {
-        // Query Firestore (TỰ BUILD)
         repo.getByField("BacSi", "chuyenKhoa", chuyenKhoa,
             querySnapshot -> {
                 // Build response
@@ -589,167 +975,32 @@ public class ChatbotEngine {
         );
     }
     
-    // ============================================
-    // DOCTOR-SPECIFIC HANDLERS
-    // ============================================
-    
-    private void handlePatientStatistics(ChatCallback callback) {
-        if (maBacSi == null) {
-            callback.onResponse(new ChatResponse(
-                "Chức năng này chỉ dành cho bác sĩ.",
-                ChatResponse.ResponseType.TEXT
-            ));
-            return;
+    private String getTrangThaiIcon(String trangThai) {
+        switch (trangThai) {
+            case "CHO": return "⏳";
+            case "XAC_NHAN": return "✅";
+            case "HOAN_THANH": return "🎉";
+            case "HUY": return "❌";
+            default: return "📋";
         }
-        
-        // Query thống kê từ Firestore
-        repo.getByField("LichKham", "maBacSi", maBacSi,
-            querySnapshot -> {
-                int totalAppointments = querySnapshot.size();
-                int todayAppointments = 0;
-                int pendingAppointments = 0;
-                
-                java.util.Calendar today = java.util.Calendar.getInstance();
-                today.set(java.util.Calendar.HOUR_OF_DAY, 0);
-                today.set(java.util.Calendar.MINUTE, 0);
-                today.set(java.util.Calendar.SECOND, 0);
-                
-                for (var doc : querySnapshot.getDocuments()) {
-                    LichKham lk = doc.toObject(LichKham.class);
-                    if (lk != null) {
-                        if ("CHO".equals(lk.getTrangThai())) {
-                            pendingAppointments++;
-                        }
-                        
-                        if (lk.getNgayKham() != null) {
-                            java.util.Calendar appointmentDate = java.util.Calendar.getInstance();
-                            appointmentDate.setTime(lk.getNgayKham().toDate());
-                            appointmentDate.set(java.util.Calendar.HOUR_OF_DAY, 0);
-                            appointmentDate.set(java.util.Calendar.MINUTE, 0);
-                            appointmentDate.set(java.util.Calendar.SECOND, 0);
-                            
-                            if (appointmentDate.equals(today)) {
-                                todayAppointments++;
-                            }
-                        }
-                    }
-                }
-                
-                String message = "📊 Thống kê bệnh nhân:\n\n" +
-                               "📅 Hôm nay: " + todayAppointments + " lịch khám\n" +
-                               "⏳ Chờ xác nhận: " + pendingAppointments + " lịch\n" +
-                               "📋 Tổng số lịch: " + totalAppointments + "\n\n" +
-                               "Bạn cần xem chi tiết gì không?";
-                
-                callback.onResponse(new ChatResponse(message, ChatResponse.ResponseType.TEXT));
-            },
-            e -> callback.onError(e.getMessage())
-        );
     }
     
-    private void handleDoctorSchedule(ChatCallback callback) {
-        if (maBacSi == null) {
-            callback.onResponse(new ChatResponse(
-                "Chức năng này chỉ dành cho bác sĩ.",
-                ChatResponse.ResponseType.TEXT
-            ));
-            return;
+    private String getTrangThaiText(String trangThai) {
+        switch (trangThai) {
+            case "CHO": return "Chờ xác nhận";
+            case "XAC_NHAN": return "Đã xác nhận";
+            case "HOAN_THANH": return "Hoàn thành";
+            case "HUY": return "Đã hủy";
+            default: return "Không xác định";
         }
-        
-        // Query lịch làm việc từ Firestore
-        repo.getByField("LichLamViec", "maBacSi", maBacSi,
-            querySnapshot -> {
-                if (querySnapshot.isEmpty()) {
-                    callback.onResponse(new ChatResponse(
-                        "Bạn chưa có lịch làm việc nào được đăng ký.",
-                        ChatResponse.ResponseType.TEXT
-                    ));
-                } else {
-                    StringBuilder message = new StringBuilder("📅 Lịch làm việc của bạn:\n\n");
-                    
-                    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                    
-                    for (var doc : querySnapshot.getDocuments()) {
-                        String caLamViec = doc.getString("caLamViec");
-                        com.google.firebase.Timestamp ngayLamViec = doc.getTimestamp("ngayLamViec");
-                        
-                        if (ngayLamViec != null) {
-                            message.append("📌 ").append(sdf.format(ngayLamViec.toDate()));
-                            message.append(" - ").append(caLamViec).append("\n");
-                        }
-                    }
-                    
-                    callback.onResponse(new ChatResponse(message.toString(), ChatResponse.ResponseType.TEXT));
-                }
-            },
-            e -> callback.onError(e.getMessage())
-        );
     }
     
-    private void handlePatientLookup(String userMessage, ChatCallback callback) {
-        if (maBacSi == null) {
-            callback.onResponse(new ChatResponse(
-                "Chức năng này chỉ dành cho bác sĩ.",
-                ChatResponse.ResponseType.TEXT
-            ));
-            return;
-        }
-        
-        callback.onResponse(new ChatResponse(
-            "🔍 Tra cứu bệnh nhân\n\n" +
-            "Vui lòng cung cấp:\n" +
-            "- Tên bệnh nhân\n" +
-            "- Mã bệnh nhân\n" +
-            "- Số điện thoại\n\n" +
-            "Để tôi tìm kiếm thông tin.",
-            ChatResponse.ResponseType.TEXT
-        ));
+    private String getBacSiName(String maBacSi) {
+        return "Đang tải...";
     }
     
-    private void handleMedicationLookup(String userMessage, ChatCallback callback) {
-        // Tra cứu thuốc - có thể dùng Gemini để tra cứu thông tin thuốc
-        String prompt = "Tra cứu thông tin về thuốc: " + userMessage + 
-                       "\n\nVui lòng cung cấp:\n" +
-                       "- Thành phần\n" +
-                       "- Công dụng\n" +
-                       "- Liều dùng\n" +
-                       "- Tương tác thuốc\n" +
-                       "- Chống chỉ định";
-        
-        handleWithGemini(prompt, callback);
-    }
-    
-    private void handleCreateReport(ChatCallback callback) {
-        if (maBacSi == null) {
-            callback.onResponse(new ChatResponse(
-                "Chức năng này chỉ dành cho bác sĩ.",
-                ChatResponse.ResponseType.TEXT
-            ));
-            return;
-        }
-        
-        callback.onResponse(new ChatResponse(
-            "📋 Tạo báo cáo\n\n" +
-            "Bạn muốn tạo báo cáo gì?\n\n" +
-            "1. Báo cáo bệnh nhân theo ngày\n" +
-            "2. Báo cáo doanh thu\n" +
-            "3. Báo cáo thuốc kê đơn\n" +
-            "4. Báo cáo tổng hợp\n\n" +
-            "Vui lòng chọn loại báo cáo.",
-            ChatResponse.ResponseType.TEXT
-        ));
-    }
-    
-    private void handleDiagnosisSuggestion(String userMessage, ChatCallback callback) {
-        // Gợi ý chẩn đoán - dùng Gemini với context y tế
-        String prompt = "Với vai trò là trợ lý y tế, hãy gợi ý các chẩn đoán có thể dựa trên triệu chứng sau:\n\n" +
-                       userMessage + 
-                       "\n\nVui lòng liệt kê:\n" +
-                       "1. Các chẩn đoán có thể\n" +
-                       "2. Xét nghiệm cần làm\n" +
-                       "3. Điều trị ban đầu\n\n" +
-                       "Lưu ý: Đây chỉ là gợi ý, cần thăm khám trực tiếp để chẩn đoán chính xác.";
-        
-        handleWithGemini(prompt, callback);
+    private String formatCurrency(Double amount) {
+        if (amount == null) return "0đ";
+        return String.format("%,.0fđ", amount);
     }
 }

@@ -5,6 +5,8 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.HorizontalScrollView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -173,6 +175,9 @@ public class ChatActivity extends AppCompatActivity {
                     messages.add(botMessage);
                     adapter.notifyItemInserted(messages.size() - 1);
                     rvChat.scrollToPosition(messages.size() - 1);
+                    
+                    // Show quick replies if available
+                    showQuickReplies(response.getQuickReplies());
                 });
             }
             
@@ -201,5 +206,50 @@ public class ChatActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    private void showQuickReplies(List<String> quickReplies) {
+        HorizontalScrollView quickRepliesContainer = findViewById(R.id.quickRepliesContainer);
+        LinearLayout quickRepliesLayout = findViewById(R.id.quickRepliesLayout);
+        
+        if (quickReplies == null || quickReplies.isEmpty()) {
+            quickRepliesContainer.setVisibility(android.view.View.GONE);
+            return;
+        }
+        
+        // Clear previous quick replies
+        quickRepliesLayout.removeAllViews();
+        
+        // Add new quick reply buttons
+        for (String reply : quickReplies) {
+            com.google.android.material.button.MaterialButton button = new com.google.android.material.button.MaterialButton(
+                this, null, com.google.android.material.R.attr.materialButtonOutlinedStyle);
+            
+            button.setText(reply);
+            button.setTextSize(14);
+            button.setAllCaps(false);
+            
+            // Set margins
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            params.setMargins(0, 0, 16, 0);
+            button.setLayoutParams(params);
+            
+            // Click listener
+            button.setOnClickListener(v -> {
+                // Send the quick reply as user message
+                edtMessage.setText(reply);
+                sendMessage();
+                
+                // Hide quick replies after selection
+                quickRepliesContainer.setVisibility(android.view.View.GONE);
+            });
+            
+            quickRepliesLayout.addView(button);
+        }
+        
+        quickRepliesContainer.setVisibility(android.view.View.VISIBLE);
     }
 }

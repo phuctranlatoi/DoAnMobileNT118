@@ -1,11 +1,14 @@
 package com.example.doannt118.model;
 import java.util.Date;
+import com.google.firebase.Timestamp;
 
 public class DonThuoc {
     private String maDonThuoc;
     private String maBenhAn;
     private String maBenhNhan;
+    private String maBacSi; // Mã bác sĩ kê đơn
     private Date ngayLap;
+    private Timestamp ngayKeDon; // Ngày kê đơn (Timestamp cho Firestore)
     private int soNgayUong;
     private Date ngayBatDau;
     private Date ngayKetThuc;
@@ -47,4 +50,10 @@ public class DonThuoc {
 
     public String getTrangThai() { return trangThai; }
     public void setTrangThai(String trangThai) { this.trangThai = trangThai; }
+    
+    public String getMaBacSi() { return maBacSi; }
+    public void setMaBacSi(String maBacSi) { this.maBacSi = maBacSi; }
+    
+    public Timestamp getNgayKeDon() { return ngayKeDon; }
+    public void setNgayKeDon(Timestamp ngayKeDon) { this.ngayKeDon = ngayKeDon; }
 }
