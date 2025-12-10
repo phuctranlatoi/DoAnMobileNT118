@@ -3,99 +3,190 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     android:background="@color/background">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:elevation="8dp">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/colorPrimary"
-            app:title="Lịch sử uống thuốc"
+            android:layout_height="64dp"
+            android:background="@drawable/toolbar_gradient_background"
+            app:title="💊 Lịch sử uống thuốc"
             app:titleTextColor="@android:color/white"
-            app:navigationIcon="@drawable/ic_back" />
+            app:titleTextAppearance="@style/ToolbarTitleStyle"
+            app:navigationIcon="@drawable/ic_back_white"
+            android:paddingStart="8dp"
+            android:paddingEnd="16dp" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="@drawable/main_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+        <!-- Header thống kê với hiệu ứng đẹp -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="2dp">
+            app:cardCornerRadius="28dp"
+            app:cardElevation="16dp"
+            android:background="@drawable/premium_stats_background">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="28dp"
+                android:background="@drawable/premium_stats_background">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <!-- Header với icon và title -->
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tỉ lệ tuân thủ"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/textPrimary"
-                    android:layout_marginBottom="12dp" />
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="24dp">
 
+                    <FrameLayout
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/stats_icon_background"
+                        android:layout_marginEnd="16dp">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_analytics"
+                            android:tint="@android:color/white" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thống kê tuân thủ"
+                            android:textSize="22sp"
+                            android:textStyle="bold"
+                            android:textColor="#1A1A1A"
+                            android:fontFamily="sans-serif-medium" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Theo dõi việc uống thuốc của bạn"
+                            android:textSize="14sp"
+                            android:textColor="#666666"
+                            android:layout_marginTop="2dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Thống kê chính -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <TextView
-                        android:id="@+id/tvTiLeTuanThu"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="85%"
-                        android:textSize="32sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorPrimary" />
+                    <!-- Percentage circle với hiệu ứng -->
+                    <FrameLayout
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:background="@drawable/percentage_circle_modern">
 
+                        <TextView
+                            android:id="@+id/tvTiLeTuanThu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="85%"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            android:textColor="#FFFFFF"
+                            android:fontFamily="sans-serif-medium" />
+                    </FrameLayout>
+
+                    <!-- Stats details -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:orientation="vertical"
-                        android:layout_marginStart="16dp">
+                        android:layout_marginStart="24dp">
 
-                        <TextView
-                            android:id="@+id/tvDaUong"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Đã uống: 17/20 lần"
-                            android:textSize="14sp"
-                            android:textColor="@color/textPrimary" />
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/stat_item_background"
+                            android:padding="12dp"
+                            android:layout_marginBottom="8dp">
 
-                        <TextView
-                            android:id="@+id/tvBoQua"
-                            android:layout_width="wrap_content"
+                            <View
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:background="@drawable/success_dot"
+                                android:layout_marginEnd="12dp" />
+
+                            <TextView
+                                android:id="@+id/tvDaUong"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Đã uống: 17/20 lần"
+                                android:textSize="16sp"
+                                android:textColor="#4CAF50"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Bỏ qua: 3 lần"
-                            android:textSize="14sp"
-                            android:textColor="@color/textSecondary"
-                            android:layout_marginTop="4dp" />
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:background="@drawable/stat_item_background"
+                            android:padding="12dp">
+
+                            <View
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:background="@drawable/skip_dot"
+                                android:layout_marginEnd="12dp" />
+
+                            <TextView
+                                android:id="@+id/tvBoQua"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Bỏ qua: 3 lần"
+                                android:textSize="16sp"
+                                android:textColor="#FF5722"
+                                android:fontFamily="sans-serif-medium" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
+        <!-- RecyclerView với background đẹp -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvLichSu"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="8dp"
-            android:clipToPadding="false" />
+            android:clipToPadding="false"
+            android:paddingBottom="16dp" />
     </LinearLayout>
 
     <ProgressBar

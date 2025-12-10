@@ -231,7 +231,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             loadUserInfo(); // Thử load lại
             return;
         }
-        Intent intent = new Intent(this, DiemDanhUongThuocActivity.class);
+        Intent intent = new Intent(this, QuanLyUongThuocActivity.class);
         intent.putExtra("MA_BENH_NHAN", maBenhNhan);
         startActivity(intent);
     }

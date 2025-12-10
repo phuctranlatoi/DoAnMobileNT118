@@ -55,10 +55,28 @@ public class LichSuUongThuocActivity extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         toolbar.setNavigationOnClickListener(v -> finish());
+        
+        // Thêm menu tạo dữ liệu test
+        toolbar.setOnMenuItemClickListener(item -> {
+            if (item.getTitle().equals("Tạo dữ liệu test")) {
+                createTestData();
+                Toast.makeText(this, "Đang tạo dữ liệu test...", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+            return false;
+        });
+        
+        // Thêm menu item
+        toolbar.getMenu().add("Tạo dữ liệu test");
     }
 
     private void setupRecyclerView() {
-        adapter = new LichSuUongThuocAdapter(this);
+        adapter = new LichSuUongThuocAdapter(this, () -> {
+            // Reload data khi có thay đổi
+            if (maBenhNhan != null) {
+                loadLichSuUongThuoc();
+            }
+        });
         rvLichSu.setLayoutManager(new LinearLayoutManager(this));
         rvLichSu.setAdapter(adapter);
     }
@@ -111,6 +129,23 @@ public class LichSuUongThuocActivity extends AppCompatActivity {
                     }
                 }
                 
+                // Sắp xếp: Chờ xác nhận lên đầu, sau đó theo ngày giảm dần
+                list.sort((a, b) -> {
+                    // Chờ xác nhận lên đầu
+                    if ("CHO_XAC_NHAN".equals(a.getTrangThai()) && !"CHO_XAC_NHAN".equals(b.getTrangThai())) {
+                        return -1;
+                    }
+                    if (!"CHO_XAC_NHAN".equals(a.getTrangThai()) && "CHO_XAC_NHAN".equals(b.getTrangThai())) {
+                        return 1;
+                    }
+                    
+                    // Cùng trạng thái thì sắp xếp theo ngày giảm dần
+                    if (a.getNgayUong() != null && b.getNgayUong() != null) {
+                        return b.getNgayUong().compareTo(a.getNgayUong());
+                    }
+                    return 0;
+                });
+                
                 adapter.setData(list);
                 updateThongKe(daUong, boQua, list.size());
                 showLoading(false);
@@ -126,13 +161,32 @@ public class LichSuUongThuocActivity extends AppCompatActivity {
     private void updateThongKe(int daUong, int boQua, int total) {
         if (total > 0) {
             int tiLe = (int) ((daUong * 100.0) / total);
-            tvTiLeTuanThu.setText(tiLe + "%");
-            tvDaUong.setText("Đã uống: " + daUong + "/" + total + " lần");
-            tvBoQua.setText("Bỏ qua: " + boQua + " lần");
+            
+            // Hiệu ứng cập nhật số liệu
+            android.animation.ValueAnimator animator = android.animation.ValueAnimator.ofInt(0, tiLe);
+            animator.setDuration(1000);
+            animator.addUpdateListener(animation -> {
+                int animatedValue = (int) animation.getAnimatedValue();
+                tvTiLeTuanThu.setText(animatedValue + "%");
+            });
+            animator.start();
+            
+            tvDaUong.setText("✅ Đã uống: " + daUong + "/" + total + " lần");
+            tvBoQua.setText("⏭️ Bỏ qua: " + boQua + " lần");
+            
+            // Thay đổi màu sắc dựa trên tỷ lệ tuân thủ
+            if (tiLe >= 80) {
+                tvTiLeTuanThu.setTextColor(android.graphics.Color.parseColor("#27AE60"));
+            } else if (tiLe >= 60) {
+                tvTiLeTuanThu.setTextColor(android.graphics.Color.parseColor("#F39C12"));
+            } else {
+                tvTiLeTuanThu.setTextColor(android.graphics.Color.parseColor("#E74C3C"));
+            }
         } else {
             tvTiLeTuanThu.setText("0%");
-            tvDaUong.setText("Đã uống: 0/0 lần");
-            tvBoQua.setText("Bỏ qua: 0 lần");
+            tvTiLeTuanThu.setTextColor(android.graphics.Color.parseColor("#95A5A6"));
+            tvDaUong.setText("✅ Đã uống: 0/0 lần");
+            tvBoQua.setText("⏭️ Bỏ qua: 0 lần");
         }
     }
 
@@ -143,5 +197,46 @@ public class LichSuUongThuocActivity extends AppCompatActivity {
     private void showEmpty(boolean show) {
         tvEmpty.setVisibility(show ? View.VISIBLE : View.GONE);
         rvLichSu.setVisibility(show ? View.GONE : View.VISIBLE);
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Refresh data khi quay lại activity với hiệu ứng
+        if (maBenhNhan != null) {
+            // Thêm delay nhỏ để tạo hiệu ứng mượt mà
+            new android.os.Handler().postDelayed(() -> {
+                loadLichSuUongThuoc();
+            }, 300);
+        }
+    }
+    
+    // Method để tạo dữ liệu test (gọi 1 lần để tạo data)
+    private void createTestData() {
+        if (maBenhNhan == null) return;
+        
+        // Tạo 3 lịch uống thuốc test
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        
+        for (int i = 0; i < 3; i++) {
+            cal.add(java.util.Calendar.DAY_OF_MONTH, -i);
+            String maLichUong = "LU" + System.currentTimeMillis() + "_" + i;
+            
+            LichUongThuoc lich = new LichUongThuoc(
+                maLichUong,
+                "DT001", // maDonThuoc
+                maBenhNhan,
+                cal.getTime(),
+                i == 0 ? "SANG" : i == 1 ? "TRUA" : "TOI"
+            );
+            
+            repository.addDocument("LichUongThuoc", maLichUong, lich,
+                aVoid -> android.util.Log.d("LichSuUongThuocActivity", "Created test data: " + maLichUong),
+                e -> android.util.Log.e("LichSuUongThuocActivity", "Failed to create test data", e)
+            );
+        }
+        
+        // Reload sau khi tạo
+        new android.os.Handler().postDelayed(() -> loadLichSuUongThuoc(), 2000);
     }
 }

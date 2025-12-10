@@ -5,102 +5,159 @@
     android:id="@+id/cardThuoc"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="8dp"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="2dp"
-    app:strokeWidth="1dp"
-    app:strokeColor="@color/divider">
+    android:layout_marginBottom="16dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    app:strokeWidth="0dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:orientation="vertical"
+        android:background="@drawable/modern_card_background">
 
-        <!-- Icon thuốc -->
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_medication"
-            android:tint="@color/primary"
-            android:layout_gravity="center_vertical" />
-
-        <!-- Thông tin thuốc -->
+        <!-- Header với icon và tên thuốc -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_marginStart="12dp"
-            android:layout_marginEnd="8dp">
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
 
-            <TextView
-                android:id="@+id/tvTenThuoc"
-                android:layout_width="wrap_content"
+            <!-- Icon thuốc với container đẹp -->
+            <FrameLayout
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/medicine_icon_background">
+
+                <ImageView
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_medication"
+                    android:tint="@android:color/white" />
+
+            </FrameLayout>
+
+            <!-- Thông tin thuốc -->
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Paracetamol 500mg"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_primary" />
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="12dp">
 
-            <TextView
-                android:id="@+id/tvLieuDung"
+                <TextView
+                    android:id="@+id/tvTenThuoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Paracetamol 500mg"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="#1A1A1A"
+                    android:fontFamily="sans-serif-medium"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <TextView
+                    android:id="@+id/tvLieuDung"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Uống 7 ngày, ngày 3 lần, mỗi lần 2 viên"
+                    android:textSize="14sp"
+                    android:textColor="#4A5568"
+                    android:fontFamily="sans-serif"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+            </LinearLayout>
+
+            <!-- Nút điểm danh -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDiemDanh"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
-                android:text="Uống 7 ngày, ngày 3 lần, mỗi lần 2 viên"
-                android:textSize="13sp"
-                android:textColor="@color/text_secondary" />
+                android:layout_height="44dp"
+                android:text="✓ Uống"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:backgroundTint="#4CAF50"
+                app:cornerRadius="22dp"
+                android:minWidth="0dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:fontFamily="sans-serif-medium"
+                app:rippleColor="#81C784"
+                android:elevation="4dp" />
 
+        </LinearLayout>
+
+        <!-- Thông tin bổ sung -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp"
+            android:gravity="center_vertical">
+
+            <!-- Cách dùng -->
             <TextView
                 android:id="@+id/tvCachDung"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="Uống sau ăn"
-                android:textSize="12sp"
-                android:textColor="@color/text_hint"
-                android:textStyle="italic" />
+                android:layout_weight="1"
+                android:text="🍽️ Uống sau ăn"
+                android:textSize="13sp"
+                android:textColor="#4CAF50"
+                android:background="@drawable/instruction_tag_background"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="sans-serif-medium" />
 
             <!-- Trạng thái đã uống -->
             <LinearLayout
                 android:id="@+id/layoutDaUong"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
                 android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/completed_status_background"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
                 android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:src="@drawable/ic_check"
-                    android:tint="@color/success"
-                    android:layout_gravity="center_vertical" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✅"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="6dp" />
 
                 <TextView
                     android:id="@+id/tvThoiGianUong"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
                     android:text="Đã uống lúc 08:30"
                     android:textSize="12sp"
-                    android:textColor="@color/success" />
+                    android:textColor="#FFFFFF"
+                    android:fontFamily="sans-serif-medium" />
 
             </LinearLayout>
 
         </LinearLayout>
-
-        <!-- Nút điểm danh -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDiemDanh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Đã uống"
-            android:textSize="12sp"
-            app:cornerRadius="20dp"
-            android:layout_gravity="center_vertical"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
     </LinearLayout>
 

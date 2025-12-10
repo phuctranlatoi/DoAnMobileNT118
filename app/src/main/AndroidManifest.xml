@@ -96,6 +96,9 @@
             android:name=".ui.DiemDanhUongThuocActivity"
             android:exported="false" />
         <activity
+            android:name=".ui.QuanLyUongThuocActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.ChiTietThongBaoActivity"
             android:exported="false" />
         <activity

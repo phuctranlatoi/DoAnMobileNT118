@@ -31,10 +31,11 @@ import java.util.UUID;
  */
 public class DiemDanhUongThuocActivity extends AppCompatActivity {
     
-    private TextView tvNgayHomNay, tvEmpty;
+    private TextView tvNgayHomNay;
+    private View tvEmpty;
     private RecyclerView rvCaSang, rvCaTrua, rvCaChieu, rvCaToi;
     private View layoutCaSang, layoutCaTrua, layoutCaChieu, layoutCaToi;
-    private ProgressBar progressBar;
+    private View progressBar;
     
     private DiemDanhThuocAdapter adapterSang, adapterTrua, adapterChieu, adapterToi;
     private FirestoreRepository repository;
@@ -101,10 +102,10 @@ public class DiemDanhUongThuocActivity extends AppCompatActivity {
     }
 
     private void setupRecyclerViews() {
-        adapterSang = new DiemDanhThuocAdapter(this, this::onDiemDanh);
-        adapterTrua = new DiemDanhThuocAdapter(this, this::onDiemDanh);
-        adapterChieu = new DiemDanhThuocAdapter(this, this::onDiemDanh);
-        adapterToi = new DiemDanhThuocAdapter(this, this::onDiemDanh);
+        adapterSang = new DiemDanhThuocAdapter(this, "SANG", this::onDiemDanh);
+        adapterTrua = new DiemDanhThuocAdapter(this, "TRUA", this::onDiemDanh);
+        adapterChieu = new DiemDanhThuocAdapter(this, "CHIEU", this::onDiemDanh);
+        adapterToi = new DiemDanhThuocAdapter(this, "TOI", this::onDiemDanh);
         
         rvCaSang.setLayoutManager(new LinearLayoutManager(this));
         rvCaSang.setAdapter(adapterSang);
