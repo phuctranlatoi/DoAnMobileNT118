@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-59:/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\c354bc57d554a1a3043653c16c3af035\\transformed\\material-1.13.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,22,31,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/9a6ff1f62b467f507e3bf42197fa0f35/transformed/appcompat-1.7.1/res/values-land/values-land.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\299850debdf9e78dd9ce4bff696ee3ef\\transformed\\appcompat-1.7.1\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

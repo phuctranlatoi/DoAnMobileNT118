@@ -304,7 +304,7 @@ public class DiemDanhThuocAdapter extends RecyclerView.Adapter<DiemDanhThuocAdap
         
         if (maBenhNhan.isEmpty()) {
             // Fallback: lấy từ activity nếu có
-            if (context instanceof QuanLyUongThuocActivity) {
+            if (context instanceof DiemDanhUongThuocActivity || context instanceof QuanLyUongThuocActivity) {
                 android.content.Intent intent = ((android.app.Activity) context).getIntent();
                 maBenhNhan = intent.getStringExtra("MA_BENH_NHAN");
             } else if (context instanceof android.app.Activity) {

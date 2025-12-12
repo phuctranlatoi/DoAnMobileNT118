@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-59:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/9a6ff1f62b467f507e3bf42197fa0f35/transformed/appcompat-1.7.1/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\299850debdf9e78dd9ce4bff696ee3ef\\transformed\\appcompat-1.7.1\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/fa0d8d4871472e5a7e591eb8f8ba098a/transformed/media-1.0.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\75a2ff218f66b74d4deb6ce8654c9d69\\transformed\\media-1.0.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -31,7 +31,7 @@
                     }
                 },
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\c354bc57d554a1a3043653c16c3af035\\transformed\\material-1.13.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",

@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-59:/values-v18/values-v18.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/9a6ff1f62b467f507e3bf42197fa0f35/transformed/appcompat-1.7.1/res/values-v18/values-v18.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\299850debdf9e78dd9ce4bff696ee3ef\\transformed\\appcompat-1.7.1\\res\\values-v18\\values-v18.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

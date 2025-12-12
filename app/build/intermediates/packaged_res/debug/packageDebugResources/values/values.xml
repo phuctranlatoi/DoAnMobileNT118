@@ -69,4 +69,9 @@
         <item name="textAllCaps">false</item>
     </style>
     <style name="Theme.DoAnNT118" parent="Base.Theme.DoAnNT118"/>
+    <style name="ToolbarTitleStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 </resources>

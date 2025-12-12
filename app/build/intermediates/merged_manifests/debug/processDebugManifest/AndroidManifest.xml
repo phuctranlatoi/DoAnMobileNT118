@@ -43,6 +43,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.DoAnNT118" >
 
         <!-- 🟢 WelcomeActivity: chạy đầu tiên -->
@@ -119,6 +120,9 @@
             android:exported="false" />
         <activity
             android:name="com.example.doannt118.ui.DiemDanhUongThuocActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.QuanLyUongThuocActivity"
             android:exported="false" />
         <activity
             android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"

@@ -4,7 +4,7 @@
             "outputFile": "com.example.doannt118.app-mergeDebugResources-59:/values-w400dp-port-v13/values-w400dp-port-v13.xml",
             "map": [
                 {
-                    "source": "/Users/kelvin/.gradle/caches/8.13/transforms/befde0cc6f1e502eb9973da31fdf6bba/transformed/material-1.13.0/res/values-w400dp-port-v13/values-w400dp-port-v13.xml",
+                    "source": "C:\\Users\\ASUS\\.gradle\\caches\\8.13\\transforms\\c354bc57d554a1a3043653c16c3af035\\transformed\\material-1.13.0\\res\\values-w400dp-port-v13\\values-w400dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
