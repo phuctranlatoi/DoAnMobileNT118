@@ -39,4 +39,9 @@
     <color name="success_light">#E8F5E9</color>
     <color name="warning_light">#FFF3E0</color>
     <color name="error_light">#FFEBEE</color>
+    
+    <!-- New Colors for Medicine Management -->
+    <color name="primary_green">#4CAF50</color>
+    <color name="status_pending">#FF6B35</color>
+    <color name="completed_background_light">#F0FFF4</color>
 </resources>

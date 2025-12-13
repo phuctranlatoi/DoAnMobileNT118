@@ -1,886 +1,926 @@
 [
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_dich_vu_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_dich_vu_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_note.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_note.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input_1.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_input_1.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_status_success_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\status_success_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_microphone.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_microphone.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_menu.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_menu.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_empty_state_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/empty_state_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_success_dot.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\success_dot.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_status_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/completed_status_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_note.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_note.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_close.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_close.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_benh_an_bac_si.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_benh_an_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_number.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_number.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lichkham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lichkham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_time_badge_modern.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/time_badge_modern.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_them_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_them_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_lich_lam_viec.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_close.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_close.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xac_nhan_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_xac_nhan_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_appointment.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_appointment.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_hoa_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_status_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\status_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_arrow_right.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_arrow_right.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_doctor_illustration.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_doctor_illustration.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\menu_bottom_nav_patient.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\menu\\bottom_nav_patient.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_button_solid_green.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/button_solid_green.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_thong_bao.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_thong_bao.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_menu.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_img.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\img.png"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_diem_danh_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_diem_danh_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_gui_thong_bao.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_gui_thong_bao.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_back_white.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_back_white.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_rounded_button_white.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\rounded_button_white.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_diagnosis_entry.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_diagnosis_entry.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\xml\\data_extraction_rules.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_circle_bg.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/circle_bg.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_edit_account.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_edit_account.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_appointment.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_appointment.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_settings.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_settings.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_don_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_don_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_bac_si.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_fragment_diem_danh_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\fragment_diem_danh_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/menu_benhnhan_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/menu/benhnhan_menu.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_input_field.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_input_field.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_fragment_lich_su_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/fragment_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_profile.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_profile.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_success_dot.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/success_dot.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lich_su_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lich_su_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_cap_nhat_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_cap_nhat_benh_an.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_email.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_email.png"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_primary.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_primary.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_gui_thong_bao.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_gui_thong_bao.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_warning.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_warning.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_success.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_success.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_pending_doctor.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_pending_doctor.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_button_solid_blue.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/button_solid_blue.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_verified.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_verified.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_don_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_don_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_invoice.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_invoice.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_arrow_right.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_arrow_right.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_instruction_tag_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\instruction_tag_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_calendar.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_calendar.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_dich_vu.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_dich_vu.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_main_bacsi.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_main_bacsi.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_thong_bao.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_thong_bao.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chi_tiet_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chi_tiet_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_lich_kham_cua_toi.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_lich_kham_cua_toi.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_stats_icon_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\stats_icon_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_chon_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_chon_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_search.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_search.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_benh_nhan.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_benh_nhan.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_activity_history.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_activity_history.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_success.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_success.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_service.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_service.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_check_circle.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_check_circle.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_password.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_password.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_thuoc_can_uong.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_thuoc_can_uong.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_outline.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_outline.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_ho_so_benh_nhan.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_ho_so_benh_nhan.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_welcome.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_welcome.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_quan_ly_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_quan_ly_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bottom_nav_icon_tint.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bottom_nav_icon_tint.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_stat_item_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\stat_item_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_thong_bao.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_thong_bao.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_activity_history.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_activity_history.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_search_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/search_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_rounded_button_elevation.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\rounded_button_elevation.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_instruction_tag_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/instruction_tag_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_setting_lines.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\setting_lines.png"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_ke_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_ke_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_xem_benh_an.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_xem_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_settings.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_don_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_don_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_quan_ly_lich_lam_viec.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_quan_ly_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_benh_an_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_benh_an_bac_si.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_hospital.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_hospital.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_benh_an.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_rounded_button_elevation_large.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\rounded_button_elevation_large.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_gradient_divider.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/gradient_divider.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_session_header_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\session_header_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_outline_blue.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_outline_blue.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_them_lich_lam_viec.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_them_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_icon_ring_effect.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/icon_ring_effect.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_delete.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_delete.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_message.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_message.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_disease_info.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_disease_info.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_pill_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/medicine_pill_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_button_outline.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_button_outline.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_avatar_overlay.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_avatar_overlay.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_quanlyhosocanhan.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_quanlyhosocanhan.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_danger.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_danger.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_medical.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_medical.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_schedule.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_schedule.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_icon_container_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\icon_container_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_nhan.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_benh_nhan.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chat_bot.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chat_bot.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_session_header_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/session_header_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_user.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_user.png"
+        "merged": "com.example.doannt118.app-debug-61:/menu_bottom_nav_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/menu/bottom_nav_doctor.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_settings.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_settings.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_them_dich_vu.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_them_dich_vu.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_circle_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/circle_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_gradient_button.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\gradient_button.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_benh_nhan_list.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_benh_nhan_list.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_setting.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_setting.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_number.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_number.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_user.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_user.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_button_solid_green.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\button_solid_green.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_verified.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_verified.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-anydpi\\ic_launcher_round.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_ghichu.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_ghichu.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_thong_bao.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_thong_bao.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_status_pending.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_status_pending.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_add.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_add.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_ho_so_benh_nhan.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_ho_so_benh_nhan.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_diem_danh_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_diem_danh_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_password.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_password.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_them_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_them_lich_lam_viec.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_benh_an.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_avatar.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_avatar.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_img_logo.jpg.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\img_logo.jpg"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_white.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_white.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chi_tiet_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chi_tiet_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_lich_kham_cua_toi.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_lich_kham_cua_toi.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_hospital.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/hospital.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_outline_blue.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_outline_blue.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_thong_bao.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_thong_bao.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_benh_an.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_confirm_button_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/confirm_button_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_thuoc_ke_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_thuoc_ke_don.xml"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_xac_nhan_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_xac_nhan_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_home.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_home.xml"
     },
     {
         "merged": "com.example.doannt118.app-debug-61:/layout_fragment_diem_danh_uong_thuoc.xml.flat",
         "source": "com.example.doannt118.app-main-63:/layout/fragment_diem_danh_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_gradient_divider.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\gradient_divider.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_patient.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_patient.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_xac_nhan_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_xac_nhan_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_toolbar_gradient_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\toolbar_gradient_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_benh_nhan_select.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_benh_nhan_select.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_primary.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_primary.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_lich_su_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_lich_su_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_kham_cua_toi.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lich_kham_cua_toi.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_button_primary.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_button_primary.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_delete.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_delete.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_dangky_lichkham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_dangky_lichkham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_ghichu.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_ghichu.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_health_record.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_health_record.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_back.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_back.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_account_info.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_account_info.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_bac_si.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_main_benhnhan.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_main_benhnhan.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_skip_dot.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/skip_dot.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_back.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_back.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_can_uong.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_can_uong.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_button_outline_red.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\button_outline_red.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_su_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_tao_benh_an.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_tao_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_status_pending_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/status_pending_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_location.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_location.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_premium_stats_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/premium_stats_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_input.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_input.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_email.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_email.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_instruction_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\instruction_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_xac_nhan_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-anydpi\\ic_launcher.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_secondary.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_secondary.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_premium_stats_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\premium_stats_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_gradient_button.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/gradient_button.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_fragment_lich_su_uong_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\fragment_lich_su_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_arrow_back.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_arrow_back.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_xac_nhan_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_xac_nhan_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lich_lam_viec.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_them_lich_lam_viec.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_them_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_home.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_home.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_ke_don_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_ke_don_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_account.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_account.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_button_outline_red.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/button_outline_red.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_nhap_ma_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_nhap_ma_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medication.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_medication.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_status_pending.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_status_pending.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_status_success_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/status_success_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_setting_lines.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/setting_lines.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\menu_benhnhan_menu.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\menu\\benhnhan_menu.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_trong_ca.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_trong_ca.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_message.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_message.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_phone.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_phone.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_doctor_illustration.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_doctor_illustration.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_nhap_ma_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_nhap_ma_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_search_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\search_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_account_info.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_account_info.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_button_solid_blue.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\button_solid_blue.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_bac_si.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_icon_ring_effect.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\icon_ring_effect.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_su_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lich_su_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_phone.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_phone.png"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_setting.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_setting.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-61:/layout_fragment_danh_sach_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/fragment_danh_sach_lich_lam_viec.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_analytics.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_analytics.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chon_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chon_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_stats_icon_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/stats_icon_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_main_admin.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_main_admin.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_dangky_lichkham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_dangky_lichkham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lich_lam_viec.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_tao_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_tao_benh_an.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_notification.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_notification.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_instruction_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/instruction_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_bac_si.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_diem_danh_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_diem_danh_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_elevation_large.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_elevation_large.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_rounded_button_teal.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\rounded_button_teal.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_status_skip_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/status_skip_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_copy.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_copy.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_elevation.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_elevation.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_edit_text_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\edit_text_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_modern_card_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/modern_card_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_xem_chi_tiet_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_xem_chi_tiet_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_hoa_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_danger.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_danger.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_teal.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_teal.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_time.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_time.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_location1.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_location1.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lich_kham_cua_toi.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lich_kham_cua_toi.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xem_chi_tiet_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_xem_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\menu_doctor_menu.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\menu\\doctor_menu.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_create_account.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_create_account.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_info.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_info.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_copy.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_copy.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chat.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chat.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_update_bacsi_profile.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_update_bacsi_profile.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_time.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_time.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_create_account.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_create_account.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_item_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/medicine_item_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_avatar.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_avatar.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_skip_dot.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\skip_dot.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_init_duoc_pham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_init_duoc_pham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_service.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_service.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_toolbar_gradient_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/toolbar_gradient_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_circle_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\circle_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medical_record.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_medical_record.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_check.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_check.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_lich_su_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_lich_su_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_ca_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_ca_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_chat.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_chat.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xem_benh_an.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_xem_benh_an.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_badge_primary.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\badge_primary.xml"
+        "merged": "com.example.doannt118.app-debug-61:/menu_doctor_menu.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/menu/doctor_menu.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_avatar_overlay.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_avatar_overlay.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_khung_gio.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_khung_gio.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_profile.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_profile.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_chat.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_chat.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_calendar.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_calendar.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_disease_info.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_disease_info.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_tao_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_tao_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_an_bac_si.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_benh_an_bac_si.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_benh_an.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_status_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/status_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_khung_gio.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_khung_gio.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_welcome.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_welcome.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_health_record.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_health_record.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_forgot_password.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_forgot_password.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_edit_text.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_edit_text.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\xml\\backup_rules.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_analytics.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_analytics.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chon_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chon_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_notification.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_notification.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_camera.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_camera.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_info.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_info.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_back_white.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_back_white.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_bacsi.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_main_bacsi.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_circle_bg.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\circle_bg.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xac_nhan_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chon_dich_vu_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chon_dich_vu_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_list_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/medicine_list_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_pending_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_pending_doctor.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_quan_ly_benh_an_bac_si.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_quan_ly_benh_an_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_status_completed.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_status_completed.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_input_1.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_input_1.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_benhnhan.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_main_benhnhan.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_location1.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_location1.png"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_thong_bao.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_thong_bao.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_init_duoc_pham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_init_duoc_pham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_status_completed_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/status_completed_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_status_completed.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_status_completed.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_chon_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_chon_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_spinner_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\spinner_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input_field.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_input_field.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_diagnosis_entry.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_diagnosis_entry.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_input.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_danh_sach_bac_si.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_danh_sach_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_forgot_password.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_forgot_password.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_completed_status_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\completed_status_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_header_gradient.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_header_gradient.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_fragment_danh_sach_lich_lam_viec.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\fragment_danh_sach_lich_lam_viec.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_warning.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/badge_warning.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_check.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_check.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_tao_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_tao_hoa_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_diem_danh_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_diem_danh_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_dich_vu_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_dich_vu_hoa_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_cap_nhat_benh_an.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_cap_nhat_benh_an.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_don_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_don_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_rounded_button.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\rounded_button.xml"
+        "merged": "com.example.doannt118.app-debug-61:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_schedule.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_schedule.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_hospital.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_hospital.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_main_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\main_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chon_dich_vu_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chon_dich_vu_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chat_user.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chat_user.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_icon_container_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/icon_container_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_chatbot.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\chatbot.png"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_edit.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_edit.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_card.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/bg_card.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_dich_vu_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_dich_vu_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_admin.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_main_admin.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_main.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_don_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_don_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_register.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_register.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_pill_info.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_pill_info.xml"
+        "merged": "com.example.doannt118.app-debug-61:/menu_bottom_nav_patient.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/menu/bottom_nav_patient.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_edit_text.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_edit_text.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_location.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_location.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_percentage_circle_modern.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\percentage_circle_modern.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_update_bacsi_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_update_bacsi_profile.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_tu_choi_lich_kham.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_tu_choi_lich_kham.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/completed_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_medication.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_medication.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chat.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chat.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_login.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_danh_sach_don_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_danh_sach_don_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_lich_su_uong_thuoc.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_time_badge_modern.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\time_badge_modern.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_lich_lam_viec.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_lich_lam_viec.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_patient.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_patient.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_doctor.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_doctor.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_danh_sach_hoa_don.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_danh_sach_hoa_don.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_info_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/completed_info_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_doctor.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_doctor.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_profile.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_arrow_back.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_arrow_back.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_nhan_select.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_benh_nhan_select.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_medical_record.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_medical_record.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_add.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_add.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_chi_tiet_don_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_chi_tiet_don_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_edit_text_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/edit_text_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_settings.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_settings.png"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_chatbot.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/chatbot.png"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_microphone.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_microphone.xml"
+        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.doannt118.app-main-63:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_card.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_card.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_tu_choi_lich_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_tu_choi_lich_kham.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_consultation.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_consultation.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_invoice.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_invoice.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_search.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_search.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_profile.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_profile.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_ke_don_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_ke_don_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_camera.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_camera.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_modern_card_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\modern_card_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_edit_account.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/dialog_edit_account.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_medicine_icon_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\medicine_icon_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_edit.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_edit.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\activity_login.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_empty_state_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\empty_state_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_account.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_account.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_button_secondary.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_button_secondary.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_percentage_circle_modern.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/percentage_circle_modern.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_dialog_benh_nhan_list.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\dialog_benh_nhan_list.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_consultation.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_consultation.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\menu_bottom_nav_doctor.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\menu\\bottom_nav_doctor.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_hoa_don.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bottom_nav_icon_tint.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bottom_nav_icon_tint.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_check_circle.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_check_circle.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_hospital.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\hospital.png"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quanlyhosocanhan.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_quanlyhosocanhan.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_bg_header_gradient.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\bg_header_gradient.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_main_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/main_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_status_skip_background.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\status_skip_background.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chat_bot.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chat_bot.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_chi_tiet_don_thuoc.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_chi_tiet_don_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_modern_header_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/modern_header_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\drawable_ic_lock.png.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\drawable\\ic_lock.png"
+        "merged": "com.example.doannt118.app-debug-61:/drawable_spinner_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/spinner_background.xml"
     },
     {
-        "merged": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-debug-61:\\layout_item_bac_si.xml.flat",
-        "source": "C:\\Users\\ASUS\\.gradle\\daemon\\8.13\\com.example.doannt118.app-main-63:\\layout\\item_bac_si.xml"
+        "merged": "com.example.doannt118.app-debug-61:/layout_activity_register.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_pill_info.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_pill_info.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_dich_vu_kham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_dich_vu_kham.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/xml_backup_rules.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medical.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_medical.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_hoa_don.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_hoa_don.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_chat_user.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_chat_user.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/layout_item_lichkham.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/layout/item_lichkham.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_lock.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/ic_lock.png"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_img.png.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/img.png"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_img_logo.jpg.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/img_logo.jpg"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_icon_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/medicine_icon_background.xml"
+    },
+    {
+        "merged": "com.example.doannt118.app-debug-61:/drawable_stat_item_background.xml.flat",
+        "source": "com.example.doannt118.app-main-63:/drawable/stat_item_background.xml"
     }
 ]

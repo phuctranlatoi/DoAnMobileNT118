@@ -16,7 +16,7 @@ import com.example.doannt118.model.ChiTietDonThuoc;
 import com.example.doannt118.model.DonThuoc;
 import com.example.doannt118.model.XacNhanUongThuoc;
 import com.example.doannt118.repository.FirestoreRepository;
-import com.example.doannt118.ui.DiemDanhThuocAdapter;
+import com.example.doannt118.ui.CaUongThuocAdapter;
 import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import java.text.SimpleDateFormat;
@@ -25,17 +25,15 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.UUID;
 
 public class DiemDanhUongThuocFragment extends Fragment {
     
     private TextView tvNgayHomNay;
     private View tvEmpty;
-    private RecyclerView rvCaSang, rvCaTrua, rvCaChieu;
-    private View layoutCaSang, layoutCaTrua, layoutCaChieu;
+    private RecyclerView rvCacCaUongThuoc;
     private View progressBar;
     
-    private DiemDanhThuocAdapter adapterSang, adapterTrua, adapterChieu;
+    private CaUongThuocAdapter caUongThuocAdapter;
     private FirestoreRepository repository;
     private String maBenhNhan;
     private SimpleDateFormat dateFormat;
@@ -68,13 +66,13 @@ public class DiemDanhUongThuocFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         
         initViews(view);
-        setupRecyclerViews();
         
         if (maBenhNhan == null || maBenhNhan.isEmpty()) {
             Toast.makeText(getContext(), "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
             return;
         }
         
+        setupRecyclerViews();
         loadThuocHomNay();
     }
 
@@ -82,14 +80,7 @@ public class DiemDanhUongThuocFragment extends Fragment {
         tvNgayHomNay = view.findViewById(R.id.tvNgayHomNay);
         tvEmpty = view.findViewById(R.id.tvEmpty);
         progressBar = view.findViewById(R.id.progressBar);
-        
-        layoutCaSang = view.findViewById(R.id.layoutCaSang);
-        layoutCaTrua = view.findViewById(R.id.layoutCaTrua);
-        layoutCaChieu = view.findViewById(R.id.layoutCaChieu);
-        
-        rvCaSang = view.findViewById(R.id.rvCaSang);
-        rvCaTrua = view.findViewById(R.id.rvCaTrua);
-        rvCaChieu = view.findViewById(R.id.rvCaChieu);
+        rvCacCaUongThuoc = view.findViewById(R.id.rvCacCaUongThuoc);
         
         repository = new FirestoreRepository();
         dateFormat = new SimpleDateFormat("EEEE, dd/MM/yyyy", new Locale("vi", "VN"));
@@ -106,18 +97,9 @@ public class DiemDanhUongThuocFragment extends Fragment {
     }
 
     private void setupRecyclerViews() {
-        adapterSang = new DiemDanhThuocAdapter(getContext(), "SANG", this::onDiemDanh);
-        adapterTrua = new DiemDanhThuocAdapter(getContext(), "TRUA", this::onDiemDanh);
-        adapterChieu = new DiemDanhThuocAdapter(getContext(), "CHIEU", this::onDiemDanh);
-        
-        rvCaSang.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvCaSang.setAdapter(adapterSang);
-        
-        rvCaTrua.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvCaTrua.setAdapter(adapterTrua);
-        
-        rvCaChieu.setLayoutManager(new LinearLayoutManager(getContext()));
-        rvCaChieu.setAdapter(adapterChieu);
+        caUongThuocAdapter = new CaUongThuocAdapter(getContext(), maBenhNhan, this::onXacNhanCa);
+        rvCacCaUongThuoc.setLayoutManager(new LinearLayoutManager(getContext()));
+        rvCacCaUongThuoc.setAdapter(caUongThuocAdapter);
     }
 
     private void loadThuocHomNay() {
@@ -192,46 +174,47 @@ public class DiemDanhUongThuocFragment extends Fragment {
                                        thuoc.isUongChieu() || thuoc.isUongToi();
             
             if (!coThongTinCaUong) {
+                // Dữ liệu cũ không có thông tin ca uống - chỉ cho phép ca sáng và chiều
                 thuocSang.add(thuoc);
-                thuocTrua.add(thuoc);
                 thuocChieu.add(thuoc);
             } else {
+                // Dữ liệu mới có thông tin ca uống - phân loại chính xác
                 if (thuoc.isUongSang()) thuocSang.add(thuoc);
                 if (thuoc.isUongTrua()) thuocTrua.add(thuoc);
-                if (thuoc.isUongChieu()) thuocChieu.add(thuoc);
+                if (thuoc.isUongChieu() || thuoc.isUongToi()) thuocChieu.add(thuoc); // Gộp chiều và tối
             }
         }
         
-        adapterSang.setData(thuocSang);
-        adapterTrua.setData(thuocTrua);
-        adapterChieu.setData(thuocChieu);
+        // Tạo danh sách các ca uống thuốc - CHỈ hiển thị những ca có thuốc
+        List<CaUongThuocAdapter.CaUongThuoc> danhSachCa = new ArrayList<>();
         
-        layoutCaSang.setVisibility(thuocSang.isEmpty() ? View.GONE : View.VISIBLE);
-        layoutCaTrua.setVisibility(thuocTrua.isEmpty() ? View.GONE : View.VISIBLE);
-        layoutCaChieu.setVisibility(thuocChieu.isEmpty() ? View.GONE : View.VISIBLE);
+        if (!thuocSang.isEmpty()) {
+            danhSachCa.add(new CaUongThuocAdapter.CaUongThuoc("Ca Sáng", "🌅", "SANG", thuocSang));
+        }
+        
+        if (!thuocTrua.isEmpty()) {
+            danhSachCa.add(new CaUongThuocAdapter.CaUongThuoc("Ca Trưa", "☀️", "TRUA", thuocTrua));
+        }
+        
+        if (!thuocChieu.isEmpty()) {
+            danhSachCa.add(new CaUongThuocAdapter.CaUongThuoc("Ca Chiều", "🌤️", "CHIEU", thuocChieu));
+        }
+        
+        // Cập nhật adapter
+        caUongThuocAdapter.setData(danhSachCa);
         
         showLoading(false);
-        showEmpty(tatCaThuoc.isEmpty());
+        
+        // Chỉ hiển thị empty state khi không có ca nào có thuốc
+        showEmpty(danhSachCa.isEmpty());
     }
 
-    private void onDiemDanh(ChiTietDonThuoc thuoc, String caUong) {
-        String maXacNhan = "XN_" + UUID.randomUUID().toString();
-        XacNhanUongThuoc xacNhan = new XacNhanUongThuoc();
-        xacNhan.setMaXacNhan(maXacNhan);
-        xacNhan.setMaChiTietDonThuoc(thuoc.getMaChiTiet());
-        xacNhan.setMaBenhNhan(maBenhNhan);
-        xacNhan.setDaUong(true);
-        xacNhan.setThoiGianXacNhan(Timestamp.now());
-        xacNhan.setGhiChu("Điểm danh ca " + caUong.toLowerCase());
-        
-        repository.addDocument("XacNhanUongThuoc", maXacNhan, xacNhan,
-            aVoid -> {
-                Toast.makeText(getContext(), "Đã xác nhận uống " + thuoc.getTenThuoc(), Toast.LENGTH_SHORT).show();
-            },
-            e -> {
-                Toast.makeText(getContext(), "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        );
+    private void onXacNhanCa(CaUongThuocAdapter.CaUongThuoc caUong) {
+        // Callback khi xác nhận ca thành công
+        Toast.makeText(getContext(), 
+            "✅ Đã xác nhận uống hết " + caUong.getTenCa().toLowerCase() + 
+            " (" + caUong.getDanhSachThuoc().size() + " loại thuốc)", 
+            Toast.LENGTH_SHORT).show();
     }
 
     private void showLoading(boolean show) {

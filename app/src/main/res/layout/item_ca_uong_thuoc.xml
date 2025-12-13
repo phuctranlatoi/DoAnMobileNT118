@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cardCaUong"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    android:layout_marginHorizontal="4dp"
+    android:orientation="vertical"
+    android:background="@drawable/modern_card_background"
+    android:padding="24dp"
+    android:elevation="4dp">
+
+    <!-- Header ca uống - không có icon -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="20dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTenCa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ca Sáng"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="#1A202C"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:id="@+id/tvSoLuongThuoc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="3 loại thuốc cần uống"
+                android:textSize="16sp"
+                android:textColor="#718096" />
+        </LinearLayout>
+
+        <!-- Trạng thái -->
+        <TextView
+            android:id="@+id/tvTrangThai"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa uống"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"
+            android:background="@drawable/status_pending_background"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp" />
+    </LinearLayout>
+
+    <!-- Danh sách thuốc -->
+    <LinearLayout
+        android:id="@+id/layoutDanhSachThuoc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/medicine_item_background"
+        android:padding="16dp"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Danh sách thuốc:"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#4A5568"
+            android:layout_marginBottom="8dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvThuocTrongCa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:nestedScrollingEnabled="false" />
+    </LinearLayout>
+
+    <!-- Thông tin đã uống - hiển thị thời gian rõ ràng -->
+    <LinearLayout
+        android:id="@+id/layoutDaUong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/completed_info_background"
+        android:padding="20dp"
+        android:layout_marginBottom="20dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đã hoàn thành"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#059669"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvThoiGianUong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Thời gian uống: 08:30 - 14/12/2025"
+            android:textSize="16sp"
+            android:textColor="#065F46"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <!-- Nút xác nhận -->
+    <Button
+        android:id="@+id/btnXacNhanCa"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:text="Xác nhận đã uống hết ca này"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:backgroundTint="#10B981"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/confirm_button_background"
+        android:elevation="2dp" />
+
+</LinearLayout>

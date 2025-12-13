@@ -14,273 +14,92 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-        <!-- Header Card với hiệu ứng đẹp -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="12dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="24dp"
-                android:background="@drawable/premium_stats_background">
-
-                <!-- Header với icon -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:layout_marginBottom="16dp">
-
-                    <FrameLayout
-                        android:layout_width="56dp"
-                        android:layout_height="56dp"
-                        android:background="@drawable/stats_icon_background"
-                        android:layout_marginEnd="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="📅"
-                            android:textSize="28sp" />
-                    </FrameLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Điểm danh hôm nay"
-                            android:textSize="22sp"
-                            android:textStyle="bold"
-                            android:textColor="#1A1A1A"
-                            android:fontFamily="sans-serif-medium" />
-
-                        <TextView
-                            android:id="@+id/tvNgayHomNay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="Thứ Sáu, 06/12/2025"
-                            android:textSize="16sp"
-                            android:textColor="#666666"
-                            android:fontFamily="sans-serif" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <!-- Instruction với background đẹp -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/instruction_background"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="💡"
-                        android:textSize="20sp"
-                        android:layout_marginEnd="12dp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Nhấn vào từng loại thuốc để xác nhận đã uống"
-                        android:textSize="14sp"
-                        android:textColor="#4A5568"
-                        android:fontFamily="sans-serif" />
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Ca Sáng -->
+        <!-- Header Card đẹp và hiện đại -->
         <LinearLayout
-            android:id="@+id/layoutCaSang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:background="@drawable/modern_header_background"
+            android:padding="32dp"
+            android:layout_marginBottom="24dp">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <!-- Tiêu đề chính -->
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/session_header_background"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp">
+                android:text="Điểm danh uống thuốc"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="#FFFFFF"
+                android:fontFamily="sans-serif-medium"
+                android:layout_gravity="center"
+                android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🌅"
-                    android:textSize="24sp"
-                    android:layout_marginEnd="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca Sáng"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A"
-                    android:fontFamily="sans-serif-medium" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCaSang"
-                android:layout_width="match_parent"
+            <!-- Ngày hiện tại - to và rõ ràng -->
+            <TextView
+                android:id="@+id/tvNgayHomNay"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
+                android:text="Thứ Sáu, 14/12/2025"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#E8F4FD"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Hướng dẫn -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Xác nhận đã uống hết tất cả thuốc trong mỗi ca"
+                android:textSize="16sp"
+                android:textColor="#B3D9F2"
+                android:fontFamily="sans-serif"
+                android:layout_gravity="center"
+                android:gravity="center" />
 
         </LinearLayout>
 
-        <!-- Ca Trưa -->
-        <LinearLayout
-            android:id="@+id/layoutCaTrua"
+        <!-- Danh sách các ca uống thuốc -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCacCaUongThuoc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
+            android:nestedScrollingEnabled="false" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/session_header_background"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="☀️"
-                    android:textSize="24sp"
-                    android:layout_marginEnd="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca Trưa"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A"
-                    android:fontFamily="sans-serif-medium" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCaTrua"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
-
-        </LinearLayout>
-
-        <!-- Ca Chiều -->
+        <!-- Empty State đẹp -->
         <LinearLayout
-            android:id="@+id/layoutCaChieu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginBottom="20dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/session_header_background"
-                android:padding="16dp"
-                android:layout_marginBottom="12dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🌤️"
-                    android:textSize="24sp"
-                    android:layout_marginEnd="12dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ca Chiều"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#1A1A1A"
-                    android:fontFamily="sans-serif-medium" />
-            </LinearLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvCaChieu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false" />
-
-        </LinearLayout>
-
-        <!-- Empty State với hiệu ứng đẹp -->
-        <com.google.android.material.card.MaterialCardView
             android:id="@+id/tvEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="40dp"
+            android:background="@drawable/empty_state_background"
             android:visibility="gone">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:text="Không có ca uống thuốc nào hôm nay"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#4A5568"
                 android:gravity="center"
-                android:padding="40dp"
-                android:background="@drawable/empty_state_background">
+                android:fontFamily="sans-serif-medium"
+                android:layout_marginBottom="8dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🎉"
-                    android:textSize="48sp"
-                    android:layout_marginBottom="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Không có thuốc nào được kê cho hôm nay"
+                android:textSize="16sp"
+                android:textColor="#718096"
+                android:gravity="center" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Không có thuốc cần uống hôm nay"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="#4A5568"
-                    android:gravity="center"
-                    android:fontFamily="sans-serif-medium" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Bạn đã hoàn thành tất cả!"
-                    android:textSize="14sp"
-                    android:textColor="#718096"
-                    android:gravity="center" />
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
 
         </LinearLayout>
 

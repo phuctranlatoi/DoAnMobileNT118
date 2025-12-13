@@ -8,14 +8,17 @@ color border
 color colorAccent
 color colorPrimary
 color colorPrimaryDark
+color completed_background_light
 color danger
 color divider
 color error
 color error_light
 color info
 color primary
+color primary_green
 color primary_light
 color selected_item_background
+color status_pending
 color success
 color success_light
 color textPrimary
@@ -53,7 +56,10 @@ drawable button_solid_green
 drawable chatbot
 drawable circle_background
 drawable circle_bg
+drawable completed_background
+drawable completed_info_background
 drawable completed_status_background
+drawable confirm_button_background
 drawable edit_text_background
 drawable empty_state_background
 drawable gradient_button
@@ -120,7 +126,11 @@ drawable instruction_background
 drawable instruction_tag_background
 drawable main_background
 drawable medicine_icon_background
+drawable medicine_item_background
+drawable medicine_list_background
+drawable medicine_pill_background
 drawable modern_card_background
+drawable modern_header_background
 drawable percentage_circle_modern
 drawable premium_stats_background
 drawable rounded_button
@@ -136,6 +146,8 @@ drawable spinner_background
 drawable stat_item_background
 drawable stats_icon_background
 drawable status_background
+drawable status_completed_background
+drawable status_pending_background
 drawable status_skip_background
 drawable status_success_background
 drawable success_dot
@@ -192,6 +204,7 @@ id btnTimKiem
 id btnTraCuu
 id btnTuChoi
 id btnXacNhan
+id btnXacNhanCa
 id btnXacNhanCapNhat
 id btnXacNhanTatCa
 id btnXacNhanThem
@@ -202,6 +215,7 @@ id btnXoa
 id buttonContainer
 id calendarView
 id cardBacSi
+id cardCaUong
 id cardChatbot
 id cardConfirmAppointment
 id cardConfirmMedication
@@ -279,6 +293,7 @@ id layoutCaSang
 id layoutCaToi
 id layoutCaTrua
 id layoutDaUong
+id layoutDanhSachThuoc
 id layoutEmail
 id layoutLyDo
 id layoutLyDoKham
@@ -324,6 +339,7 @@ id rvCaChieu
 id rvCaSang
 id rvCaToi
 id rvCaTrua
+id rvCacCaUongThuoc
 id rvChat
 id rvChiTiet
 id rvChiTietLichKham
@@ -339,6 +355,7 @@ id rvLichSuKham
 id rvThongBao
 id rvThuoc
 id rvThuocCanUong
+id rvThuocTrongCa
 id settingCamera
 id settingChangePassword
 id settingMicro
@@ -424,10 +441,12 @@ id tvQuenMatKhau
 id tvSoDienThoai
 id tvSoLanKham
 id tvSoLuong
+id tvSoLuongThuoc
 id tvSoThuTu
 id tvStatus
 id tvTenBacSi
 id tvTenBenhNhan
+id tvTenCa
 id tvTenDangNhap
 id tvTenDichVu
 id tvTenNhanVien
@@ -522,6 +541,7 @@ layout item_benh_an
 layout item_benh_an_bac_si
 layout item_benh_nhan
 layout item_benh_nhan_select
+layout item_ca_uong_thuoc
 layout item_chat_bot
 layout item_chat_user
 layout item_chi_tiet_don_thuoc
@@ -546,6 +566,7 @@ layout item_pending_doctor
 layout item_thong_bao
 layout item_thuoc_can_uong
 layout item_thuoc_ke_don
+layout item_thuoc_trong_ca
 layout item_xac_nhan_lich_kham
 menu benhnhan_menu
 menu bottom_nav_doctor

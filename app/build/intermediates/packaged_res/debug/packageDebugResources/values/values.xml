@@ -8,14 +8,17 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorPrimary">#2196F3</color>
     <color name="colorPrimaryDark">#1976D2</color>
+    <color name="completed_background_light">#F0FFF4</color>
     <color name="danger">#F44336</color>
     <color name="divider">#E0E0E0</color>
     <color name="error">#F44336</color>
     <color name="error_light">#FFEBEE</color>
     <color name="info">#2196F3</color>
     <color name="primary">#2196F3</color>
+    <color name="primary_green">#4CAF50</color>
     <color name="primary_light">#E3F2FD</color>
     <color name="selected_item_background">#D4EDDA</color>
+    <color name="status_pending">#FF6B35</color>
     <color name="success">#4CAF50</color>
     <color name="success_light">#E8F5E9</color>
     <color name="textPrimary">#212121</color>
