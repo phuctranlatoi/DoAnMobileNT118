@@ -51,6 +51,8 @@ public class MainBacSiActivity extends AppCompatActivity {
             finish();
             return;
         }
+        
+
 
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
@@ -285,4 +287,6 @@ public class MainBacSiActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
 //        tvHoTen.setText("Họ tên: ");
     }
+    
+
 }

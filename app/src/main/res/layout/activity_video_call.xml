@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <!-- Remote video view (full screen) - Sử dụng FrameLayout theo tài liệu Stringee -->
+    <FrameLayout
+        android:id="@+id/remoteVideoView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true" />
+
+    <!-- Local video view (small overlay) - Sử dụng FrameLayout theo tài liệu Stringee -->
+    <FrameLayout
+        android:id="@+id/localVideoView"
+        android:layout_width="120dp"
+        android:layout_height="160dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="16dp"
+        android:background="@drawable/video_overlay_background" />
+
+    <!-- Call info overlay -->
+    <LinearLayout
+        android:id="@+id/layoutCallInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="@drawable/call_info_overlay_background">
+
+        <!-- Caller name -->
+        <TextView
+            android:id="@+id/tvCallerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BS. Nguyễn Văn A"
+            android:textColor="#FFFFFF"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Call status -->
+        <TextView
+            android:id="@+id/tvCallStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Đang gọi video..."
+            android:textColor="#E8F4FD"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Call duration -->
+        <TextView
+            android:id="@+id/tvCallDuration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+    <!-- Incoming call buttons (Answer/Reject) -->
+    <LinearLayout
+        android:id="@+id/layoutIncomingCallButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="@drawable/call_controls_overlay_background"
+        android:visibility="gone">
+
+        <!-- Reject button -->
+        <ImageButton
+            android:id="@+id/btnRejectCall"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/end_call_button_background"
+            android:src="@drawable/ic_call_end"
+            android:contentDescription="Từ chối cuộc gọi"
+            android:scaleType="center"
+            android:layout_marginEnd="48dp" />
+
+        <!-- Answer button -->
+        <ImageButton
+            android:id="@+id/btnAnswerCall"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/call_button_background"
+            android:src="@drawable/ic_videocam"
+            android:contentDescription="Trả lời cuộc gọi video"
+            android:scaleType="center"
+            android:layout_marginStart="48dp" />
+
+    </LinearLayout>
+
+    <!-- Bottom control buttons -->
+    <LinearLayout
+        android:id="@+id/layoutCallControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="32dp"
+        android:background="@drawable/call_controls_overlay_background">
+
+        <!-- Mute button -->
+        <ImageButton
+            android:id="@+id/btnMute"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/call_button_background"
+            android:src="@drawable/ic_mic_off"
+            android:contentDescription="Tắt tiếng"
+            android:scaleType="center"
+            android:layout_marginEnd="16dp" />
+
+        <!-- Camera button -->
+        <ImageButton
+            android:id="@+id/btnCamera"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/call_button_background"
+            android:src="@drawable/ic_videocam_off"
+            android:contentDescription="Tắt camera"
+            android:scaleType="center"
+            android:layout_marginEnd="16dp" />
+
+        <!-- End call button -->
+        <ImageButton
+            android:id="@+id/btnEndCall"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/end_call_button_background"
+            android:src="@drawable/ic_call_end"
+            android:contentDescription="Kết thúc cuộc gọi"
+            android:scaleType="center"
+            android:layout_marginHorizontal="16dp" />
+
+        <!-- Switch camera button -->
+        <ImageButton
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/call_button_background"
+            android:src="@drawable/ic_switch_camera"
+            android:contentDescription="Chuyển camera"
+            android:scaleType="center"
+            android:layout_marginStart="16dp" />
+
+    </LinearLayout>
+
+</RelativeLayout>

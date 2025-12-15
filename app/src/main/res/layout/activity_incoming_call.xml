@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/call_background_gradient">
+
+    <!-- Background overlay -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#80000000" />
+
+    <!-- Caller info section -->
+    <LinearLayout
+        android:id="@+id/layoutCallerInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp">
+
+        <!-- Caller avatar with animation -->
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivCallerAvatar"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/ic_doctor"
+            app:civ_border_width="6dp"
+            app:civ_border_color="#FFFFFF"
+            android:layout_marginBottom="24dp"
+            android:elevation="8dp" />
+
+        <!-- Call type -->
+        <TextView
+            android:id="@+id/tvCallType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cuộc gọi đến..."
+            android:textColor="#E8F4FD"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Caller name -->
+        <TextView
+            android:id="@+id/tvCallerName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BS. Nguyễn Văn A"
+            android:textColor="#FFFFFF"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"
+            android:gravity="center" />
+
+        <!-- Ringing indicator -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📞 Đang đổ chuông..."
+            android:textColor="#4CAF50"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+
+    <!-- Answer/Reject buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:padding="48dp">
+
+        <!-- Reject button -->
+        <ImageButton
+            android:id="@+id/btnReject"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/end_call_button_background"
+            android:src="@drawable/ic_call_end"
+            android:contentDescription="Từ chối cuộc gọi"
+            android:scaleType="center"
+            android:layout_marginEnd="64dp"
+            android:elevation="8dp" />
+
+        <!-- Answer button -->
+        <ImageButton
+            android:id="@+id/btnAnswer"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/call_button_background"
+            android:src="@drawable/ic_call"
+            android:contentDescription="Trả lời cuộc gọi"
+            android:scaleType="center"
+            android:layout_marginStart="64dp"
+            android:elevation="8dp" />
+
+    </LinearLayout>
+
+    <!-- Swipe hint (optional) -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/layoutCallerInfo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="32dp"
+        android:text="Vuốt để trả lời hoặc từ chối"
+        android:textColor="#CCFFFFFF"
+        android:textSize="14sp"
+        android:alpha="0.7" />
+
+</RelativeLayout>

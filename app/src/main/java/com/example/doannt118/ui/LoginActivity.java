@@ -161,6 +161,9 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vai trò không hợp lệ: " + vaiTro, Toast.LENGTH_SHORT).show();
                 return;
             }
+            
+
+            
             intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
             startActivity(intent);
             finish();
@@ -169,4 +172,6 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, "Lỗi chuyển hướng: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
+    
+
 }

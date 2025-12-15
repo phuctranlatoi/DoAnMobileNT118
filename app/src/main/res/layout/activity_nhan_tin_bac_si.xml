@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:fitsSystemWindows="true"
     android:background="#F8FAFC">
 
     <!-- Toolbar -->
@@ -45,6 +46,39 @@
                     android:text="Đang hoạt động"
                     android:textColor="#E8F4FD"
                     android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <!-- Call buttons -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginEnd="12dp">
+
+                <!-- Voice call button -->
+                <ImageButton
+                    android:id="@+id/btnVoiceCall"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_call"
+                    android:contentDescription="Gọi điện thoại"
+                    android:scaleType="center"
+                    app:tint="#FFFFFF"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Video call button -->
+                <ImageButton
+                    android:id="@+id/btnVideoCall"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_video_call"
+                    android:contentDescription="Gọi video"
+                    android:scaleType="center"
+                    app:tint="#FFFFFF"
+                    android:layout_marginEnd="8dp" />
 
             </LinearLayout>
 

@@ -53,6 +53,8 @@ public class MainBenhNhanActivity extends AppCompatActivity {
             finish();
             return;
         }
+        
+
 
         // Ánh xạ View
         toolbar = findViewById(R.id.toolbar);
@@ -359,4 +361,6 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         tvHoTen.setText("Họ tên: N/A");
     }
+    
+
 }

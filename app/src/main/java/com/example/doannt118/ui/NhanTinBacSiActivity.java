@@ -2,7 +2,9 @@ package com.example.doannt118.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -16,7 +18,10 @@ import com.example.doannt118.R;
 import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.TinNhanBacSi;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.example.doannt118.stringee.StringeeManager;
 import com.example.doannt118.utils.NotificationHelper;
+import com.stringee.call.StringeeCall;
+import com.stringee.call.StringeeCall2;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
@@ -46,6 +51,9 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
     private BacSi bacSi;
     private boolean isDoctorView = false; // true nếu là view của bác sĩ
     private boolean isMessageLoaded = false; // flag để tránh load tin nhắn nhiều lần
+    
+    // Call buttons
+    private ImageButton btnVoiceCall, btnVideoCall;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +90,8 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
         etTinNhan = findViewById(R.id.etTinNhan);
         btnGui = findViewById(R.id.btnGui);
         progressBar = findViewById(R.id.progressBar);
+        btnVoiceCall = findViewById(R.id.btnVoiceCall);
+        btnVideoCall = findViewById(R.id.btnVideoCall);
         
         repository = new FirestoreRepository();
     }
@@ -140,6 +150,9 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             guiTinNhan();
             return true;
         });
+        
+        btnVoiceCall.setOnClickListener(v -> makeVoiceCall());
+        btnVideoCall.setOnClickListener(v -> makeVideoCall());
     }
     
     private void loadThongTinBacSi() {
@@ -299,12 +312,177 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
         }
     }
     
+    private void makeVoiceCall() {
+        Log.d("NhanTinBacSi", "🎯 makeVoiceCall() called");
+        
+        // Kiểm tra kết nối Stringee trước
+        StringeeManager stringeeManager = StringeeManager.getInstance(this);
+        
+        if (!stringeeManager.isConnected()) {
+            Toast.makeText(this, "❌ Chưa kết nối được với server. Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
+            // Try to reconnect
+            connectToStringee();
+            return;
+        }
+        
+        // Debug: Kiểm tra dữ liệu
+        Log.d("NhanTinBacSi", "🔍 makeVoiceCall - maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan);
+        Log.d("NhanTinBacSi", "🔍 isDoctorView: " + isDoctorView + ", tenBacSi: " + tenBacSi);
+        
+        if (TextUtils.isEmpty(maBacSi) || TextUtils.isEmpty(maBenhNhan)) {
+            Toast.makeText(this, "❌ Lỗi: Thiếu thông tin - maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan, Toast.LENGTH_LONG).show();
+            return;
+        }
+        
+        // Thực hiện cuộc gọi voice thực sự với Stringee
+        String fromUserId, toUserId, callerName;
+        if (isDoctorView) {
+            // Bác sĩ gọi cho bệnh nhân
+            fromUserId = "doctor_" + maBacSi;
+            toUserId = "patient_" + maBenhNhan;
+            callerName = tenBacSi != null ? tenBacSi : "Bác sĩ";
+        } else {
+            // Bệnh nhân gọi cho bác sĩ
+            fromUserId = "patient_" + maBenhNhan;
+            toUserId = "doctor_" + maBacSi;
+            callerName = tenBacSi != null ? tenBacSi : "Bác sĩ";
+        }
+        
+        Log.d("NhanTinBacSi", "🎯 Starting voice call: " + fromUserId + " -> " + toUserId);
+        
+        // Mở VoiceCallActivity - Activity sẽ tự tạo call
+        Intent intent = new Intent(this, VoiceCallActivity.class);
+        intent.putExtra("CALLER_NAME", callerName);
+        intent.putExtra("CALLER_ID", fromUserId);
+        intent.putExtra("RECEIVER_ID", toUserId);
+        intent.putExtra("IS_INCOMING_CALL", false);
+        startActivity(intent);
+    }
+    
+    private void makeVideoCall() {
+        Log.d("NhanTinBacSi", "🎯 makeVideoCall() called");
+        
+        // Kiểm tra kết nối Stringee trước
+        StringeeManager stringeeManager = StringeeManager.getInstance(this);
+        
+        if (!stringeeManager.isConnected()) {
+            Toast.makeText(this, "❌ Chưa kết nối được với server. Vui lòng thử lại sau.", Toast.LENGTH_LONG).show();
+            // Try to reconnect
+            connectToStringee();
+            return;
+        }
+        
+        // Debug: Kiểm tra dữ liệu
+        Log.d("NhanTinBacSi", "🔍 makeVideoCall - maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan);
+        
+        if (TextUtils.isEmpty(maBacSi) || TextUtils.isEmpty(maBenhNhan)) {
+            Toast.makeText(this, "❌ Lỗi: Thiếu thông tin - maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan, Toast.LENGTH_LONG).show();
+            return;
+        }
+        
+        // Thực hiện cuộc gọi video thực sự với Stringee
+        String fromUserId, toUserId, callerName;
+        if (isDoctorView) {
+            // Bác sĩ gọi cho bệnh nhân
+            fromUserId = "doctor_" + maBacSi;
+            toUserId = "patient_" + maBenhNhan;
+            callerName = tenBacSi != null ? tenBacSi : "Bác sĩ";
+        } else {
+            // Bệnh nhân gọi cho bác sĩ
+            fromUserId = "patient_" + maBenhNhan;
+            toUserId = "doctor_" + maBacSi;
+            callerName = tenBacSi != null ? tenBacSi : "Bác sĩ";
+        }
+        
+        Log.d("NhanTinBacSi", "🎯 Starting video call: " + fromUserId + " -> " + toUserId);
+        
+        // Mở VideoCallActivity - Activity sẽ tự tạo call
+        Intent intent = new Intent(this, VideoCallActivity.class);
+        intent.putExtra("CALLER_NAME", callerName);
+        intent.putExtra("CALLER_ID", fromUserId);
+        intent.putExtra("RECEIVER_ID", toUserId);
+        intent.putExtra("IS_INCOMING_CALL", false);
+        startActivity(intent);
+    }
+    
     @Override
     protected void onResume() {
         super.onResume();
         // Đánh dấu tin nhắn đã đọc khi vào chat
         if (!TextUtils.isEmpty(maBenhNhan) && !TextUtils.isEmpty(maBacSi)) {
             markMessagesAsRead();
+        }
+        
+        // Connect to Stringee for calling features
+        connectToStringee();
+    }
+    
+    private void connectToStringee() {
+        try {
+            Log.d("NhanTinBacSi", "🚀 === BẮT ĐẦU KẾT NỐI STRINGEE ===");
+            
+            StringeeManager stringeeManager = StringeeManager.getInstance(this);
+            
+            // Determine user ID based on role
+            String userId;
+            if (isDoctorView) {
+                userId = "doctor_" + maBacSi;
+            } else {
+                userId = "patient_" + maBenhNhan;
+            }
+            
+            Log.d("NhanTinBacSi", "🆔 Connecting with userId: " + userId);
+            Log.d("NhanTinBacSi", "🆔 isDoctorView: " + isDoctorView);
+            Log.d("NhanTinBacSi", "🆔 maBacSi: " + maBacSi);
+            Log.d("NhanTinBacSi", "🆔 maBenhNhan: " + maBenhNhan);
+            
+            // Set connection callback để theo dõi trạng thái
+            stringeeManager.setConnectionCallback(new StringeeManager.StringeeConnectionCallback() {
+                @Override
+                public void onConnected() {
+                    Log.d("NhanTinBacSi", "🎉 Stringee connected successfully!");
+                    runOnUiThread(() -> {
+                        Toast.makeText(NhanTinBacSiActivity.this, "✅ Đã kết nối server thành công!", Toast.LENGTH_SHORT).show();
+                    });
+                }
+                
+                @Override
+                public void onDisconnected() {
+                    Log.d("NhanTinBacSi", "⚠️ Stringee disconnected");
+                    runOnUiThread(() -> {
+                        Toast.makeText(NhanTinBacSiActivity.this, "⚠️ Mất kết nối server", Toast.LENGTH_SHORT).show();
+                    });
+                }
+                
+                @Override
+                public void onConnectionError(String error) {
+                    Log.e("NhanTinBacSi", "❌ Stringee connection error: " + error);
+                    runOnUiThread(() -> {
+                        Toast.makeText(NhanTinBacSiActivity.this, "❌ Lỗi kết nối: " + error, Toast.LENGTH_LONG).show();
+                    });
+                }
+            });
+            
+            // Thử kết nối
+            if (!stringeeManager.isConnected()) {
+                Log.d("NhanTinBacSi", "🔄 Starting connection...");
+                stringeeManager.connect(userId);
+                
+                // Thêm test connection để debug
+                new android.os.Handler().postDelayed(() -> {
+                    Log.d("NhanTinBacSi", "🧪 Running test connection...");
+                    stringeeManager.testConnection();
+                }, 2000);
+                
+            } else {
+                Log.d("NhanTinBacSi", "🔄 Already connected, force reconnecting...");
+                stringeeManager.forceReconnect();
+            }
+            
+        } catch (Exception e) {
+            Log.e("NhanTinBacSi", "💥 Exception connecting to Stringee: " + e.getMessage());
+            e.printStackTrace();
+            Toast.makeText(this, "💥 Lỗi kết nối: " + e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
     

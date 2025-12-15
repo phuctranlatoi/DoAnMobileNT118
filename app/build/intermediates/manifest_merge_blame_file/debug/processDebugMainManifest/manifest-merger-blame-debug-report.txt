@@ -32,837 +32,920 @@
 19    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
 19-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:12:5-79
 19-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:12:22-76
-20    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-20-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:26:5-79
-20-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:26:22-76
-21    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-21-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:24:5-68
-21-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:24:22-65
-22    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-22-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:26:5-82
-22-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:26:22-79
-23    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
-23-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:25:5-79
-23-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:25:22-76
-24    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
-24-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:26:5-88
-24-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:26:22-85
-25    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
-25-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:27:5-82
-25-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:27:22-79
-26    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-26-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:26:5-110
-26-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:26:22-107
-27    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-27-->[com.google.android.recaptcha:recaptcha:18.6.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b95f18d5d39d312970cc6359bb8234d1\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:5-98
-27-->[com.google.android.recaptcha:recaptcha:18.6.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b95f18d5d39d312970cc6359bb8234d1\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:22-95
-28
-29    <permission
-29-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
-30        android:name="com.example.doannt118.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-30-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
-31        android:protectionLevel="signature" />
-31-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
-32
-33    <uses-permission android:name="com.example.doannt118.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-33-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
-33-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
-34
-35    <application
-35-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:14:5-185:19
-36        android:allowBackup="true"
-36-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:16:9-35
-37        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-37-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
-38        android:dataExtractionRules="@xml/data_extraction_rules"
-38-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:17:9-65
-39        android:debuggable="true"
-40        android:extractNativeLibs="false"
-41        android:fullBackupContent="@xml/backup_rules"
-41-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:18:9-54
-42        android:icon="@mipmap/ic_launcher"
-42-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:19:9-43
-43        android:label="@string/app_name"
-43-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:20:9-41
-44        android:roundIcon="@mipmap/ic_launcher_round"
-44-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:21:9-54
-45        android:supportsRtl="true"
-45-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:22:9-35
-46        android:testOnly="true"
-47        android:theme="@style/Theme.DoAnNT118" >
-47-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:15:9-47
-48
-49        <!-- 🟢 WelcomeActivity: chạy đầu tiên -->
-50        <activity
-50-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:26:9-34:20
-51            android:name="com.example.doannt118.ui.WelcomeActivity"
-51-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:27:13-47
-52            android:exported="true"
-52-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:28:13-36
-53            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-53-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:29:13-69
-54            <intent-filter>
-54-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:30:13-33:29
-55                <action android:name="android.intent.action.MAIN" />
-55-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:31:17-69
-55-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:31:25-66
-56
-57                <category android:name="android.intent.category.LAUNCHER" />
-57-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:32:17-77
-57-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:32:27-74
-58            </intent-filter>
-59        </activity>
-60
-61        <!-- 🟡 Các activity khác -->
-62        <activity
-62-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:37:9-40:72
-63            android:name="com.example.doannt118.ui.LoginActivity"
-63-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:38:13-45
-64            android:exported="false"
-64-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:39:13-37
-65            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-65-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:40:13-69
-66        <activity
-66-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:41:9-44:72
-67            android:name="com.example.doannt118.ui.RegisterActivity"
-67-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:42:13-48
-68            android:exported="false"
-68-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:43:13-37
-69            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-69-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:44:13-69
-70        <activity android:name="com.example.doannt118.ui.MainBenhNhanActivity" />
-70-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:46:9-61
-70-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:46:19-58
-71        <activity android:name="com.example.doannt118.ui.MainBacSiActivity" />
-71-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:47:9-58
-71-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:47:19-55
-72        <activity android:name="com.example.doannt118.ui.MainAdminActivity" />
-72-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:48:9-58
-72-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:48:19-55
-73        <activity android:name="com.example.doannt118.ui.ChiTietBenhAnActivity" />
-73-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:49:9-62
-73-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:49:19-59
-74        <activity android:name="com.example.doannt118.ui.XemBenhAnActivity" />
-74-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:50:9-58
-74-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:50:19-55
-75        <activity android:name="com.example.doannt118.ui.ProfileActivity" />
-75-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:51:9-56
-75-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:51:19-53
-76        <activity android:name="com.example.doannt118.ui.QuanLyHoSoCaNhan" />
-76-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:52:9-57
-76-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:52:19-54
-77        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
-77-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:53:9-66
-77-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:53:19-63
-78        <activity
-78-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:54:9-55:72
-79            android:name="com.example.doannt118.ui.ThemLichLamViecActivity"
-79-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:54:19-61
-80            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-80-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:55:13-69
-81        <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
-81-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:56:9-63
-81-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:56:19-60
-82        <activity android:name="com.example.doannt118.ui.SettingActivity" />
-82-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:57:9-55
-82-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:57:19-53
-83        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
-83-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:58:9-63
-83-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:58:19-60
-84        <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
-84-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:59:9-62
-84-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:59:19-59
-85        <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
-85-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:60:9-61
-85-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:60:19-58
-86        <activity
-86-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:61:9-63:74
-87            android:name="com.example.doannt118.ui.XemChiTietLichKhamActivity"
-87-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:61:19-64
-88            android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
-88-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:62:13-71
-89            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
-89-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:63:13-71
-90        <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
-90-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:64:9-64
-90-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:64:19-61
-91        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
-91-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:65:9-60
-91-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:65:19-57
-92        <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
-92-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:66:9-57
-92-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:66:19-54
-93        <activity
-93-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:67:9-69:58
-94            android:name="com.example.doannt118.ui.ChatActivity"
-94-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:68:13-44
-95            android:windowSoftInputMode="adjustResize" />
-95-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:69:13-55
-96        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecNewActivity" />
-96-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:70:9-69
-96-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:70:19-66
-97        <activity
-97-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:71:9-73:40
-98            android:name="com.example.doannt118.ui.DanhSachDonThuocActivity"
-98-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:72:13-56
-99            android:exported="false" />
-99-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:73:13-37
-100        <activity
-100-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:74:9-76:40
-101            android:name="com.example.doannt118.ui.ChiTietDonThuocActivity"
-101-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:75:13-55
-102            android:exported="false" />
-102-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:76:13-37
-103        <activity
-103-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:77:9-79:40
-104            android:name="com.example.doannt118.ui.DanhSachHoaDonActivity"
-104-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:78:13-54
-105            android:exported="false" />
-105-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:79:13-37
-106        <activity
-106-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:80:9-82:40
-107            android:name="com.example.doannt118.ui.ChiTietHoaDonActivity"
-107-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:81:13-53
-108            android:exported="false" />
-108-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:82:13-37
-109        <activity
-109-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:83:9-85:40
-110            android:name="com.example.doannt118.ui.UpdateBacSiProfileActivity"
-110-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:84:13-58
-111            android:exported="false" />
-111-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:85:13-37
+20
+21    <!-- Stringee permissions - THEO TÀI LIỆU CHÍNH THỨC -->
+22    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+22-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:15:5-79
+22-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:15:22-76
+23    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+23-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:16:5-76
+23-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:16:22-73
+24    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+24-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:17:5-71
+24-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:17:22-68
+25    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+25-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:18:5-80
+25-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:18:22-77
+26    <uses-permission android:name="android.permission.BLUETOOTH" />
+26-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:19:5-68
+26-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:19:22-65
+27    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+27-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:20:5-76
+27-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:20:22-73
+28    <uses-permission android:name="android.permission.WAKE_LOCK" />
+28-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:21:5-68
+28-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:21:22-65
+29
+30    <!-- Camera and features - THEO TÀI LIỆU STRINGEE -->
+31    <uses-feature
+31-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:24:5-26:35
+32        android:name="android.hardware.camera"
+32-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:25:9-47
+33        android:required="true" />
+33-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:26:9-32
+34    <uses-feature
+34-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:27:5-29:36
+35        android:name="android.hardware.camera.autofocus"
+35-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:28:9-57
+36        android:required="false" />
+36-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:29:9-33
+37    <uses-feature
+37-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:30:5-32:36
+38        android:name="android.hardware.bluetooth"
+38-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:31:9-50
+39        android:required="false" />
+39-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:32:9-33
+40    <uses-feature
+40-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:33:5-35:36
+41        android:name="android.hardware.bluetooth_le"
+41-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:34:9-53
+42        android:required="false" />
+42-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:35:9-33
+43    <uses-feature
+43-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:36:5-38:36
+44        android:glEsVersion="0x00020000"
+44-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:37:9-41
+45        android:required="false" />
+45-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:38:9-33
+46    <!-- Required by older versions of Google Play services to create IID tokens -->
+47    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+47-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:26:5-82
+47-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:26:22-79
+48    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
+48-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:25:5-79
+48-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:25:22-76
+49    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION" />
+49-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:26:5-88
+49-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:26:22-85
+50    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID" />
+50-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:27:5-82
+50-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:27:22-79
+51    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+51-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:26:5-110
+51-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:26:22-107
+52    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+52-->[com.google.android.recaptcha:recaptcha:18.6.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b95f18d5d39d312970cc6359bb8234d1\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:5-98
+52-->[com.google.android.recaptcha:recaptcha:18.6.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\b95f18d5d39d312970cc6359bb8234d1\transformed\recaptcha-18.6.1\AndroidManifest.xml:9:22-95
+53
+54    <permission
+54-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
+55        android:name="com.example.doannt118.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+55-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:23:9-81
+56        android:protectionLevel="signature" />
+56-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:24:9-44
+57
+58    <uses-permission android:name="com.example.doannt118.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+58-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:26:5-97
+58-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:26:22-94
+59
+60    <application
+60-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:40:5-228:19
+61        android:name="com.example.doannt118.MyApplication"
+61-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:41:9-38
+62        android:allowBackup="true"
+62-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:43:9-35
+63        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+63-->[androidx.core:core:1.13.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6b21f697a51e96e703ee0ee0b9a2a65a\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
+64        android:dataExtractionRules="@xml/data_extraction_rules"
+64-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:44:9-65
+65        android:debuggable="true"
+66        android:extractNativeLibs="false"
+67        android:fullBackupContent="@xml/backup_rules"
+67-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:45:9-54
+68        android:icon="@mipmap/ic_launcher"
+68-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:46:9-43
+69        android:label="@string/app_name"
+69-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:47:9-41
+70        android:roundIcon="@mipmap/ic_launcher_round"
+70-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:48:9-54
+71        android:supportsRtl="true"
+71-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:49:9-35
+72        android:testOnly="true"
+73        android:theme="@style/Theme.DoAnNT118" >
+73-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:42:9-47
+74
+75        <!-- 🟢 WelcomeActivity: chạy đầu tiên -->
+76        <activity
+76-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:53:9-61:20
+77            android:name="com.example.doannt118.ui.WelcomeActivity"
+77-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:54:13-47
+78            android:exported="true"
+78-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:55:13-36
+79            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+79-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:56:13-69
+80            <intent-filter>
+80-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:57:13-60:29
+81                <action android:name="android.intent.action.MAIN" />
+81-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:58:17-69
+81-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:58:25-66
+82
+83                <category android:name="android.intent.category.LAUNCHER" />
+83-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:59:17-77
+83-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:59:27-74
+84            </intent-filter>
+85        </activity>
+86
+87        <!-- 🟡 Các activity khác -->
+88        <activity
+88-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:64:9-67:72
+89            android:name="com.example.doannt118.ui.LoginActivity"
+89-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:65:13-45
+90            android:exported="false"
+90-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:66:13-37
+91            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+91-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:67:13-69
+92        <activity
+92-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:68:9-71:72
+93            android:name="com.example.doannt118.ui.RegisterActivity"
+93-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:69:13-48
+94            android:exported="false"
+94-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:70:13-37
+95            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+95-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:71:13-69
+96        <activity android:name="com.example.doannt118.ui.MainBenhNhanActivity" />
+96-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:73:9-61
+96-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:73:19-58
+97        <activity android:name="com.example.doannt118.ui.MainBacSiActivity" />
+97-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:74:9-58
+97-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:74:19-55
+98        <activity android:name="com.example.doannt118.ui.MainAdminActivity" />
+98-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:75:9-58
+98-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:75:19-55
+99        <activity android:name="com.example.doannt118.ui.ChiTietBenhAnActivity" />
+99-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:76:9-62
+99-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:76:19-59
+100        <activity android:name="com.example.doannt118.ui.XemBenhAnActivity" />
+100-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:77:9-58
+100-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:77:19-55
+101        <activity android:name="com.example.doannt118.ui.ProfileActivity" />
+101-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:78:9-56
+101-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:78:19-53
+102        <activity android:name="com.example.doannt118.ui.QuanLyHoSoCaNhan" />
+102-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:79:9-57
+102-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:79:19-54
+103        <activity android:name="com.example.doannt118.ui.QuanLyLichLamViecActivity" />
+103-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:80:9-66
+103-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:80:19-63
+104        <activity
+104-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:81:9-82:72
+105            android:name="com.example.doannt118.ui.ThemLichLamViecActivity"
+105-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:81:19-61
+106            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+106-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:82:13-69
+107        <activity android:name="com.example.doannt118.ui.ForgotPasswordActivity" />
+107-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:83:9-63
+107-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:83:19-60
+108        <activity android:name="com.example.doannt118.ui.SettingActivity" />
+108-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:84:9-55
+108-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:84:19-53
+109        <activity android:name="com.example.doannt118.ui.DangKyLichKhamActivity" />
+109-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:85:9-63
+109-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:85:19-60
+110        <activity android:name="com.example.doannt118.ui.DanhSachBacSiActivity" />
+110-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:86:9-62
+110-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:86:19-59
+111        <activity android:name="com.example.doannt118.ui.ChiTietBacSiActivity" />
+111-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:87:9-61
+111-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:87:19-58
 112        <activity
-112-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:86:9-88:40
-113            android:name="com.example.doannt118.ui.MainActivity"
-113-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:87:13-44
-114            android:exported="false" />
-114-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:88:13-37
-115        <activity
-115-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:89:9-91:40
-116            android:name="com.example.doannt118.ui.XacNhanUongThuocActivity"
-116-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:90:13-56
-117            android:exported="false" />
-117-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:91:13-37
-118        <activity
-118-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:92:9-94:40
-119            android:name="com.example.doannt118.ui.LichSuUongThuocActivity"
-119-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:93:13-55
-120            android:exported="false" />
-120-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:94:13-37
-121        <activity
-121-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:95:9-97:40
-122            android:name="com.example.doannt118.ui.DiemDanhUongThuocActivity"
-122-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:96:13-57
-123            android:exported="false" />
-123-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:97:13-37
-124        <activity
-124-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:98:9-100:40
-125            android:name="com.example.doannt118.ui.QuanLyUongThuocActivity"
-125-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:99:13-55
-126            android:exported="false" />
-126-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:100:13-37
-127        <activity
-127-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:101:9-103:40
-128            android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"
-128-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:102:13-55
-129            android:exported="false" />
-129-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:103:13-37
-130        <activity
-130-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:104:9-106:40
-131            android:name="com.example.doannt118.ui.QuanLyBenhAnBacSiActivity"
-131-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:105:13-57
-132            android:exported="false" />
-132-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:106:13-37
-133        <activity
-133-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:107:9-109:40
-134            android:name="com.example.doannt118.ui.CapNhatBenhAnActivity"
-134-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:108:13-53
-135            android:exported="false" />
-135-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:109:13-37
-136        <activity
-136-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:110:9-112:40
-137            android:name="com.example.doannt118.ui.TaoBenhAnActivity"
-137-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:111:13-49
-138            android:exported="false" />
-138-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:112:13-37
-139        <activity
-139-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:113:9-115:40
-140            android:name="com.example.doannt118.ui.KeDonThuocActivity"
-140-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:114:13-50
-141            android:exported="false" />
-141-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:115:13-37
-142        <activity
-142-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:116:9-118:40
-143            android:name="com.example.doannt118.ui.TaoHoaDonActivity"
-143-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:117:13-49
-144            android:exported="false" />
-144-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:118:13-37
-145        <activity
-145-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:119:9-121:40
-146            android:name="com.example.doannt118.ui.NhapMaKhamActivity"
-146-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:120:13-50
-147            android:exported="false" />
-147-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:121:13-37
-148        <activity
-148-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:122:9-124:40
-149            android:name="com.example.doannt118.ui.HoSoBenhNhanActivity"
-149-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:123:13-52
-150            android:exported="false" />
-150-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:124:13-37
-151        <activity
-151-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:125:9-127:40
-152            android:name="com.example.doannt118.ui.LichKhamCuaToiActivity"
-152-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:126:13-54
-153            android:exported="false" />
-153-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:127:13-37
-154        <activity
-154-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:128:9-130:40
-155            android:name="com.example.doannt118.ui.ChiTietLichKhamActivity"
-155-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:129:13-55
-156            android:exported="false" />
-156-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:130:13-37
-157        <activity
-157-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:131:9-133:40
-158            android:name="com.example.doannt118.ui.InitDuocPhamActivity"
-158-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:132:13-52
-159            android:exported="false" />
-159-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:133:13-37
-160        <activity
-160-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:134:9-136:40
-161            android:name="com.example.doannt118.ui.InitDichVuKhamActivity"
-161-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:135:13-54
-162            android:exported="false" />
-162-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:136:13-37
-163        <activity
-163-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:137:9-139:40
-164            android:name="com.example.doannt118.ui.ChonDichVuKhamActivity"
-164-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:138:13-54
-165            android:exported="false" />
-165-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:139:13-37
-166        <activity
-166-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:140:9-142:40
-167            android:name="com.example.doannt118.ui.QuanLyDuLieuActivity"
-167-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:141:13-52
-168            android:exported="false" />
-168-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:142:13-37
-169        <activity
-169-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:143:9-146:58
-170            android:name="com.example.doannt118.ui.NhanTinBacSiActivity"
-170-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:144:13-52
-171            android:exported="false"
-171-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:145:13-37
-172            android:windowSoftInputMode="adjustResize" />
-172-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:146:13-55
-173        <activity
-173-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:147:9-149:40
-174            android:name="com.example.doannt118.ui.DanhSachTinNhanBacSiActivity"
-174-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:148:13-60
-175            android:exported="false" />
-175-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:149:13-37
-176        <activity
-176-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:150:9-152:40
-177            android:name="com.example.doannt118.ui.ChonBacSiChatActivity"
-177-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:151:13-53
-178            android:exported="false" />
-178-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:152:13-37
-179        <activity
-179-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:153:9-155:40
-180            android:name="com.example.doannt118.ui.DanhSachCuocTroChuyenBenhNhanActivity"
-180-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:154:13-69
-181            android:exported="false" />
-181-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:155:13-37
-182        <activity
-182-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:156:9-158:40
-183            android:name="com.example.doannt118.ui.ThongTinBacSiActivity"
-183-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:157:13-53
-184            android:exported="false" />
-184-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:158:13-37
-185        <activity
-185-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:159:9-161:40
-186            android:name="com.example.doannt118.ui.ThanhToanActivity"
-186-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:160:13-49
-187            android:exported="false" />
-187-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:161:13-37
-188        <activity
-188-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:162:9-164:40
-189            android:name="com.example.doannt118.ui.ThanhToanQRActivity"
-189-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:163:13-51
-190            android:exported="false" />
-190-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:164:13-37
-191
-192        <!-- Firebase Cloud Messaging Service -->
-193        <service
-193-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:167:9-173:19
-194            android:name="com.example.doannt118.service.MyFirebaseMessagingService"
-194-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:168:13-63
-195            android:exported="false" >
-195-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:169:13-37
-196            <intent-filter>
-196-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:170:13-172:29
-197                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-197-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:171:17-78
-197-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:171:25-75
-198            </intent-filter>
-199        </service>
-200
-201        <!-- Firebase Messaging Metadata -->
-202        <meta-data
-202-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:176:9-178:60
-203            android:name="com.google.firebase.messaging.default_notification_icon"
-203-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:177:13-83
-204            android:resource="@drawable/ic_notification" />
-204-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:178:13-57
-205        <meta-data
-205-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:179:9-181:54
-206            android:name="com.google.firebase.messaging.default_notification_color"
-206-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:180:13-84
-207            android:resource="@color/colorPrimary" />
-207-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:181:13-51
-208        <meta-data
-208-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:182:9-184:60
-209            android:name="com.google.firebase.messaging.default_notification_channel_id"
-209-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:183:13-89
-210            android:value="medical_notification_channel" />
-210-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:184:13-57
-211
-212        <activity
-212-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:29:9-46:20
-213            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-213-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:30:13-80
-214            android:excludeFromRecents="true"
-214-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:31:13-46
-215            android:exported="true"
-215-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:32:13-36
-216            android:launchMode="singleTask"
-216-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:33:13-44
-217            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-217-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:34:13-72
-218            <intent-filter>
-218-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:35:13-45:29
-219                <action android:name="android.intent.action.VIEW" />
-219-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:17-69
-219-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:25-66
-220
-221                <category android:name="android.intent.category.DEFAULT" />
-221-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:17-76
-221-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:27-73
-222                <category android:name="android.intent.category.BROWSABLE" />
-222-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:17-78
-222-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:27-75
-223
-224                <data
-224-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:41:17-44:51
-225                    android:host="firebase.auth"
-225-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:42:21-49
-226                    android:path="/"
-226-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:43:21-37
-227                    android:scheme="genericidp" />
-227-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:44:21-48
-228            </intent-filter>
-229        </activity>
-230        <activity
-230-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:47:9-64:20
-231            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-231-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:48:13-79
-232            android:excludeFromRecents="true"
-232-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:49:13-46
-233            android:exported="true"
-233-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:50:13-36
-234            android:launchMode="singleTask"
-234-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:51:13-44
-235            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-235-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:52:13-72
-236            <intent-filter>
-236-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:53:13-63:29
-237                <action android:name="android.intent.action.VIEW" />
-237-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:17-69
-237-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:25-66
-238
-239                <category android:name="android.intent.category.DEFAULT" />
-239-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:17-76
-239-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:27-73
-240                <category android:name="android.intent.category.BROWSABLE" />
-240-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:17-78
-240-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:27-75
-241
-242                <data
-242-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:41:17-44:51
-243                    android:host="firebase.auth"
-243-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:42:21-49
-244                    android:path="/"
-244-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:43:21-37
-245                    android:scheme="recaptcha" />
-245-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:44:21-48
-246            </intent-filter>
-247        </activity>
-248
-249        <service
-249-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:66:9-72:19
-250            android:name="com.google.firebase.components.ComponentDiscoveryService"
-250-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:67:13-84
-251            android:directBootAware="true"
-251-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:32:13-43
-252            android:exported="false" >
-252-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:68:13-37
-253            <meta-data
-253-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:69:13-71:85
-254                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-254-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:70:17-109
-255                android:value="com.google.firebase.components.ComponentRegistrar" />
-255-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:71:17-82
-256            <meta-data
-256-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:17:13-19:85
-257                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
-257-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:18:17-122
-258                android:value="com.google.firebase.components.ComponentRegistrar" />
-258-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:19:17-82
-259            <meta-data
-259-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:20:13-22:85
-260                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
-260-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:21:17-111
-261                android:value="com.google.firebase.components.ComponentRegistrar" />
-261-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:22:17-82
-262            <meta-data
-262-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:57:13-59:85
-263                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-263-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:58:17-122
-264                android:value="com.google.firebase.components.ComponentRegistrar" />
-264-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:59:17-82
-265            <meta-data
-265-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:60:13-62:85
-266                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-266-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:61:17-119
-267                android:value="com.google.firebase.components.ComponentRegistrar" />
-267-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:62:17-82
-268            <meta-data
-268-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:30:13-32:85
-269                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
-269-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:31:17-118
-270                android:value="com.google.firebase.components.ComponentRegistrar" />
-270-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:32:17-82
-271            <meta-data
-271-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:33:13-35:85
-272                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
-272-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:34:17-107
-273                android:value="com.google.firebase.components.ComponentRegistrar" />
-273-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:35:17-82
-274            <meta-data
-274-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:31:13-33:85
-275                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
-275-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:32:17-105
-276                android:value="com.google.firebase.components.ComponentRegistrar" />
-276-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:33:17-82
-277            <meta-data
-277-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:33:13-35:85
-278                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-278-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:34:17-139
-279                android:value="com.google.firebase.components.ComponentRegistrar" />
-279-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:35:17-82
-280            <meta-data
-280-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:15:13-17:85
-281                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-281-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:16:17-130
-282                android:value="com.google.firebase.components.ComponentRegistrar" />
-282-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:17:17-82
-283            <meta-data
-283-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:18:13-20:85
-284                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-284-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:19:17-127
-285                android:value="com.google.firebase.components.ComponentRegistrar" />
-285-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:20:17-82
-286            <meta-data
-286-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:35:13-37:85
-287                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-287-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:36:17-109
-288                android:value="com.google.firebase.components.ComponentRegistrar" />
-288-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:37:17-82
-289            <meta-data
-289-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:25:13-27:85
-290                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
-290-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:26:17-120
-291                android:value="com.google.firebase.components.ComponentRegistrar" />
-291-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:27:17-82
-292            <meta-data
-292-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:28:13-30:85
-293                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
-293-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:29:17-117
-294                android:value="com.google.firebase.components.ComponentRegistrar" />
-294-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:30:17-82
+112-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:88:9-90:74
+113            android:name="com.example.doannt118.ui.XemChiTietLichKhamActivity"
+113-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:88:19-64
+114            android:parentActivityName="com.example.doannt118.ui.QuanLyLichLamViecActivity"
+114-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:89:13-71
+115            android:theme="@style/Theme.AppCompat.Light.DarkActionBar" />
+115-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:90:13-71
+116        <activity android:name="com.example.doannt118.ui.XacNhanLichKhamActivity" />
+116-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:91:9-64
+116-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:91:19-61
+117        <activity android:name="com.example.doannt118.ui.GuiThongBaoActivity" />
+117-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:92:9-60
+117-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:92:19-57
+118        <activity android:name="com.example.doannt118.ui.ThongBaoActivity" />
+118-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:93:9-57
+118-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:93:19-54
+119        <activity
+119-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:94:9-96:58
+120            android:name="com.example.doannt118.ui.ChatActivity"
+120-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:95:13-44
+121            android:windowSoftInputMode="adjustResize" />
+121-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:96:13-55
+122        <activity
+122-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:97:9-99:40
+123            android:name="com.example.doannt118.ui.DanhSachDonThuocActivity"
+123-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:98:13-56
+124            android:exported="false" />
+124-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:99:13-37
+125        <activity
+125-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:100:9-102:40
+126            android:name="com.example.doannt118.ui.ChiTietDonThuocActivity"
+126-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:101:13-55
+127            android:exported="false" />
+127-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:102:13-37
+128        <activity
+128-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:103:9-105:40
+129            android:name="com.example.doannt118.ui.DanhSachHoaDonActivity"
+129-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:104:13-54
+130            android:exported="false" />
+130-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:105:13-37
+131        <activity
+131-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:106:9-108:40
+132            android:name="com.example.doannt118.ui.ChiTietHoaDonActivity"
+132-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:107:13-53
+133            android:exported="false" />
+133-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:108:13-37
+134        <activity
+134-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:109:9-111:40
+135            android:name="com.example.doannt118.ui.UpdateBacSiProfileActivity"
+135-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:110:13-58
+136            android:exported="false" />
+136-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:111:13-37
+137        <activity
+137-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:112:9-114:40
+138            android:name="com.example.doannt118.ui.MainActivity"
+138-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:113:13-44
+139            android:exported="false" />
+139-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:114:13-37
+140        <activity
+140-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:115:9-117:40
+141            android:name="com.example.doannt118.ui.XacNhanUongThuocActivity"
+141-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:116:13-56
+142            android:exported="false" />
+142-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:117:13-37
+143        <activity
+143-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:118:9-120:40
+144            android:name="com.example.doannt118.ui.LichSuUongThuocActivity"
+144-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:119:13-55
+145            android:exported="false" />
+145-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:120:13-37
+146        <activity
+146-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:121:9-127:43
+147            android:name="com.example.doannt118.ui.IncomingCallActivity"
+147-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:122:13-52
+148            android:exported="false"
+148-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:123:13-37
+149            android:launchMode="singleTop"
+149-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:125:13-43
+150            android:showOnLockScreen="true"
+150-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:126:13-44
+151            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+151-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:124:13-69
+152            android:turnScreenOn="true" />
+152-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:127:13-40
+153        <activity
+153-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:128:9-130:40
+154            android:name="com.example.doannt118.ui.DiemDanhUongThuocActivity"
+154-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:129:13-57
+155            android:exported="false" />
+155-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:130:13-37
+156        <activity
+156-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:131:9-133:40
+157            android:name="com.example.doannt118.ui.QuanLyUongThuocActivity"
+157-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:132:13-55
+158            android:exported="false" />
+158-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:133:13-37
+159        <activity
+159-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:134:9-136:40
+160            android:name="com.example.doannt118.ui.ChiTietThongBaoActivity"
+160-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:135:13-55
+161            android:exported="false" />
+161-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:136:13-37
+162        <activity
+162-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:137:9-139:40
+163            android:name="com.example.doannt118.ui.QuanLyBenhAnBacSiActivity"
+163-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:138:13-57
+164            android:exported="false" />
+164-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:139:13-37
+165        <activity
+165-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:140:9-142:40
+166            android:name="com.example.doannt118.ui.CapNhatBenhAnActivity"
+166-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:141:13-53
+167            android:exported="false" />
+167-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:142:13-37
+168        <activity
+168-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:143:9-145:40
+169            android:name="com.example.doannt118.ui.TaoBenhAnActivity"
+169-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:144:13-49
+170            android:exported="false" />
+170-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:145:13-37
+171        <activity
+171-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:146:9-148:40
+172            android:name="com.example.doannt118.ui.KeDonThuocActivity"
+172-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:147:13-50
+173            android:exported="false" />
+173-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:148:13-37
+174        <activity
+174-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:149:9-151:40
+175            android:name="com.example.doannt118.ui.TaoHoaDonActivity"
+175-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:150:13-49
+176            android:exported="false" />
+176-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:151:13-37
+177        <activity
+177-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:152:9-154:40
+178            android:name="com.example.doannt118.ui.NhapMaKhamActivity"
+178-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:153:13-50
+179            android:exported="false" />
+179-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:154:13-37
+180        <activity
+180-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:155:9-157:40
+181            android:name="com.example.doannt118.ui.HoSoBenhNhanActivity"
+181-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:156:13-52
+182            android:exported="false" />
+182-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:157:13-37
+183        <activity
+183-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:158:9-160:40
+184            android:name="com.example.doannt118.ui.LichKhamCuaToiActivity"
+184-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:159:13-54
+185            android:exported="false" />
+185-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:160:13-37
+186        <activity
+186-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:161:9-163:40
+187            android:name="com.example.doannt118.ui.ChiTietLichKhamActivity"
+187-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:162:13-55
+188            android:exported="false" />
+188-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:163:13-37
+189        <activity
+189-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:164:9-166:40
+190            android:name="com.example.doannt118.ui.InitDuocPhamActivity"
+190-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:165:13-52
+191            android:exported="false" />
+191-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:166:13-37
+192        <activity
+192-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:167:9-169:40
+193            android:name="com.example.doannt118.ui.InitDichVuKhamActivity"
+193-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:168:13-54
+194            android:exported="false" />
+194-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:169:13-37
+195        <activity
+195-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:170:9-172:40
+196            android:name="com.example.doannt118.ui.ChonDichVuKhamActivity"
+196-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:171:13-54
+197            android:exported="false" />
+197-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:172:13-37
+198        <activity
+198-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:173:9-175:40
+199            android:name="com.example.doannt118.ui.QuanLyDuLieuActivity"
+199-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:174:13-52
+200            android:exported="false" />
+200-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:175:13-37
+201        <activity
+201-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:176:9-179:58
+202            android:name="com.example.doannt118.ui.NhanTinBacSiActivity"
+202-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:177:13-52
+203            android:exported="false"
+203-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:178:13-37
+204            android:windowSoftInputMode="adjustResize" />
+204-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:179:13-55
+205        <activity
+205-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:180:9-182:40
+206            android:name="com.example.doannt118.ui.DanhSachTinNhanBacSiActivity"
+206-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:181:13-60
+207            android:exported="false" />
+207-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:182:13-37
+208        <activity
+208-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:183:9-185:40
+209            android:name="com.example.doannt118.ui.ChonBacSiChatActivity"
+209-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:184:13-53
+210            android:exported="false" />
+210-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:185:13-37
+211        <activity
+211-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:186:9-188:40
+212            android:name="com.example.doannt118.ui.DanhSachCuocTroChuyenBenhNhanActivity"
+212-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:187:13-69
+213            android:exported="false" />
+213-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:188:13-37
+214        <activity
+214-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:189:9-191:40
+215            android:name="com.example.doannt118.ui.ThongTinBacSiActivity"
+215-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:190:13-53
+216            android:exported="false" />
+216-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:191:13-37
+217        <activity
+217-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:192:9-194:40
+218            android:name="com.example.doannt118.ui.ThanhToanActivity"
+218-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:193:13-49
+219            android:exported="false" />
+219-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:194:13-37
+220        <activity
+220-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:195:9-197:40
+221            android:name="com.example.doannt118.ui.ThanhToanQRActivity"
+221-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:196:13-51
+222            android:exported="false" />
+222-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:197:13-37
+223        <activity
+223-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:198:9-202:72
+224            android:name="com.example.doannt118.ui.VoiceCallActivity"
+224-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:199:13-49
+225            android:exported="false"
+225-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:200:13-37
+226            android:screenOrientation="portrait"
+226-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:201:13-49
+227            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+227-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:202:13-69
+228        <activity
+228-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:203:9-207:72
+229            android:name="com.example.doannt118.ui.VideoCallActivity"
+229-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:204:13-49
+230            android:exported="false"
+230-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:205:13-37
+231            android:screenOrientation="portrait"
+231-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:206:13-49
+232            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+232-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:207:13-69
+233
+234        <!-- Firebase Cloud Messaging Service -->
+235        <service
+235-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:210:9-216:19
+236            android:name="com.example.doannt118.service.MyFirebaseMessagingService"
+236-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:211:13-63
+237            android:exported="false" >
+237-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:212:13-37
+238            <intent-filter>
+238-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:213:13-215:29
+239                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+239-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:214:17-78
+239-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:214:25-75
+240            </intent-filter>
+241        </service>
+242
+243        <!-- Firebase Messaging Metadata -->
+244        <meta-data
+244-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:219:9-221:60
+245            android:name="com.google.firebase.messaging.default_notification_icon"
+245-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:220:13-83
+246            android:resource="@drawable/ic_notification" />
+246-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:221:13-57
+247        <meta-data
+247-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:222:9-224:54
+248            android:name="com.google.firebase.messaging.default_notification_color"
+248-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:223:13-84
+249            android:resource="@color/colorPrimary" />
+249-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:224:13-51
+250        <meta-data
+250-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:225:9-227:60
+251            android:name="com.google.firebase.messaging.default_notification_channel_id"
+251-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:226:13-89
+252            android:value="medical_notification_channel" />
+252-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:227:13-57
+253
+254        <activity
+254-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:29:9-46:20
+255            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+255-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:30:13-80
+256            android:excludeFromRecents="true"
+256-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:31:13-46
+257            android:exported="true"
+257-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:32:13-36
+258            android:launchMode="singleTask"
+258-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:33:13-44
+259            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+259-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:34:13-72
+260            <intent-filter>
+260-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:35:13-45:29
+261                <action android:name="android.intent.action.VIEW" />
+261-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:17-69
+261-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:25-66
+262
+263                <category android:name="android.intent.category.DEFAULT" />
+263-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:17-76
+263-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:27-73
+264                <category android:name="android.intent.category.BROWSABLE" />
+264-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:17-78
+264-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:27-75
+265
+266                <data
+266-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:41:17-44:51
+267                    android:host="firebase.auth"
+267-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:42:21-49
+268                    android:path="/"
+268-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:43:21-37
+269                    android:scheme="genericidp" />
+269-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:44:21-48
+270            </intent-filter>
+271        </activity>
+272        <activity
+272-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:47:9-64:20
+273            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+273-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:48:13-79
+274            android:excludeFromRecents="true"
+274-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:49:13-46
+275            android:exported="true"
+275-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:50:13-36
+276            android:launchMode="singleTask"
+276-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:51:13-44
+277            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+277-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:52:13-72
+278            <intent-filter>
+278-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:53:13-63:29
+279                <action android:name="android.intent.action.VIEW" />
+279-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:17-69
+279-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:36:25-66
+280
+281                <category android:name="android.intent.category.DEFAULT" />
+281-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:17-76
+281-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:38:27-73
+282                <category android:name="android.intent.category.BROWSABLE" />
+282-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:17-78
+282-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:39:27-75
+283
+284                <data
+284-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:41:17-44:51
+285                    android:host="firebase.auth"
+285-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:42:21-49
+286                    android:path="/"
+286-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:43:21-37
+287                    android:scheme="recaptcha" />
+287-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:44:21-48
+288            </intent-filter>
+289        </activity>
+290
+291        <service
+291-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:66:9-72:19
+292            android:name="com.google.firebase.components.ComponentDiscoveryService"
+292-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:67:13-84
+293            android:directBootAware="true"
+293-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:32:13-43
+294            android:exported="false" >
+294-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:68:13-37
 295            <meta-data
-295-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:25:13-27:85
-296                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-296-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:26:17-115
+295-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:69:13-71:85
+296                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+296-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:70:17-109
 297                android:value="com.google.firebase.components.ComponentRegistrar" />
-297-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:27:17-82
-298        </service>
-299
-300        <receiver
-300-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:29:9-40:20
-301            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-301-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:30:13-78
-302            android:exported="true"
-302-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:31:13-36
-303            android:permission="com.google.android.c2dm.permission.SEND" >
-303-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:32:13-73
-304            <intent-filter>
-304-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:33:13-35:29
-305                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-305-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:34:17-81
-305-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:34:25-78
-306            </intent-filter>
-307
-308            <meta-data
-308-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:37:13-39:40
-309                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-309-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:38:17-92
-310                android:value="true" />
-310-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:39:17-37
-311        </receiver>
-312        <!--
-313             FirebaseMessagingService performs security checks at runtime,
-314             but set to not exported to explicitly avoid allowing another app to call it.
-315        -->
-316        <service
-316-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:46:9-53:19
-317            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-317-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:47:13-82
-318            android:directBootAware="true"
-318-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:48:13-43
-319            android:exported="false" >
-319-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:49:13-37
-320            <intent-filter android:priority="-500" >
-320-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:170:13-172:29
-321                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-321-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:171:17-78
-321-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:171:25-75
-322            </intent-filter>
-323        </service>
-324
-325        <provider
-325-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:23:9-28:39
-326            android:name="com.google.firebase.provider.FirebaseInitProvider"
-326-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:24:13-77
-327            android:authorities="com.example.doannt118.firebaseinitprovider"
-327-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:25:13-72
-328            android:directBootAware="true"
-328-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:26:13-43
-329            android:exported="false"
-329-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:27:13-37
-330            android:initOrder="100" />
-330-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:28:13-36
-331
-332        <receiver
-332-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:29:9-33:20
-333            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-333-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:30:13-85
-334            android:enabled="true"
-334-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:31:13-35
-335            android:exported="false" >
-335-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:32:13-37
-336        </receiver>
-337
-338        <service
-338-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:35:9-38:40
-339            android:name="com.google.android.gms.measurement.AppMeasurementService"
-339-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:36:13-84
-340            android:enabled="true"
-340-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:37:13-35
-341            android:exported="false" />
-341-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:38:13-37
-342        <service
-342-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:39:9-43:72
-343            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-343-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:40:13-87
-344            android:enabled="true"
-344-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:41:13-35
-345            android:exported="false"
-345-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:42:13-37
-346            android:permission="android.permission.BIND_JOB_SERVICE" />
-346-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:43:13-69
-347        <service
-347-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:24:9-32:19
-348            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
-348-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:25:13-94
-349            android:enabled="true"
-349-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:26:13-35
-350            android:exported="false" >
-350-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:27:13-37
-351            <meta-data
-351-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:29:13-31:104
-352                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
-352-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:30:17-76
-353                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
-353-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:31:17-101
-354        </service>
-355
-356        <activity
-356-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:34:9-41:20
-357            android:name="androidx.credentials.playservices.HiddenActivity"
-357-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:35:13-76
-358            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-358-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:36:13-87
-359            android:enabled="true"
-359-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:37:13-35
-360            android:exported="false"
-360-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:38:13-37
-361            android:fitsSystemWindows="true"
-361-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:39:13-45
-362            android:theme="@style/Theme.Hidden" >
-362-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:40:13-48
-363        </activity>
-364        <activity
-364-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:23:9-27:75
-365            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
-365-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:24:13-93
-366            android:excludeFromRecents="true"
-366-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:25:13-46
-367            android:exported="false"
-367-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:26:13-37
-368            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-368-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:27:13-72
-369        <!--
-370            Service handling Google Sign-In user revocation. For apps that do not integrate with
-371            Google Sign-In, this service will never be started.
-372        -->
-373        <service
-373-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:33:9-37:51
-374            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
-374-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:34:13-89
-375            android:exported="true"
-375-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:35:13-36
-376            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
-376-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:36:13-107
-377            android:visibleToInstantApps="true" />
-377-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:37:13-48
-378
-379        <provider
-379-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-380            android:name="androidx.startup.InitializationProvider"
-380-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-381            android:authorities="com.example.doannt118.androidx-startup"
-381-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-382            android:exported="false" >
-382-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-383            <meta-data
-383-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-384                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-384-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-385                android:value="androidx.startup" />
-385-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-386            <meta-data
-386-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-387                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-387-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-388                android:value="androidx.startup" />
-388-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-389            <meta-data
-389-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-390                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-390-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-391                android:value="androidx.startup" />
-391-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-392        </provider>
-393
-394        <uses-library
-394-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:23:9-25:40
-395            android:name="android.ext.adservices"
-395-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:24:13-50
-396            android:required="false" />
-396-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:25:13-37
+297-->[com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\9f6b3bea170771f1d1fe036dfcf69515\transformed\firebase-auth-24.0.1\AndroidManifest.xml:71:17-82
+298            <meta-data
+298-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:17:13-19:85
+299                android:name="com.google.firebase.components:com.google.firebase.firestore.FirebaseFirestoreKtxRegistrar"
+299-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:18:17-122
+300                android:value="com.google.firebase.components.ComponentRegistrar" />
+300-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:19:17-82
+301            <meta-data
+301-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:20:13-22:85
+302                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+302-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:21:17-111
+303                android:value="com.google.firebase.components.ComponentRegistrar" />
+303-->[com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:22:17-82
+304            <meta-data
+304-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:57:13-59:85
+305                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+305-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:58:17-122
+306                android:value="com.google.firebase.components.ComponentRegistrar" />
+306-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:59:17-82
+307            <meta-data
+307-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:60:13-62:85
+308                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+308-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:61:17-119
+309                android:value="com.google.firebase.components.ComponentRegistrar" />
+309-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:62:17-82
+310            <meta-data
+310-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:30:13-32:85
+311                android:name="com.google.firebase.components:com.google.firebase.storage.FirebaseStorageKtxRegistrar"
+311-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:31:17-118
+312                android:value="com.google.firebase.components.ComponentRegistrar" />
+312-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:32:17-82
+313            <meta-data
+313-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:33:13-35:85
+314                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+314-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:34:17-107
+315                android:value="com.google.firebase.components.ComponentRegistrar" />
+315-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:35:17-82
+316            <meta-data
+316-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:31:13-33:85
+317                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
+317-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:32:17-105
+318                android:value="com.google.firebase.components.ComponentRegistrar" />
+318-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:33:17-82
+319            <meta-data
+319-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:33:13-35:85
+320                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+320-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:34:17-139
+321                android:value="com.google.firebase.components.ComponentRegistrar" />
+321-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:35:17-82
+322            <meta-data
+322-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:15:13-17:85
+323                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+323-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:16:17-130
+324                android:value="com.google.firebase.components.ComponentRegistrar" />
+324-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:17:17-82
+325            <meta-data
+325-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:18:13-20:85
+326                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+326-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:19:17-127
+327                android:value="com.google.firebase.components.ComponentRegistrar" />
+327-->[com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:20:17-82
+328            <meta-data
+328-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:35:13-37:85
+329                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+329-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:36:17-109
+330                android:value="com.google.firebase.components.ComponentRegistrar" />
+330-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:37:17-82
+331            <meta-data
+331-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:25:13-27:85
+332                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckKtxRegistrar"
+332-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:26:17-120
+333                android:value="com.google.firebase.components.ComponentRegistrar" />
+333-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:27:17-82
+334            <meta-data
+334-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:28:13-30:85
+335                android:name="com.google.firebase.components:com.google.firebase.appcheck.FirebaseAppCheckRegistrar"
+335-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:29:17-117
+336                android:value="com.google.firebase.components.ComponentRegistrar" />
+336-->[com.google.firebase:firebase-appcheck:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8e9e19f95f3391765ee75785bac324b0\transformed\firebase-appcheck-19.0.1\AndroidManifest.xml:30:17-82
+337            <meta-data
+337-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:25:13-27:85
+338                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+338-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:26:17-115
+339                android:value="com.google.firebase.components.ComponentRegistrar" />
+339-->[com.google.firebase:firebase-datatransport:18.2.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\fae0ffff7bfe860b535e0f7f224a9e48\transformed\firebase-datatransport-18.2.0\AndroidManifest.xml:27:17-82
+340        </service>
+341
+342        <receiver
+342-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:29:9-40:20
+343            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+343-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:30:13-78
+344            android:exported="true"
+344-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:31:13-36
+345            android:permission="com.google.android.c2dm.permission.SEND" >
+345-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:32:13-73
+346            <intent-filter>
+346-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:33:13-35:29
+347                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+347-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:34:17-81
+347-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:34:25-78
+348            </intent-filter>
+349
+350            <meta-data
+350-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:37:13-39:40
+351                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+351-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:38:17-92
+352                android:value="true" />
+352-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:39:17-37
+353        </receiver>
+354        <!--
+355             FirebaseMessagingService performs security checks at runtime,
+356             but set to not exported to explicitly avoid allowing another app to call it.
+357        -->
+358        <service
+358-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:46:9-53:19
+359            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+359-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:47:13-82
+360            android:directBootAware="true"
+360-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:48:13-43
+361            android:exported="false" >
+361-->[com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:49:13-37
+362            <intent-filter android:priority="-500" >
+362-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:213:13-215:29
+363                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+363-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:214:17-78
+363-->E:\HK1_2025_2026\NT118\DoAnMobileNT118\DoAnMobileNT118\app\src\main\AndroidManifest.xml:214:25-75
+364            </intent-filter>
+365        </service>
+366
+367        <provider
+367-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:23:9-28:39
+368            android:name="com.google.firebase.provider.FirebaseInitProvider"
+368-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:24:13-77
+369            android:authorities="com.example.doannt118.firebaseinitprovider"
+369-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:25:13-72
+370            android:directBootAware="true"
+370-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:26:13-43
+371            android:exported="false"
+371-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:27:13-37
+372            android:initOrder="100" />
+372-->[com.google.firebase:firebase-common:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d73301ef37f25adc78720f0df7fd568d\transformed\firebase-common-22.0.1\AndroidManifest.xml:28:13-36
+373
+374        <receiver
+374-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:29:9-33:20
+375            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+375-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:30:13-85
+376            android:enabled="true"
+376-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:31:13-35
+377            android:exported="false" >
+377-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:32:13-37
+378        </receiver>
+379
+380        <service
+380-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:35:9-38:40
+381            android:name="com.google.android.gms.measurement.AppMeasurementService"
+381-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:36:13-84
+382            android:enabled="true"
+382-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:37:13-35
+383            android:exported="false" />
+383-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:38:13-37
+384        <service
+384-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:39:9-43:72
+385            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+385-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:40:13-87
+386            android:enabled="true"
+386-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:41:13-35
+387            android:exported="false"
+387-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:42:13-37
+388            android:permission="android.permission.BIND_JOB_SERVICE" />
+388-->[com.google.android.gms:play-services-measurement:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\8ab6f50227936d1ca62c32477c7c4a99\transformed\play-services-measurement-23.0.0\AndroidManifest.xml:43:13-69
+389        <service
+389-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:24:9-32:19
+390            android:name="androidx.credentials.playservices.CredentialProviderMetadataHolder"
+390-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:25:13-94
+391            android:enabled="true"
+391-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:26:13-35
+392            android:exported="false" >
+392-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:27:13-37
+393            <meta-data
+393-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:29:13-31:104
+394                android:name="androidx.credentials.CREDENTIAL_PROVIDER_KEY"
+394-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:30:17-76
+395                android:value="androidx.credentials.playservices.CredentialProviderPlayServicesImpl" />
+395-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:31:17-101
+396        </service>
 397
 398        <activity
-398-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
-399            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-399-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
-400            android:exported="false"
-400-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
-401            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-401-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
-402
-403        <receiver
-403-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-404            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-404-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-405            android:directBootAware="false"
-405-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-406            android:enabled="true"
-406-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-407            android:exported="true"
-407-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-408            android:permission="android.permission.DUMP" >
-408-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-409            <intent-filter>
-409-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-410                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-410-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-410-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-411            </intent-filter>
-412            <intent-filter>
-412-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-413                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-413-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-413-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-414            </intent-filter>
-415            <intent-filter>
-415-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-416                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-416-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-416-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-417            </intent-filter>
-418            <intent-filter>
-418-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-419                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-419-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-419-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-420            </intent-filter>
-421        </receiver>
-422
-423        <meta-data
-423-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:21:9-23:69
-424            android:name="com.google.android.gms.version"
-424-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:22:13-58
-425            android:value="@integer/google_play_services_version" />
-425-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:23:13-66
-426
-427        <service
-427-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:28:9-34:19
-428            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-428-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:29:13-103
-429            android:exported="false" >
-429-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:30:13-37
-430            <meta-data
-430-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:31:13-33:39
-431                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-431-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:32:17-94
-432                android:value="cct" />
-432-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:33:17-36
-433        </service>
-434        <service
-434-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:26:9-30:19
-435            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-435-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:27:13-117
-436            android:exported="false"
-436-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:28:13-37
-437            android:permission="android.permission.BIND_JOB_SERVICE" >
-437-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:29:13-69
-438        </service>
+398-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:34:9-41:20
+399            android:name="androidx.credentials.playservices.HiddenActivity"
+399-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:35:13-76
+400            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
+400-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:36:13-87
+401            android:enabled="true"
+401-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:37:13-35
+402            android:exported="false"
+402-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:38:13-37
+403            android:fitsSystemWindows="true"
+403-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:39:13-45
+404            android:theme="@style/Theme.Hidden" >
+404-->[androidx.credentials:credentials-play-services-auth:1.2.0-rc01] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ab43789cc38c6016094ac326f7ebb5a4\transformed\credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:40:13-48
+405        </activity>
+406        <activity
+406-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:23:9-27:75
+407            android:name="com.google.android.gms.auth.api.signin.internal.SignInHubActivity"
+407-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:24:13-93
+408            android:excludeFromRecents="true"
+408-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:25:13-46
+409            android:exported="false"
+409-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:26:13-37
+410            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+410-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:27:13-72
+411        <!--
+412            Service handling Google Sign-In user revocation. For apps that do not integrate with
+413            Google Sign-In, this service will never be started.
+414        -->
+415        <service
+415-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:33:9-37:51
+416            android:name="com.google.android.gms.auth.api.signin.RevocationBoundService"
+416-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:34:13-89
+417            android:exported="true"
+417-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:35:13-36
+418            android:permission="com.google.android.gms.auth.api.signin.permission.REVOCATION_NOTIFICATION"
+418-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:36:13-107
+419            android:visibleToInstantApps="true" />
+419-->[com.google.android.gms:play-services-auth:20.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\cf66d4af82f98e97251c19823d08858a\transformed\play-services-auth-20.7.0\AndroidManifest.xml:37:13-48
+420
+421        <provider
+421-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+422            android:name="androidx.startup.InitializationProvider"
+422-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+423            android:authorities="com.example.doannt118.androidx-startup"
+423-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+424            android:exported="false" >
+424-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+425            <meta-data
+425-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+426                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+426-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+427                android:value="androidx.startup" />
+427-->[androidx.emoji2:emoji2:1.3.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\2cb8816528f913decc6b9a22daaf0112\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+428            <meta-data
+428-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+429                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+429-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+430                android:value="androidx.startup" />
+430-->[androidx.lifecycle:lifecycle-process:2.6.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\4d9916d2bb57ea0f07ea7e4a10dc1bb1\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+431            <meta-data
+431-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+432                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+432-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+433                android:value="androidx.startup" />
+433-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+434        </provider>
+435
+436        <uses-library
+436-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:23:9-25:40
+437            android:name="android.ext.adservices"
+437-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:24:13-50
+438            android:required="false" />
+438-->[androidx.privacysandbox.ads:ads-adservices:1.1.0-beta11] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d447beb804d415700af80f82f7de27d6\transformed\ads-adservices-1.1.0-beta11\AndroidManifest.xml:25:13-37
 439
-440        <receiver
-440-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:32:9-34:40
-441            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-441-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:33:13-132
-442            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
-442-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:34:13-37
-443        <activity
-443-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:14:9-18:65
-444            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
-444-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:15:13-93
-445            android:exported="false"
-445-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:16:13-37
-446            android:stateNotNeeded="true"
-446-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:17:13-42
-447            android:theme="@style/Theme.PlayCore.Transparent" />
-447-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:18:13-62
-448    </application>
-449
-450</manifest>
+440        <activity
+440-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:9-173
+441            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+441-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:19-85
+442            android:exported="false"
+442-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:146-170
+443            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+443-->[com.google.android.gms:play-services-base:18.5.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a8559cb9ce85b8671ca317acc8c19c7b\transformed\play-services-base-18.5.0\AndroidManifest.xml:5:86-145
+444
+445        <receiver
+445-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+446            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+446-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+447            android:directBootAware="false"
+447-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+448            android:enabled="true"
+448-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+449            android:exported="true"
+449-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+450            android:permission="android.permission.DUMP" >
+450-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+451            <intent-filter>
+451-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+452                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+452-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+452-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+453            </intent-filter>
+454            <intent-filter>
+454-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+455                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+455-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+455-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+456            </intent-filter>
+457            <intent-filter>
+457-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+458                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+458-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+458-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+459            </intent-filter>
+460            <intent-filter>
+460-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+461                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+461-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+461-->[androidx.profileinstaller:profileinstaller:1.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a78db38d9248fa75f6b16bbc5ce42182\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+462            </intent-filter>
+463        </receiver>
+464
+465        <meta-data
+465-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:21:9-23:69
+466            android:name="com.google.android.gms.version"
+466-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:22:13-58
+467            android:value="@integer/google_play_services_version" />
+467-->[com.google.android.gms:play-services-basement:18.8.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a60b5212b594ec2a740d60c0ed7dc0e4\transformed\play-services-basement-18.8.0\AndroidManifest.xml:23:13-66
+468
+469        <service
+469-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:28:9-34:19
+470            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+470-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:29:13-103
+471            android:exported="false" >
+471-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:30:13-37
+472            <meta-data
+472-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:31:13-33:39
+473                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+473-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:32:17-94
+474                android:value="cct" />
+474-->[com.google.android.datatransport:transport-backend-cct:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\7d355464a7d255f298b63f776fb5614d\transformed\transport-backend-cct-3.1.9\AndroidManifest.xml:33:17-36
+475        </service>
+476        <service
+476-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:26:9-30:19
+477            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+477-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:27:13-117
+478            android:exported="false"
+478-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:28:13-37
+479            android:permission="android.permission.BIND_JOB_SERVICE" >
+479-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:29:13-69
+480        </service>
+481
+482        <receiver
+482-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:32:9-34:40
+483            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+483-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:33:13-132
+484            android:exported="false" /> <!-- The activities will be merged into the manifest of the hosting app. -->
+484-->[com.google.android.datatransport:transport-runtime:3.1.9] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\ac0f19143392d64d593f35b7565d4e7b\transformed\transport-runtime-3.1.9\AndroidManifest.xml:34:13-37
+485        <activity
+485-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:14:9-18:65
+486            android:name="com.google.android.play.core.common.PlayCoreDialogWrapperActivity"
+486-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:15:13-93
+487            android:exported="false"
+487-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:16:13-37
+488            android:stateNotNeeded="true"
+488-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:17:13-42
+489            android:theme="@style/Theme.PlayCore.Transparent" />
+489-->[com.google.android.play:core-common:2.0.3] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c78d0a643c740e2d01d78af15ec1a385\transformed\core-common-2.0.3\AndroidManifest.xml:18:13-62
+490    </application>
+491
+492</manifest>
