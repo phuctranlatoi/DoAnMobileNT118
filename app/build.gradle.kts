@@ -60,4 +60,5 @@ dependencies {
     implementation("com.google.firebase:firebase-messaging") // Thêm Firebase Cloud Messaging
     implementation("com.sun.mail:javax.mail:1.6.2")
     implementation("com.github.bumptech.glide:glide:4.16.0") // Thư viện load ảnh
+    implementation("de.hdodenhof:circleimageview:3.1.0") // Thư viện CircleImageView
 }

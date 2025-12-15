@@ -140,6 +140,28 @@
         <activity
             android:name=".ui.QuanLyDuLieuActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.NhanTinBacSiActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.DanhSachTinNhanBacSiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ChonBacSiChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.DanhSachCuocTroChuyenBenhNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ThongTinBacSiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.ThanhToanQRActivity"
+            android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->
         <service

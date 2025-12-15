@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 import androidx.viewpager2.widget.ViewPager2;
 import com.example.doannt118.R;
+import com.example.doannt118.repository.FirestoreRepository;
 import com.example.doannt118.ui.fragment.DiemDanhUongThuocFragment;
 import com.example.doannt118.ui.fragment.LichSuUongThuocFragment;
 import com.google.android.material.tabs.TabLayout;
@@ -18,7 +19,10 @@ public class QuanLyUongThuocActivity extends AppCompatActivity {
     
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+
     private String maBenhNhan;
+
+    private FirestoreRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,7 @@ public class QuanLyUongThuocActivity extends AppCompatActivity {
     private void initViews() {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewPager);
+        repository = new FirestoreRepository();
     }
 
     private void setupToolbar() {
@@ -66,6 +71,8 @@ public class QuanLyUongThuocActivity extends AppCompatActivity {
             }
         }).attach();
     }
+    
+
 
     private class ViewPagerAdapter extends FragmentStateAdapter {
         public ViewPagerAdapter(@NonNull FragmentActivity fragmentActivity) {

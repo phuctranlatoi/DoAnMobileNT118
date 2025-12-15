@@ -166,6 +166,28 @@
         <activity
             android:name="com.example.doannt118.ui.QuanLyDuLieuActivity"
             android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.NhanTinBacSiActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.example.doannt118.ui.DanhSachTinNhanBacSiActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ChonBacSiChatActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.DanhSachCuocTroChuyenBenhNhanActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ThongTinBacSiActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ThanhToanActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.doannt118.ui.ThanhToanQRActivity"
+            android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->
         <service

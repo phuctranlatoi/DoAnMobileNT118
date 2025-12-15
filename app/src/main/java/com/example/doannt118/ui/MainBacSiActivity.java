@@ -108,9 +108,15 @@ public class MainBacSiActivity extends AppCompatActivity {
                     // Đã ở trang chủ
                     return true;
                 } else if (itemId == R.id.nav_messages) {
-                    // Mở chatbot
-                    Intent intent = new Intent(this, ChatActivity.class);
-                    intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+                    // Mở danh sách tin nhắn từ bệnh nhân
+                    if (maBacSi == null || maBacSi.isEmpty()) {
+                        Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+                        loadUserInfo();
+                        return false;
+                    }
+                    Intent intent = new Intent(this, DanhSachTinNhanBacSiActivity.class);
+                    intent.putExtra("MA_BAC_SI", maBacSi);
+                    intent.putExtra("TEN_BAC_SI", tvHoTen.getText().toString());
                     startActivity(intent);
                     return true;
                 } else if (itemId == R.id.nav_notifications) {

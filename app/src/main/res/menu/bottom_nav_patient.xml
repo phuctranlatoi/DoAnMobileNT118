@@ -10,8 +10,8 @@
         android:title="Chatbot" />
     <item
         android:id="@+id/nav_add"
-        android:icon="@drawable/ic_add"
-        android:title="Đặt lịch" />
+        android:icon="@drawable/ic_message"
+        android:title="Nhắn tin" />
     <item
         android:id="@+id/nav_appointments"
         android:icon="@drawable/ic_appointment"

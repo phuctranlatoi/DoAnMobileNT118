@@ -79,6 +79,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         View cardConfirmMedication = findViewById(R.id.cardConfirmMedication);
         View cardViewInvoice = findViewById(R.id.cardViewInvoice);
         View cardChatbot = findViewById(R.id.cardChatbot);
+        View cardChatWithDoctor = findViewById(R.id.cardChatWithDoctor);
 
         if (cardRegisterAppointment != null) {
             cardRegisterAppointment.setOnClickListener(v -> handleDangKyLichKham());
@@ -94,6 +95,9 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         }
         if (cardChatbot != null) {
             cardChatbot.setOnClickListener(v -> handleChatbot());
+        }
+        if (cardChatWithDoctor != null) {
+            cardChatWithDoctor.setOnClickListener(v -> handleChonBacSiChat());
         }
 
         // Xử lý sự kiện cho nút thông báo
@@ -113,7 +117,7 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                     handleChatbot();
                     return true;
                 } else if (itemId == R.id.nav_add) {
-                    handleDangKyLichKham();
+                    handleDanhSachTinNhan();
                     return true;
                 } else if (itemId == R.id.nav_appointments) {
                     handleXemLichKham();
@@ -276,6 +280,36 @@ public class MainBenhNhanActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(this, ChatActivity.class);
         intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        startActivity(intent);
+    }
+
+    private void handleChonBacSiChat() {
+        logActivity("Chọn bác sĩ để chat");
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        
+        // Mở màn hình chọn bác sĩ để chat
+        Intent intent = new Intent(this, ChonBacSiChatActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        intent.putExtra("TEN_BENH_NHAN", tvHoTen.getText().toString());
+        startActivity(intent);
+    }
+
+    private void handleDanhSachTinNhan() {
+        logActivity("Xem danh sách tin nhắn");
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bệnh nhân...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        
+        // Mở màn hình danh sách cuộc trò chuyện
+        Intent intent = new Intent(this, DanhSachCuocTroChuyenBenhNhanActivity.class);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        intent.putExtra("TEN_BENH_NHAN", tvHoTen.getText().toString());
         startActivity(intent);
     }
 

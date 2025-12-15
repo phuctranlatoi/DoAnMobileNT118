@@ -1169,4 +1169,10 @@ public class FirestoreRepository {
                     onFailure.accept(e);
                 });
     }
+    
+    // === CẬP NHẬT DOCUMENT (method đơn giản) ===
+    public void update(String collection, String documentId, Map<String, Object> fields,
+                       Consumer<Void> onSuccess, Consumer<Exception> onFailure) {
+        updateDocumentFields(collection, documentId, fields, onSuccess, onFailure);
+    }
 }

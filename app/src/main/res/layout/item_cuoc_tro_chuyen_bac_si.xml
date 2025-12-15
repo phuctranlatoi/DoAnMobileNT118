@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivAvatarBenhNhan"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:src="@drawable/ic_patient"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#667EEA" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="16dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvTenBenhNhan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Nguyễn Văn A"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#1F2937" />
+
+                <TextView
+                    android:id="@+id/tvThoiGianCuoi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:30"
+                    android:textSize="12sp"
+                    android:textColor="#9CA3AF" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvTinNhanCuoi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tin nhắn cuối cùng..."
+                android:textSize="14sp"
+                android:textColor="#6B7280"
+                android:layout_marginTop="4dp"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="8dp">
+
+            <!-- Badge số tin nhắn chưa đọc -->
+            <TextView
+                android:id="@+id/tvSoTinNhanChuaDoc"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="@drawable/badge_danger"
+                android:text="3"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:visibility="gone" />
+
+            <!-- Dấu chấm xanh cho tin nhắn chưa đọc -->
+            <ImageView
+                android:id="@+id/ivUnreadDot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:src="@drawable/unread_dot"
+                android:layout_marginTop="2dp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_message"
+                android:layout_marginTop="4dp"
+                app:tint="#667EEA" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,926 +1,1042 @@
 [
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_note.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_note.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_main_benhnhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_main_benhnhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input_1.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_input_1.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_benh_nhan_list.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_benh_nhan_list.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_microphone.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_microphone.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_empty_state_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/empty_state_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_diem_danh_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_diem_danh_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_status_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/completed_status_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_close.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_close.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_camera.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_camera.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_number.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_number.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_medicine_item_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\medicine_item_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_time_badge_modern.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/time_badge_modern.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_input_field.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_input_field.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_lich_lam_viec.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_lich_lam_viec.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_copy.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_copy.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xac_nhan_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_xac_nhan_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_danh_sach_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_danh_sach_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_notification.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_notification.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_password.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_password.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_doctor_illustration.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_doctor_illustration.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_calendar.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_calendar.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_stat_item_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\stat_item_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_button_solid_green.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/button_solid_green.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_info.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_info.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_menu.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_menu.xml"
+        "merged": "com.example.doannt118.app-debug-62:/drawable_qr_border.xml.flat",
+        "source": "com.example.doannt118.app-main-64:/drawable/qr_border.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_diem_danh_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_diem_danh_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_medicine_icon_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\medicine_icon_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_back_white.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_back_white.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_rounded_button.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\rounded_button.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_diagnosis_entry.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_diagnosis_entry.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_diagnosis_entry.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_diagnosis_entry.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_circle_bg.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/circle_bg.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_status_completed.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_status_completed.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_appointment.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_appointment.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_microphone.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_microphone.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "com.example.doannt118.app-debug-62:/layout_activity_thanh_toan_qr.xml.flat",
+        "source": "com.example.doannt118.app-main-64:/layout/activity_thanh_toan_qr.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_bac_si.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_bac_si.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/menu_benhnhan_menu.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/menu/benhnhan_menu.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_login.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_login.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_fragment_lich_su_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/fragment_lich_su_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_close.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_close.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_success_dot.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/success_dot.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_status_success_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\status_success_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_cap_nhat_benh_an.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_cap_nhat_benh_an.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_pending_doctor.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_pending_doctor.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_primary.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_primary.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_bac_si_chat.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_bac_si_chat.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_gui_thong_bao.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_gui_thong_bao.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_diem_danh_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_diem_danh_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_success.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_success.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-anydpi\\ic_launcher.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_button_solid_blue.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/button_solid_blue.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_package_border_selected.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\package_border_selected.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_don_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_don_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_button_solid_green.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\button_solid_green.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_arrow_right.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_arrow_right.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\menu_bottom_nav_patient.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\menu\\bottom_nav_patient.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_calendar.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_calendar.xml"
+        "merged": "com.example.doannt118.app-debug-62:/drawable_qr_momo_sample.xml.flat",
+        "source": "com.example.doannt118.app-main-64:/drawable/qr_momo_sample.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_dich_vu.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_dich_vu.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_appointment.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_appointment.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_thong_bao.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_thong_bao.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_send.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_send.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_lich_kham_cua_toi.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_lich_kham_cua_toi.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_message.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_message.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_gui_thong_bao.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_gui_thong_bao.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_search.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_search.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_quan_ly_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_quan_ly_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_activity_history.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_activity_history.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bottom_nav_icon_tint.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bottom_nav_icon_tint.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_service.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_service.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_completed_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\completed_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_password.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_password.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_outline.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_outline.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_welcome.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_welcome.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lich_su_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lich_su_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bottom_nav_icon_tint.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bottom_nav_icon_tint.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_thong_bao.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_thong_bao.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_modern_header_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\modern_header_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_search_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/search_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_edit_account.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_edit_account.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_instruction_tag_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/instruction_tag_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_profile.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_profile.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_ke_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_ke_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_thuoc_can_uong.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_thuoc_can_uong.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_settings.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_settings.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_them_dich_vu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_them_dich_vu.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_don_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_don_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_rounded_button_white.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\rounded_button_white.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_benh_an_bac_si.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_benh_an_bac_si.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_icon_ring_effect.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\icon_ring_effect.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lich_lam_viec.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lich_lam_viec.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_an.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_benh_an.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_benh_an_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_benh_an_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_gradient_divider.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/gradient_divider.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\menu_doctor_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\menu\\doctor_menu.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_outline_blue.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_outline_blue.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_cuoc_tro_chuyen_benh_nhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_cuoc_tro_chuyen_benh_nhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_icon_ring_effect.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/icon_ring_effect.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_launcher_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_message.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_message.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_add.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_add.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_pill_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/medicine_pill_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_thong_bao.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_thong_bao.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_avatar_overlay.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_avatar_overlay.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_nhan_tin_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_nhan_tin_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_danger.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_danger.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_tao_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_tao_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_schedule.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_schedule.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_tin_nhan_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_tin_nhan_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_nhan.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_benh_nhan.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_benh_nhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_benh_nhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_session_header_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/session_header_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_session_header_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\session_header_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/menu_bottom_nav_doctor.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/menu/bottom_nav_doctor.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_email.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_email.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_settings.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_settings.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_thong_bao.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_thong_bao.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_circle_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/circle_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_outline_blue.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_outline_blue.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_benh_nhan_list.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_benh_nhan_list.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_input.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_input.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_message_bubble_received.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\message_bubble_received.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_button_outline.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_button_outline.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_user.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_user.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\menu_benhnhan_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\menu\\benhnhan_menu.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_verified.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_verified.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_ghichu.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_ghichu.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_back.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_back.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_status_pending.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_status_pending.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_empty_state_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\empty_state_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_ho_so_benh_nhan.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_ho_so_benh_nhan.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_success.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_success.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_rounded_button_teal.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\rounded_button_teal.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_them_lich_lam_viec.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_them_lich_lam_viec.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_lich_su_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_avatar.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_avatar.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_message_bubble_sent.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\message_bubble_sent.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_white.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_white.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_user.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_user.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_medicine_list_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\medicine_list_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_hospital.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/hospital.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_gradient_divider.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\gradient_divider.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_update_bacsi_profile.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_update_bacsi_profile.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_benh_an.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_benh_an.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_ca_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_ca_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_confirm_button_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/confirm_button_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_fragment_lich_su_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\fragment_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_home.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_home.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_thuoc_ke_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_thuoc_ke_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_fragment_diem_danh_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/fragment_diem_danh_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_xac_nhan_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_patient.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_patient.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_gradient_button.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\gradient_button.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_time.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_time.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_patient.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_patient.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_primary.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_primary.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_status_skip_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\status_skip_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_kham_cua_toi.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lich_kham_cua_toi.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chon_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chon_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_delete.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_delete.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_online_status.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_online_status.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_main.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_back_white.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_back_white.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quan_ly_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_quan_ly_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_nhap_ma_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_nhap_ma_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_back.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_back.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_thong_tin_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_thong_tin_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_bac_si.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_bac_si.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_instruction_tag_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\instruction_tag_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_skip_dot.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/skip_dot.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_modern_card_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\modern_card_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_can_uong.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_can_uong.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_main_bacsi.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_main_bacsi.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_su_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lich_su_uong_thuoc.xml"
+        "merged": "com.example.doannt118.app-debug-62:/drawable_cancel_button_background.xml.flat",
+        "source": "com.example.doannt118.app-main-64:/drawable/cancel_button_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_status_pending_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/status_pending_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_benh_an.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_benh_an.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_premium_stats_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/premium_stats_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_chat_ngay_button_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\chat_ngay_button_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_email.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_email.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_ho_so_benh_nhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_ho_so_benh_nhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_xac_nhan_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_xac_nhan_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_arrow_right.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_arrow_right.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_button_secondary.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_button_secondary.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chon_bac_si_nhan_tin.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chon_bac_si_nhan_tin.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_gradient_button.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/gradient_button.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chi_tiet_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chi_tiet_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_arrow_back.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_arrow_back.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_package_border.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\package_border.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_lam_viec.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lich_lam_viec.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_button_primary.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_button_primary.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_button_solid_blue.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\button_solid_blue.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_ke_don_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_ke_don_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_completed_info_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\completed_info_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_button_outline_red.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/button_outline_red.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_dich_vu_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_dich_vu_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medication.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_medication.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_xem_chi_tiet_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_xem_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_status_success_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/status_success_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_forgot_password.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_forgot_password.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_setting_lines.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/setting_lines.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_spinner_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\spinner_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_thuoc_trong_ca.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_thuoc_trong_ca.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chi_tiet_don_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chi_tiet_don_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_phone.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_phone.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_header_gradient.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_header_gradient.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_nhap_ma_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_nhap_ma_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_them_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_them_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_account_info.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_account_info.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_icon_container_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\icon_container_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_bac_si.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_bac_si.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lich_su_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lich_su_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_home.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_home.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_setting.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_setting.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_fragment_danh_sach_lich_lam_viec.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/fragment_danh_sach_lich_lam_viec.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_primary.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_primary.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chon_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chon_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_stats_icon_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/stats_icon_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_account_info.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_account_info.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_dangky_lichkham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_dangky_lichkham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_fragment_danh_sach_lich_lam_viec.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\fragment_danh_sach_lich_lam_viec.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_tao_benh_an.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_tao_benh_an.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lich_su_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lich_su_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_instruction_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/instruction_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_rounded_button_elevation_large.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\rounded_button_elevation_large.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_diem_danh_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_diem_danh_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_xac_nhan_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_xac_nhan_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_elevation_large.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_elevation_large.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_invoice.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_invoice.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_status_skip_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/status_skip_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_arrow_back.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_arrow_back.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_elevation.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_elevation.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_stats_icon_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\stats_icon_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_modern_card_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/modern_card_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_circle_bg.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\circle_bg.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_delete.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_delete.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_rounded_button_teal.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/rounded_button_teal.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_status_pending.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_status_pending.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_location1.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_location1.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_danger.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_danger.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xem_chi_tiet_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_xem_chi_tiet_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_dich_vu_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_dich_vu_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_create_account.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_create_account.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_welcome.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_welcome.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_copy.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_copy.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_main.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_main.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chat.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chat.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_pill_info.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_pill_info.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_time.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_time.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_main_admin.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_main_admin.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_item_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/medicine_item_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_tin_nhan_benh_nhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_tin_nhan_benh_nhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_search_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\search_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_init_duoc_pham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_init_duoc_pham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_edit_text_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\edit_text_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_toolbar_gradient_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/toolbar_gradient_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chi_tiet_don_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chi_tiet_don_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medical_record.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_medical_record.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_percentage_circle_modern.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\percentage_circle_modern.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_check.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_check.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_menu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_menu.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_ca_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_ca_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_number.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_number.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xem_benh_an.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_xem_benh_an.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_danh_sach_don_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_danh_sach_don_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/menu_doctor_menu.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/menu/doctor_menu.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_settings.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_settings.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_khung_gio.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_khung_gio.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_thanh_toan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_thanh_toan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_chat.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_chat.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_settings.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_disease_info.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_disease_info.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_location.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_location.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_an_bac_si.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_benh_an_bac_si.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_phone.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_phone.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_status_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/status_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_doctor.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_doctor.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lich_kham_cua_toi.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lich_kham_cua_toi.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_health_record.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_health_record.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_setting_lines.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\setting_lines.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_edit_text.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_edit_text.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_analytics.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_analytics.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_health_record.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_health_record.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_notification.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_notification.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_lich_kham_cua_toi.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_lich_kham_cua_toi.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_info.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_info.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_input_1.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_input_1.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_bacsi.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_main_bacsi.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-anydpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_xac_nhan_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_xac_nhan_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_instruction_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\instruction_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_list_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/medicine_list_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_xem_benh_an.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_xem_benh_an.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_pending_doctor.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_pending_doctor.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_completed_status_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\completed_status_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_status_completed.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_status_completed.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_quanlyhosocanhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_quanlyhosocanhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_benhnhan.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_main_benhnhan.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_benh_nhan_select.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_benh_nhan_select.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_thong_bao.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_thong_bao.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_status_completed_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/status_completed_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_them_lich_lam_viec.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_them_lich_lam_viec.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_chon_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_chon_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_check_circle.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_check_circle.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input_field.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_input_field.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_ke_don_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_ke_don_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_input.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_input.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_primary_button_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\primary_button_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_forgot_password.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_forgot_password.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_benh_an.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_benh_an.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_header_gradient.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_header_gradient.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\menu_bottom_nav_doctor.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\menu\\bottom_nav_doctor.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_badge_warning.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/badge_warning.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_tao_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_tao_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_quan_ly_benh_an_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_quan_ly_benh_an_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_dich_vu_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_dich_vu_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_note.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_note.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_don_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_don_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_tu_choi_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_tu_choi_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/xml/data_extraction_rules.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_button_secondary.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_button_secondary.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_hospital.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_hospital.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_skip_dot.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\skip_dot.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chon_dich_vu_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chon_dich_vu_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_khung_gio.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_khung_gio.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_icon_container_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/icon_container_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chi_tiet_lich_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chi_tiet_lich_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_circle_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\circle_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_bg_card.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/bg_card.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_search.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_search.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_main_admin.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_main_admin.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_init_duoc_pham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_init_duoc_pham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_danh_sach_don_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_danh_sach_don_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_chon_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_chon_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_launcher_foreground.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chon_dich_vu_kham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chon_dich_vu_kham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/menu_bottom_nav_patient.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/menu/bottom_nav_patient.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_ghichu.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_ghichu.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_location.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_location.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_danh_sach_cuoc_tro_chuyen_benh_nhan.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_danh_sach_cuoc_tro_chuyen_benh_nhan.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_update_bacsi_profile.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_update_bacsi_profile.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\xml_data_extraction_rules.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/completed_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_them_lich_lam_viec.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_them_lich_lam_viec.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_chi_tiet_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_chi_tiet_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_login.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_login.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chat_bot.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chat_bot.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_lich_su_uong_thuoc.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_lich_su_uong_thuoc.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_avatar_overlay.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_avatar_overlay.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_them_lich_lam_viec.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_them_lich_lam_viec.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_analytics.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_analytics.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_doctor.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_doctor.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_disease_info.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_disease_info.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_completed_info_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/completed_info_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_img_logo.jpg.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\img_logo.jpg"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_profile.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_profile.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_lichkham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_lichkham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_benh_nhan_select.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_benh_nhan_select.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_medication.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_medication.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_add.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_add.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_premium_stats_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\premium_stats_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_edit_text_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/edit_text_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_main_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\main_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_chatbot.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/chatbot.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.doannt118.app-main-63:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_bac_si_nhan_tin.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_bac_si_nhan_tin.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_tu_choi_lich_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_tu_choi_lich_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_edit_text.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_edit_text.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_invoice.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_invoice.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_dangky_lichkham.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_dangky_lichkham.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_profile.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_profile.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_thuoc_trong_ca.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_thuoc_trong_ca.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_camera.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_camera.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_xac_nhan_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_xac_nhan_uong_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_dialog_edit_account.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/dialog_edit_account.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_activity_history.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_activity_history.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_edit.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_edit.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_launcher_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_medicine_pill_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\medicine_pill_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_account.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_account.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_footer_button_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\footer_button_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_percentage_circle_modern.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/percentage_circle_modern.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_account.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_account.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_consultation.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_consultation.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_quan_ly_lich_lam_viec.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_quan_ly_lich_lam_viec.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chi_tiet_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chi_tiet_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_don_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_don_thuoc.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_check_circle.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_check_circle.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_chat.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_chat.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_quanlyhosocanhan.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_quanlyhosocanhan.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_status_completed_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\status_completed_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_main_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/main_background.xml"
+        "merged": "com.example.doannt118.app-debug-62:/drawable_qr_code_sample.xml.flat",
+        "source": "com.example.doannt118.app-main-64:/drawable/qr_code_sample.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chat_bot.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chat_bot.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_edit.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_edit.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_modern_header_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/modern_header_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_thong_bao.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_thong_bao.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_spinner_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/spinner_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_chatbot.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\chatbot.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_activity_register.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/activity_register.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chon_bac_si_chat.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chon_bac_si_chat.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_pill_info.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_pill_info.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_hospital.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\hospital.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_dich_vu_kham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_dich_vu_kham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_success_dot.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\success_dot.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/xml_backup_rules.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/xml/backup_rules.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_register.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_register.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_medical.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_medical.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_service.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_service.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_hoa_don.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_hoa_don.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_doctor_illustration.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_doctor_illustration.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_chat_user.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_chat_user.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_location1.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_location1.png"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/layout_item_lichkham.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/layout/item_lichkham.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_hoa_don.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_hoa_don.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_ic_lock.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/ic_lock.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_cuoc_tro_chuyen_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_cuoc_tro_chuyen_bac_si.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_img.png.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/img.png"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_send_button_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\send_button_background.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_img_logo.jpg.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/img_logo.jpg"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_verified.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_verified.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_medicine_icon_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/medicine_icon_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_dialog_create_account.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\dialog_create_account.xml"
     },
     {
-        "merged": "com.example.doannt118.app-debug-61:/drawable_stat_item_background.xml.flat",
-        "source": "com.example.doannt118.app-main-63:/drawable/stat_item_background.xml"
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_bg_card.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\bg_card.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_status_pending_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\status_pending_background.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_medical.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_medical.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_chat.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_chat.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_rounded_button_elevation.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\rounded_button_elevation.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_avatar.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_avatar.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_check.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_check.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_message_input_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\message_input_background.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_schedule.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_schedule.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_tao_benh_an.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_tao_benh_an.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_img.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\img.png"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_time_badge_modern.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\time_badge_modern.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_danh_sach_tin_nhan_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_danh_sach_tin_nhan_bac_si.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_fragment_diem_danh_uong_thuoc.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\fragment_diem_danh_uong_thuoc.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_hospital.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_hospital.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_confirm_button_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\confirm_button_background.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_status_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\status_background.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\xml_backup_rules.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_badge_warning.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\badge_warning.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_consultation.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_consultation.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_toolbar_gradient_background.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\toolbar_gradient_background.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_cap_nhat_benh_an.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_cap_nhat_benh_an.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_profile.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_profile.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_lock.png.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_lock.png"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_activity_danh_sach_bac_si.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\activity_danh_sach_bac_si.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\layout_item_chat_user.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\layout\\item_chat_user.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_setting.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_setting.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_button_outline_red.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\button_outline_red.xml"
+    },
+    {
+        "merged": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-debug-62:\\drawable_ic_medical_record.xml.flat",
+        "source": "E:\\HK1_2025_2026\\NT118\\Android\\daemon\\8.13\\com.example.doannt118.app-main-64:\\drawable\\ic_medical_record.xml"
     }
 ]

@@ -74,6 +74,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 case "THONG_BAO_CHUNG":
                     sendGeneralNotification(title, body, data);
                     break;
+                case "TIN_NHAN_BAC_SI":
+                    sendMessageNotification(title, body, data);
+                    break;
                 default:
                     sendNotification(title, body, data);
                     break;
@@ -104,6 +107,29 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         intent.putExtra("MA_BENH_NHAN", data.get("maBenhNhan"));
         
         showNotification(title, body, intent, 3);
+    }
+    
+    private void sendMessageNotification(String title, String body, Map<String, String> data) {
+        String userRole = data.get("userRole"); // "BENH_NHAN" hoặc "BAC_SI"
+        String maBacSi = data.get("maBacSi");
+        String maBenhNhan = data.get("maBenhNhan");
+        String tenNguoiGui = data.get("tenNguoiGui");
+        
+        Intent intent;
+        if ("BAC_SI".equals(userRole)) {
+            // Thông báo cho bác sĩ - mở danh sách tin nhắn bác sĩ
+            intent = new Intent(this, com.example.doannt118.ui.DanhSachTinNhanBacSiActivity.class);
+            intent.putExtra("MA_BAC_SI", maBacSi);
+            intent.putExtra("TEN_BAC_SI", tenNguoiGui);
+        } else {
+            // Thông báo cho bệnh nhân - mở chat trực tiếp
+            intent = new Intent(this, com.example.doannt118.ui.NhanTinBacSiActivity.class);
+            intent.putExtra("MA_BAC_SI", maBacSi);
+            intent.putExtra("MA_BENH_NHAN", maBenhNhan);
+        }
+        
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        showNotification(title, body, intent, 4);
     }
 
     private void sendNotification(String title, String body, Map<String, String> data) {
