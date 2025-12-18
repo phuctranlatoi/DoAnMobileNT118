@@ -3,6 +3,7 @@ package com.example.doannt118.stringee;
 import android.content.Context;
 import android.util.Log;
 import com.stringee.StringeeClient;
+import android.os.Handler;
 import com.stringee.call.StringeeCall;
 import com.stringee.call.StringeeCall2;
 import com.stringee.exception.StringeeError;
@@ -20,10 +21,20 @@ public class StringeeManager {
     private static final String STRINGEE_SID_KEY = "SK.0.uHNIGYBHHRcU5J0hjrSSky4nzdXvAbso";
     private static final String STRINGEE_SECRET_KEY = "TnNsaE1UZWJRRXJxUDZnMWdMMTYxaUdRdEszbnpwYkY=";
     
+    // Persistent connection settings
+    private static final String PREF_CONNECTION = "stringee_connection";
+    private static final String KEY_LAST_TOKEN = "last_token";
+    private static final String KEY_LAST_USER_ID = "last_user_id";
+    private static final String KEY_TOKEN_TIMESTAMP = "token_timestamp";
+    private static final long TOKEN_VALIDITY = 24 * 60 * 60 * 1000; // 24 hours
+    
     private static StringeeManager instance;
     private StringeeClient stringeeClient;
     private Context context;
     private boolean isConnected = false;
+    private boolean isReconnecting = false;
+    private int reconnectAttempts = 0;
+    private static final int MAX_RECONNECT_ATTEMPTS = 5;
     
     // Callbacks
     public interface StringeeConnectionCallback {
@@ -80,10 +91,18 @@ public class StringeeManager {
             public void onConnectionConnected(StringeeClient stringeeClient, boolean isReconnecting) {
                 Log.d(TAG, "🎉 Stringee connected successfully! isReconnecting: " + isReconnecting);
                 Log.d(TAG, "User ID: " + stringeeClient.getUserId());
+                
+                // Reset reconnection state
                 isConnected = true;
+                StringeeManager.this.isReconnecting = false;
+                reconnectAttempts = 0;
+                
                 if (connectionCallback != null) {
                     connectionCallback.onConnected();
                 }
+                
+                // Start background maintenance
+                startConnectionMaintenance();
             }
             
             @Override
@@ -248,26 +267,52 @@ public class StringeeManager {
             return storedUserId;
         }
         
-        // Get current user ID from SharedPreferences or other storage
+        // 🔥 FIX: Sử dụng SessionManager thay vì trực tiếp SharedPreferences
+        try {
+            com.example.doannt118.utils.SessionManager sessionManager = new com.example.doannt118.utils.SessionManager(context);
+            
+            String maTaiKhoan = sessionManager.getMaTaiKhoan();
+            String vaiTro = sessionManager.getVaiTro();
+            
+            Log.d(TAG, "🆔 From SessionManager - maTaiKhoan: " + maTaiKhoan + ", vaiTro: " + vaiTro);
+            
+            if (maTaiKhoan != null && !maTaiKhoan.isEmpty() && vaiTro != null && !vaiTro.isEmpty()) {
+                String userId;
+                if ("BenhNhan".equalsIgnoreCase(vaiTro) || "patient".equalsIgnoreCase(vaiTro)) {
+                    userId = "patient_" + maTaiKhoan;
+                } else if ("BacSi".equalsIgnoreCase(vaiTro) || "doctor".equalsIgnoreCase(vaiTro)) {
+                    userId = "doctor_" + maTaiKhoan;
+                } else {
+                    // Fallback với role
+                    userId = vaiTro.toLowerCase() + "_" + maTaiKhoan;
+                }
+                
+                Log.d(TAG, "🆔 Generated userId from SessionManager: " + userId);
+                return userId;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "❌ Error getting user info from SessionManager: " + e.getMessage());
+        }
+        
+        // Fallback: Thử cách cũ
         android.content.SharedPreferences prefs = context.getSharedPreferences("user_info", Context.MODE_PRIVATE);
         String maBenhNhan = prefs.getString("maBenhNhan", "");
         String maBacSi = prefs.getString("maBacSi", "");
         
-        Log.d(TAG, "🆔 From SharedPreferences - maBenhNhan: " + maBenhNhan + ", maBacSi: " + maBacSi);
+        Log.d(TAG, "🆔 Fallback - maBenhNhan: " + maBenhNhan + ", maBacSi: " + maBacSi);
         
-        // Return the appropriate user ID
         String userId;
         if (!maBenhNhan.isEmpty()) {
             userId = "patient_" + maBenhNhan;
         } else if (!maBacSi.isEmpty()) {
             userId = "doctor_" + maBacSi;
         } else {
-            // Fallback to a default user ID for testing
+            // Final fallback
             userId = "user_" + System.currentTimeMillis();
-            Log.w(TAG, "⚠️ Using fallback userId: " + userId);
+            Log.w(TAG, "⚠️ Using final fallback userId: " + userId);
         }
         
-        Log.d(TAG, "🆔 Generated userId: " + userId);
+        Log.d(TAG, "🆔 Final userId: " + userId);
         return userId;
     }
     
@@ -285,6 +330,59 @@ public class StringeeManager {
         if (stringeeClient != null) {
             Log.d(TAG, "Connecting current user to Stringee");
             generateAccessToken();
+        }
+    }
+    
+    /**
+     * Simple connection test method
+     */
+    public void testSimpleConnection() {
+        Log.d(TAG, "🧪 === SIMPLE CONNECTION TEST ===");
+        
+        if (stringeeClient == null) {
+            Log.e(TAG, "🧪 ❌ StringeeClient is null");
+            return;
+        }
+        
+        // Test với userId đơn giản
+        String testUserId = "test_" + System.currentTimeMillis();
+        Log.d(TAG, "🧪 Test userId: " + testUserId);
+        
+        // Tạo token
+        String token = StringeeTokenGenerator.generateAccessToken(testUserId);
+        if (token != null && !token.isEmpty()) {
+            Log.d(TAG, "🧪 ✅ Token created: " + token.substring(0, Math.min(50, token.length())) + "...");
+            
+            // Thử kết nối
+            stringeeClient.connect(token);
+            Log.d(TAG, "🧪 Connection attempt initiated");
+        } else {
+            Log.e(TAG, "🧪 ❌ Failed to create token");
+        }
+    }
+    
+    /**
+     * Debug method để kiểm tra thông tin user
+     */
+    public void debugUserInfo() {
+        Log.d(TAG, "🔍 === DEBUG USER INFO ===");
+        
+        try {
+            com.example.doannt118.utils.SessionManager sessionManager = new com.example.doannt118.utils.SessionManager(context);
+            
+            Log.d(TAG, "🔍 SessionManager info:");
+            Log.d(TAG, "🔍 - isLoggedIn: " + sessionManager.isLoggedIn());
+            Log.d(TAG, "🔍 - maTaiKhoan: " + sessionManager.getMaTaiKhoan());
+            Log.d(TAG, "🔍 - vaiTro: " + sessionManager.getVaiTro());
+            Log.d(TAG, "🔍 - email: " + sessionManager.getEmail());
+            Log.d(TAG, "🔍 - hoTen: " + sessionManager.getHoTen());
+            
+            String currentUserId = getCurrentUserId();
+            Log.d(TAG, "🔍 Generated userId: " + currentUserId);
+            
+        } catch (Exception e) {
+            Log.e(TAG, "🔍 ❌ Error in debugUserInfo: " + e.getMessage());
+            e.printStackTrace();
         }
     }
     
@@ -333,10 +431,173 @@ public class StringeeManager {
     
     public void forceReconnect() {
         if (stringeeClient != null) {
-            Log.d(TAG, "Force reconnecting to Stringee");
-            isConnected = false;
-            generateAccessToken();
+            Log.d(TAG, "🔄 === FORCE RECONNECT STRINGEE ===");
+            
+            // Disconnect hiện tại
+            try {
+                if (isConnected) {
+                    stringeeClient.disconnect();
+                    isConnected = false;
+                    Log.d(TAG, "🔄 Disconnected current connection");
+                }
+            } catch (Exception e) {
+                Log.e(TAG, "❌ Error disconnecting: " + e.getMessage());
+            }
+            
+            // Đợi một chút để đảm bảo disconnect hoàn tất
+            new Handler().postDelayed(() -> {
+                Log.d(TAG, "🔄 Reconnecting after disconnect...");
+                generateAccessToken();
+            }, 1000);
         }
+    }
+    
+    /**
+     * PERSISTENT CONNECTION: Đảm bảo kết nối bền vững
+     */
+    public void ensurePersistentConnection() {
+        if (isConnected) {
+            Log.d(TAG, "✅ Already connected - no action needed");
+            return;
+        }
+        
+        if (isReconnecting) {
+            Log.d(TAG, "🔄 Already reconnecting...");
+            return;
+        }
+        
+        Log.d(TAG, "🔄 === ENSURING PERSISTENT CONNECTION ===");
+        isReconnecting = true;
+        connectWithRetry();
+    }
+    
+    private void connectWithRetry() {
+        if (reconnectAttempts >= MAX_RECONNECT_ATTEMPTS) {
+            Log.e(TAG, "❌ Max reconnect attempts reached (" + MAX_RECONNECT_ATTEMPTS + ")");
+            isReconnecting = false;
+            reconnectAttempts = 0;
+            
+            if (connectionCallback != null) {
+                connectionCallback.onConnectionError("Không thể kết nối sau " + MAX_RECONNECT_ATTEMPTS + " lần thử");
+            }
+            return;
+        }
+        
+        reconnectAttempts++;
+        Log.d(TAG, "🔄 Connection attempt " + reconnectAttempts + "/" + MAX_RECONNECT_ATTEMPTS);
+        
+        // Thử sử dụng token cũ trước nếu còn hợp lệ
+        String cachedToken = getCachedToken();
+        String cachedUserId = getCachedUserId();
+        
+        if (cachedToken != null && cachedUserId != null && isTokenValid()) {
+            Log.d(TAG, "🎯 Using cached token for userId: " + cachedUserId);
+            stringeeClient.connect(cachedToken);
+        } else {
+            Log.d(TAG, "🎯 Generating new token (cached invalid or missing)");
+            generateAndCacheToken();
+        }
+        
+        // Retry sau 3 giây nếu không thành công
+        new Handler().postDelayed(() -> {
+            if (!isConnected && isReconnecting) {
+                Log.d(TAG, "🔄 Retry connection after delay...");
+                connectWithRetry();
+            }
+        }, 3000);
+    }
+    
+    private void generateAndCacheToken() {
+        try {
+            String userId = getCurrentUserId();
+            Log.d(TAG, "🔑 Generating token for userId: " + userId);
+            
+            String token = StringeeTokenGenerator.generateAccessToken(userId);
+            
+            if (token != null && !token.isEmpty()) {
+                // Cache token và user info
+                android.content.SharedPreferences prefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+                prefs.edit()
+                    .putString(KEY_LAST_TOKEN, token)
+                    .putString(KEY_LAST_USER_ID, userId)
+                    .putLong(KEY_TOKEN_TIMESTAMP, System.currentTimeMillis())
+                    .apply();
+                
+                Log.d(TAG, "✅ Token cached successfully");
+                stringeeClient.connect(token);
+            } else {
+                Log.e(TAG, "❌ Failed to generate token");
+                if (connectionCallback != null) {
+                    connectionCallback.onConnectionError("Không thể tạo token xác thực");
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "💥 Error in generateAndCacheToken: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    private String getCachedToken() {
+        android.content.SharedPreferences prefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        return prefs.getString(KEY_LAST_TOKEN, null);
+    }
+    
+    private String getCachedUserId() {
+        android.content.SharedPreferences prefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        return prefs.getString(KEY_LAST_USER_ID, null);
+    }
+    
+    private boolean isTokenValid() {
+        android.content.SharedPreferences prefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        long timestamp = prefs.getLong(KEY_TOKEN_TIMESTAMP, 0);
+        long age = System.currentTimeMillis() - timestamp;
+        
+        boolean valid = age < TOKEN_VALIDITY;
+        Log.d(TAG, "🔍 Token age: " + (age / 1000) + "s, valid: " + valid);
+        return valid;
+    }
+    
+    /**
+     * SOFT RECONNECT: Kết nối lại nhẹ nhàng thay vì reset hoàn toàn
+     */
+    public void softReconnect() {
+        Log.d(TAG, "🔄 === SOFT RECONNECT ===");
+        
+        // Reset reconnect attempts
+        reconnectAttempts = 0;
+        
+        if (isConnected) {
+            Log.d(TAG, "🔄 Already connected, checking token validity...");
+            
+            // Chỉ refresh token nếu sắp hết hạn
+            if (isTokenExpiringSoon()) {
+                Log.d(TAG, "🔄 Token expiring soon, refreshing...");
+                generateAndCacheToken();
+            }
+        } else {
+            Log.d(TAG, "🔄 Not connected, ensuring persistent connection...");
+            ensurePersistentConnection();
+        }
+    }
+    
+    private boolean isTokenExpiringSoon() {
+        android.content.SharedPreferences prefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        long timestamp = prefs.getLong(KEY_TOKEN_TIMESTAMP, 0);
+        long age = System.currentTimeMillis() - timestamp;
+        
+        // Token sắp hết hạn nếu còn < 1 giờ
+        boolean expiringSoon = age > (TOKEN_VALIDITY - 60 * 60 * 1000);
+        Log.d(TAG, "🔍 Token expiring soon: " + expiringSoon);
+        return expiringSoon;
+    }
+    
+    /**
+     * DEPRECATED: Thay thế bằng softReconnect()
+     */
+    @Deprecated
+    public void resetConnection() {
+        Log.w(TAG, "⚠️ resetConnection() is deprecated, using softReconnect() instead");
+        softReconnect();
     }
     
     public void disconnect() {
@@ -344,6 +605,59 @@ public class StringeeManager {
             Log.d(TAG, "Disconnecting from Stringee");
             stringeeClient.disconnect();
         }
+    }
+    
+    /**
+     * LOGOUT: Clear tất cả token, cache và disconnect hoàn toàn
+     * Gọi method này khi user logout để tránh conflict giữa các role
+     */
+    public void logout() {
+        Log.d(TAG, "🚪 === STRINGEE LOGOUT ===");
+        
+        // 1. Disconnect connection hiện tại
+        try {
+            if (stringeeClient != null && isConnected) {
+                Log.d(TAG, "🚪 Disconnecting current connection...");
+                stringeeClient.disconnect();
+                isConnected = false;
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "❌ Error disconnecting: " + e.getMessage());
+        }
+        
+        // 2. Clear cached tokens và user info
+        Log.d(TAG, "🚪 Clearing cached tokens and user info...");
+        android.content.SharedPreferences stringeePrefs = context.getSharedPreferences("stringee_info", Context.MODE_PRIVATE);
+        stringeePrefs.edit().clear().apply();
+        
+        android.content.SharedPreferences connectionPrefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        connectionPrefs.edit().clear().apply();
+        
+        // 3. Reset internal state
+        isConnected = false;
+        isReconnecting = false;
+        reconnectAttempts = 0;
+        
+        // 4. Stop maintenance
+        stopConnectionMaintenance();
+        
+        Log.d(TAG, "🚪 ✅ Stringee logout completed - all tokens and cache cleared");
+    }
+    
+    /**
+     * CLEAR CACHE: Chỉ clear cache mà không disconnect (dùng khi switch user)
+     */
+    public void clearCache() {
+        Log.d(TAG, "🧹 === CLEARING STRINGEE CACHE ===");
+        
+        // Clear cached tokens và user info
+        android.content.SharedPreferences stringeePrefs = context.getSharedPreferences("stringee_info", Context.MODE_PRIVATE);
+        stringeePrefs.edit().clear().apply();
+        
+        android.content.SharedPreferences connectionPrefs = context.getSharedPreferences(PREF_CONNECTION, Context.MODE_PRIVATE);
+        connectionPrefs.edit().clear().apply();
+        
+        Log.d(TAG, "🧹 ✅ Stringee cache cleared");
     }
     
     public boolean isConnected() {
@@ -423,6 +737,49 @@ public class StringeeManager {
     public StringeeClient getStringeeClient() {
         return stringeeClient;
     }
+
+    // Background connection maintenance
+    private Handler maintenanceHandler = new Handler();
+    private Runnable maintenanceRunnable = new Runnable() {
+        @Override
+        public void run() {
+            // Kiểm tra connection mỗi 30 giây
+            if (!isConnected && !isReconnecting) {
+                Log.d(TAG, "🔧 Maintenance: Connection lost, reconnecting...");
+                ensurePersistentConnection();
+            }
+            
+            // Refresh token trước khi hết hạn
+            if (isConnected && isTokenExpiringSoon()) {
+                Log.d(TAG, "🔧 Maintenance: Token expiring, refreshing...");
+                generateAndCacheToken();
+            }
+            
+            maintenanceHandler.postDelayed(this, 30000); // 30 seconds
+        }
+    };
+
+    public void startConnectionMaintenance() {
+        Log.d(TAG, "🔧 Starting connection maintenance...");
+        stopConnectionMaintenance(); // Stop existing first
+        maintenanceHandler.postDelayed(maintenanceRunnable, 30000);
+    }
+
+    public void stopConnectionMaintenance() {
+        maintenanceHandler.removeCallbacks(maintenanceRunnable);
+    }
     
+    // Deprecated methods - keep for compatibility
+    @Deprecated
+    public void startAutoReconnect() {
+        Log.w(TAG, "⚠️ startAutoReconnect() is deprecated, using startConnectionMaintenance() instead");
+        startConnectionMaintenance();
+    }
+
+    @Deprecated
+    public void stopAutoReconnect() {
+        Log.w(TAG, "⚠️ stopAutoReconnect() is deprecated, using stopConnectionMaintenance() instead");
+        stopConnectionMaintenance();
+    }
 
 }

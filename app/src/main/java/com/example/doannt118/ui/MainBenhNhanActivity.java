@@ -329,6 +329,17 @@ public class MainBenhNhanActivity extends AppCompatActivity {
 
     private void handleDangXuat() {
         logActivity("Đăng xuất");
+        
+        // 🔥 FIX: Clear Stringee connection và cache trước khi logout
+        try {
+            com.example.doannt118.stringee.StringeeManager stringeeManager = 
+                com.example.doannt118.stringee.StringeeManager.getInstance(this);
+            stringeeManager.logout();
+            Log.d("MainBenhNhanActivity", "✅ Stringee logout completed");
+        } catch (Exception e) {
+            Log.e("MainBenhNhanActivity", "❌ Error during Stringee logout: " + e.getMessage());
+        }
+        
         auth.signOut();
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

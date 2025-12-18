@@ -439,6 +439,16 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
                 .setTitle("Đăng xuất")
                 .setMessage("Bạn có chắc chắn muốn đăng xuất?")
                 .setPositiveButton(android.R.string.yes, (dialog, which) -> {
+                    // 🔥 FIX: Clear Stringee connection và cache trước khi logout
+                    try {
+                        com.example.doannt118.stringee.StringeeManager stringeeManager = 
+                            com.example.doannt118.stringee.StringeeManager.getInstance(this);
+                        stringeeManager.logout();
+                        Log.d("QuanLyLichLamViecActivity", "✅ Stringee logout completed");
+                    } catch (Exception e) {
+                        Log.e("QuanLyLichLamViecActivity", "❌ Error during Stringee logout: " + e.getMessage());
+                    }
+                    
                     Intent intent = new Intent(this, LoginActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

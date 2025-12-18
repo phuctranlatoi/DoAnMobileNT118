@@ -502,6 +502,16 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void handleDangXuat() {
+        // 🔥 FIX: Clear Stringee connection và cache trước khi logout
+        try {
+            com.example.doannt118.stringee.StringeeManager stringeeManager = 
+                com.example.doannt118.stringee.StringeeManager.getInstance(this);
+            stringeeManager.logout();
+            Log.d("ProfileActivity", "✅ Stringee logout completed");
+        } catch (Exception e) {
+            Log.e("ProfileActivity", "❌ Error during Stringee logout: " + e.getMessage());
+        }
+        
         // Xóa session
         sessionManager.logout();
         // Đăng xuất Firebase

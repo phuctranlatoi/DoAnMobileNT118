@@ -231,12 +231,13 @@ public class VideoCallActivity extends AppCompatActivity {
     }
     
     private void makeOutgoingCall() {
-        // Đảm bảo kết nối đơn giản
-        com.example.doannt118.MyApplication.ensureStringeeConnection(this);
+        // Đảm bảo kết nối bền vững
+        stringeeManager.ensurePersistentConnection();
         
         if (!stringeeManager.isConnected()) {
-            Log.e(TAG, "❌ Stringee not connected, trying to reconnect...");
+            Log.e(TAG, "❌ Stringee not connected, trying to connect...");
             tvCallStatus.setText("Đang kết nối...");
+            
             stringeeManager.setConnectionCallback(new StringeeManager.StringeeConnectionCallback() {
                 @Override
                 public void onConnected() {
@@ -262,7 +263,9 @@ public class VideoCallActivity extends AppCompatActivity {
                     });
                 }
             });
-            stringeeManager.connectCurrentUser();
+            
+            // Sử dụng persistent connection
+            stringeeManager.ensurePersistentConnection();
             return;
         }
         
@@ -272,8 +275,15 @@ public class VideoCallActivity extends AppCompatActivity {
     private void initiateVideoCall() {
         tvCallStatus.setText("Đang gọi video...");
         
-        // Get caller ID from current user
-        String callerId = getCurrentUserId();
+        // 🔥 FIX: Sử dụng callerId từ Intent thay vì getCurrentUserId()
+        // callerId đã được set từ Intent trong getDataFromIntent()
+        
+        Log.d(TAG, "🔍 DEBUG VIDEO CALL LOGIC:");
+        Log.d(TAG, "🔍 - callerId from Intent: " + callerId);
+        Log.d(TAG, "🔍 - receiverId from Intent: " + receiverId);
+        Log.d(TAG, "🔍 - isIncomingCall: " + isIncomingCall);
+        Log.d(TAG, "🔍 - callerName: " + callerName);
+        
         Log.d(TAG, "🎯 Making video call from: " + callerId + " to: " + receiverId);
         
         StringeeClient client = stringeeManager.getStringeeClient();
@@ -309,8 +319,24 @@ public class VideoCallActivity extends AppCompatActivity {
             public void onError(StringeeError error) {
                 Log.e(TAG, "❌ Error making video call: " + error.getMessage());
                 runOnUiThread(() -> {
-                    Toast.makeText(VideoCallActivity.this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
-                    finish();
+                    if (error.getMessage() != null && 
+                        (error.getMessage().contains("not connected") || 
+                         error.getMessage().contains("chưa kết nối") ||
+                         error.getMessage().contains("server"))) {
+                        
+                        tvCallStatus.setText("Đang kết nối lại...");
+                        // Sử dụng soft reconnect thay vì force reconnect
+                        stringeeManager.softReconnect();
+                        
+                        new Handler().postDelayed(() -> {
+                            if (!isFinishing()) {
+                                makeOutgoingCall();
+                            }
+                        }, 3000);
+                    } else {
+                        Toast.makeText(VideoCallActivity.this, "Lỗi: " + error.getMessage(), Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
                 });
             }
         });
@@ -659,21 +685,40 @@ public class VideoCallActivity extends AppCompatActivity {
             com.example.doannt118.MyApplication.removeIncomingVideoCall(callId);
         }
         
-        // CRITICAL FIX: Force reconnect StringeeManager for subsequent calls
+        // SOFT RECONNECT: Duy trì kết nối bền vững thay vì reset hoàn toàn
         if (stringeeManager != null) {
-            Log.d(TAG, "🔄 Force reconnecting StringeeManager for future calls...");
-            // Always force reconnect after call ends to ensure fresh connection
+            Log.d(TAG, "🔄 Ensuring persistent connection for future calls...");
             new android.os.Handler().postDelayed(() -> {
-                Log.d(TAG, "🔄 Forcing StringeeManager reconnection...");
-                stringeeManager.forceReconnect();
-            }, 500);
+                Log.d(TAG, "🔄 Soft reconnect to maintain connection...");
+                stringeeManager.softReconnect();
+            }, 1000);
         }
         
         Log.d(TAG, "✅ VideoCallActivity cleanup completed");
     }
     
     private String getCurrentUserId() {
-        // Get current user ID from SharedPreferences
+        // 🔥 FIX: Sử dụng SessionManager
+        try {
+            com.example.doannt118.utils.SessionManager sessionManager = new com.example.doannt118.utils.SessionManager(this);
+            
+            String maTaiKhoan = sessionManager.getMaTaiKhoan();
+            String vaiTro = sessionManager.getVaiTro();
+            
+            if (maTaiKhoan != null && !maTaiKhoan.isEmpty() && vaiTro != null && !vaiTro.isEmpty()) {
+                if ("BenhNhan".equalsIgnoreCase(vaiTro) || "patient".equalsIgnoreCase(vaiTro)) {
+                    return "patient_" + maTaiKhoan;
+                } else if ("BacSi".equalsIgnoreCase(vaiTro) || "doctor".equalsIgnoreCase(vaiTro)) {
+                    return "doctor_" + maTaiKhoan;
+                } else {
+                    return vaiTro.toLowerCase() + "_" + maTaiKhoan;
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error getting user info from SessionManager: " + e.getMessage());
+        }
+        
+        // Fallback
         android.content.SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
         String maBenhNhan = prefs.getString("maBenhNhan", "");
         String maBacSi = prefs.getString("maBacSi", "");
@@ -684,7 +729,7 @@ public class VideoCallActivity extends AppCompatActivity {
             return "doctor_" + maBacSi;
         }
         
-        // Fallback
+        // Final fallback
         return "user_" + System.currentTimeMillis();
     }
     
@@ -711,10 +756,10 @@ public class VideoCallActivity extends AppCompatActivity {
         super.onResume();
         Log.d(TAG, "🔄 Activity resumed - checking connection...");
         
-        // Ensure connection is maintained when returning to activity
+        // Ensure persistent connection when returning to activity
         if (stringeeManager != null && !stringeeManager.isConnected()) {
-            Log.d(TAG, "🔄 Connection lost during pause, reconnecting...");
-            stringeeManager.connectCurrentUser();
+            Log.d(TAG, "🔄 Connection lost during pause, ensuring persistent connection...");
+            stringeeManager.ensurePersistentConnection();
         }
     }
 }

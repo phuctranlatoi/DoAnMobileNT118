@@ -3,6 +3,7 @@ package com.example.doannt118.ui;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,6 +99,16 @@ public class MainAdminActivity extends AppCompatActivity {
         });
 
         btnLogout.setOnClickListener(v -> {
+            // 🔥 FIX: Clear Stringee connection và cache trước khi logout
+            try {
+                com.example.doannt118.stringee.StringeeManager stringeeManager = 
+                    com.example.doannt118.stringee.StringeeManager.getInstance(this);
+                stringeeManager.logout();
+                Log.d("MainAdminActivity", "✅ Stringee logout completed");
+            } catch (Exception e) {
+                Log.e("MainAdminActivity", "❌ Error during Stringee logout: " + e.getMessage());
+            }
+            
             String maLichSu = UUID.randomUUID().toString();
             LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
             repo.logActivity(lichSu);

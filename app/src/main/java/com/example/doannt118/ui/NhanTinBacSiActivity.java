@@ -104,17 +104,38 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
         tenBacSi = intent.getStringExtra("TEN_BAC_SI");
         isDoctorView = intent.getBooleanExtra("IS_DOCTOR_VIEW", false);
         
-        // Nếu không có mã bệnh nhân và không phải view của bác sĩ, lấy từ SharedPreferences
-        if (TextUtils.isEmpty(maBenhNhan) && !isDoctorView) {
-            // Lấy từ SharedPreferences hoặc Intent
-            android.content.SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
-            maBenhNhan = prefs.getString("maBenhNhan", "");
-            tenBenhNhan = prefs.getString("tenBenhNhan", "");
+        // 🔥 FIX: Xử lý thông tin user dựa trên role
+        if (isDoctorView) {
+            // Bác sĩ view: Đảm bảo có đủ thông tin bác sĩ và bệnh nhân
+            if (TextUtils.isEmpty(maBacSi)) {
+                // Lấy maBacSi từ SessionManager nếu không có trong Intent
+                try {
+                    com.example.doannt118.utils.SessionManager sessionManager = new com.example.doannt118.utils.SessionManager(this);
+                    maBacSi = sessionManager.getMaTaiKhoan();
+                    Log.d("NhanTinBacSi", "🔍 Doctor view - maBacSi from SessionManager: " + maBacSi);
+                } catch (Exception e) {
+                    Log.e("NhanTinBacSi", "❌ Error getting maBacSi from SessionManager: " + e.getMessage());
+                }
+            }
             
-            if (TextUtils.isEmpty(maBenhNhan)) {
-                Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
+            if (TextUtils.isEmpty(maBacSi) || TextUtils.isEmpty(maBenhNhan)) {
+                Log.e("NhanTinBacSi", "❌ Missing info for doctor view - maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan);
+                Toast.makeText(this, "Thiếu thông tin bác sĩ hoặc bệnh nhân!", Toast.LENGTH_SHORT).show();
                 finish();
                 return;
+            }
+        } else {
+            // Bệnh nhân view: Lấy thông tin bệnh nhân từ SharedPreferences nếu cần
+            if (TextUtils.isEmpty(maBenhNhan)) {
+                android.content.SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+                maBenhNhan = prefs.getString("maBenhNhan", "");
+                tenBenhNhan = prefs.getString("tenBenhNhan", "");
+                
+                if (TextUtils.isEmpty(maBenhNhan)) {
+                    Toast.makeText(this, "Không tìm thấy thông tin bệnh nhân!", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
             }
             
             // Load tin nhắn sau khi có thông tin bệnh nhân (chỉ nếu chưa load)
@@ -123,6 +144,8 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                 isMessageLoaded = true;
             }
         }
+        
+        Log.d("NhanTinBacSi", "🔍 Final info - isDoctorView: " + isDoctorView + ", maBacSi: " + maBacSi + ", maBenhNhan: " + maBenhNhan);
     }
     
     private void setupToolbar() {
@@ -151,8 +174,14 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             return true;
         });
         
-        btnVoiceCall.setOnClickListener(v -> makeVoiceCall());
-        btnVideoCall.setOnClickListener(v -> makeVideoCall());
+        btnVoiceCall.setOnClickListener(v -> {
+            Log.d("NhanTinBacSi", "🔘 Voice call button clicked - isDoctorView: " + isDoctorView);
+            makeVoiceCall();
+        });
+        btnVideoCall.setOnClickListener(v -> {
+            Log.d("NhanTinBacSi", "🔘 Video call button clicked - isDoctorView: " + isDoctorView);
+            makeVideoCall();
+        });
     }
     
     private void loadThongTinBacSi() {
@@ -349,6 +378,12 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
         }
         
         Log.d("NhanTinBacSi", "🎯 Starting voice call: " + fromUserId + " -> " + toUserId);
+        Log.d("NhanTinBacSi", "🔍 DEBUG INTENT DATA:");
+        Log.d("NhanTinBacSi", "🔍 - CALLER_NAME: " + callerName);
+        Log.d("NhanTinBacSi", "🔍 - CALLER_ID: " + fromUserId);
+        Log.d("NhanTinBacSi", "🔍 - RECEIVER_ID: " + toUserId);
+        Log.d("NhanTinBacSi", "🔍 - IS_INCOMING_CALL: false");
+        Log.d("NhanTinBacSi", "🔍 - isDoctorView: " + isDoctorView);
         
         // Mở VoiceCallActivity - Activity sẽ tự tạo call
         Intent intent = new Intent(this, VoiceCallActivity.class);
@@ -395,6 +430,12 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
         }
         
         Log.d("NhanTinBacSi", "🎯 Starting video call: " + fromUserId + " -> " + toUserId);
+        Log.d("NhanTinBacSi", "🔍 DEBUG VIDEO INTENT DATA:");
+        Log.d("NhanTinBacSi", "🔍 - CALLER_NAME: " + callerName);
+        Log.d("NhanTinBacSi", "🔍 - CALLER_ID: " + fromUserId);
+        Log.d("NhanTinBacSi", "🔍 - RECEIVER_ID: " + toUserId);
+        Log.d("NhanTinBacSi", "🔍 - IS_INCOMING_CALL: false");
+        Log.d("NhanTinBacSi", "🔍 - isDoctorView: " + isDoctorView);
         
         // Mở VideoCallActivity - Activity sẽ tự tạo call
         Intent intent = new Intent(this, VideoCallActivity.class);
@@ -423,6 +464,15 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             
             StringeeManager stringeeManager = StringeeManager.getInstance(this);
             
+            // 🔥 VALIDATE DATA TRƯỚC KHI KẾT NỐI
+            if (TextUtils.isEmpty(maBacSi) || TextUtils.isEmpty(maBenhNhan)) {
+                Log.e("NhanTinBacSi", "❌ CRITICAL: Missing required data!");
+                Log.e("NhanTinBacSi", "❌ maBacSi: " + maBacSi);
+                Log.e("NhanTinBacSi", "❌ maBenhNhan: " + maBenhNhan);
+                Toast.makeText(this, "❌ Lỗi: Thiếu thông tin cần thiết để kết nối", Toast.LENGTH_LONG).show();
+                return;
+            }
+            
             // Determine user ID based on role
             String userId;
             if (isDoctorView) {
@@ -431,10 +481,11 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                 userId = "patient_" + maBenhNhan;
             }
             
-            Log.d("NhanTinBacSi", "🆔 Connecting with userId: " + userId);
-            Log.d("NhanTinBacSi", "🆔 isDoctorView: " + isDoctorView);
-            Log.d("NhanTinBacSi", "🆔 maBacSi: " + maBacSi);
-            Log.d("NhanTinBacSi", "🆔 maBenhNhan: " + maBenhNhan);
+            Log.d("NhanTinBacSi", "🆔 Connection details:");
+            Log.d("NhanTinBacSi", "🆔 - userId: " + userId);
+            Log.d("NhanTinBacSi", "🆔 - isDoctorView: " + isDoctorView);
+            Log.d("NhanTinBacSi", "🆔 - maBacSi: " + maBacSi);
+            Log.d("NhanTinBacSi", "🆔 - maBenhNhan: " + maBenhNhan);
             
             // Set connection callback để theo dõi trạng thái
             stringeeManager.setConnectionCallback(new StringeeManager.StringeeConnectionCallback() {
@@ -459,24 +510,44 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                     Log.e("NhanTinBacSi", "❌ Stringee connection error: " + error);
                     runOnUiThread(() -> {
                         Toast.makeText(NhanTinBacSiActivity.this, "❌ Lỗi kết nối: " + error, Toast.LENGTH_LONG).show();
+                        
+                        // 🔥 SHOW DEBUG INFO TO USER
+                        if (error.contains("authentication") || error.contains("invalid signature")) {
+                            showAuthenticationErrorDialog(error);
+                        }
                     });
                 }
             });
+            
+            // 🔥 DEBUG: Test token generation trước khi kết nối
+            Log.d("NhanTinBacSi", "🧪 Testing token generation...");
+            String testToken = com.example.doannt118.stringee.StringeeTokenGenerator.generateAccessToken("test_user_" + System.currentTimeMillis());
+            if (testToken == null) {
+                Log.e("NhanTinBacSi", "❌ CRITICAL: Cannot generate test token!");
+                Toast.makeText(this, "❌ Lỗi tạo token xác thực. Kiểm tra API keys!", Toast.LENGTH_LONG).show();
+                return;
+            }
             
             // Thử kết nối
             if (!stringeeManager.isConnected()) {
                 Log.d("NhanTinBacSi", "🔄 Starting connection...");
                 stringeeManager.connect(userId);
                 
-                // Thêm test connection để debug
+                // Debug connection sau 3 giây
                 new android.os.Handler().postDelayed(() -> {
-                    Log.d("NhanTinBacSi", "🧪 Running test connection...");
-                    stringeeManager.testConnection();
-                }, 2000);
+                    Log.d("NhanTinBacSi", "🧪 === CONNECTION STATUS CHECK ===");
+                    Log.d("NhanTinBacSi", "🧪 Is connected: " + stringeeManager.isConnected());
+                    
+                    if (!stringeeManager.isConnected()) {
+                        Log.d("NhanTinBacSi", "🧪 Still not connected, running debug...");
+                        stringeeManager.debugUserInfo();
+                        stringeeManager.testConnection();
+                    }
+                }, 3000);
                 
             } else {
-                Log.d("NhanTinBacSi", "🔄 Already connected, force reconnecting...");
-                stringeeManager.forceReconnect();
+                Log.d("NhanTinBacSi", "🔄 Already connected, checking connection health...");
+                stringeeManager.softReconnect();
             }
             
         } catch (Exception e) {
@@ -518,6 +589,36 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             .addOnFailureListener(e -> {
                 android.util.Log.e("NhanTinBacSi", "Lỗi đánh dấu tin nhắn đã đọc: " + e.getMessage());
             });
+    }
+    
+    /**
+     * 🔥 SHOW AUTHENTICATION ERROR DIALOG WITH DEBUG INFO
+     */
+    private void showAuthenticationErrorDialog(String error) {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        builder.setTitle("🔥 Lỗi Xác Thực Stringee");
+        
+        StringBuilder message = new StringBuilder();
+        message.append("Chi tiết lỗi: ").append(error).append("\n\n");
+        message.append("Thông tin debug:\n");
+        message.append("- maBacSi: ").append(maBacSi).append("\n");
+        message.append("- maBenhNhan: ").append(maBenhNhan).append("\n");
+        message.append("- isDoctorView: ").append(isDoctorView).append("\n");
+        
+        String userId = isDoctorView ? "doctor_" + maBacSi : "patient_" + maBenhNhan;
+        message.append("- userId: ").append(userId).append("\n\n");
+        message.append("Giải pháp:\n");
+        message.append("1. Kiểm tra API keys trong StringeeTokenGenerator\n");
+        message.append("2. Kiểm tra kết nối internet\n");
+        message.append("3. Thử đăng nhập lại");
+        
+        builder.setMessage(message.toString());
+        builder.setPositiveButton("Thử lại", (dialog, which) -> {
+            // Force reconnect
+            StringeeManager.getInstance(this).forceReconnect();
+        });
+        builder.setNegativeButton("Đóng", null);
+        builder.show();
     }
     
     @Override

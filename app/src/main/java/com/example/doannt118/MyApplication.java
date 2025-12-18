@@ -18,14 +18,16 @@ public class MyApplication extends Application {
     // Store incoming calls để Activity có thể lấy
     private static Map<String, StringeeCall> incomingCalls = new HashMap<>();
     private static Map<String, StringeeCall2> incomingVideoCalls = new HashMap<>();
-    
+
     @Override
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "Application created");
-        
-        // Initialize Stringee
+
         initializeStringee();
+
+        // Bật connection maintenance nền
+        StringeeManager.getInstance(this).startConnectionMaintenance();
     }
     
     private void initializeStringee() {
@@ -114,6 +116,15 @@ public class MyApplication extends Application {
         Log.d(TAG, "🔔 From: " + call.getFrom());
         Log.d(TAG, "🔔 To: " + call.getTo());
         
+        // 🔥 FIX: Kiểm tra xem có phải cuộc gọi từ chính mình không
+        String currentUserId = getCurrentUserId();
+        Log.d(TAG, "🔔 Current user ID: " + currentUserId);
+        
+        if (call.getFrom().equals(currentUserId)) {
+            Log.d(TAG, "🔔 ⚠️ IGNORING: This is an outgoing call from current user, not incoming!");
+            return;
+        }
+        
         // Store call để Activity có thể lấy
         incomingCalls.put(call.getCallId(), call);
         Log.d(TAG, "🔔 Stored incoming voice call with ID: " + call.getCallId());
@@ -140,6 +151,15 @@ public class MyApplication extends Application {
         Log.d(TAG, "🔔 From: " + call.getFrom());
         Log.d(TAG, "🔔 To: " + call.getTo());
         Log.d(TAG, "🔔 Is video call: " + call.isVideoCall());
+        
+        // 🔥 FIX: Kiểm tra xem có phải cuộc gọi từ chính mình không
+        String currentUserId = getCurrentUserId();
+        Log.d(TAG, "🔔 Current user ID: " + currentUserId);
+        
+        if (call.getFrom().equals(currentUserId)) {
+            Log.d(TAG, "🔔 ⚠️ IGNORING: This is an outgoing video call from current user, not incoming!");
+            return;
+        }
         
         // Store call để Activity có thể lấy
         incomingVideoCalls.put(call.getCallId(), call);
@@ -179,20 +199,60 @@ public class MyApplication extends Application {
     }
     
     /**
-     * Method đơn giản để đảm bảo kết nối Stringee khi cần
+     * Method để đảm bảo kết nối bền vững Stringee khi cần
      */
     public static void ensureStringeeConnection(android.content.Context context) {
         try {
             StringeeManager stringeeManager = StringeeManager.getInstance(context);
+            
             if (!stringeeManager.isConnected()) {
-                Log.d("MyApplication", "🔄 Ensuring Stringee connection...");
-                stringeeManager.connectCurrentUser();
+                Log.d("MyApplication", "🔄 Stringee not connected, ensuring persistent connection...");
+                stringeeManager.ensurePersistentConnection();
             } else {
                 Log.d("MyApplication", "✅ Stringee already connected");
             }
+            
         } catch (Exception e) {
             Log.e("MyApplication", "❌ Error ensuring connection: " + e.getMessage());
         }
     }
+    
+    /**
+     * Get current user ID để kiểm tra cuộc gọi
+     */
+    private String getCurrentUserId() {
+        try {
+            com.example.doannt118.utils.SessionManager sessionManager = new com.example.doannt118.utils.SessionManager(this);
+            
+            String maTaiKhoan = sessionManager.getMaTaiKhoan();
+            String vaiTro = sessionManager.getVaiTro();
+            
+            if (maTaiKhoan != null && !maTaiKhoan.isEmpty() && vaiTro != null && !vaiTro.isEmpty()) {
+                if ("BenhNhan".equalsIgnoreCase(vaiTro) || "patient".equalsIgnoreCase(vaiTro)) {
+                    return "patient_" + maTaiKhoan;
+                } else if ("BacSi".equalsIgnoreCase(vaiTro) || "doctor".equalsIgnoreCase(vaiTro)) {
+                    return "doctor_" + maTaiKhoan;
+                } else {
+                    return vaiTro.toLowerCase() + "_" + maTaiKhoan;
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error getting user info from SessionManager: " + e.getMessage());
+        }
+        
+        // Fallback
+        android.content.SharedPreferences prefs = getSharedPreferences("user_info", MODE_PRIVATE);
+        String maBenhNhan = prefs.getString("maBenhNhan", "");
+        String maBacSi = prefs.getString("maBacSi", "");
+
+        if (!maBenhNhan.isEmpty()) {
+            return "patient_" + maBenhNhan;
+        } else if (!maBacSi.isEmpty()) {
+            return "doctor_" + maBacSi;
+        }
+        return "user_" + System.currentTimeMillis();
+    }
+
+
 
 }
