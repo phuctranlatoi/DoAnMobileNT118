@@ -4,13 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5">
+    android:fitsSystemWindows="true"
+    android:background="@color/background">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/colorPrimary"
         android:elevation="4dp"
         app:title="Lịch Khám Của Tôi"
         app:titleTextColor="@android:color/white"
@@ -23,8 +24,8 @@
         android:background="@android:color/white"
         app:tabMode="scrollable"
         app:tabTextColor="@android:color/darker_gray"
-        app:tabSelectedTextColor="@color/primary"
-        app:tabIndicatorColor="@color/primary">
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/colorPrimary">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

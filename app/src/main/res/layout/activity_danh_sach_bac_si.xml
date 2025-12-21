@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5">
+    android:fitsSystemWindows="true"
+    android:background="@color/background">
 
     <!-- Header -->
     <LinearLayout
@@ -29,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="16dp"
-            android:text="Chọn bác sĩ"
+            android:text="Chọn bác sĩ để đặt lịch"
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#2C3E50" />

@@ -14,7 +14,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_header_gradient"
+        android:background="@color/colorPrimary"
         android:orientation="horizontal"
         android:padding="20dp"
         android:gravity="center_vertical"
@@ -346,7 +346,7 @@
                             android:layout_height="48dp"
                             android:src="@drawable/ic_search"
                             android:contentDescription="Nhập mã khám"
-                            app:tint="#2196F3" />
+                            app:tint="@color/colorPrimary" />
 
                         <TextView
                             android:layout_width="wrap_content"

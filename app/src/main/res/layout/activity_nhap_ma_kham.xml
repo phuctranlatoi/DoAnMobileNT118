@@ -4,14 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F5F5F5">
+    android:fitsSystemWindows="true"
+    android:background="@color/background">
 
     <!-- Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@color/primary"
+        android:background="@color/colorPrimary"
         android:elevation="4dp"
         app:title="Nhập Mã Khám"
         app:titleTextColor="@android:color/white"
@@ -48,7 +49,7 @@
                         android:text="Nhập Mã Khám Bệnh"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/colorPrimary"
                         android:layout_marginBottom="16dp" />
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -80,7 +81,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:layout_marginTop="16dp"
-                        android:backgroundTint="@color/primary" />
+                        android:backgroundTint="@color/colorPrimary" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
@@ -106,7 +107,7 @@
                         android:text="Thông Tin Bệnh Nhân"
                         android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/colorPrimary"
                         android:layout_marginBottom="16dp" />
 
                     <LinearLayout
@@ -211,7 +212,7 @@
                             android:text="123456"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            android:textColor="@color/primary" />
+                            android:textColor="@color/colorPrimary" />
                     </LinearLayout>
 
                     <Button
@@ -222,7 +223,7 @@
                         android:textSize="16sp"
                         android:textStyle="bold"
                         android:layout_marginTop="16dp"
-                        android:backgroundTint="@color/primary" />
+                        android:backgroundTint="@color/colorPrimary" />
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

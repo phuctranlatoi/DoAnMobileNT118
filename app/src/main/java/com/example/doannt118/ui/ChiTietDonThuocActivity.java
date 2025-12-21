@@ -40,8 +40,16 @@ public class ChiTietDonThuocActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chi_tiet_don_thuoc);
 
+        // Hỗ trợ cả 2 key để tương thích
         maDonThuoc = getIntent().getStringExtra("MA_DON_THUOC");
+        if (maDonThuoc == null) {
+            maDonThuoc = getIntent().getStringExtra("maDonThuoc");
+        }
+        
         maBenhAn = getIntent().getStringExtra("MA_BENH_AN");
+        if (maBenhAn == null) {
+            maBenhAn = getIntent().getStringExtra("maBenhAn");
+        }
 
         if (maDonThuoc == null || maDonThuoc.isEmpty()) {
             Toast.makeText(this, "Lỗi: Không tìm thấy mã đơn thuốc!", Toast.LENGTH_SHORT).show();
@@ -89,20 +97,35 @@ public class ChiTietDonThuocActivity extends AppCompatActivity {
                             tvMaDonThuoc.setText("Mã đơn: " + donThuoc.getMaDonThuoc());
                             
                             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-                            tvNgayLap.setText("Ngày lập: " + sdf.format(donThuoc.getNgayLap()));
+                            if (donThuoc.getNgayLap() != null) {
+                                tvNgayLap.setText("Ngày lập: " + sdf.format(donThuoc.getNgayLap()));
+                            }
 
+                            // Lấy mã bệnh án từ đơn thuốc nếu chưa có
+                            if (maBenhAn == null || maBenhAn.isEmpty()) {
+                                maBenhAn = donThuoc.getMaBenhAn();
+                            }
+                            
                             // Load thông tin bệnh án
-                            if (maBenhAn != null) {
+                            if (maBenhAn != null && !maBenhAn.isEmpty()) {
                                 loadBenhAnInfo(maBenhAn);
+                            } else {
+                                // Nếu không có mã bệnh án, load trực tiếp thông tin bác sĩ từ đơn thuốc
+                                if (donThuoc.getMaBacSi() != null) {
+                                    loadBacSiInfo(donThuoc.getMaBacSi());
+                                }
+                                tvChanDoan.setText("Chẩn đoán: Không có thông tin");
                             }
                         }
+                    } else {
+                        Toast.makeText(this, "Không tìm thấy thông tin đơn thuốc", Toast.LENGTH_SHORT).show();
                     }
                     progressBar.setVisibility(View.GONE);
                 },
                 e -> {
                     Log.e("ChiTietDonThuoc", "Lỗi tải thông tin đơn thuốc: ", e);
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(this, "Lỗi tải dữ liệu", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Lỗi tải dữ liệu: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 
@@ -137,15 +160,23 @@ public class ChiTietDonThuocActivity extends AppCompatActivity {
         repo.getChiTietDonThuoc(maDonThuoc,
                 querySnapshot -> {
                     chiTietList.clear();
-                    querySnapshot.forEach(doc -> {
-                        ChiTietDonThuoc chiTiet = doc.toObject(ChiTietDonThuoc.class);
-                        chiTietList.add(chiTiet);
-                    });
+                    if (querySnapshot != null && !querySnapshot.isEmpty()) {
+                        querySnapshot.forEach(doc -> {
+                            ChiTietDonThuoc chiTiet = doc.toObject(ChiTietDonThuoc.class);
+                            if (chiTiet != null) {
+                                chiTietList.add(chiTiet);
+                            }
+                        });
+                    }
                     adapter.notifyDataSetChanged();
+                    
+                    if (chiTietList.isEmpty()) {
+                        Toast.makeText(this, "Đơn thuốc này chưa có chi tiết", Toast.LENGTH_SHORT).show();
+                    }
                 },
                 e -> {
                     Log.e("ChiTietDonThuoc", "Lỗi tải chi tiết: ", e);
-                    Toast.makeText(this, "Lỗi tải chi tiết đơn thuốc", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "Lỗi tải chi tiết đơn thuốc: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 });
     }
 }

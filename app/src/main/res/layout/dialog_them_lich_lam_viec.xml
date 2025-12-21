@@ -12,7 +12,7 @@
         android:text="Thông tin lịch làm việc"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:textColor="@color/primary"
+        android:textColor="@color/colorPrimary"
         android:layout_marginBottom="16dp" />
 
     <!-- Ngày làm việc -->
@@ -106,7 +106,7 @@
             android:layout_height="wrap_content"
             android:text="Xác nhận"
             android:layout_marginStart="8dp"
-            android:backgroundTint="@color/primary" />
+            android:backgroundTint="@color/colorPrimary" />
     </LinearLayout>
 
 </LinearLayout>

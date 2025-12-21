@@ -108,6 +108,12 @@ public class ChonDichVuKhamActivity extends AppCompatActivity {
     }
     
     private void loadDichVu(String loai) {
+        // Debug: In ra trạng thái trước khi load
+        System.out.println("=== TRƯỚC KHI LOAD DỊCH VỤ: " + loai + " ===");
+        if (adapter != null) {
+            adapter.printSelectedServices();
+        }
+        
         repo.getByField("DichVuKham", "loaiDichVu", loai,
             querySnapshot -> {
                 List<DichVuKham> list = new ArrayList<>();
@@ -118,6 +124,10 @@ public class ChonDichVuKhamActivity extends AppCompatActivity {
                     }
                 }
                 adapter.updateData(list);
+                
+                // Debug: In ra trạng thái sau khi load
+                System.out.println("=== SAU KHI LOAD DỊCH VỤ: " + loai + " ===");
+                adapter.printSelectedServices();
             },
             e -> Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }

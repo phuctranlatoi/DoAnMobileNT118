@@ -3,6 +3,8 @@ package com.example.doannt118.ui;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -11,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,6 +31,7 @@ import com.example.doannt118.repository.FirestoreRepository;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +44,8 @@ public class MainAdminActivity extends AppCompatActivity {
     private TextView tvUserName, tvPendingCount, tvTotalCount;
     private TabLayout tabLayout;
     private RecyclerView rvAccounts;
+    private EditText etSearch;
+    private ImageView btnClearSearch;
     private View btnLogout;
     private FirestoreRepository repo;
     private FirebaseAuth auth;
@@ -47,6 +53,8 @@ public class MainAdminActivity extends AppCompatActivity {
     private AccountAdapter adapter;
     private List<TaiKhoan> pendingAccounts;
     private List<TaiKhoan> allAccounts;
+    private List<TaiKhoan> filteredAccounts;
+    private com.example.doannt118.utils.SessionManager sessionManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +64,7 @@ public class MainAdminActivity extends AppCompatActivity {
 
         repo = new FirestoreRepository();
         auth = FirebaseAuth.getInstance();
+        sessionManager = new com.example.doannt118.utils.SessionManager(this);
         maTaiKhoanAdmin = getIntent().getStringExtra("MA_TAI_KHOAN");
 
         toolbar = findViewById(R.id.toolbar);
@@ -64,28 +73,35 @@ public class MainAdminActivity extends AppCompatActivity {
         tvTotalCount = findViewById(R.id.tvTotalCount);
         tabLayout = findViewById(R.id.tabLayout);
         rvAccounts = findViewById(R.id.rvAccounts);
+        etSearch = findViewById(R.id.etSearch);
+        btnClearSearch = findViewById(R.id.btnClearSearch);
         btnLogout = findViewById(R.id.btnLogout);
         rvAccounts.setLayoutManager(new LinearLayoutManager(this));
 
         pendingAccounts = new ArrayList<>();
         allAccounts = new ArrayList<>();
+        filteredAccounts = new ArrayList<>();
 
-        tabLayout.addTab(tabLayout.newTab().setText("Chờ duyệt"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tất cả tài khoản"));
+        tabLayout.addTab(tabLayout.newTab().setText("Bác sĩ"));
+        tabLayout.addTab(tabLayout.newTab().setText("Bệnh nhân"));
         tabLayout.addTab(tabLayout.newTab().setText("Tạo tài khoản"));
+        tabLayout.addTab(tabLayout.newTab().setText("Đăng xuất"));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 0:
-                        loadPendingAccounts();
+                        loadBacSiAccounts();
                         break;
                     case 1:
-                        loadAllAccounts();
+                        loadBenhNhanAccounts();
                         break;
                     case 2:
                         showCreateAccountDialog();
+                        break;
+                    case 3:
+                        handleLogout();
                         break;
                 }
             }
@@ -98,33 +114,113 @@ public class MainAdminActivity extends AppCompatActivity {
             }
         });
 
-        btnLogout.setOnClickListener(v -> {
-            // 🔥 FIX: Clear Stringee connection và cache trước khi logout
-            try {
-                com.example.doannt118.stringee.StringeeManager stringeeManager = 
-                    com.example.doannt118.stringee.StringeeManager.getInstance(this);
-                stringeeManager.logout();
-                Log.d("MainAdminActivity", "✅ Stringee logout completed");
-            } catch (Exception e) {
-                Log.e("MainAdminActivity", "❌ Error during Stringee logout: " + e.getMessage());
-            }
-            
-            String maLichSu = UUID.randomUUID().toString();
-            LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
-            repo.logActivity(lichSu);
-            auth.signOut();
-            startActivity(new Intent(MainAdminActivity.this, LoginActivity.class));
-            finish();
-        });
+        btnLogout.setOnClickListener(v -> handleLogout());
+
+        setupSearchFunctionality();
 
         loadUserInfo();
         loadStatistics();
-        loadPendingAccounts(); // Mặc định hiển thị tab "Chờ duyệt"
+        loadBacSiAccounts(); // Mặc định hiển thị tab "Bác sĩ"
+        
+        // Migration: Cập nhật các bác sĩ cũ với trường mới (chỉ chạy 1 lần)
+        migrateBacSiFields();
+    }
+    
+    private void migrateBacSiFields() {
+        Log.d("MainAdminActivity", "🔄 Bắt đầu migration các trường mới cho BacSi...");
+        repo.getAll("BacSi",
+                querySnapshot -> {
+                    for (var doc : querySnapshot.getDocuments()) {
+                        BacSi bacSi = doc.toObject(BacSi.class);
+                        if (bacSi != null) {
+                            boolean needUpdate = false;
+                            
+                            // Kiểm tra và set giá trị mặc định cho các trường mới
+                            if (bacSi.getChuyenKhoa() == null) {
+                                bacSi.setChuyenKhoa("");
+                                needUpdate = true;
+                            }
+                            if (bacSi.getDiaChi() == null) {
+                                bacSi.setDiaChi("");
+                                needUpdate = true;
+                            }
+                            if (bacSi.getNamKinhNghiem() == 0 && bacSi.getGioiThieu() == null) {
+                                // Chỉ set namKinhNghiem = 0 nếu gioiThieu cũng null (tức là bác sĩ cũ)
+                                bacSi.setNamKinhNghiem(0);
+                                needUpdate = true;
+                            }
+                            if (bacSi.getGioiThieu() == null) {
+                                bacSi.setGioiThieu("");
+                                needUpdate = true;
+                            }
+                            
+                            if (needUpdate) {
+                                String maBacSi = doc.getId();
+                                repo.updateDocument("BacSi", maBacSi, bacSi,
+                                        v -> Log.d("MainAdminActivity", "✅ Migration thành công cho bác sĩ: " + bacSi.getHoTen()),
+                                        e -> Log.e("MainAdminActivity", "❌ Migration thất bại cho bác sĩ: " + bacSi.getHoTen() + " - " + e.getMessage()));
+                            }
+                        }
+                    }
+                    Log.d("MainAdminActivity", "🎉 Hoàn thành migration BacSi fields");
+                },
+                e -> Log.e("MainAdminActivity", "❌ Lỗi migration: " + e.getMessage()));
+    }
+    
+    private void setupSearchFunctionality() {
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                String query = s.toString().trim();
+                if (query.isEmpty()) {
+                    btnClearSearch.setVisibility(View.GONE);
+                    filteredAccounts.clear();
+                    filteredAccounts.addAll(allAccounts);
+                } else {
+                    btnClearSearch.setVisibility(View.VISIBLE);
+                    filterAccounts(query);
+                }
+                if (adapter != null) {
+                    adapter.updateList(filteredAccounts);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+
+        btnClearSearch.setOnClickListener(v -> {
+            etSearch.setText("");
+            etSearch.clearFocus();
+        });
+    }
+
+    private void filterAccounts(String query) {
+        filteredAccounts.clear();
+        String lowerQuery = query.toLowerCase();
+        
+        for (TaiKhoan taiKhoan : allAccounts) {
+            boolean matches = false;
+            
+            // Tìm kiếm theo tên đăng nhập, email
+            if (taiKhoan.getTenDangNhap().toLowerCase().contains(lowerQuery) ||
+                taiKhoan.getEmail().toLowerCase().contains(lowerQuery)) {
+                matches = true;
+            }
+            
+            // Tạm thời thêm vào danh sách nếu khớp với thông tin cơ bản
+            if (matches) {
+                filteredAccounts.add(taiKhoan);
+            }
+        }
     }
     
     private void loadStatistics() {
-        // Đếm tài khoản chờ duyệt
-        repo.countByField("TaiKhoan", "trangThai", "Chờ duyệt",
+        // Đếm tài khoản bác sĩ
+        repo.countByField("TaiKhoan", "vaiTro", "Bác sĩ",
                 count -> {
                     if (tvPendingCount != null) {
                         tvPendingCount.setText(String.valueOf(count));
@@ -155,38 +251,44 @@ public class MainAdminActivity extends AppCompatActivity {
                 e -> Toast.makeText(this, "Lỗi tải thông tin admin: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
-    private void loadPendingAccounts() {
-        repo.getByField("TaiKhoan", "trangThai", "Chờ duyệt",
-                querySnapshot -> {
-                    pendingAccounts.clear();
-                    for (var doc : querySnapshot.getDocuments()) {
-                        TaiKhoan taiKhoan = doc.toObject(TaiKhoan.class);
-                        if (taiKhoan != null) {
-                            pendingAccounts.add(taiKhoan);
-                        }
-                    }
-                    adapter = new AccountAdapter(pendingAccounts, true);
-                    rvAccounts.setAdapter(adapter);
-                    loadStatistics(); // Cập nhật thống kê
-                },
-                e -> Toast.makeText(this, "Lỗi tải danh sách tài khoản chờ duyệt: " + e.getMessage(), Toast.LENGTH_SHORT).show());
-    }
-
-    private void loadAllAccounts() {
-        repo.getAll("TaiKhoan",
+    private void loadBacSiAccounts() {
+        repo.getByField("TaiKhoan", "vaiTro", "Bác sĩ",
                 querySnapshot -> {
                     allAccounts.clear();
+                    filteredAccounts.clear();
                     for (var doc : querySnapshot.getDocuments()) {
                         TaiKhoan taiKhoan = doc.toObject(TaiKhoan.class);
                         if (taiKhoan != null) {
                             allAccounts.add(taiKhoan);
                         }
                     }
-                    adapter = new AccountAdapter(allAccounts, false);
+                    filteredAccounts.addAll(allAccounts);
+                    adapter = new AccountAdapter(filteredAccounts, false);
                     rvAccounts.setAdapter(adapter);
+                    etSearch.setText(""); // Clear search when switching tabs
                     loadStatistics(); // Cập nhật thống kê
                 },
-                e -> Toast.makeText(this, "Lỗi tải danh sách tài khoản: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                e -> Toast.makeText(this, "Lỗi tải danh sách bác sĩ: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+    }
+
+    private void loadBenhNhanAccounts() {
+        repo.getByField("TaiKhoan", "vaiTro", "Bệnh nhân",
+                querySnapshot -> {
+                    allAccounts.clear();
+                    filteredAccounts.clear();
+                    for (var doc : querySnapshot.getDocuments()) {
+                        TaiKhoan taiKhoan = doc.toObject(TaiKhoan.class);
+                        if (taiKhoan != null) {
+                            allAccounts.add(taiKhoan);
+                        }
+                    }
+                    filteredAccounts.addAll(allAccounts);
+                    adapter = new AccountAdapter(filteredAccounts, false);
+                    rvAccounts.setAdapter(adapter);
+                    etSearch.setText(""); // Clear search when switching tabs
+                    loadStatistics(); // Cập nhật thống kê
+                },
+                e -> Toast.makeText(this, "Lỗi tải danh sách bệnh nhân: " + e.getMessage(), Toast.LENGTH_SHORT).show());
     }
 
     private void showCreateAccountDialog() {
@@ -202,6 +304,10 @@ public class MainAdminActivity extends AppCompatActivity {
         EditText txtBangCap = dialogView.findViewById(R.id.txtBangCap);
         EditText txtHocVi = dialogView.findViewById(R.id.txtHocVi);
         EditText txtChungChi = dialogView.findViewById(R.id.txtChungChi);
+        EditText txtChuyenKhoa = dialogView.findViewById(R.id.txtChuyenKhoa);
+        EditText txtDiaChi = dialogView.findViewById(R.id.txtDiaChi);
+        EditText txtNamKinhNghiem = dialogView.findViewById(R.id.txtNamKinhNghiem);
+        EditText txtGioiThieu = dialogView.findViewById(R.id.txtGioiThieu);
         Spinner spVaiTro = dialogView.findViewById(R.id.spVaiTro);
         Button btnDangKy = dialogView.findViewById(R.id.btnDangKy);
         Button btnQuayLai = dialogView.findViewById(R.id.btnQuayLai);
@@ -221,6 +327,10 @@ public class MainAdminActivity extends AppCompatActivity {
             String bangCap = txtBangCap.getText().toString().trim();
             String hocVi = txtHocVi.getText().toString().trim();
             String chungChi = txtChungChi.getText().toString().trim();
+            String chuyenKhoa = txtChuyenKhoa.getText().toString().trim();
+            String diaChi = txtDiaChi.getText().toString().trim();
+            String namKinhNghiemStr = txtNamKinhNghiem.getText().toString().trim();
+            String gioiThieu = txtGioiThieu.getText().toString().trim();
             String vaiTro = spVaiTro.getSelectedItem().toString();
 
             if (tenDangNhap.isEmpty() || matKhau.isEmpty() || hoTen.isEmpty() || sdt.isEmpty() || email.isEmpty()) {
@@ -236,6 +346,19 @@ public class MainAdminActivity extends AppCompatActivity {
                 return;
             }
 
+            // Validate số năm kinh nghiệm
+            int namKinhNghiem = 0;
+            if (!namKinhNghiemStr.isEmpty()) {
+                try {
+                    namKinhNghiem = Integer.parseInt(namKinhNghiemStr);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Số năm kinh nghiệm không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+
+            final int finalNamKinhNghiem = namKinhNghiem;
+
             repo.getByField("TaiKhoan", "tenDangNhap", tenDangNhap,
                     querySnapshot -> {
                         if (!querySnapshot.isEmpty()) {
@@ -246,7 +369,7 @@ public class MainAdminActivity extends AppCompatActivity {
                                         if (!emailSnapshot.isEmpty()) {
                                             Toast.makeText(this, "Email đã tồn tại!", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            createNewAccount(tenDangNhap, matKhau, hoTen, sdt, email, bangCap, hocVi, chungChi, vaiTro, dialog);
+                                            createNewAccount(tenDangNhap, matKhau, hoTen, sdt, email, bangCap, hocVi, chungChi, chuyenKhoa, diaChi, finalNamKinhNghiem, gioiThieu, vaiTro, dialog);
                                         }
                                     },
                                     e -> Toast.makeText(this, "Lỗi kiểm tra email: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -260,7 +383,7 @@ public class MainAdminActivity extends AppCompatActivity {
     }
 
     private void createNewAccount(String tenDangNhap, String matKhau, String hoTen, String sdt, String email,
-                                  String bangCap, String hocVi, String chungChi, String vaiTro, AlertDialog dialog) {
+                                  String bangCap, String hocVi, String chungChi, String chuyenKhoa, String diaChi, int namKinhNghiem, String gioiThieu, String vaiTro, AlertDialog dialog) {
         String matKhauDaBam;
         try {
             matKhauDaBam = BCrypt.hashpw(matKhau, BCrypt.gensalt());
@@ -284,12 +407,18 @@ public class MainAdminActivity extends AppCompatActivity {
                         : "BS" + System.currentTimeMillis();
                     
                     // Bước 2: Tạo object TaiKhoan
-                    TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Chờ duyệt");
+                    TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Hoạt động");
                     
                     // Bước 3: Tạo object BacSi hoặc Admin
                     Object userProfile;
                     if (vaiTro.equals("Bác sĩ")) {
-                        userProfile = new BacSi(maProfile, maTaiKhoan, hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Chờ xác thực");
+                        BacSi bacSi = new BacSi(maProfile, maTaiKhoan, hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Đã xác thực");
+                        // Set thêm các thông tin mới
+                        bacSi.setChuyenKhoa(chuyenKhoa);
+                        bacSi.setDiaChi(diaChi);
+                        bacSi.setNamKinhNghiem(namKinhNghiem);
+                        bacSi.setGioiThieu(gioiThieu);
+                        userProfile = bacSi;
                     } else {
                         userProfile = new Admin(maProfile, maTaiKhoan, hoTen, sdt);
                     }
@@ -307,8 +436,13 @@ public class MainAdminActivity extends AppCompatActivity {
                                 // Hiển thị thông tin tài khoản vừa tạo
                                 showAccountInfoDialog(tenDangNhap, matKhau, email, maProfile, maTaiKhoan, hoTen, vaiTro);
                                 
-                                // Reload danh sách
-                                tabLayout.getTabAt(0).select();
+                                // Reload the appropriate tab
+                                if (vaiTro.equals("Bác sĩ")) {
+                                    tabLayout.getTabAt(0).select();
+                                } else if (vaiTro.equals("Admin")) {
+                                    // Admin accounts would be in doctor tab for now, or we could add a separate admin tab
+                                    tabLayout.getTabAt(0).select();
+                                }
                             },
                             e -> {
                                 // Nếu lưu Firestore thất bại, xóa tài khoản Firebase Auth
@@ -369,6 +503,57 @@ public class MainAdminActivity extends AppCompatActivity {
         dialog.show();
     }
     
+    private void handleLogout() {
+        // Hiển thị dialog xác nhận đăng xuất
+        new AlertDialog.Builder(this)
+            .setTitle("Đăng xuất")
+            .setMessage("Bạn có chắc chắn muốn đăng xuất khỏi hệ thống?")
+            .setPositiveButton("Đăng xuất", (dialog, which) -> {
+                Log.d("MainAdminActivity", "🔥 Bắt đầu quá trình đăng xuất...");
+                
+                // 🔥 FIX: Clear Stringee connection và cache trước khi logout
+                try {
+                    com.example.doannt118.stringee.StringeeManager stringeeManager = 
+                        com.example.doannt118.stringee.StringeeManager.getInstance(this);
+                    stringeeManager.logout();
+                    Log.d("MainAdminActivity", "✅ Stringee logout completed");
+                } catch (Exception e) {
+                    Log.e("MainAdminActivity", "❌ Error during Stringee logout: " + e.getMessage());
+                }
+                
+                // Log hoạt động đăng xuất
+                String maLichSu = UUID.randomUUID().toString();
+                LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Đăng xuất", new Date(), "Đăng xuất khỏi hệ thống");
+                repo.logActivity(lichSu);
+                Log.d("MainAdminActivity", "✅ Logged logout activity");
+                
+                // Clear session
+                sessionManager.logout();
+                Log.d("MainAdminActivity", "✅ Session cleared");
+                
+                // Đăng xuất Firebase Auth
+                auth.signOut();
+                Log.d("MainAdminActivity", "✅ Firebase Auth signed out");
+                
+                // Hiển thị toast xác nhận
+                Toast.makeText(this, "Đã đăng xuất thành công!", Toast.LENGTH_SHORT).show();
+                
+                // Chuyển về LoginActivity với delay nhỏ
+                new android.os.Handler().postDelayed(() -> {
+                    Intent intent = new Intent(MainAdminActivity.this, LoginActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                    finish();
+                    Log.d("MainAdminActivity", "✅ Navigated to LoginActivity");
+                }, 500);
+            })
+            .setNegativeButton("Hủy", null)
+            .show();
+        
+        // Quay lại tab đầu tiên sau khi bấm đăng xuất
+        tabLayout.getTabAt(0).select();
+    }
+    
     private void showEditAccountDialog(TaiKhoan taiKhoan) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_edit_account, null);
@@ -379,21 +564,34 @@ public class MainAdminActivity extends AppCompatActivity {
         EditText etBangCap = dialogView.findViewById(R.id.etBangCap);
         EditText etHocVi = dialogView.findViewById(R.id.etHocVi);
         EditText etChungChi = dialogView.findViewById(R.id.etChungChi);
+        EditText etChuyenKhoa = dialogView.findViewById(R.id.etChuyenKhoa);
+        EditText etDiaChi = dialogView.findViewById(R.id.etDiaChi);
+        EditText etNamKinhNghiem = dialogView.findViewById(R.id.etNamKinhNghiem);
+        EditText etGioiThieu = dialogView.findViewById(R.id.etGioiThieu);
         Button btnSave = dialogView.findViewById(R.id.btnSave);
         Button btnCancel = dialogView.findViewById(R.id.btnCancel);
 
         String collection = taiKhoan.getVaiTro().equals("Bác sĩ") ? "BacSi" : taiKhoan.getVaiTro().equals("Admin") ? "Admin" : "BenhNhan";
+        
+        Log.d("MainAdminActivity", "🔍 Loading thông tin để edit: " + taiKhoan.getTenDangNhap());
+        
         repo.getByField(collection, "maTaiKhoan", taiKhoan.getMaTaiKhoan(),
                 querySnapshot -> {
                     if (!querySnapshot.isEmpty()) {
                         if (taiKhoan.getVaiTro().equals("Bác sĩ")) {
                             BacSi bacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
                             if (bacSi != null) {
+                                Log.d("MainAdminActivity", "📋 Loaded BacSi - Chuyên khoa: '" + bacSi.getChuyenKhoa() + "', Năm KN: " + bacSi.getNamKinhNghiem() + ", Giới thiệu: '" + bacSi.getGioiThieu() + "'");
+                                
                                 etHoTen.setText(bacSi.getHoTen());
                                 etSoDienThoai.setText(bacSi.getSoDienThoai());
                                 etBangCap.setText(bacSi.getBangCap() != null ? bacSi.getBangCap() : "");
                                 etHocVi.setText(bacSi.getHocVi() != null ? bacSi.getHocVi() : "");
                                 etChungChi.setText(bacSi.getChungChiHanhNghe() != null ? String.join(", ", bacSi.getChungChiHanhNghe()) : "");
+                                etChuyenKhoa.setText(bacSi.getChuyenKhoa() != null ? bacSi.getChuyenKhoa() : "");
+                                etDiaChi.setText(bacSi.getDiaChi() != null ? bacSi.getDiaChi() : "");
+                                etNamKinhNghiem.setText(bacSi.getNamKinhNghiem() > 0 ? String.valueOf(bacSi.getNamKinhNghiem()) : "");
+                                etGioiThieu.setText(bacSi.getGioiThieu() != null ? bacSi.getGioiThieu() : "");
                             }
                         } else if (taiKhoan.getVaiTro().equals("Admin")) {
                             Admin admin = querySnapshot.getDocuments().get(0).toObject(Admin.class);
@@ -403,6 +601,10 @@ public class MainAdminActivity extends AppCompatActivity {
                                 etBangCap.setVisibility(View.GONE);
                                 etHocVi.setVisibility(View.GONE);
                                 etChungChi.setVisibility(View.GONE);
+                                etChuyenKhoa.setVisibility(View.GONE);
+                                etDiaChi.setVisibility(View.GONE);
+                                etNamKinhNghiem.setVisibility(View.GONE);
+                                etGioiThieu.setVisibility(View.GONE);
                             }
                         } else {
                             BenhNhan benhNhan = querySnapshot.getDocuments().get(0).toObject(BenhNhan.class);
@@ -412,6 +614,10 @@ public class MainAdminActivity extends AppCompatActivity {
                                 etBangCap.setVisibility(View.GONE);
                                 etHocVi.setVisibility(View.GONE);
                                 etChungChi.setVisibility(View.GONE);
+                                etChuyenKhoa.setVisibility(View.GONE);
+                                etDiaChi.setVisibility(View.GONE);
+                                etNamKinhNghiem.setVisibility(View.GONE);
+                                etGioiThieu.setVisibility(View.GONE);
                             }
                         }
                     }
@@ -426,6 +632,10 @@ public class MainAdminActivity extends AppCompatActivity {
             String bangCap = etBangCap.getText().toString().trim();
             String hocVi = etHocVi.getText().toString().trim();
             String chungChi = etChungChi.getText().toString().trim();
+            String chuyenKhoa = etChuyenKhoa.getText().toString().trim();
+            String diaChi = etDiaChi.getText().toString().trim();
+            String namKinhNghiemStr = etNamKinhNghiem.getText().toString().trim();
+            String gioiThieu = etGioiThieu.getText().toString().trim();
 
             if (hoTen.isEmpty() || sdt.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đủ họ tên và số điện thoại!", Toast.LENGTH_SHORT).show();
@@ -436,29 +646,92 @@ public class MainAdminActivity extends AppCompatActivity {
                 return;
             }
 
+            int namKinhNghiem = 0;
+            if (!namKinhNghiemStr.isEmpty()) {
+                try {
+                    namKinhNghiem = Integer.parseInt(namKinhNghiemStr);
+                } catch (NumberFormatException e) {
+                    Toast.makeText(this, "Số năm kinh nghiệm không hợp lệ!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
+
+            final int finalNamKinhNghiem = namKinhNghiem;
+
+            Log.d("MainAdminActivity", "🔍 Chuẩn bị lưu - Chuyên khoa: '" + chuyenKhoa + "', Địa chỉ: '" + diaChi + "', Năm KN: " + finalNamKinhNghiem + ", Giới thiệu: '" + gioiThieu + "'");
+
             repo.getByField(collection, "maTaiKhoan", taiKhoan.getMaTaiKhoan(),
                     querySnapshot -> {
                         if (!querySnapshot.isEmpty()) {
                             Object userProfile;
                             String maProfile = querySnapshot.getDocuments().get(0).getId();
                             if (taiKhoan.getVaiTro().equals("Bác sĩ")) {
-                                userProfile = new BacSi(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Chờ xác thực");
+                                // Lấy trạng thái xác thực hiện tại
+                                BacSi currentBacSi = querySnapshot.getDocuments().get(0).toObject(BacSi.class);
+                                String currentTrangThaiXacThuc = currentBacSi != null ? currentBacSi.getTrangThaiXacThuc() : "Đã xác thực";
+                                
+                                BacSi bacSi = new BacSi(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), currentTrangThaiXacThuc);
+                                // Set thêm các thông tin mới
+                                bacSi.setChuyenKhoa(chuyenKhoa);
+                                bacSi.setDiaChi(diaChi);
+                                bacSi.setNamKinhNghiem(finalNamKinhNghiem);
+                                bacSi.setGioiThieu(gioiThieu);
+                                
+                                // 🔍 DEBUG: Log object BacSi trước khi lưu
+                                Log.d("MainAdminActivity", "📝 BacSi object trước khi lưu:");
+                                Log.d("MainAdminActivity", "   - Chuyên khoa: '" + bacSi.getChuyenKhoa() + "'");
+                                Log.d("MainAdminActivity", "   - Địa chỉ: '" + bacSi.getDiaChi() + "'");
+                                Log.d("MainAdminActivity", "   - Năm KN: " + bacSi.getNamKinhNghiem());
+                                Log.d("MainAdminActivity", "   - Giới thiệu: '" + bacSi.getGioiThieu() + "'");
+                                
+                                userProfile = bacSi;
                             } else if (taiKhoan.getVaiTro().equals("Admin")) {
                                 userProfile = new Admin(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt);
                             } else {
                                 userProfile = new BenhNhan(maProfile, taiKhoan.getMaTaiKhoan(), hoTen, sdt, "", "");
                             }
 
-                            repo.updateDocument(collection, maProfile, userProfile,
-                                    v2 -> {
+                            // 🔥 THAY ĐỔI: Sử dụng Firestore trực tiếp thay vì repo.updateDocument
+                            Log.d("MainAdminActivity", "🚀 Sử dụng Firestore trực tiếp để lưu...");
+                            FirebaseFirestore db = FirebaseFirestore.getInstance();
+                            db.collection(collection).document(maProfile)
+                                    .set(userProfile)
+                                    .addOnSuccessListener(aVoid -> {
+                                        Log.d("MainAdminActivity", "✅ Firestore direct update thành công - Chuyên khoa: " + chuyenKhoa + ", Năm KN: " + finalNamKinhNghiem + ", Giới thiệu: " + gioiThieu);
+                                        
+                                        // 🔍 VERIFY: Đọc lại từ Firestore để xác nhận đã lưu
+                                        db.collection(collection).document(maProfile).get()
+                                                .addOnSuccessListener(documentSnapshot -> {
+                                                    if (documentSnapshot.exists()) {
+                                                        BacSi verifyBacSi = documentSnapshot.toObject(BacSi.class);
+                                                        if (verifyBacSi != null) {
+                                                            Log.d("MainAdminActivity", "🔍 VERIFY - Đọc lại từ Firestore:");
+                                                            Log.d("MainAdminActivity", "   - Chuyên khoa: '" + verifyBacSi.getChuyenKhoa() + "'");
+                                                            Log.d("MainAdminActivity", "   - Địa chỉ: '" + verifyBacSi.getDiaChi() + "'");
+                                                            Log.d("MainAdminActivity", "   - Năm KN: " + verifyBacSi.getNamKinhNghiem());
+                                                            Log.d("MainAdminActivity", "   - Giới thiệu: '" + verifyBacSi.getGioiThieu() + "'");
+                                                        }
+                                                    }
+                                                })
+                                                .addOnFailureListener(e -> Log.e("MainAdminActivity", "❌ Lỗi verify: " + e.getMessage()));
+                                        
                                         String maLichSu = UUID.randomUUID().toString();
                                         LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Sửa thông tin tài khoản", new Date(), "Sửa thông tin tài khoản " + taiKhoan.getVaiTro() + ": " + hoTen);
                                         repo.logActivity(lichSu);
                                         Toast.makeText(this, "Cập nhật thông tin thành công!", Toast.LENGTH_SHORT).show();
-                                        loadAllAccounts();
+                                        // Reload the current tab
+                                        int currentTab = tabLayout.getSelectedTabPosition();
+                                        if (currentTab == 0) {
+                                            loadBacSiAccounts();
+                                        } else if (currentTab == 1) {
+                                            loadBenhNhanAccounts();
+                                        }
                                         dialog.dismiss();
-                                    },
-                                    e -> Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_SHORT).show());
+                                    })
+                                    .addOnFailureListener(e -> {
+                                        Log.e("MainAdminActivity", "❌ Firestore direct update thất bại: " + e.getMessage());
+                                        Toast.makeText(this, "Lỗi cập nhật: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                    });
                         }
                     },
                     e -> Toast.makeText(this, "Lỗi tải thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -475,6 +748,11 @@ public class MainAdminActivity extends AppCompatActivity {
         public AccountAdapter(List<TaiKhoan> list, boolean isPendingMode) {
             this.list = list;
             this.isPendingMode = isPendingMode;
+        }
+
+        public void updateList(List<TaiKhoan> newList) {
+            this.list = newList;
+            notifyDataSetChanged();
         }
 
         @Override
@@ -544,8 +822,13 @@ public class MainAdminActivity extends AppCompatActivity {
                                                     String maLichSu = UUID.randomUUID().toString();
                                                     LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Duyệt bác sĩ", new Date(), "Duyệt bác sĩ: " + taiKhoan.getTenDangNhap());
                                                     repo.logActivity(lichSu);
-                                                    list.remove(position);
-                                                    notifyDataSetChanged();
+                                                    // Reload current tab instead of removing from list
+                                                    int currentTab = tabLayout.getSelectedTabPosition();
+                                                    if (currentTab == 0) {
+                                                        loadBacSiAccounts();
+                                                    } else if (currentTab == 1) {
+                                                        loadBenhNhanAccounts();
+                                                    }
                                                     Toast.makeText(MainAdminActivity.this, "Đã duyệt tài khoản bác sĩ!", Toast.LENGTH_SHORT).show();
                                                 },
                                                 e -> Toast.makeText(MainAdminActivity.this, "Lỗi duyệt: " + e.getMessage(), Toast.LENGTH_SHORT).show());
@@ -564,8 +847,13 @@ public class MainAdminActivity extends AppCompatActivity {
                                                     String maLichSu = UUID.randomUUID().toString();
                                                     LichSuHoatDong lichSu = new LichSuHoatDong(maLichSu, maTaiKhoanAdmin, "Từ chối bác sĩ", new Date(), "Từ chối bác sĩ: " + taiKhoan.getTenDangNhap());
                                                     repo.logActivity(lichSu);
-                                                    list.remove(position);
-                                                    notifyDataSetChanged();
+                                                    // Reload current tab instead of removing from list
+                                                    int currentTab = tabLayout.getSelectedTabPosition();
+                                                    if (currentTab == 0) {
+                                                        loadBacSiAccounts();
+                                                    } else if (currentTab == 1) {
+                                                        loadBenhNhanAccounts();
+                                                    }
                                                     Toast.makeText(MainAdminActivity.this, "Đã từ chối tài khoản bác sĩ!", Toast.LENGTH_SHORT).show();
                                                 },
                                                 e -> Toast.makeText(MainAdminActivity.this, "Lỗi từ chối: " + e.getMessage(), Toast.LENGTH_SHORT).show());

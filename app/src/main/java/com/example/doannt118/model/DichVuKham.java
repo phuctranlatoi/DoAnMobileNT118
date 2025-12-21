@@ -52,4 +52,27 @@ public class DichVuKham implements Serializable {
     public String getGiaTienFormatted() {
         return String.format("%,d đ", giaTien);
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        DichVuKham that = (DichVuKham) obj;
+        return maDichVu != null ? maDichVu.equals(that.maDichVu) : that.maDichVu == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return maDichVu != null ? maDichVu.hashCode() : 0;
+    }
+    
+    @Override
+    public String toString() {
+        return "DichVuKham{" +
+                "maDichVu='" + maDichVu + '\'' +
+                ", tenDichVu='" + tenDichVu + '\'' +
+                ", loaiDichVu='" + loaiDichVu + '\'' +
+                ", giaTien=" + giaTien +
+                '}';
+    }
 }

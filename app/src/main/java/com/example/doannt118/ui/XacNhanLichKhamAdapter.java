@@ -49,12 +49,28 @@ public class XacNhanLichKhamAdapter extends RecyclerView.Adapter<XacNhanLichKham
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         LichKham lichKham = lichKhamList.get(position);
         
-        // Hiển thị thời gian
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        holder.tvThoiGian.setText(sdf.format(lichKham.getNgayKham().toDate()));
+        // Hiển thị thời gian - ưu tiên gioKham nếu có
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        String ngayKham = sdf.format(lichKham.getNgayKham().toDate());
         
-        // Hiển thị số thứ tự
-        holder.tvLyDo.setText("STT: " + lichKham.getSoThuTu());
+        String gioKham = lichKham.getGioKham();
+        if (gioKham != null && !gioKham.isEmpty()) {
+            // Hiển thị ngày + khung giờ cụ thể
+            holder.tvThoiGian.setText(ngayKham + " - " + gioKham);
+        } else {
+            // Fallback về cách cũ nếu không có gioKham
+            SimpleDateFormat sdfFull = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+            holder.tvThoiGian.setText(sdfFull.format(lichKham.getNgayKham().toDate()));
+        }
+        
+        // Hiển thị thông tin bổ sung (có thể là lý do khám hoặc ghi chú)
+        String lyDoKham = lichKham.getLyDoKham();
+        if (lyDoKham != null && !lyDoKham.isEmpty()) {
+            holder.tvLyDo.setText("Lý do: " + lyDoKham);
+            holder.tvLyDo.setVisibility(View.VISIBLE);
+        } else {
+            holder.tvLyDo.setVisibility(View.GONE);
+        }
         
         // Load tên bệnh nhân
         repo.getByField("BenhNhan", "maBenhNhan", lichKham.getMaBenhNhan(),

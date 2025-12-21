@@ -33,7 +33,7 @@
                 android:text="Đã xác nhận"
                 android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary"
+                android:textColor="@color/colorPrimary"
                 android:drawablePadding="6dp"
                 app:drawableStartCompat="@drawable/ic_check_circle" />
 
@@ -73,7 +73,7 @@
                 android:text="123456"
                 android:textSize="24sp"
                 android:textStyle="bold"
-                android:textColor="@color/primary"
+                android:textColor="@color/colorPrimary"
                 android:letterSpacing="0.1" />
         </LinearLayout>
 
@@ -89,7 +89,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_doctor"
-                app:tint="@color/primary"
+                app:tint="@color/colorPrimary"
                 android:layout_marginEnd="8dp" />
 
             <TextView

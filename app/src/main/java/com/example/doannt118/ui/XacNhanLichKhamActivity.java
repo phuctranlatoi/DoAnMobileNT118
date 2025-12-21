@@ -262,69 +262,77 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
     private void handleXacNhan(LichKham lichKham) {
         progressBar.setVisibility(View.VISIBLE);
         
-        // Kiểm tra lịch làm việc có hợp lệ không
-        repo.getCollection("LichLamViec")
-            .document(lichKham.getMaLichLamViec())
-            .get()
-            .addOnSuccessListener(lichLamViecDoc -> {
-                if (!lichLamViecDoc.exists()) {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(this, "✗ Lịch làm việc không tồn tại!", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                
-                // Lấy số lượng tối đa
-                Long soLuongToiDaLong = lichLamViecDoc.getLong("soLuongBenhNhanToiDa");
-                if (soLuongToiDaLong == null) {
-                    soLuongToiDaLong = lichLamViecDoc.getLong("soLuongToiDa");
-                }
-                int soLuongToiDa = (soLuongToiDaLong != null) ? soLuongToiDaLong.intValue() : 10;
-                
-                // Đếm số lượng đã xác nhận
-                repo.getByField("LichKham", "maLichLamViec", lichKham.getMaLichLamViec(),
-                    querySnapshot -> {
-                        final int[] soLuongDaXacNhan = {0};
-                        for (var doc : querySnapshot.getDocuments()) {
-                            String trangThai = doc.getString("trangThai");
-                            if ("XAC_NHAN".equals(trangThai)) {
-                                soLuongDaXacNhan[0]++;
-                            }
+        // Với hệ thống TimeSlot mới, mỗi slot chỉ có thể được đặt một lần
+        // Kiểm tra xem có lịch khám nào khác đã được xác nhận cho cùng ngày và giờ không
+        if (lichKham.getGioKham() != null && !lichKham.getGioKham().isEmpty()) {
+            // Kiểm tra trùng lặp theo ngày và giờ khám cụ thể
+            repo.getByField("LichKham", "maBacSi", maBacSi,
+                querySnapshot -> {
+                    boolean hasConflict = false;
+                    
+                    for (var doc : querySnapshot.getDocuments()) {
+                        LichKham existingLichKham = doc.toObject(LichKham.class);
+                        if (existingLichKham != null && 
+                            !existingLichKham.getMaLichKham().equals(lichKham.getMaLichKham()) &&
+                            "XAC_NHAN".equals(existingLichKham.getTrangThai()) &&
+                            lichKham.getGioKham().equals(existingLichKham.getGioKham()) &&
+                            isSameDay(lichKham.getNgayKham(), existingLichKham.getNgayKham())) {
+                            hasConflict = true;
+                            break;
                         }
-                        
-                        if (soLuongDaXacNhan[0] >= soLuongToiDa) {
-                            progressBar.setVisibility(View.GONE);
-                            Toast.makeText(this, "✗ Khung giờ này đã đầy!", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
-                        
-                        // Cập nhật trạng thái lịch khám
-                        Map<String, Object> updates = new HashMap<>();
-                        updates.put("trangThai", "XAC_NHAN");
-                        
-                        repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
-                            aVoid -> {
-                                // Tạo mã khám bệnh
-                                taoMaKhamBenh(lichKham);
-                                
-                                Toast.makeText(this, "✓ Xác nhận thành công!", Toast.LENGTH_SHORT).show();
-                                loadDanhSachLichKham();
-                            },
-                            e -> {
-                                progressBar.setVisibility(View.GONE);
-                                Log.e(TAG, "Lỗi xác nhận", e);
-                                Toast.makeText(this, "✗ Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                            });
-                    },
-                    e -> {
+                    }
+                    
+                    if (hasConflict) {
                         progressBar.setVisibility(View.GONE);
-                        Log.e(TAG, "Lỗi kiểm tra số lượng", e);
-                        Toast.makeText(this, "✗ Lỗi kiểm tra số lượng!", Toast.LENGTH_SHORT).show();
-                    });
-            })
-            .addOnFailureListener(e -> {
+                        Toast.makeText(this, "✗ Khung giờ này đã có lịch khám khác được xác nhận!", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    
+                    // Xác nhận lịch khám
+                    xacNhanLichKham(lichKham);
+                },
+                e -> {
+                    progressBar.setVisibility(View.GONE);
+                    Log.e(TAG, "Lỗi kiểm tra trùng lặp", e);
+                    Toast.makeText(this, "✗ Lỗi kiểm tra trùng lặp!", Toast.LENGTH_SHORT).show();
+                });
+        } else {
+            // Fallback cho lịch khám cũ không có gioKham
+            xacNhanLichKham(lichKham);
+        }
+    }
+    
+    private boolean isSameDay(com.google.firebase.Timestamp date1, com.google.firebase.Timestamp date2) {
+        if (date1 == null || date2 == null) return false;
+        
+        java.util.Calendar cal1 = java.util.Calendar.getInstance();
+        cal1.setTime(date1.toDate());
+        
+        java.util.Calendar cal2 = java.util.Calendar.getInstance();
+        cal2.setTime(date2.toDate());
+        
+        return cal1.get(java.util.Calendar.YEAR) == cal2.get(java.util.Calendar.YEAR) &&
+               cal1.get(java.util.Calendar.DAY_OF_YEAR) == cal2.get(java.util.Calendar.DAY_OF_YEAR);
+    }
+    
+    private void xacNhanLichKham(LichKham lichKham) {
+        // Cập nhật trạng thái lịch khám
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("trangThai", "XAC_NHAN");
+        
+        repo.updateDocumentFields("LichKham", lichKham.getMaLichKham(), updates,
+            aVoid -> {
+                // Tạo mã khám bệnh
+                taoMaKhamBenh(lichKham);
+                
                 progressBar.setVisibility(View.GONE);
-                Log.e(TAG, "Lỗi tải lịch làm việc", e);
-                Toast.makeText(this, "✗ Lỗi tải lịch làm việc!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "✓ Xác nhận thành công!", Toast.LENGTH_SHORT).show();
+                loadDanhSachLichKham();
+            },
+            e -> {
+                progressBar.setVisibility(View.GONE);
+                Log.e(TAG, "Lỗi xác nhận", e);
+                Toast.makeText(this, "✗ Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             });
     }
     

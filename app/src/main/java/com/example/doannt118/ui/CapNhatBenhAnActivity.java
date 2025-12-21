@@ -60,7 +60,8 @@ public class CapNhatBenhAnActivity extends AppCompatActivity {
         donThuocAdapter = new DonThuocAdapter(this, new java.util.ArrayList<>(), donThuoc -> {
             // Click vào đơn thuốc để xem chi tiết
             android.content.Intent intent = new android.content.Intent(this, ChiTietDonThuocActivity.class);
-            intent.putExtra("maDonThuoc", donThuoc.getMaDonThuoc());
+            intent.putExtra("MA_DON_THUOC", donThuoc.getMaDonThuoc());
+            intent.putExtra("MA_BENH_AN", maBenhAn);
             startActivity(intent);
         });
         rvDonThuoc.setLayoutManager(new androidx.recyclerview.widget.LinearLayoutManager(this));

@@ -169,21 +169,40 @@ public class DiemDanhUongThuocFragment extends Fragment {
         List<ChiTietDonThuoc> thuocTrua = new ArrayList<>();
         List<ChiTietDonThuoc> thuocChieu = new ArrayList<>();
         
+        android.util.Log.d("DiemDanhFragment", "Phân loại " + tatCaThuoc.size() + " loại thuốc");
+        
         for (ChiTietDonThuoc thuoc : tatCaThuoc) {
             boolean coThongTinCaUong = thuoc.isUongSang() || thuoc.isUongTrua() || 
                                        thuoc.isUongChieu() || thuoc.isUongToi();
             
+            android.util.Log.d("DiemDanhFragment", "Thuốc " + thuoc.getTenThuoc() + 
+                ": Sáng=" + thuoc.isUongSang() + ", Trưa=" + thuoc.isUongTrua() + 
+                ", Chiều=" + thuoc.isUongChieu() + ", Tối=" + thuoc.isUongToi());
+            
             if (!coThongTinCaUong) {
                 // Dữ liệu cũ không có thông tin ca uống - chỉ cho phép ca sáng và chiều
+                android.util.Log.d("DiemDanhFragment", "Thuốc " + thuoc.getTenThuoc() + " không có thông tin ca uống - thêm vào sáng và chiều");
                 thuocSang.add(thuoc);
                 thuocChieu.add(thuoc);
             } else {
                 // Dữ liệu mới có thông tin ca uống - phân loại chính xác
-                if (thuoc.isUongSang()) thuocSang.add(thuoc);
-                if (thuoc.isUongTrua()) thuocTrua.add(thuoc);
-                if (thuoc.isUongChieu() || thuoc.isUongToi()) thuocChieu.add(thuoc); // Gộp chiều và tối
+                if (thuoc.isUongSang()) {
+                    android.util.Log.d("DiemDanhFragment", "Thuốc " + thuoc.getTenThuoc() + " thêm vào ca sáng");
+                    thuocSang.add(thuoc);
+                }
+                if (thuoc.isUongTrua()) {
+                    android.util.Log.d("DiemDanhFragment", "Thuốc " + thuoc.getTenThuoc() + " thêm vào ca trưa");
+                    thuocTrua.add(thuoc);
+                }
+                if (thuoc.isUongChieu() || thuoc.isUongToi()) {
+                    android.util.Log.d("DiemDanhFragment", "Thuốc " + thuoc.getTenThuoc() + " thêm vào ca chiều");
+                    thuocChieu.add(thuoc); // Gộp chiều và tối
+                }
             }
         }
+        
+        android.util.Log.d("DiemDanhFragment", "Kết quả phân loại: Sáng=" + thuocSang.size() + 
+            ", Trưa=" + thuocTrua.size() + ", Chiều=" + thuocChieu.size());
         
         // Tạo danh sách các ca uống thuốc - CHỈ hiển thị những ca có thuốc
         List<CaUongThuocAdapter.CaUongThuoc> danhSachCa = new ArrayList<>();
@@ -199,6 +218,8 @@ public class DiemDanhUongThuocFragment extends Fragment {
         if (!thuocChieu.isEmpty()) {
             danhSachCa.add(new CaUongThuocAdapter.CaUongThuoc("Ca Chiều", "🌤️", "CHIEU", thuocChieu));
         }
+        
+        android.util.Log.d("DiemDanhFragment", "Hiển thị " + danhSachCa.size() + " ca uống thuốc");
         
         // Cập nhật adapter
         caUongThuocAdapter.setData(danhSachCa);

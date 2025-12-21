@@ -48,8 +48,12 @@ drawable bg_input
 drawable bg_input_1
 drawable bg_input_field
 drawable bg_outline_blue
+drawable bg_slot_counter
 drawable bg_status_completed
 drawable bg_status_pending
+drawable bg_switch_container
+drawable bg_switch_selected
+drawable bg_switch_unselected
 drawable bottom_nav_icon_tint
 drawable button_outline_red
 drawable button_solid_blue
@@ -194,6 +198,8 @@ id btnAnswerCall
 id btnApprove
 id btnBack
 id btnBoQua
+id btnBuoiChieu
+id btnBuoiSang
 id btnCamera
 id btnCancel
 id btnCapNhat
@@ -202,6 +208,7 @@ id btnChonDichVu
 id btnChonGioBatDau
 id btnChonGioKetThuc
 id btnChonNgay
+id btnClearSearch
 id btnConfirm
 id btnContainer
 id btnCopy
@@ -280,6 +287,7 @@ id cardRegisterAppointment
 id cardSendNotification
 id cardThongTinBenhNhan
 id cardThuoc
+id cardTimeSlot
 id cardTrangThaiThanhToan
 id cardView
 id cardViewInvoice
@@ -314,9 +322,12 @@ id edtTenThuoc
 id edtTieuDe
 id etBangCap
 id etChungChi
+id etChuyenKhoa
 id etDiaChi
+id etGioiThieu
 id etHoTen
 id etHocVi
+id etNamKinhNghiem
 id etNgaySinh
 id etSearch
 id etSoDienThoai
@@ -435,6 +446,7 @@ id rvThuoc
 id rvThuocCanUong
 id rvThuocTrongCa
 id rvTinNhan
+id searchCard
 id settingCamera
 id settingChangePassword
 id settingMicro
@@ -455,6 +467,7 @@ id tvBangCap
 id tvBenhAn
 id tvBenhNhan
 id tvBoQua
+id tvBuoiKham
 id tvCaLamViec
 id tvCaUong
 id tvCachDung
@@ -523,6 +536,7 @@ id tvPendingCount
 id tvPhiKham
 id tvPhuongThucThanhToan
 id tvQuenMatKhau
+id tvSlotCount
 id tvSoDienThoai
 id tvSoLanKham
 id tvSoLuong
@@ -560,11 +574,14 @@ id tvVaiTro
 id tvWelcome
 id txtBangCap
 id txtChungChi
+id txtChuyenKhoa
 id txtDiaChi
 id txtEmail
+id txtGioiThieu
 id txtHoTen
 id txtHocVi
 id txtMatKhau
+id txtNamKinhNghiem
 id txtNgaySinh
 id txtSoDienThoai
 id txtTenDangNhap
@@ -673,6 +690,7 @@ layout item_thong_bao
 layout item_thuoc_can_uong
 layout item_thuoc_ke_don
 layout item_thuoc_trong_ca
+layout item_time_slot
 layout item_tin_nhan_bac_si
 layout item_tin_nhan_benh_nhan
 layout item_xac_nhan_lich_kham

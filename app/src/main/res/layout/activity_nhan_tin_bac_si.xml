@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    android:background="#F8FAFC">
+    android:background="@color/background">
 
     <!-- Toolbar -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="@drawable/toolbar_gradient_background"
+        android:background="@color/colorPrimary"
         android:elevation="4dp"
         app:titleTextAppearance="@style/ToolbarTitleStyle"
         app:navigationIcon="@drawable/ic_back_white">

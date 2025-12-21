@@ -39,20 +39,11 @@ public class ChiTietHoaDonAdapter extends RecyclerView.Adapter<ChiTietHoaDonAdap
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ChiTietHoaDon chiTiet = chiTietList.get(position);
         
-        // Load tên dược phẩm
-        repo.getByField("DuocPham", "maDuocPham", chiTiet.getMaDuocPham(),
-                querySnapshot -> {
-                    if (!querySnapshot.isEmpty()) {
-                        String tenDuocPham = querySnapshot.getDocuments().get(0).getString("tenDuocPham");
-                        String donViTinh = querySnapshot.getDocuments().get(0).getString("donViTinh");
-                        holder.tvTenThuoc.setText(tenDuocPham);
-                        holder.tvSoLuong.setText("Số lượng: " + chiTiet.getSoLuong() + " " + donViTinh);
-                    }
-                },
-                e -> Log.e("ChiTietHoaDonAdapter", "Lỗi tải dược phẩm: ", e));
-        
+        // Hiển thị tên dịch vụ/thuốc trực tiếp từ chi tiết hóa đơn
+        holder.tvTenThuoc.setText(chiTiet.getTenDichVu());
+        holder.tvSoLuong.setText("Số lượng: " + chiTiet.getSoLuong());
         holder.tvDonGia.setText(String.format("Đơn giá: %,.0f đ", chiTiet.getDonGia()));
-        holder.tvThanhTien.setText(String.format("Thành tiền: %,.0f đ", chiTiet.getSoLuong() * chiTiet.getDonGia()));
+        holder.tvThanhTien.setText(String.format("Thành tiền: %,.0f đ", chiTiet.getThanhTien()));
     }
 
     @Override

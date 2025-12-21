@@ -11,6 +11,7 @@ public class LichLamViec {
     private String caLamViec; // "08:00-12:00"
     private int soLuongToiDa; // Số lượng bệnh nhân tối đa (mặc định 6)
     private String loaiHinh; // ONLINE, OFFLINE (tại phòng khám)
+    private String ghiChu; // Ghi chú cho lịch làm việc
 
     public LichLamViec() {}
 
@@ -53,4 +54,7 @@ public class LichLamViec {
     
     public String getLoaiHinh() { return loaiHinh; }
     public void setLoaiHinh(String loaiHinh) { this.loaiHinh = loaiHinh; }
+    
+    public String getGhiChu() { return ghiChu; }
+    public void setGhiChu(String ghiChu) { this.ghiChu = ghiChu; }
 }

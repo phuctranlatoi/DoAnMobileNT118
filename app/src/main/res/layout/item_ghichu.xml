@@ -24,7 +24,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_note"
-                android:tint="#2196F3"
+                android:tint="@color/colorPrimary"
                 android:layout_marginEnd="8dp"/>
 
             <TextView
@@ -34,7 +34,7 @@
                 android:layout_weight="1"
                 android:text="01/01/2024"
                 android:textSize="14sp"
-                android:textColor="#2196F3"
+                android:textColor="@color/colorPrimary"
                 android:textStyle="bold"/>
         </LinearLayout>
 

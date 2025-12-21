@@ -35,7 +35,7 @@
                     android:layout_gravity="center"
                     android:src="@drawable/ic_profile"
                     android:contentDescription="Avatar"
-                    app:tint="#2196F3" />
+                    app:tint="@color/colorPrimary" />
             </androidx.cardview.widget.CardView>
 
             <LinearLayout
@@ -158,7 +158,7 @@
                 android:orientation="vertical"
                 android:layout_marginTop="8dp"
                 android:padding="12dp"
-                android:background="#F5F5F5">
+                android:background="@color/background">
 
                 <TextView
                     android:id="@+id/tvBangCap"
@@ -238,7 +238,7 @@
                 android:layout_height="40dp"
                 android:text="Sửa"
                 android:textSize="13sp"
-                android:backgroundTint="#2196F3"
+                android:backgroundTint="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"

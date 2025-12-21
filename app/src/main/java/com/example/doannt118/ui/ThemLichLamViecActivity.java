@@ -33,7 +33,7 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
     private TextView tvTitle, tvGioBatDau, tvGioKetThuc, lblThongBao;
     private DatePicker dpNgayLamViec;
     private Button btnChonGioBatDau, btnChonGioKetThuc, btnHuy, btnLuu;
-    private TextInputEditText edtSoLuongToiDa;
+    private TextInputEditText edtGhiChu;
     private ProgressBar progressBar;
 
     private FirestoreRepository repo;
@@ -63,7 +63,7 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
         btnChonGioKetThuc = findViewById(R.id.btnChonGioKetThuc);
         btnHuy = findViewById(R.id.btnHuy);
         btnLuu = findViewById(R.id.btnLuu);
-        edtSoLuongToiDa = findViewById(R.id.edtSoLuongToiDa);
+        edtGhiChu = findViewById(R.id.edtGhiChu);
         progressBar = findViewById(R.id.progressBar);
     }
 
@@ -176,10 +176,11 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
             }
         }
 
-        // Set số lượng
-        int soLuong = lich.getSoLuongToiDa();
-        if (soLuong == 0) soLuong = 10;
-        edtSoLuongToiDa.setText(String.valueOf(soLuong));
+        // Set ghi chú
+        String ghiChu = lich.getGhiChu();
+        if (ghiChu != null) {
+            edtGhiChu.setText(ghiChu);
+        }
     }
 
     private void saveLichLamViec() {
@@ -202,19 +203,8 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
             selectedStartTime.format(TIME_FORMATTER),
             selectedEndTime.format(TIME_FORMATTER));
 
-        // Lấy số lượng
-        final int soLuongToiDa;
-        try {
-            String soLuongStr = edtSoLuongToiDa.getText().toString().trim();
-            if (!soLuongStr.isEmpty()) {
-                soLuongToiDa = Integer.parseInt(soLuongStr);
-            } else {
-                soLuongToiDa = 10;
-            }
-        } catch (NumberFormatException e) {
-            showError("Số lượng bệnh nhân không hợp lệ!");
-            return;
-        }
+        // Lấy ghi chú
+        String ghiChu = edtGhiChu.getText().toString().trim();
 
         progressBar.setVisibility(View.VISIBLE);
         
@@ -288,9 +278,10 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
                     maBacSi,
                     ngayLamViec,
                     caLamViec,
-                    soLuongToiDa,
+                    1, // Không cần số lượng tối đa với TimeSlot system
                     "OFFLINE"
                 );
+                lich.setGhiChu(ghiChu);
                 
                 repo.addDocument("LichLamViec", id, lich,
                     aVoid -> {
@@ -330,27 +321,6 @@ public class ThemLichLamViecActivity extends AppCompatActivity {
 
         if (selectedStartTime.isAfter(selectedEndTime) || selectedStartTime.equals(selectedEndTime)) {
             showError("Giờ bắt đầu phải trước giờ kết thúc!");
-            return false;
-        }
-
-        String soLuongStr = edtSoLuongToiDa.getText().toString().trim();
-        if (soLuongStr.isEmpty()) {
-            showError("Vui lòng nhập số lượng bệnh nhân!");
-            return false;
-        }
-
-        try {
-            int soLuong = Integer.parseInt(soLuongStr);
-            if (soLuong <= 0) {
-                showError("Số lượng bệnh nhân phải lớn hơn 0!");
-                return false;
-            }
-            if (soLuong > 50) {
-                showError("Số lượng bệnh nhân không nên quá 50!");
-                return false;
-            }
-        } catch (NumberFormatException e) {
-            showError("Số lượng bệnh nhân không hợp lệ!");
             return false;
         }
 

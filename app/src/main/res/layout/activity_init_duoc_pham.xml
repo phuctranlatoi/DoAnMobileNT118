@@ -5,13 +5,14 @@
     android:orientation="vertical"
     android:padding="20dp"
     android:gravity="center"
+    android:fitsSystemWindows="true"
     android:background="@color/background">
 
     <ImageView
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:src="@drawable/ic_medication"
-        app:tint="@color/primary"
+        app:tint="@color/colorPrimary"
         android:layout_marginBottom="20dp"
         xmlns:app="http://schemas.android.com/apk/res-auto" />
 
@@ -21,7 +22,7 @@
         android:text="Import Dược Phẩm"
         android:textSize="28sp"
         android:textStyle="bold"
-        android:textColor="@color/primary"
+        android:textColor="@color/colorPrimary"
         android:layout_marginBottom="10dp" />
 
     <TextView
@@ -51,7 +52,7 @@
         android:text="BẮT ĐẦU IMPORT"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:backgroundTint="@color/primary" />
+        android:backgroundTint="@color/colorPrimary" />
 
     <TextView
         android:layout_width="wrap_content"

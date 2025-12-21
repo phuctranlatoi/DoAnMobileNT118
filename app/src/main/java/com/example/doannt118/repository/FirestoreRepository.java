@@ -126,12 +126,12 @@ public class FirestoreRepository {
         } else if (userProfile instanceof BacSi) {
             profileCollectionName = COLLECTION_BACSI;
             profileDocumentId = ((BacSi) userProfile).getMaBacSi();
-            taiKhoan.setTrangThai("Chờ duyệt");
-            ((BacSi) userProfile).setTrangThaiXacThuc("Chờ xác thực");
+            taiKhoan.setTrangThai("Hoạt động");
+            ((BacSi) userProfile).setTrangThaiXacThuc("Đã xác thực");
         } else if (userProfile instanceof Admin) {
             profileCollectionName = COLLECTION_ADMIN;
             profileDocumentId = ((Admin) userProfile).getMaAdmin();
-            taiKhoan.setTrangThai("Chờ duyệt");
+            taiKhoan.setTrangThai("Hoạt động");
         } else {
             onFailure.accept(new IllegalArgumentException("userProfile must be BenhNhan, BacSi, or Admin"));
             return;

@@ -29,6 +29,7 @@ public class DanhSachBacSiActivity extends AppCompatActivity {
     
     private FirestoreRepository repo;
     private String maTaiKhoan;
+    private String maBenhNhan; // Thêm biến này
     private List<BacSi> allBacSiList = new ArrayList<>();
     private List<BacSi> filteredList = new ArrayList<>();
     private BacSiAdapter adapter;
@@ -40,6 +41,7 @@ public class DanhSachBacSiActivity extends AppCompatActivity {
 
         repo = new FirestoreRepository();
         maTaiKhoan = getIntent().getStringExtra("MA_TAI_KHOAN");
+        maBenhNhan = getIntent().getStringExtra("MA_BENH_NHAN"); // Nhận từ Intent
 
         initViews();
         setupRecyclerView();
@@ -56,9 +58,10 @@ public class DanhSachBacSiActivity extends AppCompatActivity {
     private void setupRecyclerView() {
         rvBacSi.setLayoutManager(new LinearLayoutManager(this));
         adapter = new BacSiAdapter(filteredList, bacSi -> {
-            // Mở màn hình chi tiết bác sĩ
+            // Mở màn hình chi tiết bác sĩ để đặt lịch khám
             Intent intent = new Intent(this, ChiTietBacSiActivity.class);
             intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+            intent.putExtra("MA_BENH_NHAN", maBenhNhan);
             intent.putExtra("MA_BAC_SI", bacSi.getMaBacSi());
             startActivity(intent);
         });

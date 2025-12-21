@@ -67,7 +67,7 @@ public class UpdateBacSiProfileActivity extends AppCompatActivity {
                     querySnapshot -> {
                         if (!querySnapshot.isEmpty()) {
                             String maBacSi = querySnapshot.getDocuments().get(0).getId();
-                            BacSi bacSi = new BacSi(maBacSi, maTaiKhoan, hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Chờ xác thực");
+                            BacSi bacSi = new BacSi(maBacSi, maTaiKhoan, hoTen, sdt, bangCap, hocVi, Arrays.asList(chungChi.split(",\\s*")), "Đã xác thực");
                             repo.updateDocument("BacSi", maBacSi, bacSi,
                                     v2 -> {
                                         String maLichSu = UUID.randomUUID().toString();

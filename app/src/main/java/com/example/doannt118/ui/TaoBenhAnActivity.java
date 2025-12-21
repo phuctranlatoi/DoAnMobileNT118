@@ -541,16 +541,24 @@ public class TaoBenhAnActivity extends AppCompatActivity {
                     chiTiet.put("soLuong", ct.getSoLuong());
                     chiTiet.put("lieuDung", ct.getLieuDung());
                     
+                    // Thêm thông tin ca uống thuốc
+                    chiTiet.put("soNgayUong", ct.getSoNgayUong());
+                    chiTiet.put("soLanMoiNgay", ct.getSoLanMoiNgay());
+                    chiTiet.put("soVienMoiLan", ct.getSoVienMoiLan());
+                    chiTiet.put("uongSang", ct.isUongSang());
+                    chiTiet.put("uongTrua", ct.isUongTrua());
+                    chiTiet.put("uongChieu", ct.isUongChieu());
+                    chiTiet.put("uongToi", ct.isUongToi());
+                    chiTiet.put("cachDung", ct.getCachDung());
+                    
                     repository.addDocument("ChiTietDonThuoc", maChiTiet, chiTiet,
                         v -> {},
                         e -> Log.e("TaoBenhAn", "Lỗi thêm chi tiết: " + e.getMessage())
                     );
                 }
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(TaoBenhAnActivity.this, 
-                    "Tạo bệnh án và đơn thuốc thành công", 
-                    Toast.LENGTH_SHORT).show();
-                finish();
+                
+                // Sau khi tạo đơn thuốc xong, tạo hóa đơn
+                taoHoaDonTuDong(maBenhAn);
             },
             e -> {
                 progressBar.setVisibility(View.GONE);
@@ -579,11 +587,311 @@ public class TaoBenhAnActivity extends AppCompatActivity {
                 }
             })
             .setNegativeButton("Không", (dialog, which) -> {
-                Toast.makeText(this, "Tạo bệnh án thành công", Toast.LENGTH_SHORT).show();
-                finish();
+                // Không kê đơn thuốc nhưng vẫn tạo hóa đơn cho dịch vụ khám
+                taoHoaDonTuDong(maBenhAn);
             })
             .setCancelable(false)
             .show();
+    }
+    
+    /**
+     * Tạo hóa đơn tự động sau khi hoàn thành bệnh án và đơn thuốc
+     */
+    private void taoHoaDonTuDong(String maBenhAn) {
+        String maHoaDon = "HD_" + System.currentTimeMillis();
+        Date ngayLap = new Date();
+        
+        // Tính toán các loại phí
+        long phiKham = tongPhiDichVu; // Phí dịch vụ khám đã chọn
+        long phiThuoc = 0; // Sẽ tính sau từ database
+        long phiDichVu = 0; // Có thể mở rộng sau cho các dịch vụ khác
+        
+        double tongTien = phiKham; // Tạm thời chỉ có phí khám, phí thuốc sẽ cập nhật sau
+        
+        // Tạo hóa đơn với phí thuốc = 0 trước
+        com.example.doannt118.model.HoaDon hoaDon = new com.example.doannt118.model.HoaDon();
+        hoaDon.setMaHoaDon(maHoaDon);
+        hoaDon.setMaBenhAn(maBenhAn);
+        hoaDon.setMaBenhNhan(maBenhNhanChon);
+        hoaDon.setNgayLap(ngayLap);
+        hoaDon.setTongTien(tongTien);
+        hoaDon.setPhiKham(phiKham);
+        hoaDon.setPhiThuoc(phiThuoc);
+        hoaDon.setPhiDichVu(phiDichVu);
+        hoaDon.setTrangThai("CHUA_THANH_TOAN");
+        
+        repository.addDocument("HoaDon", maHoaDon, hoaDon,
+            aVoid -> {
+                // Tạo chi tiết hóa đơn và tính phí thuốc thực tế
+                taoChiTietHoaDonVaTinhPhiThuoc(maHoaDon);
+            },
+            e -> {
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(this, "Lỗi tạo hóa đơn: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                // Vẫn thông báo thành công vì bệnh án đã tạo
+                Toast.makeText(this, "Tạo bệnh án thành công", Toast.LENGTH_SHORT).show();
+                finish();
+            }
+        );
+    }
+    
+    /**
+     * Tính phí thuốc từ đơn thuốc - lấy giá thực từ database
+     */
+    private void tinhPhiThuocThucTe(String maHoaDon, Runnable onComplete) {
+        if (danhSachThuoc.isEmpty()) {
+            // Không có thuốc, hoàn thành luôn
+            onComplete.run();
+            return;
+        }
+        
+        final long[] tongPhiThuoc = {0};
+        final int[] count = {0};
+        final int total = danhSachThuoc.size();
+        
+        for (ChiTietDonThuoc thuoc : danhSachThuoc) {
+            // Lấy giá thuốc từ database
+            repository.getByField("DuocPham", "maDuocPham", thuoc.getMaDuocPham(),
+                querySnapshot -> {
+                    if (!querySnapshot.isEmpty()) {
+                        com.example.doannt118.model.DuocPham duocPham = 
+                            querySnapshot.getDocuments().get(0).toObject(com.example.doannt118.model.DuocPham.class);
+                        if (duocPham != null) {
+                            tongPhiThuoc[0] += (long)(thuoc.getSoLuong() * duocPham.getGiaBan());
+                        }
+                    } else {
+                        // Không tìm thấy thuốc, dùng giá mặc định
+                        tongPhiThuoc[0] += thuoc.getSoLuong() * 10000;
+                    }
+                    
+                    count[0]++;
+                    if (count[0] == total) {
+                        // Đã tính xong tất cả thuốc, cập nhật hóa đơn
+                        capNhatPhiThuocTrongHoaDon(maHoaDon, tongPhiThuoc[0], onComplete);
+                    }
+                },
+                e -> {
+                    Log.e("TaoBenhAn", "Lỗi lấy giá thuốc: " + e.getMessage());
+                    // Dùng giá mặc định khi có lỗi
+                    tongPhiThuoc[0] += thuoc.getSoLuong() * 10000;
+                    
+                    count[0]++;
+                    if (count[0] == total) {
+                        capNhatPhiThuocTrongHoaDon(maHoaDon, tongPhiThuoc[0], onComplete);
+                    }
+                }
+            );
+        }
+    }
+    
+    /**
+     * Cập nhật phí thuốc trong hóa đơn sau khi tính toán xong
+     */
+    private void capNhatPhiThuocTrongHoaDon(String maHoaDon, long phiThuocThucTe, Runnable onComplete) {
+        // Cập nhật phí thuốc và tổng tiền trong hóa đơn
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("phiThuoc", phiThuocThucTe);
+        updates.put("tongTien", (double)(tongPhiDichVu + phiThuocThucTe));
+        
+        repository.updateDocumentFields("HoaDon", maHoaDon, updates,
+            aVoid -> {
+                Log.d("TaoBenhAn", "Đã cập nhật phí thuốc: " + phiThuocThucTe);
+                onComplete.run();
+            },
+            e -> {
+                Log.e("TaoBenhAn", "Lỗi cập nhật phí thuốc: " + e.getMessage());
+                // Vẫn tiếp tục dù có lỗi
+                onComplete.run();
+            }
+        );
+    }
+    
+    /**
+     * Tạo chi tiết hóa đơn và tính phí thuốc thực tế từ database
+     */
+    private void taoChiTietHoaDonVaTinhPhiThuoc(String maHoaDon) {
+        List<com.example.doannt118.model.ChiTietHoaDon> danhSachChiTiet = new ArrayList<>();
+        
+        // Thêm chi tiết cho dịch vụ khám
+        if (dichVuChon != null && !dichVuChon.isEmpty()) {
+            for (int i = 0; i < dichVuChon.size(); i++) {
+                com.example.doannt118.model.DichVuKham dv = dichVuChon.get(i);
+                String maChiTiet = "CTHD_DV_" + maHoaDon + "_" + i + "_" + dv.getMaDichVu();
+                com.example.doannt118.model.ChiTietHoaDon chiTiet = new com.example.doannt118.model.ChiTietHoaDon();
+                chiTiet.setMaChiTiet(maChiTiet);
+                chiTiet.setMaHoaDon(maHoaDon);
+                chiTiet.setTenDichVu(dv.getTenDichVu());
+                chiTiet.setSoLuong(1);
+                chiTiet.setDonGia(dv.getGiaTien());
+                danhSachChiTiet.add(chiTiet);
+            }
+        }
+        
+        // Thêm chi tiết cho thuốc - sẽ cập nhật giá sau
+        taoChiTietThuocVoiGiaThucTe(maHoaDon, danhSachChiTiet);
+    }
+    
+    /**
+     * Tạo chi tiết thuốc với giá thực tế từ database
+     */
+    private void taoChiTietThuocVoiGiaThucTe(String maHoaDon, List<com.example.doannt118.model.ChiTietHoaDon> danhSachChiTietDichVu) {
+        if (danhSachThuoc.isEmpty()) {
+            // Không có thuốc, lưu chi tiết dịch vụ và hoàn thành
+            luuTatCaChiTietHoaDon(danhSachChiTietDichVu, 0);
+            return;
+        }
+        
+        final List<com.example.doannt118.model.ChiTietHoaDon> danhSachChiTietThuoc = new ArrayList<>();
+        final int[] count = {0};
+        final int total = danhSachThuoc.size();
+        
+        for (int i = 0; i < danhSachThuoc.size(); i++) {
+            ChiTietDonThuoc thuoc = danhSachThuoc.get(i);
+            final int index = i; // Để sử dụng trong lambda
+            
+            // Lấy giá thuốc từ database
+            repository.getByField("DuocPham", "maDuocPham", thuoc.getMaDuocPham(),
+                querySnapshot -> {
+                    double giaThuoc = 10000; // Giá mặc định
+                    
+                    if (!querySnapshot.isEmpty()) {
+                        com.example.doannt118.model.DuocPham duocPham = 
+                            querySnapshot.getDocuments().get(0).toObject(com.example.doannt118.model.DuocPham.class);
+                        if (duocPham != null) {
+                            giaThuoc = duocPham.getGiaBan();
+                        }
+                    }
+                    
+                    // Tạo chi tiết hóa đơn cho thuốc với ID unique
+                    String maChiTiet = "CTHD_THUOC_" + maHoaDon + "_" + index + "_" + thuoc.getMaDuocPham();
+                    com.example.doannt118.model.ChiTietHoaDon chiTiet = new com.example.doannt118.model.ChiTietHoaDon();
+                    chiTiet.setMaChiTiet(maChiTiet);
+                    chiTiet.setMaHoaDon(maHoaDon);
+                    chiTiet.setTenDichVu(thuoc.getTenThuoc());
+                    chiTiet.setSoLuong(thuoc.getSoLuong());
+                    chiTiet.setDonGia(giaThuoc);
+                    
+                    synchronized (danhSachChiTietThuoc) {
+                        danhSachChiTietThuoc.add(chiTiet);
+                    }
+                    
+                    count[0]++;
+                    if (count[0] == total) {
+                        // Đã lấy xong giá tất cả thuốc
+                        // Gộp chi tiết dịch vụ và thuốc
+                        List<com.example.doannt118.model.ChiTietHoaDon> tatCaChiTiet = new ArrayList<>();
+                        tatCaChiTiet.addAll(danhSachChiTietDichVu);
+                        tatCaChiTiet.addAll(danhSachChiTietThuoc);
+                        
+                        // Tính tổng phí thuốc
+                        long tongPhiThuoc = 0;
+                        for (com.example.doannt118.model.ChiTietHoaDon ct : danhSachChiTietThuoc) {
+                            tongPhiThuoc += (long)(ct.getSoLuong() * ct.getDonGia());
+                        }
+                        
+                        // Cập nhật phí thuốc trong hóa đơn
+                        capNhatPhiThuocTrongHoaDon(maHoaDon, tongPhiThuoc, () -> {
+                            // Lưu tất cả chi tiết hóa đơn
+                            luuTatCaChiTietHoaDon(tatCaChiTiet, 0);
+                        });
+                    }
+                },
+                e -> {
+                    Log.e("TaoBenhAn", "Lỗi lấy giá thuốc: " + e.getMessage());
+                    
+                    // Dùng giá mặc định khi có lỗi
+                    String maChiTiet = "CTHD_THUOC_" + maHoaDon + "_" + index + "_" + thuoc.getMaDuocPham();
+                    com.example.doannt118.model.ChiTietHoaDon chiTiet = new com.example.doannt118.model.ChiTietHoaDon();
+                    chiTiet.setMaChiTiet(maChiTiet);
+                    chiTiet.setMaHoaDon(maHoaDon);
+                    chiTiet.setTenDichVu(thuoc.getTenThuoc());
+                    chiTiet.setSoLuong(thuoc.getSoLuong());
+                    chiTiet.setDonGia(10000); // Giá mặc định
+                    
+                    synchronized (danhSachChiTietThuoc) {
+                        danhSachChiTietThuoc.add(chiTiet);
+                    }
+                    
+                    count[0]++;
+                    if (count[0] == total) {
+                        // Gộp và lưu
+                        List<com.example.doannt118.model.ChiTietHoaDon> tatCaChiTiet = new ArrayList<>();
+                        tatCaChiTiet.addAll(danhSachChiTietDichVu);
+                        tatCaChiTiet.addAll(danhSachChiTietThuoc);
+                        
+                        long tongPhiThuoc = 0;
+                        for (com.example.doannt118.model.ChiTietHoaDon ct : danhSachChiTietThuoc) {
+                            tongPhiThuoc += (long)(ct.getSoLuong() * ct.getDonGia());
+                        }
+                        
+                        capNhatPhiThuocTrongHoaDon(maHoaDon, tongPhiThuoc, () -> {
+                            luuTatCaChiTietHoaDon(tatCaChiTiet, 0);
+                        });
+                    }
+                }
+            );
+        }
+    }
+    
+    /**
+     * Lưu tất cả chi tiết hóa đơn theo thứ tự
+     */
+    private void luuTatCaChiTietHoaDon(List<com.example.doannt118.model.ChiTietHoaDon> danhSach, int index) {
+        if (index >= danhSach.size()) {
+            // Đã lưu xong tất cả, gửi thông báo và kết thúc
+            guiThongBaoHoaDonMoi();
+            progressBar.setVisibility(View.GONE);
+            Toast.makeText(this, "Tạo bệnh án, đơn thuốc và hóa đơn thành công!", Toast.LENGTH_LONG).show();
+            finish();
+            return;
+        }
+        
+        com.example.doannt118.model.ChiTietHoaDon chiTiet = danhSach.get(index);
+        repository.addDocument("ChiTietHoaDon", chiTiet.getMaChiTiet(), chiTiet,
+            aVoid -> {
+                // Lưu chi tiết tiếp theo
+                luuTatCaChiTietHoaDon(danhSach, index + 1);
+            },
+            e -> {
+                Log.e("TaoBenhAn", "Lỗi lưu chi tiết hóa đơn: " + e.getMessage());
+                // Tiếp tục lưu chi tiết tiếp theo dù có lỗi
+                luuTatCaChiTietHoaDon(danhSach, index + 1);
+            }
+        );
+    }
+    
+    /**
+     * Gửi thông báo hóa đơn mới cho bệnh nhân
+     */
+    private void guiThongBaoHoaDonMoi() {
+        // Lấy tổng tiền từ hóa đơn đã được cập nhật
+        repository.getByField("HoaDon", "maBenhNhan", maBenhNhanChon,
+            querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    // Lấy hóa đơn mới nhất (theo thời gian tạo)
+                    com.example.doannt118.model.HoaDon hoaDonMoiNhat = null;
+                    for (var doc : querySnapshot.getDocuments()) {
+                        com.example.doannt118.model.HoaDon hd = doc.toObject(com.example.doannt118.model.HoaDon.class);
+                        if (hd != null && (hoaDonMoiNhat == null || 
+                            hd.getNgayLap().after(hoaDonMoiNhat.getNgayLap()))) {
+                            hoaDonMoiNhat = hd;
+                        }
+                    }
+                    
+                    if (hoaDonMoiNhat != null) {
+                        long tongTien = (long)hoaDonMoiNhat.getTongTien();
+                        
+                        com.example.doannt118.utils.NotificationHelper helper = 
+                            new com.example.doannt118.utils.NotificationHelper(this);
+                        helper.guiThongBaoTuBacSi(maBenhNhanChon, null,
+                            "Hóa đơn khám bệnh",
+                            "Bạn có hóa đơn mới với tổng tiền " + String.format("%,d đ", tongTien) + 
+                            ". Vui lòng kiểm tra và thanh toán.");
+                    }
+                }
+            },
+            e -> Log.e("TaoBenhAn", "Lỗi lấy thông tin hóa đơn để gửi thông báo: " + e.getMessage())
+        );
     }
     
     private void capNhatTrangThaiLichKham(String maLichKham) {

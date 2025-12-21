@@ -2,6 +2,7 @@ package com.example.doannt118.ui;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.doannt118.R;
 import com.example.doannt118.model.LichLamViec;
+import com.example.doannt118.repository.FirestoreRepository;
 
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
@@ -62,20 +64,17 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         holder.tvTenNhanVien.setText(nhanVienMap.getOrDefault(lich.getMaBacSi(), "Không rõ BS"));
         holder.tvCaLamViec.setText(lich.getCaLamViec() != null ? lich.getCaLamViec() : "N/A");
         
-        // Hiển thị số lượng bệnh nhân thay vì trạng thái
-        int soLuongToiDa = lich.getSoLuongToiDa();
-        if (soLuongToiDa == 0) soLuongToiDa = 10; // Mặc định
-        
-        // Hiển thị tạm thời - sẽ cập nhật sau khi đếm từ Firebase
-        String soLuongText = "0/" + soLuongToiDa + " BN";
-        holder.tvTrangThai.setText(soLuongText);
-        holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success); // Còn trống - xanh
-
         if (lich.getNgayLamViec() != null) {
             holder.tvNgayLamViec.setText(DATE_FORMAT.format(lich.getNgayLamViec()));
         } else {
             holder.tvNgayLamViec.setText("N/A");
         }
+
+        // Tính số lượng slot và số lượng đã đặt
+        int soLuongToiDa = tinhSoSlotTuCaLamViec(lich.getCaLamViec());
+        
+        // Đếm số lượng bệnh nhân đã đặt lịch cho ca này
+        demSoLuongBenhNhanDaDat(lich, holder, soLuongToiDa);
 
         // Highlight item được chọn
         if (selectedPosition == position) {
@@ -140,6 +139,115 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         }
         resetSelection();
         notifyDataSetChanged();
+    }
+
+    // Tính số slot từ ca làm việc (ví dụ: "14:00-18:00" = 8 slots)
+    private int tinhSoSlotTuCaLamViec(String caLamViec) {
+        if (caLamViec == null || !caLamViec.contains("-")) {
+            return 8; // Mặc định
+        }
+        
+        try {
+            String[] parts = caLamViec.split("-");
+            String[] startParts = parts[0].trim().split(":");
+            String[] endParts = parts[1].trim().split(":");
+            
+            int startHour = Integer.parseInt(startParts[0]);
+            int startMinute = Integer.parseInt(startParts[1]);
+            int endHour = Integer.parseInt(endParts[0]);
+            int endMinute = Integer.parseInt(endParts[1]);
+            
+            int totalMinutes = (endHour * 60 + endMinute) - (startHour * 60 + startMinute);
+            return totalMinutes / 30; // Mỗi slot 30 phút
+        } catch (Exception e) {
+            return 8; // Mặc định nếu có lỗi
+        }
+    }
+    
+    // Đếm số lượng bệnh nhân đã đặt lịch cho ca làm việc này
+    private void demSoLuongBenhNhanDaDat(LichLamViec lich, LichLamViecViewHolder holder, int tongSoSlot) {
+        // Hiển thị loading trước
+        holder.tvTrangThai.setText("Đang tải...");
+        holder.tvTrangThai.setBackgroundResource(R.drawable.badge_warning);
+        
+        // Tạo FirestoreRepository để query
+        com.example.doannt118.repository.FirestoreRepository repo = 
+            new com.example.doannt118.repository.FirestoreRepository();
+        
+        // Tạo date range cho ngày làm việc
+        java.util.Calendar startCal = java.util.Calendar.getInstance();
+        startCal.setTime(lich.getNgayLamViec());
+        startCal.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        startCal.set(java.util.Calendar.MINUTE, 0);
+        startCal.set(java.util.Calendar.SECOND, 0);
+        startCal.set(java.util.Calendar.MILLISECOND, 0);
+        java.util.Date startDate = startCal.getTime();
+
+        java.util.Calendar endCal = java.util.Calendar.getInstance();
+        endCal.setTime(lich.getNgayLamViec());
+        endCal.set(java.util.Calendar.HOUR_OF_DAY, 23);
+        endCal.set(java.util.Calendar.MINUTE, 59);
+        endCal.set(java.util.Calendar.SECOND, 59);
+        endCal.set(java.util.Calendar.MILLISECOND, 999);
+        java.util.Date endDate = endCal.getTime();
+        
+        // Query lịch khám đã đặt (trạng thái CHO và XAC_NHAN)
+        repo.getByFieldAndDateRange("LichKham", "maBacSi", lich.getMaBacSi(), "ngayKham", startDate, endDate,
+            querySnapshot -> {
+                int soDaDat = 0;
+                
+                for (com.google.firebase.firestore.DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.LichKham lichKham = doc.toObject(com.example.doannt118.model.LichKham.class);
+                    if (lichKham != null && 
+                        !"HUY".equals(lichKham.getTrangThai()) && // Không tính lịch đã hủy
+                        lichKham.getGioKham() != null && 
+                        !lichKham.getGioKham().isEmpty()) {
+                        
+                        // Kiểm tra xem giờ khám có nằm trong ca làm việc này không
+                        if (gioKhamTrongCaLamViec(lichKham.getGioKham(), lich.getCaLamViec())) {
+                            soDaDat++;
+                        }
+                    }
+                }
+                
+                // Cập nhật UI
+                String soLuongText = soDaDat + "/" + tongSoSlot + " BN";
+                holder.tvTrangThai.setText(soLuongText);
+                
+                // Đổi màu theo tỷ lệ đặt
+                if (soDaDat == 0) {
+                    holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success); // Xanh - trống
+                } else if (soDaDat >= tongSoSlot) {
+                    holder.tvTrangThai.setBackgroundResource(R.drawable.badge_danger); // Đỏ - đầy
+                } else {
+                    holder.tvTrangThai.setBackgroundResource(R.drawable.badge_warning); // Vàng - một phần
+                }
+            },
+            e -> {
+                // Lỗi - hiển thị mặc định
+                holder.tvTrangThai.setText("0/" + tongSoSlot + " BN");
+                holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success);
+            });
+    }
+    
+    // Kiểm tra xem giờ khám có nằm trong ca làm việc không
+    private boolean gioKhamTrongCaLamViec(String gioKham, String caLamViec) {
+        if (gioKham == null || caLamViec == null) return false;
+        
+        try {
+            // Lấy giờ bắt đầu từ gioKham (ví dụ: "14:00-14:30" -> "14:00")
+            String gioStart = gioKham.split("-")[0].trim();
+            
+            // Lấy khoảng thời gian ca làm việc (ví dụ: "14:00-18:00")
+            String[] caParts = caLamViec.split("-");
+            String caStart = caParts[0].trim();
+            String caEnd = caParts[1].trim();
+            
+            // So sánh thời gian
+            return gioStart.compareTo(caStart) >= 0 && gioStart.compareTo(caEnd) < 0;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     // ViewHolder

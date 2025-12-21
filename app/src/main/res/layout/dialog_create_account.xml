@@ -101,6 +101,45 @@
             android:hint="Chứng chỉ hành nghề (Bác sĩ, cách nhau bởi dấu phẩy)"
             android:background="@drawable/bg_input"
             android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/txtChuyenKhoa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Chuyên khoa (Bác sĩ)"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/txtDiaChi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Địa chỉ (Bác sĩ)"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/txtNamKinhNghiem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Số năm kinh nghiệm (Bác sĩ)"
+            android:inputType="number"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:layout_marginBottom="8dp" />
+
+        <EditText
+            android:id="@+id/txtGioiThieu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Giới thiệu về bác sĩ"
+            android:background="@drawable/bg_input"
+            android:padding="12dp"
+            android:minLines="3"
+            android:gravity="top"
             android:layout_marginBottom="16dp" />
 
         <LinearLayout

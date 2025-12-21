@@ -47,7 +47,13 @@ public class DonThuocAdapter extends RecyclerView.Adapter<DonThuocAdapter.ViewHo
         holder.tvMaDonThuoc.setText("Mã đơn: " + donThuoc.getMaDonThuoc());
         
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
-        holder.tvNgayLap.setText("Ngày lập: " + sdf.format(donThuoc.getNgayLap()));
+        if (donThuoc.getNgayLap() != null) {
+            holder.tvNgayLap.setText("Ngày lập: " + sdf.format(donThuoc.getNgayLap()));
+        } else if (donThuoc.getNgayKeDon() != null) {
+            holder.tvNgayLap.setText("Ngày lập: " + sdf.format(donThuoc.getNgayKeDon().toDate()));
+        } else {
+            holder.tvNgayLap.setText("Ngày lập: Không rõ");
+        }
         
         holder.cardView.setOnClickListener(v -> {
             if (listener != null) {

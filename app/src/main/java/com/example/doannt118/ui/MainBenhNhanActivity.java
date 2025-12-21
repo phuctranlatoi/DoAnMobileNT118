@@ -188,8 +188,10 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     // === XỬ LÝ CHỨC NĂNG ===
     private void handleDangKyLichKham() {
         logActivity("Mở đăng ký lịch khám");
-        Intent intent = new Intent(this, DangKyLichKhamActivity.class);
+        // Mở danh sách bác sĩ để chọn
+        Intent intent = new Intent(this, DanhSachBacSiActivity.class);
         intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BENH_NHAN", maBenhNhan);
         startActivity(intent);
     }
 
