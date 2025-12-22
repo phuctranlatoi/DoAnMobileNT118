@@ -78,8 +78,7 @@
         <activity android:name=".ui.ProfileActivity" />
         <activity android:name=".ui.QuanLyHoSoCaNhan" />
         <activity android:name=".ui.QuanLyLichLamViecActivity" />
-        <activity android:name=".ui.ThemLichLamViecActivity" 
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".ui.ThemLichLamViecActivity" />
         <activity android:name=".ui.ForgotPasswordActivity" />
         <activity android:name=".ui.SettingActivity"/>
         <activity android:name=".ui.DangKyLichKhamActivity" />

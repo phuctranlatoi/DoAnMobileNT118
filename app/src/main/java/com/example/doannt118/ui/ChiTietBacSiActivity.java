@@ -307,14 +307,14 @@ public class ChiTietBacSiActivity extends AppCompatActivity {
             return;
         }
         
-        // Tạo date range cho ngày được chọn
+        // Tạo date range cho ngày được chọn sử dụng Timestamp
         Calendar startCal = Calendar.getInstance();
         startCal.setTime(selectedDate);
         startCal.set(Calendar.HOUR_OF_DAY, 0);
         startCal.set(Calendar.MINUTE, 0);
         startCal.set(Calendar.SECOND, 0);
         startCal.set(Calendar.MILLISECOND, 0);
-        Date startDate = startCal.getTime();
+        final Timestamp startTimestamp = new Timestamp(startCal.getTime());
 
         Calendar endCal = Calendar.getInstance();
         endCal.setTime(selectedDate);
@@ -322,25 +322,53 @@ public class ChiTietBacSiActivity extends AppCompatActivity {
         endCal.set(Calendar.MINUTE, 59);
         endCal.set(Calendar.SECOND, 59);
         endCal.set(Calendar.MILLISECOND, 999);
-        Date endDate = endCal.getTime();
+        final Timestamp endTimestamp = new Timestamp(endCal.getTime());
         
-        // Lấy tất cả lịch khám đã đặt cho bác sĩ trong ngày
-        repo.getByFieldAndDateRange("LichKham", "maBacSi", maBacSi, "ngayKham", startDate, endDate,
-                querySnapshot -> {
+        Log.d(TAG, "Checking booked slots for maBacSi: " + maBacSi);
+        Log.d(TAG, "Date range: " + startTimestamp.toDate() + " to " + endTimestamp.toDate());
+        
+        // Query đơn giản hơn: chỉ lấy theo maBacSi, sau đó filter theo ngày trong code
+        repo.getCollection("LichKham")
+                .whereEqualTo("maBacSi", maBacSi)
+                .get()
+                .addOnSuccessListener(querySnapshot -> {
                     List<LichKham> bookedAppointments = new ArrayList<>();
+                    
+                    Log.d(TAG, "Query returned " + querySnapshot.size() + " total documents for maBacSi: " + maBacSi);
                     
                     for (var doc : querySnapshot.getDocuments()) {
                         LichKham lichKham = doc.toObject(LichKham.class);
+                        if (lichKham == null) continue;
+                        
+                        // Filter theo ngày trong code
+                        Timestamp ngayKham = lichKham.getNgayKham();
+                        if (ngayKham == null) {
+                            Log.d(TAG, "Skipping LichKham with null ngayKham: " + lichKham.getMaLichKham());
+                            continue;
+                        }
+                        
+                        // Kiểm tra ngày khám có nằm trong khoảng không
+                        long ngayKhamMillis = ngayKham.toDate().getTime();
+                        long startMillis = startTimestamp.toDate().getTime();
+                        long endMillis = endTimestamp.toDate().getTime();
+                        
+                        if (ngayKhamMillis < startMillis || ngayKhamMillis > endMillis) {
+                            Log.d(TAG, "Skipping LichKham outside date range: " + lichKham.getMaLichKham() + " - ngayKham: " + ngayKham.toDate());
+                            continue;
+                        }
+                        
                         // QUAN TRỌNG: Kiểm tra tất cả trạng thái trừ "HUY"
                         // Bao gồm cả "CHO" (chờ xác nhận) và "XAC_NHAN" (đã xác nhận)
                         // Vì cả hai trạng thái này đều chiếm slot
-                        if (lichKham != null && !"HUY".equals(lichKham.getTrangThai())) {
+                        if (!"HUY".equals(lichKham.getTrangThai())) {
                             bookedAppointments.add(lichKham);
-                            Log.d(TAG, "Booked slot found: " + lichKham.getGioKham() + " - Status: " + lichKham.getTrangThai());
+                            Log.d(TAG, "✓ Booked slot found: " + lichKham.getGioKham() + " - Status: " + lichKham.getTrangThai() + " - MaLichKham: " + lichKham.getMaLichKham());
+                        } else {
+                            Log.d(TAG, "✗ Skipping cancelled LichKham: " + lichKham.getMaLichKham());
                         }
                     }
                     
-                    Log.d(TAG, "Total booked appointments: " + bookedAppointments.size());
+                    Log.d(TAG, "Total booked appointments for selected date (excluding HUY): " + bookedAppointments.size());
                     
                     // Đánh dấu các slot đã được đặt TRƯỚC KHI lưu vào allTimeSlots
                     markBookedSlots(bookedAppointments);
@@ -361,8 +389,8 @@ public class ChiTietBacSiActivity extends AppCompatActivity {
                     
                     // Filter theo buổi hiện tại (sẽ tự động loại bỏ các slot đã đặt)
                     filterSlotsByTime();
-                },
-                e -> {
+                })
+                .addOnFailureListener(e -> {
                     Log.e(TAG, "Error checking booked slots: ", e);
                     allTimeSlots.clear();
                     allTimeSlots.addAll(timeSlotList);
@@ -372,24 +400,37 @@ public class ChiTietBacSiActivity extends AppCompatActivity {
 
     private void markBookedSlots(List<LichKham> bookedAppointments) {
         Log.d(TAG, "Marking booked slots for " + bookedAppointments.size() + " appointments");
+        Log.d(TAG, "Available slots in timeSlotList: " + timeSlotList.size());
+        
+        // Log tất cả khung giờ có sẵn
+        for (TimeSlot slot : timeSlotList) {
+            Log.d(TAG, "Available slot: '" + slot.getKhungGio() + "'");
+        }
         
         for (LichKham lichKham : bookedAppointments) {
             String gioKham = lichKham.getGioKham();
+            Log.d(TAG, "Processing LichKham: " + lichKham.getMaLichKham() + " - gioKham: '" + gioKham + "' - Status: " + lichKham.getTrangThai());
+            
             if (gioKham != null && !gioKham.isEmpty()) {
+                // Chuẩn hóa gioKham (loại bỏ khoảng trắng thừa)
+                String normalizedGioKham = gioKham.trim().replaceAll("\\s+", "");
+                
                 // Tìm slot tương ứng với giờ khám
                 boolean found = false;
                 for (TimeSlot slot : timeSlotList) {
-                    if (gioKham.equals(slot.getKhungGio())) {
+                    String normalizedSlotKhungGio = slot.getKhungGio().trim().replaceAll("\\s+", "");
+                    
+                    if (normalizedGioKham.equals(normalizedSlotKhungGio)) {
                         slot.setBooked(true);
                         slot.setMaBenhNhanDat(lichKham.getMaBenhNhan());
                         found = true;
-                        Log.d(TAG, "Marked slot as booked: " + gioKham + " for patient: " + lichKham.getMaBenhNhan() + " (Status: " + lichKham.getTrangThai() + ")");
+                        Log.d(TAG, "✓ Marked slot as booked: " + gioKham + " for patient: " + lichKham.getMaBenhNhan() + " (Status: " + lichKham.getTrangThai() + ")");
                         break;
                     }
                 }
                 
                 if (!found) {
-                    Log.w(TAG, "Could not find slot for booked time: " + gioKham);
+                    Log.w(TAG, "✗ Could not find slot for booked time: '" + gioKham + "' (normalized: '" + normalizedGioKham + "')");
                 }
             } else {
                 Log.w(TAG, "LichKham has empty gioKham: " + lichKham.getMaLichKham());

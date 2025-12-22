@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,10 +47,11 @@ import java.util.UUID;
 
 public class QuanLyLichLamViecActivity extends AppCompatActivity implements LichLamViecAdapter.OnItemClickListener {
 
-    private Toolbar toolbar;
+    private View toolbar;
     private TextView tvUserName, lblThongBao, tvGioBatDau, tvGioKetThuc;
     private RecyclerView rvLichLamViec;
-    private Button btnLogout, btnTraCuu, btnThem, btnCapNhat, btnXoa, btnXacNhanThem, btnXacNhanCapNhat, btnHuy, btnQuayLai, btnChonGioBatDau, btnChonGioKetThuc;
+    private Button btnLogout, btnTraCuu, btnThem, btnCapNhat, btnXoa, btnXacNhanThem, btnXacNhanCapNhat, btnHuy, btnChonGioBatDau, btnChonGioKetThuc;
+    private View btnQuayLai;
     private ProgressBar progressBar;
     private FirestoreRepository repo;
     private String maTaiKhoan;
@@ -84,7 +84,6 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
 
         // --- findViewById ---
         toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
         tvUserName = findViewById(R.id.tvUserName);
         rvLichLamViec = findViewById(R.id.rvLichLamViec);
         btnLogout = findViewById(R.id.btnLogout);
@@ -480,7 +479,7 @@ public class QuanLyLichLamViecActivity extends AppCompatActivity implements Lich
 
         btnThem.setEnabled(!visible);
         btnTraCuu.setEnabled(!visible);
-        btnQuayLai.setEnabled(!visible);
+        btnQuayLai.setClickable(!visible);
         btnLogout.setEnabled(!visible);
 
         boolean itemSelected = (adapter != null && adapter.getSelectedItem() != null);

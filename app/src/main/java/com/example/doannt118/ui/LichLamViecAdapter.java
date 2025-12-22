@@ -174,14 +174,14 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         com.example.doannt118.repository.FirestoreRepository repo = 
             new com.example.doannt118.repository.FirestoreRepository();
         
-        // Tạo date range cho ngày làm việc
+        // Tạo date range cho ngày làm việc sử dụng Timestamp
         java.util.Calendar startCal = java.util.Calendar.getInstance();
         startCal.setTime(lich.getNgayLamViec());
         startCal.set(java.util.Calendar.HOUR_OF_DAY, 0);
         startCal.set(java.util.Calendar.MINUTE, 0);
         startCal.set(java.util.Calendar.SECOND, 0);
         startCal.set(java.util.Calendar.MILLISECOND, 0);
-        java.util.Date startDate = startCal.getTime();
+        final long startMillis = startCal.getTimeInMillis();
 
         java.util.Calendar endCal = java.util.Calendar.getInstance();
         endCal.setTime(lich.getNgayLamViec());
@@ -189,26 +189,39 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         endCal.set(java.util.Calendar.MINUTE, 59);
         endCal.set(java.util.Calendar.SECOND, 59);
         endCal.set(java.util.Calendar.MILLISECOND, 999);
-        java.util.Date endDate = endCal.getTime();
+        final long endMillis = endCal.getTimeInMillis();
         
-        // Query lịch khám đã đặt (trạng thái CHO và XAC_NHAN)
-        repo.getByFieldAndDateRange("LichKham", "maBacSi", lich.getMaBacSi(), "ngayKham", startDate, endDate,
-            querySnapshot -> {
+        // Query đơn giản: chỉ lấy theo maBacSi, sau đó filter theo ngày trong code
+        repo.getCollection("LichKham")
+            .whereEqualTo("maBacSi", lich.getMaBacSi())
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
                 int soDaDat = 0;
                 
                 for (com.google.firebase.firestore.DocumentSnapshot doc : querySnapshot.getDocuments()) {
                     com.example.doannt118.model.LichKham lichKham = doc.toObject(com.example.doannt118.model.LichKham.class);
-                    if (lichKham != null && 
-                        !"HUY".equals(lichKham.getTrangThai()) && // Không tính lịch đã hủy
+                    if (lichKham == null) continue;
+                    
+                    // Filter theo ngày trong code
+                    com.google.firebase.Timestamp ngayKham = lichKham.getNgayKham();
+                    if (ngayKham == null) continue;
+                    
+                    long ngayKhamMillis = ngayKham.toDate().getTime();
+                    if (ngayKhamMillis < startMillis || ngayKhamMillis > endMillis) continue;
+                    
+                    if (!"HUY".equals(lichKham.getTrangThai()) && // Không tính lịch đã hủy
                         lichKham.getGioKham() != null && 
                         !lichKham.getGioKham().isEmpty()) {
                         
                         // Kiểm tra xem giờ khám có nằm trong ca làm việc này không
                         if (gioKhamTrongCaLamViec(lichKham.getGioKham(), lich.getCaLamViec())) {
                             soDaDat++;
+                            Log.d("LichLamViecAdapter", "Found booked slot: " + lichKham.getGioKham() + " in ca: " + lich.getCaLamViec() + " - Status: " + lichKham.getTrangThai());
                         }
                     }
                 }
+                
+                Log.d("LichLamViecAdapter", "Total booked for ca " + lich.getCaLamViec() + ": " + soDaDat + "/" + tongSoSlot);
                 
                 // Cập nhật UI
                 String soLuongText = soDaDat + "/" + tongSoSlot + " BN";
@@ -222,9 +235,10 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
                 } else {
                     holder.tvTrangThai.setBackgroundResource(R.drawable.badge_warning); // Vàng - một phần
                 }
-            },
-            e -> {
+            })
+            .addOnFailureListener(e -> {
                 // Lỗi - hiển thị mặc định
+                Log.e("LichLamViecAdapter", "Error counting booked slots: " + e.getMessage());
                 holder.tvTrangThai.setText("0/" + tongSoSlot + " BN");
                 holder.tvTrangThai.setBackgroundResource(R.drawable.badge_success);
             });
@@ -235,6 +249,10 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
         if (gioKham == null || caLamViec == null) return false;
         
         try {
+            // Chuẩn hóa strings (loại bỏ khoảng trắng)
+            gioKham = gioKham.trim().replaceAll("\\s+", "");
+            caLamViec = caLamViec.trim().replaceAll("\\s+", "");
+            
             // Lấy giờ bắt đầu từ gioKham (ví dụ: "14:00-14:30" -> "14:00")
             String gioStart = gioKham.split("-")[0].trim();
             
@@ -243,11 +261,28 @@ public class LichLamViecAdapter extends RecyclerView.Adapter<LichLamViecAdapter.
             String caStart = caParts[0].trim();
             String caEnd = caParts[1].trim();
             
-            // So sánh thời gian
-            return gioStart.compareTo(caStart) >= 0 && gioStart.compareTo(caEnd) < 0;
+            // Parse thời gian để so sánh chính xác
+            int gioStartMinutes = parseTimeToMinutes(gioStart);
+            int caStartMinutes = parseTimeToMinutes(caStart);
+            int caEndMinutes = parseTimeToMinutes(caEnd);
+            
+            // So sánh: giờ bắt đầu của slot phải >= giờ bắt đầu ca và < giờ kết thúc ca
+            boolean result = gioStartMinutes >= caStartMinutes && gioStartMinutes < caEndMinutes;
+            Log.d("LichLamViecAdapter", "gioKhamTrongCaLamViec: " + gioKham + " in " + caLamViec + " = " + result + 
+                " (gioStart=" + gioStartMinutes + ", caStart=" + caStartMinutes + ", caEnd=" + caEndMinutes + ")");
+            return result;
         } catch (Exception e) {
+            Log.e("LichLamViecAdapter", "Error in gioKhamTrongCaLamViec: " + e.getMessage());
             return false;
         }
+    }
+    
+    // Parse thời gian HH:mm thành số phút từ 00:00
+    private int parseTimeToMinutes(String time) {
+        String[] parts = time.split(":");
+        int hours = Integer.parseInt(parts[0]);
+        int minutes = Integer.parseInt(parts[1]);
+        return hours * 60 + minutes;
     }
 
     // ViewHolder

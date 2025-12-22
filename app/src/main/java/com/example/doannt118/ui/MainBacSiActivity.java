@@ -17,13 +17,16 @@ import com.bumptech.glide.Glide;
 import com.example.doannt118.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.example.doannt118.model.LichSuHoatDong;
-import com.example.doannt118.ui.LichLamViecAdapter;
 import com.example.doannt118.model.BacSi;
 import com.example.doannt118.model.LichKham;
 import com.example.doannt118.repository.FirestoreRepository;
+import com.google.firebase.Timestamp;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 public class MainBacSiActivity extends AppCompatActivity {
@@ -36,7 +39,8 @@ public class MainBacSiActivity extends AppCompatActivity {
     private FirestoreRepository repo;
     private String maTaiKhoan;
     private String maBacSi;
-    private LichLamViecAdapter appointmentAdapter;
+    private LichHenHomNayAdapter lichHenAdapter;
+    private List<LichKham> lichHenList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +75,9 @@ public class MainBacSiActivity extends AppCompatActivity {
 
         // Thiết lập RecyclerView
         rvAppointments.setLayoutManager(new LinearLayoutManager(this));
-        appointmentAdapter = new LichLamViecAdapter(this, new ArrayList<>());
-        rvAppointments.setAdapter(appointmentAdapter);
+        rvAppointments.setNestedScrollingEnabled(false);
+        lichHenAdapter = new LichHenHomNayAdapter(lichHenList);
+        rvAppointments.setAdapter(lichHenAdapter);
 
         // Ánh xạ và thêm sự kiện cho các chức năng
         View cardManageMedicalRecord = findViewById(R.id.cardManageMedicalRecord);
@@ -80,7 +85,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         View cardManagePrescription = findViewById(R.id.cardManagePrescription);
         View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
         View cardNhapMaKham = findViewById(R.id.cardNhapMaKham);
-        View cardSendNotification = findViewById(R.id.cardSendNotification);
+//        View cardSendNotification = findViewById(R.id.cardSendNotification);
 
         if (cardManageMedicalRecord != null) {
             cardManageMedicalRecord.setOnClickListener(v -> handleQuanLyBenhAn());
@@ -97,9 +102,9 @@ public class MainBacSiActivity extends AppCompatActivity {
         if (cardNhapMaKham != null) {
             cardNhapMaKham.setOnClickListener(v -> handleNhapMaKham());
         }
-        if (cardSendNotification != null) {
-            cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
-        }
+//        if (cardSendNotification != null) {
+//            cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
+//        }
 
         // Xử lý Bottom Navigation
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
@@ -165,6 +170,9 @@ public class MainBacSiActivity extends AppCompatActivity {
                             .into(ivAvatar);
                     }
                     progressBar.setVisibility(View.GONE);
+                    
+                    // Load lịch hẹn hôm nay
+                    loadLichHenHomNay();
                 }
                 
                 @Override
@@ -172,6 +180,64 @@ public class MainBacSiActivity extends AppCompatActivity {
                     showError(message);
                     progressBar.setVisibility(View.GONE);
                 }
+            });
+    }
+
+    private void loadLichHenHomNay() {
+        if (maBacSi == null || maBacSi.isEmpty()) return;
+
+        // Lấy ngày hôm nay (từ 00:00:00 đến 23:59:59)
+        Calendar calStart = Calendar.getInstance();
+        calStart.set(Calendar.HOUR_OF_DAY, 0);
+        calStart.set(Calendar.MINUTE, 0);
+        calStart.set(Calendar.SECOND, 0);
+        calStart.set(Calendar.MILLISECOND, 0);
+        Date startOfDay = calStart.getTime();
+
+        Calendar calEnd = Calendar.getInstance();
+        calEnd.set(Calendar.HOUR_OF_DAY, 23);
+        calEnd.set(Calendar.MINUTE, 59);
+        calEnd.set(Calendar.SECOND, 59);
+        calEnd.set(Calendar.MILLISECOND, 999);
+        Date endOfDay = calEnd.getTime();
+
+        // Query lịch khám của bác sĩ hôm nay với trạng thái XAC_NHAN
+        repo.getByField("LichKham", "maBacSi", maBacSi,
+            querySnapshot -> {
+                lichHenList.clear();
+                for (var doc : querySnapshot.getDocuments()) {
+                    try {
+                        String trangThai = doc.getString("trangThai");
+                        if (!"XAC_NHAN".equals(trangThai)) continue;
+
+                        // Kiểm tra ngày khám
+                        Timestamp ngayKhamTs = doc.getTimestamp("ngayKham");
+                        if (ngayKhamTs == null) continue;
+                        
+                        Date ngayKham = ngayKhamTs.toDate();
+                        if (ngayKham.before(startOfDay) || ngayKham.after(endOfDay)) continue;
+
+                        LichKham lichKham = doc.toObject(LichKham.class);
+                        if (lichKham != null) {
+                            lichHenList.add(lichKham);
+                        }
+                    } catch (Exception e) {
+                        Log.e("MainBacSi", "Error parsing LichKham", e);
+                    }
+                }
+
+                // Sắp xếp theo giờ khám
+                Collections.sort(lichHenList, (a, b) -> {
+                    String gioA = a.getGioKham() != null ? a.getGioKham() : "";
+                    String gioB = b.getGioKham() != null ? b.getGioKham() : "";
+                    return gioA.compareTo(gioB);
+                });
+
+                lichHenAdapter.updateData(lichHenList);
+                Log.d("MainBacSi", "Loaded " + lichHenList.size() + " appointments for today");
+            },
+            e -> {
+                Log.e("MainBacSi", "Error loading appointments", e);
             });
     }
 
