@@ -1,6 +1,7 @@
 package com.example.doannt118.ui;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -19,11 +20,16 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
 public class XacNhanUongThuocActivity extends AppCompatActivity {
+    
+    private static final String TAG = "XacNhanUongThuocActivity";
+    
     private TextView tvCaUong, tvNgayUong;
     private RecyclerView rvThuocCanUong;
     private MaterialButton btnXacNhanTatCa, btnBoQua;
@@ -33,6 +39,9 @@ public class XacNhanUongThuocActivity extends AppCompatActivity {
     private FirestoreRepository repository;
     private String maLichUong;
     private String maBenhNhan;
+    private String caUong;
+    private String tenCa;
+    private boolean fromNotification;
     private LichUongThuoc lichUongThuoc;
     private SimpleDateFormat dateFormat;
 
@@ -45,13 +54,24 @@ public class XacNhanUongThuocActivity extends AppCompatActivity {
         setupToolbar();
         setupRecyclerView();
         
+        // Lấy dữ liệu từ intent
         maLichUong = getIntent().getStringExtra("maLichUong");
         maBenhNhan = getIntent().getStringExtra("maBenhNhan");
+        caUong = getIntent().getStringExtra("caUong");
+        tenCa = getIntent().getStringExtra("tenCa");
+        fromNotification = getIntent().getBooleanExtra("fromNotification", false);
         
-        if (maLichUong != null) {
+        Log.d(TAG, "onCreate: maBenhNhan=" + maBenhNhan + ", caUong=" + caUong + 
+            ", fromNotification=" + fromNotification);
+        
+        if (fromNotification && maBenhNhan != null && caUong != null) {
+            // Mở từ notification - load thuốc theo ca
+            loadThuocTheoCa();
+        } else if (maLichUong != null) {
+            // Mở từ lịch uống thuốc cũ
             loadLichUongThuoc();
         } else {
-            Toast.makeText(this, "Không tìm thấy thông tin lịch uống thuốc", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Không tìm thấy thông tin", Toast.LENGTH_SHORT).show();
             finish();
         }
     }
@@ -67,7 +87,13 @@ public class XacNhanUongThuocActivity extends AppCompatActivity {
         repository = new FirestoreRepository();
         dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         
-        btnXacNhanTatCa.setOnClickListener(v -> xacNhanTatCa());
+        btnXacNhanTatCa.setOnClickListener(v -> {
+            if (fromNotification) {
+                xacNhanCaTuNotification();
+            } else {
+                xacNhanTatCa();
+            }
+        });
         btnBoQua.setOnClickListener(v -> boQuaLanNay());
     }
 
@@ -84,6 +110,161 @@ public class XacNhanUongThuocActivity extends AppCompatActivity {
         adapter = new ThuocCanUongAdapter(this);
         rvThuocCanUong.setLayoutManager(new LinearLayoutManager(this));
         rvThuocCanUong.setAdapter(adapter);
+    }
+    
+    /**
+     * Load thuốc theo ca khi mở từ notification
+     */
+    private void loadThuocTheoCa() {
+        showLoading(true);
+        
+        // Hiển thị thông tin ca
+        if (tenCa != null) {
+            tvCaUong.setText(tenCa);
+        } else {
+            tvCaUong.setText(getTenCaFromMaCa(caUong));
+        }
+        tvNgayUong.setText(dateFormat.format(new Date()));
+        
+        // Load đơn thuốc đang dùng của bệnh nhân
+        repository.getByField("DonThuoc", "maBenhNhan", maBenhNhan,
+            querySnapshot -> {
+                List<String> maDonThuocList = new ArrayList<>();
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    String trangThai = doc.getString("trangThai");
+                    if (trangThai == null || "DANG_DUNG".equals(trangThai)) {
+                        maDonThuocList.add(doc.getId());
+                    }
+                }
+                
+                if (maDonThuocList.isEmpty()) {
+                    showLoading(false);
+                    Toast.makeText(this, "Không có đơn thuốc đang dùng", Toast.LENGTH_SHORT).show();
+                    finish();
+                    return;
+                }
+                
+                // Load chi tiết thuốc cho ca này
+                loadChiTietThuocTheoCa(maDonThuocList);
+            },
+            e -> {
+                showLoading(false);
+                Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        );
+    }
+    
+    private void loadChiTietThuocTheoCa(List<String> maDonThuocList) {
+        List<ChiTietDonThuoc> allThuoc = new ArrayList<>();
+        final int[] count = {0};
+        
+        for (String maDonThuoc : maDonThuocList) {
+            repository.getByField("ChiTietDonThuoc", "maDonThuoc", maDonThuoc,
+                querySnapshot -> {
+                    for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                        ChiTietDonThuoc chiTiet = doc.toObject(ChiTietDonThuoc.class);
+                        if (chiTiet != null && thuocThuocCa(chiTiet, caUong)) {
+                            allThuoc.add(chiTiet);
+                        }
+                    }
+                    
+                    count[0]++;
+                    if (count[0] == maDonThuocList.size()) {
+                        adapter.setData(allThuoc);
+                        showLoading(false);
+                        
+                        if (allThuoc.isEmpty()) {
+                            Toast.makeText(this, "Không có thuốc cần uống trong ca này", 
+                                Toast.LENGTH_SHORT).show();
+                            finish();
+                        }
+                    }
+                },
+                e -> {
+                    count[0]++;
+                    if (count[0] == maDonThuocList.size()) {
+                        adapter.setData(allThuoc);
+                        showLoading(false);
+                    }
+                }
+            );
+        }
+    }
+    
+    private boolean thuocThuocCa(ChiTietDonThuoc chiTiet, String ca) {
+        switch (ca) {
+            case "SANG": return chiTiet.isUongSang();
+            case "TRUA": return chiTiet.isUongTrua();
+            case "CHIEU": return chiTiet.isUongChieu() || chiTiet.isUongToi();
+            default: return false;
+        }
+    }
+    
+    private String getTenCaFromMaCa(String maCa) {
+        switch (maCa) {
+            case "SANG": return "Ca Sáng";
+            case "TRUA": return "Ca Trưa";
+            case "CHIEU": return "Ca Chiều";
+            default: return "Ca " + maCa;
+        }
+    }
+    
+    /**
+     * Xác nhận uống thuốc ca từ notification
+     */
+    private void xacNhanCaTuNotification() {
+        showLoading(true);
+        
+        // Tạo key xác nhận cho ca
+        SimpleDateFormat keyDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String ngayHomNay = keyDateFormat.format(new Date());
+        String keyXacNhan = "CA_" + caUong + "_" + maBenhNhan + "_" + ngayHomNay;
+        
+        // Kiểm tra đã xác nhận chưa
+        repository.getCollection("XacNhanUongThuoc").document(keyXacNhan).get()
+            .addOnSuccessListener(doc -> {
+                if (doc.exists()) {
+                    Boolean daUong = doc.getBoolean("daUong");
+                    if (daUong != null && daUong) {
+                        showLoading(false);
+                        Toast.makeText(this, "Bạn đã xác nhận uống thuốc ca này rồi!", 
+                            Toast.LENGTH_SHORT).show();
+                        finish();
+                        return;
+                    }
+                }
+                
+                // Lưu xác nhận
+                luuXacNhanCa(keyXacNhan);
+            })
+            .addOnFailureListener(e -> {
+                // Nếu chưa có document, tạo mới
+                luuXacNhanCa(keyXacNhan);
+            });
+    }
+    
+    private void luuXacNhanCa(String keyXacNhan) {
+        XacNhanUongThuoc xacNhan = new XacNhanUongThuoc();
+        xacNhan.setMaXacNhan(keyXacNhan);
+        xacNhan.setMaChiTietDonThuoc("CA_" + caUong);
+        xacNhan.setMaBenhNhan(maBenhNhan);
+        xacNhan.setDaUong(true);
+        xacNhan.setThoiGianXacNhan(Timestamp.now());
+        xacNhan.setGhiChu("Xác nhận từ thông báo nhắc nhở - " + getTenCaFromMaCa(caUong) + 
+            " ngày " + dateFormat.format(new Date()));
+        
+        repository.addDocument("XacNhanUongThuoc", keyXacNhan, xacNhan,
+            aVoid -> {
+                showLoading(false);
+                Toast.makeText(this, "✅ Đã xác nhận uống thuốc " + getTenCaFromMaCa(caUong), 
+                    Toast.LENGTH_SHORT).show();
+                finish();
+            },
+            e -> {
+                showLoading(false);
+                Toast.makeText(this, "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        );
     }
 
     private void loadLichUongThuoc() {

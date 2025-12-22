@@ -155,6 +155,16 @@ public class MainBenhNhanActivity extends AppCompatActivity {
                             .circleCrop()
                             .into(ivAvatar);
                     }
+                    
+                    // Lưu maBenhNhan vào SharedPreferences để dùng cho BootReceiver
+                    getSharedPreferences("user_prefs", MODE_PRIVATE)
+                        .edit()
+                        .putString("maBenhNhan", maBenhNhan)
+                        .apply();
+                    
+                    // Setup nhắc nhở uống thuốc
+                    setupMedicineReminders();
+                    
                     hideProgress();
                 }
                 
@@ -373,6 +383,20 @@ public class MainBenhNhanActivity extends AppCompatActivity {
     private void showError(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         tvHoTen.setText("Họ tên: N/A");
+    }
+    
+    /**
+     * Setup nhắc nhở uống thuốc theo ca
+     * Ca sáng: 7:30, Ca trưa: 11:30, Ca chiều: 17:00
+     */
+    private void setupMedicineReminders() {
+        if (maBenhNhan == null || maBenhNhan.isEmpty()) return;
+        
+        com.example.doannt118.utils.MedicineReminderManager reminderManager = 
+            new com.example.doannt118.utils.MedicineReminderManager(this);
+        reminderManager.setupRemindersForPatient(maBenhNhan);
+        
+        Log.d("MainBenhNhanActivity", "Medicine reminders setup for: " + maBenhNhan);
     }
     
 

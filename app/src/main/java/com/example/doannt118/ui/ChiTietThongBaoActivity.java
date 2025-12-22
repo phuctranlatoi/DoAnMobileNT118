@@ -99,7 +99,9 @@ public class ChiTietThongBaoActivity extends AppCompatActivity {
                     break;
                 case "NHAC_THUOC":
                     tvLoaiThongBao.setText("Nhắc uống thuốc");
-                    break;
+                    // Mở màn hình xác nhận uống thuốc
+                    openXacNhanUongThuoc(thongBao);
+                    return; // Không hiển thị chi tiết, chuyển sang màn hình xác nhận
                 default:
                     tvLoaiThongBao.setText("Thông báo chung");
                     break;
@@ -110,6 +112,39 @@ public class ChiTietThongBaoActivity extends AppCompatActivity {
             cardBacSi.setVisibility(View.VISIBLE);
             loadBacSiInfo(thongBao.getMaBacSi());
         }
+    }
+    
+    private void openXacNhanUongThuoc(ThongBao thongBao) {
+        // Lấy thông tin ca uống từ maThongBao
+        // Format: NHAC_THUOC_[CA]_[maBenhNhan]_[timestamp]
+        String maThongBao = thongBao.getMaThongBao();
+        String caUong = "SANG"; // Mặc định
+        String tenCa = "Ca Sáng";
+        
+        if (maThongBao != null && maThongBao.startsWith("NHAC_THUOC_")) {
+            String[] parts = maThongBao.split("_");
+            if (parts.length >= 3) {
+                caUong = parts[2]; // SANG, TRUA, CHIEU
+                switch (caUong) {
+                    case "SANG": tenCa = "Ca Sáng"; break;
+                    case "TRUA": tenCa = "Ca Trưa"; break;
+                    case "CHIEU": tenCa = "Ca Chiều"; break;
+                }
+            }
+        }
+        
+        android.content.Intent intent = new android.content.Intent(this, XacNhanUongThuocActivity.class);
+        intent.putExtra("maBenhNhan", thongBao.getMaBenhNhan());
+        intent.putExtra("caUong", caUong);
+        intent.putExtra("tenCa", tenCa);
+        intent.putExtra("fromNotification", true);
+        startActivity(intent);
+        
+        // Đánh dấu đã đọc
+        markAsRead(maThongBao);
+        
+        // Đóng activity này
+        finish();
     }
 
     private void loadBacSiInfo(String maBacSi) {

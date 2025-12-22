@@ -1,6 +1,7 @@
 package com.example.doannt118.model;
 import java.util.Date;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.PropertyName;
 
 public class DonThuoc {
     private String maDonThuoc;
@@ -39,8 +40,18 @@ public class DonThuoc {
     public Date getNgayLap() { return ngayLap; }
     public void setNgayLap(Date ngayLap) { this.ngayLap = ngayLap; }
 
+    @PropertyName("soNgayUong")
     public int getSoNgayUong() { return soNgayUong; }
+    
+    @PropertyName("soNgayUong")
     public void setSoNgayUong(int soNgayUong) { this.soNgayUong = soNgayUong; }
+    
+    // Thêm getter/setter cho field "soNgay" (có thể dữ liệu cũ dùng tên này)
+    @PropertyName("soNgay")
+    public int getSoNgay() { return soNgayUong; }
+    
+    @PropertyName("soNgay")
+    public void setSoNgay(int soNgay) { this.soNgayUong = soNgay; }
 
     public Date getNgayBatDau() { return ngayBatDau; }
     public void setNgayBatDau(Date ngayBatDau) { this.ngayBatDau = ngayBatDau; }

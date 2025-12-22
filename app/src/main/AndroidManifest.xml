@@ -10,6 +10,8 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.USE_EXACT_ALARM" />
     
     <!-- Stringee permissions - THEO TÀI LIỆU CHÍNH THỨC -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -204,6 +206,9 @@
             android:exported="false"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".ui.QuanLyDonThuocBacSiActivity"
+            android:exported="false" />
 
         <!-- Firebase Cloud Messaging Service -->
         <service
@@ -224,5 +229,19 @@
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_channel_id"
             android:value="medical_notification_channel" />
+        
+        <!-- Medicine Reminder Receiver -->
+        <receiver
+            android:name=".receiver.MedicineReminderReceiver"
+            android:exported="false" />
+        
+        <!-- Boot Receiver để đặt lại alarm sau khi khởi động lại -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
     </application>
 </manifest>

@@ -14,11 +14,14 @@
         android:padding="16dp"
         android:gravity="center_vertical">
 
-        <CheckBox
-            android:id="@+id/cbDaUong"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/colorPrimary" />
+        <!-- Icon thuốc thay vì checkbox -->
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_prescription"
+            android:padding="8dp"
+            android:background="@drawable/bg_icon_circle"
+            app:tint="@color/colorPrimary" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -54,13 +57,5 @@
                 android:textColor="@color/textSecondary"
                 android:layout_marginTop="2dp" />
         </LinearLayout>
-
-        <ImageView
-            android:id="@+id/ivTrangThai"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_check_circle"
-            android:tint="@color/colorPrimary"
-            android:visibility="gone" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

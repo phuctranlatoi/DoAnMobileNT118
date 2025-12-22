@@ -42,18 +42,31 @@ drawable bg_button_outline
 drawable bg_button_primary
 drawable bg_button_secondary
 drawable bg_card
+drawable bg_compliance_card
+drawable bg_duration_info
 drawable bg_edit_text
 drawable bg_header_gradient
+drawable bg_icon_circle
+drawable bg_icon_circle_green
+drawable bg_icon_circle_orange
+drawable bg_icon_circle_primary
 drawable bg_input
 drawable bg_input_1
 drawable bg_input_field
 drawable bg_outline_blue
+drawable bg_selected_date
 drawable bg_slot_counter
+drawable bg_status_cancelled
 drawable bg_status_completed
+drawable bg_status_confirmed
 drawable bg_status_pending
 drawable bg_switch_container
 drawable bg_switch_selected
 drawable bg_switch_unselected
+drawable bg_tag_suggestion
+drawable bg_time_picker_button
+drawable bg_time_slot_selected
+drawable bg_time_slot_unselected
 drawable bottom_nav_icon_tint
 drawable button_outline_red
 drawable button_solid_blue
@@ -82,6 +95,7 @@ drawable ic_add
 drawable ic_analytics
 drawable ic_appointment
 drawable ic_arrow_back
+drawable ic_arrow_forward
 drawable ic_arrow_right
 drawable ic_avatar
 drawable ic_back
@@ -126,6 +140,7 @@ drawable ic_password
 drawable ic_patient
 drawable ic_phone
 drawable ic_pill_info
+drawable ic_prescription
 drawable ic_profile
 drawable ic_schedule
 drawable ic_search
@@ -141,6 +156,7 @@ drawable ic_video_call
 drawable ic_videocam
 drawable ic_videocam_off
 drawable ic_volume_up
+drawable ic_warning
 drawable icon_container_background
 drawable icon_ring_effect
 drawable img
@@ -162,6 +178,7 @@ drawable package_border_selected
 drawable percentage_circle_modern
 drawable premium_stats_background
 drawable primary_button_background
+drawable progress_compliance
 drawable qr_border
 drawable qr_code_sample
 drawable qr_momo_sample
@@ -200,6 +217,9 @@ id btnBack
 id btnBoQua
 id btnBuoiChieu
 id btnBuoiSang
+id btnCaSang
+id btnCaToi
+id btnCaTrua
 id btnCamera
 id btnCancel
 id btnCapNhat
@@ -283,8 +303,9 @@ id cardManageMedicalRecord
 id cardManagePrescription
 id cardManageSchedule
 id cardNhapMaKham
+id cardQuanLyDonThuoc
 id cardRegisterAppointment
-id cardSendNotification
+id cardThongBao
 id cardThongTinBenhNhan
 id cardThuoc
 id cardTimeSlot
@@ -294,7 +315,6 @@ id cardViewInvoice
 id cardViewMedicalRecord
 id cbChieu
 id cbChon
-id cbDaUong
 id cbSang
 id cbTrua
 id checkBox
@@ -350,7 +370,6 @@ id ivDelete
 id ivIcon
 id ivLoaiThongBao
 id ivQRCode
-id ivTrangThai
 id ivUnreadDot
 id layoutBacSiInfo
 id layoutButtons
@@ -376,8 +395,10 @@ id layoutLyDoTuChoi
 id layoutMaKham
 id layoutPassword
 id layoutTheTinDung
+id layoutThoiLuong
 id layoutViDienTu
 id lblThongBao
+id loadingOverlay
 id localVideoView
 id logoImage
 id main_content
@@ -406,6 +427,7 @@ id nav_view_invoice
 id nav_view_medical_record
 id progressBar
 id progressBarThanhToan
+id progressTuanThu
 id quickRepliesContainer
 id quickRepliesLayout
 id rbChuyenKhoan
@@ -478,6 +500,7 @@ id tvCallerName
 id tvChanDoan
 id tvChangeAvatar
 id tvChiTiet
+id tvChiTietTuanThu
 id tvChuanDoan
 id tvChungChi
 id tvChuyenKhoa
@@ -498,6 +521,7 @@ id tvGhiChu
 id tvGiaTien
 id tvGioBatDau
 id tvGioKetThuc
+id tvGioKham
 id tvGioiThieu
 id tvHanhDong
 id tvHoTen
@@ -522,9 +546,11 @@ id tvMenuHoSoTitle
 id tvMessage
 id tvMoTa
 id tvNgay
+id tvNgayDaChon
 id tvNgayDangKy
 id tvNgayGio
 id tvNgayHomNay
+id tvNgayKe
 id tvNgayKham
 id tvNgayLamViec
 id tvNgayLap
@@ -539,6 +565,7 @@ id tvQuenMatKhau
 id tvSlotCount
 id tvSoDienThoai
 id tvSoLanKham
+id tvSoLoaiThuoc
 id tvSoLuong
 id tvSoLuongThuoc
 id tvSoThuTu
@@ -555,7 +582,9 @@ id tvTenThuoc
 id tvThanhTien
 id tvThoiGian
 id tvThoiGianCuoi
+id tvThoiGianDung
 id tvThoiGianUong
+id tvThoiLuong
 id tvThongBao
 id tvThongTinBenhNhan
 id tvTiLeTuanThu
@@ -568,6 +597,7 @@ id tvTrangThai
 id tvTrangThaiBacSi
 id tvTrangThaiThanhToan
 id tvTrangThaiXacThuc
+id tvTyLeTuanThu
 id tvUserName
 id tvUserPhone
 id tvVaiTro
@@ -621,6 +651,7 @@ layout activity_nhan_tin_bac_si
 layout activity_nhap_ma_kham
 layout activity_profile
 layout activity_quan_ly_benh_an_bac_si
+layout activity_quan_ly_don_thuoc_bac_si
 layout activity_quan_ly_lich_lam_viec
 layout activity_quan_ly_uong_thuoc
 layout activity_quanlyhosocanhan
@@ -676,9 +707,11 @@ layout item_dich_vu_hoa_don
 layout item_dich_vu_kham
 layout item_diem_danh_thuoc
 layout item_don_thuoc
+layout item_don_thuoc_bac_si
 layout item_ghichu
 layout item_hoa_don
 layout item_khung_gio
+layout item_lich_hen_hom_nay
 layout item_lich_kham
 layout item_lich_kham_cua_toi
 layout item_lich_lam_viec

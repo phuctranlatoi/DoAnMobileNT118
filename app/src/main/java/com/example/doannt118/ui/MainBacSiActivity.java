@@ -85,6 +85,7 @@ public class MainBacSiActivity extends AppCompatActivity {
         View cardManagePrescription = findViewById(R.id.cardManagePrescription);
         View cardConfirmAppointment = findViewById(R.id.cardConfirmAppointment);
         View cardNhapMaKham = findViewById(R.id.cardNhapMaKham);
+        View cardQuanLyDonThuoc = findViewById(R.id.cardQuanLyDonThuoc);
 //        View cardSendNotification = findViewById(R.id.cardSendNotification);
 
         if (cardManageMedicalRecord != null) {
@@ -101,6 +102,9 @@ public class MainBacSiActivity extends AppCompatActivity {
         }
         if (cardNhapMaKham != null) {
             cardNhapMaKham.setOnClickListener(v -> handleNhapMaKham());
+        }
+        if (cardQuanLyDonThuoc != null) {
+            cardQuanLyDonThuoc.setOnClickListener(v -> handleQuanLyDonThuoc());
         }
 //        if (cardSendNotification != null) {
 //            cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
@@ -150,6 +154,15 @@ public class MainBacSiActivity extends AppCompatActivity {
         // Hiển thị progress bar và load thông tin
         progressBar.setVisibility(View.VISIBLE);
         loadUserInfo();
+    }
+    
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // Load lại lịch hẹn hôm nay khi quay về activity
+        if (maBacSi != null && !maBacSi.isEmpty()) {
+            loadLichHenHomNay();
+        }
     }
 
     private void loadUserInfo() {
@@ -323,6 +336,19 @@ public class MainBacSiActivity extends AppCompatActivity {
     private void handleNhapMaKham() {
         logActivity("Nhập mã khám");
         Intent intent = new Intent(this, NhapMaKhamActivity.class);
+        startActivity(intent);
+    }
+
+    private void handleQuanLyDonThuoc() {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo();
+            return;
+        }
+        logActivity("Quản lý đơn thuốc");
+        Intent intent = new Intent(this, QuanLyDonThuocBacSiActivity.class);
+        intent.putExtra("MA_TAI_KHOAN", maTaiKhoan);
+        intent.putExtra("MA_BAC_SI", maBacSi);
         startActivity(intent);
     }
 

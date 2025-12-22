@@ -108,31 +108,121 @@ public class DiemDanhUongThuocFragment extends Fragment {
         // Load tất cả đơn thuốc đang active của bệnh nhân
         repository.getByField("DonThuoc", "maBenhNhan", maBenhNhan,
             querySnapshot -> {
-                List<String> danhSachMaDonThuoc = new ArrayList<>();
+                List<DonThuoc> danhSachDonThuoc = new ArrayList<>();
                 for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
                     DonThuoc donThuoc = doc.toObject(DonThuoc.class);
                     if (donThuoc != null) {
                         String trangThai = donThuoc.getTrangThai();
+                        
+                        // Chỉ lấy đơn thuốc đang dùng
                         if (trangThai == null || "DANG_DUNG".equals(trangThai)) {
-                            danhSachMaDonThuoc.add(donThuoc.getMaDonThuoc());
+                            danhSachDonThuoc.add(donThuoc);
                         }
                     }
                 }
                 
-                if (danhSachMaDonThuoc.isEmpty()) {
+                if (danhSachDonThuoc.isEmpty()) {
                     showLoading(false);
                     showEmpty(true);
                     Toast.makeText(getContext(), "Không có đơn thuốc nào đang sử dụng", Toast.LENGTH_LONG).show();
                     return;
                 }
                 
-                loadChiTietThuoc(danhSachMaDonThuoc);
+                // Load chi tiết và kiểm tra hết hạn dựa trên soNgayUong từ ChiTietDonThuoc
+                checkAndLoadChiTietThuoc(danhSachDonThuoc);
             },
             e -> {
                 showLoading(false);
                 Toast.makeText(getContext(), "Lỗi: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         );
+    }
+    
+    private void checkAndLoadChiTietThuoc(List<DonThuoc> danhSachDonThuoc) {
+        List<String> danhSachMaDonThuocConHan = new ArrayList<>();
+        final int[] count = {0};
+        
+        for (DonThuoc donThuoc : danhSachDonThuoc) {
+            String maDonThuoc = donThuoc.getMaDonThuoc();
+            
+            // Lấy soNgayUong từ ChiTietDonThuoc
+            repository.getByField("ChiTietDonThuoc", "maDonThuoc", maDonThuoc,
+                chiTietSnapshot -> {
+                    int soNgayUong = 0;
+                    for (DocumentSnapshot chiTietDoc : chiTietSnapshot.getDocuments()) {
+                        Long soNgay = chiTietDoc.getLong("soNgayUong");
+                        if (soNgay != null && soNgay > soNgayUong) {
+                            soNgayUong = soNgay.intValue();
+                        }
+                    }
+                    
+                    // Lấy ngày kê đơn
+                    Date ngayKeDon = null;
+                    if (donThuoc.getNgayKeDon() != null) {
+                        ngayKeDon = donThuoc.getNgayKeDon().toDate();
+                    } else if (donThuoc.getNgayLap() != null) {
+                        ngayKeDon = donThuoc.getNgayLap();
+                    }
+                    
+                    android.util.Log.d("DiemDanhFragment", "DonThuoc " + maDonThuoc + 
+                        ": soNgayUong=" + soNgayUong + ", ngayKeDon=" + ngayKeDon);
+                    
+                    // Kiểm tra nếu đã hết thời gian uống thuốc
+                    boolean daHetHan = false;
+                    if (ngayKeDon != null && soNgayUong > 0) {
+                        Calendar calNgayKetThuc = Calendar.getInstance();
+                        calNgayKetThuc.setTime(ngayKeDon);
+                        calNgayKetThuc.add(Calendar.DAY_OF_MONTH, soNgayUong);
+                        
+                        // Nếu ngày kết thúc < ngày hôm nay → đã hoàn thành
+                        if (calNgayKetThuc.getTime().before(ngayHomNay)) {
+                            daHetHan = true;
+                            // Cập nhật trạng thái trong Firestore
+                            updateTrangThaiDonThuoc(maDonThuoc, "DA_HET");
+                            android.util.Log.d("DiemDanhFragment", "DonThuoc " + maDonThuoc + " đã hết hạn");
+                        }
+                    }
+                    
+                    if (!daHetHan) {
+                        synchronized (danhSachMaDonThuocConHan) {
+                            danhSachMaDonThuocConHan.add(maDonThuoc);
+                        }
+                    }
+                    
+                    count[0]++;
+                    if (count[0] == danhSachDonThuoc.size()) {
+                        // Đã kiểm tra xong tất cả đơn thuốc
+                        if (danhSachMaDonThuocConHan.isEmpty()) {
+                            showLoading(false);
+                            showEmpty(true);
+                            Toast.makeText(getContext(), "Không có đơn thuốc nào đang sử dụng", Toast.LENGTH_LONG).show();
+                        } else {
+                            loadChiTietThuoc(danhSachMaDonThuocConHan);
+                        }
+                    }
+                },
+                e -> {
+                    count[0]++;
+                    if (count[0] == danhSachDonThuoc.size()) {
+                        if (danhSachMaDonThuocConHan.isEmpty()) {
+                            showLoading(false);
+                            showEmpty(true);
+                        } else {
+                            loadChiTietThuoc(danhSachMaDonThuocConHan);
+                        }
+                    }
+                }
+            );
+        }
+    }
+    
+    private void updateTrangThaiDonThuoc(String maDonThuoc, String trangThai) {
+        if (maDonThuoc == null || maDonThuoc.isEmpty()) return;
+        
+        repository.getCollection("DonThuoc").document(maDonThuoc)
+            .update("trangThai", trangThai)
+            .addOnSuccessListener(aVoid -> android.util.Log.d("DiemDanhFragment", "Updated trangThai to " + trangThai + " for " + maDonThuoc))
+            .addOnFailureListener(e -> android.util.Log.e("DiemDanhFragment", "Error updating trangThai", e));
     }
 
     private void loadChiTietThuoc(List<String> danhSachMaDonThuoc) {

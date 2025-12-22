@@ -4,8 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -48,10 +46,6 @@ public class ThuocCanUongAdapter extends RecyclerView.Adapter<ThuocCanUongAdapte
         String lieuDung = thuoc.getLieuDungDayDu();
         holder.tvLieuDung.setText(lieuDung != null ? lieuDung : "Theo chỉ định");
         holder.tvSoLuong.setText("Số lượng: " + thuoc.getSoLuong() + " viên");
-        
-        holder.cbDaUong.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            holder.ivTrangThai.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-        });
     }
 
     @Override
@@ -61,16 +55,12 @@ public class ThuocCanUongAdapter extends RecyclerView.Adapter<ThuocCanUongAdapte
 
     static class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTenThuoc, tvLieuDung, tvSoLuong;
-        CheckBox cbDaUong;
-        ImageView ivTrangThai;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvTenThuoc = itemView.findViewById(R.id.tvTenThuoc);
             tvLieuDung = itemView.findViewById(R.id.tvLieuDung);
             tvSoLuong = itemView.findViewById(R.id.tvSoLuong);
-            cbDaUong = itemView.findViewById(R.id.cbDaUong);
-            ivTrangThai = itemView.findViewById(R.id.ivTrangThai);
         }
     }
 }
