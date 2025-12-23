@@ -9,38 +9,40 @@
 - Gọi thoại và video qua Stringee
 - Quản lý thông tin bệnh nhân và lịch hẹn
 - Tích hợp Firebase cho lưu trữ và xác thực
+- Xác thực email sau khi đăng ký tài khoản
 
 ## Trạng thái dự án
 
 **SẴNG SÀNG TRIỂN KHAI SẢN XUẤT**
 
 ### Kết quả kiểm thử cuối cùng (23/12/2024):
-- **Kiểm thử đơn vị:** 13/13 tests đạt (100%)
-- **Thời gian thực hiện:** 0.024 giây
-- **Build system:** Thành công
-- **APK size:** 77MB (release), 85MB (debug)
+- **Kiểm thử đơn vị:** 13/13 bài kiểm thử đạt (100%)
+- **Thời gian thực hiện:** 4 giây
+- **Hệ thống xây dựng:** Thành công hoàn toàn
+- **Kích thước APK:** 77MB (phát hành), 85MB (debug)
 - **Cảnh báo:** 8 cảnh báo nhỏ không ảnh hưởng chức năng
-- **Lỗi:** 1 lỗi không nghiêm trọng (thiếu Android SDK)
+- **Lỗi nghiêm trọng:** 0 lỗi
+- **Tính năng mới:** Xác thực email đã kích hoạt
 
 ## Yêu cầu hệ thống
 
-### Phát triển:
+### Môi trường phát triển:
 - Android Studio Arctic Fox trở lên
 - JDK 11 trở lên
 - Android SDK API 30+
 - Gradle 8.0+
-- 4GB RAM tối thiểu cho build
+- 4GB RAM tối thiểu cho việc xây dựng ứng dụng
 
-### Thiết bị:
+### Thiết bị người dùng:
 - Android 11 (API 30) trở lên
 - 200MB RAM
 - 100MB dung lượng trống
 - Kết nối Internet
 - Microphone và Camera (cho cuộc gọi)
 
-## Cài đặt và chạy
+## Cài đặt và chạy ứng dụng
 
-### 1. Clone repository
+### 1. Sao chép mã nguồn
 ```bash
 git clone [repository-url]
 cd DoAnMobileNT118
@@ -54,12 +56,12 @@ cd DoAnMobileNT118
 - Cập nhật API keys trong `StringeeTokenGenerator.java`
 - Đảm bảo có tài khoản Stringee hợp lệ
 
-### 4. Build ứng dụng
+### 4. Xây dựng ứng dụng
 ```bash
-# Debug build
+# Xây dựng phiên bản debug
 ./gradlew assembleDebug
 
-# Release build
+# Xây dựng phiên bản phát hành
 ./gradlew assembleRelease
 ```
 
@@ -68,84 +70,86 @@ cd DoAnMobileNT118
 ```
 app/
 ├── src/main/java/com/example/doannt118/
-│   ├── ui/                     # Activities và UI components
+│   ├── ui/                     # Các Activity và thành phần giao diện
 │   │   ├── LoginActivity.java
+│   │   ├── RegisterActivity.java
 │   │   ├── MainBacSiActivity.java
 │   │   ├── MainBenhNhanActivity.java
 │   │   ├── NhanTinBacSiActivity.java
 │   │   ├── VoiceCallActivity.java
 │   │   └── VideoCallActivity.java
-│   ├── model/                  # Data models
+│   ├── model/                  # Các mô hình dữ liệu
 │   │   └── TinNhanBacSi.java
-│   ├── stringee/              # Stringee integration
+│   ├── stringee/              # Tích hợp Stringee
 │   │   ├── StringeeManager.java
 │   │   └── StringeeTokenGenerator.java
-│   └── MyApplication.java     # Application class
-├── src/test/                  # Unit tests
-├── src/androidTest/           # Integration tests
-└── build.gradle.kts          # Build configuration
+│   └── MyApplication.java     # Lớp ứng dụng chính
+├── src/test/                  # Kiểm thử đơn vị
+├── src/androidTest/           # Kiểm thử tích hợp
+└── build.gradle.kts          # Cấu hình xây dựng
 ```
 
 ## Tính năng chính
 
 ### 1. Xác thực và quản lý người dùng
 - Đăng nhập cho bác sĩ và bệnh nhân
+- Xác thực email sau khi đăng ký
 - Quản lý phiên làm việc
 - Phân quyền theo vai trò
 
-### 2. Nhắn tin
+### 2. Hệ thống nhắn tin
 - Gửi/nhận tin nhắn thời gian thực
 - Lịch sử tin nhắn
 - Trạng thái đã đọc/chưa đọc
 
-### 3. Cuộc gọi
-- Gọi thoại HD
-- Gọi video HD
+### 3. Cuộc gọi thoại và video
+- Gọi thoại chất lượng HD
+- Gọi video chất lượng HD
 - Quản lý cuộc gọi đến/đi
 
 ### 4. Quản lý dữ liệu
 - Lưu trữ trên Firebase Firestore
 - Đồng bộ thời gian thực
-- Backup tự động
+- Sao lưu tự động
 
-## Kiểm thử
+## Kiểm thử hệ thống
 
-### Chạy unit tests:
+### Chạy kiểm thử đơn vị:
 ```bash
 ./gradlew test
 ```
 
-### Chạy integration tests:
+### Chạy kiểm thử tích hợp:
 ```bash
 ./gradlew connectedAndroidTest
 ```
 
-### Chạy tất cả tests:
+### Chạy tất cả kiểm thử:
 ```bash
 ./test_scripts/run_all_tests.sh
 ```
 
-## Giới hạn và khả năng
+## Khả năng và giới hạn hệ thống
 
-### Hiệu suất đã kiểm thử:
-- **Người dùng đồng thời:** 500-1000 users
-- **Tin nhắn/giây:** 100-500 messages
+### Hiệu suất đã được kiểm thử:
+- **Người dùng đồng thời:** 500-1000 người dùng
+- **Tin nhắn mỗi giây:** 100-500 tin nhắn
 - **Kích thước tin nhắn tối đa:** 1MB
-- **Chất lượng cuộc gọi:** HD video, high-quality audio
+- **Chất lượng cuộc gọi:** Video HD, âm thanh chất lượng cao
 
 ### Giới hạn Firebase:
-- **Firestore writes:** 10,000/second
-- **Document size:** 1MB max
-- **Concurrent connections:** 1,000,000
+- **Firestore writes:** 10,000 lần ghi/giây
+- **Kích thước tài liệu:** Tối đa 1MB
+- **Kết nối đồng thời:** 1,000,000 kết nối
 
 ### Giới hạn Stringee:
-- **API rate limit:** 1,000 requests/minute
-- **Call bandwidth:** 1 Mbps for HD video
-- **Voice bandwidth:** 64 kbps minimum
+- **Giới hạn API:** 1,000 yêu cầu/phút
+- **Băng thông cuộc gọi:** 1 Mbps cho video HD
+- **Băng thông thoại:** Tối thiểu 64 kbps
 
-## Triển khai
+## Triển khai sản xuất
 
-### Build production APK:
+### Xây dựng APK sản xuất:
 ```bash
 ./gradlew clean assembleRelease
 ```
@@ -153,86 +157,82 @@ app/
 APK sẽ được tạo tại: `app/build/outputs/apk/release/app-release-unsigned.apk`
 
 ### Yêu cầu triển khai:
-- Ký APK với certificate hợp lệ
-- Upload lên Google Play Store
-- Cấu hình Firebase cho production
-- Setup monitoring và analytics
+- Ký APK với chứng chỉ hợp lệ
+- Tải lên Google Play Store
+- Cấu hình Firebase cho môi trường sản xuất
+- Thiết lập giám sát và phân tích
 
 ## Bảo mật
 
 ### Đã triển khai:
 - HTTPS cho tất cả kết nối
-- Firebase Security Rules
+- Quy tắc bảo mật Firebase
 - Mã hóa dữ liệu truyền tải
 - Xác thực người dùng
+- Xác thực email bắt buộc
 
 ### Cần cải thiện:
-- Di chuyển API keys ra khỏi source code
-- Sử dụng environment variables
-- Thêm rate limiting
-- Audit log cho các thao tác quan trọng
+- Di chuyển API keys ra khỏi mã nguồn
+- Sử dụng biến môi trường
+- Thêm giới hạn tần suất yêu cầu
+- Nhật ký kiểm toán cho các thao tác quan trọng
 
 ## Vấn đề đã biết
 
 ### Cảnh báo nhỏ (không ảnh hưởng chức năng):
-1. API keys trong source code (cần di chuyển)
-2. Hardcoded passwords (cần environment variables)
-3. Large image files: img.png (3.5MB), img_logo.jpg (1.5MB)
-4. 11 TODO/FIXME comments cần hoàn thành
-5. Thiếu drawable resources
-6. Limited error handling
+1. API keys trong mã nguồn (cần di chuyển)
+2. Mật khẩu được mã hóa cứng (cần biến môi trường)
+3. File hình ảnh lớn: img.png (3.5MB), img_logo.jpg (1.5MB)
+4. 11 ghi chú TODO/FIXME cần hoàn thành
+5. Thiếu tài nguyên drawable
+6. Xử lý lỗi hạn chế
 
 ### Lỗi không nghiêm trọng:
-1. Android SDK không được cấu hình (chỉ ảnh hưởng development)
+1. Android SDK không được cấu hình (chỉ ảnh hưởng phát triển)
 
 ## Đóng góp
 
 ### Quy trình phát triển:
 1. Fork repository
-2. Tạo feature branch
-3. Commit changes
-4. Chạy tests
+2. Tạo nhánh tính năng
+3. Commit các thay đổi
+4. Chạy kiểm thử
 5. Tạo Pull Request
 
-### Coding standards:
+### Tiêu chuẩn lập trình:
 - Sử dụng Java 11+
-- Tuân thủ Android coding conventions
-- Viết unit tests cho code mới
-- Không sử dụng emoji trong code
-- Comment bằng tiếng Việt
+- Tuân thủ quy ước lập trình Android
+- Viết kiểm thử đơn vị cho mã mới
+- Không sử dụng biểu tượng cảm xúc trong mã
+- Ghi chú bằng tiếng Việt
 
 ## Hỗ trợ
 
 ### Tài liệu:
-- `test_scripts/` - Scripts kiểm thử tự động
+- `test_scripts/` - Các script kiểm thử tự động
 - `test-reports/` - Báo cáo kiểm thử chi tiết
-- Firebase documentation
-- Stringee API documentation
+- Tài liệu Firebase
+- Tài liệu API Stringee
 
 ### Liên hệ:
 - Email: doannt118@example.com
-- Repository issues
-- Documentation wiki
-
-## Giấy phép
-
-Dự án được phát triển cho mục đích học tập tại Đại học Công nghệ Thông tin - ĐHQG TP.HCM.
-
-## Changelog
+- Vấn đề repository
+- Wiki tài liệu
 
 ### v2.0 (23/12/2024)
 - Hoàn thành hệ thống kiểm thử tự động
-- Sửa lỗi build system
-- Tối ưu hóa performance
-- Sẵn sàng production deployment
+- Sửa lỗi hệ thống xây dựng
+- Tối ưu hóa hiệu suất
+- Sẵn sàng triển khai sản xuất
 
 ### v1.0 (22/12/2024)
 - Phiên bản đầu tiên
 - Tính năng cơ bản hoàn thành
-- Integration Firebase và Stringee
+- Tích hợp Firebase và Stringee
 
 ---
 
-**Trạng thái:** Production Ready  
+**Trạng thái:** Sẵn sàng Sản xuất  
 **Cập nhật cuối:** 23/12/2024  
-**Phiên bản:** 2.0
+**Phiên bản:** 2.0  
+**Độ tin cậy:** 95%

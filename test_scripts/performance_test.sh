@@ -126,21 +126,21 @@ monitor_performance() {
             # Check for performance issues
             if [ -n "$memory_kb" ] && [ "$memory_kb" -gt 200000 ]; then  # > 200MB
                 echo "$(date '+%Y-%m-%d %H:%M:%S'),high_memory,memory_usage=${memory_kb}KB" >> "$PERF_DIR/performance_events.csv"
-                echo -e "${YELLOW}⚠️ High memory usage detected: ${memory_kb}KB${NC}"
+                echo -e "${YELLOW}High memory usage detected: ${memory_kb}KB${NC}"
             fi
             
             if [ -n "$cpu_percent" ] && [ "${cpu_percent%.*}" -gt 80 ]; then  # > 80%
                 echo "$(date '+%Y-%m-%d %H:%M:%S'),high_cpu,cpu_usage=${cpu_percent}%" >> "$PERF_DIR/performance_events.csv"
-                echo -e "${YELLOW}⚠️ High CPU usage detected: ${cpu_percent}%${NC}"
+                echo -e "${YELLOW}High CPU usage detected: ${cpu_percent}%${NC}"
             fi
             
             if [ -n "$battery_temp" ] && [ "${battery_temp%.*}" -gt 40 ]; then  # > 40°C
                 echo "$(date '+%Y-%m-%d %H:%M:%S'),high_temperature,temperature=${battery_temp}°C" >> "$PERF_DIR/performance_events.csv"
-                echo -e "${YELLOW}⚠️ High temperature detected: ${battery_temp}°C${NC}"
+                echo -e "${YELLOW}High temperature detected: ${battery_temp}°C${NC}"
             fi
             
         else
-            echo -e "${RED}❌ App not running (PID: $pid)${NC}"
+            echo -e "${RED}App not running (PID: $pid)${NC}"
             echo "$(date '+%Y-%m-%d %H:%M:%S'),app_not_running,pid=$pid" >> "$PERF_DIR/performance_events.csv"
         fi
         
@@ -164,7 +164,7 @@ analyze_performance() {
     echo -e "${YELLOW}Analyzing performance data...${NC}"
     
     if [ ! -f "$PERF_DIR/performance_metrics.csv" ]; then
-        echo -e "${RED}❌ No performance data found${NC}"
+        echo -e "${RED}No performance data found${NC}"
         return 1
     fi
     
@@ -199,11 +199,11 @@ EOF
         
         # Memory usage assessment
         if [ "$max_memory" -gt 300000 ]; then
-            echo "Status: ❌ HIGH MEMORY USAGE" >> "$analysis_file"
+            echo "Status: HIGH MEMORY USAGE" >> "$analysis_file"
         elif [ "$max_memory" -gt 200000 ]; then
-            echo "Status: ⚠️ MODERATE MEMORY USAGE" >> "$analysis_file"
+            echo "Status: MODERATE MEMORY USAGE" >> "$analysis_file"
         else
-            echo "Status: ✅ GOOD MEMORY USAGE" >> "$analysis_file"
+            echo "Status: GOOD MEMORY USAGE" >> "$analysis_file"
         fi
     else
         echo "No memory data available" >> "$analysis_file"
@@ -228,11 +228,11 @@ EOF
         
         # CPU usage assessment
         if [ "${max_cpu%.*}" -gt 80 ]; then
-            echo "Status: ❌ HIGH CPU USAGE" >> "$analysis_file"
+            echo "Status: HIGH CPU USAGE" >> "$analysis_file"
         elif [ "${max_cpu%.*}" -gt 50 ]; then
-            echo "Status: ⚠️ MODERATE CPU USAGE" >> "$analysis_file"
+            echo "Status: MODERATE CPU USAGE" >> "$analysis_file"
         else
-            echo "Status: ✅ GOOD CPU USAGE" >> "$analysis_file"
+            echo "Status: GOOD CPU USAGE" >> "$analysis_file"
         fi
     else
         echo "No CPU data available" >> "$analysis_file"
@@ -258,11 +258,11 @@ EOF
         
         # Battery drain assessment
         if [ "$battery_drain" -gt 10 ]; then
-            echo "Status: ❌ HIGH BATTERY DRAIN" >> "$analysis_file"
+            echo "Status: HIGH BATTERY DRAIN" >> "$analysis_file"
         elif [ "$battery_drain" -gt 5 ]; then
-            echo "Status: ⚠️ MODERATE BATTERY DRAIN" >> "$analysis_file"
+            echo "Status: MODERATE BATTERY DRAIN" >> "$analysis_file"
         else
-            echo "Status: ✅ GOOD BATTERY EFFICIENCY" >> "$analysis_file"
+            echo "Status: GOOD BATTERY EFFICIENCY" >> "$analysis_file"
         fi
     else
         echo "No battery data available" >> "$analysis_file"
@@ -293,13 +293,13 @@ EOF
     local total_issues=$((high_memory_events + high_cpu_events + high_temp_events + app_not_running_events))
     
     if [ "$total_issues" -eq 0 ]; then
-        echo "Status: ✅ EXCELLENT PERFORMANCE" >> "$analysis_file"
+        echo "Status: EXCELLENT PERFORMANCE" >> "$analysis_file"
         echo "No performance issues detected during testing." >> "$analysis_file"
     elif [ "$total_issues" -lt 5 ]; then
-        echo "Status: ⚠️ GOOD PERFORMANCE WITH MINOR ISSUES" >> "$analysis_file"
+        echo "Status: GOOD PERFORMANCE WITH MINOR ISSUES" >> "$analysis_file"
         echo "Minor performance issues detected. Consider optimization." >> "$analysis_file"
     else
-        echo "Status: ❌ PERFORMANCE ISSUES DETECTED" >> "$analysis_file"
+        echo "Status: PERFORMANCE ISSUES DETECTED" >> "$analysis_file"
         echo "Multiple performance issues detected. Optimization required." >> "$analysis_file"
     fi
     
@@ -413,15 +413,15 @@ EOF
         if python3 -c "import matplotlib" >/dev/null 2>&1; then
             python3 "$PERF_DIR/generate_charts.py" "$PERF_DIR"
             if [ $? -eq 0 ]; then
-                echo -e "${GREEN}✅ Performance charts generated${NC}"
+                echo -e "${GREEN}Performance charts generated${NC}"
             else
-                echo -e "${YELLOW}⚠️ Chart generation failed${NC}"
+                echo -e "${YELLOW}Chart generation failed${NC}"
             fi
         else
-            echo -e "${YELLOW}⚠️ matplotlib not available, skipping chart generation${NC}"
+            echo -e "${YELLOW}matplotlib not available, skipping chart generation${NC}"
         fi
     else
-        echo -e "${YELLOW}⚠️ Python3 not available, skipping chart generation${NC}"
+        echo -e "${YELLOW}Python3 not available, skipping chart generation${NC}"
     fi
 }
 
@@ -429,13 +429,13 @@ EOF
 main() {
     # Check if device is connected
     if ! adb devices | grep -q "device$"; then
-        echo -e "${RED}❌ No Android device connected${NC}"
+        echo -e "${RED}No Android device connected${NC}"
         exit 1
     fi
     
     # Check if app is installed
     if ! adb shell pm list packages | grep -q "$PACKAGE_NAME"; then
-        echo -e "${RED}❌ App $PACKAGE_NAME is not installed${NC}"
+        echo -e "${RED}App $PACKAGE_NAME is not installed${NC}"
         exit 1
     fi
     

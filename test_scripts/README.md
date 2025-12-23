@@ -227,7 +227,7 @@ sudo apt install python3  # Ubuntu
 - Cập nhật IDs theo layout thực tế
 - Chạy `./gradlew clean build` trước khi test
 
-## 🔄 Continuous Integration
+## Continuous Integration
 
 ### GitHub Actions Example:
 ```yaml
@@ -247,14 +247,14 @@ jobs:
       run: ./test_scripts/run_all_tests.sh --skip-instrumented
 ```
 
-## 📚 Tài liệu tham khảo
+## Tài liệu tham khảo
 
-- 📖 [Kế hoạch kiểm thử tổng thể](KE_HOACH_KIEM_THU_HE_THONG.md)
-- 📖 [Hướng dẫn kiểm thử thủ công](TEST_SCRIPTS_MANUAL.md)
-- 📖 [Thiết lập kiểm thử tự động](AUTOMATED_TEST_SETUP.md)
-- 📖 [Hướng dẫn kiểm thử hiệu năng](PERFORMANCE_TESTING_GUIDE.md)
+- [Kế hoạch kiểm thử tổng thể](KE_HOACH_KIEM_THU_HE_THONG.md)
+- [Hướng dẫn kiểm thử thủ công](TEST_SCRIPTS_MANUAL.md)
+- [Thiết lập kiểm thử tự động](AUTOMATED_TEST_SETUP.md)
+- [Hướng dẫn kiểm thử hiệu năng](PERFORMANCE_TESTING_GUIDE.md)
 
-## 🎯 Best Practices
+## Best Practices
 
 ### 1. Chạy tests thường xuyên
 - Unit tests: Mỗi khi code
@@ -286,4 +286,4 @@ Nếu gặp vấn đề:
 
 ---
 
-**🎉 Happy Testing! Chúc bạn kiểm thử thành công!**
+**Happy Testing! Chúc bạn kiểm thử thành công!**

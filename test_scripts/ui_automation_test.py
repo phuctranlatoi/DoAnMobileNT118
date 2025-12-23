@@ -46,7 +46,7 @@ class UIAutomationTester:
         except subprocess.TimeoutExpired:
             return "", 1
         except Exception as e:
-            print(f"❌ ADB command failed: {e}")
+            print(f"ADB command failed: {e}")
             return "", 1
     
     def check_device_connection(self) -> bool:
@@ -57,11 +57,11 @@ class UIAutomationTester:
         
         devices = [line for line in output.split('\n') if '\tdevice' in line]
         if not devices:
-            print("❌ No Android device connected")
+            print("No Android device connected")
             return False
         
         self.device_id = devices[0].split('\t')[0]
-        print(f"✅ Connected to device: {self.device_id}")
+        print(f"Connected to device: {self.device_id}")
         return True
     
     def is_app_installed(self) -> bool:
@@ -92,7 +92,7 @@ class UIAutomationTester:
             print(f"Screenshot saved: {filename}")
             return filepath
         else:
-            print(f"❌ Failed to take screenshot: {name}")
+            print(f"Failed to take screenshot: {name}")
             return ""
     
     def tap_coordinates(self, x: int, y: int) -> bool:
@@ -158,7 +158,7 @@ class UIAutomationTester:
         }
         self.test_results.append(result)
         
-        status = "✅ PASS" if passed else "❌ FAIL"
+        status = "PASS" if passed else "FAIL"
         print(f"{status} {test_name}")
         if details:
             print(f"   Details: {details}")
@@ -196,9 +196,9 @@ class UIAutomationTester:
         for element in expected_elements:
             if self.find_text_on_screen(element):
                 elements_found += 1
-                print(f"   ✅ Found: {element}")
+                print(f"   Found: {element}")
             else:
-                print(f"   ❌ Missing: {element}")
+                print(f"   Missing: {element}")
         
         success = elements_found >= 2  # At least 2 out of 3 elements
         
@@ -294,9 +294,9 @@ class UIAutomationTester:
         for element in nav_elements:
             if self.find_text_on_screen(element):
                 elements_found += 1
-                print(f"   ✅ Found navigation: {element}")
+                print(f"   Found navigation: {element}")
             else:
-                print(f"   ❌ Missing navigation: {element}")
+                print(f"   Missing navigation: {element}")
         
         success = elements_found >= 2
         
@@ -332,7 +332,7 @@ class UIAutomationTester:
                           self.find_text_on_screen("Tin nhắn"))
             
             if chat_opened:
-                print("   ✅ Chat screen opened")
+                print("   Chat screen opened")
                 
                 # Try to test message input if available
                 if self.find_text_on_screen("Nhập tin nhắn") or self.find_text_on_screen("Gửi"):
@@ -353,10 +353,10 @@ class UIAutomationTester:
                 else:
                     success = True  # Chat screen opened but no input field visible
             else:
-                print("   ❌ Chat screen did not open")
+                print("   Chat screen did not open")
                 success = False
         else:
-            print("   ❌ Messages navigation not found")
+            print("   Messages navigation not found")
             success = False
         
         self.record_test_result(
@@ -389,7 +389,7 @@ class UIAutomationTester:
             output, code = self.run_adb_command(f"shell pidof {self.package_name}")
             if code != 0 or not output.strip():
                 crashes += 1
-                print(f"   ❌ App crashed before {action_name}")
+                print(f"   App crashed before {action_name}")
                 continue
             
             # Perform action
@@ -400,9 +400,9 @@ class UIAutomationTester:
             output, code = self.run_adb_command(f"shell pidof {self.package_name}")
             if code != 0 or not output.strip():
                 crashes += 1
-                print(f"   ❌ App crashed after {action_name}")
+                print(f"   App crashed after {action_name}")
             else:
-                print(f"   ✅ App stable after {action_name}")
+                print(f"   App stable after {action_name}")
         
         self.take_screenshot("stability_test_end")
         
@@ -449,7 +449,7 @@ class UIAutomationTester:
                 f"PSS Total: {memory_mb:.1f} MB"
             )
         else:
-            print("   ❌ Could not get memory info")
+            print("   Could not get memory info")
             self.record_test_result(
                 "Memory Usage",
                 False,
@@ -469,7 +469,7 @@ class UIAutomationTester:
             return {"error": "No device connected"}
         
         if not self.is_app_installed():
-            print(f"❌ App {self.package_name} is not installed")
+            print(f"App {self.package_name} is not installed")
             return {"error": "App not installed"}
         
         # Run tests
@@ -487,7 +487,7 @@ class UIAutomationTester:
             try:
                 test_func()
             except Exception as e:
-                print(f"❌ Test {test_func.__name__} failed with exception: {e}")
+                print(f"Test {test_func.__name__} failed with exception: {e}")
                 self.record_test_result(
                     test_func.__name__.replace('test_', '').replace('_', ' ').title(),
                     False,
@@ -578,7 +578,7 @@ def main():
     report = tester.run_all_tests()
     
     if "error" in report:
-        print(f"❌ Test execution failed: {report['error']}")
+        print(f"Test execution failed: {report['error']}")
         sys.exit(1)
     
     # Exit with appropriate code

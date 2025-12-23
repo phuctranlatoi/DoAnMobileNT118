@@ -97,7 +97,7 @@ run_unit_tests() {
     ./gradlew test --continue
     
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Unit tests passed${NC}"
+        echo -e "${GREEN}Unit tests passed${NC}"
         
         # Copy test reports
         if [ -d "app/build/reports/tests/testDebugUnitTest" ]; then
@@ -107,7 +107,7 @@ run_unit_tests() {
         
         return 0
     else
-        echo -e "${RED}❌ Unit tests failed${NC}"
+        echo -e "${RED}Unit tests failed${NC}"
         return 1
     fi
 }
@@ -128,7 +128,7 @@ run_instrumented_tests() {
     ./gradlew connectedDebugAndroidTest --continue
     
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Instrumented tests passed${NC}"
+        echo -e "${GREEN}Instrumented tests passed${NC}"
         
         # Copy test reports
         if [ -d "app/build/reports/androidTests/connected" ]; then
@@ -138,7 +138,7 @@ run_instrumented_tests() {
         
         return 0
     else
-        echo -e "${RED}❌ Instrumented tests failed${NC}"
+        echo -e "${RED}Instrumented tests failed${NC}"
         return 1
     fi
 }
@@ -153,7 +153,7 @@ run_lint_checks() {
     ./gradlew lint
     
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Lint checks passed${NC}"
+        echo -e "${GREEN}Lint checks passed${NC}"
         
         # Copy lint reports
         if [ -d "app/build/reports/lint-results-debug.html" ]; then
@@ -163,7 +163,7 @@ run_lint_checks() {
         
         return 0
     else
-        echo -e "${YELLOW}⚠️ Lint checks found issues (non-blocking)${NC}"
+        echo -e "${YELLOW}Lint checks found issues (non-blocking)${NC}"
         return 0  # Don't fail the entire test suite for lint issues
     fi
 }
@@ -178,7 +178,7 @@ generate_coverage() {
     ./gradlew jacocoTestReport
     
     if [ $? -eq 0 ]; then
-        echo -e "${GREEN}✅ Coverage report generated${NC}"
+        echo -e "${GREEN}Coverage report generated${NC}"
         
         # Copy coverage reports
         if [ -d "app/build/reports/jacoco/jacocoTestReport" ]; then
@@ -188,7 +188,7 @@ generate_coverage() {
         
         return 0
     else
-        echo -e "${YELLOW}⚠️ Coverage report generation failed (non-blocking)${NC}"
+        echo -e "${YELLOW}Coverage report generation failed (non-blocking)${NC}"
         return 0
     fi
 }
@@ -202,12 +202,12 @@ run_performance_tests() {
         bash "$PROJECT_DIR/test_scripts/performance_test.sh"
         
         if [ $? -eq 0 ]; then
-            echo -e "${GREEN}✅ Performance tests completed${NC}"
+            echo -e "${GREEN}Performance tests completed${NC}"
         else
-            echo -e "${YELLOW}⚠️ Performance tests had issues (non-blocking)${NC}"
+            echo -e "${YELLOW}Performance tests had issues (non-blocking)${NC}"
         fi
     else
-        echo -e "${YELLOW}⚠️ Performance test script not found, skipping...${NC}"
+        echo -e "${YELLOW}Performance test script not found, skipping...${NC}"
     fi
 }
 
@@ -309,12 +309,12 @@ main() {
     
     # Check prerequisites
     if ! command_exists adb; then
-        echo -e "${RED}❌ ADB not found. Please install Android SDK.${NC}"
+        echo -e "${RED}ADB not found. Please install Android SDK.${NC}"
         exit 1
     fi
     
     if [ ! -f "$PROJECT_DIR/gradlew" ]; then
-        echo -e "${RED}❌ gradlew not found. Please run from project root.${NC}"
+        echo -e "${RED}gradlew not found. Please run from project root.${NC}"
         exit 1
     fi
     
