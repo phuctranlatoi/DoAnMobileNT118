@@ -12,6 +12,7 @@ public class StringeeTokenGenerator {
     private static final String TAG = "StringeeTokenGenerator";
     
     // Stringee credentials - API Keys từ user
+    // TODO: SECURITY IMPROVEMENT - Move these to BuildConfig or secure storage
     // SID Key format: SK.0.xxxxx
     // Secret Key: Base64 encoded string
     private static final String STRINGEE_SID_KEY = "SK.0.uHNIGYBHHRcU5J0hjrSSky4nzdXvAbso";

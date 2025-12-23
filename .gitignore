@@ -13,3 +13,32 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Test reports and temporary files
+test-reports/
+*.log
+*.tmp
+
+# Documentation files (keep only README.md)
+*_FIXED.md
+*_FEATURE.md
+BAO_CAO_*.md
+SUA_LOI_*.md
+STRINGEE_*.md
+CHAT_*.md
+HOAN_*.md
+KIEM_THU_*.md
+TOM_TAT_*.md
+NHAN_TIN_*.md
+THANH_TOAN_*.md
+THAY_DOI_*.md
+DUPLICATE_*.md
+UNREAD_*.md
+MESSENGER_*.md
+DANG_KY_*.md
+
+# IDE files
+.vscode/
+*.swp
+*.swo
+*~

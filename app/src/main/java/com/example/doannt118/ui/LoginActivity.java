@@ -99,12 +99,13 @@ public class LoginActivity extends AppCompatActivity {
 
                                         Log.d("LoginActivity", "Firebase login success, using maTaiKhoan: " + finalMaTaiKhoan);
 
-                                        // TẮT XÁC THỰC EMAIL - Để import data dễ dàng
-                                        // if (!authResult.getUser().isEmailVerified()) {
-                                        //     authResult.getUser().sendEmailVerification();
-                                        //     Toast.makeText(this, "Vui lòng xác thực email! Đã gửi lại link xác thực.", Toast.LENGTH_LONG).show();
-                                        //     return;
-                                        // }
+                                        // Kiểm tra xác thực email
+                                        if (!authResult.getUser().isEmailVerified()) {
+                                            authResult.getUser().sendEmailVerification();
+                                            Toast.makeText(this, "Vui lòng xác thực email! Đã gửi lại link xác thực.", Toast.LENGTH_LONG).show();
+                                            auth.signOut(); // Đăng xuất để yêu cầu xác thực
+                                            return;
+                                        }
 
                                         if (!BCrypt.checkpw(matKhau, storedHash)) {
                                             String newHashedPassword = BCrypt.hashpw(matKhau, BCrypt.gensalt());

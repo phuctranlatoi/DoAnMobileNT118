@@ -3,6 +3,8 @@ package com.example.doannt118;
 import android.app.Application;
 import android.content.Intent;
 import android.util.Log;
+import androidx.multidex.MultiDex;
+import androidx.multidex.MultiDexApplication;
 import com.example.doannt118.stringee.StringeeManager;
 import com.example.doannt118.ui.VoiceCallActivity;
 import com.example.doannt118.ui.VideoCallActivity;
@@ -12,7 +14,7 @@ import com.stringee.call.StringeeCall2;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
     private static final String TAG = "MyApplication";
     
     // Store incoming calls để Activity có thể lấy
@@ -28,6 +30,12 @@ public class MyApplication extends Application {
 
         // Bật connection maintenance nền
         StringeeManager.getInstance(this).startConnectionMaintenance();
+    }
+    
+    @Override
+    protected void attachBaseContext(android.content.Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(this);
     }
     
     private void initializeStringee() {

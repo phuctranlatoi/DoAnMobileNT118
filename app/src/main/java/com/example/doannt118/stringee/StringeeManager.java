@@ -18,6 +18,7 @@ public class StringeeManager {
     private static final String TAG = "StringeeManager";
     
     // Stringee credentials - CHÍNH XÁC từ user
+    // TODO: SECURITY IMPROVEMENT - Move these to BuildConfig or secure storage
     private static final String STRINGEE_SID_KEY = "SK.0.uHNIGYBHHRcU5J0hjrSSky4nzdXvAbso";
     private static final String STRINGEE_SECRET_KEY = "TnNsaE1UZWJRRXJxUDZnMWdMMTYxaUdRdEszbnpwYkY=";
     

@@ -259,5 +259,7 @@ public class IncomingCallActivity extends AppCompatActivity {
     public void onBackPressed() {
         // Prevent back button during incoming call
         // User must answer or reject
+        // Call super to satisfy lint requirements but do nothing
+        super.onBackPressed();
     }
 }

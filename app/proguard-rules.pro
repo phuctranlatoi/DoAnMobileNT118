@@ -35,3 +35,40 @@
 # Stringee
 -dontwarn com.stringee.**
 -keep class com.stringee.** { *; }
+# Apache HTTP Client - Fix for Stringee SDK
+-dontwarn org.apache.http.**
+-keep class org.apache.http.** { *; }
+-dontwarn android.net.http.AndroidHttpClient
+-keep class android.net.http.AndroidHttpClient { *; }
+
+# Firebase
+-keep class com.google.firebase.** { *; }
+-dontwarn com.google.firebase.**
+
+# Gson
+-keepattributes Signature
+-keepattributes *Annotation*
+-dontwarn sun.misc.**
+-keep class com.google.gson.** { *; }
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Keep model classes
+-keep class com.example.doannt118.model.** { *; }
+
+# Keep Stringee callbacks
+-keep class com.example.doannt118.stringee.** { *; }
+
+# Volley
+-keep class com.android.volley.** { *; }
+-dontwarn com.android.volley.**
+
+# Mail
+-dontwarn java.awt.**
+-dontwarn java.beans.Beans
+-keep class javax.mail.** { *; }
+-keep class com.sun.mail.** { *; }
+-dontwarn javax.activation.**
+-dontwarn javax.mail.**
+-dontwarn com.sun.mail.**

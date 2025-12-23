@@ -88,10 +88,10 @@ public class RegisterActivity extends AppCompatActivity {
                                             // Tạo tài khoản Firebase
                                             auth.createUserWithEmailAndPassword(email, matKhau)
                                                     .addOnSuccessListener(authResult -> {
-                                                        // TẮT XÁC THỰC EMAIL - Để import data dễ dàng
-                                                        // if (authResult.getUser() != null) {
-                                                        //     authResult.getUser().sendEmailVerification();
-                                                        // }
+                                                        // Gửi email xác thực
+                                                        if (authResult.getUser() != null) {
+                                                            authResult.getUser().sendEmailVerification();
+                                                        }
 
                                                         // Tạo dữ liệu cho Firestore
                                                         TaiKhoan newTaiKhoan = new TaiKhoan(maTaiKhoan, tenDangNhap, matKhauDaBam, vaiTro, email, "Hoạt động");
@@ -104,9 +104,9 @@ public class RegisterActivity extends AppCompatActivity {
                                                         repo.registerNewUserBatch(newTaiKhoan, benhNhan,
                                                                 aVoid -> {
                                                                     Log.d("RegisterActivity", "User registered successfully: " + email);
-                                                                    Toast.makeText(this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
-                                                                    // TẮT ĐĂNG XUẤT - Không cần xác thực email
-                                                                    // auth.signOut();
+                                                                    Toast.makeText(this, "Đăng ký thành công! Vui lòng kiểm tra email để xác thực tài khoản.", Toast.LENGTH_LONG).show();
+                                                                    // Đăng xuất để yêu cầu xác thực email
+                                                                    auth.signOut();
                                                                     finish();
                                                                 },
                                                                 e -> {
