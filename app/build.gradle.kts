@@ -62,7 +62,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0") // Thư viện load ảnh
     implementation("de.hdodenhof:circleimageview:3.1.0") // Thư viện CircleImageView
     
-    // Stringee SDK for voice and video calling - UPDATED theo tài liệu chính thức
     implementation("com.stringee.sdk.android:stringee-android-sdk:2.1.5")
     implementation("io.github.webrtc-sdk:android:137.7151.03")
     implementation("com.android.volley:volley:1.2.1")

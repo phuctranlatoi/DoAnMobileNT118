@@ -145,36 +145,38 @@ public class IntentDetector {
         
         keywords.put(Intent.XEM_LICH_LAM_VIEC, Arrays.asList(
             "lịch làm việc", "lịch của tôi", "ca làm việc", "schedule", 
-            "work schedule", "quản lý lịch làm việc"
+            "work schedule", "quản lý lịch làm việc", "lịch hôm nay",
+            "hôm nay làm gì", "ca làm", "lịch trực"
         ));
         
         keywords.put(Intent.QUAN_LY_BENH_AN, Arrays.asList(
             "quản lý bệnh án", "bệnh án bệnh nhân", "medical record management",
-            "hồ sơ bệnh nhân", "cập nhật bệnh án"
+            "hồ sơ bệnh nhân", "cập nhật bệnh án", "xem bệnh án", "bệnh án"
         ));
         
         keywords.put(Intent.XAC_NHAN_LICH_KHAM, Arrays.asList(
             "xác nhận lịch", "duyệt lịch", "confirm appointment", "phê duyệt lịch khám",
-            "xác nhận lịch khám"
+            "xác nhận lịch khám", "lịch chờ xác nhận", "chờ duyệt"
         ));
         
         keywords.put(Intent.QUAN_LY_DON_THUOC_BS, Arrays.asList(
             "quản lý đơn thuốc", "kê đơn", "prescription management", "đơn thuốc bệnh nhân",
-            "tạo đơn thuốc"
+            "tạo đơn thuốc", "đơn thuốc", "kê thuốc"
         ));
         
         keywords.put(Intent.NHAP_MA_KHAM, Arrays.asList(
-            "nhập mã khám", "mã khám", "patient code", "mã bệnh nhân"
+            "nhập mã khám", "mã khám", "patient code", "mã bệnh nhân", "nhập mã"
         ));
         
         keywords.put(Intent.XEM_BENH_NHAN_NGAY, Arrays.asList(
             "bệnh nhân hôm nay", "danh sách bệnh nhân", "ai khám hôm nay", 
-            "lịch khám hôm nay", "bệnh nhân ngày", "patient today", "patients list"
+            "lịch khám hôm nay", "bệnh nhân ngày", "patient today", "patients list",
+            "bệnh nhân", "hôm nay có ai", "khám ai hôm nay"
         ));
         
         keywords.put(Intent.THONG_KE_BAC_SI, Arrays.asList(
             "thống kê", "báo cáo", "doanh thu", "số lượng bệnh nhân", "statistics",
-            "report", "revenue", "patient count", "hiệu suất"
+            "report", "revenue", "patient count", "hiệu suất", "xem thống kê"
         ));
         
         keywords.put(Intent.GUI_THONG_BAO, Arrays.asList(
@@ -184,11 +186,12 @@ public class IntentDetector {
         
         keywords.put(Intent.CHAT_VOI_BENH_NHAN, Arrays.asList(
             "chat bệnh nhân", "tin nhắn bệnh nhân", "danh sách tin nhắn",
-            "message patient", "patient chat"
+            "message patient", "patient chat", "nhắn tin bệnh nhân"
         ));
         
         keywords.put(Intent.AI_ASSISTANT, Arrays.asList(
-            "ai assistant", "trợ lý ai", "hỗ trợ ai", "ai support", "chatbot bác sĩ"
+            "ai assistant", "trợ lý ai", "hỗ trợ ai", "ai support", "chatbot bác sĩ",
+            "hỗ trợ chẩn đoán", "tư vấn điều trị", "tra cứu y khoa"
         ));
         
         // ============================================
@@ -616,21 +619,70 @@ public class IntentDetector {
     
     /**
      * Kiểm tra xem có phải câu hỏi mơ hồ không
+     * Cải tiến: Giảm false positive cho các câu hỏi rõ ràng
      */
     public boolean isAmbiguous(String message) {
         String normalized = normalize(message);
         
-        // Câu quá ngắn
-        if (normalized.length() < 5) return true;
+        // Câu quá ngắn (dưới 3 ký tự)
+        if (normalized.length() < 3) return true;
         
-        // Chỉ có 1 từ khóa mà không rõ ý định
-        if ((normalized.contains("lịch") && !normalized.contains("đặt") && !normalized.contains("xem")) ||
-            (normalized.contains("thuốc") && !normalized.contains("xem") && !normalized.contains("đơn")) ||
-            (normalized.contains("bác sĩ") && !normalized.contains("tìm"))) {
-            return true;
+        // KHÔNG mơ hồ nếu có các từ khóa rõ ràng cho bác sĩ
+        if (containsAny(normalized, Arrays.asList(
+            "bệnh nhân hôm nay", "lịch làm việc", "xác nhận lịch", "thống kê",
+            "quản lý bệnh án", "quản lý đơn thuốc", "nhập mã khám", "chat bệnh nhân",
+            "ai assistant", "báo cáo", "doanh thu", "số lượng bệnh nhân"
+        ))) {
+            return false;
         }
         
-        // Câu hỏi chung chung
-        return containsAny(normalized, Arrays.asList("giúp", "help", "làm gì", "gì", "?"));
+        // KHÔNG mơ hồ nếu có các từ khóa rõ ràng cho bệnh nhân
+        if (containsAny(normalized, Arrays.asList(
+            "đặt lịch khám", "xem lịch khám", "hủy lịch", "xem đơn thuốc",
+            "xem bệnh án", "xem hóa đơn", "chat bác sĩ", "tìm bác sĩ",
+            "uống thuốc", "thông báo"
+        ))) {
+            return false;
+        }
+        
+        // KHÔNG mơ hồ nếu là chào hỏi hoặc cảm ơn
+        if (containsAny(normalized, Arrays.asList(
+            "xin chào", "chào", "hello", "hi", "cảm ơn", "thank"
+        ))) {
+            return false;
+        }
+        
+        // Chỉ mơ hồ nếu câu rất ngắn và chỉ có 1 từ khóa đơn lẻ
+        if (normalized.length() < 10) {
+            // Chỉ có từ "lịch" đơn lẻ
+            if (normalized.equals("lịch") || normalized.equals("lich")) return true;
+            // Chỉ có từ "thuốc" đơn lẻ
+            if (normalized.equals("thuốc") || normalized.equals("thuoc")) return true;
+            // Chỉ có từ "?" 
+            if (normalized.equals("?")) return true;
+        }
+        
+        return false;
+    }
+    
+    /**
+     * Lấy gợi ý dựa trên role của user
+     */
+    public List<String> getSuggestionsForRole(String message, String userType) {
+        List<String> suggestions = new ArrayList<>();
+        
+        if ("bacsi".equals(userType)) {
+            suggestions.add("Xem bệnh nhân hôm nay");
+            suggestions.add("Xem lịch làm việc");
+            suggestions.add("Xác nhận lịch khám");
+            suggestions.add("Xem thống kê");
+        } else {
+            suggestions.add("Đặt lịch khám");
+            suggestions.add("Xem lịch khám");
+            suggestions.add("Xem đơn thuốc");
+            suggestions.add("Tìm bác sĩ");
+        }
+        
+        return suggestions;
     }
 }
