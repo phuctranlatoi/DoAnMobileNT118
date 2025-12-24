@@ -16,33 +16,56 @@ import java.util.Map;
 public class IntentDetector {
     
     public enum Intent {
-        // DATA & ACTIONS (Rule-based - Truy xuất Firestore)
-        DAT_LICH_KHAM,          // Đặt lịch khám
-        XEM_LICH_HEN,           // Xem lịch hẹn
-        HUY_LICH,               // Hủy lịch
-        TRA_CUU_BAC_SI,         // Tìm bác sĩ
-        XEM_LICH_BAC_SI,        // Xem lịch làm việc của bác sĩ theo ngày
-        HUONG_DAN_UONG_THUOC,   // Xem đơn thuốc
-        XEM_BENH_AN,            // Xem bệnh án
-        XEM_HOA_DON,            // Xem hóa đơn
-        THONG_TIN_PHONG_KHAM,   // FAQ phòng khám
+        // ============================================
+        // PATIENT INTENTS (Rule-based - Truy xuất Firestore)
+        // ============================================
+        DAT_LICH_KHAM,              // Đặt lịch khám (từ DanhSachBacSiActivity)
+        XEM_LICH_KHAM,              // Xem lịch khám (LichKhamCuaToiActivity)
+        XEM_LICH_HEN,               // Xem lịch hẹn (alias cho XEM_LICH_KHAM)
+        HUY_LICH_KHAM,              // Hủy lịch khám
+        HUY_LICH,                   // Hủy lịch (alias cho HUY_LICH_KHAM)
+        XEM_BENH_AN,                // Xem bệnh án (XemBenhAnActivity)
+        XEM_DON_THUOC,              // Xem đơn thuốc (DanhSachDonThuocActivity)
+        QUAN_LY_UONG_THUOC,         // Quản lý uống thuốc (QuanLyUongThuocActivity)
+        HUONG_DAN_UONG_THUOC,       // Hướng dẫn uống thuốc (alias)
+        XEM_HOA_DON,                // Xem hóa đơn (DanhSachHoaDonActivity)
+        XEM_THONG_BAO,              // Xem thông báo (ThongBaoActivity)
+        CHAT_VOI_BAC_SI,            // Chat với bác sĩ (ChonBacSiChatActivity)
+        TRA_CUU_BAC_SI,             // Tìm bác sĩ (DanhSachBacSiActivity)
+        TRA_CUU_THONG_TIN,          // FAQ phòng khám
+        THONG_TIN_PHONG_KHAM,       // Thông tin phòng khám (alias)
         
-        // DOCTOR-SPECIFIC INTENTS
-        THONG_KE_BENH_NHAN,     // Thống kê bệnh nhân
-        XEM_LICH_LAM_VIEC,      // Xem lịch làm việc
-        TRA_CUU_BENH_NHAN,      // Tra cứu thông tin bệnh nhân
-        TRA_CUU_THUOC,          // Tra cứu thuốc và tương tác
-        TAO_BAO_CAO,            // Tạo báo cáo
-        GOI_Y_CHAN_DOAN,        // Gợi ý chẩn đoán
+        // ============================================
+        // DOCTOR INTENTS (Rule-based - Truy xuất Firestore)
+        // ============================================
+        XEM_LICH_LAM_VIEC,          // Xem lịch làm việc (QuanLyLichLamViecActivity)
+        XEM_LICH_BAC_SI,            // Xem lịch bác sĩ theo ngày
+        QUAN_LY_BENH_AN,            // Quản lý bệnh án (QuanLyBenhAnBacSiActivity)
+        XAC_NHAN_LICH_KHAM,         // Xác nhận lịch khám (XacNhanLichKhamActivity)
+        QUAN_LY_DON_THUOC_BS,       // Quản lý đơn thuốc (QuanLyDonThuocBacSiActivity)
+        NHAP_MA_KHAM,               // Nhập mã khám (NhapMaKhamActivity)
+        XEM_BENH_NHAN_NGAY,         // Xem danh sách bệnh nhân hôm nay
+        THONG_KE_BAC_SI,            // Thống kê và báo cáo
+        THONG_KE_BENH_NHAN,         // Thống kê bệnh nhân
+        GUI_THONG_BAO,              // Gửi thông báo (GuiThongBaoActivity)
+        CHAT_VOI_BENH_NHAN,         // Chat với bệnh nhân (DanhSachTinNhanBacSiActivity)
+        AI_ASSISTANT,               // AI Assistant cho bác sĩ
+        TRA_CUU_BENH_NHAN,          // Tra cứu thông tin bệnh nhân
+        TRA_CUU_THUOC,              // Tra cứu thông tin thuốc
+        TAO_BAO_CAO,                // Tạo báo cáo
+        GOI_Y_CHAN_DOAN,            // Gợi ý chẩn đoán
         
-        // CONVERSATION
+        // ============================================
+        // CONVERSATION & SYSTEM
+        // ============================================
         CHAO_HOI,
         CAM_ON,
         XAC_NHAN,
         TU_CHOI,
+        CHON_ROLE,                  // Chọn vai trò (Bệnh nhân/Bác sĩ)
         
         // FALLBACK (Gemini AI - Tư vấn y tế)
-        KHAC                    // Câu hỏi mở, tư vấn
+        KHAC                        // Câu hỏi mở, tư vấn
     }
     
     private Map<Intent, List<String>> keywords;
@@ -58,44 +81,122 @@ public class IntentDetector {
         // DATA & ACTIONS (Rule-based)
         // ============================================
         
+        // ============================================
+        // PATIENT INTENTS - DỰA TRÊN CÁC ACTIVITY THỰC TẾ
+        // ============================================
         keywords.put(Intent.DAT_LICH_KHAM, Arrays.asList(
             "đặt lịch", "book", "hẹn", "đăng ký", "khám bệnh", "muốn khám", "đặt hẹn",
-            "appointment", "schedule", "đặt", "lịch", "khám", "hẹn khám", "đi khám"
+            "appointment", "schedule", "đặt", "lịch", "khám", "hẹn khám", "đi khám",
+            "đăng ký lịch khám", "chọn bác sĩ"
         ));
         
-        keywords.put(Intent.XEM_LICH_HEN, Arrays.asList(
+        keywords.put(Intent.XEM_LICH_KHAM, Arrays.asList(
             "xem lịch", "lịch hẹn", "lịch khám", "lịch của tôi", "hẹn nào", "khi nào khám",
-            "check lịch", "kiểm tra lịch", "lịch", "appointment", "schedule", "hẹn"
+            "check lịch", "kiểm tra lịch", "lịch", "appointment", "schedule", "hẹn",
+            "lịch khám của tôi"
         ));
         
-        keywords.put(Intent.HUY_LICH, Arrays.asList(
-            "hủy lịch", "hủy hẹn", "không đi", "cancel", "bỏ lịch"
-        ));
-        
-        keywords.put(Intent.TRA_CUU_BAC_SI, Arrays.asList(
-            "bác sĩ", "doctor", "chuyên khoa", "tìm bác sĩ", "bác sĩ nào"
-        ));
-        
-        keywords.put(Intent.XEM_LICH_BAC_SI, Arrays.asList(
-            "lịch bác sĩ", "bác sĩ làm việc", "bác sĩ có lịch", "ngày nào có bác sĩ",
-            "bác sĩ khám ngày", "lịch khám bác sĩ", "bác sĩ rảnh"
-        ));
-        
-        keywords.put(Intent.HUONG_DAN_UONG_THUOC, Arrays.asList(
-            "thuốc", "uống thuốc", "đơn thuốc", "medication", "thuốc của tôi",
-            "prescription", "medicine", "đơn", "thuốc uống", "lịch uống thuốc"
+        keywords.put(Intent.HUY_LICH_KHAM, Arrays.asList(
+            "hủy lịch", "hủy hẹn", "không đi", "cancel", "bỏ lịch", "hủy"
         ));
         
         keywords.put(Intent.XEM_BENH_AN, Arrays.asList(
-            "bệnh án", "hồ sơ", "chẩn đoán", "kết quả khám"
+            "bệnh án", "hồ sơ", "chẩn đoán", "kết quả khám", "xem bệnh án",
+            "medical record", "hồ sơ bệnh án"
+        ));
+        
+        keywords.put(Intent.XEM_DON_THUOC, Arrays.asList(
+            "thuốc", "đơn thuốc", "medication", "thuốc của tôi", "prescription", 
+            "medicine", "đơn", "danh sách đơn thuốc", "xem đơn thuốc"
+        ));
+        
+        keywords.put(Intent.QUAN_LY_UONG_THUOC, Arrays.asList(
+            "uống thuốc", "điểm danh thuốc", "nhắc nhở thuốc", "lịch uống thuốc",
+            "quản lý uống thuốc", "xác nhận uống thuốc", "medicine reminder"
         ));
         
         keywords.put(Intent.XEM_HOA_DON, Arrays.asList(
-            "hóa đơn", "tiền", "thanh toán", "chi phí", "invoice"
+            "hóa đơn", "tiền", "thanh toán", "chi phí", "invoice", "bill",
+            "danh sách hóa đơn", "xem hóa đơn"
         ));
         
-        keywords.put(Intent.THONG_TIN_PHONG_KHAM, Arrays.asList(
-            "giờ làm việc", "địa chỉ", "liên hệ", "hotline", "ở đâu"
+        keywords.put(Intent.XEM_THONG_BAO, Arrays.asList(
+            "thông báo", "notification", "tin nhắn hệ thống", "thông tin mới"
+        ));
+        
+        keywords.put(Intent.CHAT_VOI_BAC_SI, Arrays.asList(
+            "chat bác sĩ", "nhắn tin bác sĩ", "nói chuyện bác sĩ", "tư vấn bác sĩ",
+            "chọn bác sĩ chat", "tin nhắn", "message doctor"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_BAC_SI, Arrays.asList(
+            "bác sĩ", "doctor", "chuyên khoa", "tìm bác sĩ", "bác sĩ nào",
+            "danh sách bác sĩ", "chọn bác sĩ"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_THONG_TIN, Arrays.asList(
+            "giờ làm việc", "địa chỉ", "liên hệ", "hotline", "ở đâu", "thông tin",
+            "bảng giá", "dịch vụ", "quy trình", "phòng khám"
+        ));
+        
+        // ============================================
+        // DOCTOR INTENTS - DỰA TRÊN MainBacSiActivity
+        // ============================================
+        
+        keywords.put(Intent.XEM_LICH_LAM_VIEC, Arrays.asList(
+            "lịch làm việc", "lịch của tôi", "ca làm việc", "schedule", 
+            "work schedule", "quản lý lịch làm việc"
+        ));
+        
+        keywords.put(Intent.QUAN_LY_BENH_AN, Arrays.asList(
+            "quản lý bệnh án", "bệnh án bệnh nhân", "medical record management",
+            "hồ sơ bệnh nhân", "cập nhật bệnh án"
+        ));
+        
+        keywords.put(Intent.XAC_NHAN_LICH_KHAM, Arrays.asList(
+            "xác nhận lịch", "duyệt lịch", "confirm appointment", "phê duyệt lịch khám",
+            "xác nhận lịch khám"
+        ));
+        
+        keywords.put(Intent.QUAN_LY_DON_THUOC_BS, Arrays.asList(
+            "quản lý đơn thuốc", "kê đơn", "prescription management", "đơn thuốc bệnh nhân",
+            "tạo đơn thuốc"
+        ));
+        
+        keywords.put(Intent.NHAP_MA_KHAM, Arrays.asList(
+            "nhập mã khám", "mã khám", "patient code", "mã bệnh nhân"
+        ));
+        
+        keywords.put(Intent.XEM_BENH_NHAN_NGAY, Arrays.asList(
+            "bệnh nhân hôm nay", "danh sách bệnh nhân", "ai khám hôm nay", 
+            "lịch khám hôm nay", "bệnh nhân ngày", "patient today", "patients list"
+        ));
+        
+        keywords.put(Intent.THONG_KE_BAC_SI, Arrays.asList(
+            "thống kê", "báo cáo", "doanh thu", "số lượng bệnh nhân", "statistics",
+            "report", "revenue", "patient count", "hiệu suất"
+        ));
+        
+        keywords.put(Intent.GUI_THONG_BAO, Arrays.asList(
+            "gửi thông báo", "thông báo bệnh nhân", "send notification", 
+            "tin nhắn thông báo"
+        ));
+        
+        keywords.put(Intent.CHAT_VOI_BENH_NHAN, Arrays.asList(
+            "chat bệnh nhân", "tin nhắn bệnh nhân", "danh sách tin nhắn",
+            "message patient", "patient chat"
+        ));
+        
+        keywords.put(Intent.AI_ASSISTANT, Arrays.asList(
+            "ai assistant", "trợ lý ai", "hỗ trợ ai", "ai support", "chatbot bác sĩ"
+        ));
+        
+        // ============================================
+        // CONVERSATION
+        // ============================================
+        
+        keywords.put(Intent.CHON_ROLE, Arrays.asList(
+            "bệnh nhân", "bác sĩ", "patient", "doctor", "role", "vai trò"
         ));
         
         // ============================================
