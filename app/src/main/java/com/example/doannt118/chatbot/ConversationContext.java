@@ -9,7 +9,7 @@ import java.util.Map;
  * Track trạng thái conversation và lưu data tạm
  * VD: Đang đặt lịch → lưu ngày, bác sĩ đã chọn
  */
-public class 0ConversationContext {
+public class ConversationContext {
     
     public enum ConversationState {
         IDLE,                       // Chờ input mới

@@ -42,6 +42,7 @@ drawable bg_button_outline
 drawable bg_button_primary
 drawable bg_button_secondary
 drawable bg_card
+drawable bg_circle_primary
 drawable bg_compliance_card
 drawable bg_duration_info
 drawable bg_edit_text
@@ -54,6 +55,7 @@ drawable bg_input
 drawable bg_input_1
 drawable bg_input_field
 drawable bg_outline_blue
+drawable bg_schedule_info
 drawable bg_selected_date
 drawable bg_slot_counter
 drawable bg_status_cancelled
@@ -122,6 +124,7 @@ drawable ic_hospital
 drawable ic_invoice
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_list
 drawable ic_location
 drawable ic_location1
 drawable ic_lock
@@ -148,6 +151,7 @@ drawable ic_send
 drawable ic_service
 drawable ic_setting
 drawable ic_settings
+drawable ic_star
 drawable ic_switch_camera
 drawable ic_time
 drawable ic_user
@@ -206,15 +210,18 @@ drawable time_badge_modern
 drawable toolbar_gradient_background
 drawable unread_dot
 drawable video_overlay_background
+id actionButtonsContainer
 id actvBacSi
 id actvBenhNhan
 id avatarSection
 id bottomNavigation
+id btnAction
 id btnAnswer
 id btnAnswerCall
 id btnApprove
 id btnBack
 id btnBoQua
+id btnBookDoctor
 id btnBuoiChieu
 id btnBuoiSang
 id btnCaSang
@@ -318,6 +325,7 @@ id cbChon
 id cbSang
 id cbTrua
 id checkBox
+id doctorCardsContainer
 id dpNgayLamViec
 id dpTraCuu
 id editButtonLayout
@@ -365,8 +373,10 @@ id imgLogo
 id ivAvatar
 id ivAvatarBacSi
 id ivAvatarBenhNhan
+id ivBotAvatar
 id ivCallerAvatar
 id ivDelete
+id ivDoctorAvatar
 id ivIcon
 id ivLoaiThongBao
 id ivQRCode
@@ -468,6 +478,7 @@ id rvThuoc
 id rvThuocCanUong
 id rvThuocTrongCa
 id rvTinNhan
+id scheduleContainer
 id searchCard
 id settingCamera
 id settingChangePassword
@@ -509,6 +520,7 @@ id tvDangKy
 id tvDanhSachThuoc
 id tvDiaChi
 id tvDichVuChon
+id tvDoctorName
 id tvDonGia
 id tvDonVi
 id tvEmail
@@ -517,6 +529,7 @@ id tvEmptyDichVu
 id tvEmptyDonThuoc
 id tvEmptyLichSu
 id tvEmptyThuoc
+id tvExperience
 id tvGhiChu
 id tvGiaTien
 id tvGioBatDau
@@ -562,6 +575,7 @@ id tvPendingCount
 id tvPhiKham
 id tvPhuongThucThanhToan
 id tvQuenMatKhau
+id tvSchedule
 id tvSlotCount
 id tvSoDienThoai
 id tvSoLanKham
@@ -570,6 +584,7 @@ id tvSoLuong
 id tvSoLuongThuoc
 id tvSoThuTu
 id tvSoTinNhanChuaDoc
+id tvSpecialty
 id tvStatus
 id tvTenBacSi
 id tvTenBenhNhan
@@ -685,6 +700,7 @@ layout fragment_danh_sach_lich_lam_viec
 layout fragment_diem_danh_uong_thuoc
 layout fragment_lich_su_uong_thuoc
 layout item_account
+layout item_action_button
 layout item_activity_history
 layout item_bac_si
 layout item_bac_si_chat
@@ -695,6 +711,8 @@ layout item_benh_nhan
 layout item_benh_nhan_select
 layout item_ca_uong_thuoc
 layout item_chat_bot
+layout item_chat_bot_actions
+layout item_chat_doctor_carousel
 layout item_chat_user
 layout item_chi_tiet_don_thuoc
 layout item_chi_tiet_hoa_don
@@ -706,6 +724,7 @@ layout item_diagnosis_entry
 layout item_dich_vu_hoa_don
 layout item_dich_vu_kham
 layout item_diem_danh_thuoc
+layout item_doctor_card
 layout item_don_thuoc
 layout item_don_thuoc_bac_si
 layout item_ghichu
