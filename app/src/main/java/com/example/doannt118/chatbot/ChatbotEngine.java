@@ -149,6 +149,10 @@ public class ChatbotEngine {
                 handleViewAppointments(callback);
                 break;
                 
+            case XEM_LICH_BAC_SI:
+                handleViewDoctorSchedule(userMessage, callback);
+                break;
+                
             case HUONG_DAN_UONG_THUOC:
                 handleMedicationGuide(callback);
                 break;
@@ -195,6 +199,109 @@ public class ChatbotEngine {
         response.setQuickReplies(quickReplies);
         
         callback.onResponse(response);
+    }
+    
+    // ============================================
+    // XEM LỊCH BÁC SĨ THEO NGÀY
+    // ============================================
+    
+    private void handleViewDoctorSchedule(String userMessage, ChatCallback callback) {
+        // Parse ngày từ message
+        java.util.Date targetDate = parseDateFromText(userMessage);
+        
+        // Nếu không có ngày cụ thể, mặc định là hôm nay
+        if (targetDate == null) {
+            targetDate = new java.util.Date();
+        }
+        
+        final java.util.Date queryDate = targetDate;
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+        
+        // Query lịch làm việc của bác sĩ theo ngày
+        // Tạo timestamp cho đầu ngày
+        java.util.Calendar cal = java.util.Calendar.getInstance();
+        cal.setTime(queryDate);
+        cal.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        cal.set(java.util.Calendar.MINUTE, 0);
+        cal.set(java.util.Calendar.SECOND, 0);
+        cal.set(java.util.Calendar.MILLISECOND, 0);
+        
+        repo.getCollection("LichLamViec")
+            .whereEqualTo("ngayLamViec", new com.google.firebase.Timestamp(cal.getTime()))
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    ChatResponse response = new ChatResponse(
+                        "📅 Không có bác sĩ nào có lịch làm việc vào ngày " + 
+                        dateFormat.format(queryDate) + "\n\n" +
+                        "Bạn có muốn xem ngày khác không?",
+                        ChatResponse.ResponseType.QUICK_REPLY
+                    );
+                    
+                    List<String> quickReplies = new ArrayList<>();
+                    quickReplies.add("Ngày mai");
+                    quickReplies.add("Thứ 2 tuần sau");
+                    quickReplies.add("Đặt lịch khám");
+                    response.setQuickReplies(quickReplies);
+                    
+                    callback.onResponse(response);
+                    return;
+                }
+                
+                // Lấy danh sách mã bác sĩ và ca làm việc
+                List<String> doctorIds = new ArrayList<>();
+                Map<String, String> doctorSchedules = new HashMap<>();
+                
+                for (var doc : querySnapshot.getDocuments()) {
+                    String maBacSi = doc.getString("maBacSi");
+                    String caLamViec = doc.getString("caLamViec");
+                    if (maBacSi != null) {
+                        doctorIds.add(maBacSi);
+                        doctorSchedules.put(maBacSi, caLamViec);
+                    }
+                }
+                
+                // Query thông tin chi tiết bác sĩ
+                repo.getCollection("BacSi")
+                    .whereIn("maBacSi", doctorIds)
+                    .get()
+                    .addOnSuccessListener(doctorSnapshot -> {
+                        List<BacSi> availableDoctors = new ArrayList<>();
+                        
+                        for (var doctorDoc : doctorSnapshot.getDocuments()) {
+                            BacSi doctor = doctorDoc.toObject(BacSi.class);
+                            if (doctor != null) {
+                                String schedule = doctorSchedules.get(doctor.getMaBacSi());
+                                doctor.setCaLamViec(schedule);
+                                availableDoctors.add(doctor);
+                            }
+                        }
+                        
+                        if (availableDoctors.isEmpty()) {
+                            callback.onResponse(new ChatResponse(
+                                "Không tìm thấy thông tin bác sĩ.",
+                                ChatResponse.ResponseType.TEXT
+                            ));
+                            return;
+                        }
+                        
+                        // Tạo response với doctor cards
+                        String message = "👨‍⚕️ Danh sách bác sĩ có lịch ngày " + 
+                                        dateFormat.format(queryDate) + ":\n\n" +
+                                        "Vuốt sang trái để xem thêm bác sĩ. Nhấn \"Đặt lịch khám\" để đặt lịch.";
+                        
+                        ChatResponse response = new ChatResponse(message, ChatResponse.ResponseType.DOCTOR_CARDS);
+                        response.setDoctorCards(availableDoctors);
+                        
+                        callback.onResponse(response);
+                    })
+                    .addOnFailureListener(e -> {
+                        callback.onError("Lỗi khi tải thông tin bác sĩ: " + e.getMessage());
+                    });
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tìm lịch làm việc: " + e.getMessage());
+            });
     }
     
     private void handleDateInput(String userMessage, ChatCallback callback) {
@@ -654,13 +761,46 @@ public class ChatbotEngine {
         if (chuyenKhoa != null) {
             queryDoctorsBySpecialty(chuyenKhoa, callback);
         } else {
-            handleWithGemini(userMessage, callback);
+            // Hiển thị tất cả bác sĩ
+            queryAllDoctors(callback);
         }
+    }
+    
+    private void queryAllDoctors(ChatCallback callback) {
+        repo.getCollection("BacSi")
+            .limit(10)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Không tìm thấy bác sĩ nào trong hệ thống.",
+                        ChatResponse.ResponseType.TEXT
+                    ));
+                    return;
+                }
+                
+                List<BacSi> doctors = new ArrayList<>();
+                for (var doc : querySnapshot.getDocuments()) {
+                    BacSi doctor = doc.toObject(BacSi.class);
+                    if (doctor != null) {
+                        doctors.add(doctor);
+                    }
+                }
+                
+                String message = "👨‍⚕️ Danh sách bác sĩ của phòng khám:\n\n" +
+                                "Vuốt sang trái để xem thêm. Nhấn \"Đặt lịch khám\" để đặt lịch với bác sĩ.";
+                
+                ChatResponse response = new ChatResponse(message, ChatResponse.ResponseType.DOCTOR_CARDS);
+                response.setDoctorCards(doctors);
+                callback.onResponse(response);
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tải danh sách bác sĩ: " + e.getMessage());
+            });
     }
     
     private void handleGreeting(ChatCallback callback) {
         String welcomeMessage;
-        List<String> quickReplies = new ArrayList<>();
         
         if ("bacsi".equals(userType)) {
             welcomeMessage = "Xin chào Bác sĩ! 👨‍⚕️\n\n" +
@@ -671,27 +811,41 @@ public class ChatbotEngine {
                            "💊 Tra cứu thuốc\n\n" +
                            "Bạn cần hỗ trợ gì?";
             
+            List<String> quickReplies = new ArrayList<>();
             quickReplies.add("Thống kê hôm nay");
             quickReplies.add("Lịch làm việc");
             quickReplies.add("Tra cứu thuốc");
+            
+            ChatResponse response = new ChatResponse(welcomeMessage, ChatResponse.ResponseType.QUICK_REPLY);
+            response.setQuickReplies(quickReplies);
+            callback.onResponse(response);
         } else {
             welcomeMessage = "Xin chào! 👋\n\n" +
-                           "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
-                           "📅 Đặt lịch khám\n" +
-                           "💊 Xem đơn thuốc\n" +
-                           "🏥 Xem lịch khám\n" +
-                           "👨‍⚕️ Tìm bác sĩ\n\n" +
-                           "Bạn cần giúp gì?";
+                           "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn nhiều việc!\n\n" +
+                           "Hãy chọn một trong các tùy chọn bên dưới:";
             
-            quickReplies.add("Đặt lịch khám");
-            quickReplies.add("Xem lịch khám");
-            quickReplies.add("Xem đơn thuốc");
-            quickReplies.add("Tìm bác sĩ");
+            // Tạo action buttons cho bệnh nhân
+            List<com.example.doannt118.model.ChatMessage.ActionButton> actions = new ArrayList<>();
+            actions.add(new com.example.doannt118.model.ChatMessage.ActionButton(
+                "📅 Đặt lịch khám", 
+                com.example.doannt118.model.ChatMessage.ActionType.BOOK_APPOINTMENT).setPrimary(true));
+            actions.add(new com.example.doannt118.model.ChatMessage.ActionButton(
+                "🏥 Xem lịch khám của tôi", 
+                com.example.doannt118.model.ChatMessage.ActionType.VIEW_APPOINTMENTS));
+            actions.add(new com.example.doannt118.model.ChatMessage.ActionButton(
+                "👨‍⚕️ Xem lịch bác sĩ hôm nay", 
+                com.example.doannt118.model.ChatMessage.ActionType.VIEW_DOCTOR_SCHEDULE));
+            actions.add(new com.example.doannt118.model.ChatMessage.ActionButton(
+                "💊 Xem đơn thuốc", 
+                com.example.doannt118.model.ChatMessage.ActionType.VIEW_PRESCRIPTIONS));
+            actions.add(new com.example.doannt118.model.ChatMessage.ActionButton(
+                "🔍 Tìm bác sĩ", 
+                com.example.doannt118.model.ChatMessage.ActionType.FIND_DOCTOR));
+            
+            ChatResponse response = new ChatResponse(welcomeMessage, ChatResponse.ResponseType.ACTION_BUTTONS);
+            response.setActionButtons(actions);
+            callback.onResponse(response);
         }
-        
-        ChatResponse response = new ChatResponse(welcomeMessage, ChatResponse.ResponseType.QUICK_REPLY);
-        response.setQuickReplies(quickReplies);
-        callback.onResponse(response);
     }
     
     private void handleThanks(ChatCallback callback) {
@@ -961,18 +1115,52 @@ public class ChatbotEngine {
     }
     
     private String extractChuyenKhoa(String message) {
-        if (message.contains("tim")) return "Tim mạch";
-        if (message.contains("nội")) return "Nội khoa";
+        message = message.toLowerCase();
+        if (message.contains("tim") || message.contains("tim mạch")) return "Tim mạch";
+        if (message.contains("nội") || message.contains("nội khoa")) return "Nội khoa";
+        if (message.contains("ngoại") || message.contains("ngoại khoa")) return "Ngoại khoa";
+        if (message.contains("da liễu") || message.contains("da")) return "Da liễu";
+        if (message.contains("mắt") || message.contains("nhãn khoa")) return "Nhãn khoa";
+        if (message.contains("tai mũi họng") || message.contains("tmh")) return "Tai mũi họng";
+        if (message.contains("răng") || message.contains("nha khoa")) return "Nha khoa";
+        if (message.contains("sản") || message.contains("phụ khoa")) return "Sản phụ khoa";
+        if (message.contains("nhi") || message.contains("trẻ em")) return "Nhi khoa";
+        if (message.contains("thần kinh")) return "Thần kinh";
         return null;
     }
     
     private void queryDoctorsBySpecialty(String chuyenKhoa, ChatCallback callback) {
-        repo.getByField("BacSi", "chuyenKhoa", chuyenKhoa,
-            querySnapshot -> {
-                // Build response
-            },
-            e -> callback.onError(e.getMessage())
-        );
+        repo.getCollection("BacSi")
+            .whereEqualTo("chuyenKhoa", chuyenKhoa)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (querySnapshot.isEmpty()) {
+                    callback.onResponse(new ChatResponse(
+                        "Không tìm thấy bác sĩ chuyên khoa " + chuyenKhoa + ".\n\n" +
+                        "Bạn có muốn xem tất cả bác sĩ không?",
+                        ChatResponse.ResponseType.QUICK_REPLY
+                    ));
+                    return;
+                }
+                
+                List<BacSi> doctors = new ArrayList<>();
+                for (var doc : querySnapshot.getDocuments()) {
+                    BacSi doctor = doc.toObject(BacSi.class);
+                    if (doctor != null) {
+                        doctors.add(doctor);
+                    }
+                }
+                
+                String message = "👨‍⚕️ Bác sĩ chuyên khoa " + chuyenKhoa + ":\n\n" +
+                                "Vuốt sang trái để xem thêm. Nhấn \"Đặt lịch khám\" để đặt lịch.";
+                
+                ChatResponse response = new ChatResponse(message, ChatResponse.ResponseType.DOCTOR_CARDS);
+                response.setDoctorCards(doctors);
+                callback.onResponse(response);
+            })
+            .addOnFailureListener(e -> {
+                callback.onError("Lỗi khi tìm bác sĩ: " + e.getMessage());
+            });
     }
     
     private String getTrangThaiIcon(String trangThai) {

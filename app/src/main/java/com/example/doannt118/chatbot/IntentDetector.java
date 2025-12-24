@@ -21,6 +21,7 @@ public class IntentDetector {
         XEM_LICH_HEN,           // Xem lịch hẹn
         HUY_LICH,               // Hủy lịch
         TRA_CUU_BAC_SI,         // Tìm bác sĩ
+        XEM_LICH_BAC_SI,        // Xem lịch làm việc của bác sĩ theo ngày
         HUONG_DAN_UONG_THUOC,   // Xem đơn thuốc
         XEM_BENH_AN,            // Xem bệnh án
         XEM_HOA_DON,            // Xem hóa đơn
@@ -73,6 +74,11 @@ public class IntentDetector {
         
         keywords.put(Intent.TRA_CUU_BAC_SI, Arrays.asList(
             "bác sĩ", "doctor", "chuyên khoa", "tìm bác sĩ", "bác sĩ nào"
+        ));
+        
+        keywords.put(Intent.XEM_LICH_BAC_SI, Arrays.asList(
+            "lịch bác sĩ", "bác sĩ làm việc", "bác sĩ có lịch", "ngày nào có bác sĩ",
+            "bác sĩ khám ngày", "lịch khám bác sĩ", "bác sĩ rảnh"
         ));
         
         keywords.put(Intent.HUONG_DAN_UONG_THUOC, Arrays.asList(
@@ -236,6 +242,19 @@ public class IntentDetector {
             "gợi ý bác sĩ", "bác sĩ tim mạch", "bác sĩ nội khoa"
         ))) {
             return Intent.TRA_CUU_BAC_SI;
+        }
+        
+        // ============================================
+        // PATTERN XEM LỊCH BÁC SĨ THEO NGÀY
+        // ============================================
+        if (containsAny(message, Arrays.asList(
+            "lịch bác sĩ", "bác sĩ làm việc ngày", "bác sĩ có lịch ngày",
+            "ngày nào có bác sĩ", "bác sĩ khám ngày", "lịch khám bác sĩ",
+            "bác sĩ rảnh ngày", "xem lịch bác sĩ", "bác sĩ nào làm việc",
+            "hôm nay có bác sĩ nào", "ngày mai có bác sĩ nào",
+            "bác sĩ nào khám hôm nay", "bác sĩ nào khám ngày mai"
+        ))) {
+            return Intent.XEM_LICH_BAC_SI;
         }
         
         // ============================================
