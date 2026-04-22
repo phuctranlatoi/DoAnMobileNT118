@@ -87,7 +87,7 @@ public class DanhSachTinNhanBacSiActivity extends AppCompatActivity
         showLoading(true);
         
         // Lấy tất cả tin nhắn của bác sĩ này với real-time listener
-        // Không dùng orderBy để tránh lỗi index
+        // Sử dụng conversationId để đảm bảo tính nhất quán
         Query query = FirebaseFirestore.getInstance()
             .collection("TinNhanBacSi")
             .whereEqualTo("maBacSi", maBacSi);
@@ -106,38 +106,57 @@ public class DanhSachTinNhanBacSiActivity extends AppCompatActivity
             Map<String, Integer> mapSoTinNhanChuaDoc = new HashMap<>();
             Map<String, TinNhanBacSi> mapTinNhanCuoi = new HashMap<>();
             
-            // Đếm tin nhắn chưa đọc và tìm tin nhắn cuối
+            // Đếm tin nhắn chưa đọc và tìm tin nhắn cuối theo conversationId
             for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
                 TinNhanBacSi tinNhan = doc.toObject(TinNhanBacSi.class);
-                if (tinNhan != null) {
+                if (tinNhan != null && validateMessageForDoctor(tinNhan, maBacSi)) {
                     String maBenhNhan = tinNhan.getMaBenhNhan();
+                    String conversationId = tinNhan.getConversationId();
+                    
+                    // Sử dụng conversationId làm key nếu có, nếu không thì dùng maBenhNhan
+                    String key = conversationId != null ? conversationId : maBenhNhan;
                     
                     // Cập nhật tin nhắn cuối (theo thời gian)
-                    TinNhanBacSi tinNhanCuoi = mapTinNhanCuoi.get(maBenhNhan);
+                    TinNhanBacSi tinNhanCuoi = mapTinNhanCuoi.get(key);
                     if (tinNhanCuoi == null || 
                         (tinNhan.getThoiGianGui() != null && tinNhanCuoi.getThoiGianGui() != null &&
                          tinNhan.getThoiGianGui().compareTo(tinNhanCuoi.getThoiGianGui()) > 0)) {
-                        mapTinNhanCuoi.put(maBenhNhan, tinNhan);
+                        
+                        // Debug log
+                        android.util.Log.d("DanhSachTinNhanBacSi", "Updating last message for " + key + 
+                            ": " + tinNhan.getNoiDung().substring(0, Math.min(50, tinNhan.getNoiDung().length())) + 
+                            " at " + tinNhan.getThoiGianGui());
+                        
+                        mapTinNhanCuoi.put(key, tinNhan);
+                    } else if (tinNhanCuoi != null) {
+                        // Debug log cho tin nhắn bị bỏ qua
+                        android.util.Log.d("DanhSachTinNhanBacSi", "Skipping older message for " + key + 
+                            ": " + tinNhan.getNoiDung().substring(0, Math.min(50, tinNhan.getNoiDung().length())) + 
+                            " at " + tinNhan.getThoiGianGui() + 
+                            " (current last: " + tinNhanCuoi.getThoiGianGui() + ")");
                     }
                     
                     // Đếm tin nhắn chưa đọc (tin nhắn từ bệnh nhân mà bác sĩ chưa đọc)
                     if (tinNhan.getLoaiTinNhan() == TinNhanBacSi.LoaiTinNhan.BENH_NHAN &&
                         tinNhan.getTrangThai() != TinNhanBacSi.TrangThaiTinNhan.DA_XEM) {
-                        mapSoTinNhanChuaDoc.put(maBenhNhan, 
-                            mapSoTinNhanChuaDoc.getOrDefault(maBenhNhan, 0) + 1);
+                        mapSoTinNhanChuaDoc.put(key, 
+                            mapSoTinNhanChuaDoc.getOrDefault(key, 0) + 1);
                     }
                 }
             }
             
-            // Tạo danh sách cuộc trò chuyện
+            // Tạo danh sách cuộc trò chuyện và lấy tên bệnh nhân
             for (Map.Entry<String, TinNhanBacSi> entry : mapTinNhanCuoi.entrySet()) {
-                String maBenhNhan = entry.getKey();
+                String key = entry.getKey();
                 TinNhanBacSi tinNhanCuoi = entry.getValue();
+                String maBenhNhan = tinNhanCuoi.getMaBenhNhan();
                 
                 boolean laBacSiGuiCuoi = tinNhanCuoi.getLoaiTinNhan() == TinNhanBacSi.LoaiTinNhan.BAC_SI;
+                
+                // Tạo cuộc trò chuyện với tên tạm thời, sẽ cập nhật sau
                 CuocTroChuyenBacSi cuocTroChuyenBacSi = new CuocTroChuyenBacSi(
                     maBenhNhan,
-                    tinNhanCuoi.getTenNguoiGui(),
+                    "Đang tải...", // Tên tạm thời
                     tinNhanCuoi.getNoiDung(),
                     tinNhanCuoi.getThoiGianGui(),
                     laBacSiGuiCuoi
@@ -145,10 +164,16 @@ public class DanhSachTinNhanBacSiActivity extends AppCompatActivity
                 
                 // Set số tin nhắn chưa đọc
                 cuocTroChuyenBacSi.setSoTinNhanChuaDoc(
-                    mapSoTinNhanChuaDoc.getOrDefault(maBenhNhan, 0));
+                    mapSoTinNhanChuaDoc.getOrDefault(key, 0));
+                
+                // Set trạng thái tin nhắn cuối
+                cuocTroChuyenBacSi.setTrangThaiTinNhanCuoi(tinNhanCuoi.getTrangThai());
                 
                 mapCuocTroChuyenBacSi.put(maBenhNhan, cuocTroChuyenBacSi);
             }
+            
+            // Lấy tên bệnh nhân từ collection BenhNhan
+            loadTenBenhNhanForConversations(new ArrayList<>(mapCuocTroChuyenBacSi.values()));
             
             // Chuyển map thành list và sắp xếp theo thời gian
             List<CuocTroChuyenBacSi> danhSachCuocTroChuyenBacSi = new ArrayList<>(mapCuocTroChuyenBacSi.values());
@@ -160,10 +185,112 @@ public class DanhSachTinNhanBacSiActivity extends AppCompatActivity
             
                 adapter.setData(danhSachCuocTroChuyenBacSi);
                 showEmpty(danhSachCuocTroChuyenBacSi.isEmpty());
+                
+                android.util.Log.d("DanhSachTinNhanBacSi", "Loaded " + danhSachCuocTroChuyenBacSi.size() + " conversations for doctor: " + maBacSi);
             } else {
                 showEmpty(true);
             }
         });
+    }
+    
+    /**
+     * Validate tin nhắn cho bác sĩ để đảm bảo không bị lộn xộn
+     */
+    private boolean validateMessageForDoctor(TinNhanBacSi tinNhan, String expectedMaBacSi) {
+        if (tinNhan == null) return false;
+        
+        // Kiểm tra mã bác sĩ
+        if (!expectedMaBacSi.equals(tinNhan.getMaBacSi())) {
+            android.util.Log.w("DanhSachTinNhanBacSi", "Message validation failed - Expected maBacSi: " + 
+                expectedMaBacSi + ", Got: " + tinNhan.getMaBacSi());
+            return false;
+        }
+        
+//        // Kiểm tra có mã bệnh nhân
+//        if (TextUtils.isEmpty(tinNhan.getMaBenhNhan())) {
+//            android.util.Log.w("DanhSachTinNhanBacSi", "Message missing maBenhNhan");
+//            return false;
+//        }
+//
+//        // Kiểm tra nội dung tin nhắn không rỗng
+//        if (TextUtils.isEmpty(tinNhan.getNoiDung())) {
+//            android.util.Log.w("DanhSachTinNhanBacSi", "Empty message content filtered out");
+//            return false;
+//        }
+        
+        return true;
+    }
+    
+    /**
+     * Lấy tên bệnh nhân từ collection BenhNhan và cập nhật vào danh sách cuộc trò chuyện
+     */
+    private void loadTenBenhNhanForConversations(List<CuocTroChuyenBacSi> danhSachCuocTroChuyenBacSi) {
+        if (danhSachCuocTroChuyenBacSi.isEmpty()) {
+            adapter.setData(danhSachCuocTroChuyenBacSi);
+            showEmpty(true);
+            return;
+        }
+        
+        // Lấy danh sách mã bệnh nhân duy nhất
+        List<String> danhSachMaBenhNhan = new ArrayList<>();
+        for (CuocTroChuyenBacSi cuocTroChuyenBacSi : danhSachCuocTroChuyenBacSi) {
+            if (!danhSachMaBenhNhan.contains(cuocTroChuyenBacSi.getMaBenhNhan())) {
+                danhSachMaBenhNhan.add(cuocTroChuyenBacSi.getMaBenhNhan());
+            }
+        }
+        
+        // Lấy thông tin bệnh nhân từ Firestore
+        FirebaseFirestore.getInstance()
+            .collection("BenhNhan")
+            .whereIn("maBenhNhan", danhSachMaBenhNhan)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                Map<String, String> mapTenBenhNhan = new HashMap<>();
+                
+                // Tạo map mã bệnh nhân -> tên bệnh nhân
+                for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
+                    String maBenhNhan = doc.getString("maBenhNhan");
+                    String tenBenhNhan = doc.getString("hoTen");
+                    if (maBenhNhan != null && tenBenhNhan != null) {
+                        mapTenBenhNhan.put(maBenhNhan, tenBenhNhan);
+                    }
+                }
+                
+                // Cập nhật tên bệnh nhân vào danh sách cuộc trò chuyện
+                for (CuocTroChuyenBacSi cuocTroChuyenBacSi : danhSachCuocTroChuyenBacSi) {
+                    String tenBenhNhan = mapTenBenhNhan.get(cuocTroChuyenBacSi.getMaBenhNhan());
+                    if (tenBenhNhan != null) {
+                        cuocTroChuyenBacSi.setTenBenhNhan(tenBenhNhan);
+                    } else {
+                        // Nếu không tìm thấy tên, hiển thị mã bệnh nhân
+                        cuocTroChuyenBacSi.setTenBenhNhan("Bệnh nhân " + cuocTroChuyenBacSi.getMaBenhNhan());
+                    }
+                }
+                
+                // Sắp xếp lại theo thời gian
+                danhSachCuocTroChuyenBacSi.sort((c1, c2) -> {
+                    if (c1.getThoiGianCuoi() == null) return 1;
+                    if (c2.getThoiGianCuoi() == null) return -1;
+                    return c2.getThoiGianCuoi().compareTo(c1.getThoiGianCuoi());
+                });
+                
+                // Cập nhật adapter
+                adapter.setData(danhSachCuocTroChuyenBacSi);
+                showEmpty(danhSachCuocTroChuyenBacSi.isEmpty());
+                
+                android.util.Log.d("DanhSachTinNhanBacSi", "Loaded " + danhSachCuocTroChuyenBacSi.size() + " conversations for doctor: " + maBacSi);
+            })
+            .addOnFailureListener(e -> {
+                android.util.Log.e("DanhSachTinNhanBacSi", "Lỗi tải tên bệnh nhân: " + e.getMessage());
+                
+                // Nếu lỗi, vẫn hiển thị danh sách với tên mặc định
+                for (CuocTroChuyenBacSi cuocTroChuyenBacSi : danhSachCuocTroChuyenBacSi) {
+                    cuocTroChuyenBacSi.setTenBenhNhan("Bệnh nhân " + cuocTroChuyenBacSi.getMaBenhNhan());
+                }
+                
+                adapter.setData(danhSachCuocTroChuyenBacSi);
+                showEmpty(danhSachCuocTroChuyenBacSi.isEmpty());
+            });
     }
     
     @Override

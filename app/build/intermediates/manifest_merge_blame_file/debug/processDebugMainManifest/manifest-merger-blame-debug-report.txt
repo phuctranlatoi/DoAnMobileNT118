@@ -5,7 +5,7 @@
 5    android:versionName="1.0" >
 6
 7    <uses-sdk
-8        android:minSdkVersion="30"
+8        android:minSdkVersion="27"
 9        android:targetSdkVersion="36" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
@@ -662,11 +662,11 @@
 332                android:value="com.google.firebase.components.ComponentRegistrar" />
 332-->[com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:35:17-82
 333            <meta-data
-333-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:31:13-33:85
+333-->[com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:31:13-33:85
 334                android:name="com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar"
-334-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:32:17-105
+334-->[com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:32:17-105
 335                android:value="com.google.firebase.components.ComponentRegistrar" />
-335-->[com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:33:17-82
+335-->[com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:33:17-82
 336            <meta-data
 336-->[com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:33:13-35:85
 337                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"

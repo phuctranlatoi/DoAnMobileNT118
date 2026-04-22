@@ -114,28 +114,41 @@ public class ChatActivity extends AppCompatActivity {
         String welcomeText;
         
         if ("doctor_assistant".equals(aiMode)) {
-            // Welcome message cho bác sĩ
-            welcomeText = "Xin chào Bác sĩ! 👨‍⚕️\n\n" +
-                "Tôi là AI Assistant của bạn. Tôi có thể giúp:\n\n" +
-                "📊 Thống kê bệnh nhân\n" +
-                "📅 Quản lý lịch làm việc\n" +
-                "🔍 Tra cứu thông tin bệnh nhân\n" +
-                "💊 Tra cứu thuốc và tương tác\n" +
-                "📋 Tạo báo cáo nhanh\n" +
-                "🏥 Xem lịch sử khám bệnh\n" +
-                "💡 Gợi ý chẩn đoán\n\n" +
-                "Bác sĩ cần hỗ trợ gì?";
+            // Enhanced welcome message for doctors
+            welcomeText = "👨‍⚕️ **Xin chào Bác sĩ!**\n\n" +
+                "🤖 Tôi là **AI Assistant** nâng cao của bạn. Tôi đã được cải tiến để hỗ trợ tốt hơn:\n\n" +
+                "🩺 **Hỗ trợ chuyên môn:**\n" +
+                "• Phân tích triệu chứng và gợi ý chẩn đoán\n" +
+                "• Tư vấn phác đồ điều trị cập nhật\n" +
+                "• Kiểm tra tương tác thuốc thông minh\n" +
+                "• Tra cứu thông tin y khoa chuyên sâu\n\n" +
+                "📊 **Quản lý thông minh:**\n" +
+                "• Thống kê bệnh nhân và hiệu suất\n" +
+                "• Quản lý lịch làm việc tối ưu\n" +
+                "• Theo dõi và phân tích xu hướng\n\n" +
+                "💡 **Tính năng mới:**\n" +
+                "• Ghi nhớ ngữ cảnh cuộc trò chuyện\n" +
+                "• Hiểu tiếng Việt tự nhiên tốt hơn\n" +
+                "• Phản hồi thông minh và cá nhân hóa\n\n" +
+                "Hãy hỏi tôi bất cứ điều gì! 🚀";
         } else {
-            // Welcome message cho bệnh nhân
-            welcomeText = "Xin chào! 👋\n\n" +
-                "Tôi là trợ lý ảo của phòng khám. Tôi có thể giúp bạn:\n\n" +
-                "📅 Đặt lịch khám\n" +
-                "💊 Xem đơn thuốc\n" +
-                "🏥 Xem bệnh án\n" +
-                "👨‍⚕️ Tìm bác sĩ\n" +
-                "💰 Xem hóa đơn\n" +
-                "❓ Tư vấn sức khỏe\n\n" +
-                "Bạn cần giúp gì?";
+            // Enhanced welcome message for patients
+            welcomeText = "👋 **Xin chào!**\n\n" +
+                "🤖 Tôi là **MediBot** - trợ lý ảo thông minh của phòng khám, được nâng cấp với nhiều tính năng mới:\n\n" +
+                "🏥 **Dịch vụ y tế:**\n" +
+                "• 📅 Đặt lịch khám nhanh chóng\n" +
+                "• 👨‍⚕️ Tìm bác sĩ phù hợp\n" +
+                "• 💊 Quản lý đơn thuốc thông minh\n" +
+                "• 📋 Theo dõi sức khỏe cá nhân\n\n" +
+                "💡 **Tư vấn sức khỏe:**\n" +
+                "• Giải đáp thắc mắc y tế cơ bản\n" +
+                "• Hướng dẫn chăm sóc sức khỏe\n" +
+                "• Nhắc nhở uống thuốc đúng giờ\n\n" +
+                "🆕 **Cải tiến mới:**\n" +
+                "• Hiểu ngôn ngữ tự nhiên tốt hơn\n" +
+                "• Ghi nhớ cuộc trò chuyện\n" +
+                "• Phản hồi thông minh và thân thiện\n\n" +
+                "Bạn cần hỗ trợ gì hôm nay? 😊";
         }
         
         ChatMessage welcomeMessage = new ChatMessage(welcomeText, ChatMessage.MessageType.BOT);
@@ -143,6 +156,27 @@ public class ChatActivity extends AppCompatActivity {
         messages.add(welcomeMessage);
         adapter.notifyItemInserted(messages.size() - 1);
         rvChat.scrollToPosition(messages.size() - 1);
+        
+        // Show initial quick replies based on user type
+        showInitialQuickReplies();
+    }
+    
+    private void showInitialQuickReplies() {
+        List<String> quickReplies = new ArrayList<>();
+        
+        if ("doctor_assistant".equals(aiMode)) {
+            quickReplies.add("👥 Bệnh nhân hôm nay");
+            quickReplies.add("📅 Lịch làm việc");
+            quickReplies.add("🩺 Hỗ trợ chẩn đoán");
+            quickReplies.add("📊 Xem thống kê");
+        } else {
+            quickReplies.add("📅 Đặt lịch khám");
+            quickReplies.add("👨‍⚕️ Tìm bác sĩ");
+            quickReplies.add("💊 Xem đơn thuốc");
+            quickReplies.add("🏥 Thông tin bệnh viện");
+        }
+        
+        showQuickReplies(quickReplies);
     }
     
     private void sendMessage() {
@@ -161,12 +195,24 @@ public class ChatActivity extends AppCompatActivity {
         // Clear input
         edtMessage.setText("");
         
-        // Process with chatbot
+        // Hide quick replies when user types
+        HorizontalScrollView quickRepliesContainer = findViewById(R.id.quickRepliesContainer);
+        if (quickRepliesContainer != null) {
+            quickRepliesContainer.setVisibility(android.view.View.GONE);
+        }
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Process with enhanced chatbot
         chatbot.processMessage(messageText, new ChatbotEngine.ChatCallback() {
             @Override
             public void onResponse(com.example.doannt118.chatbot.ChatResponse response) {
                 runOnUiThread(() -> {
-                    // Add bot response
+                    // Hide typing indicator
+                    hideTypingIndicator();
+                    
+                    // Add bot response with enhanced formatting
                     ChatMessage botMessage = new ChatMessage(
                         response.getMessage(),
                         ChatMessage.MessageType.BOT
@@ -178,25 +224,84 @@ public class ChatActivity extends AppCompatActivity {
                     
                     // Show quick replies if available
                     showQuickReplies(response.getQuickReplies());
+                    
+                    // Handle special response types
+                    handleSpecialResponseTypes(response);
                 });
             }
             
             @Override
             public void onError(String error) {
                 runOnUiThread(() -> {
-                    Toast.makeText(ChatActivity.this, "Lỗi: " + error, Toast.LENGTH_SHORT).show();
+                    // Hide typing indicator
+                    hideTypingIndicator();
                     
-                    // Add error message
-                    ChatMessage errorMessage = new ChatMessage(
-                        "Xin lỗi, tôi gặp lỗi. Vui lòng thử lại!",
-                        ChatMessage.MessageType.BOT
-                    );
-                    messages.add(errorMessage);
+                    // Show user-friendly error message
+                    String errorMessage = "😅 Xin lỗi, tôi gặp chút trục trặc. Hãy thử lại nhé!\n\n" +
+                                         "💡 Bạn có thể:\n" +
+                                         "• Thử hỏi lại bằng cách khác\n" +
+                                         "• Sử dụng menu chức năng\n" +
+                                         "• Liên hệ hỗ trợ nếu cần";
+                    
+                    ChatMessage errorMsg = new ChatMessage(errorMessage, ChatMessage.MessageType.BOT);
+                    messages.add(errorMsg);
                     adapter.notifyItemInserted(messages.size() - 1);
                     rvChat.scrollToPosition(messages.size() - 1);
+                    
+                    // Show fallback quick replies
+                    List<String> fallbackReplies = new ArrayList<>();
+                    if ("doctor_assistant".equals(aiMode)) {
+                        fallbackReplies.add("👥 Bệnh nhân hôm nay");
+                        fallbackReplies.add("📊 Thống kê");
+                        fallbackReplies.add("🤖 AI Assistant");
+                    } else {
+                        fallbackReplies.add("📅 Đặt lịch khám");
+                        fallbackReplies.add("👨‍⚕️ Tìm bác sĩ");
+                        fallbackReplies.add("📞 Liên hệ hỗ trợ");
+                    }
+                    showQuickReplies(fallbackReplies);
                 });
             }
         });
+    }
+    
+    private void showTypingIndicator() {
+        // Add typing indicator message
+        ChatMessage typingMessage = new ChatMessage("💭 Đang suy nghĩ...", ChatMessage.MessageType.BOT);
+        typingMessage.setIsTyping(true);
+        messages.add(typingMessage);
+        adapter.notifyItemInserted(messages.size() - 1);
+        rvChat.scrollToPosition(messages.size() - 1);
+    }
+    
+    private void hideTypingIndicator() {
+        // Remove typing indicator if it exists
+        if (!messages.isEmpty()) {
+            ChatMessage lastMessage = messages.get(messages.size() - 1);
+            if (lastMessage.getMessageType() == ChatMessage.MessageType.BOT && 
+                lastMessage.isTyping()) {
+                messages.remove(messages.size() - 1);
+                adapter.notifyItemRemoved(messages.size());
+            }
+        }
+    }
+    
+    private void handleSpecialResponseTypes(com.example.doannt118.chatbot.ChatResponse response) {
+        // Handle different response types for enhanced user experience
+        switch (response.getType()) {
+            case DOCTOR_CARDS:
+                // Could implement doctor cards view here
+                break;
+            case ACTION_BUTTONS:
+                // Could implement action buttons here
+                break;
+            case CONFIRMATION:
+                // Could add confirmation dialog here
+                break;
+            default:
+                // Standard text response - already handled
+                break;
+        }
     }
     
     @Override

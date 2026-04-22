@@ -1,0 +1,102 @@
+// Cách thêm dữ liệu thủ công vào Firestore
+// Vào Firebase Console → Firestore Database → Data tab
+// Chạy từng lệnh này trong Console (F12)
+
+// Lệnh 1: Thêm DP005
+firebase.firestore().collection('DuocPham').doc('DP005').set({
+  maDuocPham: "DP005",
+  tenDuocPham: "Ibuprofen 400mg",
+  donViTinh: "Viên",
+  giaBan: 3500
+});
+
+// Lệnh 2: Thêm DP006
+firebase.firestore().collection('DuocPham').doc('DP006').set({
+  maDuocPham: "DP006",
+  tenDuocPham: "Paracetamol 500mg",
+  donViTinh: "Viên",
+  giaBan: 2000
+});
+
+// Lệnh 3: Thêm DP007
+firebase.firestore().collection('DuocPham').doc('DP007').set({
+  maDuocPham: "DP007",
+  tenDuocPham: "Amoxicillin 250mg",
+  donViTinh: "Viên",
+  giaBan: 4500
+});
+
+// Lệnh 4: Thêm DP008
+firebase.firestore().collection('DuocPham').doc('DP008').set({
+  maDuocPham: "DP008",
+  tenDuocPham: "Aspirin 100mg",
+  donViTinh: "Viên",
+  giaBan: 1500
+});
+
+// Lệnh 5: Thêm DP009
+firebase.firestore().collection('DuocPham').doc('DP009').set({
+  maDuocPham: "DP009",
+  tenDuocPham: "Cetirizine 10mg",
+  donViTinh: "Viên",
+  giaBan: 3000
+});
+
+// Lệnh 6: Thêm DP010
+firebase.firestore().collection('DuocPham').doc('DP010').set({
+  maDuocPham: "DP010",
+  tenDuocPham: "Omeprazole 20mg",
+  donViTinh: "Viên",
+  giaBan: 5500
+});
+
+// Lệnh 7: Thêm DP011
+firebase.firestore().collection('DuocPham').doc('DP011').set({
+  maDuocPham: "DP011",
+  tenDuocPham: "Metformin 500mg",
+  donViTinh: "Viên",
+  giaBan: 4000
+});
+
+// Lệnh 8: Thêm DP012
+firebase.firestore().collection('DuocPham').doc('DP012').set({
+  maDuocPham: "DP012",
+  tenDuocPham: "Simvastatin 20mg",
+  donViTinh: "Viên",
+  giaBan: 6000
+});
+
+// Lệnh 9: Thêm DP013
+firebase.firestore().collection('DuocPham').doc('DP013').set({
+  maDuocPham: "DP013",
+  tenDuocPham: "Amlodipine 5mg",
+  donViTinh: "Viên",
+  giaBan: 3500
+});
+
+// Lệnh 10: Thêm DP014
+firebase.firestore().collection('DuocPham').doc('DP014').set({
+  maDuocPham: "DP014",
+  tenDuocPham: "Losartan 50mg",
+  donViTinh: "Viên",
+  giaBan: 7000
+});
+
+// Hoặc thêm tất cả bằng 1 lệnh:
+const duocPhamData = [
+  {maDuocPham: "DP005", tenDuocPham: "Ibuprofen 400mg", donViTinh: "Viên", giaBan: 3500},
+  {maDuocPham: "DP006", tenDuocPham: "Paracetamol 500mg", donViTinh: "Viên", giaBan: 2000},
+  {maDuocPham: "DP007", tenDuocPham: "Amoxicillin 250mg", donViTinh: "Viên", giaBan: 4500},
+  {maDuocPham: "DP008", tenDuocPham: "Aspirin 100mg", donViTinh: "Viên", giaBan: 1500},
+  {maDuocPham: "DP009", tenDuocPham: "Cetirizine 10mg", donViTinh: "Viên", giaBan: 3000},
+  {maDuocPham: "DP010", tenDuocPham: "Omeprazole 20mg", donViTinh: "Viên", giaBan: 5500},
+  {maDuocPham: "DP011", tenDuocPham: "Metformin 500mg", donViTinh: "Viên", giaBan: 4000},
+  {maDuocPham: "DP012", tenDuocPham: "Simvastatin 20mg", donViTinh: "Viên", giaBan: 6000},
+  {maDuocPham: "DP013", tenDuocPham: "Amlodipine 5mg", donViTinh: "Viên", giaBan: 3500},
+  {maDuocPham: "DP014", tenDuocPham: "Losartan 50mg", donViTinh: "Viên", giaBan: 7000}
+];
+
+duocPhamData.forEach(async (duocPham) => {
+  await firebase.firestore().collection('DuocPham').doc(duocPham.maDuocPham).set(duocPham);
+  console.log('Đã thêm:', duocPham.maDuocPham);
+});

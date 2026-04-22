@@ -58,16 +58,34 @@
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvTinNhanCuoi"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Tin nhắn cuối cùng..."
-                android:textSize="14sp"
-                android:textColor="#6B7280"
-                android:layout_marginTop="4dp"
-                android:maxLines="2"
-                android:ellipsize="end" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/tvTinNhanCuoi"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tin nhắn cuối cùng..."
+                    android:textSize="14sp"
+                    android:textColor="#6B7280"
+                    android:maxLines="2"
+                    android:ellipsize="end" />
+
+                <!-- Icon seen cho tin nhắn cuối nếu là tin nhắn gửi đi -->
+                <ImageView
+                    android:id="@+id/ivSeenStatusCuoi"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/ic_check"
+                    android:tint="#9CA3AF"
+                    android:layout_marginStart="4dp"
+                    android:visibility="gone" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

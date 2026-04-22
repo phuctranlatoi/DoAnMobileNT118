@@ -1,0 +1,24 @@
+{
+  "name": "doanmobilent118",
+  "version": "1.0.0",
+  "description": "",
+  "main": "insert_duoc_pham_data.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phuctranlatoi/DoAnMobileNT118.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/phuctranlatoi/DoAnMobileNT118/issues"
+  },
+  "homepage": "https://github.com/phuctranlatoi/DoAnMobileNT118#readme",
+  "dependencies": {
+    "firebase-admin": "^13.6.0"
+  }
+}

@@ -196,24 +196,30 @@ public class ChatbotEngine {
             case XEM_BENH_AN:
                 if ("benhnhan".equals(currentUserType)) {
                     handleViewMedicalRecord(callback);
+                } else if ("bacsi".equals(currentUserType)) {
+                    handleViewMedicalRecordForDoctor(callback);
                 } else {
-                    handleUnauthorizedAction("Chỉ bệnh nhân mới có thể xem bệnh án cá nhân", callback);
+                    handleUnauthorizedAction("Chỉ bệnh nhân và bác sĩ mới có thể xem bệnh án", callback);
                 }
                 break;
 
             case XEM_DON_THUOC:
                 if ("benhnhan".equals(currentUserType)) {
                     handleViewPrescriptions(callback);
+                } else if ("bacsi".equals(currentUserType)) {
+                    handleViewPrescriptionsForDoctor(callback);
                 } else {
-                    handleUnauthorizedAction("Chỉ bệnh nhân mới có thể xem đơn thuốc cá nhân", callback);
+                    handleUnauthorizedAction("Chỉ bệnh nhân và bác sĩ mới có thể xem đơn thuốc", callback);
                 }
                 break;
 
             case XEM_HOA_DON:
                 if ("benhnhan".equals(currentUserType)) {
                     handleViewInvoices(callback);
+                } else if ("bacsi".equals(currentUserType)) {
+                    handleViewInvoicesForDoctor(callback);
                 } else {
-                    handleUnauthorizedAction("Chỉ bệnh nhân mới có thể xem hóa đơn cá nhân", callback);
+                    handleUnauthorizedAction("Chỉ bệnh nhân và bác sĩ mới có thể xem hóa đơn", callback);
                 }
                 break;
 
@@ -228,8 +234,10 @@ public class ChatbotEngine {
             case XEM_THONG_BAO:
                 if ("benhnhan".equals(currentUserType)) {
                     handleViewNotifications(callback);
+                } else if ("bacsi".equals(currentUserType)) {
+                    handleViewNotificationsForDoctor(callback);
                 } else {
-                    handleUnauthorizedAction("Chỉ bệnh nhân mới có thể xem thông báo cá nhân", callback);
+                    handleUnauthorizedAction("Chỉ bệnh nhân và bác sĩ mới có thể xem thông báo", callback);
                 }
                 break;
 
@@ -715,6 +723,138 @@ public class ChatbotEngine {
             });
     }
 
+    /**
+     * XỬ LÝ XEM BỆNH ÁN CHO BÁC SĨ - Xem bệnh án của bệnh nhân mà bác sĩ phụ trách
+     */
+    private void handleViewMedicalRecordForDoctor(ChatCallback callback) {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            ChatResponse response = new ChatResponse(
+                "❌ Không tìm thấy thông tin bác sĩ. Vui lòng đăng nhập lại.",
+                ChatResponse.ResponseType.TEXT
+            );
+            callback.onResponse(response);
+            return;
+        }
+
+        // Lấy danh sách bệnh án do bác sĩ này tạo từ Firestore
+        repo.getByField("BenhAn", "maBacSi", maBacSi,
+            querySnapshot -> {
+                List<com.example.doannt118.model.BenhAn> benhAnList = new ArrayList<>();
+
+                for (var doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.BenhAn benhAn =
+                        doc.toObject(com.example.doannt118.model.BenhAn.class);
+                    if (benhAn != null) {
+                        benhAnList.add(benhAn);
+                    }
+                }
+
+                if (benhAnList.isEmpty()) {
+                    ChatResponse response = new ChatResponse(
+                        "📋 BỆNH ÁN BỆNH NHÂN\n\n" +
+                        "📋 Bạn chưa tạo bệnh án nào.\n\n" +
+                        "Bạn có thể:",
+                        ChatResponse.ResponseType.QUICK_REPLY
+                    );
+
+                    List<String> quickReplies = new ArrayList<>();
+                    quickReplies.add("👥 Bệnh nhân hôm nay");
+                    quickReplies.add("✅ Xác nhận lịch khám");
+                    quickReplies.add("💊 Quản lý đơn thuốc");
+                    quickReplies.add("📊 Thống kê");
+
+                    response.setQuickReplies(quickReplies);
+                    callback.onResponse(response);
+                    return;
+                }
+
+                // Sắp xếp theo ngày khám (mới nhất trước)
+                benhAnList.sort((a, b) -> {
+                    com.google.firebase.Timestamp tsA = a.getNgayKhamAsTimestamp();
+                    com.google.firebase.Timestamp tsB = b.getNgayKhamAsTimestamp();
+                    if (tsA == null) return 1;
+                    if (tsB == null) return -1;
+                    return tsB.compareTo(tsA);
+                });
+
+                StringBuilder responseText = new StringBuilder();
+                responseText.append("📋 BỆNH ÁN BỆNH NHÂN\n\n");
+                responseText.append("📊 Tổng cộng: ").append(benhAnList.size()).append(" bệnh án\n\n");
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+                int count = 0;
+                for (com.example.doannt118.model.BenhAn benhAn : benhAnList) {
+                    if (count >= 3) break; // Chỉ hiển thị 3 bệnh án gần nhất
+
+                    responseText.append("🏥 BỆNH ÁN ").append(count + 1).append("\n");
+                    responseText.append("🆔 Mã BA: ").append(benhAn.getMaBenhAn().substring(0, 8).toUpperCase()).append("\n");
+                    responseText.append("🆔 Mã BN: ").append(benhAn.getMaBenhNhan().substring(0, 8).toUpperCase()).append("\n");
+
+                    com.google.firebase.Timestamp ngayKham = benhAn.getNgayKhamAsTimestamp();
+                    if (ngayKham != null) {
+                        responseText.append("📅 Ngày khám: ").append(dateFormat.format(ngayKham.toDate())).append("\n");
+                    }
+
+                    if (benhAn.getChanDoan() != null && !benhAn.getChanDoan().isEmpty()) {
+                        String chanDoan = benhAn.getChanDoan();
+                        if (chanDoan.length() > 50) {
+                            chanDoan = chanDoan.substring(0, 50) + "...";
+                        }
+                        responseText.append("🩺 Chẩn đoán: ").append(chanDoan).append("\n");
+                    }
+
+                    if (benhAn.getLoaiKham() != null && !benhAn.getLoaiKham().isEmpty()) {
+                        responseText.append("🔍 Loại khám: ").append(benhAn.getLoaiKham()).append("\n");
+                    }
+
+                    if (benhAn.getPhiKham() > 0) {
+                        responseText.append("💰 Phí khám: ").append(String.format("%,d", benhAn.getPhiKham())).append(" VNĐ\n");
+                    }
+
+                    responseText.append("\n");
+                    count++;
+                }
+
+                if (benhAnList.size() > 3) {
+                    responseText.append("📋 Và ").append(benhAnList.size() - 3).append(" bệnh án khác...\n\n");
+                }
+
+                responseText.append("💡 *Để xem chi tiết đầy đủ, vui lòng sử dụng ứng dụng chính.*");
+
+                ChatResponse response = new ChatResponse(
+                    responseText.toString(),
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("👥 Bệnh nhân hôm nay");
+                quickReplies.add("✅ Xác nhận lịch khám");
+                quickReplies.add("💊 Quản lý đơn thuốc");
+                quickReplies.add("📊 Thống kê");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+
+            }, e -> {
+                Log.e("ChatbotEngine", "Error loading medical records for doctor: ", e);
+
+                ChatResponse response = new ChatResponse(
+                    "❌ Lỗi tải bệnh án\n\n" +
+                    "Không thể tải danh sách bệnh án. Vui lòng thử lại sau.",
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("🔄 Thử lại");
+                quickReplies.add("👥 Bệnh nhân hôm nay");
+                quickReplies.add("📞 Liên hệ hỗ trợ");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+            });
+    }
+
     private void handleViewPrescriptions(ChatCallback callback) {
         if (maBenhNhan == null || maBenhNhan.isEmpty()) {
             ChatResponse response = new ChatResponse(
@@ -832,6 +972,134 @@ public class ChatbotEngine {
                 List<String> quickReplies = new ArrayList<>();
                 quickReplies.add("🔄 Thử lại");
                 quickReplies.add("📅 Đặt lịch khám");
+                quickReplies.add("📞 Liên hệ hỗ trợ");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+            });
+    }
+
+    /**
+     * XỬ LÝ XEM ĐƠN THUỐC CHO BÁC SĨ - Xem đơn thuốc mà bác sĩ đã kê
+     */
+    private void handleViewPrescriptionsForDoctor(ChatCallback callback) {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            ChatResponse response = new ChatResponse(
+                "❌ Không tìm thấy thông tin bác sĩ. Vui lòng đăng nhập lại.",
+                ChatResponse.ResponseType.TEXT
+            );
+            callback.onResponse(response);
+            return;
+        }
+
+        // Lấy danh sách đơn thuốc do bác sĩ này kê từ Firestore
+        repo.getByField("DonThuoc", "maBacSi", maBacSi,
+            querySnapshot -> {
+                List<com.example.doannt118.model.DonThuoc> donThuocList = new ArrayList<>();
+
+                for (var doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.DonThuoc donThuoc =
+                        doc.toObject(com.example.doannt118.model.DonThuoc.class);
+                    if (donThuoc != null) {
+                        donThuocList.add(donThuoc);
+                    }
+                }
+
+                if (donThuocList.isEmpty()) {
+                    ChatResponse response = new ChatResponse(
+                        "💊 ĐƠN THUỐC ĐÃ KÊ\n\n" +
+                        "📋 Bạn chưa kê đơn thuốc nào.\n\n" +
+                        "Bạn có thể:",
+                        ChatResponse.ResponseType.QUICK_REPLY
+                    );
+
+                    List<String> quickReplies = new ArrayList<>();
+                    quickReplies.add("👥 Bệnh nhân hôm nay");
+                    quickReplies.add("📋 Quản lý bệnh án");
+                    quickReplies.add("✅ Xác nhận lịch khám");
+                    quickReplies.add("📊 Thống kê");
+
+                    response.setQuickReplies(quickReplies);
+                    callback.onResponse(response);
+                    return;
+                }
+
+                // Sắp xếp theo ngày lập (mới nhất trước)
+                donThuocList.sort((a, b) -> {
+                    if (a.getNgayLap() == null) return 1;
+                    if (b.getNgayLap() == null) return -1;
+                    return b.getNgayLap().compareTo(a.getNgayLap());
+                });
+
+                StringBuilder responseText = new StringBuilder();
+                responseText.append("💊 ĐƠN THUỐC ĐÃ KÊ\n\n");
+                responseText.append("📊 Tổng cộng: ").append(donThuocList.size()).append(" đơn thuốc\n\n");
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+                int count = 0;
+                for (com.example.doannt118.model.DonThuoc donThuoc : donThuocList) {
+                    if (count >= 3) break; // Chỉ hiển thị 3 đơn gần nhất
+
+                    String statusIcon = getPrescriptionStatusIcon(donThuoc.getTrangThai());
+                    String statusText = getPrescriptionStatusText(donThuoc.getTrangThai());
+
+                    responseText.append(statusIcon).append(" ").append(statusText).append("\n");
+                    responseText.append("🆔 Mã đơn: ").append(donThuoc.getMaDonThuoc().substring(0, 8).toUpperCase()).append("\n");
+                    responseText.append("🆔 Mã BN: ").append(donThuoc.getMaBenhNhan().substring(0, 8).toUpperCase()).append("\n");
+
+                    if (donThuoc.getNgayLap() != null) {
+                        responseText.append("📅 Ngày kê: ").append(dateFormat.format(donThuoc.getNgayLap())).append("\n");
+                    }
+
+                    if (donThuoc.getSoNgayUong() > 0) {
+                        responseText.append("⏰ Thời gian: ").append(donThuoc.getSoNgayUong()).append(" ngày\n");
+                    }
+
+                    // Tính ngày hết thuốc
+                    if (donThuoc.getNgayBatDau() != null && donThuoc.getSoNgayUong() > 0) {
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(donThuoc.getNgayBatDau());
+                        cal.add(Calendar.DAY_OF_MONTH, donThuoc.getSoNgayUong());
+                        responseText.append("📅 Hết thuốc: ").append(dateFormat.format(cal.getTime())).append("\n");
+                    }
+
+                    responseText.append("\n");
+                    count++;
+                }
+
+                if (donThuocList.size() > 3) {
+                    responseText.append("📋 Và ").append(donThuocList.size() - 3).append(" đơn thuốc khác...\n\n");
+                }
+
+                responseText.append("💡 *Để xem chi tiết từng loại thuốc, vui lòng sử dụng ứng dụng chính.*");
+
+                ChatResponse response = new ChatResponse(
+                    responseText.toString(),
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("👥 Bệnh nhân hôm nay");
+                quickReplies.add("📋 Quản lý bệnh án");
+                quickReplies.add("✅ Xác nhận lịch khám");
+                quickReplies.add("📊 Thống kê");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+
+            }, e -> {
+                Log.e("ChatbotEngine", "Error loading prescriptions for doctor: ", e);
+
+                ChatResponse response = new ChatResponse(
+                    "❌ Lỗi tải đơn thuốc\n\n" +
+                    "Không thể tải danh sách đơn thuốc. Vui lòng thử lại sau.",
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("🔄 Thử lại");
+                quickReplies.add("👥 Bệnh nhân hôm nay");
                 quickReplies.add("📞 Liên hệ hỗ trợ");
 
                 response.setQuickReplies(quickReplies);
@@ -1021,6 +1289,163 @@ public class ChatbotEngine {
                 List<String> quickReplies = new ArrayList<>();
                 quickReplies.add("🔄 Thử lại");
                 quickReplies.add("📅 Đặt lịch khám");
+                quickReplies.add("📞 Liên hệ hỗ trợ");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+            });
+    }
+
+    /**
+     * XỬ LÝ XEM HÓA ĐƠN CHO BÁC SĨ - Xem hóa đơn liên quan đến bác sĩ
+     */
+    private void handleViewInvoicesForDoctor(ChatCallback callback) {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            ChatResponse response = new ChatResponse(
+                "❌ Không tìm thấy thông tin bác sĩ. Vui lòng đăng nhập lại.",
+                ChatResponse.ResponseType.TEXT
+            );
+            callback.onResponse(response);
+            return;
+        }
+
+        // Lấy danh sách hóa đơn liên quan đến bác sĩ từ Firestore
+        repo.getByField("HoaDon", "maBacSi", maBacSi,
+            querySnapshot -> {
+                List<com.example.doannt118.model.HoaDon> hoaDonList = new ArrayList<>();
+
+                for (var doc : querySnapshot.getDocuments()) {
+                    com.example.doannt118.model.HoaDon hoaDon =
+                        doc.toObject(com.example.doannt118.model.HoaDon.class);
+                    if (hoaDon != null) {
+                        hoaDonList.add(hoaDon);
+                    }
+                }
+
+                if (hoaDonList.isEmpty()) {
+                    ChatResponse response = new ChatResponse(
+                        "💰 HÓA ĐƠN LIÊN QUAN\n\n" +
+                        "📋 Chưa có hóa đơn nào liên quan đến bạn.\n\n" +
+                        "Bạn có thể:",
+                        ChatResponse.ResponseType.QUICK_REPLY
+                    );
+
+                    List<String> quickReplies = new ArrayList<>();
+                    quickReplies.add("👥 Bệnh nhân hôm nay");
+                    quickReplies.add("📋 Quản lý bệnh án");
+                    quickReplies.add("💊 Quản lý đơn thuốc");
+                    quickReplies.add("📊 Thống kê");
+
+                    response.setQuickReplies(quickReplies);
+                    callback.onResponse(response);
+                    return;
+                }
+
+                // Sắp xếp theo ngày lập (mới nhất trước)
+                hoaDonList.sort((a, b) -> {
+                    if (a.getNgayLap() == null) return 1;
+                    if (b.getNgayLap() == null) return -1;
+                    return b.getNgayLap().compareTo(a.getNgayLap());
+                });
+
+                StringBuilder responseText = new StringBuilder();
+                responseText.append("💰 HÓA ĐƠN LIÊN QUAN\n\n");
+                responseText.append("📊 Tổng cộng: ").append(hoaDonList.size()).append(" hóa đơn\n\n");
+
+                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+
+                // Tính tổng tiền và thống kê
+                long tongTienTatCa = 0;
+                int daThanhtoan = 0;
+                int chuaThanhToan = 0;
+
+                for (com.example.doannt118.model.HoaDon hoaDon : hoaDonList) {
+                    tongTienTatCa += hoaDon.getTongTienLong();
+                    if ("DA_THANH_TOAN".equals(hoaDon.getTrangThai())) {
+                        daThanhtoan++;
+                    } else {
+                        chuaThanhToan++;
+                    }
+                }
+
+                responseText.append("💵 Tổng doanh thu: ").append(String.format("%,d", tongTienTatCa)).append(" VNĐ\n");
+                responseText.append("✅ Đã thanh toán: ").append(daThanhtoan).append(" hóa đơn\n");
+                responseText.append("⏳ Chưa thanh toán: ").append(chuaThanhToan).append(" hóa đơn\n\n");
+
+                // Hiển thị chi tiết một số hóa đơn gần nhất
+                responseText.append("📋 HÓA ĐƠN GẦN NHẤT:\n\n");
+
+                int count = 0;
+                for (com.example.doannt118.model.HoaDon hoaDon : hoaDonList) {
+                    if (count >= 3) break; // Chỉ hiển thị 3 hóa đơn gần nhất
+
+                    String statusIcon = getInvoiceStatusIcon(hoaDon.getTrangThai());
+                    String statusText = getInvoiceStatusText(hoaDon.getTrangThai());
+
+                    responseText.append(statusIcon).append(" ").append(statusText).append("\n");
+                    responseText.append("🆔 Mã HĐ: ").append(hoaDon.getMaHoaDon().substring(0, 8).toUpperCase()).append("\n");
+                    responseText.append("🆔 Mã BN: ").append(hoaDon.getMaBenhNhan().substring(0, 8).toUpperCase()).append("\n");
+
+                    if (hoaDon.getNgayLap() != null) {
+                        responseText.append("📅 Ngày lập: ").append(dateFormat.format(hoaDon.getNgayLap())).append("\n");
+                    }
+
+                    // Chi tiết chi phí
+                    if (hoaDon.getPhiKham() > 0) {
+                        responseText.append("🩺 Phí khám: ").append(String.format("%,d", hoaDon.getPhiKham())).append(" VNĐ\n");
+                    }
+                    if (hoaDon.getPhiThuoc() > 0) {
+                        responseText.append("💊 Phí thuốc: ").append(String.format("%,d", hoaDon.getPhiThuoc())).append(" VNĐ\n");
+                    }
+                    if (hoaDon.getPhiDichVu() > 0) {
+                        responseText.append("🔬 Phí dịch vụ: ").append(String.format("%,d", hoaDon.getPhiDichVu())).append(" VNĐ\n");
+                    }
+
+                    long tongTien = hoaDon.getTongTienLong();
+                    if (tongTien > 0) {
+                        responseText.append("💰 Tổng tiền: ").append(String.format("%,d", tongTien)).append(" VNĐ\n");
+                    }
+
+                    if (hoaDon.getNgayThanhToan() != null) {
+                        responseText.append("✅ Đã thanh toán: ").append(dateFormat.format(hoaDon.getNgayThanhToan())).append("\n");
+                    }
+
+                    responseText.append("\n");
+                    count++;
+                }
+
+                if (hoaDonList.size() > 3) {
+                    responseText.append("📋 Và ").append(hoaDonList.size() - 3).append(" hóa đơn khác...\n\n");
+                }
+
+                responseText.append("💡 *Để xem chi tiết đầy đủ, vui lòng sử dụng ứng dụng chính.*");
+
+                ChatResponse response = new ChatResponse(
+                    responseText.toString(),
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("👥 Bệnh nhân hôm nay");
+                quickReplies.add("📋 Quản lý bệnh án");
+                quickReplies.add("💊 Quản lý đơn thuốc");
+                quickReplies.add("📊 Thống kê");
+
+                response.setQuickReplies(quickReplies);
+                callback.onResponse(response);
+
+            }, e -> {
+                Log.e("ChatbotEngine", "Error loading invoices for doctor: ", e);
+
+                ChatResponse response = new ChatResponse(
+                    "❌ Lỗi tải hóa đơn\n\n" +
+                    "Không thể tải danh sách hóa đơn. Vui lòng thử lại sau.",
+                    ChatResponse.ResponseType.QUICK_REPLY
+                );
+
+                List<String> quickReplies = new ArrayList<>();
+                quickReplies.add("🔄 Thử lại");
+                quickReplies.add("👥 Bệnh nhân hôm nay");
                 quickReplies.add("📞 Liên hệ hỗ trợ");
 
                 response.setQuickReplies(quickReplies);
@@ -1270,6 +1695,42 @@ public class ChatbotEngine {
         quickReplies.add("💊 Xem đơn thuốc");
         quickReplies.add("👨‍⚕️ Chat với bác sĩ");
         quickReplies.add("📞 Liên hệ hỗ trợ");
+
+        response.setQuickReplies(quickReplies);
+        callback.onResponse(response);
+    }
+
+    /**
+     * XỬ LÝ XEM THÔNG BÁO CHO BÁC SĨ
+     */
+    private void handleViewNotificationsForDoctor(ChatCallback callback) {
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            ChatResponse response = new ChatResponse(
+                "❌ Không tìm thấy thông tin bác sĩ. Vui lòng đăng nhập lại.",
+                ChatResponse.ResponseType.TEXT
+            );
+            callback.onResponse(response);
+            return;
+        }
+
+        ChatResponse response = new ChatResponse(
+            "🔔 THÔNG BÁO BÁC SĨ\n\n" +
+            "Để xem danh sách thông báo chi tiết, vui lòng sử dụng ứng dụng chính.\n\n" +
+            "📋 Các loại thông báo:\n" +
+            "• 📅 Lịch khám mới cần xác nhận\n" +
+            "• 👥 Bệnh nhân hủy lịch khám\n" +
+            "• 💬 Tin nhắn từ bệnh nhân\n" +
+            "• 📊 Báo cáo thống kê\n" +
+            "• ⚙️ Cập nhật hệ thống\n\n" +
+            "🔔 Bạn sẽ nhận được thông báo push khi có tin mới.",
+            ChatResponse.ResponseType.QUICK_REPLY
+        );
+
+        List<String> quickReplies = new ArrayList<>();
+        quickReplies.add("👥 Bệnh nhân hôm nay");
+        quickReplies.add("✅ Xác nhận lịch khám");
+        quickReplies.add("💬 Tin nhắn bệnh nhân");
+        quickReplies.add("📊 Thống kê");
 
         response.setQuickReplies(quickReplies);
         callback.onResponse(response);
@@ -3591,65 +4052,209 @@ public class ChatbotEngine {
     }
     
     private void handleUnknownIntent(String userMessage, ChatCallback callback) {
-        // Try Gemini for unknown intents
+        // Enhanced unknown intent handling with better AI integration
         if (geminiAssistant != null) {
-            handleWithGemini(userMessage, callback);
+            handleWithEnhancedGemini(userMessage, callback);
         } else {
+            // Improved fallback response
+            String userType = (String) conversationContext.getData("userType");
             ChatResponse response = new ChatResponse(
-                "🤔 Xin lỗi, tôi chưa hiểu câu hỏi của bạn.\n\n" +
-                "Bạn có thể thử hỏi về:",
+                "🤔 Tôi chưa hiểu rõ câu hỏi \"" + userMessage + "\"\n\n" +
+                "💡 Tôi có thể giúp bạn với:",
                 ChatResponse.ResponseType.QUICK_REPLY
             );
             
-            List<String> quickReplies = new ArrayList<>();
-            quickReplies.add("📅 Đặt lịch khám");
-            quickReplies.add("👨‍⚕️ Tìm bác sĩ");
-            quickReplies.add("🏥 Thông tin bệnh viện");
+            List<String> quickReplies = getContextualSuggestions(userMessage, userType);
             response.setQuickReplies(quickReplies);
             
             callback.onResponse(response);
         }
     }
     
-    private void handleWithGemini(String userMessage, ChatCallback callback) {
-        String userContext = buildUserContext();
+    private void handleWithEnhancedGemini(String userMessage, ChatCallback callback) {
+        String userType = (String) conversationContext.getData("userType");
+        String userContext = buildEnhancedUserContext();
         
-        geminiAssistant.ask(userMessage, userContext, new GeminiAssistant.GeminiCallback() {
-            @Override
-            public void onSuccess(String response) {
-                if (isMedicalAdvice(userMessage)) {
-                    response += "\n\n⚠️ Lưu ý: Đây chỉ là tư vấn sơ bộ. " +
-                               "Vui lòng gặp bác sĩ để được chẩn đoán chính xác.";
+        // Add conversation context for better continuity
+        conversationContext.addToHistory(userMessage, true);
+        
+        // Detect if this is a medical question for better handling
+        boolean isMedicalQuestion = geminiAssistant.isMedicalAdvice(userMessage);
+        
+        if (isMedicalQuestion) {
+            // Use specialized medical context
+            String medicalContext = geminiAssistant.buildMedicalContext(userType, userMessage, "");
+            geminiAssistant.ask(userMessage, medicalContext, userType, new GeminiAssistant.GeminiCallback() {
+                @Override
+                public void onSuccess(String response) {
+                    handleGeminiSuccess(response, userMessage, userType, callback);
                 }
                 
-                callback.onResponse(new ChatResponse(response, ChatResponse.ResponseType.TEXT));
-            }
-            
-            @Override
-            public void onError(String error) {
-                handleUnknownIntent(userMessage, callback);
-            }
-        });
+                @Override
+                public void onError(String error) {
+                    handleGeminiError(error, userMessage, userType, callback);
+                }
+            });
+        } else {
+            // Use general context
+            geminiAssistant.ask(userMessage, userContext, userType, new GeminiAssistant.GeminiCallback() {
+                @Override
+                public void onSuccess(String response) {
+                    handleGeminiSuccess(response, userMessage, userType, callback);
+                }
+                
+                @Override
+                public void onError(String error) {
+                    handleGeminiError(error, userMessage, userType, callback);
+                }
+            });
+        }
     }
     
-    private String buildUserContext() {
+    private void handleGeminiSuccess(String response, String userMessage, String userType, ChatCallback callback) {
+        // Enhanced response processing
+        response = processGeminiResponse(response, userMessage, userType);
+        
+        // Add to conversation history
+        conversationContext.addToHistory(response, false);
+        
+        // Create enhanced response with contextual suggestions
+        ChatResponse chatResponse = new ChatResponse(response, ChatResponse.ResponseType.QUICK_REPLY);
+        
+        // Add contextual quick replies
+        List<String> suggestions = getContextualSuggestions(userMessage, userType);
+        if (!suggestions.isEmpty()) {
+            chatResponse.setQuickReplies(suggestions);
+        }
+        
+        callback.onResponse(chatResponse);
+    }
+    
+    private void handleGeminiError(String error, String userMessage, String userType, ChatCallback callback) {
+        // Enhanced error handling with fallback responses
+        String fallbackResponse = generateFallbackResponse(userMessage, userType);
+        
+        ChatResponse response = new ChatResponse(fallbackResponse, ChatResponse.ResponseType.QUICK_REPLY);
+        List<String> suggestions = conversationContext.getContextualSuggestions();
+        if (!suggestions.isEmpty()) {
+            response.setQuickReplies(suggestions);
+        }
+        
+        callback.onResponse(response);
+    }
+    
+    /**
+     * Build enhanced user context for better AI responses
+     */
+    private String buildEnhancedUserContext() {
         StringBuilder context = new StringBuilder();
-        context.append("Thông tin người dùng:\n");
-        if (maBenhNhan != null) {
-            context.append("- Mã BN: ").append(maBenhNhan).append("\n");
+        
+        String userType = (String) conversationContext.getData("userType");
+        context.append("Người dùng: ").append(userType).append("\n");
+        
+        // Add conversation history
+        String conversationSummary = conversationContext.getConversationSummary();
+        if (!conversationSummary.isEmpty()) {
+            context.append("Ngữ cảnh cuộc trò chuyện:\n").append(conversationSummary).append("\n");
         }
-        if (maBacSi != null) {
-            context.append("- Mã BS: ").append(maBacSi).append("\n");
+        
+        // Add current time context
+        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("EEEE, dd/MM/yyyy HH:mm", new java.util.Locale("vi", "VN"));
+        context.append("Thời gian hiện tại: ").append(sdf.format(new java.util.Date())).append("\n");
+        
+        // Add user-specific context
+        if ("benhnhan".equals(userType) && maBenhNhan != null) {
+            context.append("Mã bệnh nhân: ").append(maBenhNhan).append("\n");
+        } else if ("bacsi".equals(userType) && maBacSi != null) {
+            context.append("Mã bác sĩ: ").append(maBacSi).append("\n");
         }
+        
         return context.toString();
     }
     
+    /**
+     * Process Gemini response for better formatting
+     */
+    private String processGeminiResponse(String response, String userMessage, String userType) {
+        if (response == null || response.trim().isEmpty()) {
+            return generateFallbackResponse(userMessage, userType);
+        }
+        
+        // Clean up response
+        response = response.trim();
+        
+        // Add medical disclaimer if needed
+        if (geminiAssistant.isMedicalAdvice(userMessage) && !response.contains("bác sĩ")) {
+            response += "\n\n⚠️ *Lưu ý: Đây chỉ là tư vấn sơ bộ. Vui lòng gặp bác sĩ để được chẩn đoán chính xác.*";
+        }
+        
+        return response;
+    }
+    
+    /**
+     * Generate contextual suggestions based on user message and type
+     */
+    private List<String> getContextualSuggestions(String userMessage, String userType) {
+        List<String> suggestions = new ArrayList<>();
+        
+        if ("bacsi".equals(userType)) {
+            // Doctor suggestions
+            if (userMessage.toLowerCase().contains("bệnh nhân")) {
+                suggestions.add("👥 Xem bệnh nhân hôm nay");
+                suggestions.add("📋 Quản lý bệnh án");
+            } else if (userMessage.toLowerCase().contains("thuốc")) {
+                suggestions.add("💊 Quản lý đơn thuốc");
+                suggestions.add("🔍 Tra cứu thuốc");
+            } else {
+                suggestions.add("👥 Bệnh nhân hôm nay");
+                suggestions.add("📅 Lịch làm việc");
+                suggestions.add("🤖 AI Assistant");
+            }
+        } else {
+            // Patient suggestions
+            if (userMessage.toLowerCase().contains("đau") || userMessage.toLowerCase().contains("bệnh")) {
+                suggestions.add("👨‍⚕️ Tìm bác sĩ");
+                suggestions.add("📅 Đặt lịch khám");
+                suggestions.add("💬 Chat với bác sĩ");
+            } else if (userMessage.toLowerCase().contains("thuốc")) {
+                suggestions.add("💊 Xem đơn thuốc");
+                suggestions.add("⏰ Quản lý uống thuốc");
+            } else {
+                suggestions.add("📅 Đặt lịch khám");
+                suggestions.add("👨‍⚕️ Tìm bác sĩ");
+                suggestions.add("🏥 Thông tin bệnh viện");
+            }
+        }
+        
+        return suggestions;
+    }
+    
+    /**
+     * Generate fallback response when AI fails
+     */
+    private String generateFallbackResponse(String userMessage, String userType) {
+        if (geminiAssistant.isMedicalAdvice(userMessage)) {
+            return "🩺 Đây là câu hỏi y tế quan trọng.\n\n" +
+                   "💡 Tôi khuyên bạn nên:\n" +
+                   "• 👨‍⚕️ Tư vấn trực tiếp với bác sĩ\n" +
+                   "• 📅 Đặt lịch khám để được thăm khám\n" +
+                   "• 🚨 Nếu cấp cứu, gọi 115 ngay\n\n" +
+                   "Sức khỏe của bạn rất quan trọng! 💙";
+        }
+        
+        return "😅 Xin lỗi, tôi gặp chút khó khăn với câu hỏi này.\n\n" +
+               "💡 Bạn có thể:\n" +
+               "• Thử hỏi lại bằng cách khác\n" +
+               "• Sử dụng menu chức năng bên dưới\n" +
+               "• Liên hệ hỗ trợ nếu cần thiết\n\n" +
+               "Tôi luôn sẵn sàng giúp đỡ bạn! 😊";
+    }
+    
+    private String buildUserContext() {
+        return buildEnhancedUserContext();
+    }
+    
     private boolean isMedicalAdvice(String message) {
-        String lower = message.toLowerCase();
-        return lower.contains("bị") || 
-               lower.contains("đau") || 
-               lower.contains("sốt") ||
-               lower.contains("nên làm gì") ||
-               lower.contains("triệu chứng");
+        return geminiAssistant.isMedicalAdvice(message);
     }
 }

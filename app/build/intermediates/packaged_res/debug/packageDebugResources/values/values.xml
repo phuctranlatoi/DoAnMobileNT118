@@ -32,14 +32,14 @@
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">DoAnNT118</string>
     <string name="close_drawer">Close navigation drawer</string>
-    <string name="gcm_defaultSenderId" translatable="false">596644444511</string>
-    <string name="google_api_key" translatable="false">AIzaSyBsBwLO44YtAJ-ZWUF5-o24-TWq2hnwL-Y</string>
-    <string name="google_app_id" translatable="false">1:596644444511:android:b6a6a76e4d79d88644deea</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBsBwLO44YtAJ-ZWUF5-o24-TWq2hnwL-Y</string>
-    <string name="google_storage_bucket" translatable="false">qlykhambenh.firebasestorage.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">85702316080</string>
+    <string name="google_api_key" translatable="false">AIzaSyCVoGRwu1uAkLxIVDlOoiYZ0mFnRR0lJ_c</string>
+    <string name="google_app_id" translatable="false">1:85702316080:android:97a4a8c7380245b2dcddf5</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCVoGRwu1uAkLxIVDlOoiYZ0mFnRR0lJ_c</string>
+    <string name="google_storage_bucket" translatable="false">quanlyphongkham-bdf55.firebasestorage.app</string>
     <string name="medical_record_icon">Biểu tượng hồ sơ bệnh án</string>
     <string name="open_drawer">Open navigation drawer</string>
-    <string name="project_id" translatable="false">qlykhambenh</string>
+    <string name="project_id" translatable="false">quanlyphongkham-bdf55</string>
     <string name="view_details">Xem chi tiết</string>
     <style name="Base.Theme.DoAnNT118" parent="Theme.Material3.DayNight.NoActionBar">
         

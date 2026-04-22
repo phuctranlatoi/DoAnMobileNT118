@@ -4352,6 +4352,8 @@ int id ivDoctorAvatar 0x7f0801a5
 int id ivIcon 0x7f0801a6
 int id ivLoaiThongBao 0x7f0801a7
 int id ivQRCode 0x7f0801a8
+int id ivSeenStatus 0x7f0803c2
+int id ivSeenStatusCuoi 0x7f0803c3
 int id ivUnreadDot 0x7f0801a9
 int id jumpToEnd 0x7f0801aa
 int id jumpToStart 0x7f0801ab

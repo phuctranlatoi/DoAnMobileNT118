@@ -32,6 +32,7 @@ public class ChatMessage {
     private List<String> quickReplies;
     private List<ActionButton> actionButtons;
     private Object cardData; // Dữ liệu cho card (BacSi, LichKham, etc.)
+    private boolean isTyping = false; // Trạng thái typing
     
     public ChatMessage(String text, MessageType type) {
         this.id = String.valueOf(System.currentTimeMillis());
@@ -43,8 +44,13 @@ public class ChatMessage {
     public String getId() { return id; }
     public String getText() { return text; }
     public MessageType getType() { return type; }
+    public MessageType getMessageType() { return type; } // Alias method
     public Date getTimestamp() { return timestamp; }
     public List<String> getQuickReplies() { return quickReplies; }
+    
+    // Typing methods
+    public boolean isTyping() { return isTyping; }
+    public void setIsTyping(boolean isTyping) { this.isTyping = isTyping; }
     
     public void setQuickReplies(List<String> quickReplies) {
         this.quickReplies = quickReplies;

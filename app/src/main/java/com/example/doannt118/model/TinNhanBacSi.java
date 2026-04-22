@@ -6,7 +6,8 @@ public class TinNhanBacSi {
     
     public enum LoaiTinNhan {
         BENH_NHAN,
-        BAC_SI
+        BAC_SI,
+        HE_THONG  // Tin nhắn hệ thống (chào mừng, thông báo)
     }
     
     public enum TrangThaiTinNhan {
@@ -19,6 +20,7 @@ public class TinNhanBacSi {
     private String noiDung;
     private String maBenhNhan;
     private String maBacSi;
+    private String conversationId; // ID duy nhất cho cuộc trò chuyện
     private LoaiTinNhan loaiTinNhan;
     private TrangThaiTinNhan trangThai;
     private Timestamp thoiGianGui;
@@ -33,10 +35,23 @@ public class TinNhanBacSi {
         this.noiDung = noiDung;
         this.maBenhNhan = maBenhNhan;
         this.maBacSi = maBacSi;
+        this.conversationId = generateConversationId(maBenhNhan, maBacSi);
         this.loaiTinNhan = loaiTinNhan;
         this.tenNguoiGui = tenNguoiGui;
         this.trangThai = TrangThaiTinNhan.DA_GUI;
         this.thoiGianGui = Timestamp.now();
+    }
+    
+    /**
+     * Tạo ID duy nhất cho cuộc trò chuyện giữa bệnh nhân và bác sĩ
+     * Format: "conversation_{maBenhNhan}_{maBacSi}"
+     * Đảm bảo thứ tự nhất quán để tránh duplicate
+     */
+    public static String generateConversationId(String maBenhNhan, String maBacSi) {
+        if (maBenhNhan == null || maBacSi == null) {
+            throw new IllegalArgumentException("maBenhNhan và maBacSi không được null");
+        }
+        return "conversation_" + maBenhNhan + "_" + maBacSi;
     }
     
     // Getters và Setters
@@ -51,6 +66,9 @@ public class TinNhanBacSi {
     
     public String getMaBacSi() { return maBacSi; }
     public void setMaBacSi(String maBacSi) { this.maBacSi = maBacSi; }
+    
+    public String getConversationId() { return conversationId; }
+    public void setConversationId(String conversationId) { this.conversationId = conversationId; }
     
     public LoaiTinNhan getLoaiTinNhan() { return loaiTinNhan; }
     public void setLoaiTinNhan(LoaiTinNhan loaiTinNhan) { this.loaiTinNhan = loaiTinNhan; }

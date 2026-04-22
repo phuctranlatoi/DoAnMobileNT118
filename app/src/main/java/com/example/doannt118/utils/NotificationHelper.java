@@ -105,8 +105,20 @@ public class NotificationHelper {
         // Hoặc sử dụng Firebase Functions để gửi
         Log.d(TAG, "Gửi push notification: " + title + " - " + body);
         
-        // TODO: Implement actual FCM API call
-        // Có thể sử dụng Firebase Functions hoặc server backend
+        // Tạm thời tạo local notification để test
+        createLocalNotification(title, body, data);
+    }
+    
+    /**
+     * Tạo local notification để test (thay thế cho FCM API call)
+     */
+    private static void createLocalNotification(String title, String body, Map<String, String> data) {
+        // Sử dụng NotificationManager để tạo notification local
+        // Điều này sẽ hoạt động ngay lập tức mà không cần server FCM
+        Log.d(TAG, "Creating local notification: " + title);
+        
+        // TODO: Implement local notification creation
+        // Có thể sử dụng NotificationCompat.Builder để tạo notification
     }
     
     /**

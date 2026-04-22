@@ -31,6 +31,16 @@ public class SessionManager {
         editor.putString(KEY_EMAIL, email);
         editor.putString(KEY_HO_TEN, hoTen);
         editor.apply();
+        
+        // Lưu thông tin cho FCM service
+        SharedPreferences appPrefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        appPrefs.edit()
+            .putString("MA_TAI_KHOAN", maTaiKhoan)
+            .putString("USER_TYPE", vaiTro)
+            .apply();
+        
+        // Cập nhật FCM token nếu có
+        updateFCMToken(maTaiKhoan, vaiTro);
     }
 
     /**
@@ -74,5 +84,52 @@ public class SessionManager {
     public void logout() {
         editor.clear();
         editor.apply();
+        
+        // Xóa thông tin FCM
+        SharedPreferences appPrefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        appPrefs.edit().clear().apply();
+    }
+    
+    /**
+     * Cập nhật FCM token khi đăng nhập
+     */
+    private void updateFCMToken(String maTaiKhoan, String vaiTro) {
+        SharedPreferences appPrefs = context.getSharedPreferences("app_prefs", Context.MODE_PRIVATE);
+        String fcmToken = appPrefs.getString("fcm_token", "");
+        
+        if (!fcmToken.isEmpty()) {
+            updateFCMTokenInFirestore(fcmToken, maTaiKhoan, vaiTro);
+        }
+    }
+    
+    private void updateFCMTokenInFirestore(String token, String maTaiKhoan, String userType) {
+        com.google.firebase.firestore.FirebaseFirestore db = 
+            com.google.firebase.firestore.FirebaseFirestore.getInstance();
+        
+        String collection = "BENH_NHAN".equals(userType) ? "BenhNhan" : "BacSi";
+        String field = "BENH_NHAN".equals(userType) ? "maBenhNhan" : "maBacSi";
+        
+        // Tìm document theo mã tài khoản
+        db.collection(collection)
+            .whereEqualTo(field, maTaiKhoan)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    String documentId = querySnapshot.getDocuments().get(0).getId();
+                    
+                    // Cập nhật FCM token
+                    db.collection(collection)
+                        .document(documentId)
+                        .update("fcmToken", token)
+                        .addOnSuccessListener(aVoid -> 
+                            android.util.Log.d("SessionManager", "FCM token updated successfully"))
+                        .addOnFailureListener(e -> 
+                            android.util.Log.e("SessionManager", "Error updating FCM token: " + e.getMessage()));
+                } else {
+                    android.util.Log.w("SessionManager", "User document not found for: " + maTaiKhoan);
+                }
+            })
+            .addOnFailureListener(e -> 
+                android.util.Log.e("SessionManager", "Error finding user document: " + e.getMessage()));
     }
 }

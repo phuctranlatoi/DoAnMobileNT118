@@ -110,6 +110,11 @@ public class MainBacSiActivity extends AppCompatActivity {
 //            cardSendNotification.setOnClickListener(v -> handleGuiThongBao());
 //        }
 
+        // Xử lý sự kiện cho nút thông báo
+        if (btnNotification != null) {
+            btnNotification.setOnClickListener(v -> handleXemThongBao());
+        }
+
         // Xử lý Bottom Navigation
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNavigation);
         if (bottomNavigation != null) {
@@ -360,6 +365,19 @@ public class MainBacSiActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(this, GuiThongBaoActivity.class);
         intent.putExtra("MA_BAC_SI", maBacSi);
+        startActivity(intent);
+    }
+
+    private void handleXemThongBao() {
+        logActivity("Xem thông báo");
+        if (maBacSi == null || maBacSi.isEmpty()) {
+            Toast.makeText(this, "Vui lòng đợi tải thông tin bác sĩ...", Toast.LENGTH_SHORT).show();
+            loadUserInfo(); // Thử load lại
+            return;
+        }
+        Intent intent = new Intent(this, ThongBaoActivity.class);
+        intent.putExtra("MA_BAC_SI", maBacSi);
+        intent.putExtra("USER_TYPE", "bacsi");
         startActivity(intent);
     }
 

@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.doannt118.R;
 import com.example.doannt118.model.CuocTroChuyenBacSi;
+import com.example.doannt118.model.TinNhanBacSi;
 import de.hdodenhof.circleimageview.CircleImageView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -64,7 +65,7 @@ public class CuocTroChuyenBacSiAdapter extends RecyclerView.Adapter<CuocTroChuye
     class ViewHolder extends RecyclerView.ViewHolder {
         private CircleImageView ivAvatarBenhNhan;
         private TextView tvTenBenhNhan, tvTinNhanCuoi, tvThoiGianCuoi, tvSoTinNhanChuaDoc;
-        private ImageView ivUnreadDot;
+        private ImageView ivUnreadDot, ivSeenStatusCuoi;
         
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +75,7 @@ public class CuocTroChuyenBacSiAdapter extends RecyclerView.Adapter<CuocTroChuye
             tvThoiGianCuoi = itemView.findViewById(R.id.tvThoiGianCuoi);
             tvSoTinNhanChuaDoc = itemView.findViewById(R.id.tvSoTinNhanChuaDoc);
             ivUnreadDot = itemView.findViewById(R.id.ivUnreadDot);
+            ivSeenStatusCuoi = itemView.findViewById(R.id.ivSeenStatusCuoi);
             
             itemView.setOnClickListener(v -> {
                 if (listener != null) {
@@ -103,6 +105,7 @@ public class CuocTroChuyenBacSiAdapter extends RecyclerView.Adapter<CuocTroChuye
             if (cuocTroChuyenBacSi.isLaBacSiGuiCuoi()) {
                 tvTinNhanCuoi.setText("Bạn: " + tinNhanCuoi);
             } else {
+                // Không thêm prefix cho tin nhắn hệ thống hoặc tin nhắn từ bệnh nhân
                 tvTinNhanCuoi.setText(tinNhanCuoi);
             }
             
@@ -145,8 +148,32 @@ public class CuocTroChuyenBacSiAdapter extends RecyclerView.Adapter<CuocTroChuye
                 }
             }
             
+            // Hiển thị trạng thái seen cho tin nhắn cuối nếu là tin nhắn gửi đi
+            if (ivSeenStatusCuoi != null && cuocTroChuyenBacSi.isLaBacSiGuiCuoi()) {
+                updateSeenStatusIcon(cuocTroChuyenBacSi.getTrangThaiTinNhanCuoi(), ivSeenStatusCuoi);
+            } else if (ivSeenStatusCuoi != null) {
+                ivSeenStatusCuoi.setVisibility(View.GONE);
+            }
+            
             // Load avatar (có thể dùng Glide nếu có URL)
             ivAvatarBenhNhan.setImageResource(R.drawable.ic_patient);
+        }
+        
+        private void updateSeenStatusIcon(TinNhanBacSi.TrangThaiTinNhan trangThai, ImageView ivSeenStatus) {
+            if (trangThai == TinNhanBacSi.TrangThaiTinNhan.DA_XEM) {
+                // Đã xem - hiển thị check xanh
+                ivSeenStatus.setImageResource(R.drawable.ic_check);
+                ivSeenStatus.setColorFilter(ContextCompat.getColor(itemView.getContext(), R.color.primary));
+                ivSeenStatus.setVisibility(View.VISIBLE);
+            } else if (trangThai == TinNhanBacSi.TrangThaiTinNhan.DA_NHAN) {
+                // Đã nhận nhưng chưa xem - hiển thị check xám
+                ivSeenStatus.setImageResource(R.drawable.ic_check);
+                ivSeenStatus.setColorFilter(ContextCompat.getColor(itemView.getContext(), R.color.text_hint));
+                ivSeenStatus.setVisibility(View.VISIBLE);
+            } else {
+                // Đang gửi hoặc chưa nhận - ẩn icon
+                ivSeenStatus.setVisibility(View.GONE);
+            }
         }
         
         private String formatTime(Date date) {

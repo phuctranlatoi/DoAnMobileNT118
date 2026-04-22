@@ -380,6 +380,8 @@ id ivDoctorAvatar
 id ivIcon
 id ivLoaiThongBao
 id ivQRCode
+id ivSeenStatus
+id ivSeenStatusCuoi
 id ivUnreadDot
 id layoutBacSiInfo
 id layoutButtons

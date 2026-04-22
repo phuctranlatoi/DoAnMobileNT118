@@ -393,13 +393,27 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
                         "📋 Mã khám của bạn: " + maKham + "\n\n" +
                         "Vui lòng mang mã này khi đến khám!";
         
-        com.example.doannt118.utils.NotificationHelper.guiThongBaoChoBenhNhan(
-            this,
+        // Tạo thông báo trong Firestore
+        taoThongBao(maBacSi, maBenhNhan, tieuDe, noiDung, "LICH_HEN");
+    }
+    
+    private void taoThongBao(String maBacSi, String maBenhNhan, String tieuDe, String noiDung, String loaiThongBao) {
+        String maThongBao = "TB" + System.currentTimeMillis();
+        
+        com.example.doannt118.model.ThongBao thongBao = new com.example.doannt118.model.ThongBao(
+            maThongBao,
             maBenhNhan,
+            maBacSi,
             tieuDe,
             noiDung,
-            "LICH_HEN",
-            maKham
+            loaiThongBao,
+            com.google.firebase.Timestamp.now(),
+            false
+        );
+        
+        repo.addDocument("ThongBao", maThongBao, thongBao,
+            aVoid -> Log.d(TAG, "Thông báo đã được tạo: " + maThongBao),
+            e -> Log.e(TAG, "Lỗi tạo thông báo: ", e)
         );
     }
 
@@ -431,13 +445,7 @@ public class XacNhanLichKhamActivity extends AppCompatActivity {
         String tieuDe = "Lịch khám bị từ chối";
         String noiDung = "Bác sĩ đã từ chối lịch khám của bạn. Lý do: " + lyDo;
         
-        com.example.doannt118.utils.NotificationHelper.guiThongBaoChoBenhNhan(
-            this,
-            maBenhNhan,
-            tieuDe,
-            noiDung,
-            "LICH_HEN",
-            ""
-        );
+        // Tạo thông báo trong Firestore
+        taoThongBao(maBacSi, maBenhNhan, tieuDe, noiDung, "LICH_HEN");
     }
 }

@@ -178,8 +178,49 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     private void sendRegistrationToServer(String token) {
-        // TODO: Implement gửi token lên Firestore
-        // Lưu token vào collection "DeviceTokens" với mã bệnh nhân
-        Log.d(TAG, "Token saved: " + token);
+        Log.d(TAG, "Saving FCM token: " + token);
+        
+        // Lưu token vào SharedPreferences để sử dụng sau
+        android.content.SharedPreferences prefs = getSharedPreferences("app_prefs", MODE_PRIVATE);
+        prefs.edit().putString("fcm_token", token).apply();
+        
+        // Lưu token vào Firestore nếu có thông tin user
+        String maTaiKhoan = prefs.getString("MA_TAI_KHOAN", "");
+        String userType = prefs.getString("USER_TYPE", "");
+        
+        if (!maTaiKhoan.isEmpty() && !userType.isEmpty()) {
+            updateFCMTokenInFirestore(token, maTaiKhoan, userType);
+        }
+    }
+    
+    private void updateFCMTokenInFirestore(String token, String maTaiKhoan, String userType) {
+        com.google.firebase.firestore.FirebaseFirestore db = 
+            com.google.firebase.firestore.FirebaseFirestore.getInstance();
+        
+        String collection = "BENH_NHAN".equals(userType) ? "BenhNhan" : "BacSi";
+        String field = "BENH_NHAN".equals(userType) ? "maBenhNhan" : "maBacSi";
+        
+        // Tìm document theo mã tài khoản
+        db.collection(collection)
+            .whereEqualTo(field, maTaiKhoan)
+            .get()
+            .addOnSuccessListener(querySnapshot -> {
+                if (!querySnapshot.isEmpty()) {
+                    String documentId = querySnapshot.getDocuments().get(0).getId();
+                    
+                    // Cập nhật FCM token
+                    db.collection(collection)
+                        .document(documentId)
+                        .update("fcmToken", token)
+                        .addOnSuccessListener(aVoid -> 
+                            Log.d(TAG, "FCM token updated successfully"))
+                        .addOnFailureListener(e -> 
+                            Log.e(TAG, "Error updating FCM token: " + e.getMessage()));
+                } else {
+                    Log.w(TAG, "User document not found for: " + maTaiKhoan);
+                }
+            })
+            .addOnFailureListener(e -> 
+                Log.e(TAG, "Error finding user document: " + e.getMessage()));
     }
 }

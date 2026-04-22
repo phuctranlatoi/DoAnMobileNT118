@@ -185,38 +185,12 @@ public class ThanhToanQRActivity extends AppCompatActivity {
         // Cập nhật vào Firestore
         repository.update("DangKyNhanTin", maDangKy, capNhat,
             aVoid -> {
-                // Tạo cuộc trò chuyện đầu tiên để hiển thị trong danh sách
-                taoTinNhanChaoMung();
+                // Chuyển thẳng đến chat, không tạo tin nhắn chào mừng
+                chuyenDenChat();
             },
             e -> {
                 Toast.makeText(this, "Lỗi cập nhật thanh toán: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                 // Vẫn chuyển đến chat dù có lỗi
-                chuyenDenChat();
-            }
-        );
-    }
-    
-    private void taoTinNhanChaoMung() {
-        // Tạo tin nhắn chào mừng từ bác sĩ
-        String maTinNhan = java.util.UUID.randomUUID().toString();
-        
-        Map<String, Object> tinNhanChaoMung = new HashMap<>();
-        tinNhanChaoMung.put("maTinNhan", maTinNhan);
-        tinNhanChaoMung.put("maBacSi", maBacSi);
-        tinNhanChaoMung.put("maBenhNhan", maBenhNhan);
-        tinNhanChaoMung.put("noiDung", "Chào bạn! Tôi là BS. " + tenBacSi + ". Cảm ơn bạn đã đăng ký gói tư vấn. Tôi sẵn sàng hỗ trợ và tư vấn cho bạn. Bạn có thể chia sẻ với tôi về tình trạng sức khỏe hoặc những thắc mắc cần tư vấn.");
-        tinNhanChaoMung.put("thoiGianGui", Timestamp.now());
-        tinNhanChaoMung.put("loaiTinNhan", TinNhanBacSi.LoaiTinNhan.BAC_SI);
-        tinNhanChaoMung.put("tenNguoiGui", "BS. " + tenBacSi);
-        tinNhanChaoMung.put("daDoc", false);
-        
-        repository.addDocument("TinNhanBacSi", maTinNhan, tinNhanChaoMung,
-            aVoid -> {
-                // Chuyển đến màn hình chat
-                chuyenDenChat();
-            },
-            e -> {
-                // Vẫn chuyển đến chat dù có lỗi tạo tin nhắn
                 chuyenDenChat();
             }
         );
