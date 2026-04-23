@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "com.example.doannt118"
-        minSdk = 30
+        minSdk = 27
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
@@ -44,7 +44,7 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
-    implementation(platform("com.google.firebase:firebase-bom:34.4.0"))
+    implementation(platform("com.google.firebase:firebase-bom:34.7.0"))
     implementation("com.google.firebase:firebase-firestore")  // No explicit version
     implementation("com.google.firebase:firebase-analytics")  // Optional
     implementation("com.google.firebase:firebase-ai")  // No explicit version if BOM supports
@@ -62,7 +62,6 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.16.0") // Thư viện load ảnh
     implementation("de.hdodenhof:circleimageview:3.1.0") // Thư viện CircleImageView
     
-    // Stringee SDK for voice and video calling - UPDATED theo tài liệu chính thức
     implementation("com.stringee.sdk.android:stringee-android-sdk:2.1.5")
     implementation("io.github.webrtc-sdk:android:137.7151.03")
     implementation("com.android.volley:volley:1.2.1")

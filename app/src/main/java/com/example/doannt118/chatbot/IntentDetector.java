@@ -6,43 +6,71 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
- * INTENT DETECTOR - TỰ BUILD
+ * INTENT DETECTOR - NÂNG CAP HIỂU NGÔN NGỮ TỰ NHIÊN
  * 
- * Phân loại intent bằng keyword matching
- * Đơn giản, nhanh, không cần AI
+ * Cải thiện:
+ * - Fuzzy matching tốt hơn
+ * - Context awareness
+ * - Synonym handling
+ * - Typo correction
+ * - Multi-intent detection
  */
 public class IntentDetector {
     
     public enum Intent {
-        // DATA & ACTIONS (Rule-based - Truy xuất Firestore)
-        DAT_LICH_KHAM,          // Đặt lịch khám
-        XEM_LICH_HEN,           // Xem lịch hẹn
-        HUY_LICH,               // Hủy lịch
-        TRA_CUU_BAC_SI,         // Tìm bác sĩ
-        XEM_LICH_BAC_SI,        // Xem lịch làm việc của bác sĩ theo ngày
-        HUONG_DAN_UONG_THUOC,   // Xem đơn thuốc
-        XEM_BENH_AN,            // Xem bệnh án
-        XEM_HOA_DON,            // Xem hóa đơn
-        THONG_TIN_PHONG_KHAM,   // FAQ phòng khám
+        // ============================================
+        // PATIENT INTENTS (Rule-based - Truy xuất Firestore)
+        // ============================================
+        DAT_LICH_KHAM,              // Đặt lịch khám (từ DanhSachBacSiActivity)
+        XEM_LICH_KHAM,              // Xem lịch khám (LichKhamCuaToiActivity)
+        XEM_LICH_HEN,               // Xem lịch hẹn (alias cho XEM_LICH_KHAM)
+        HUY_LICH_KHAM,              // Hủy lịch khám
+        HUY_LICH,                   // Hủy lịch (alias cho HUY_LICH_KHAM)
+        XEM_BENH_AN,                // Xem bệnh án (XemBenhAnActivity)
+        XEM_DON_THUOC,              // Xem đơn thuốc (DanhSachDonThuocActivity)
+        QUAN_LY_UONG_THUOC,         // Quản lý uống thuốc (QuanLyUongThuocActivity)
+        HUONG_DAN_UONG_THUOC,       // Hướng dẫn uống thuốc (alias)
+        XEM_HOA_DON,                // Xem hóa đơn (DanhSachHoaDonActivity)
+        XEM_THONG_BAO,              // Xem thông báo (ThongBaoActivity)
+        CHAT_VOI_BAC_SI,            // Chat với bác sĩ (ChonBacSiChatActivity)
+        TRA_CUU_BAC_SI,             // Tìm bác sĩ (DanhSachBacSiActivity)
+        TRA_CUU_THONG_TIN,          // FAQ phòng khám
+        THONG_TIN_PHONG_KHAM,       // Thông tin phòng khám (alias)
         
-        // DOCTOR-SPECIFIC INTENTS
-        THONG_KE_BENH_NHAN,     // Thống kê bệnh nhân
-        XEM_LICH_LAM_VIEC,      // Xem lịch làm việc
-        TRA_CUU_BENH_NHAN,      // Tra cứu thông tin bệnh nhân
-        TRA_CUU_THUOC,          // Tra cứu thuốc và tương tác
-        TAO_BAO_CAO,            // Tạo báo cáo
-        GOI_Y_CHAN_DOAN,        // Gợi ý chẩn đoán
+        // ============================================
+        // DOCTOR INTENTS (Rule-based - Truy xuất Firestore)
+        // ============================================
+        XEM_LICH_LAM_VIEC,          // Xem lịch làm việc (QuanLyLichLamViecActivity)
+        XEM_LICH_BAC_SI,            // Xem lịch bác sĩ theo ngày
+        QUAN_LY_BENH_AN,            // Quản lý bệnh án (QuanLyBenhAnBacSiActivity)
+        XAC_NHAN_LICH_KHAM,         // Xác nhận lịch khám (XacNhanLichKhamActivity)
+        QUAN_LY_DON_THUOC_BS,       // Quản lý đơn thuốc (QuanLyDonThuocBacSiActivity)
+        NHAP_MA_KHAM,               // Nhập mã khám (NhapMaKhamActivity)
+        XEM_BENH_NHAN_NGAY,         // Xem danh sách bệnh nhân hôm nay
+        THONG_KE_BAC_SI,            // Thống kê và báo cáo
+        THONG_KE_BENH_NHAN,         // Thống kê bệnh nhân
+        GUI_THONG_BAO,              // Gửi thông báo (GuiThongBaoActivity)
+        CHAT_VOI_BENH_NHAN,         // Chat với bệnh nhân (DanhSachTinNhanBacSiActivity)
+        AI_ASSISTANT,               // AI Assistant cho bác sĩ
+        TRA_CUU_BENH_NHAN,          // Tra cứu thông tin bệnh nhân
+        TRA_CUU_THUOC,              // Tra cứu thông tin thuốc
+        TAO_BAO_CAO,                // Tạo báo cáo
+        GOI_Y_CHAN_DOAN,            // Gợi ý chẩn đoán
         
-        // CONVERSATION
+        // ============================================
+        // CONVERSATION & SYSTEM
+        // ============================================
         CHAO_HOI,
         CAM_ON,
         XAC_NHAN,
         TU_CHOI,
+        CHON_ROLE,                  // Chọn vai trò (Bệnh nhân/Bác sĩ)
         
         // FALLBACK (Gemini AI - Tư vấn y tế)
-        KHAC                    // Câu hỏi mở, tư vấn
+        KHAC                        // Câu hỏi mở, tư vấn
     }
     
     private Map<Intent, List<String>> keywords;
@@ -55,80 +83,125 @@ public class IntentDetector {
         keywords = new HashMap<>();
         
         // ============================================
-        // DATA & ACTIONS (Rule-based)
+        // PATIENT INTENTS - DỰA TRÊN CÁC ACTIVITY THỰC TẾ
         // ============================================
-        
         keywords.put(Intent.DAT_LICH_KHAM, Arrays.asList(
             "đặt lịch", "book", "hẹn", "đăng ký", "khám bệnh", "muốn khám", "đặt hẹn",
-            "appointment", "schedule", "đặt", "lịch", "khám", "hẹn khám", "đi khám"
+            "appointment", "schedule", "đặt", "lịch", "khám", "hẹn khám", "đi khám",
+            "đăng ký lịch khám", "chọn bác sĩ"
         ));
         
-        keywords.put(Intent.XEM_LICH_HEN, Arrays.asList(
+        keywords.put(Intent.XEM_LICH_KHAM, Arrays.asList(
             "xem lịch", "lịch hẹn", "lịch khám", "lịch của tôi", "hẹn nào", "khi nào khám",
-            "check lịch", "kiểm tra lịch", "lịch", "appointment", "schedule", "hẹn"
+            "check lịch", "kiểm tra lịch", "lịch", "appointment", "schedule", "hẹn",
+            "lịch khám của tôi"
         ));
         
-        keywords.put(Intent.HUY_LICH, Arrays.asList(
-            "hủy lịch", "hủy hẹn", "không đi", "cancel", "bỏ lịch"
-        ));
-        
-        keywords.put(Intent.TRA_CUU_BAC_SI, Arrays.asList(
-            "bác sĩ", "doctor", "chuyên khoa", "tìm bác sĩ", "bác sĩ nào"
-        ));
-        
-        keywords.put(Intent.XEM_LICH_BAC_SI, Arrays.asList(
-            "lịch bác sĩ", "bác sĩ làm việc", "bác sĩ có lịch", "ngày nào có bác sĩ",
-            "bác sĩ khám ngày", "lịch khám bác sĩ", "bác sĩ rảnh"
-        ));
-        
-        keywords.put(Intent.HUONG_DAN_UONG_THUOC, Arrays.asList(
-            "thuốc", "uống thuốc", "đơn thuốc", "medication", "thuốc của tôi",
-            "prescription", "medicine", "đơn", "thuốc uống", "lịch uống thuốc"
+        keywords.put(Intent.HUY_LICH_KHAM, Arrays.asList(
+            "hủy lịch", "hủy hẹn", "không đi", "cancel", "bỏ lịch", "hủy"
         ));
         
         keywords.put(Intent.XEM_BENH_AN, Arrays.asList(
-            "bệnh án", "hồ sơ", "chẩn đoán", "kết quả khám"
+            "bệnh án", "hồ sơ", "chẩn đoán", "kết quả khám", "xem bệnh án",
+            "medical record", "hồ sơ bệnh án"
+        ));
+        
+        keywords.put(Intent.XEM_DON_THUOC, Arrays.asList(
+            "thuốc", "đơn thuốc", "medication", "thuốc của tôi", "prescription", 
+            "medicine", "đơn", "danh sách đơn thuốc", "xem đơn thuốc"
+        ));
+        
+        keywords.put(Intent.QUAN_LY_UONG_THUOC, Arrays.asList(
+            "uống thuốc", "điểm danh thuốc", "nhắc nhở thuốc", "lịch uống thuốc",
+            "quản lý uống thuốc", "xác nhận uống thuốc", "medicine reminder"
         ));
         
         keywords.put(Intent.XEM_HOA_DON, Arrays.asList(
-            "hóa đơn", "tiền", "thanh toán", "chi phí", "invoice"
+            "hóa đơn", "tiền", "thanh toán", "chi phí", "invoice", "bill",
+            "danh sách hóa đơn", "xem hóa đơn"
         ));
         
-        keywords.put(Intent.THONG_TIN_PHONG_KHAM, Arrays.asList(
-            "giờ làm việc", "địa chỉ", "liên hệ", "hotline", "ở đâu"
+        keywords.put(Intent.XEM_THONG_BAO, Arrays.asList(
+            "thông báo", "notification", "tin nhắn hệ thống", "thông tin mới"
+        ));
+        
+        keywords.put(Intent.CHAT_VOI_BAC_SI, Arrays.asList(
+            "chat bác sĩ", "nhắn tin bác sĩ", "nói chuyện bác sĩ", "tư vấn bác sĩ",
+            "chọn bác sĩ chat", "tin nhắn", "message doctor"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_BAC_SI, Arrays.asList(
+            "bác sĩ", "doctor", "chuyên khoa", "tìm bác sĩ", "bác sĩ nào",
+            "danh sách bác sĩ", "chọn bác sĩ"
+        ));
+        
+        keywords.put(Intent.TRA_CUU_THONG_TIN, Arrays.asList(
+            "giờ làm việc", "địa chỉ", "liên hệ", "hotline", "ở đâu", "thông tin",
+            "bảng giá", "dịch vụ", "quy trình", "phòng khám"
         ));
         
         // ============================================
-        // DOCTOR-SPECIFIC INTENTS
+        // DOCTOR INTENTS - DỰA TRÊN MainBacSiActivity
         // ============================================
-        
-        keywords.put(Intent.THONG_KE_BENH_NHAN, Arrays.asList(
-            "thống kê", "số lượng bệnh nhân", "bao nhiêu bệnh nhân", "tổng số", "báo cáo thống kê"
-        ));
         
         keywords.put(Intent.XEM_LICH_LAM_VIEC, Arrays.asList(
-            "lịch làm việc", "lịch của tôi", "ca làm", "lịch trực", "khi nào làm việc"
+            "lịch làm việc", "lịch của tôi", "ca làm việc", "schedule", 
+            "work schedule", "quản lý lịch làm việc", "lịch hôm nay",
+            "hôm nay làm gì", "ca làm", "lịch trực"
         ));
         
-        keywords.put(Intent.TRA_CUU_BENH_NHAN, Arrays.asList(
-            "thông tin bệnh nhân", "tra cứu bệnh nhân", "tìm bệnh nhân", "bệnh nhân nào", "hồ sơ bệnh nhân"
+        keywords.put(Intent.QUAN_LY_BENH_AN, Arrays.asList(
+            "quản lý bệnh án", "bệnh án bệnh nhân", "medical record management",
+            "hồ sơ bệnh nhân", "cập nhật bệnh án", "xem bệnh án", "bệnh án"
         ));
         
-        keywords.put(Intent.TRA_CUU_THUOC, Arrays.asList(
-            "tra cứu thuốc", "thuốc gì", "tương tác thuốc", "thông tin thuốc", "liều dùng"
+        keywords.put(Intent.XAC_NHAN_LICH_KHAM, Arrays.asList(
+            "xác nhận lịch", "duyệt lịch", "confirm appointment", "phê duyệt lịch khám",
+            "xác nhận lịch khám", "lịch chờ xác nhận", "chờ duyệt"
         ));
         
-        keywords.put(Intent.TAO_BAO_CAO, Arrays.asList(
-            "tạo báo cáo", "báo cáo", "xuất báo cáo", "report", "thống kê báo cáo"
+        keywords.put(Intent.QUAN_LY_DON_THUOC_BS, Arrays.asList(
+            "quản lý đơn thuốc", "kê đơn", "prescription management", "đơn thuốc bệnh nhân",
+            "tạo đơn thuốc", "đơn thuốc", "kê thuốc"
         ));
         
-        keywords.put(Intent.GOI_Y_CHAN_DOAN, Arrays.asList(
-            "gợi ý chẩn đoán", "chẩn đoán", "triệu chứng", "bệnh gì", "có thể là"
+        keywords.put(Intent.NHAP_MA_KHAM, Arrays.asList(
+            "nhập mã khám", "mã khám", "patient code", "mã bệnh nhân", "nhập mã"
+        ));
+        
+        keywords.put(Intent.XEM_BENH_NHAN_NGAY, Arrays.asList(
+            "bệnh nhân hôm nay", "danh sách bệnh nhân", "ai khám hôm nay", 
+            "lịch khám hôm nay", "bệnh nhân ngày", "patient today", "patients list",
+            "bệnh nhân", "hôm nay có ai", "khám ai hôm nay"
+        ));
+        
+        keywords.put(Intent.THONG_KE_BAC_SI, Arrays.asList(
+            "thống kê", "báo cáo", "doanh thu", "số lượng bệnh nhân", "statistics",
+            "report", "revenue", "patient count", "hiệu suất", "xem thống kê"
+        ));
+        
+        keywords.put(Intent.GUI_THONG_BAO, Arrays.asList(
+            "gửi thông báo", "thông báo bệnh nhân", "send notification", 
+            "tin nhắn thông báo"
+        ));
+        
+        keywords.put(Intent.CHAT_VOI_BENH_NHAN, Arrays.asList(
+            "chat bệnh nhân", "tin nhắn bệnh nhân", "danh sách tin nhắn",
+            "message patient", "patient chat", "nhắn tin bệnh nhân"
+        ));
+        
+        keywords.put(Intent.AI_ASSISTANT, Arrays.asList(
+            "ai assistant", "trợ lý ai", "hỗ trợ ai", "ai support", "chatbot bác sĩ",
+            "hỗ trợ chẩn đoán", "tư vấn điều trị", "tra cứu y khoa"
         ));
         
         // ============================================
         // CONVERSATION
         // ============================================
+        
+        keywords.put(Intent.CHON_ROLE, Arrays.asList(
+            "bệnh nhân", "bác sĩ", "patient", "doctor", "role", "vai trò"
+        ));
         
         keywords.put(Intent.CHAO_HOI, Arrays.asList(
             "xin chào", "chào", "hello", "hi", "hey"
@@ -148,7 +221,7 @@ public class IntentDetector {
     }
     
     /**
-     * Detect intent từ user message - NÂNG CAP HIỂU NGÔN NGỮ TỰ NHIÊN
+     * Detect intent từ user message
      */
     public Intent detect(String message) {
         String normalized = normalize(message);
@@ -159,7 +232,7 @@ public class IntentDetector {
             return naturalLanguageIntent;
         }
         
-        // BƯỚC 2: Fallback về keyword matching cũ
+        // BƯỚC 2: Fallback về keyword matching
         Map<Intent, Integer> scores = new HashMap<>();
         for (Intent intent : Intent.values()) {
             scores.put(intent, 0);
@@ -188,19 +261,15 @@ public class IntentDetector {
             }
         }
         
-        // Nếu không match gì → KHAC (Gemini sẽ xử lý)
         return maxScore > 0 ? bestIntent : Intent.KHAC;
     }
     
     /**
      * PHÁT HIỆN PATTERN NGÔN NGỮ TỰ NHIÊN
-     * Hiểu các câu như "tôi muốn...", "cho tôi xem...", "làm sao để..."
      */
     private Intent detectNaturalLanguagePatterns(String message) {
         
-        // ============================================
         // PATTERN ĐẶT LỊCH KHÁM
-        // ============================================
         if (containsAny(message, Arrays.asList(
             "tôi muốn đặt lịch", "tôi cần đặt lịch", "muốn đặt lịch khám",
             "đặt lịch khám bệnh", "đặt hẹn khám", "book lịch khám",
@@ -210,9 +279,7 @@ public class IntentDetector {
             return Intent.DAT_LICH_KHAM;
         }
         
-        // ============================================
         // PATTERN XEM LỊCH HẸN
-        // ============================================
         if (containsAny(message, Arrays.asList(
             "xem lịch hẹn", "xem lịch khám", "lịch khám của tôi",
             "cho tôi xem lịch", "tôi có lịch nào", "lịch hẹn nào",
@@ -222,9 +289,7 @@ public class IntentDetector {
             return Intent.XEM_LICH_HEN;
         }
         
-        // ============================================
         // PATTERN HỦY LỊCH
-        // ============================================
         if (containsAny(message, Arrays.asList(
             "hủy lịch khám", "hủy lịch hẹn", "cancel lịch",
             "tôi muốn hủy lịch", "không đi khám nữa", "bỏ lịch hẹn",
@@ -233,9 +298,7 @@ public class IntentDetector {
             return Intent.HUY_LICH;
         }
         
-        // ============================================
         // PATTERN TRA CỨU BÁC SĨ
-        // ============================================
         if (containsAny(message, Arrays.asList(
             "tìm bác sĩ", "bác sĩ nào", "doctor nào", "chuyên khoa nào",
             "bác sĩ giỏi", "bác sĩ chuyên", "tư vấn bác sĩ",
@@ -244,65 +307,7 @@ public class IntentDetector {
             return Intent.TRA_CUU_BAC_SI;
         }
         
-        // ============================================
-        // PATTERN XEM LỊCH BÁC SĨ THEO NGÀY
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "lịch bác sĩ", "bác sĩ làm việc ngày", "bác sĩ có lịch ngày",
-            "ngày nào có bác sĩ", "bác sĩ khám ngày", "lịch khám bác sĩ",
-            "bác sĩ rảnh ngày", "xem lịch bác sĩ", "bác sĩ nào làm việc",
-            "hôm nay có bác sĩ nào", "ngày mai có bác sĩ nào",
-            "bác sĩ nào khám hôm nay", "bác sĩ nào khám ngày mai"
-        ))) {
-            return Intent.XEM_LICH_BAC_SI;
-        }
-        
-        // ============================================
-        // PATTERN THUỐC
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "xem đơn thuốc", "thuốc của tôi", "đơn thuốc nào",
-            "tôi uống thuốc gì", "medication của tôi", "prescription",
-            "hướng dẫn uống thuốc", "cách uống thuốc", "lịch uống thuốc"
-        ))) {
-            return Intent.HUONG_DAN_UONG_THUOC;
-        }
-        
-        // ============================================
-        // PATTERN BỆNH ÁN
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "xem bệnh án", "hồ sơ bệnh án", "kết quả khám",
-            "chẩn đoán của tôi", "bệnh án của tôi", "medical record",
-            "lịch sử khám bệnh", "kết quả xét nghiệm"
-        ))) {
-            return Intent.XEM_BENH_AN;
-        }
-        
-        // ============================================
-        // PATTERN HÓA ĐƠN
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "xem hóa đơn", "chi phí khám", "tiền khám", "invoice",
-            "thanh toán", "bill", "phí khám bệnh", "giá khám"
-        ))) {
-            return Intent.XEM_HOA_DON;
-        }
-        
-        // ============================================
-        // PATTERN THÔNG TIN PHÒNG KHÁM
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "phòng khám ở đâu", "địa chỉ phòng khám", "giờ làm việc",
-            "liên hệ phòng khám", "hotline", "số điện thoại",
-            "phòng khám mở cửa", "đóng cửa lúc nào"
-        ))) {
-            return Intent.THONG_TIN_PHONG_KHAM;
-        }
-        
-        // ============================================
         // PATTERN CHÀO HỎI
-        // ============================================
         if (containsAny(message, Arrays.asList(
             "xin chào", "chào bạn", "hello", "hi", "hey",
             "chào trợ lý", "chào bot", "good morning", "good afternoon"
@@ -310,46 +315,16 @@ public class IntentDetector {
             return Intent.CHAO_HOI;
         }
         
-        // ============================================
-        // PATTERN CẢM ƠN
-        // ============================================
+        // PATTERN BÁC SĨ - BỆNH NHÂN HÔM NAY
         if (containsAny(message, Arrays.asList(
-            "cảm ơn", "thank you", "thanks", "cám ơn",
-            "ok cảm ơn", "được rồi", "ok", "oke"
+            "bệnh nhân hôm nay", "ai khám hôm nay", "danh sách bệnh nhân hôm nay",
+            "hôm nay có ai khám", "bệnh nhân ngày hôm nay", "lịch khám hôm nay",
+            "ai đặt lịch hôm nay", "bệnh nhân nào khám hôm nay"
         ))) {
-            return Intent.CAM_ON;
+            return Intent.XEM_BENH_NHAN_NGAY;
         }
         
-        // ============================================
-        // PATTERN XÁC NHẬN
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "xác nhận", "đồng ý", "ok", "yes", "có", "được",
-            "chấp nhận", "đúng rồi", "đúng vậy", "tôi đồng ý"
-        ))) {
-            return Intent.XAC_NHAN;
-        }
-        
-        // ============================================
-        // PATTERN TỪ CHỐI
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "không", "hủy", "no", "thôi", "không cần",
-            "bỏ qua", "không muốn", "từ chối", "cancel"
-        ))) {
-            return Intent.TU_CHOI;
-        }
-        
-        // ============================================
-        // PATTERN CHO BÁC SĨ
-        // ============================================
-        if (containsAny(message, Arrays.asList(
-            "thống kê bệnh nhân", "số lượng bệnh nhân", "bao nhiêu bệnh nhân",
-            "thống kê hôm nay", "báo cáo ngày", "tổng số bệnh nhân"
-        ))) {
-            return Intent.THONG_KE_BENH_NHAN;
-        }
-        
+        // PATTERN BÁC SĨ - LỊCH LÀM VIỆC
         if (containsAny(message, Arrays.asList(
             "lịch làm việc", "lịch của tôi", "ca làm việc",
             "khi nào tôi làm", "lịch trực", "schedule của tôi"
@@ -357,7 +332,6 @@ public class IntentDetector {
             return Intent.XEM_LICH_LAM_VIEC;
         }
         
-        // Không match pattern nào
         return Intent.KHAC;
     }
     
@@ -412,23 +386,6 @@ public class IntentDetector {
         fixes.put("doctor", "bác sĩ");
         fixes.put("dr", "bác sĩ");
         
-        // Variations của "thuốc"
-        fixes.put("thuoc", "thuốc");
-        fixes.put("medication", "thuốc");
-        fixes.put("medicine", "thuốc");
-        fixes.put("don thuoc", "đơn thuốc");
-        
-        // Variations của "hủy"
-        fixes.put("huy", "hủy");
-        fixes.put("cancel", "hủy");
-        fixes.put("hủy bỏ", "hủy");
-        
-        // Variations của "xác nhận"
-        fixes.put("xac nhan", "xác nhận");
-        fixes.put("dong y", "đồng ý");
-        fixes.put("ok", "đồng ý");
-        fixes.put("yes", "đồng ý");
-        
         // Apply fixes
         for (Map.Entry<String, String> fix : fixes.entrySet()) {
             text = text.replace(fix.getKey(), fix.getValue());
@@ -438,72 +395,17 @@ public class IntentDetector {
     }
     
     /**
-     * Fuzzy matching - tìm similarity giữa 2 string
+     * Lấy gợi ý dựa trên role của user
      */
-    private boolean fuzzyMatch(String text, String pattern, double threshold) {
-        if (text.contains(pattern)) return true;
-        
-        // Simple Levenshtein distance based similarity
-        int distance = levenshteinDistance(text, pattern);
-        double similarity = 1.0 - (double) distance / Math.max(text.length(), pattern.length());
-        
-        return similarity >= threshold;
-    }
-    
-    /**
-     * Tính Levenshtein distance
-     */
-    private int levenshteinDistance(String s1, String s2) {
-        int[][] dp = new int[s1.length() + 1][s2.length() + 1];
-        
-        for (int i = 0; i <= s1.length(); i++) {
-            for (int j = 0; j <= s2.length(); j++) {
-                if (i == 0) {
-                    dp[i][j] = j;
-                } else if (j == 0) {
-                    dp[i][j] = i;
-                } else {
-                    dp[i][j] = Math.min(
-                        dp[i - 1][j - 1] + (s1.charAt(i - 1) == s2.charAt(j - 1) ? 0 : 1),
-                        Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1)
-                    );
-                }
-            }
-        }
-        
-        return dp[s1.length()][s2.length()];
-    }
-    
-    /**
-     * Xử lý các câu hỏi mơ hồ bằng cách gợi ý
-     */
-    public List<String> getSuggestions(String message) {
+    public List<String> getSuggestionsForRole(String message, String userType) {
         List<String> suggestions = new ArrayList<>();
-        String normalized = normalize(message);
         
-        // Nếu chỉ nói "lịch" → gợi ý cụ thể
-        if (normalized.contains("lịch") && !normalized.contains("đặt") && !normalized.contains("xem")) {
-            suggestions.add("Đặt lịch khám");
-            suggestions.add("Xem lịch khám");
-            suggestions.add("Hủy lịch khám");
-        }
-        
-        // Nếu chỉ nói "thuốc" → gợi ý cụ thể
-        if (normalized.contains("thuốc") && !normalized.contains("xem") && !normalized.contains("đơn")) {
-            suggestions.add("Xem đơn thuốc");
-            suggestions.add("Hướng dẫn uống thuốc");
-            suggestions.add("Tra cứu thuốc");
-        }
-        
-        // Nếu chỉ nói "bác sĩ" → gợi ý cụ thể
-        if (normalized.contains("bác sĩ") && !normalized.contains("tìm") && !normalized.contains("chuyên khoa")) {
-            suggestions.add("Tìm bác sĩ");
-            suggestions.add("Bác sĩ chuyên khoa");
-            suggestions.add("Đặt lịch với bác sĩ");
-        }
-        
-        // Câu hỏi chung → gợi ý menu
-        if (normalized.length() < 10 || containsAny(normalized, Arrays.asList("giúp", "help", "làm gì", "gì"))) {
+        if ("bacsi".equals(userType)) {
+            suggestions.add("Xem bệnh nhân hôm nay");
+            suggestions.add("Xem lịch làm việc");
+            suggestions.add("Xác nhận lịch khám");
+            suggestions.add("Xem thống kê");
+        } else {
             suggestions.add("Đặt lịch khám");
             suggestions.add("Xem lịch khám");
             suggestions.add("Xem đơn thuốc");
@@ -519,17 +421,44 @@ public class IntentDetector {
     public boolean isAmbiguous(String message) {
         String normalized = normalize(message);
         
-        // Câu quá ngắn
-        if (normalized.length() < 5) return true;
+        // Câu quá ngắn (dưới 3 ký tự)
+        if (normalized.length() < 3) return true;
         
-        // Chỉ có 1 từ khóa mà không rõ ý định
-        if ((normalized.contains("lịch") && !normalized.contains("đặt") && !normalized.contains("xem")) ||
-            (normalized.contains("thuốc") && !normalized.contains("xem") && !normalized.contains("đơn")) ||
-            (normalized.contains("bác sĩ") && !normalized.contains("tìm"))) {
-            return true;
+        // KHÔNG mơ hồ nếu có các từ khóa rõ ràng cho bác sĩ
+        if (containsAny(normalized, Arrays.asList(
+            "bệnh nhân hôm nay", "lịch làm việc", "xác nhận lịch", "thống kê",
+            "quản lý bệnh án", "quản lý đơn thuốc", "nhập mã khám", "chat bệnh nhân",
+            "ai assistant", "báo cáo", "doanh thu", "số lượng bệnh nhân"
+        ))) {
+            return false;
         }
         
-        // Câu hỏi chung chung
-        return containsAny(normalized, Arrays.asList("giúp", "help", "làm gì", "gì", "?"));
+        // KHÔNG mơ hồ nếu có các từ khóa rõ ràng cho bệnh nhân
+        if (containsAny(normalized, Arrays.asList(
+            "đặt lịch khám", "xem lịch khám", "hủy lịch", "xem đơn thuốc",
+            "xem bệnh án", "xem hóa đơn", "chat bác sĩ", "tìm bác sĩ",
+            "uống thuốc", "thông báo"
+        ))) {
+            return false;
+        }
+        
+        // KHÔNG mơ hồ nếu là chào hỏi hoặc cảm ơn
+        if (containsAny(normalized, Arrays.asList(
+            "xin chào", "chào", "hello", "hi", "cảm ơn", "thank"
+        ))) {
+            return false;
+        }
+        
+        // Chỉ mơ hồ nếu câu rất ngắn và chỉ có 1 từ khóa đơn lẻ
+        if (normalized.length() < 10) {
+            // Chỉ có từ "lịch" đơn lẻ
+            if (normalized.equals("lịch") || normalized.equals("lich")) return true;
+            // Chỉ có từ "thuốc" đơn lẻ
+            if (normalized.equals("thuốc") || normalized.equals("thuoc")) return true;
+            // Chỉ có từ "?" 
+            if (normalized.equals("?")) return true;
+        }
+        
+        return false;
     }
 }

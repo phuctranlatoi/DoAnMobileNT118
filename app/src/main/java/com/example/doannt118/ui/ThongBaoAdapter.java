@@ -46,8 +46,13 @@ public class ThongBaoAdapter extends RecyclerView.Adapter<ThongBaoAdapter.ViewHo
         holder.tvTieuDe.setText(tb.getTieuDe());
         holder.tvNoiDung.setText(tb.getNoiDung());
         
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
-        holder.tvThoiGian.setText(sdf.format(tb.getThoiGianGui().toDate()));
+        // Null check cho thời gian
+        if (tb.getThoiGianGui() != null) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault());
+            holder.tvThoiGian.setText(sdf.format(tb.getThoiGianGui().toDate()));
+        } else {
+            holder.tvThoiGian.setText("Không xác định");
+        }
 
         // Icon theo loại thông báo
         switch (tb.getLoaiThongBao()) {

@@ -16,22 +16,33 @@ import java.util.Locale;
 
 public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     
-    private static final int TYPE_BENH_NHAN = 1;
-    private static final int TYPE_BAC_SI = 2;
+    private static final int TYPE_SENT = 1;     // Tin nhắn gửi đi (bên phải)
+    private static final int TYPE_RECEIVED = 2; // Tin nhắn nhận được (bên trái)
     
     private List<TinNhanBacSi> danhSachTinNhan;
     private SimpleDateFormat timeFormat;
+    private boolean isDoctorView; // true nếu là view của bác sĩ
     
-    public TinNhanBacSiAdapter() {
+    public TinNhanBacSiAdapter(boolean isDoctorView) {
         this.danhSachTinNhan = new ArrayList<>();
         this.timeFormat = new SimpleDateFormat("HH:mm", Locale.getDefault());
+        this.isDoctorView = isDoctorView;
     }
     
     @Override
     public int getItemViewType(int position) {
         TinNhanBacSi tinNhan = danhSachTinNhan.get(position);
-        return tinNhan.getLoaiTinNhan() == TinNhanBacSi.LoaiTinNhan.BENH_NHAN ? 
-               TYPE_BENH_NHAN : TYPE_BAC_SI;
+        
+        // Xác định tin nhắn gửi đi hay nhận được dựa trên người đang xem
+        if (isDoctorView) {
+            // Bác sĩ view: tin nhắn của bác sĩ là gửi đi, của bệnh nhân là nhận được
+            return tinNhan.getLoaiTinNhan() == TinNhanBacSi.LoaiTinNhan.BAC_SI ? 
+                   TYPE_SENT : TYPE_RECEIVED;
+        } else {
+            // Bệnh nhân view: tin nhắn của bệnh nhân là gửi đi, của bác sĩ là nhận được
+            return tinNhan.getLoaiTinNhan() == TinNhanBacSi.LoaiTinNhan.BENH_NHAN ? 
+                   TYPE_SENT : TYPE_RECEIVED;
+        }
     }
     
     @NonNull
@@ -39,12 +50,14 @@ public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         
-        if (viewType == TYPE_BENH_NHAN) {
+        if (viewType == TYPE_SENT) {
+            // Tin nhắn gửi đi - sử dụng layout bên phải
             View view = inflater.inflate(R.layout.item_tin_nhan_benh_nhan, parent, false);
-            return new BenhNhanViewHolder(view);
+            return new SentMessageViewHolder(view);
         } else {
+            // Tin nhắn nhận được - sử dụng layout bên trái
             View view = inflater.inflate(R.layout.item_tin_nhan_bac_si, parent, false);
-            return new BacSiViewHolder(view);
+            return new ReceivedMessageViewHolder(view);
         }
     }
     
@@ -52,10 +65,10 @@ public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         TinNhanBacSi tinNhan = danhSachTinNhan.get(position);
         
-        if (holder instanceof BenhNhanViewHolder) {
-            ((BenhNhanViewHolder) holder).bind(tinNhan);
-        } else if (holder instanceof BacSiViewHolder) {
-            ((BacSiViewHolder) holder).bind(tinNhan);
+        if (holder instanceof SentMessageViewHolder) {
+            ((SentMessageViewHolder) holder).bind(tinNhan);
+        } else if (holder instanceof ReceivedMessageViewHolder) {
+            ((ReceivedMessageViewHolder) holder).bind(tinNhan);
         }
     }
     
@@ -78,14 +91,16 @@ public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         notifyItemInserted(danhSachTinNhan.size() - 1);
     }
     
-    // ViewHolder cho tin nhắn của bệnh nhân
-    class BenhNhanViewHolder extends RecyclerView.ViewHolder {
+    // ViewHolder cho tin nhắn gửi đi (bên phải)
+    class SentMessageViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNoiDung, tvThoiGian;
+        private android.widget.ImageView ivSeenStatus;
         
-        public BenhNhanViewHolder(@NonNull View itemView) {
+        public SentMessageViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNoiDung = itemView.findViewById(R.id.tvNoiDung);
             tvThoiGian = itemView.findViewById(R.id.tvThoiGian);
+            ivSeenStatus = itemView.findViewById(R.id.ivSeenStatus);
         }
         
         public void bind(TinNhanBacSi tinNhan) {
@@ -93,15 +108,39 @@ public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             if (tinNhan.getThoiGianGui() != null) {
                 tvThoiGian.setText(timeFormat.format(tinNhan.getThoiGianGui().toDate()));
             }
+            
+            // Hiển thị trạng thái seen
+            if (ivSeenStatus != null) {
+                updateSeenStatus(tinNhan, ivSeenStatus);
+            }
+        }
+        
+        private void updateSeenStatus(TinNhanBacSi tinNhan, android.widget.ImageView ivSeenStatus) {
+            if (tinNhan.getTrangThai() == TinNhanBacSi.TrangThaiTinNhan.DA_XEM) {
+                // Đã xem - hiển thị check xanh
+                ivSeenStatus.setImageResource(R.drawable.ic_check);
+                ivSeenStatus.setColorFilter(androidx.core.content.ContextCompat.getColor(
+                    ivSeenStatus.getContext(), R.color.primary));
+                ivSeenStatus.setVisibility(View.VISIBLE);
+            } else if (tinNhan.getTrangThai() == TinNhanBacSi.TrangThaiTinNhan.DA_NHAN) {
+                // Đã nhận nhưng chưa xem - hiển thị check xám
+                ivSeenStatus.setImageResource(R.drawable.ic_check);
+                ivSeenStatus.setColorFilter(androidx.core.content.ContextCompat.getColor(
+                    ivSeenStatus.getContext(), R.color.text_hint));
+                ivSeenStatus.setVisibility(View.VISIBLE);
+            } else {
+                // Đang gửi hoặc chưa nhận - ẩn icon
+                ivSeenStatus.setVisibility(View.GONE);
+            }
         }
     }
     
-    // ViewHolder cho tin nhắn của bác sĩ
-    class BacSiViewHolder extends RecyclerView.ViewHolder {
+    // ViewHolder cho tin nhắn nhận được (bên trái)
+    class ReceivedMessageViewHolder extends RecyclerView.ViewHolder {
         private TextView tvNoiDung, tvThoiGian;
         private CircleImageView ivAvatar;
         
-        public BacSiViewHolder(@NonNull View itemView) {
+        public ReceivedMessageViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNoiDung = itemView.findViewById(R.id.tvNoiDung);
             tvThoiGian = itemView.findViewById(R.id.tvThoiGian);
@@ -113,8 +152,15 @@ public class TinNhanBacSiAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             if (tinNhan.getThoiGianGui() != null) {
                 tvThoiGian.setText(timeFormat.format(tinNhan.getThoiGianGui().toDate()));
             }
-            // Có thể load avatar từ URL nếu có
-            ivAvatar.setImageResource(R.drawable.ic_doctor);
+            
+            // Hiển thị avatar phù hợp
+            if (isDoctorView) {
+                // Bác sĩ view: tin nhắn nhận được từ bệnh nhân
+                ivAvatar.setImageResource(R.drawable.ic_patient);
+            } else {
+                // Bệnh nhân view: tin nhắn nhận được từ bác sĩ
+                ivAvatar.setImageResource(R.drawable.ic_doctor);
+            }
         }
     }
 }

@@ -27,6 +27,20 @@
           "order": "DESCENDING"
         }
       ]
+    },
+    {
+      "collectionGroup": "LichLamViec",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "maBacSi",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "ngayLamViec",
+          "order": "ASCENDING"
+        }
+      ]
     }
   ],
   "fieldOverrides": []

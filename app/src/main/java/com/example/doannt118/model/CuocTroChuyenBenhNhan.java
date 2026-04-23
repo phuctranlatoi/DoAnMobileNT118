@@ -10,6 +10,7 @@ public class CuocTroChuyenBenhNhan {
     private Timestamp thoiGianCuoi;
     private int soTinNhanChuaDoc;
     private boolean laBenhNhanGuiCuoi; // true nếu tin nhắn cuối là bệnh nhân gửi
+    private TinNhanBacSi.TrangThaiTinNhan trangThaiTinNhanCuoi; // trạng thái tin nhắn cuối
     
     // Constructor mặc định cho Firestore
     public CuocTroChuyenBenhNhan() {}
@@ -45,4 +46,7 @@ public class CuocTroChuyenBenhNhan {
     
     public boolean isLaBenhNhanGuiCuoi() { return laBenhNhanGuiCuoi; }
     public void setLaBenhNhanGuiCuoi(boolean laBenhNhanGuiCuoi) { this.laBenhNhanGuiCuoi = laBenhNhanGuiCuoi; }
+    
+    public TinNhanBacSi.TrangThaiTinNhan getTrangThaiTinNhanCuoi() { return trangThaiTinNhanCuoi; }
+    public void setTrangThaiTinNhanCuoi(TinNhanBacSi.TrangThaiTinNhan trangThaiTinNhanCuoi) { this.trangThaiTinNhanCuoi = trangThaiTinNhanCuoi; }
 }

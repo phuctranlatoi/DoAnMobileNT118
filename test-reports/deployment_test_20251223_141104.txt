@@ -1,0 +1,106 @@
+DEPLOYMENT TESTING REPORT
+=========================
+Test Date: Tue Dec 23 14:11:04 +07 2025
+Project: DoAn Mobile NT118 - Doctor-Patient Messaging System
+
+PASS: Gradle Wrapper
+  Details: Gradle wrapper is functional
+
+PASS: Clean Build
+  Details: Project builds successfully
+
+PASS: APK Generation
+  Details: APK generated successfully, size:  85M
+
+PASS: File: app/build.gradle.kts
+  Details: File exists
+
+PASS: File: app/google-services.json
+  Details: File exists
+
+PASS: File: firebase.json
+  Details: File exists
+
+PASS: File: local.properties
+  Details: File exists
+
+PASS: Firebase Config
+  Details: Firebase configuration valid
+
+PASS: Stringee Config
+  Details: Stringee configuration found
+
+PASS: Permission: android.permission.INTERNET
+  Details: Permission declared
+
+PASS: Permission: android.permission.RECORD_AUDIO
+  Details: Permission declared
+
+PASS: Permission: android.permission.CAMERA
+  Details: Permission declared
+
+PASS: Permission: android.permission.MODIFY_AUDIO_SETTINGS
+  Details: Permission declared
+
+WARN: API Key Security
+  Details: Potential API keys found in source code
+
+WARN: Password Security
+  Details: Potential hardcoded passwords found
+
+WARN: APK Size
+  Details: APK size: 84MB (large but acceptable)
+
+WARN: Large Resource
+  Details: Large file found: img.png (3.5M)
+
+WARN: Large Resource
+  Details: Large file found: img_logo.jpg (1.5M)
+
+WARN: Drawable Resources
+  Details: No drawable resources found
+
+PASS: Firebase Connectivity
+  Details: Firebase services reachable
+
+PASS: Stringee Connectivity
+  Details: Stringee services reachable
+
+PASS: Firebase JSON Validity
+  Details: Firebase configuration is valid JSON
+
+PASS: Java Version
+  Details: Java version: 19.0.1
+
+FAIL: Android SDK
+  Details: Android SDK not found or ANDROID_HOME not set
+
+PASS: Disk Space
+  Details: Available space: 130Gi
+
+PASS: System Memory
+  Details: Memory check completed (macOS)
+
+PASS: Debug Flags
+  Details: No debug flags in production code
+
+WARN: Code Completeness
+  Details:       11 TODO/FIXME comments found
+
+WARN: Error Handling
+  Details: Limited error handling found
+
+PASS: Logging
+  Details: Logging implementation found
+
+PASS: Release Build
+  Details: Release build successful
+
+PASS: Release APK
+  Details: Release APK generated, size:  78M
+
+
+DEPLOYMENT TEST SUMMARY
+======================
+Overall Result: PASS
+Test Completed: Tue Dec 23 14:11:38 +07 2025

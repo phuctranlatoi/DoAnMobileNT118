@@ -632,17 +632,31 @@ public class DangKyLichKhamActivity extends AppCompatActivity {
                     String tieuDe = "Đăng ký lịch khám mới";
                     String noiDung = tenBenhNhan + " đã đăng ký lịch khám vào " + ngayKham + " - " + khungGio;
                     
-                    NotificationHelper.guiThongBaoChoBacSi(
-                        this,
-                        maBacSi,
-                        tieuDe,
-                        noiDung,
-                        "LICH_HEN",
-                        maBenhNhan
-                    );
+                    // Tạo thông báo mới trong Firestore
+                    taoThongBao(maBacSi, maBenhNhan, tieuDe, noiDung, "LICH_HEN");
                 }
             },
             e -> Log.e(TAG, "Error loading benh nhan: ", e)
+        );
+    }
+    
+    private void taoThongBao(String maBacSi, String maBenhNhan, String tieuDe, String noiDung, String loaiThongBao) {
+        String maThongBao = "TB" + System.currentTimeMillis();
+        
+        com.example.doannt118.model.ThongBao thongBao = new com.example.doannt118.model.ThongBao(
+            maThongBao,
+            maBenhNhan,
+            maBacSi,
+            tieuDe,
+            noiDung,
+            loaiThongBao,
+            com.google.firebase.Timestamp.now(),
+            false
+        );
+        
+        repo.addDocument("ThongBao", maThongBao, thongBao,
+            aVoid -> Log.d(TAG, "Thông báo đã được tạo: " + maThongBao),
+            e -> Log.e(TAG, "Lỗi tạo thông báo: ", e)
         );
     }
 }

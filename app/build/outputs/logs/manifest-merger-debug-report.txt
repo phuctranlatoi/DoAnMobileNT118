@@ -15,7 +15,7 @@ MERGED from [com.google.firebase:firebase-auth:24.0.1] E:\HK1_2025_2026\NT118\An
 MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:2:1-26:12
 MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:17:1-66:12
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:15:1-39:12
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:15:1-37:12
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-analytics:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c135dc01f523020c40ae1580ff1dee79\transformed\firebase-analytics-23.0.0\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:17:1-39:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\434b131c60f094c5a65985601b4d175f\transformed\firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
@@ -143,8 +143,8 @@ MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT1
 MERGED from [com.google.firebase:firebase-firestore:26.0.2] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\6ab0953ef7db22122ebd72e4f3c36556\transformed\firebase-firestore-26.0.2\AndroidManifest.xml:11:5-67
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:24:5-67
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:24:5-67
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:23:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:22:5-67
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:22:5-67
 MERGED from [com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:8:5-67
@@ -209,8 +209,8 @@ MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT1
 MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:22:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:7:5-79
@@ -314,8 +314,8 @@ MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT1
 MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:28:5-64:19
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:26:5-37:19
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:26:5-37:19
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:27:5-35:19
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:27:5-35:19
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:27:5-35:19
 MERGED from [com.google.firebase:firebase-analytics:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c135dc01f523020c40ae1580ff1dee79\transformed\firebase-analytics-23.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.firebase:firebase-analytics:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c135dc01f523020c40ae1580ff1dee79\transformed\firebase-analytics-23.0.0\AndroidManifest.xml:7:5-20
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:29:5-37:19
@@ -826,8 +826,8 @@ MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT1
 MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:19:5-44
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:19:5-44
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-analytics:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c135dc01f523020c40ae1580ff1dee79\transformed\firebase-analytics-23.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-analytics:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c135dc01f523020c40ae1580ff1dee79\transformed\firebase-analytics-23.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:20:5-44
@@ -1104,8 +1104,8 @@ MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT1
 MERGED from [com.google.firebase:firebase-messaging:25.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\a0932bdba2cdd58272f3f403d0c94169\transformed\firebase-messaging-25.0.1\AndroidManifest.xml:54:9-63:19
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:27:9-36:19
 MERGED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:27:9-36:19
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:28:9-34:19
-MERGED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:28:9-34:19
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:28:9-34:19
+MERGED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:28:9-34:19
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:30:9-36:19
 MERGED from [com.google.firebase:firebase-installations:19.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\babe622b093cd81ef69decabd7c1117f\transformed\firebase-installations-19.0.1\AndroidManifest.xml:12:9-21:19
@@ -1201,11 +1201,11 @@ ADDED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\
 	android:name
 		ADDED from [com.google.firebase:firebase-storage:22.0.1] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\955b325450e01794d689e1fbfc9f5a04\transformed\firebase-storage-22.0.1\AndroidManifest.xml:34:17-107
 meta-data#com.google.firebase.components:com.google.firebase.ai.FirebaseAIRegistrar
-ADDED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:31:13-33:85
+ADDED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:31:13-33:85
 	android:value
-		ADDED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:33:17-82
+		ADDED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:33:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-ai:17.4.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\d82fbb69c496f1047489c0053ce0524e\transformed\firebase-ai-17.4.0\AndroidManifest.xml:32:17-105
+		ADDED from [com.google.firebase:firebase-ai:17.7.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\0612559efd1555fda2877411bc4a49be\transformed\firebase-ai-17.7.0\AndroidManifest.xml:32:17-105
 uses-permission#com.google.android.gms.permission.AD_ID
 ADDED from [com.google.android.gms:play-services-measurement-api:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\c0c76e6e607d1eb53b378554230375af\transformed\play-services-measurement-api-23.0.0\AndroidManifest.xml:25:5-79
 MERGED from [com.google.android.gms:play-services-measurement-impl:23.0.0] E:\HK1_2025_2026\NT118\Android\caches\8.13\transforms\5430e9b3136e9792e76cba4e9197e9cb\transformed\play-services-measurement-impl-23.0.0\AndroidManifest.xml:27:5-79

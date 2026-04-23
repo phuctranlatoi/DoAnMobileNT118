@@ -1,0 +1,168 @@
+SYSTEM LIMITS TESTING REPORT
+============================
+Test Date: Tue Dec 23 14:11:48 +07 2025
+Project: DoAn Mobile NT118 - Doctor-Patient Messaging System
+
+APK Size Limit: PASS
+  Value: 77MB
+  Limit: 150MB (Play Store limit)
+
+System Memory (macOS): INFO
+  Value: Free: 320MB
+
+Available Disk Space: INFO
+  Value: 130Gi (260GB)
+
+Large File Creation: PASS
+  Value: 100MB file created successfully
+
+Firestore Document Limit: INFO
+  Value: 1MB per document
+
+Firestore Collection Limit: INFO
+  Value: No limit on collection size
+
+Firestore Query Limit: INFO
+  Value: 1MB per query result
+
+Process File Descriptor Limit: INFO
+  Value: 1048575 files
+
+Firebase Connectivity: PASS
+  Value: Firebase reachable
+
+Stringee Connectivity: PASS
+  Value: Stringee reachable
+
+HTTP Connection Limit: INFO
+  Value: 4 connections per host (default)
+
+Socket Timeout: INFO
+  Value: 30 seconds (default)
+
+Firestore Concurrent Connections: INFO
+  Value: 1 million concurrent connections
+
+Firestore Write Limit: INFO
+  Value: 10,000 writes per second per database
+
+Firestore Read Limit: INFO
+  Value: No limit on reads
+
+Stringee Concurrent Calls: INFO
+  Value: Based on subscription plan
+
+Stringee API Rate Limit: INFO
+  Value: 1000 requests per minute
+
+Estimated Concurrent Users: INFO
+  Value: 500-1000 users (estimated)
+  Limit: Based on system resources
+
+Small Message Size: PASS
+  Value: 100 bytes
+  Limit: Typical chat message
+
+Medium Message Size: PASS
+  Value: 1000 bytes
+  Limit: Long text message
+
+Large Message Size: LIMIT
+  Value: 1048576 bytes (1MB)
+  Limit: Firestore document limit
+
+Daily Messages Per User: INFO
+  Value: 50-200 messages
+  Limit: Estimated
+
+Peak Messages Per Second: INFO
+  Value: 100-500 messages
+  Limit: System capacity estimate
+
+Stringee Call Duration: INFO
+  Value: No limit (based on subscription)
+
+Stringee Call Quality: INFO
+  Value: HD video, high-quality audio
+
+Concurrent Calls Per User: INFO
+  Value: 1 call per user
+
+Voice Call Bandwidth: INFO
+  Value: 64 kbps (minimum)
+
+Video Call Bandwidth: INFO
+  Value: 1 Mbps (minimum for HD)
+
+Firestore Query Result Size: INFO
+  Value: 1MB per query
+
+Firestore Compound Queries: INFO
+  Value: Up to 30 compound queries
+
+Firestore IN Queries: INFO
+  Value: Up to 10 values in 'in' queries
+
+Firestore Array Contains: INFO
+  Value: Up to 10 values in 'array-contains-any'
+
+Recommended Page Size: INFO
+  Value: 20-50 documents per page
+  Limit: For optimal performance
+
+Firebase Auth Rate Limit: INFO
+  Value: No specific limit documented
+
+Firebase Security Rules: INFO
+  Value: Applied per request
+
+Recommended API Rate Limit: INFO
+  Value: 100 requests per minute per user
+
+Max Login Attempts: INFO
+  Value: 5 attempts per 15 minutes (recommended)
+
+Session Timeout: INFO
+  Value: 30 minutes (recommended)
+
+
+SUMMARY AND RECOMMENDATIONS
+===========================
+
+SYSTEM CAPACITY ESTIMATES:
+- Concurrent Users: 500-1,000 users
+- Messages per Second: 100-500 messages
+- Storage Growth: ~1GB per 10,000 users per month
+- Network Bandwidth: 1-10 Mbps for video calls
+
+CRITICAL LIMITS TO MONITOR:
+1. APK Size: Keep under 150MB for Play Store
+2. Memory Usage: Monitor for memory leaks
+3. Firestore Document Size: Keep under 1MB
+4. Network Connections: Monitor concurrent connections
+5. API Rate Limits: Implement proper rate limiting
+
+SCALING RECOMMENDATIONS:
+1. Implement message pagination (20-50 messages per page)
+2. Use Firebase Cloud Functions for heavy processing
+3. Implement proper caching strategies
+4. Monitor and optimize database queries
+5. Use CDN for static content
+6. Implement proper error handling and retry logic
+
+MONITORING RECOMMENDATIONS:
+1. Set up Firebase Performance Monitoring
+2. Monitor Crashlytics for app stability
+3. Track user engagement metrics
+4. Monitor API response times
+5. Set up alerts for resource usage
+
+OPTIMIZATION OPPORTUNITIES:
+1. Implement message compression
+2. Use image optimization for media messages
+3. Implement offline message caching
+4. Optimize database indexes
+5. Use connection pooling for network requests
+
+
+Test Completed: Tue Dec 23 14:11:49 +07 2025

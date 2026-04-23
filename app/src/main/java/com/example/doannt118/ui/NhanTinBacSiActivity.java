@@ -159,7 +159,7 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
     }
     
     private void setupRecyclerView() {
-        adapter = new TinNhanBacSiAdapter();
+        adapter = new TinNhanBacSiAdapter(isDoctorView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setStackFromEnd(true); // Cuộn xuống tin nhắn mới nhất
         rvTinNhan.setLayoutManager(layoutManager);
@@ -216,7 +216,10 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             return;
         }
         
-        android.util.Log.d("NhanTinBacSi", "Bắt đầu load tin nhắn: maBenhNhan=" + maBenhNhan + ", maBacSi=" + maBacSi);
+        // Tạo conversationId để đảm bảo tính duy nhất
+        String conversationId = TinNhanBacSi.generateConversationId(maBenhNhan, maBacSi);
+        
+        android.util.Log.d("NhanTinBacSi", "Bắt đầu load tin nhắn với conversationId: " + conversationId);
         showLoading(true);
         
         // Remove listener cũ nếu có
@@ -225,12 +228,12 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             messageListener = null;
         }
         
-        // Tạo query để lấy tin nhắn giữa bệnh nhân và bác sĩ
-        // Không dùng orderBy để tránh lỗi index, sẽ sort trong code
+        // Tạo query để lấy tin nhắn theo conversationId (đảm bảo chỉ lấy tin nhắn của 1 cuộc trò chuyện)
         Query query = FirebaseFirestore.getInstance()
             .collection("TinNhanBacSi")
-            .whereEqualTo("maBenhNhan", maBenhNhan)
-            .whereEqualTo("maBacSi", maBacSi);
+            .whereEqualTo("conversationId", conversationId)
+            .whereEqualTo("maBenhNhan", maBenhNhan)  // Double check để đảm bảo
+            .whereEqualTo("maBacSi", maBacSi);       // Double check để đảm bảo
         
         // Lắng nghe thay đổi real-time
         messageListener = query.addSnapshotListener((querySnapshot, e) -> {
@@ -243,15 +246,21 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             }
             
             if (querySnapshot != null) {
-                android.util.Log.d("NhanTinBacSi", "Snapshot received: " + querySnapshot.size() + " documents");
+                android.util.Log.d("NhanTinBacSi", "Snapshot received: " + querySnapshot.size() + " documents for conversationId: " + conversationId);
                 
                 List<TinNhanBacSi> danhSachTinNhan = new ArrayList<>();
                 for (DocumentSnapshot doc : querySnapshot.getDocuments()) {
                     TinNhanBacSi tinNhan = doc.toObject(TinNhanBacSi.class);
                     if (tinNhan != null) {
                         tinNhan.setId(doc.getId());
-                        danhSachTinNhan.add(tinNhan);
-                        android.util.Log.d("NhanTinBacSi", "Message: " + tinNhan.getNoiDung() + " - ID: " + doc.getId());
+                        
+                        // Validate dữ liệu tin nhắn để đảm bảo không bị lộn xộn
+                        if (validateMessage(tinNhan, maBenhNhan, maBacSi)) {
+                            danhSachTinNhan.add(tinNhan);
+                            android.util.Log.d("NhanTinBacSi", "Valid message: " + tinNhan.getNoiDung() + " - ID: " + doc.getId());
+                        } else {
+                            android.util.Log.w("NhanTinBacSi", "Invalid message filtered out: " + doc.getId());
+                        }
                     }
                 }
                 
@@ -262,7 +271,7 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                     return t1.getThoiGianGui().compareTo(t2.getThoiGianGui());
                 });
                 
-                android.util.Log.d("NhanTinBacSi", "Setting " + danhSachTinNhan.size() + " messages to adapter");
+                android.util.Log.d("NhanTinBacSi", "Setting " + danhSachTinNhan.size() + " validated messages to adapter");
                 adapter.setData(danhSachTinNhan);
                 
                 // Cuộn xuống tin nhắn mới nhất
@@ -271,6 +280,39 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+    
+    /**
+     * Validate tin nhắn để đảm bảo không bị lộn xộn
+     * Kiểm tra tin nhắn có thuộc về đúng cuộc trò chuyện này không
+     */
+    private boolean validateMessage(TinNhanBacSi tinNhan, String expectedMaBenhNhan, String expectedMaBacSi) {
+        if (tinNhan == null) return false;
+        
+        // Kiểm tra mã bệnh nhân và bác sĩ
+        if (!expectedMaBenhNhan.equals(tinNhan.getMaBenhNhan()) || 
+            !expectedMaBacSi.equals(tinNhan.getMaBacSi())) {
+            android.util.Log.w("NhanTinBacSi", "Message validation failed - Expected: " + 
+                expectedMaBenhNhan + "/" + expectedMaBacSi + 
+                ", Got: " + tinNhan.getMaBenhNhan() + "/" + tinNhan.getMaBacSi());
+            return false;
+        }
+        
+        // Kiểm tra conversationId nếu có
+        String expectedConversationId = TinNhanBacSi.generateConversationId(expectedMaBenhNhan, expectedMaBacSi);
+        if (tinNhan.getConversationId() != null && !expectedConversationId.equals(tinNhan.getConversationId())) {
+            android.util.Log.w("NhanTinBacSi", "ConversationId validation failed - Expected: " + 
+                expectedConversationId + ", Got: " + tinNhan.getConversationId());
+            return false;
+        }
+        
+        // Kiểm tra nội dung tin nhắn không rỗng
+        if (TextUtils.isEmpty(tinNhan.getNoiDung())) {
+            android.util.Log.w("NhanTinBacSi", "Empty message content filtered out");
+            return false;
+        }
+        
+        return true;
     }
     
     private void guiTinNhan() {
@@ -286,7 +328,13 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             return;
         }
         
-        // Tạo tin nhắn mới
+        // Validate độ dài tin nhắn
+        if (noiDung.length() > 1000) {
+            Toast.makeText(this, "Tin nhắn quá dài (tối đa 1000 ký tự)", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        
+        // Tạo tin nhắn mới với conversationId
         TinNhanBacSi tinNhan;
         if (isDoctorView) {
             // Bác sĩ gửi tin nhắn
@@ -312,8 +360,14 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             );
         }
         
-        // Vô hiệu hóa nút gửi
+        // Log để debug
+        android.util.Log.d("NhanTinBacSi", "Sending message with conversationId: " + tinNhan.getConversationId());
+        android.util.Log.d("NhanTinBacSi", "Message details - maBenhNhan: " + tinNhan.getMaBenhNhan() + 
+                          ", maBacSi: " + tinNhan.getMaBacSi() + ", loai: " + tinNhan.getLoaiTinNhan());
+        
+        // Vô hiệu hóa nút gửi để tránh gửi duplicate
         btnGui.setEnabled(false);
+        etTinNhan.setEnabled(false);
         
         // Lưu tin nhắn vào Firestore
         FirebaseFirestore.getInstance().collection("TinNhanBacSi")
@@ -322,14 +376,23 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
                 // Xóa nội dung EditText
                 etTinNhan.setText("");
                 btnGui.setEnabled(true);
+                etTinNhan.setEnabled(true);
+                
+                android.util.Log.d("NhanTinBacSi", "Message sent successfully with ID: " + documentReference.getId());
                 
                 // Gửi push notification
                 NotificationHelper.sendMessageNotification(tinNhan);
+                
+                // Giả lập cập nhật trạng thái tin nhắn từ DA_GUI → DA_NHAN
+                simulateMessageDelivery(documentReference.getId());
                 
                 // Tin nhắn sẽ được cập nhật tự động qua listener
             })
             .addOnFailureListener(e -> {
                 btnGui.setEnabled(true);
+                etTinNhan.setEnabled(true);
+                
+                android.util.Log.e("NhanTinBacSi", "Failed to send message: " + e.getMessage());
                 Toast.makeText(this, "Lỗi gửi tin nhắn: " + e.getMessage(), 
                               Toast.LENGTH_SHORT).show();
             });
@@ -589,6 +652,24 @@ public class NhanTinBacSiActivity extends AppCompatActivity {
             .addOnFailureListener(e -> {
                 android.util.Log.e("NhanTinBacSi", "Lỗi đánh dấu tin nhắn đã đọc: " + e.getMessage());
             });
+    }
+    
+    /**
+     * Cập nhật trạng thái tin nhắn từ DA_GUI → DA_NHAN sau 1 giây (giả lập)
+     */
+    private void simulateMessageDelivery(String messageId) {
+        new Handler().postDelayed(() -> {
+            FirebaseFirestore.getInstance()
+                .collection("TinNhanBacSi")
+                .document(messageId)
+                .update("trangThai", TinNhanBacSi.TrangThaiTinNhan.DA_NHAN)
+                .addOnSuccessListener(aVoid -> {
+                    android.util.Log.d("NhanTinBacSi", "Cập nhật trạng thái tin nhắn thành DA_NHAN: " + messageId);
+                })
+                .addOnFailureListener(e -> {
+                    android.util.Log.e("NhanTinBacSi", "Lỗi cập nhật trạng thái tin nhắn: " + e.getMessage());
+                });
+        }, 1000); // Delay 1 giây
     }
     
     /**
